@@ -1,0 +1,45 @@
+{
+  "name": "odysseus-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon src/index.js --exec babel-node",
+    "db:start": "docker start odysseus-db || docker run --name odysseus-db postgres:10"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "babel-cli": "^6.26.0",
+    "babel-plugin-syntax-decorators": "^6.13.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
+    "babel-polyfill": "^6.26.0",
+    "body-parser": "^1.18.3",
+    "bookshelf": "^0.13.3",
+    "dotenv": "^6.0.0",
+    "dotenv-cli": "^1.4.0",
+    "express": "^4.16.3",
+    "knex": "^0.15.2",
+    "pg": "^7.4.3",
+    "signale": "^1.2.1",
+    "socket.io": "^2.1.1"
+  },
+  "devDependencies": {
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "eslint": "^5.2.0",
+    "nodemon": "^1.18.3"
+  },
+  "babel": {
+    "sourceMaps": "inline",
+    "plugins": [
+      "babel-plugin-syntax-decorators",
+      "babel-plugin-transform-es2015-modules-commonjs",
+      "babel-plugin-transform-object-rest-spread"
+    ]
+  },
+  "signale": {
+    "displayTimestamp": true
+  }
+}
