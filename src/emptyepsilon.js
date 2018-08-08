@@ -1,11 +1,12 @@
 require('dotenv').config({ silent: true });
 import logger from 'signale';
-import { get } from 'axios';
-import { set } from 'lodash';
+import axios from 'axios';
+import { get, set } from 'lodash';
 
 const { EMPTY_EPSILON_HOST, EMPTY_EPSILON_PORT } = process.env;
 const URL = `http://${EMPTY_EPSILON_HOST}:${EMPTY_EPSILON_PORT}`;
 const GET_URL = `${URL}/get.lua`;
+const SET_URL = `${URL}/set.lua`;
 
 const systems = [
   'reactor',
@@ -34,8 +35,19 @@ const requestParameters = createRequestParameters([
   { keySuffix: 'Heat', command: 'getSystemHeat', targets: systems }
 ]);
 
+export const setGameState = (command, target, value) => {
+  // Only allow known commands to be used
+  if (!['setSystemHealth', 'setSystemHeat', 'setWeaponStorage'].includes(command))
+    return Promise.reject('Invalid command', command);
+  return axios.get(`${SET_URL}?${command}("${target}",${value})`).then(res => {
+    if (get(res, 'data.ERROR')) throw new Error(res.data.ERROR);
+    logger.success('Empty Epsilon game state set', command, target, value);
+    return res;
+  });
+}
+
 export const getGameState = () => {
-  return get(GET_URL, { params: requestParameters }).then((res, err) => {
+  return axios.get(GET_URL, { params: requestParameters }).then((res, err) => {
     if (err) throw new Error(err);
     return Object.keys(res.data).reduce((data, key) => {
       let keyPrefix;
