@@ -41,7 +41,7 @@ export const getGameState = () => {
       let keyPrefix;
       if (key.includes('Health')) keyPrefix = 'systems.health';
       else if (key.includes('Heat')) keyPrefix = 'systems.heat';
-      return set(data, `data.${keyPrefix || 'weapons'}.${key}`, res.data[key]);
+      return set(data, `${keyPrefix || 'weapons'}.${key}`, res.data[key]);
     }, {});
   });
 };
