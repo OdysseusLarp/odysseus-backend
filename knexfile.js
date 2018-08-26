@@ -17,7 +17,10 @@ module.exports = {
 		bailAfter: Infinity
 	},
 	migrations: {
-		tableName: `${process.env.DB_PREFIX}knex_migrations`,
+		tableName: `knex_migrations`,
 		directory: `${__dirname}/db/migrations`
+	},
+	seeds: {
+		directory: `${__dirname}/db/seeds`
 	}
 };

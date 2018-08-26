@@ -2,13 +2,21 @@
   "name": "odysseus-backend",
   "version": "0.0.0",
   "private": true,
-  "description": "",
+	"description": "Backend for multiple services used in Odysseus LARP",
+	"engines": {
+    "node": "*"
+	},
   "main": "index.js",
   "scripts": {
     "test": "NODE_ENV=test nyc ava --verbose",
     "test:nc": "NODE_ENV=test ava --verbose",
-    "start": "nodemon src/index.js --exec babel-node",
-    "db:start": "docker start odysseus-db || docker run --name odysseus-db postgres:10"
+		"start": "nodemon src/index.js --exec babel-node",
+		"db:build": "docker build -t odysseus-postgis:latest ./db",
+		"db:run": "docker run --name odysseus-dev -p 5432:5432 -d odysseus-postgis:latest",
+		"db:start": "docker start odysseus-dev || (npm run db:build && npm run db:run) || exit 0",
+		"db:migrate": "knex migrate:latest",
+		"db:rollback": "knex migrate:rollback",
+		"db:seed": "knex seed:run"
   },
   "author": "",
   "license": "ISC",
