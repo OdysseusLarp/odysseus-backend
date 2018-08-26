@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "NODE_ENV=test nyc ava --verbose",
+    "test:nc": "NODE_ENV=test ava --verbose",
     "start": "nodemon src/index.js --exec babel-node",
     "db:start": "docker start odysseus-db || docker run --name odysseus-db postgres:10"
   },
@@ -12,9 +13,7 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.18.0",
-    "babel-cli": "^6.26.0",
-    "babel-plugin-syntax-decorators": "^6.13.0",
-    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
+    "babel-plugin-rewire": "^1.1.0",
     "babel-polyfill": "^6.26.0",
     "body-parser": "^1.18.3",
     "bookshelf": "^0.13.3",
@@ -27,20 +26,64 @@
     "socket.io": "^2.1.1"
   },
   "devDependencies": {
+    "ava": "^0.25.0",
+    "babel-cli": "^6.26.0",
+    "babel-eslint": "^8.2.6",
+    "babel-plugin-istanbul": "^4.1.6",
+    "babel-plugin-syntax-decorators": "^6.13.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-plugin-transform-strict-mode": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
     "eslint": "^5.2.0",
-    "nodemon": "^1.18.3"
+    "nock": "^9.6.1",
+    "nodemon": "^1.18.3",
+    "nyc": "^12.0.2",
+    "rewire": "^4.0.1",
+    "sinon": "^6.1.5"
   },
   "babel": {
     "sourceMaps": "inline",
+    "presets": [
+      "stage-0"
+    ],
     "plugins": [
       "babel-plugin-syntax-decorators",
+      "babel-plugin-transform-strict-mode",
       "babel-plugin-transform-es2015-modules-commonjs",
       "babel-plugin-transform-object-rest-spread"
-    ]
+    ],
+    "env": {
+      "test": {
+        "plugins": [
+          "rewire",
+          "istanbul"
+        ]
+      }
+    }
   },
   "signale": {
     "displayTimestamp": true,
     "displayFilename": true
+  },
+  "nyc": {
+    "include": [
+      "src/**/*.js"
+    ],
+    "sourceMap": false,
+    "instrument": false
+  },
+  "ava": {
+    "concurrency": 4,
+    "files": [
+      "test/**/*.js"
+    ],
+    "source": [
+      "src/**/*.js"
+    ],
+    "babel": "inherit",
+    "require": [
+      "babel-register"
+    ]
   }
 }
