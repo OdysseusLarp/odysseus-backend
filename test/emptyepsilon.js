@@ -9,7 +9,7 @@ nock.disableNetConnect();
 // Line below can be used to record actual http requests so they can turned into mocks
 // nock.recorder.rec();
 
-test('should set state to healthy', async t => {
+test('succesful getGameState should set state to healthy', async t => {
 	nock('http://localhost:8080', { "encodedQueryParams": true })
 		.get('/get.lua')
 		.query(true)
@@ -19,7 +19,7 @@ test('should set state to healthy', async t => {
 	t.truthy(emptyEpsilon.isConnectionHealthy);
 });
 
-test('should set state to unhealthy', async t => {
+test('failing setGameState should set state to unhealthy', async t => {
 	nock('http://localhost:8080', { "encodedQueryParams": true })
 		.get('/get.lua')
 		.query(true)
@@ -65,15 +65,7 @@ test('should parse getGameState reponse correctly', async t => {
 			"warpHealth": 1,
 			"beamweaponsHealth": 1,
 			"empCount": 6
-		},
-			[
-				'Content-type',
-				'text/html',
-				'Connection',
-				'Keep-Alive',
-				'Transfer-Encoding',
-				'chunked'
-			]);
+		}, []);
 	const emptyEpsilon = new EmptyEpsilonClient();
 	const gameState = await emptyEpsilon.getGameState();
 	t.truthy(emptyEpsilon.isConnectionHealthy);
