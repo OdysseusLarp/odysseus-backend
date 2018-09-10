@@ -1,6 +1,7 @@
 require('dotenv').config({ silent: true });
-import logger from 'signale';
+import { logger } from './logger';
 import axios from 'axios';
+import nock from 'nock';
 import { get, set } from 'lodash';
 
 const { EMPTY_EPSILON_HOST, EMPTY_EPSILON_PORT } = process.env,
@@ -17,11 +18,18 @@ const { EMPTY_EPSILON_HOST, EMPTY_EPSILON_PORT } = process.env,
 	],
 	weapons = ['homing', 'nuke', 'mine', 'emp', 'hvli'];
 
-export default class EmptyEpsilonClient {
+export class EmptyEpsilonClient {
 	constructor({ host = EMPTY_EPSILON_HOST, port = EMPTY_EPSILON_PORT } = {}) {
-		const url = `http://${host}:${port}`;
-		this.getUrl = `${url}/get.lua`;
-		this.setUrl = `${url}/set.lua`;
+		if (host && port) {
+			const url = `http://${host}:${port}`;
+			this.getUrl = `${url}/get.lua`;
+			this.setUrl = `${url}/set.lua`;
+		} else {
+			logger.info('Empty Epsilon configuration not provided, initializing emulator');
+			this.getUrl = 'http://ee-emulation.local/get.lua';
+			this.setUrl = 'http://ee-emulation.local/set.lua';
+			initEmulator();
+		}
 	}
 
 	setIsConnectionHealthy(value, error) {
@@ -84,3 +92,50 @@ const requestParameters = createRequestParameters([
 	{ keySuffix: 'Health', command: 'getSystemHealth', targets: systems },
 	{ keySuffix: 'Heat', command: 'getSystemHeat', targets: systems }
 ]);
+
+let emptyEpsilonClient;
+export function getEmptyEpsilonClient(config = {}) {
+	if (emptyEpsilonClient) return emptyEpsilonClient;
+	emptyEpsilonClient = new EmptyEpsilonClient(config);
+	return emptyEpsilonClient;
+};
+
+/**
+ * This aims to emulate a Empty Epsilon server when connection details to a real
+ * one have not been provided
+ */
+let mockState;
+function initEmulator() {
+	mockState = require('../fixtures/emptyepsilon');
+	nock('http://ee-emulation.local', { "encodedQueryParams": true })
+		.persist()
+		.get(/\/get\.lua.*/)
+		.query(true)
+		.reply(function (uri, requestBody, cb) {
+			cb(null, [200, mockState, []]);
+		});
+	nock('http://ee-emulation.local', { "encodedQueryParams": true })
+		.persist()
+		.get(/\/set\.lua.*/)
+		.query(true)
+		.reply(function (uri, requestBody, cb) {
+			const req = decodeURI(this.req.path);
+			const target = req.replace(/.*"(\w.*)".*/, '$1');
+			const value = Number(req.replace(/.*,([0-9.]*)\)/, '$1'));
+			if (req.includes('setSystemHealth') && systems.includes(target)) {
+				mockState[`${target}Health`] = value;
+				return cb(null, [200, mockState, []]);
+			}
+			if (req.includes('setSystemHeat') && systems.includes(target)) {
+				mockState[`${target}Heat`] = value;
+				return cb(null, [200, mockState, []]);
+			}
+			if (req.includes('setWeaponStorage') && weapons.includes(target)) {
+				mockState[`${target}Count`] = value;
+				return cb(null, [200, mockState, []]);
+			}
+			return cb(null, [200, { ERROR: 'Something went wrong' }]);
+		});
+}
+
+export default { EmptyEpsilonClient, getEmptyEpsilonClient };

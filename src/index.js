@@ -1,55 +1,65 @@
 require('dotenv').config({ silent: true });
 const app = require('express')();
+const bodyParser = require('body-parser');
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
-import logger from 'signale';
-import { get } from 'lodash';
-import EmptyEpsilonClient from './emptyepsilon';
+import { logger, loggerMiddleware } from './logger'
+import { getEmptyEpsilonClient } from './emptyepsilon';
 
-const emptyEpsilon = new EmptyEpsilonClient();
+import engineering from './routes/engineering';
+import fleet from './routes/fleet';
+import starmap from './routes/starmap';
 
-// Setup logging middleware
+// Setup logging middleware and body parsing
+app.use(bodyParser.json());
+app.use(loggerMiddleware);
+
+// Temporary store for game state
+let gameState = {};
+
+// Add Socket.IO reference to all requests so route handlers can call it
 app.use((req, res, next) => {
-	logger.log(req.ip, req.method, req.url);
+	req.io = io;
 	next();
 });
 
-// Temporary store for game state
-let state = {};
-
-app.get('/', (req, res) => res.send('Hello'));
-app.get('/state', (req, res) => res.json(state));
-app.get('/state/:command/:target/:value', (req, res) => {
-	const { command, target, value } = req.params;
-	emptyEpsilon.setGameState(command, target, value)
-		.then(() => res.status(200).send('ok'))
+// Setup routes
+app.get('/', (req, res) => res.send('Odysseus backend'));
+app.use('/engineering', engineering);
+app.use('/fleet', fleet);
+app.use('/starmap', starmap);
+app.get('/state', (req, res) => res.json(gameState));
+app.put('/state', (req, res) => {
+	const { command, target, value } = req.body;
+	getEmptyEpsilonClient().setGameState(command, target, value)
+		.then(() => res.sendStatus(204))
 		.catch(error => {
 			logger.error('Error setting game state', error);
-			res.status(500).send('error');
+			res.sendStatus(500);
 		});
 });
 
 // Setup Socket.IO
 io.on('connection', socket => {
-	logger.info('Client connected');
+	logger.info('Socket.IO Client connected');
 	socket.on('disconnect', () => {
-		logger.info('Client disconnected');
+		logger.info('Socket.IO Client disconnected');
 	});
 });
 
+// Get Empty Epsilon game state and emit it to clients
+function getEmptyEpsilonState() {
+	// TODO: Validate state and make sure that EE mission did not just change
+	getEmptyEpsilonClient().getGameState().then(state => {
+		if (state.error) return;
+		gameState = state;
+		io.emit('gameStateUpdated', state);
+	});
+}
+
+const EE_UPDATE_INTERVAL = 1000;
+logger.watch(`Starting to poll Empty Epsilon game state every ${EE_UPDATE_INTERVAL}ms`);
+setInterval(getEmptyEpsilonState, EE_UPDATE_INTERVAL);
+
 const { APP_PORT } = process.env;
 http.listen(APP_PORT, () => logger.start(`Odysseus backend listening to port ${APP_PORT}`));
-
-// Get Empty Epsilon game state and emit it to clients
-const EE_UPDATE_INTERVAL = 1000;
-let isEmptyEpsilonConnectionHealthy;
-logger.watch(`Starting to poll Empty Epsilon game state every ${EE_UPDATE_INTERVAL}ms`);
-setInterval(() => {
-	// TODO: Validate state and make sure that EE mission did not just change
-	emptyEpsilon.getGameState()
-		.then(state => {
-			if (state.error) return;
-			io.emit('gameStateUpdated', state);
-			logger.info('Empty Epsilon game state updated');
-		});
-}, EE_UPDATE_INTERVAL);

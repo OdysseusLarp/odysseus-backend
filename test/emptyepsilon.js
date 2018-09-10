@@ -1,7 +1,6 @@
 import test from 'ava';
-import sinon from 'sinon';
 import nock from 'nock';
-import EmptyEpsilonClient from '../src/emptyepsilon';
+import { EmptyEpsilonClient, getEmptyEpsilonClient } from '../src/emptyepsilon';
 
 // Disable real http communications
 nock.disableNetConnect();
@@ -19,7 +18,7 @@ test('succesful getGameState should set state to healthy', async t => {
 	t.truthy(emptyEpsilon.isConnectionHealthy);
 });
 
-test('failing setGameState should set state to unhealthy', async t => {
+test('failing getGameState should set state to unhealthy', async t => {
 	nock('http://localhost:8080', { "encodedQueryParams": true })
 		.get('/get.lua')
 		.query(true)
@@ -104,3 +103,9 @@ test('should parse getGameState reponse correctly', async t => {
 	})
 });
 
+test('getEmptyEpsilonClient should only create one instance of the client', t => {
+	const clientOne = getEmptyEpsilonClient();
+	const clientTwo = getEmptyEpsilonClient();
+	t.truthy(clientOne instanceof EmptyEpsilonClient);
+	t.is(clientOne, clientTwo);
+})
