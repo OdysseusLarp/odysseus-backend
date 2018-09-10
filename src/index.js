@@ -63,3 +63,5 @@ setInterval(getEmptyEpsilonState, EE_UPDATE_INTERVAL);
 
 const { APP_PORT } = process.env;
 http.listen(APP_PORT, () => logger.start(`Odysseus backend listening to port ${APP_PORT}`));
+
+export { app };

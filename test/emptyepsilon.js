@@ -2,24 +2,27 @@ import test from 'ava';
 import nock from 'nock';
 import { EmptyEpsilonClient, getEmptyEpsilonClient } from '../src/emptyepsilon';
 
+const emptyEpsilonConfig = { host: 'ee-test.local', port: '8080' };
+const emptyEpsilonUrl = `http://${emptyEpsilonConfig.host}:${emptyEpsilonConfig.port}`;
+
 // Disable real http communications
 nock.disableNetConnect();
 
 // Line below can be used to record actual http requests so they can turned into mocks
 // nock.recorder.rec();
 
-test('succesful getGameState should set state to healthy', async t => {
-	nock('http://localhost:8080', { "encodedQueryParams": true })
+test.serial('succesful getGameState should set state to healthy', async t => {
+	nock(emptyEpsilonUrl, { "encodedQueryParams": true })
 		.get('/get.lua')
 		.query(true)
 		.reply(200, {}, []);
-	const emptyEpsilon = new EmptyEpsilonClient();
-	const gameState = await emptyEpsilon.getGameState();
+	const emptyEpsilon = new EmptyEpsilonClient(emptyEpsilonConfig);
+	await emptyEpsilon.getGameState();
 	t.truthy(emptyEpsilon.isConnectionHealthy);
 });
 
-test('failing getGameState should set state to unhealthy', async t => {
-	nock('http://localhost:8080', { "encodedQueryParams": true })
+test.serial('failing getGameState should set state to unhealthy', async t => {
+	nock(emptyEpsilonUrl, { "encodedQueryParams": true })
 		.get('/get.lua')
 		.query(true)
 		.reply(500, { 'ERROR': 'mock error' },
@@ -31,13 +34,13 @@ test('failing getGameState should set state to unhealthy', async t => {
 				'Transfer-Encoding',
 				'chunked'
 			]);
-	const emptyEpsilon = new EmptyEpsilonClient();
-	const gameState = await emptyEpsilon.getGameState();
+	const emptyEpsilon = new EmptyEpsilonClient(emptyEpsilonConfig);
+	await emptyEpsilon.getGameState();
 	t.falsy(emptyEpsilon.isConnectionHealthy);
 });
 
 test('should parse getGameState reponse correctly', async t => {
-	nock('http://localhost:8080', { "encodedQueryParams": true })
+	nock(emptyEpsilonUrl, { "encodedQueryParams": true })
 		.get('/get.lua')
 		.query(true)
 		.reply(200, {
@@ -65,7 +68,7 @@ test('should parse getGameState reponse correctly', async t => {
 			"beamweaponsHealth": 1,
 			"empCount": 6
 		}, []);
-	const emptyEpsilon = new EmptyEpsilonClient();
+	const emptyEpsilon = new EmptyEpsilonClient(emptyEpsilonConfig);
 	const gameState = await emptyEpsilon.getGameState();
 	t.truthy(emptyEpsilon.isConnectionHealthy);
 	t.deepEqual(gameState, {
@@ -104,8 +107,8 @@ test('should parse getGameState reponse correctly', async t => {
 });
 
 test('getEmptyEpsilonClient should only create one instance of the client', t => {
-	const clientOne = getEmptyEpsilonClient();
-	const clientTwo = getEmptyEpsilonClient();
+	const clientOne = getEmptyEpsilonClient(emptyEpsilonConfig);
+	const clientTwo = getEmptyEpsilonClient(emptyEpsilonConfig);
 	t.truthy(clientOne instanceof EmptyEpsilonClient);
 	t.is(clientOne, clientTwo);
 })
