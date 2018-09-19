@@ -12,7 +12,7 @@ nock.disableNetConnect();
 // nock.recorder.rec();
 
 test.serial('succesful getGameState should set state to healthy', async t => {
-	nock(emptyEpsilonUrl, { "encodedQueryParams": true })
+	nock(emptyEpsilonUrl, { encodedQueryParams: true })
 		.get('/get.lua')
 		.query(true)
 		.reply(200, {}, []);
@@ -22,10 +22,10 @@ test.serial('succesful getGameState should set state to healthy', async t => {
 });
 
 test.serial('failing getGameState should set state to unhealthy', async t => {
-	nock(emptyEpsilonUrl, { "encodedQueryParams": true })
+	nock(emptyEpsilonUrl, { encodedQueryParams: true })
 		.get('/get.lua')
 		.query(true)
-		.reply(500, { 'ERROR': 'mock error' },
+		.reply(500, { ERROR: 'mock error' },
 			[
 				'Content-type',
 				'text/html',
@@ -40,33 +40,33 @@ test.serial('failing getGameState should set state to unhealthy', async t => {
 });
 
 test('should parse getGameState reponse correctly', async t => {
-	nock(emptyEpsilonUrl, { "encodedQueryParams": true })
+	nock(emptyEpsilonUrl, { encodedQueryParams: true })
 		.get('/get.lua')
 		.query(true)
 		.reply(200, {
-			"reactorHeat": 0,
-			"homingCount": 12,
-			"nukeCount": 4,
-			"frontshieldHealth": 1,
-			"rearshieldHeat": 0,
-			"missilesystemHeat": 0,
-			"maneuverHeat": 0,
-			"jumpdriveHealth": 1,
-			"beamweaponsHeat": 0,
-			"frontshieldHeat": 0,
-			"hvliCount": 20,
-			"impulseHeat": 0,
-			"jumpdriveHeat": 0,
-			"rearshieldHealth": 1,
-			"warpHeat": 0,
-			"impulseHealth": 1,
-			"missilesystemHealth": 1,
-			"reactorHealth": 1,
-			"maneuverHealth": 1,
-			"mineCount": 8,
-			"warpHealth": 1,
-			"beamweaponsHealth": 1,
-			"empCount": 6
+			reactorHeat: 0,
+			homingCount: 12,
+			nukeCount: 4,
+			frontshieldHealth: 1,
+			rearshieldHeat: 0,
+			missilesystemHeat: 0,
+			maneuverHeat: 0,
+			jumpdriveHealth: 1,
+			beamweaponsHeat: 0,
+			frontshieldHeat: 0,
+			hvliCount: 20,
+			impulseHeat: 0,
+			jumpdriveHeat: 0,
+			rearshieldHealth: 1,
+			warpHeat: 0,
+			impulseHealth: 1,
+			missilesystemHealth: 1,
+			reactorHealth: 1,
+			maneuverHealth: 1,
+			mineCount: 8,
+			warpHealth: 1,
+			beamweaponsHealth: 1,
+			empCount: 6
 		}, []);
 	const emptyEpsilon = new EmptyEpsilonClient(emptyEpsilonConfig);
 	const gameState = await emptyEpsilon.getGameState();
@@ -103,7 +103,7 @@ test('should parse getGameState reponse correctly', async t => {
 			mineCount: 8,
 			empCount: 6
 		}
-	})
+	});
 });
 
 test('getEmptyEpsilonClient should only create one instance of the client', t => {
@@ -111,4 +111,4 @@ test('getEmptyEpsilonClient should only create one instance of the client', t =>
 	const clientTwo = getEmptyEpsilonClient(emptyEpsilonConfig);
 	t.truthy(clientOne instanceof EmptyEpsilonClient);
 	t.is(clientOne, clientTwo);
-})
+});

@@ -10,6 +10,7 @@
   "scripts": {
     "test": "NODE_ENV=test nyc ava --verbose",
     "test:nc": "NODE_ENV=test ava --verbose",
+    "lint": "eslint src test",
     "start": "nodemon src/index.js --exec babel-node",
     "db:build": "docker build -t odysseus-postgis:latest ./db",
     "db:run": "docker run --name odysseus-dev -p 5432:5432 -d odysseus-postgis:latest",

@@ -64,7 +64,7 @@ export class EmptyEpsilonClient {
 			this.setIsConnectionHealthy(false, error);
 			return { error };
 		});
-	};
+	}
 
 	setGameState(command, target, value) {
 		// Only allow known commands to be used
@@ -98,7 +98,7 @@ export function getEmptyEpsilonClient(config = {}) {
 	if (emptyEpsilonClient) return emptyEpsilonClient;
 	emptyEpsilonClient = new EmptyEpsilonClient(config);
 	return emptyEpsilonClient;
-};
+}
 
 /**
  * This aims to emulate a Empty Epsilon server when connection details to a real
@@ -107,14 +107,14 @@ export function getEmptyEpsilonClient(config = {}) {
 let mockState;
 function initEmulator() {
 	mockState = require('../fixtures/emptyepsilon');
-	nock('http://ee-emulation.local', { "encodedQueryParams": true })
+	nock('http://ee-emulation.local', { encodedQueryParams: true })
 		.persist()
 		.get(/\/get\.lua.*/)
 		.query(true)
-		.reply(function (uri, requestBody, cb) {
+		.reply((uri, requestBody, cb) => {
 			cb(null, [200, mockState, []]);
 		});
-	nock('http://ee-emulation.local', { "encodedQueryParams": true })
+	nock('http://ee-emulation.local', { encodedQueryParams: true })
 		.persist()
 		.get(/\/set\.lua.*/)
 		.query(true)

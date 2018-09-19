@@ -3,7 +3,7 @@ const app = require('express')();
 const bodyParser = require('body-parser');
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
-import { logger, loggerMiddleware } from './logger'
+import { logger, loggerMiddleware } from './logger';
 import { getEmptyEpsilonClient } from './emptyepsilon';
 
 import engineering from './routes/engineering';
