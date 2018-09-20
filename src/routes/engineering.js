@@ -1,29 +1,39 @@
 import { Router } from 'express';
+import { Task, Box } from '../models';
 const router = new Router();
 
-router.get('/', (req, res) => {
-	// TODO: Return list of tasks / broken things
-	const state = {};
+router.get('/', async (req, res) => {
+	const tasks = await Task.forge().fetchAll({
+		withRelated: 'requirements'
+	});
+	const state = { tasks };
 	res.json(state);
 });
 
-router.get('/box', (req, res) => {
-	// TODO: Return state of all boxes
-	const state = [];
+router.get('/box', async (req, res) => {
+	const state = await Box.forge().fetchAll({
+		withRelated: 'tasks'
+	});
 	res.json(state);
 });
 
-router.get('/box/:id', (req, res) => {
+router.get('/box/:id', async (req, res) => {
 	const { id } = req.params;
-	// TODO: Return state of the box with given ID
-	const state = { id };
+	const state = await Box.forge({ id }).fetch({
+		withRelated: 'tasks'
+	});
 	res.json(state);
 });
 
-router.post('/box/:id', (req, res) => {
+router.post('/box/:id', async (req, res) => {
 	const { id } = req.params;
-	// TODO: Set box state and return current state
-	const state = { id };
+	const { value } = req.body;
+	// TODO: Validate value from request body
+	// TODO: Validate new value against task requirements attached to this box
+	await Box.forge({ id }).save({ value }, { method: 'update' });
+	const state = await Box.forge({ id }).fetch({
+		withRelated: 'tasks'
+	});
 	res.json(state);
 	req.io.to('engineering').emit('boxStateUpdated', state);
 });
