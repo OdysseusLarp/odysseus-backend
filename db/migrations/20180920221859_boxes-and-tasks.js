@@ -4,6 +4,7 @@ exports.up = async knex => {
 		t.increments('id').primary();
 		t.string('name');
 		t.json('value').defaultTo('{ "value": null }');
+		t.timestamps(true, true);
 	});
 
 	await knex.schema.createTable('task', t => {
@@ -14,6 +15,7 @@ exports.up = async knex => {
 		t.string('type');
 		// List of systems where the task should be displayed
 		t.specificType('systems', 'text[]');
+		t.timestamps(true, true);
 	});
 
 	await knex.schema.createTable('task_requirement', t => {
@@ -21,6 +23,7 @@ exports.up = async knex => {
 		t.integer('task_id').references('id').inTable('task').notNullable().onDelete('cascade');
 		t.integer('box_id').references('id').inTable('box').notNullable().onDelete('cascade');
 		t.json('requirements').notNullable();
+		t.timestamps(true, true);
 	});
 };
 

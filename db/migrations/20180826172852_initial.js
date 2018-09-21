@@ -6,6 +6,7 @@ exports.up = async knex => {
 		t.string('sector', 14).notNullable();
 		t.integer('zoom_level').notNullable();
 		t.specificType('the_geom', 'geometry').notNullable();
+		t.timestamps(true, true);
 	});
 	await knex.raw('CREATE INDEX geo_index ON grid USING GIST (the_geom)');
 };

@@ -1,10 +1,13 @@
 import Bookshelf from '../../db';
 import { Task, TaskRequirement } from './';
 
+function tasks() {
+	return this.belongsToMany(Task).through(TaskRequirement);
+}
+
 export const Box = Bookshelf.Model.extend({
 	tableName: 'box',
-	tasks: function () {
-		return this.belongsToMany(Task).through(TaskRequirement);
-	}
+	hasTimestamps: true,
+	tasks
 });
 
