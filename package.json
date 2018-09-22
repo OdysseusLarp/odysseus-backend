@@ -1,100 +1,102 @@
 {
-  "name": "odysseus-backend",
-  "version": "0.0.0",
-  "private": true,
-  "description": "Backend for multiple services used in Odysseus LARP",
-  "engines": {
-    "node": "*"
-  },
-  "main": "index.js",
-  "scripts": {
-    "test": "NODE_ENV=test nyc ava --verbose",
-    "test:nc": "NODE_ENV=test ava --verbose",
-    "lint": "eslint src test db",
-    "start": "nodemon src/index.js --exec babel-node",
-    "db:build": "docker build -t odysseus-postgis:latest ./db",
-    "db:run": "docker run --name odysseus-dev -p 5432:5432 -d odysseus-postgis:latest",
-    "db:start": "docker start odysseus-dev || (npm run db:build && npm run db:run) || exit 0",
-    "db:migrate": "knex migrate:latest",
-    "db:rollback": "knex migrate:rollback",
-    "db:seed": "knex seed:run"
-  },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "axios": "^0.18.0",
-    "babel-plugin-rewire": "^1.1.0",
-    "babel-polyfill": "^6.26.0",
-    "body-parser": "^1.18.3",
-    "bookshelf": "^0.13.3",
-    "dotenv": "^6.0.0",
-    "dotenv-cli": "^1.4.0",
-    "express": "^4.16.3",
-    "knex": "^0.15.2",
-    "pg": "^7.4.3",
-    "signale": "^1.2.1",
-    "socket.io": "^2.1.1"
-  },
-  "devDependencies": {
-    "ava": "^0.25.0",
-    "babel-cli": "^6.26.0",
-    "babel-eslint": "^8.2.6",
-    "babel-plugin-istanbul": "^4.1.6",
-    "babel-plugin-syntax-decorators": "^6.13.0",
-    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
-    "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "babel-plugin-transform-strict-mode": "^6.24.1",
-    "babel-preset-stage-0": "^6.24.1",
-    "eslint": "^5.2.0",
-    "nock": "^9.6.1",
-    "nodemon": "^1.18.3",
-    "nyc": "^12.0.2",
-    "rewire": "^4.0.1",
-    "sinon": "^6.1.5",
-    "supertest": "^3.3.0"
-  },
-  "babel": {
-    "sourceMaps": "inline",
-    "presets": [
-      "stage-0"
-    ],
-    "plugins": [
-      "babel-plugin-syntax-decorators",
-      "babel-plugin-transform-strict-mode",
-      "babel-plugin-transform-es2015-modules-commonjs",
-      "babel-plugin-transform-object-rest-spread"
-    ],
-    "env": {
-      "test": {
-        "plugins": [
-          "rewire",
-          "istanbul"
-        ]
-      }
-    }
-  },
-  "signale": {
-    "displayTimestamp": true,
-    "displayFilename": true
-  },
-  "nyc": {
-    "include": [
-      "src/**/*.js"
-    ],
-    "sourceMap": false,
-    "instrument": false
-  },
-  "ava": {
-    "concurrency": 4,
-    "files": [
-      "test/**/*.js"
-    ],
-    "source": [
-      "src/**/*.js"
-    ],
-    "babel": "inherit",
-    "require": [
-      "babel-register"
-    ]
-  }
+	"name": "odysseus-backend",
+	"version": "0.0.0",
+	"private": true,
+	"description": "Backend for multiple services used in Odysseus LARP",
+	"engines": {
+		"node": "*"
+	},
+	"main": "index.js",
+	"scripts": {
+		"test": "NODE_ENV=test nyc ava --verbose",
+		"test:nc": "NODE_ENV=test ava --verbose",
+		"lint": "eslint src test db",
+		"start": "nodemon src/index.js --exec babel-node",
+		"start:prod": "NODE_ENV=production babel-node src/index.js",
+		"db:build": "docker build -t odysseus-postgis:latest ./db",
+		"db:run": "docker run --name odysseus-dev -p 5432:5432 -d odysseus-postgis:latest",
+		"db:start": "docker start odysseus-dev || (npm run db:build && npm run db:run) || exit 0",
+		"db:migrate": "knex migrate:latest",
+		"db:rollback": "knex migrate:rollback",
+		"db:seed": "knex seed:run"
+	},
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"axios": "^0.18.0",
+		"babel-plugin-rewire": "^1.1.0",
+		"babel-polyfill": "^6.26.0",
+		"body-parser": "^1.18.3",
+		"bookshelf": "^0.13.3",
+		"dotenv": "^6.0.0",
+		"dotenv-cli": "^1.4.0",
+		"express": "^4.16.3",
+		"knex": "^0.15.2",
+		"pg": "^7.4.3",
+		"signale": "^1.2.1",
+		"socket.io": "^2.1.1",
+		"swagger-ui-express": "^4.0.1"
+	},
+	"devDependencies": {
+		"ava": "^0.25.0",
+		"babel-cli": "^6.26.0",
+		"babel-eslint": "^8.2.6",
+		"babel-plugin-istanbul": "^4.1.6",
+		"babel-plugin-syntax-decorators": "^6.13.0",
+		"babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
+		"babel-plugin-transform-object-rest-spread": "^6.26.0",
+		"babel-plugin-transform-strict-mode": "^6.24.1",
+		"babel-preset-stage-0": "^6.24.1",
+		"eslint": "^5.2.0",
+		"nock": "^9.6.1",
+		"nodemon": "^1.18.3",
+		"nyc": "^12.0.2",
+		"rewire": "^4.0.1",
+		"sinon": "^6.1.5",
+		"supertest": "^3.3.0"
+	},
+	"babel": {
+		"sourceMaps": "inline",
+		"presets": [
+			"stage-0"
+		],
+		"plugins": [
+			"babel-plugin-syntax-decorators",
+			"babel-plugin-transform-strict-mode",
+			"babel-plugin-transform-es2015-modules-commonjs",
+			"babel-plugin-transform-object-rest-spread"
+		],
+		"env": {
+			"test": {
+				"plugins": [
+					"rewire",
+					"istanbul"
+				]
+			}
+		}
+	},
+	"signale": {
+		"displayTimestamp": true,
+		"displayFilename": true
+	},
+	"nyc": {
+		"include": [
+			"src/**/*.js"
+		],
+		"sourceMap": false,
+		"instrument": false
+	},
+	"ava": {
+		"concurrency": 4,
+		"files": [
+			"test/**/*.js"
+		],
+		"source": [
+			"src/**/*.js"
+		],
+		"babel": "inherit",
+		"require": [
+			"babel-register"
+		]
+	}
 }
