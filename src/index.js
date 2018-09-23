@@ -39,6 +39,12 @@ app.put('/state', (req, res) => {
 		});
 });
 
+// Error handling middleware
+app.use(async (err, req, res, next) => {
+	logger.error(err.message);
+	return res.status(err.status || 500).json({ error: err.message });
+});
+
 // Setup Socket.IO
 io.on('connection', socket => {
 	logger.info('Socket.IO Client connected');
