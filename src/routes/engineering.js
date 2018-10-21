@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { Task, Box } from '../models';
+import { Task } from '../models/task';
 import { handleAsyncErrors } from '../helpers';
 const router = new Router();
 
@@ -21,17 +21,26 @@ router.get('/:id', handleAsyncErrors(async (req, res) => {
 }));
 
 router.get('/box', handleAsyncErrors(async (req, res) => {
-	const state = await Box.forge().fetchAll({
-		withRelated: 'tasks'
-	});
+	// const state = await Box.forge().fetchAll({
+	// 	withRelated: 'tasks'
+	// });
+	const state = {};
 	res.json(state);
 }));
 
 router.get('/box/:id', handleAsyncErrors(async (req, res) => {
 	const { id } = req.params;
-	const state = await Box.forge({ id }).fetch({
-		withRelated: 'tasks'
-	});
+	// const state = await Box.forge({ id }).fetch({
+	// 	withRelated: 'tasks'
+	// });
+	const state = {};
+	res.json(state);
+}));
+
+router.get('/box/:id/config', handleAsyncErrors(async (req, res) => {
+	const { id } = req.params;
+	// TODO: Get box config
+	const state = { id };
 	res.json(state);
 }));
 

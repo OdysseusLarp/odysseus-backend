@@ -5,6 +5,7 @@ const http = require('http').Server(app);
 const io = require('socket.io')(http);
 import { logger, loggerMiddleware } from './logger';
 import { getEmptyEpsilonClient } from './emptyepsilon';
+import { loadInitialTasks } from './engineering/tasks';
 
 import engineering from './routes/engineering';
 import fleet from './routes/fleet';
@@ -62,6 +63,9 @@ function getEmptyEpsilonState() {
 		io.emit('gameStateUpdated', state);
 	});
 }
+
+// Load initial engineering tasks
+loadInitialTasks();
 
 const EE_UPDATE_INTERVAL = 1000;
 logger.watch(`Starting to poll Empty Epsilon game state every ${EE_UPDATE_INTERVAL}ms`);
