@@ -4,18 +4,14 @@ import { handleAsyncErrors } from '../helpers';
 const router = new Router();
 
 router.get('/', handleAsyncErrors(async (req, res) => {
-	const tasks = await Task.forge().fetchAll({
-		withRelated: ['requirements', 'requirements.box']
-	});
+	const tasks = await Task.forge().fetchAll();
 	const state = { tasks };
 	res.json(state);
 }));
 
 router.get('/:id', handleAsyncErrors(async (req, res) => {
 	const { id } = req.params;
-	const tasks = await Task.forge({ id }).fetch({
-		withRelated: ['requirements', 'requirements.box']
-	});
+	const tasks = await Task.forge({ id }).fetch();
 	const state = { tasks };
 	res.json(state);
 }));
