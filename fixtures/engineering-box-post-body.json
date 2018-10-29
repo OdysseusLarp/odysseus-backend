@@ -1,0 +1,8 @@
+{
+	"value": {
+		"any_key": "any value",
+		"example": true,
+		"some_number": 5
+	},
+	"version": 4
+}
