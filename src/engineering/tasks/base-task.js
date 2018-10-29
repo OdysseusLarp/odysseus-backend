@@ -1,28 +1,29 @@
-// On create, register this box so that
-// * config can be fetched
-// * registers itself to the rule engine
-// On destroy, de-register this box
+import { isObject, isBoolean } from 'lodash';
 import { Task } from '../../models/task';
+import { InvalidParametersError } from '../../errors';
 
 export default class BaseTask {
-	constructor({ id, filename, state }) {
+	constructor({ id, filename }) {
 		this.id = id;
 		this.filename = filename;
-		this.masterState = state; // contains reference to all currently loaded boxes
 		this.model;
 		this.loadTaskDetails();
 	}
 
 	async loadTaskDetails() {
 		const model = await Task.forge({ id: this.id }).fetch();
-		// check for errors
+		// TODO: check for errors
 		this.model = model;
+	}
+
+	async setActive(active) {
+		if (!isBoolean(active)) throw new InvalidParametersError('Invalid parameters');
+		if (!isObject(this.model)) throw new Error('Model not initialized');
+		await this.model.set({ is_active: active }).save();
 	}
 
 	onInit() {
 		// update odysseus.task (is_active)
-		// box.register(1)
-		// box.register(2)
 	}
 
 	destroy() {
@@ -31,10 +32,5 @@ export default class BaseTask {
 
 	validate() {
 		// validate current state against rules
-	}
-
-	// When a task file gets unloaded, make sure we have the latest references
-	updateMasterState(state) {
-		this.masterState = state;
 	}
 }

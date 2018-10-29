@@ -1,4 +1,4 @@
-import { isInteger, isString } from 'lodash';
+import { isInteger, isString, get } from 'lodash';
 import {
 	TaskNotFoundError,
 	TaskAlreadyLoadedError,
@@ -7,28 +7,29 @@ import {
 } from '../../errors';
 import { logger } from '../../logger';
 
-const loadedTasks = {};
-const boxStates = {};
+export const loadedTasks = {};
+
 const initialTasks = [
 	{ id: 1, filename: '01-example-task' }
 ];
 
 export function loadTask({ id, filename }) {
-	if (!isInteger(id) || !isString(filename)) throw new InvalidParametersError('Invalid parameters');
+	if (!isInteger(Number(id)) || !isString(filename)) throw new InvalidParametersError('Invalid parameters');
 	if (loadedTasks[id]) throw new TaskAlreadyLoadedError(`Task ${id} is already loaded`);
 	const Task = require(`./${filename}`).default;
 	if (!Task) throw new TaskNotFoundError(`${filename} does not contain a valid task`);
 	loadedTasks[id] = filename;
-	const task = new Task({ id, filename, state: boxStates });
+	const task = new Task({ id, filename });
 	loadedTasks[id] = task;
 	logger.success(`Loaded task ${id} from ${filename}`);
 }
 
-export function unloadTask(id) {
+export function unloadTask({ id, throwIfNotExists = true }) {
 	if (isInteger(id)) throw new InvalidParametersError('Invalid parameters');
-	if (loadedTasks[id]) throw new TaskAlreadyLoadedError(`Task ${id} is already loaded`);
-	const filename = loadedTasks[id];
+	if (throwIfNotExists && !loadedTasks[id]) throw new TaskNotLoadedError(`Task ${id} is not loaded`);
+	const filename = get(loadedTasks, [id, 'filename']);
 	if (!filename) throw new TaskNotLoadedError('Task not loaded');
+	delete loadedTasks[id];
 	// reset require cache
 	delete require.cache[require.resolve(`./${filename}`)];
 	logger.success(`Unloaded task ${id}`);
