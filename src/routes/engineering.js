@@ -20,14 +20,20 @@ router.get('/task/:id', handleAsyncErrors(async (req, res) => {
 	res.json(await Task.forge({ id: req.params.id }).fetch());
 }));
 
+router.put('/task/:id', handleAsyncErrors(async (req, res) => {
+	const { id } = req.params, task = loadedTasks[id], patch = req.body;
+	if (!task) throw new Error(`Task ${id} is not loaded`);
+	res.json(await task.getModel().then(model => model.save(patch, { method: 'update' })));
+}));
+
 router.post('/task/:id/load', handleAsyncErrors(async (req, res) => {
 	const { id } = req.params, { filename, reload } = req.body, task = loadedTasks[id];
 	if (!reload && task) throw new Error(`Task ${id} is already loaded`);
 	else if (reload && task) unloadTask({ id, throwIfNotExists: false });
 	// TODO: validate request body, especially filename to prevent reading any file from disk
-	loadTask({ id, filename });
+	const { model } = await loadTask({ id, filename });
 	// TODO: actually check that the task gets loaded, both the task file + info from db
-	res.json(await Task.forge({ id }).fetch());
+	res.json(model);
 }));
 
 router.put('/task/:id/unload', handleAsyncErrors(async (req, res) => {

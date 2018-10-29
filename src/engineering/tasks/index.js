@@ -13,15 +13,16 @@ const initialTasks = [
 	{ id: 1, filename: '01-example-task' }
 ];
 
-export function loadTask({ id, filename }) {
+export async function loadTask({ id, filename }) {
 	if (!isInteger(Number(id)) || !isString(filename)) throw new InvalidParametersError('Invalid parameters');
 	if (loadedTasks[id]) throw new TaskAlreadyLoadedError(`Task ${id} is already loaded`);
 	const Task = require(`./${filename}`).default;
 	if (!Task) throw new TaskNotFoundError(`${filename} does not contain a valid task`);
 	loadedTasks[id] = filename;
-	const task = new Task({ id, filename });
+	const task = await new Task({ id, filename }).loadModel();
 	loadedTasks[id] = task;
 	logger.success(`Loaded task ${id} from ${filename}`);
+	return task;
 }
 
 export function unloadTask({ id, throwIfNotExists = true }) {
