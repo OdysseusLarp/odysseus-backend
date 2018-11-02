@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
 import { logger, loggerMiddleware } from './logger';
+import { loadSwagger } from './docs';
 import { getEmptyEpsilonClient } from './emptyepsilon';
 import { loadInitialTasks } from './engineering/tasks';
 
@@ -25,7 +26,7 @@ app.use((req, res, next) => {
 });
 
 // Setup routes
-app.get('/', (req, res) => res.send('Odysseus backend'));
+app.get('/', (req, res) => res.redirect('/api-docs'));
 app.use('/engineering', engineering);
 app.use('/fleet', fleet);
 app.use('/starmap', starmap);
@@ -73,5 +74,8 @@ setInterval(getEmptyEpsilonState, EE_UPDATE_INTERVAL);
 
 const { APP_PORT } = process.env;
 http.listen(APP_PORT, () => logger.start(`Odysseus backend listening to port ${APP_PORT}`));
+
+// Generate and serve API documentation using Swagger at /api-docs
+loadSwagger(app);
 
 export { app };

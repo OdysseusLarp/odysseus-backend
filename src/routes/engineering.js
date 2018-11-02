@@ -12,20 +12,52 @@ if (!VALIDATE_BOX_VERSIONS) {
 	logger.warn('Engineering Box versions will NOT be validated on update');
 }
 
+/**
+ * Get a list of all tasks
+ * @route GET /engineering/task
+ * @group Engineering tasks - Operations related to engineering tasks
+ * @returns {Array.<Task>} 200 - List of all tasks
+ */
 router.get('/task', handleAsyncErrors(async (req, res) => {
 	res.json(await Task.forge().fetchAll());
 }));
 
+/**
+ * Get a specific task by task id
+ * @route GET /engineering/task/{id}
+ * @group Engineering tasks - Operations related to engineering tasks
+ * @param {integer} id.path.required - task id
+ * @returns {Task} 200 - Specific task
+ */
 router.get('/task/:id', handleAsyncErrors(async (req, res) => {
 	res.json(await Task.forge({ id: req.params.id }).fetch());
 }));
 
+/**
+ * Update a specific task by task id
+ * @route PUT /engineering/task/{id}
+ * @group Engineering tasks - Operations related to engineering tasks
+ * @param {integer} id.path.required - task id
+ * @param {object} body.required - task object fields to be updated
+ * @returns {Task} 200 - Updated task values
+ * @returns {Error}  502 - Error if task with given id is not loaded
+ */
 router.put('/task/:id', handleAsyncErrors(async (req, res) => {
 	const { id } = req.params, task = loadedTasks[id], patch = req.body;
 	if (!task) throw new Error(`Task ${id} is not loaded`);
 	res.json(await task.getModel().then(model => model.save(patch, { method: 'update' })));
 }));
 
+/**
+ * Load or reload specific task by task id
+ * @route PUT /engineering/task/{id}/load
+ * @group Engineering tasks - Operations related to engineering tasks
+ * @param {integer} id.path.required - Task id
+ * @param {string} filename.body.required - Filename of the task file to be loaded
+ * @param {boolean} reload.body - Boolean defining if task should reload in case it is already loaded
+ * @returns {Task} 200 - Loaded task
+ * @returns {Error}  502 - Error if task is already loaded
+ */
 router.post('/task/:id/load', handleAsyncErrors(async (req, res) => {
 	const { id } = req.params, { filename, reload } = req.body, task = loadedTasks[id];
 	if (!reload && task) throw new Error(`Task ${id} is already loaded`);
@@ -36,20 +68,49 @@ router.post('/task/:id/load', handleAsyncErrors(async (req, res) => {
 	res.json(model);
 }));
 
+/**
+ * Unload or reload specific task by task id
+ * @route PUT /engineering/task/{id}/unload
+ * @group Engineering tasks - Operations related to engineering tasks
+ * @param {integer} id.path.required - Task id
+ * @returns {} 204 - Empty response on success
+ * @returns {Error}  502 - Error if task is not loaded
+ */
 router.put('/task/:id/unload', handleAsyncErrors(async (req, res) => {
 	unloadTask({ id: req.params.id });
 	res.status(204).end();
 }));
 
+/**
+ * Get list of all engineering boxes
+ * @route GET /engineering/box
+ * @group Engineering boxes - Operations related to engineering boxes
+ * @returns {Array.<Box>} 200 - List of all Box values
+ */
 router.get('/box', handleAsyncErrors(async (req, res) => {
 	res.json(await Box.forge().fetchAll());
 }));
 
+/**
+ * Get a specific engineering box by id
+ * @route GET /engineering/box/{id}
+ * @group Engineering boxes - Operations related to engineering boxes
+ * @param {integer} id.path.required - Box id
+ * @returns {Box} 200 - Box value
+ */
 router.get('/box/:id', handleAsyncErrors(async (req, res) => {
 	res.json(await Box.forge({ id: req.params.id }).fetch());
 }));
 
-// Upsert for box values
+/**
+ * Insert or update a specific box by box id
+ * @route POST /engineering/box/{id}
+ * @group Engineering boxes - Operations related to engineering boxes
+ * @param {integer} id.path.required - Box id
+ * @param {Box} body.required - Box object fields to be updated
+ * @returns {Box} 200 - Updated Box values
+ * @returns {Error}  502 - Error if submitted box version is lower or equal to current version
+ */
 router.post('/box/:id', handleAsyncErrors(async (req, res) => {
 	const { id } = req.params, { value, version } = req.body;
 	const newVersion = new BigNumber(version || 1);
