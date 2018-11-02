@@ -8,8 +8,8 @@ import Bookshelf from '../../db';
  * @property {string} type.required - Task type, for example "SCHEDULED", "GM"
  * @property {boolean} is_active.required - Boolean stating if task is currently active
  * @property {Array.<string>} systems.required - List of systems that use this task
- * @property {date} created_at
- * @property {date} updated_at
+ * @property {string} created_at - Date-time when object was created
+ * @property {string} updated_at - Date-time when object was last updated
  */
 export const Task = Bookshelf.Model.extend({
 	tableName: 'task',
