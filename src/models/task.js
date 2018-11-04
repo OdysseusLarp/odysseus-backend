@@ -1,3 +1,4 @@
+import { get } from 'lodash';
 import Bookshelf from '../../db';
 
 /**
@@ -15,3 +16,5 @@ export const Task = Bookshelf.Model.extend({
 	tableName: 'task',
 	hasTimestamps: true
 });
+
+export const isTaskActive = async id => get(await Task.forge({ id }).fetch(), 'is_active', false);

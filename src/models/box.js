@@ -1,3 +1,4 @@
+import { get } from 'lodash';
 import Bookshelf from '../../db';
 
 /**
@@ -12,3 +13,9 @@ export const Box = Bookshelf.Model.extend({
 	tableName: 'box',
 	hasTimestamps: true
 });
+
+export const getBoxValueById = async id => {
+	const box = await Box.forge({ id }).fetch();
+	if (box) return box.get('value');
+	return;
+};
