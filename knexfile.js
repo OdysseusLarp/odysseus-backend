@@ -2,7 +2,8 @@ require('dotenv').config({ silent: true });
 
 module.exports = {
 	client: 'pg',
-	debug: process.env.NODE_ENV !== 'production',
+	// debug: process.env.NODE_ENV !== 'production',
+	debug: false,
 	connection: {
 		host: process.env.DB_HOST,
 		port: process.env.DB_PORT,
