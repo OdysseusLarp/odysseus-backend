@@ -17,7 +17,7 @@ app.use(bodyParser.json());
 app.use(loggerMiddleware);
 
 // Temporary store for game state
-let gameState = {};
+export let gameState = {};
 
 // Add Socket.IO reference to all requests so route handlers can call it
 app.use((req, res, next) => {
