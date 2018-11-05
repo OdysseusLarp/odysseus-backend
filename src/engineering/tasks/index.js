@@ -1,4 +1,4 @@
-import { isInteger, isString, get } from 'lodash';
+import { isInteger, isString, get, isFunction } from 'lodash';
 import {
 	TaskNotFoundError,
 	TaskAlreadyLoadedError,
@@ -27,13 +27,40 @@ export async function loadTask({ id, filename }) {
 
 export function unloadTask({ id, throwIfNotExists = true }) {
 	if (isInteger(id)) throw new InvalidParametersError('Invalid parameters');
-	if (throwIfNotExists && !loadedTasks[id]) throw new TaskNotLoadedError(`Task ${id} is not loaded`);
-	const filename = get(loadedTasks, [id, 'filename']);
+	const task = loadedTasks[id];
+	if (throwIfNotExists && !task) throw new TaskNotLoadedError(`Task ${id} is not loaded`);
+	const filename = get(task, 'filename');
 	if (!filename) throw new TaskNotLoadedError('Task not loaded');
+	if (isFunction(task.cleanup)) task.cleanup();
 	delete loadedTasks[id];
 	// reset require cache
 	delete require.cache[require.resolve(`./${filename}`)];
 	logger.success(`Unloaded task ${id}`);
+}
+
+// Validate all loaded tasks
+export async function validateLoadedTasks() {
+	// TODO: Might benefit from concurrency, needs testing with a lot of loaded tasks
+	await Object.keys(loadedTasks).forEach(async id => {
+		const task = loadedTasks[id];
+		if (!isFunction(task.validate)) throw new Error(`Task ${id} does not have a validate function`);
+		await task.validate();
+	});
+	return loadedTasks;
+}
+
+/*
+ * This should be called whenever a box value is changed, so that loaded tasks that implement
+ * onBoxValueChange can run whatever logic they need to run (validations etc.)
+ */
+export async function onBoxValueChange(boxId) {
+	await Object.keys(loadedTasks).forEach(async id => {
+		const task = loadedTasks[id];
+		if (!isFunction(task.validate)) throw new Error(`Task ${id} does not have a validate function`);
+		await task.validate();
+		if (isFunction(task.onBoxValueChange)) await task.onBoxValueChange(boxId);
+	});
+	return loadedTasks;
 }
 
 export function loadInitialTasks() {

@@ -2,7 +2,7 @@ import BigNumber from 'bignumber.js';
 import { Router } from 'express';
 import { Task } from '../models/task';
 import { Box } from '../models/box';
-import { loadedTasks, loadTask, unloadTask } from '../engineering/tasks';
+import { loadedTasks, loadTask, unloadTask, onBoxValueChange } from '../engineering/tasks';
 import { handleAsyncErrors } from '../helpers';
 import { logger } from '../logger';
 const router = new Router();
@@ -125,6 +125,7 @@ router.post('/box/:id', handleAsyncErrors(async (req, res) => {
 		}
 		await box.save({ value, version: newVersion.toString() }, { method: 'update' });
 	}
+	onBoxValueChange();
 	res.json(box);
 	req.io.to('engineering').emit('boxStateUpdated', box);
 }));
