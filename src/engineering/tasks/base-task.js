@@ -26,16 +26,4 @@ export default class BaseTask {
 		await this.model.set({ is_active: active }).save();
 		return this;
 	}
-
-	onInit() {
-		// update odysseus.task (is_active)
-	}
-
-	destroy() {
-		// deregister boxes associated
-	}
-
-	validate() {
-		// validate current state against rules
-	}
 }
