@@ -27,7 +27,7 @@ router.get('/task', handleAsyncErrors(async (req, res) => {
  * @route GET /engineering/task/{id}
  * @group Engineering tasks - Operations related to engineering tasks
  * @param {integer} id.path.required - task id
- * @returns {Task} 200 - Specific task
+ * @returns {Task.model} 200 - Specific task
  */
 router.get('/task/:id', handleAsyncErrors(async (req, res) => {
 	res.json(await Task.forge({ id: req.params.id }).fetch());
@@ -38,8 +38,8 @@ router.get('/task/:id', handleAsyncErrors(async (req, res) => {
  * @route PUT /engineering/task/{id}
  * @group Engineering tasks - Operations related to engineering tasks
  * @param {integer} id.path.required - task id
- * @param {object} body.required - task object fields to be updated
- * @returns {Task} 200 - Updated task values
+ * @param {Task.model} task.body.required - task object fields to be updated
+ * @returns {Task.model} 200 - Updated task values
  * @returns {Error}  502 - Error if task with given id is not loaded
  */
 router.put('/task/:id', handleAsyncErrors(async (req, res) => {
@@ -55,7 +55,7 @@ router.put('/task/:id', handleAsyncErrors(async (req, res) => {
  * @param {integer} id.path.required - Task id
  * @param {string} filename.body.required - Filename of the task file to be loaded
  * @param {boolean} reload.body - Boolean defining if task should reload in case it is already loaded
- * @returns {Task} 200 - Loaded task
+ * @returns {Task.model} 200 - Loaded task
  * @returns {Error}  502 - Error if task is already loaded
  */
 router.post('/task/:id/load', handleAsyncErrors(async (req, res) => {
@@ -96,7 +96,7 @@ router.get('/box', handleAsyncErrors(async (req, res) => {
  * @route GET /engineering/box/{id}
  * @group Engineering boxes - Operations related to engineering boxes
  * @param {string} id.path.required - Box id
- * @returns {Box} 200 - Box value
+ * @returns {Box.model} 200 - Box value
  */
 router.get('/box/:id', handleAsyncErrors(async (req, res) => {
 	res.json(await Box.forge({ id: req.params.id }).fetch());
@@ -107,8 +107,8 @@ router.get('/box/:id', handleAsyncErrors(async (req, res) => {
  * @route POST /engineering/box/{id}
  * @group Engineering boxes - Operations related to engineering boxes
  * @param {string} id.path.required - Box id
- * @param {Box} body.required - Box object fields to be updated
- * @returns {Box} 200 - Updated Box values
+ * @param {Box.model} box.body.required - Box object fields to be updated
+ * @returns {Box.model} 200 - Updated Box values
  * @returns {Error}  502 - Error if submitted box version is lower or equal to current version
  */
 router.post('/box/:id', handleAsyncErrors(async (req, res) => {
