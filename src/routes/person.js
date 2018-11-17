@@ -43,11 +43,12 @@ router.put('/:id', handleAsyncErrors(async (req, res) => {
 
 /**
  * Update or insert a family relation by person id. WIP - Not working properly yet.
- * @route PUT /person/{id}/medical/data
+ * @route PUT /person/{id}/family
  * @group Persons - Operations for person related data
  * @param {string} id.path.required - Citizen ID of the person
- * @param {MedicalData.model} medical_data.body.required - MedicalData object fields to be updated
- * @returns {MedicalData.model} 200 - Updated MedicalData values
+ * @param {string} id.body.required - Citizen ID of the person being added/updated as a relative
+ * @param {string} relation.body.required - Description of the relation, e.g. brother, sister, father...
+ * @returns {Person.model} 200 - Updated Person values containing all family members
  */
 router.put('/:id/family', handleAsyncErrors(async (req, res) => {
 	const { id, relation } = req.body;
