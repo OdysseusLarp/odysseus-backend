@@ -78,15 +78,16 @@ const militaryData = [
 ];
 
 exports.seed = async knex => {
+	await knex('person_military_data').del();
 	await knex('person_family').del();
 	await knex('person_medical_data').del();
 	await knex('person_medical_entry').del();
 	await knex('medical_entry').del();
 	await knex('person').del();
 	await knex('person').insert(persons);
+	await knex('medical_entry').insert(medicalEntries);
 	await knex('person_family').insert(personFamily);
 	await knex('person_medical_data').insert(medicalData);
-	await knex('medical_entry').insert(medicalEntries);
 	await knex('person_medical_entry').insert(personMedicalEntries);
 	await knex('person_military_data').insert(militaryData);
 };
