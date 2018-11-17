@@ -11,6 +11,7 @@ import { loadInitialTasks } from './engineering/tasks';
 import engineering from './routes/engineering';
 import fleet from './routes/fleet';
 import starmap from './routes/starmap';
+import person from './routes/person';
 
 // Setup logging middleware and body parsing
 app.use(bodyParser.json());
@@ -30,6 +31,7 @@ app.get('/', (req, res) => res.redirect('/api-docs'));
 app.use('/engineering', engineering);
 app.use('/fleet', fleet);
 app.use('/starmap', starmap);
+app.use('/person', person);
 app.get('/state', (req, res) => res.json(gameState));
 app.put('/state', (req, res) => {
 	const { command, target, value } = req.body;
