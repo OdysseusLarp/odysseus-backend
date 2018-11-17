@@ -95,7 +95,7 @@ router.get('/box', handleAsyncErrors(async (req, res) => {
  * Get a specific engineering box by id
  * @route GET /engineering/box/{id}
  * @group Engineering boxes - Operations related to engineering boxes
- * @param {integer} id.path.required - Box id
+ * @param {string} id.path.required - Box id
  * @returns {Box} 200 - Box value
  */
 router.get('/box/:id', handleAsyncErrors(async (req, res) => {
@@ -106,7 +106,7 @@ router.get('/box/:id', handleAsyncErrors(async (req, res) => {
  * Insert or update a specific box by box id
  * @route POST /engineering/box/{id}
  * @group Engineering boxes - Operations related to engineering boxes
- * @param {integer} id.path.required - Box id
+ * @param {string} id.path.required - Box id
  * @param {Box} body.required - Box object fields to be updated
  * @returns {Box} 200 - Updated Box values
  * @returns {Error}  502 - Error if submitted box version is lower or equal to current version

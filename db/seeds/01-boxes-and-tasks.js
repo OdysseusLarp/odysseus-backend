@@ -1,37 +1,21 @@
 
+const genericTask = { description: 'Lorem ipsum', systems: '{ "engineering" }', is_active: false };
+
+const tasks = [
+	{ ...genericTask, name: 'Test Task 1', type: 'SCHEDULED' },
+	{ ...genericTask, name: 'Test Task 2', type: 'SCHEDULED' },
+	{ ...genericTask, name: 'Test Task 3', type: 'SCHEDULED' },
+	{ ...genericTask, name: 'Test Task 4', type: 'GM' },
+];
+
+const boxes = [
+	{ id: 'example-box', value: '{ "value": 100  }', version: 1 },
+	{ id: 'another-box', value: '{ "whatever_key": "whatever_value", "is_example": true }', version: 1 }
+];
+
 exports.seed = async knex => {
 	await knex('task').del();
-
-	await knex.raw(`INSERT INTO task (id, name, description, type, systems, is_active) VALUES (
-		1,
-		'Testitaski 1',
-		'Testitaskin 1 kuvaus',
-		'SCHEDULED',
-		'{ "engineering" }',
-		false
-	)`);
-	await knex.raw(`INSERT INTO task (id, name, description, type, systems, is_active) VALUES (
-		2,
-		'Testitaski 2',
-		'Testitaskin 2 kuvaus',
-		'SCHEDULED',
-		'{ "engineering" }',
-		false
-	)`);
-	await knex.raw(`INSERT INTO task (id, name, description, type, systems, is_active) VALUES (
-		3,
-		'Testitaski 3',
-		'Testitaskin 3 kuvaus',
-		'SCHEDULED',
-		'{ "engineering" }',
-		false
-	)`);
-	await knex.raw(`INSERT INTO task (id, name, description, type, systems, is_active) VALUES (
-		4,
-		'Testitaski 4',
-		'Testitaskin 4 kuvaus',
-		'GM',
-		'{ "engineering" }',
-		false
-	)`);
+	await knex('box').del();
+	await knex('task').insert(tasks);
+	await knex('box').insert(boxes);
 };
