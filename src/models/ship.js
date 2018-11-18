@@ -3,11 +3,16 @@ import Bookshelf from '../../db';
 /* eslint-disable object-shorthand */
 
 /**
- * @typedef Grid
+ * @typedef {object} Grid
  * @property {string} id.required - ID
  * @property {string} name.required - Name
- * @property {string} created_at - Date-time when object was created
- * @property {string} updated_at - Date-time when object was last updated
+ * @property {integer} zoom - Zoom level
+ * @property {string} quadrant - Quadrant of the grid. Map is made of 16 quadrants.
+ * @property {string} sector - Sector of the grid. Map is made of 81 sectors.
+ * @property {string} sub_sector - Sub-sector of the grid. Map has 256 subsectors.
+ * @property {integer} x - Location of the sector on x-axis to help selecting nearby grids
+ * @property {integer} y - Location of the sector on y-axis to help selecting nearby grids
+ * @property {string} the_geom - Actual geometry of the grid in EPSG:3857 projection
  */
 export const Grid = Bookshelf.Model.extend({
 	tableName: 'grid',
@@ -20,7 +25,7 @@ const withRelated = [
 ];
 
 /**
- * @typedef Ship
+ * @typedef {object} Ship
  * @property {string} id.required - ID
  * @property {string} name.required - Name
  * @property {string} status.required - Status

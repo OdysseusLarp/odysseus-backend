@@ -3,7 +3,7 @@ import Bookshelf from '../../db';
 /* eslint-disable object-shorthand */
 
 /**
- * @typedef Event
+ * @typedef {object} Event
  * @property {string} id.required - ID
  * @property {string} type.required - Type
  * @property {string} status.required - Status

@@ -2,7 +2,7 @@ import { get } from 'lodash';
 import Bookshelf from '../../db';
 
 /**
- * @typedef Task
+ * @typedef {object} Task
  * @property {integer} id.required
  * @property {string} name.required - Task name
  * @property {string} description.required - Task description

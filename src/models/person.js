@@ -3,7 +3,7 @@ import Bookshelf from '../../db';
 /* eslint-disable object-shorthand */
 
 /**
- * @typedef MedicalData
+ * @typedef {object} MedicalData
  * @property {string} person_id.required - Citizen ID of the person that the data belongs to
  * @property {string} blood_type - Blood type
  * @property {string} medication - Medication
@@ -20,7 +20,7 @@ export const MedicalData = Bookshelf.Model.extend({
 });
 
 /**
- * @typedef MedicalEntry
+ * @typedef {object} MedicalEntry
  * @property {integer} id.required - Incrementing integer used as primary key,
  * linked to person_id in joining table person_medical_entry
  * @property {string} time - Time
@@ -34,7 +34,7 @@ export const MedicalEntry = Bookshelf.Model.extend({
 });
 
 /**
- * @typedef MilitaryData
+ * @typedef {object} MilitaryData
  * @property {string} person_id.required - Citizen ID of the person that the data belongs to
  * @property {string} rank - Military rank
  * @property {string} unit - Military unit
@@ -57,7 +57,7 @@ const withRelated = [
 ];
 
 /**
- * @typedef Person
+ * @typedef {object} Person
  * @property {string} id.required - Citizen ID used for soft authentication
  * @property {string} chip_id.required - Chip ID used for hard authentication
  * @property {string} first_name.required - First name
