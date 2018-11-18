@@ -7,6 +7,7 @@ import { logger, loggerMiddleware } from './logger';
 import { loadSwagger } from './docs';
 import { getEmptyEpsilonClient } from './emptyepsilon';
 import { loadInitialTasks } from './engineering/tasks';
+import cors from 'cors';
 
 import engineering from './routes/engineering';
 import fleet from './routes/fleet';
@@ -16,6 +17,7 @@ import person from './routes/person';
 // Setup logging middleware and body parsing
 app.use(bodyParser.json());
 app.use(loggerMiddleware);
+app.use(cors());
 
 // Temporary store for game state
 export let gameState = {};
