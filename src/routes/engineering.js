@@ -15,7 +15,7 @@ if (!VALIDATE_BOX_VERSIONS) {
 /**
  * Get a list of all tasks
  * @route GET /engineering/task
- * @group Engineering tasks - Operations related to engineering tasks
+ * @group Task - Operations related to engineering tasks
  * @returns {Array.<Task>} 200 - List of all tasks
  */
 router.get('/task', handleAsyncErrors(async (req, res) => {
@@ -25,7 +25,7 @@ router.get('/task', handleAsyncErrors(async (req, res) => {
 /**
  * Get a specific task by task id
  * @route GET /engineering/task/{id}
- * @group Engineering tasks - Operations related to engineering tasks
+ * @group Task - Operations related to engineering tasks
  * @param {integer} id.path.required - task id
  * @returns {Task.model} 200 - Specific task
  */
@@ -36,7 +36,7 @@ router.get('/task/:id', handleAsyncErrors(async (req, res) => {
 /**
  * Update a specific task by task id
  * @route PUT /engineering/task/{id}
- * @group Engineering tasks - Operations related to engineering tasks
+ * @group Task - Operations related to engineering tasks
  * @param {integer} id.path.required - task id
  * @param {Task.model} task.body.required - task object fields to be updated
  * @returns {Task.model} 200 - Updated task values
@@ -51,7 +51,7 @@ router.put('/task/:id', handleAsyncErrors(async (req, res) => {
 /**
  * Load or reload specific task by task id
  * @route PUT /engineering/task/{id}/load
- * @group Engineering tasks - Operations related to engineering tasks
+ * @group Task - Operations related to engineering tasks
  * @param {integer} id.path.required - Task id
  * @param {string} filename.body.required - Filename of the task file to be loaded
  * @param {boolean} reload.body - Boolean defining if task should reload in case it is already loaded
@@ -71,7 +71,7 @@ router.post('/task/:id/load', handleAsyncErrors(async (req, res) => {
 /**
  * Unload or reload specific task by task id
  * @route PUT /engineering/task/{id}/unload
- * @group Engineering tasks - Operations related to engineering tasks
+ * @group Task - Operations related to engineering tasks
  * @param {integer} id.path.required - Task id
  * @returns {} 204 - Empty response on success
  * @returns {Error}  502 - Error if task is not loaded
@@ -84,7 +84,7 @@ router.put('/task/:id/unload', handleAsyncErrors(async (req, res) => {
 /**
  * Get list of all engineering boxes
  * @route GET /engineering/box
- * @group Engineering boxes - Operations related to engineering boxes
+ * @group Box - Operations related to engineering boxes
  * @returns {Array.<Box>} 200 - List of all Box values
  */
 router.get('/box', handleAsyncErrors(async (req, res) => {
@@ -94,7 +94,7 @@ router.get('/box', handleAsyncErrors(async (req, res) => {
 /**
  * Get a specific engineering box by id
  * @route GET /engineering/box/{id}
- * @group Engineering boxes - Operations related to engineering boxes
+ * @group Box - Operations related to engineering boxes
  * @param {string} id.path.required - Box id
  * @returns {Box.model} 200 - Box value
  */
@@ -105,7 +105,7 @@ router.get('/box/:id', handleAsyncErrors(async (req, res) => {
 /**
  * Insert or update a specific box by box id
  * @route POST /engineering/box/{id}
- * @group Engineering boxes - Operations related to engineering boxes
+ * @group Box - Operations related to engineering boxes
  * @param {string} id.path.required - Box id
  * @param {Box.model} box.body.required - Box object fields to be updated
  * @returns {Box.model} 200 - Updated Box values

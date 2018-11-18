@@ -6,7 +6,7 @@ const router = new Router();
 /**
  * Get a list of all events
  * @route GET /event
- * @group Events - Ship event related operations
+ * @group Event - Ship event related operations
  * @returns {Array.<Event>} 200 - List of all events
  */
 router.get('/', handleAsyncErrors(async (req, res) => {
@@ -16,7 +16,7 @@ router.get('/', handleAsyncErrors(async (req, res) => {
 /**
  * Get a specific event by id
  * @route GET /event/{id}
- * @group Events - Ship event related operations
+ * @group Event - Ship event related operations
  * @param {integer} id.path.required - Event id
  * @returns {Event.model} 200 - Specific Event
  */
@@ -27,7 +27,7 @@ router.get('/:id', handleAsyncErrors(async (req, res) => {
 /**
  * Update or insert event
  * @route PUT /event
- * @group Events - Ship event related operations
+ * @group Event - Ship event related operations
  * @param {Event.model} event.body.required - Event model to be updated or inserted
  * @returns {Event.model} 200 - Updated or inserted Event values
  */
