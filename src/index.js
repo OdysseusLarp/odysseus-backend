@@ -12,6 +12,7 @@ import engineering from './routes/engineering';
 import fleet from './routes/fleet';
 import starmap from './routes/starmap';
 import person from './routes/person';
+import event from './routes/event';
 
 // Setup logging middleware and body parsing
 app.use(bodyParser.json());
@@ -32,6 +33,7 @@ app.use('/engineering', engineering);
 app.use('/fleet', fleet);
 app.use('/starmap', starmap);
 app.use('/person', person);
+app.use('/event', event);
 app.get('/state', (req, res) => res.json(gameState));
 app.put('/state', (req, res) => {
 	const { command, target, value } = req.body;
