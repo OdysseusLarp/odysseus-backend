@@ -17,7 +17,7 @@ router.get('/', handleAsyncErrors(async (req, res) => {
  * Get a specific ship by ship id. Contains current location of ship.
  * @route GET /fleet/{id}
  * @group Fleet - Fleet and ship related operations
- * @param {integer} id.path.required - Ship id
+ * @param {string} id.path.required - Ship id
  * @returns {Ship.model} 200 - Specific ship
  */
 router.get('/:id', handleAsyncErrors(async (req, res) => {
