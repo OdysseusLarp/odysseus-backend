@@ -8,7 +8,6 @@ const options = {
 			title: 'Odysseus Backend',
 			version: '0.0.0'
 		},
-		host: `localhost:${process.env.APP_PORT}`,
 		basePath: '/',
 		produces: [
 			'application/json'
