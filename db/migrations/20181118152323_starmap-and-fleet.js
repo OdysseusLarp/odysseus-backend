@@ -5,9 +5,15 @@ exports.up = async knex => {
 
 	// TODO: Replace this placeholder with Sanna's actual grid schema
 	await knex.schema.createTable('grid', t => {
-		t.string('id').primary();
-		t.string('name').unique().notNullable();
-		t.timestamps(true, true);
+		t.increments('id').primary();
+		t.specificType('zoom', 'smallint');
+		t.text('quadrant');
+		t.text('sector');
+		t.text('sub_sector');
+		t.text('name');
+		t.specificType('x', 'smallint');
+		t.specificType('y', 'smallint');
+		t.specificType('the_geom', 'geometry(Geometry,3857)').notNullable();
 	});
 
 	await knex.schema.createTable('ship', t => {
@@ -17,7 +23,7 @@ exports.up = async knex => {
 		t.string('status');
 		t.json('game_state');
 		// Current grid that the ship is located in
-		t.string('grid_id').references('id').inTable('grid');
+		t.integer('grid_id').references('id').inTable('grid');
 		t.timestamps(true, true);
 		t.index(['grid_id']);
 	});

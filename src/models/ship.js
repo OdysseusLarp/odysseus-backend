@@ -25,7 +25,7 @@ const withRelated = [
  * @property {string} name.required - Name
  * @property {string} status.required - Status
  * @property {object} game_state - JSON representation of EmptyEpsilon state
- * @property {string} grid_id - ID of the grid the ship is currently located in
+ * @property {integer} grid_id - ID of the grid the ship is currently located in
  * @property {string} created_at - Date-time when object was created
  * @property {string} updated_at - Date-time when object was last updated
  */
