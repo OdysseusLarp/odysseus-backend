@@ -12,12 +12,14 @@ const options = {
 		produces: [
 			'application/json'
 		],
-		schemes: ['http'],
+		schemes: [process.env.USE_HTTPS ? 'https' : 'http'],
 		securityDefinitions: {}
 	},
 	basedir: __dirname,
 	files: ['./routes/**/*.js', './models/**/*.js']
 };
+
+
 
 export function loadSwagger(app) {
 	return expressSwagger(app)(options);
