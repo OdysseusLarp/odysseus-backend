@@ -30,6 +30,7 @@
 		"body-parser": "^1.18.3",
 		"bookshelf": "^0.13.3",
 		"common-tags": "^1.8.0",
+		"cors": "^2.8.5",
 		"cross-env": "^5.2.0",
 		"dotenv": "^6.0.0",
 		"dotenv-cli": "^1.4.0",
