@@ -25,7 +25,7 @@ jobs:
           command: npm ci
       - run:
           name: Deploy using CodeDeploy
-          command: bash infrastructure/codedeploy.sh
+          command: bash scripts/codedeploy.sh
       - save_cache:
           paths:
             - node_modules
