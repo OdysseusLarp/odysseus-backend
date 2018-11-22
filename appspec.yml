@@ -1,0 +1,12 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /opt/app
+hooks:
+  AfterInstall:
+    - location: scripts/deploy.sh
+  ApplicationStop:
+    - location: scripts/stop.sh
+  ApplicationStart:
+    - location: scripts/start.sh

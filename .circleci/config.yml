@@ -1,0 +1,37 @@
+version: 2
+general:
+  branches:
+    only:
+      - master
+      - chore/enable-circleci
+jobs:
+  deploy:
+    docker:
+      - image: circleci/node:8-stretch
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "package-lock.json" }}
+          - v1-dependencies-
+      - run:
+          name: Install awscli
+          command: |
+            sudo apt-get install -y python-pip
+            sudo pip install awscli
+      - run:
+          name: Install dependencies
+          command: npm ci
+      - run:
+          name: Deploy using CodeDeploy
+          command: bash scripts/codedeploy.sh
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package-lock.json" }}
+workflows:
+  version: 2
+  deploy:
+    jobs:
+    - deploy

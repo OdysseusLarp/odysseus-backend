@@ -8,6 +8,7 @@ import { logger, loggerMiddleware } from './logger';
 import { loadSwagger } from './docs';
 import { getEmptyEpsilonClient } from './emptyepsilon';
 import { loadInitialTasks } from './engineering/tasks';
+import cors from 'cors';
 
 import engineering from './routes/engineering';
 import fleet from './routes/fleet';
@@ -18,6 +19,7 @@ import event from './routes/event';
 // Setup logging middleware and body parsing
 app.use(bodyParser.json());
 app.use(loggerMiddleware);
+app.use(cors());
 
 // Allow CORS from all origins for now
 app.use(cors());
