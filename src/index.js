@@ -3,7 +3,6 @@ const app = require('express')();
 const bodyParser = require('body-parser');
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
-const cors = require('cors');
 import { logger, loggerMiddleware } from './logger';
 import { loadSwagger } from './docs';
 import { getEmptyEpsilonClient } from './emptyepsilon';
@@ -19,9 +18,6 @@ import event from './routes/event';
 // Setup logging middleware and body parsing
 app.use(bodyParser.json());
 app.use(loggerMiddleware);
-app.use(cors());
-
-// Allow CORS from all origins for now
 app.use(cors());
 
 // Temporary store for game state
