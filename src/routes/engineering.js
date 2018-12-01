@@ -36,6 +36,7 @@ router.get('/task/:id', handleAsyncErrors(async (req, res) => {
 /**
  * Update a specific task by task id
  * @route PUT /engineering/task/{id}
+ * @consumes application/json
  * @group Task - Operations related to engineering tasks
  * @param {integer} id.path.required - task id
  * @param {Task.model} task.body.required - task object fields to be updated
@@ -51,6 +52,7 @@ router.put('/task/:id', handleAsyncErrors(async (req, res) => {
 /**
  * Load or reload specific task by task id
  * @route PUT /engineering/task/{id}/load
+ * @consumes application/json
  * @group Task - Operations related to engineering tasks
  * @param {integer} id.path.required - Task id
  * @param {string} filename.body.required - Filename of the task file to be loaded
@@ -71,6 +73,7 @@ router.post('/task/:id/load', handleAsyncErrors(async (req, res) => {
 /**
  * Unload or reload specific task by task id
  * @route PUT /engineering/task/{id}/unload
+ * @consumes application/json
  * @group Task - Operations related to engineering tasks
  * @param {integer} id.path.required - Task id
  * @returns {} 204 - Empty response on success
@@ -105,6 +108,7 @@ router.get('/box/:id', handleAsyncErrors(async (req, res) => {
 /**
  * Insert or update a specific box by box id
  * @route POST /engineering/box/{id}
+ * @consumes application/json
  * @group Box - Operations related to engineering boxes
  * @param {string} id.path.required - Box id
  * @param {Box.model} box.body.required - Box object fields to be updated

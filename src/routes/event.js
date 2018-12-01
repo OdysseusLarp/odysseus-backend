@@ -5,13 +5,13 @@ import { handleAsyncErrors } from '../helpers';
 const router = new Router();
 
 /**
- * Get a list of all events
+ * Get a list of all active events
  * @route GET /event
  * @group Event - Ship event related operations
  * @returns {Array.<Event>} 200 - List of all events
  */
 router.get('/', handleAsyncErrors(async (req, res) => {
-	res.json(await Event.forge().fetchAll());
+	res.json(await Event.forge().where({ is_active: true }).fetchAll());
 }));
 
 /**
@@ -28,6 +28,7 @@ router.get('/:id', handleAsyncErrors(async (req, res) => {
 /**
  * Update or insert event
  * @route PUT /event
+ * @consumes application/json
  * @group Event - Ship event related operations
  * @param {Event.model} event.body.required - Event model to be updated or inserted
  * @returns {Event.model} 200 - Updated or inserted Event values
@@ -40,11 +41,11 @@ router.put('/', handleAsyncErrors(async (req, res) => {
 	if (!event) {
 		event = await Event.forge().save(req.body, { method: 'insert' });
 		addEvent(event);
-		req.io.to('event').emit('eventAdded', event);
+		req.io.emit('eventAdded', event);
 	} else {
 		await event.save(req.body, { method: 'update' });
 		updateEvent(event);
-		req.io.to('event').emit('eventUpdated', event);
+		req.io.emit('eventUpdated', event);
 	}
 	res.json(event);
 }));

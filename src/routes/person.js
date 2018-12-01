@@ -27,6 +27,7 @@ router.get('/:id', handleAsyncErrors(async (req, res) => {
 /**
  * Update person by id
  * @route PUT /person/{id}
+ * @consumes application/json
  * @group Person - Operations for person related data
  * @param {string} id.path.required - Citizen ID of the person
  * @param {Person.model} person.body.required - Person object fields to be updated
@@ -44,9 +45,10 @@ router.put('/:id', handleAsyncErrors(async (req, res) => {
 /**
  * Update or insert a family relation by person id. WIP - Not working properly yet.
  * @route PUT /person/{id}/family
+ * @consumes application/json
  * @group Person - Operations for person related data
  * @param {string} id.path.required - Citizen ID of the person
- * @param {string} id.body.required - Citizen ID of the person being added/updated as a relative
+ * @param {string} familyMemberId.body.required - Citizen ID of the person being added/updated as a relative
  * @param {string} relation.body.required - Description of the relation, e.g. brother, sister, father...
  * @returns {Person.model} 200 - Updated Person values containing all family members
  */
@@ -63,6 +65,7 @@ router.put('/:id/family', handleAsyncErrors(async (req, res) => {
 /**
  * Update medical data of a person by person id
  * @route PUT /person/{id}/medical/data
+ * @consumes application/json
  * @group Person - Operations for person related data
  * @param {string} id.path.required - Citizen ID of the person
  * @param {MedicalData.model} medical_data.body.required - MedicalData object fields to be updated
@@ -79,6 +82,7 @@ router.put('/:id/medical/data', handleAsyncErrors(async (req, res) => {
 /**
  * Insert new medical entry for a person by person id
  * @route POST /person/{id}/medical/entry
+ * @consumes application/json
  * @group Person - Operations for person related data
  * @param {string} id.path.required - Citizen ID of the person
  * @param {MedicalEntry.model} medical_entry.body.required - MedicalEntry object fields to be updated
@@ -97,6 +101,7 @@ router.post('/:id/medical/entry', handleAsyncErrors(async (req, res) => {
 /**
  * Update or insert military data of a person by person id
  * @route PUT /person/{id}/military
+ * @consumes application/json
  * @group Person - Operations for person related data
  * @param {string} id.path.required - Citizen ID of the person
  * @param {MilitaryData.model} military_data.body.required - MilitaryData object fields to be updated

@@ -27,6 +27,7 @@ router.get('/:id', handleAsyncErrors(async (req, res) => {
 /**
  * Update ship by id
  * @route PUT /fleet/{id}
+ * @consumes application/json
  * @group Fleet - Fleet and ship related operations
  * @param {string} id.path.required - Ship id
  * @param {Ship.model} ship.body.required - Ship object fields to be updated

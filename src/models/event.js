@@ -4,7 +4,7 @@ import Bookshelf from '../../db';
 
 /**
  * @typedef {object} Event
- * @property {string} id.required - ID
+ * @property {string} id - ID
  * @property {string} type.required - Type
  * @property {string} status.required - Status
  * @property {string} ship_id - ID of the ship where the event is taking place
