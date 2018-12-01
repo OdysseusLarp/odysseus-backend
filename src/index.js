@@ -74,7 +74,7 @@ function getEmptyEpsilonState() {
 
 // Load initial engineering tasks and current events
 loadInitialTasks();
-loadEvents();
+loadEvents(io);
 
 const EE_UPDATE_INTERVAL = 1000;
 logger.watch(`Starting to poll Empty Epsilon game state every ${EE_UPDATE_INTERVAL}ms`);

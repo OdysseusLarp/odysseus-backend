@@ -6,11 +6,14 @@ import { logger } from './logger';
 
 const currentEvents = new Map();
 const eventTimers = new Map();
+let io;
 
 /**
  * Loads active events from database on when application is initialized
+ * @param {Object} socketIo Socket IO instance
  */
-export function loadEvents() {
+export function loadEvents(socketIo) {
+	io = socketIo;
 	Event.forge().where({ is_active: true }).fetchAll()
 		.then(eventsCollection => {
 			const events = eventsCollection.toArray();
@@ -63,8 +66,9 @@ export function updateEvent(event) {
 /**
  * Performs cleanup after event has finished
  * @param {Event.model} event model
+ * @param {boolean} success boolean stating if the event succeeded or was canceled
  */
-async function finishEvent(event) {
+async function finishEvent(event, success = true) {
 	const id = event.get('id');
 	// Clear timer if it for some reason exists
 	clearTimeout(eventTimers.get(id));
@@ -72,6 +76,8 @@ async function finishEvent(event) {
 	currentEvents.delete(id);
 	// Set is_active to false in database
 	await event.setActive(false);
+	// Emit to Socket IO clients
+	io.emit('eventFinished', { success, event });
 }
 
 /**
@@ -100,6 +106,10 @@ function addJumpEvent(event) {
  * @returns {number} Milliseconds until the event takes place
  */
 function getTimeUntilEvent(event) {
+	// Human readable format for logging
+	const occursIn = moment(event.get('occurs_at')).fromNow();
+	logger.info(`${event.get('type')} event ${event.get('id')} will occur in`, occursIn);
+	// Time until event in milliseconds
 	const occursAt = moment(event.get('occurs_at'));
 	return occursAt.diff(moment());
 }
@@ -112,6 +122,5 @@ function getTimeUntilEvent(event) {
 async function performShipJump(shipId, gridId) {
 	const ship = await Ship.forge({ id: shipId }).fetch();
 	await ship.save({ grid_id: gridId });
-	// TODO: Emit Socket IO event
 	logger.success(`${shipId} succesfully jumped to grid ${gridId}`);
 }
