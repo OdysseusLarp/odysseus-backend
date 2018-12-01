@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import { Event } from '../models/event';
+import { addEvent, updateEvent } from '../eventhandler';
 import { handleAsyncErrors } from '../helpers';
 const router = new Router();
 
@@ -38,9 +39,11 @@ router.put('/', handleAsyncErrors(async (req, res) => {
 	if (id) event = await Event.forge({ id }).fetch();
 	if (!event) {
 		event = await Event.forge().save(req.body, { method: 'insert' });
+		addEvent(event);
 		req.io.to('event').emit('eventAdded', event);
 	} else {
 		await event.save(req.body, { method: 'update' });
+		updateEvent(event);
 		req.io.to('event').emit('eventUpdated', event);
 	}
 	res.json(event);

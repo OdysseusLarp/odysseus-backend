@@ -17,4 +17,7 @@ import Bookshelf from '../../db';
 export const Event = Bookshelf.Model.extend({
 	tableName: 'event',
 	hasTimestamps: true,
+	setActive: function (active) {
+		this.save({ is_active: !!active });
+	}
 });

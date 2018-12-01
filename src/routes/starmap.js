@@ -1,39 +1,27 @@
 import { Router } from 'express';
+import { Ship, Grid } from '../models/ship';
 const router = new Router();
 
-router.get('/grid', (req, res) => {
-	// TODO: Return data of the current grid that Odysseus is in
-	const grid = {};
-	res.json(grid);
+/**
+ * Get info of the grid where Odysseus is currently located including list of ships
+ * @route GET /starmap/grid
+ * @group Grid - Operations related to starmap grid
+ * @returns {Grid.model} 200 - Current grid data
+ */
+router.get('/grid', async (req, res) => {
+	const odysseus = await Ship.forge({ id: 'odysseus' });
+	res.json(await Grid.forge({ id: odysseus.get('grid_id').fetchWithRelated() }));
 });
 
-router.get('/grid/:id', (req, res) => {
-	const { id } = req.params;
-	// TODO: Return data of the grid with the provided ID
-	const grid = { id };
-	res.json(grid);
-});
-
-router.post('/grid/:id', (req, res) => {
-	const { id } = req.params;
-	const { action } = req.body;
-	switch (action) {
-		case 'JUMP': {
-			// TODO: Jump logic, jump to grid with given ID
-			break;
-		}
-		case 'SCAN': {
-			// TODO: Scan logic, scan the grid with given ID
-			break;
-		}
-		default: {
-			// TODO: Error message if action is unknown
-		}
-	}
-	// TODO: Return output of the given action
-	const data = { id };
-	res.json(data);
-	req.io.to('starmap').emit('gridAction', data);
+/**
+ * Get info of the grid with given id including list of ships
+ * @route GET /starmap/grid/{id}
+ * @group Grid - Operations related to starmap grid
+ * @param {integer} id.path.required - id of the grid
+ * @returns {Grid.model} 200 - Data of a grid with given id
+ */
+router.get('/grid/:id', async (req, res) => {
+	res.json(await Grid.forge({ id: req.params.id }).fetchWithRelated());
 });
 
 router.get('/object/:id', (req, res) => {

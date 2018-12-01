@@ -7,6 +7,7 @@ import { logger, loggerMiddleware } from './logger';
 import { loadSwagger } from './docs';
 import { getEmptyEpsilonClient } from './emptyepsilon';
 import { loadInitialTasks } from './engineering/tasks';
+import { loadEvents } from './eventhandler';
 import cors from 'cors';
 
 import engineering from './routes/engineering';
@@ -71,8 +72,9 @@ function getEmptyEpsilonState() {
 	});
 }
 
-// Load initial engineering tasks
+// Load initial engineering tasks and current events
 loadInitialTasks();
+loadEvents();
 
 const EE_UPDATE_INTERVAL = 1000;
 logger.watch(`Starting to poll Empty Epsilon game state every ${EE_UPDATE_INTERVAL}ms`);

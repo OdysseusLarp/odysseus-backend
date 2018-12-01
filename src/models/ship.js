@@ -17,9 +17,15 @@ import Bookshelf from '../../db';
 export const Grid = Bookshelf.Model.extend({
 	tableName: 'grid',
 	hasTimestamps: true,
+	ships: function () {
+		return this.hasMany(Ship);
+	},
+	fetchWithRelated: function () {
+		return this.fetch({ withRelated: ['ships'] });
+	},
 });
 
-const withRelated = [
+const shipWithRelated = [
 	'position',
 	// 'persons'
 ];
@@ -41,10 +47,13 @@ export const Ship = Bookshelf.Model.extend({
 		return this.hasOne(Grid, 'id', 'grid_id');
 	},
 	fetchAllWithRelated: function () {
-		return this.fetchAll({ withRelated });
+		return this.fetchAll({ withRelated: shipWithRelated });
 	},
 	fetchWithRelated: function () {
-		return this.fetch({ withRelated });
+		return this.fetch({ withRelated: shipWithRelated });
+	},
+	getGrid: function () {
+		return this.related('position');
 	}
 });
 
