@@ -37,6 +37,7 @@
 		"express": "^4.16.3",
 		"express-swagger-generator": "git+https://github.com/nicou/express-swagger-generator.git",
 		"knex": "^0.15.2",
+		"moment": "^2.22.2",
 		"pg": "^7.4.3",
 		"signale": "^1.2.1",
 		"socket.io": "^2.1.1"
