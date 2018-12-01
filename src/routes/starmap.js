@@ -9,8 +9,8 @@ const router = new Router();
  * @returns {Grid.model} 200 - Current grid data
  */
 router.get('/grid', async (req, res) => {
-	const odysseus = await Ship.forge({ id: 'odysseus' });
-	res.json(await Grid.forge({ id: odysseus.get('grid_id').fetchWithRelated() }));
+	const odysseus = await Ship.forge({ id: 'odysseus' }).fetch();
+	res.json(await Grid.forge({ id: odysseus.get('grid_id') }).fetchWithRelated());
 });
 
 /**
