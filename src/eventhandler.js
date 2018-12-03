@@ -1,7 +1,7 @@
 import moment from 'moment';
-import { isEmpty } from 'lodash';
+import { isEmpty, pick, inRange } from 'lodash';
 import { Event } from './models/event';
-import { Ship } from './models/ship';
+import { Ship, Grid } from './models/ship';
 import { logger } from './logger';
 
 const currentEvents = new Map();
@@ -27,11 +27,10 @@ export function loadEvents(socketIo) {
  * processing depending on event type.
  * @param {Event.model} event model
  */
-export function addEvent(event) {
+export async function addEvent(event) {
 	switch (event.get('type')) {
 		case 'JUMP': {
-			addJumpEvent(event);
-			break;
+			return addJumpEvent(event);
 		}
 		default: {
 			return logger.warn(`Unknown event type '${
@@ -84,20 +83,47 @@ async function finishEvent(event, success = true) {
  * Processing function for new jump event
  * @param {Event.model} event model
  */
-function addJumpEvent(event) {
+async function addJumpEvent(event) {
 	const id = event.get('id');
 	const shipId = event.get('ship_id');
 	const metadata = event.get('metadata');
 	const occursIn = getTimeUntilEvent(event);
 	if (occursIn < 0) return logger.error(`Event ${id} occurs in the past`);
 
+	// Get target grid and ship from database to validate if jump can be made
+	// TODO: Include planet_orbit in query if it is set
+	const jumpTargetParameters = pick(metadata, ['quadrant', 'sector', 'sub_sector']);
+	const grid = await Grid.forge().where(jumpTargetParameters).fetch();
+	if (!grid) throw new Error('Given grid does not exist');
+	const ship = await Ship.forge({ id: shipId }).fetchWithRelated();
+	if (!ship) throw new Error('Invalid ship id');
+	if (!validateJumpRange(ship, grid)) throw new Error('Jump can not be made from current position');
+
 	// Set timer to execute jump
 	eventTimers.set(id, setTimeout(() => {
-		performShipJump(shipId, metadata.grid);
+		performShipJump(shipId, grid.get('id'));
 		finishEvent(event);
 	}, occursIn));
 
 	currentEvents.set(event.get('id'), event);
+}
+
+/**
+ * Validate if ship can jump to a target grid or not
+ * @param {Ship.model} ship Ship model
+ * @param {Grid.model} targetGrid Grid model
+ * @returns {boolean} Boolean stating if jump can be made or not
+ */
+function validateJumpRange(ship, targetGrid) {
+	// TODO: Get jumpRange dynamically from database (store in ship metadata / ship attributes)
+	const jumpRange = 1;
+	const current = ship.related('position').getCoordinates();
+	const target = targetGrid.getCoordinates();
+	const min = { x: current.x - jumpRange, y: current.y - jumpRange };
+	const max = { x: current.x + jumpRange + 1, y: current.x + jumpRange + 1 };
+	return (
+		inRange(target.x, min.x, max.x) &&
+		inRange(target.y, min.y, max.y));
 }
 
 /**

@@ -23,6 +23,9 @@ export const Grid = Bookshelf.Model.extend({
 	fetchWithRelated: function () {
 		return this.fetch({ withRelated: ['ships'] });
 	},
+	getCoordinates: function () {
+		return { x: this.get('x'), y: this.get('y') };
+	}
 });
 
 const shipWithRelated = [

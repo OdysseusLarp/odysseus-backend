@@ -2,6 +2,7 @@ import { Router } from 'express';
 import { Event } from '../models/event';
 import { addEvent, updateEvent } from '../eventhandler';
 import { handleAsyncErrors } from '../helpers';
+import Bookshelf from '../../db';
 const router = new Router();
 
 /**
@@ -39,12 +40,12 @@ router.put('/', handleAsyncErrors(async (req, res) => {
 	let event;
 	if (id) event = await Event.forge({ id }).fetch();
 	if (!event) {
-		event = await Event.forge().save(req.body, { method: 'insert' });
-		addEvent(event);
+		event = await Bookshelf.transaction(transacting =>
+			Event.forge().save(req.body, { method: 'insert', transacting }).tap(addEvent));
 		req.io.emit('eventAdded', event);
 	} else {
-		await event.save(req.body, { method: 'update' });
-		updateEvent(event);
+		await await Bookshelf.transaction(transacting =>
+			Event.forge().save(req.body, { method: 'update', transacting }).tap(updateEvent));
 		req.io.emit('eventUpdated', event);
 	}
 	res.json(event);
