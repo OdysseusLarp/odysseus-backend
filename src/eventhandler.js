@@ -1,5 +1,5 @@
 import moment from 'moment';
-import { isEmpty, pick, inRange } from 'lodash';
+import { isEmpty, pick, inRange, get } from 'lodash';
 import { Event } from './models/event';
 import { Ship, Grid } from './models/ship';
 import { logger } from './logger';
@@ -115,8 +115,7 @@ async function addJumpEvent(event) {
  * @returns {boolean} Boolean stating if jump can be made or not
  */
 function validateJumpRange(ship, targetGrid) {
-	// TODO: Get jumpRange dynamically from database (store in ship metadata / ship attributes)
-	const jumpRange = 1;
+	const jumpRange = get(ship.get('metadata'), 'jump_range', 1);
 	const current = ship.related('position').getCoordinates();
 	const target = targetGrid.getCoordinates();
 	const min = { x: current.x - jumpRange, y: current.y - jumpRange };
@@ -147,6 +146,8 @@ function getTimeUntilEvent(event) {
  */
 async function performShipJump(shipId, gridId) {
 	const ship = await Ship.forge({ id: shipId }).fetch();
-	await ship.save({ grid_id: gridId });
+	// Reset jump range back to 1
+	const metadata = { ...ship.get('metadata', {}), jump_range: 1 };
+	await ship.save({ grid_id: gridId, metadata });
 	logger.success(`${shipId} succesfully jumped to grid ${gridId}`);
 }
