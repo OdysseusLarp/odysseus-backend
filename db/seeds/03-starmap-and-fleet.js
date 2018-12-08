@@ -26,6 +26,7 @@ const ships = [
 ];
 
 exports.seed = async knex => {
+	await knex('event').del();
 	await knex('ship').del();
 	await knex('grid').del();
 	await knex('grid').insert(await getGrid());

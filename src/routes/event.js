@@ -44,7 +44,7 @@ router.put('/', handleAsyncErrors(async (req, res) => {
 			Event.forge().save(req.body, { method: 'insert', transacting }).tap(addEvent));
 		req.io.emit('eventAdded', event);
 	} else {
-		await await Bookshelf.transaction(transacting =>
+		await Bookshelf.transaction(transacting =>
 			Event.forge().save(req.body, { method: 'update', transacting }).tap(updateEvent));
 		req.io.emit('eventUpdated', event);
 	}

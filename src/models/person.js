@@ -77,6 +77,11 @@ const withRelated = [
 export const Person = Bookshelf.Model.extend({
 	tableName: 'person',
 	hasTimestamps: true,
+	virtuals: {
+		full_name: function () {
+			return `${this.get('first_name')} ${this.get('last_name')}`;
+		}
+	},
 	medical_data: function () {
 		return this.belongsTo(MedicalData, 'id', 'person_id');
 	},
