@@ -38,12 +38,13 @@ async function onConnection(socket) {
 
 	socket.on('disconnect', () => onUserDisconnect(socket));
 	socket.on('message', payload => onSendMessage(socket, payload));
+	socket.on('fetchHistory', payload => onFetchHistory(socket, payload));
 
 	// Emit list of all persons to new client
 	socket.emit('userList', await getUserList());
 
 	// Emit list of previous messages to new client
-	socket.emit('latestMessages', await getLatestMessages());
+	// socket.emit('latestMessages', await getLatestMessages());
 
 	// Let all active clients know that user has come online
 	messaging.emit('status', { state: 'connected', user: socket.user });
@@ -57,30 +58,50 @@ async function onConnection(socket) {
  * @param  {object} payload - Message payload
  */
 async function onSendMessage(socket, payload) {
-	const { target, message } = payload;
-	// const outgoingMessage = {
-	// 	user: getSocketUser(socket),
-	// 	message,
-	// 	timestamp: Date.now()
-	// };
+	const { target, message, type } = payload;
+	const messageData = {
+		person_id: socket.userId,
+		message
+	};
+	if (type === 'private') {
+		messageData.target_person = target;
+	} else if (type === 'channel') {
+		messageData.target_channel = target;
+	} else {
+		throw new Error('Invalid message type');
+	}
+
 	logger.debug(`Message from user ${socket.userId}: ${JSON.stringify(payload)}`);
 
 	// TODO: add 'message_seen' attribute and functionality
+	const msg = await ComMessage.forge().save(messageData, { method: 'insert' });
 
-	// Private messaging
-	if (target && connectedUsers.get(target)) {
-		// const msg = { ...outgoingMessage, context: 'private', to: target };
-		// connectedUsers.get(target).emit('message', msg);
-		// messaging.emit('message', msg);
+	// Only emit to target and sender client if message is private
+	if (type === 'private' && connectedUsers.has(target)) {
+		const msgWithRelated = await msg.fetchWithRelated();
+		connectedUsers.get(target).emit('message', msgWithRelated);
+		socket.emit('message', msgWithRelated);
 	} else {
 		// Send to general channel for now
-		const msg = await ComMessage.forge().save({
-			person_id: socket.userId,
-			target_channel: 'general',
-			message
-		}, { method: 'insert' });
 		messaging.emit('message', await msg.fetchWithRelated());
 	}
+}
+
+/**
+ * Handler for Socket fetchHistory events
+ * @param  {object} socket - Socket
+ * @param  {object} payload - Request payload
+ */
+async function onFetchHistory(socket, payload) {
+	const { type, target } = payload;
+	let messages;
+	// TODO: Add support for pagination instead of only 50 latest
+	if (type === 'private') {
+		messages = await ComMessage.forge().getPrivateHistory(socket.userId, target);
+	} else {
+		messages = await ComMessage.forge().getChannelHistory(target);
+	}
+	socket.emit('latestMessages', { type, target, messages });
 }
 
 /**
@@ -91,17 +112,6 @@ function onUserDisconnect(socket) {
 	messaging.emit('status', { state: 'disconnected', user: socket.user });
 	connectedUsers.delete(socket.userId);
 	logger.info(`User ${socket.userId} disconnected from messaging`);
-}
-
-// TODO: Support different pages, channels and private messages
-
-/**
- * Gets a list of previous messages.
- * @returns {Array.<ComMessage>} List of previous messages
- */
-async function getLatestMessages() {
-	const messages = await ComMessage.forge().fetchPageWithRelated(1);
-	return messages;
 }
 
 /**

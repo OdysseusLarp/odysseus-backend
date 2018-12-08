@@ -39,6 +39,21 @@ export const ComMessage = Bookshelf.Model.extend({
 			page,
 			withRelated: messageWithRelated
 		});
+	},
+	getPrivateHistory: function (userId, targetId) {
+		return this.query(qb => {
+			qb.where(function () {
+				this.where('target_person', targetId);
+				this.where('person_id', userId);
+			});
+			qb.orWhere(function () {
+				this.where('target_person', userId);
+				this.where('person_id', targetId);
+			});
+		}).fetchPageWithRelated(1);
+	},
+	getChannelHistory: function (channelId) {
+		return this.query(qb => qb.where('target_channel', channelId)).fetchPageWithRelated(1);
 	}
 });
 
