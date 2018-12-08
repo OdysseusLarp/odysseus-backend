@@ -26,7 +26,7 @@ export const VoteOption = Bookshelf.Model.extend({
  */
 export const VoteEntry = Bookshelf.Model.extend({
 	tableName: 'vote_entry',
-	idAttribute: 'vote_id',
+	idAttribute: 'person_id',
 	hasTimestamps: true,
 });
 
