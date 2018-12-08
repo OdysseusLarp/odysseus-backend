@@ -1,9 +1,4 @@
 version: 2
-general:
-  branches:
-    only:
-      - master
-      - chore/enable-circleci
 jobs:
   deploy:
     docker:
@@ -34,4 +29,8 @@ workflows:
   version: 2
   deploy:
     jobs:
-    - deploy
+    - deploy:
+        filters:
+          branches:
+            only:
+              - master
