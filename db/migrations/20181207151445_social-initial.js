@@ -42,6 +42,7 @@ exports.up = async knex => {
 		t.string('target_person').references('id').inTable('person').onDelete('CASCADE');
 		t.string('target_channel').references('id').inTable('com_channel');
 		t.text('message').notNullable();
+		t.timestamps(true, true);
 		t.index(['person_id', 'target_person', 'target_channel']);
 	});
 

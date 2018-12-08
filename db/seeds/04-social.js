@@ -70,7 +70,15 @@ const voteEntries = [
 	{ person_id: '593202', vote_id: 3, vote_option_id: 7 },
 ];
 
+const channels = [
+	{ id: 'general', description: 'General banter' },
+	{ id: 'engineers', description: 'Engineering talk' },
+	{ id: 'medics', description: 'Medic stuff' }
+];
+
 exports.seed = async knex => {
+	await knex('com_message').del();
+	await knex('com_channel').del();
 	await knex('post').del();
 	await knex('vote_entry').del();
 	await knex('vote_option').del();
@@ -79,4 +87,5 @@ exports.seed = async knex => {
 	await knex('vote').insert(votes);
 	await knex('vote_option').insert(voteOptions);
 	await knex('vote_entry').insert(voteEntries);
+	await knex('com_channel').insert(channels);
 };

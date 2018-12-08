@@ -8,6 +8,7 @@ import { loadSwagger } from './docs';
 import { getEmptyEpsilonClient } from './emptyepsilon';
 import { loadInitialTasks } from './engineering/tasks';
 import { loadEvents } from './eventhandler';
+import { loadMessaging } from './messaging';
 import cors from 'cors';
 
 import engineering from './routes/engineering';
@@ -65,6 +66,7 @@ io.on('connection', socket => {
 		logger.info('Socket.IO Client disconnected');
 	});
 });
+loadMessaging(io);
 
 // Get Empty Epsilon game state and emit it to clients
 function getEmptyEpsilonState() {
