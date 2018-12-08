@@ -1,4 +1,5 @@
 exports.up = async knex => {
+	await knex.raw('DROP TABLE IF EXISTS ship_log');
 	await knex.raw('DROP TABLE IF EXISTS com_message');
 	await knex.raw('DROP TABLE IF EXISTS com_channel_event');
 	await knex.raw('DROP TABLE IF EXISTS com_channel');
@@ -75,9 +76,20 @@ exports.up = async knex => {
 		t.primary(['person_id', 'vote_id']);
 		t.index(['vote_option_id']);
 	});
+
+	await knex.schema.createTable('ship_log', t => {
+		t.increments('id').primary();
+		t.string('ship_id').references('id').inTable('ship').onDelete('CASCADE');
+		t.text('message').notNullable();
+		// Type like ALERT, WARNING, SUCCESS, mostly used for styling/filtering in frontends
+		t.string('type');
+		t.json('metadata');
+		t.timestamps(true, true);
+	});
 };
 
 exports.down = async knex => {
+	await knex.raw('DROP TABLE IF EXISTS ship_log');
 	await knex.raw('DROP TABLE IF EXISTS vote_entry');
 	await knex.raw('DROP TABLE IF EXISTS vote_option');
 	await knex.raw('DROP TABLE IF EXISTS vote');

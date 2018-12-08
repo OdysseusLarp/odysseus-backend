@@ -76,7 +76,31 @@ const channels = [
 	{ id: 'medics', description: 'Medic stuff' }
 ];
 
+const logs = [
+	{
+		ship_id: 'odysseus',
+		type: 'INFO',
+		message: 'Ship preparing for jump to sector ABC'
+	},
+	{
+		ship_id: 'odysseus',
+		type: 'SUCCESS',
+		message: 'Ship jump completed to sector ABC'
+	},
+	{
+		ship_id: 'odysseus',
+		type: 'WARNING',
+		message: 'Problems detected in ship life support systems'
+	},
+	{
+		ship_id: 'odysseus',
+		type: 'SUCCESS',
+		message: 'Ship life support systems have been fixed and are functioning at 100% capacity'
+	}
+];
+
 exports.seed = async knex => {
+	await knex('ship_log').del();
 	await knex('com_message').del();
 	await knex('com_channel').del();
 	await knex('post').del();
@@ -88,4 +112,5 @@ exports.seed = async knex => {
 	await knex('vote_option').insert(voteOptions);
 	await knex('vote_entry').insert(voteEntries);
 	await knex('com_channel').insert(channels);
+	await knex('ship_log').insert(logs);
 };
