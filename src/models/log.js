@@ -8,6 +8,7 @@ import Bookshelf from '../../db';
  * @property {string} ship_id - Ship ID
  * @property {string} message.required - Human readable log message
  * @property {object} metadata - JSON formatted metadata related to the log entry
+ * @property {string} type - Type like SUCCESS, ALERT, WARNING, INFO used for styling and filtering
  * @property {string} created_at - ISO 8601 String Date-time when object was created
  * @property {string} updated_at - ISO 8601 String Date-time when object was last updated
  */

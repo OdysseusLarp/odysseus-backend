@@ -40,8 +40,8 @@ const votes = [
 		person_id: '593202',
 		title: 'Lötkö vs mötkö',
 		description: ' Kuvaajan iloa ei mitenkään hämmennä se, että hänen kalan nostanut kaverinsa satuttaa itsensä toimituksessa. Videon kommenttipalstalla suurta debattia on aiheuttanut kysymys siitä, sanoiko kuvaaja "lötkö" vai "mötkö".',
-		active_until: null,
-		is_active: true
+		active_until: '2018-12-08T20:45:09.584Z',
+		is_active: false
 	},
 	{
 		id: 3,

@@ -28,7 +28,7 @@ router.put('/', handleAsyncErrors(async (req, res) => {
 	let logEntry;
 	if (id) logEntry = await LogEntry.forge({ id }).fetch();
 	if (!logEntry) {
-		logEntry = LogEntry.forge().save(req.body, { method: 'insert' });
+		logEntry = await LogEntry.forge().save(req.body, { method: 'insert' });
 		req.io.emit('logEntryAdded', logEntry);
 	} else {
 		await logEntry.save(req.body, { method: 'update' });
