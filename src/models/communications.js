@@ -12,6 +12,7 @@ const messageWithRelated = ['sender', 'receiver', 'channel'];
  * @property {string} target_person - Person ID of the receiver (if private message)
  * @property {string} target_channel - Channel ID of the receiver (if message to channel)
  * @property {string} message - Message body
+ * @property {boolean} seen - Boolean stating if the message has been seen or not
  * @property {string} created_at - ISO 8601 String Date-time when object was created
  * @property {string} updated_at - ISO 8601 String Date-time when object was last updated
  */

@@ -1,5 +1,8 @@
 exports.up = async knex => {
 	await knex.raw('DROP TABLE IF EXISTS ship_log');
+	await knex.raw('DROP TABLE IF EXISTS vote_entry');
+	await knex.raw('DROP TABLE IF EXISTS vote_option');
+	await knex.raw('DROP TABLE IF EXISTS vote');
 	await knex.raw('DROP TABLE IF EXISTS com_message');
 	await knex.raw('DROP TABLE IF EXISTS com_channel_event');
 	await knex.raw('DROP TABLE IF EXISTS com_channel');
@@ -43,6 +46,7 @@ exports.up = async knex => {
 		t.string('target_person').references('id').inTable('person').onDelete('CASCADE');
 		t.string('target_channel').references('id').inTable('com_channel');
 		t.text('message').notNullable();
+		t.boolean('seen'); // Seen attribute for private messages
 		t.timestamps(true, true);
 		t.index(['person_id', 'target_person', 'target_channel']);
 	});
@@ -77,6 +81,7 @@ exports.up = async knex => {
 		t.index(['vote_option_id']);
 	});
 
+	// Ship log entries
 	await knex.schema.createTable('ship_log', t => {
 		t.increments('id').primary();
 		t.string('ship_id').references('id').inTable('ship').onDelete('CASCADE');

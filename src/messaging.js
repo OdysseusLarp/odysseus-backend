@@ -1,6 +1,7 @@
 import { logger } from './logger';
 import { Person } from './models/person';
 import { ComMessage } from './models/communications';
+import { isEmpty } from 'lodash';
 
 let messaging;
 const connectedUsers = new Map();
@@ -37,14 +38,16 @@ async function onConnection(socket) {
 	connectedUsers.set(socket.userId, socket);
 
 	socket.on('disconnect', () => onUserDisconnect(socket));
-	socket.on('message', payload => onSendMessage(socket, payload));
+	socket.on('message', messageDetails => onSendMessage(socket, messageDetails));
+	socket.on('messagesSeen', messageIds => onMessagesSeen(socket, messageIds));
 	socket.on('fetchHistory', payload => onFetchHistory(socket, payload));
+	socket.on('fetchUnseenMessages', () => onFetchUnseenMessages(socket));
 
 	// Emit list of all persons to new client
 	socket.emit('userList', await getUserList());
 
-	// Emit list of previous messages to new client
-	// socket.emit('latestMessages', await getLatestMessages());
+	// Emit all unseen private mesages to new client
+	onFetchUnseenMessages(socket);
 
 	// Let all active clients know that user has come online
 	messaging.emit('status', { state: 'connected', user: socket.user });
@@ -53,15 +56,16 @@ async function onConnection(socket) {
 }
 
 /**
- * Handler for Socket message event
+ * Handler for Socket message event to deliver a message
  * @param  {object} socket - Socket
- * @param  {object} payload - Message payload
+ * @param  {object} messageDetails - Message payload
  */
-async function onSendMessage(socket, payload) {
-	const { target, message, type } = payload;
+async function onSendMessage(socket, messageDetails) {
+	const { target, message, type } = messageDetails;
 	const messageData = {
 		person_id: socket.userId,
-		message
+		message,
+		seen: false
 	};
 	if (type === 'private') {
 		messageData.target_person = target;
@@ -71,9 +75,6 @@ async function onSendMessage(socket, payload) {
 		throw new Error('Invalid message type');
 	}
 
-	logger.debug(`Message from user ${socket.userId}: ${JSON.stringify(payload)}`);
-
-	// TODO: add 'message_seen' attribute and functionality
 	const msg = await ComMessage.forge().save(messageData, { method: 'insert' });
 
 	// Only emit to target and sender client if message is private
@@ -85,6 +86,31 @@ async function onSendMessage(socket, payload) {
 		// Send to general channel for now
 		messaging.emit('message', await msg.fetchWithRelated());
 	}
+}
+
+/**
+ * Handler for Socket messagesSeen event to mark messages as seen
+ * @param  {object} socket - Socket
+ * @param  {Array.<number>} messageIds - Message ID
+ */
+async function onMessagesSeen(socket, messageIds) {
+	if (isEmpty(messageIds)) return;
+	await ComMessage.forge()
+		.where('id', 'in', messageIds)
+		.save({ seen: true }, { method: 'update', patch: true });
+	const messages = await ComMessage.forge().where('id', 'in', messageIds).fetchPageWithRelated();
+	socket.emit('messagesSeen', messages);
+}
+
+/**
+ * Handler for Socket onFetchUnseenMessages events
+ * @param  {object} socket - Socket
+ */
+async function onFetchUnseenMessages(socket) {
+	const messages = await ComMessage.forge().where({
+		target_person: socket.userId, seen: false
+	}).fetchPageWithRelated();
+	socket.emit('unseenMessages', messages);
 }
 
 /**
