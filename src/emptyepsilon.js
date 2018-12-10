@@ -3,6 +3,7 @@ import { logger } from './logger';
 import axios from 'axios';
 import nock from 'nock';
 import { get, set } from 'lodash';
+import { handleAsyncErrors } from './helpers';
 
 const { EMPTY_EPSILON_HOST, EMPTY_EPSILON_PORT } = process.env,
 	systems = [
@@ -16,7 +17,54 @@ const { EMPTY_EPSILON_HOST, EMPTY_EPSILON_PORT } = process.env,
 		'frontshield',
 		'rearshield'
 	],
-	weapons = ['homing', 'nuke', 'mine', 'emp', 'hvli'];
+	weapons = ['homing', 'nuke', 'mine', 'emp', 'hvli'],
+	requestParameters = {
+		homingCount: 'getWeaponStorage("homing")',
+		nukeCount: 'getWeaponStorage("nuke")',
+		mineCount: 'getWeaponStorage("mine")',
+		empCount: 'getWeaponStorage("emp")',
+		hvliCount: 'getWeaponStorage("hvli")',
+		reactorHealth: 'getSystemHealth("reactor")',
+		beamweaponsHealth: 'getSystemHealth("beamweapons")',
+		missilesystemHealth: 'getSystemHealth("missilesystem")',
+		maneuverHealth: 'getSystemHealth("maneuver")',
+		impulseHealth: 'getSystemHealth("impulse")',
+		warpHealth: 'getSystemHealth("warp")',
+		jumpdriveHealth: 'getSystemHealth("jumpdrive")',
+		frontshieldHealth: 'getSystemHealth("frontshield")',
+		rearshieldHealth: 'getSystemHealth("rearshield")',
+		reactorHeat: 'getSystemHeat("reactor")',
+		beamweaponsHeat: 'getSystemHeat("beamweapons")',
+		missilesystemHeat: 'getSystemHeat("missilesystem")',
+		maneuverHeat: 'getSystemHeat("maneuver")',
+		impulseHeat: 'getSystemHeat("impulse")',
+		warpHeat: 'getSystemHeat("warp")',
+		jumpdriveHeat: 'getSystemHeat("jumpdrive")',
+		frontshieldHeat: 'getSystemHeat("frontshield")',
+		rearshieldHeat: 'getSystemHeat("rearshield")',
+		alertLevel: 'getAlertLevel()'
+	};
+
+export const setStateRouteHandler = handleAsyncErrors((req, res) => {
+	const { command, target, value } = req.body;
+	const client = getEmptyEpsilonClient();
+	if (command === 'setAlertLevel') {
+		client.setAlertLevel(value).then(() => {
+			res.sendStatus(204);
+			req.io.emit('shipAlertLevelUpdated', value);
+		}).catch(error => {
+			logger.error('Error setting alert level to Empty Epsilon', error);
+			res.sendStatus(500);
+		});
+	} else {
+		client.setGameState(command, target, value)
+			.then(() => res.sendStatus(204))
+			.catch(error => {
+				logger.error('Error setting game state', error);
+				res.sendStatus(500);
+			});
+	}
+});
 
 export class EmptyEpsilonClient {
 	constructor({ host = EMPTY_EPSILON_HOST, port = EMPTY_EPSILON_PORT } = {}) {
@@ -58,11 +106,28 @@ export class EmptyEpsilonClient {
 				let keyPrefix;
 				if (key.includes('Health')) keyPrefix = 'systems.health';
 				else if (key.includes('Heat')) keyPrefix = 'systems.heat';
-				return set(data, `${keyPrefix || 'weapons'}.${key}`, res.data[key]);
+				else if (key.includes('Count')) keyPrefix = 'weapons';
+				else keyPrefix = 'general';
+				return set(data, `${keyPrefix}.${key}`, res.data[key]);
 			}, {});
 		}).catch(error => {
 			this.setIsConnectionHealthy(false, error);
 			return { error };
+		});
+	}
+
+	getAlertLevel() {
+		return axios.get(`${this.getUrl}?alertLevel=getAlertLevel()`)
+			.then(res => get(res.data.alertLevel));
+	}
+
+	setAlertLevel(level) {
+		const urli = `${this.setUrl}?commandSetAlertLevel("${level}")`;
+		if (!['normal', 'yellow', 'red'].includes(level))
+			throw new Error(`Allowed alert levels are 'normal', 'yellow' and 'red'`);
+		return axios.get(urli).then(res => {
+			if (get(res, 'data.ERROR')) throw new Error(res.data.ERROR);
+			logger.success(`Ship alert level set to ${level}`);
 		});
 	}
 
@@ -77,21 +142,6 @@ export class EmptyEpsilonClient {
 		});
 	}
 }
-
-function createRequestParameters(configs) {
-	return configs.reduce((previous, next) =>
-		next.targets.reduce((p, n) => {
-			const obj = Object.assign({}, p);
-			obj[n + next.keySuffix] = `${next.command}(\"${n}\")`;
-			return obj;
-		}, previous), {});
-}
-
-const requestParameters = createRequestParameters([
-	{ keySuffix: 'Count', command: 'getWeaponStorage', targets: weapons },
-	{ keySuffix: 'Health', command: 'getSystemHealth', targets: systems },
-	{ keySuffix: 'Heat', command: 'getSystemHeat', targets: systems }
-]);
 
 let emptyEpsilonClient;
 export function getEmptyEpsilonClient(config = {}) {
@@ -121,7 +171,7 @@ function initEmulator() {
 		.reply(function (uri, requestBody, cb) {
 			const req = decodeURI(this.req.path);
 			const target = req.replace(/.*"(\w.*)".*/, '$1');
-			const value = Number(req.replace(/.*,([0-9.]*)\)/, '$1'));
+			let value = Number(req.replace(/.*,([0-9.]*)\)/, '$1'));
 			if (req.includes('setSystemHealth') && systems.includes(target)) {
 				mockState[`${target}Health`] = value;
 				return cb(null, [200, mockState, []]);
@@ -132,6 +182,15 @@ function initEmulator() {
 			}
 			if (req.includes('setWeaponStorage') && weapons.includes(target)) {
 				mockState[`${target}Count`] = value;
+				return cb(null, [200, mockState, []]);
+			}
+			if (req.includes('commandSetAlertLevel')) {
+				let alertLevel;
+				value = req.replace(/.*"(\w.*)".*/, '$1');
+				if (value === 'normal') alertLevel = 'NORMAL';
+				else if (value === 'yellow') alertLevel = 'YELLOW ALERT';
+				else if (value === 'red') alertLevel = 'RED ALERT';
+				mockState.alertLevel = alertLevel;
 				return cb(null, [200, mockState, []]);
 			}
 			return cb(null, [200, { ERROR: 'Something went wrong' }]);

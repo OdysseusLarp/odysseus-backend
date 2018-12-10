@@ -5,7 +5,7 @@ const http = require('http').Server(app);
 const io = require('socket.io')(http);
 import { logger, loggerMiddleware } from './logger';
 import { loadSwagger } from './docs';
-import { getEmptyEpsilonClient } from './emptyepsilon';
+import { getEmptyEpsilonClient, setStateRouteHandler } from './emptyepsilon';
 import { loadInitialTasks } from './engineering/tasks';
 import { loadEvents } from './eventhandler';
 import { loadMessaging } from './messaging';
@@ -45,15 +45,7 @@ app.use('/post', post);
 app.use('/vote', vote);
 app.use('/log', log);
 app.get('/state', (req, res) => res.json(gameState));
-app.put('/state', (req, res) => {
-	const { command, target, value } = req.body;
-	getEmptyEpsilonClient().setGameState(command, target, value)
-		.then(() => res.sendStatus(204))
-		.catch(error => {
-			logger.error('Error setting game state', error);
-			res.sendStatus(500);
-		});
-});
+app.put('/state', setStateRouteHandler);
 
 // Error handling middleware
 app.use(async (err, req, res, next) => {
