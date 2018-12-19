@@ -18,12 +18,58 @@ async function getGrid() {
 	});
 }
 
+/* eslint-disable-next-line camelcase */
+const the_geom = '0101000020110F000000000000000000000000000000000000';
+
 const ships = [
-	{ id: 'odysseus', name: 'Odysseus', status: 'OPERATIONAL', game_state: '{}', grid_id: 1500, metadata: { jump_range: 1 } },
-	{ id: 'starcaller', name: 'Starcaller', status: 'OPERATIONAL', game_state: null, grid_id: 1500 },
-	{ id: 'dummy1', name: 'Dummy Ship 1', status: 'UNKNOWN', game_state: null, grid_id: 1500 },
-	{ id: 'dummy2', name: 'Dummy Ship 2', status: 'UNKNOWN', game_state: null, grid_id: 1500 },
+	{
+		id: 'odysseus',
+		name: 'Odysseus',
+		status: 'OPERATIONAL',
+		game_state: '{}',
+		grid_id: 1500,
+		the_geom,
+		metadata: { jump_range: 1 },
+		type: 'RESEARCH',
+		class: 'FIREFLY'
+	},
+	{
+		id: 'starcaller',
+		name: 'Starcaller',
+		status: 'OPERATIONAL',
+		game_state: null,
+		grid_id: 1500,
+		the_geom,
+		type: 'CIVILIAN',
+		class: 'M2'
+	},
+	{
+		id: 'dummy1',
+		name: 'Dummy Ship 1',
+		status: 'UNKNOWN',
+		game_state: null,
+		grid_id: 1500,
+		the_geom,
+		type: 'CARGO',
+		class: 'C5'
+	},
+	{
+		id: 'dummy2',
+		name: 'Dummy Ship 2',
+		status: 'UNKNOWN',
+		game_state: null,
+		grid_id: 1500,
+		the_geom,
+		type: 'MILITARY',
+		class: 'C1'
+	},
 ];
+
+const gridActions = [{
+	ship_id: 'odysseus',
+	grid_id: 7,
+	type: 'SCAN'
+}];
 
 exports.seed = async knex => {
 	await knex('event').del();
@@ -31,4 +77,5 @@ exports.seed = async knex => {
 	await knex('grid').del();
 	await knex('grid').insert(await getGrid());
 	await knex('ship').insert(ships);
+	await knex('grid_action').insert(gridActions);
 };
