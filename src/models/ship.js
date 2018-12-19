@@ -41,6 +41,9 @@ const shipWithRelated = [
  * @property {object} game_state - JSON representation of EmptyEpsilon state
  * @property {object} metadata - Ship metadata
  * @property {integer} grid_id - ID of the grid the ship is currently located in
+ * @property {string} type - Ship type like MILITARY, CARGO, RESEARCH etc.
+ * @property {string} class - Ship class
+ * @property {string} the_geom - Position of the ship as a geometry point in EPSG:3857 projection
  * @property {string} created_at - Date-time when object was created
  * @property {string} updated_at - Date-time when object was last updated
  */
