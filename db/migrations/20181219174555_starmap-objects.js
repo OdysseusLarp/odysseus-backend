@@ -22,6 +22,8 @@ exports.up = async knex => {
 		t.specificType('gs_size_halo', 'real').notNullable();
 		t.specificType('gs_fill_opacity', 'real').notNullable();
 		t.specificType('gs_rotation', 'bigint').notNullable();
+		t.string('gs_color');
+		t.string('gs_color_halo');
 		t.specificType('the_geom', 'geometry(Geometry,3857)').notNullable();
 	});
 
@@ -50,6 +52,8 @@ exports.up = async knex => {
 		t.specificType('gs_size_halo', 'real').notNullable();
 		t.specificType('gs_fill_opacity', 'real').notNullable();
 		t.specificType('gs_rotation', 'bigint').notNullable();
+		t.string('gs_color');
+		t.string('gs_color_halo');
 		t.specificType('the_geom', 'geometry(Geometry,3857)').notNullable();
 		t.index(['name_generated', 'satellite_of', 'celestial_body']);
 	});
