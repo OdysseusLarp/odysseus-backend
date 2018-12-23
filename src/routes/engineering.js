@@ -113,7 +113,7 @@ router.get('/box/:id', handleAsyncErrors(async (req, res) => {
  * @param {string} id.path.required - Box id
  * @param {Box.model} box.body.required - Box object fields to be updated
  * @returns {Box.model} 200 - Updated Box values
- * @returns {Error}  502 - Error if submitted box version is lower or equal to current version
+ * @returns {Error}  409 - Error if submitted box version is lower or equal to current version
  */
 router.post('/box/:id', handleAsyncErrors(async (req, res) => {
 	const { id } = req.params, { value, version } = req.body;
@@ -125,7 +125,7 @@ router.post('/box/:id', handleAsyncErrors(async (req, res) => {
 	else {
 		const currentVersion = BigNumber(box.get('version'));
 		if (VALIDATE_BOX_VERSIONS && newVersion.isLessThanOrEqualTo(currentVersion)) {
-			throw new Error(`Currently on version number ${currentVersion.toString()}`);
+			return res.status(409).json({ error: `Currently on version number ${currentVersion.toString()}` });
 		}
 		await box.save({ value, version: newVersion.toString() }, { method: 'update' });
 	}
