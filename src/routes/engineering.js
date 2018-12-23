@@ -1,16 +1,13 @@
 import BigNumber from 'bignumber.js';
 import { Router } from 'express';
+import { isInteger } from 'lodash';
+import httpErrors from 'http-errors';
 import { Task } from '../models/task';
 import { Box } from '../models/box';
 import { loadedTasks, loadTask, unloadTask, onBoxValueChange } from '../engineering/tasks';
 import { handleAsyncErrors } from '../helpers';
-import { logger } from '../logger';
+import Bookshelf from '../../db';
 const router = new Router();
-
-const VALIDATE_BOX_VERSIONS = !process.env.DISABLE_BOX_VERSION_VALIDATION;
-if (!VALIDATE_BOX_VERSIONS) {
-	logger.warn('Engineering Box versions will NOT be validated on update');
-}
 
 /**
  * Get a list of all tasks
@@ -112,26 +109,35 @@ router.get('/box/:id', handleAsyncErrors(async (req, res) => {
  * @group Box - Operations related to engineering boxes
  * @param {string} id.path.required - Box id
  * @param {Box.model} box.body.required - Box object fields to be updated
+ * @param {boolean} force.query - Force value to be set regardless of version
  * @returns {Box.model} 200 - Updated Box values
  * @returns {Error}  409 - Error if submitted box version is lower or equal to current version
  */
-router.post('/box/:id', handleAsyncErrors(async (req, res) => {
-	const { id } = req.params, { value, version } = req.body;
-	const newVersion = new BigNumber(version || 1);
-	// TODO: Validate value & version from request body
-	let box = await Box.forge({ id }).fetch();
-	if (!box) box = await Box.forge().save(
-		{ id, value, version: newVersion.toString() }, { method: 'insert' });
-	else {
-		const currentVersion = BigNumber(box.get('version'));
-		if (VALIDATE_BOX_VERSIONS && newVersion.isLessThanOrEqualTo(currentVersion)) {
-			return res.status(409).json({ error: `Currently on version number ${currentVersion.toString()}` });
+router.post('/box/:id', handleAsyncErrors(async (req, res, next) => {
+	const { id } = req.params,
+		{ value, version } = req.body,
+		{ force } = req.query;
+	const validateVersion = !force && isInteger(version);
+	const newVersion = new BigNumber(isInteger(version) ? version : 1);
+	let box;
+	await Bookshelf.transaction(async transacting => {
+		box = await Box.forge({ id }).fetch({ transacting });
+		if (!box) box = await Box.forge().save(
+			{ id, value, version: newVersion.toString() }, { method: 'insert', transacting });
+		else {
+			const currentVersion = BigNumber(box.get('version'));
+			if (validateVersion && newVersion.isLessThanOrEqualTo(currentVersion)) {
+				throw new httpErrors.Conflict(`Currently on version number ${currentVersion.toString()}`);
+			}
+			await box.save({
+				value,
+				version: version ? newVersion.toString() : currentVersion.toString()
+			}, { method: 'update', transacting });
 		}
-		await box.save({ value, version: newVersion.toString() }, { method: 'update' });
-	}
+	});
 	onBoxValueChange();
-	res.json(box);
 	req.io.to('engineering').emit('boxStateUpdated', box);
+	res.json(box);
 }));
 
 /**
