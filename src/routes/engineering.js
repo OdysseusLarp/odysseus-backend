@@ -134,4 +134,20 @@ router.post('/box/:id', handleAsyncErrors(async (req, res) => {
 	req.io.to('engineering').emit('boxStateUpdated', box);
 }));
 
+/**
+ * Delete a box by box id
+ * @route DELETE /engineering/box/{id}
+ * @consumes application/json
+ * @group Box - Operations related to engineering boxes
+ * @param {string} id.path.required - Box id
+ * @returns {Box.model} 204 - Empty response
+ */
+router.delete('/box/:id', handleAsyncErrors(async (req, res) => {
+	const { id } = req.params;
+	await Box.forge({ id }).destroy();
+	onBoxValueChange();
+	req.io.to('engineering').emit('boxDeleted', id);
+	res.sendStatus(204);
+}));
+
 export default router;
