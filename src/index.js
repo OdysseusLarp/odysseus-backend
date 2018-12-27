@@ -53,6 +53,7 @@ app.get('/state', (req, res) => res.json(gameState));
 app.put('/state', setStateRouteHandler);
 app.use('/infoboard', infoboard);
 app.use('/data', data);
+app.use('/infoboard', infoboard);
 
 // Error handling middleware
 app.use(async (err, req, res, next) => {
