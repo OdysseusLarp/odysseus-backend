@@ -24,7 +24,7 @@ import post from './routes/post';
 import vote from './routes/vote';
 import log from './routes/log';
 import science from './routes/science';
-import data from './routes/data'
+import data from './routes/data';
 import infoboard from './routes/infoboard';
 
 import './rules/rules';
@@ -56,8 +56,8 @@ app.use('/log', log);
 app.use('/science', science);
 app.get('/state', (req, res) => res.json(gameState));
 app.put('/state', setStateRouteHandler);
-app.use('/infoboard', infoboard);
 app.use('/data', data);
+app.use('/infoboard', infoboard);
 
 // Error handling middleware
 app.use(async (err, req, res, next) => {
