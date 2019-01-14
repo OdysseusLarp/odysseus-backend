@@ -20,6 +20,7 @@ import post from './routes/post';
 import vote from './routes/vote';
 import log from './routes/log';
 import infoboard from './routes/infoboard';
+import science from './routes/science';
 
 // Setup logging middleware and body parsing
 app.use(bodyParser.json());
@@ -45,6 +46,7 @@ app.use('/event', event);
 app.use('/post', post);
 app.use('/vote', vote);
 app.use('/log', log);
+app.use('/science', science);
 app.get('/state', (req, res) => res.json(gameState));
 app.put('/state', setStateRouteHandler);
 app.use('/infoboard', infoboard);
