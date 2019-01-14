@@ -20,9 +20,9 @@ import event from './routes/event';
 import post from './routes/post';
 import vote from './routes/vote';
 import log from './routes/log';
-import infoboard from './routes/infoboard';
 import science from './routes/science';
 import data from './routes/data'
+import infoboard from './routes/infoboard';
 
 // Setup logging middleware and body parsing
 app.use(bodyParser.json());
