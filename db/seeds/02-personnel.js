@@ -11,7 +11,7 @@ const persons = [
 	},
 	{
 		id: '593203', chip_id: '038295', first_name: 'Lizzie', last_name: 'Scarrisbrick',
-		current_ship: 'Odysseus', occupation: 'medic', home_planet: 'Kobol', dynasty: 'Xia',
+		current_ship: 'Odysseus', occupation: 'researcher', home_planet: 'Kobol', dynasty: 'Xia',
 		dynasty_rank: 'grunt', birth_year: 2179, status: 'unknown'
 	},
 	{

@@ -7,7 +7,7 @@ const postWithRelated = ['author'];
 
 /**
  * @typedef {object} Post
- * @property {integer} id.required - ID
+ * @property {integer} id - ID
  * @property {string} title.required - Title / Headline
  * @property {string} body.required - Post body
  * @property {string} person_id - Person ID of the author
