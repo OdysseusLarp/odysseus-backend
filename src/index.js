@@ -26,6 +26,7 @@ import log from './routes/log';
 import science from './routes/science';
 import data from './routes/data';
 import infoboard from './routes/infoboard';
+import science from './routes/science';
 
 import './rules/rules';
 
