@@ -1,29 +1,29 @@
 const persons = [
 	{
 		id: '593201', chip_id: '028293', first_name: 'Maud', last_name: 'Maltby',
-		current_ship: 'Odysseus', occupation: 'medic', home_planet: 'Kobol', dynasty: 'Xia',
-		dynasty_rank: 'grunt', birth_year: 2179, status: 'unknown'
+		occupation: 'medic', home_planet: 'Kobol', dynasty: 'Xia',
+		dynasty_rank: 1, birth_year: 2179, status: 'unknown'
 	},
 	{
 		id: '593202', chip_id: '038294', first_name: 'Tremaine', last_name: 'Vlies',
-		current_ship: 'Odysseus', occupation: 'soldier', home_planet: 'Kobol', dynasty: 'Xia',
-		dynasty_rank: 'grunt', birth_year: 2179, status: 'on_duty'
+		occupation: 'soldier', home_planet: 'Kobol', dynasty: 'Xia',
+		dynasty_rank: 2, birth_year: 2179, status: 'on_duty'
 	},
 	{
 		id: '593203', chip_id: '038295', first_name: 'Lizzie', last_name: 'Scarrisbrick',
-		current_ship: 'Odysseus', occupation: 'researcher', home_planet: 'Kobol', dynasty: 'Xia',
-		dynasty_rank: 'grunt', birth_year: 2179, status: 'unknown'
+		occupation: 'researcher', home_planet: 'Kobol', dynasty: 'Xia',
+		dynasty_rank: 3, birth_year: 2179, status: 'unknown'
 	},
 	{
 		id: '593204', chip_id: '038296', first_name: 'Bent', last_name: 'Gingel',
-		current_ship: 'Odysseus', occupation: 'soldier', home_planet: 'Kobol', dynasty: 'Xia',
-		dynasty_rank: 'grunt', birth_year: 2179, status: 'on_duty'
+		occupation: 'soldier', home_planet: 'Kobol', dynasty: 'Xia',
+		dynasty_rank: 4, birth_year: 2179, status: 'on_duty'
 	},
 	{
 		id: '593205', chip_id: '038297', first_name: 'Cleon', last_name: 'Hubble',
-		current_ship: 'Odysseus', occupation: 'engineer', home_planet: 'Kobol', dynasty: 'Xia',
-		dynasty_rank: 'grunt', birth_year: 2179, status: 'on_duty'
-	},
+		occupation: 'engineer', home_planet: 'Kobol', dynasty: 'Xia',
+		dynasty_rank: 5, birth_year: 2179, status: 'on_duty'
+	}
 ];
 
 const personFamily = [
