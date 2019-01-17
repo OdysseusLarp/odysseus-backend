@@ -71,6 +71,8 @@ const gridActions = [{
 	type: 'SCAN'
 }];
 
+const personIds = ['593201', '593202', '593203', '593204', '593205'];
+
 exports.seed = async knex => {
 	await knex('event').del();
 	await knex('ship').del();
@@ -78,4 +80,6 @@ exports.seed = async knex => {
 	await knex('grid').insert(await getGrid());
 	await knex('ship').insert(ships);
 	await knex('grid_action').insert(gridActions);
+	await Promise.all(personIds.map(id =>
+		knex.raw(`UPDATE person SET ship_id = 'odysseus' WHERE id = ?`, id)));
 };

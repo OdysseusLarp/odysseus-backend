@@ -1,4 +1,5 @@
 import Bookshelf from '../../db';
+import { Ship } from './ship';
 
 /* eslint-disable object-shorthand */
 
@@ -53,7 +54,8 @@ const withRelated = [
 	'medical_data',
 	'medical_entries',
 	'military_data',
-	'family'
+	'family',
+	'ship'
 ];
 
 /**
@@ -62,8 +64,7 @@ const withRelated = [
  * @property {string} chip_id.required - Chip ID used for hard authentication
  * @property {string} first_name.required - First name
  * @property {string} last_name.required - Last name
- * @property {string} current_ship - Current ship where the person is located
- * @property {string} previous_ship - Previous ship where the person was located
+ * @property {string} ship_id - ID of the current ship where the person is located
  * @property {string} title - Title
  * @property {string} status - Current status
  * @property {string} occupation - Occupation
@@ -93,6 +94,9 @@ export const Person = Bookshelf.Model.extend({
 	},
 	family: function () {
 		return this.belongsToMany(Person, 'person_family', 'person1_id', 'person2_id').withPivot(['relation']);
+	},
+	ship: function () {
+		return this.belongsTo(Ship, 'ship_id', 'id');
 	},
 	fetchAllWithRelated: function () {
 		return this.fetchAll({ withRelated });
