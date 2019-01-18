@@ -1,6 +1,8 @@
 import { Router } from 'express';
-import { Vote, VoteEntry } from '../models/vote';
+import { Vote, VoteEntry, VoteOption } from '../models/vote';
 import { handleAsyncErrors } from '../helpers';
+import Bookshelf from '../../db';
+import { pick, get } from 'lodash';
 const router = new Router();
 
 /**
@@ -39,6 +41,35 @@ router.put('/:id/cast', handleAsyncErrors(async (req, res) => {
 	if (!vote.get('is_active')) throw new Error('This vote is no longer active');
 	const voteEntry = await VoteEntry.forge().save(req.body, { method: 'insert' });
 	res.json(voteEntry);
+}));
+
+/**
+ * Create a new vote with options
+ * @route PUT /vote/create
+ * @consumes application/json
+ * @group Vote - Voting related operations
+ * @param {Vote.model} vote.body.required - Vote model to be inserted
+ * @returns {} 204 - OK
+ */
+router.put('/create', handleAsyncErrors(async (req, res) => {
+	const options = get(req, 'body.options', []);
+	if (!options.length) throw new Error('No vote options specified');
+
+	// Create vote
+	const data = pick(req.body, ['title', 'person_id', 'description']);
+
+	// TODO: Calculate how long the vote should be valid for, using req.body.activeTime (minutes)
+
+	await Bookshelf.transaction(async transacting => {
+		const vote = await Vote.forge().save(
+			{ ...data, is_active: true },
+			{ method: 'insert', transacting });
+		return Promise.all(options.map(text =>
+			VoteOption.forge().save(
+				{ vote_id: vote.get('id'), text },
+				{ method: 'insert', transacting })));
+	});
+	res.sendStatus(204);
 }));
 
 export default router;
