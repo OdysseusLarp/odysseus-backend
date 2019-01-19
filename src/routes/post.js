@@ -1,8 +1,8 @@
 import { Router } from 'express';
 import { Post } from '../models/post';
-import { STATUS_PENDING, STATUS_ACCEPTED } from '../models';
+import { STATUS_PENDING, STATUS_APPROVED } from '../models';
 import { handleAsyncErrors } from '../helpers';
-import { get, pick } from 'lodash';
+import { pick } from 'lodash';
 const router = new Router();
 
 /**
@@ -43,7 +43,8 @@ router.put('/', handleAsyncErrors(async (req, res) => {
 	let post;
 	if (id) post = await Post.forge({ id }).fetch();
 	if (!post) {
-		if (!data.status && data.type === 'CAPTAINS_LOG') data.status = STATUS_PENDING;
+		if (!data.status) data.status =
+			data.type === 'CAPTAINS_LOG' ? STATUS_APPROVED : STATUS_PENDING;
 		post = Post.forge().save(data, { method: 'insert' });
 		req.io.emit('postAdded', post);
 	} else {
