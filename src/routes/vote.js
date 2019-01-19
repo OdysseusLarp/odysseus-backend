@@ -2,7 +2,8 @@ import { Router } from 'express';
 import { Vote, VoteEntry, VoteOption } from '../models/vote';
 import { handleAsyncErrors } from '../helpers';
 import Bookshelf from '../../db';
-import { pick, get } from 'lodash';
+import { pick, get, isInteger } from 'lodash';
+import moment from 'moment';
 const router = new Router();
 
 /**
@@ -58,11 +59,15 @@ router.put('/create', handleAsyncErrors(async (req, res) => {
 	// Create vote
 	const data = pick(req.body, ['title', 'person_id', 'description']);
 
-	// TODO: Calculate how long the vote should be valid for, using req.body.activeTime (minutes)
+	// Calculate when the voting time runs out
+	const activeTime = parseInt(get(req, 'body.activeTime'), 10);
+	const activeUntil = isInteger(activeTime) ?
+		moment().add(activeTime, 'minutes').toDate() :
+		null;
 
 	await Bookshelf.transaction(async transacting => {
 		const vote = await Vote.forge().save(
-			{ ...data, is_active: true },
+			{ ...data, is_active: true, active_until: activeUntil },
 			{ method: 'insert', transacting });
 		return Promise.all(options.map(text =>
 			VoteOption.forge().save(
