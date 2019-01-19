@@ -38,7 +38,10 @@ const voteWithRelated = ['author', 'entries', 'options'];
  * @property {string} person_id - ID of person who created the vote
  * @property {string} title.required - Title
  * @property {string} description.required - Description of what the vote is about
+ * @property {string} status.required - Status (PENDING, APPROVED, REJECTED)
  * @property {boolean} is_active.required - Boolean stating if the vote is active or not
+ * @property {boolean} is_public - Defines if the vote should be seen by only those who can vote
+ * @property {Array.<string>} allowed_groups - List of the group names that are allowed to vote
  * @property {string} active_until - ISO 8601 String Date-time stating when voting will end
  * @property {string} created_at - ISO 8601 String Date-time when object was created
  * @property {string} updated_at - ISO 8601 String Date-time when object was last updated

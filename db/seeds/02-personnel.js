@@ -90,4 +90,6 @@ exports.seed = async knex => {
 	await knex('person_medical_data').insert(medicalData);
 	await knex('person_medical_entry').insert(personMedicalEntries);
 	await knex('person_military_data').insert(militaryData);
+	// fix the medical_entry primary key sequence
+	await knex.raw(`SELECT setval('medical_entry_id_seq', 6)`);
 };

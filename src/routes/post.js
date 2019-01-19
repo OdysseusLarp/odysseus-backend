@@ -1,23 +1,27 @@
 import { Router } from 'express';
 import { Post } from '../models/post';
+import { STATUS_PENDING, STATUS_ACCEPTED } from '../models';
 import { handleAsyncErrors } from '../helpers';
+import { get, pick } from 'lodash';
 const router = new Router();
 
 /**
  * Get a list of all posts
  * @route GET /post
  * @group Post - Social Hub News/Opinion post related operations
+ * @param {string} status.query - Limit query to Posts with specific status
  * @returns {Array.<Post>} 200 - List of all posts
  */
 router.get('/', handleAsyncErrors(async (req, res) => {
-	res.json(await Post.forge().fetchAllWithRelated());
+	const where = req.query.status ? { status: req.query.status } : {};
+	res.json(await Post.forge().where(where).fetchAllWithRelated());
 }));
 
 /**
  * Get a specific post by post id
  * @route GET /post/{id}
  * @group Post - Social Hub News/Opinion post related operations
- * @param {integer} id.path.required - Post id
+ * @param {integer} id.path.required - Post i
  * @returns {Post.model} 200 - Specific Post
  */
 router.get('/:id', handleAsyncErrors(async (req, res) => {
@@ -35,13 +39,15 @@ router.get('/:id', handleAsyncErrors(async (req, res) => {
 router.put('/', handleAsyncErrors(async (req, res) => {
 	const { id } = req.body;
 	// TODO: Validate input
+	const data = pick(req.body, ['title', 'body', 'person_id', 'type', 'status', 'is_visible']);
 	let post;
 	if (id) post = await Post.forge({ id }).fetch();
 	if (!post) {
-		post = Post.forge().save(req.body, { method: 'insert' });
+		if (!data.status && data.type === 'CAPTAINS_LOG') data.status = STATUS_PENDING;
+		post = Post.forge().save(data, { method: 'insert' });
 		req.io.emit('postAdded', post);
 	} else {
-		await post.save(req.body, { method: 'update' });
+		await post.save(data, { method: 'update', patch: true });
 		req.io.emit('postUpdated', post);
 	}
 	res.json(post);
