@@ -1,7 +1,8 @@
 import moment from 'moment';
-import { isEmpty, pick, inRange, get } from 'lodash';
+import { isEmpty, pick, inRange, get, isInteger } from 'lodash';
 import { Event } from './models/event';
 import { Ship, Grid } from './models/ship';
+import { MapObject } from './models/map-object';
 import { logger } from './logger';
 
 const currentEvents = new Map();
@@ -31,6 +32,9 @@ export async function addEvent(event) {
 	switch (event.get('type')) {
 		case 'JUMP': {
 			return addJumpEvent(event);
+		}
+		case 'SCAN_OBJECT': {
+			return addScanObjectEvent(event);
 		}
 		default: {
 			return logger.warn(`Unknown event type '${
@@ -77,6 +81,23 @@ async function finishEvent(event, success = true) {
 	await event.setActive(false);
 	// Emit to Socket IO clients
 	io.emit('eventFinished', { success, event });
+}
+
+async function addScanObjectEvent(event) {
+	const id = event.get('id');
+	const objectId = get(event.get('metadata'), 'target');
+	const occursIn = getTimeUntilEvent(event);
+	if (occursIn < 0) throw new Error(`Event ${id} occurs in the past`);
+	if (!isInteger(objectId)) throw new Error(`Event ${id} target object ID ${objectId} is invalid`);
+
+	// TODO: Check if ship has probes left, remove 1 probe from state
+
+	// Set timer to execute scan
+	eventTimers.set(id, setTimeout(() => {
+		performObjectScan(objectId);
+		finishEvent(event);
+	}, occursIn));
+	currentEvents.set(event.get('id'), event);
 }
 
 /**
@@ -150,4 +171,10 @@ async function performShipJump(shipId, gridId) {
 	const metadata = { ...ship.get('metadata', {}), jump_range: 1 };
 	await ship.save({ grid_id: gridId, metadata });
 	logger.success(`${shipId} succesfully jumped to grid ${gridId}`);
+}
+
+async function performObjectScan(objectId) {
+	const object = await MapObject.forge({ id: objectId }).fetch();
+	await object.save({ is_scanned: true });
+	logger.success(`Object ${objectId} was succesfully scanned`);
 }
