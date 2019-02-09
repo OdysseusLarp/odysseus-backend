@@ -1,7 +1,8 @@
 import logger from 'signale';
 
 export const loggerMiddleware = (req, res, next) => {
-	logger.log(req.ip, req.method, req.url);
+	const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+	logger.log(ip, req.method, req.url);
 	next();
 };
 
