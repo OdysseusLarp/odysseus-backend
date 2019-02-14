@@ -51,7 +51,10 @@ app.use('/log', log);
 app.use('/science', science);
 app.get('/state', (req, res) => res.json(gameState));
 app.put('/state', setStateRouteHandler);
+<<<<<<< HEAD
 app.use('/infoboard', infoboard);
+=======
+>>>>>>> feat: Implement generic data store based on Redux
 app.use('/data', data);
 
 // Error handling middleware
