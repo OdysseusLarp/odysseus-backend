@@ -72,4 +72,3 @@ export function initState(state) {
 }
 
 export default store;
-
