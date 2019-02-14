@@ -20,6 +20,7 @@ import post from './routes/post';
 import vote from './routes/vote';
 import log from './routes/log';
 import science from './routes/science';
+import data from './routes/data'
 
 // Setup logging middleware and body parsing
 app.use(bodyParser.json());
@@ -48,6 +49,7 @@ app.use('/log', log);
 app.use('/science', science);
 app.get('/state', (req, res) => res.json(gameState));
 app.put('/state', setStateRouteHandler);
+app.use('/data', data);
 
 // Error handling middleware
 app.use(async (err, req, res, next) => {
