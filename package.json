@@ -8,8 +8,8 @@
 	},
 	"main": "index.js",
 	"scripts": {
-		"test": "cross-env NODE_ENV=test nyc ava --verbose",
-		"test:nc": "cross-env NODE_ENV=test ava --verbose",
+		"test": "cross-env NODE_ENV=test ./node_modules/nyc/bin/nyc.js ./node_modules/ava/cli.js --verbose",
+		"test:nc": "cross-env NODE_ENV=test ./node_modules/ava/cli.js --verbose",
 		"lint": "eslint src test db",
 		"start": "cross-env NODE_ENV=development nodemon --watch src src/index.js --exec babel-node --inspect",
 		"start:prod": "cross-env NODE_ENV=production babel-node src/index.js",
