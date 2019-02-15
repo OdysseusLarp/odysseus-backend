@@ -11,6 +11,7 @@ import { loadEvents } from './eventhandler';
 import { loadMessaging } from './messaging';
 import cors from 'cors';
 
+import { initStoreSocket } from './store/storeSocket';
 import engineering from './routes/engineering';
 import fleet from './routes/fleet';
 import starmap from './routes/starmap';
@@ -91,5 +92,7 @@ http.listen(APP_PORT, () => logger.start(`Odysseus backend listening to port ${A
 
 // Generate and serve API documentation using Swagger at /api-docs
 loadSwagger(app);
+
+initStoreSocket(io);
 
 export { app };
