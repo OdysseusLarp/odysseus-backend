@@ -14,8 +14,10 @@ const throttledSendChanges = throttle(sendChanges, 10, { leading: false, trailin
 
 function sendChangesRecursive(io, previous, current, prefix, level) {
     if (previous !== current) {
-        // console.log("Firing socket.io to " + prefix + " with content: ", current);
-        io.of(prefix).emit('storeChange', prefix, current);
+        if (level > 0) {
+            // console.log("Firing socket.io to " + prefix + " with content: ", current);
+            io.of(prefix).emit('storeChange', prefix, current);
+        }
         
         if (level < MAX_LEVELS) {
             const currentKeys = Object.keys(current);
