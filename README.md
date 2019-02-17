@@ -18,3 +18,25 @@ Backend for multiple systems used in Odysseus LARP.
 * Express
 * Socket.IO
 * Knex + Bookshelf.js
+
+
+## REST APIs
+
+TBD
+
+## Socket.io APIs
+
+### Generic data store
+
+Connect to namespace `/data` with optional query parameter `data` describing what data blobs are listened to (by default all).  For example:
+
+    http://server.name:8888/data  -  all changes
+    http://server.name:8888/data?data=/data  -  all changes
+    http://server.name:8888/data?data=/data/mytype  -  all changes within mytype
+    http://server.name:8888/data?data=/data/mytype/myid  -  only changes of single data blob
+
+Events fired by server are:
+
+    'dataUpdate', type, id, {...new content...}
+    'dataDelete', type, id
+

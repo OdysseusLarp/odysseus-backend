@@ -1,38 +1,56 @@
 import { throttle } from 'lodash';
 import store from './store';
+import { logger } from '../logger';
 
-const MAX_LEVELS = 3;
+let previousData;
+function sendDataChanges(io) {
+    const currentData = store.getState().data;
 
-let previousState;
-function sendChanges(io) {
-    const currentState = store.getState();
-    sendChangesRecursive(io, previousState, currentState, '/store', 0);
-    previousState = currentState;
-}
-const throttledSendChanges = throttle(sendChanges, 10, { leading: false, trailing: true });
-
-
-function sendChangesRecursive(io, previous, current, prefix, level) {
-    if (previous !== current) {
-        if (level > 0) {
-            // console.log("Firing socket.io to " + prefix + " with content: ", current);
-            io.of(prefix).emit('storeChange', prefix, current);
-        }
-        
-        if (level < MAX_LEVELS) {
-            const currentKeys = Object.keys(current);
-            const previousKeys = Object.keys(previous);
-            currentKeys.forEach((key) => sendChangesRecursive(io, previous[key] || {}, current[key], prefix + '/' + key, level+1));
-
-            const removedKeys = previousKeys.filter((e) => currentKeys.indexOf(e) < 0);
-            removedKeys.forEach((key) => sendChangesRecursive(io, previous[key], {}, prefix + '/' + key, level+1));
+    for (let type of Object.keys(currentData)) {
+        for (let id of Object.keys(currentData[type])) {
+            if (!previousData[type] || previousData[type][id] !== currentData[type][id]) {
+                // console.log(`Firing /data/${type}/${id} dataUpdate events`)
+                io.to(`/data/${type}/${id}`).emit('dataUpdate', type, id, currentData[type][id]);
+                io.to(`/data/${type}`).emit('dataUpdate', type, id, currentData[type][id]);
+                io.to(`/data`).emit('dataUpdate', type, id, currentData[type][id]);
+            }
         }
     }
+
+    for (let type of Object.keys(previousData)) {
+        for (let id of Object.keys(previousData[type])) {
+            if (!currentData[type] || !currentData[type][id]) {
+                // console.log(`Firing /data/${type}/${id} dataDelete events`)
+                io.to(`/data/${type}/${id}`).emit('dataDelete', type, id);
+                io.to(`/data/${type}`).emit('dataDelete', type, id);
+                io.to(`/data`).emit('dataDelete', type, id);
+            }
+        }
+    }
+
+    previousData = currentData;
 }
+const throttledSendDataChanges = throttle(sendDataChanges, 10, { leading: false, trailing: true });
+
 
 export function initStoreSocket(io) {
-    previousState = store.getState();
+
+    // Use /data namespace and 'room' query parameter to subscribe
+    var nsp = io.of('/data');
+    nsp.on('connection', function(socket) {
+        var room = socket.handshake['query']['data'] || '/data';
+
+        socket.join(room);
+        logger.info(`Socket.io listening to data changes for '${room}'`)
+      
+        socket.on('disconnect', function() {
+          socket.leave(room)
+          logger.info(`Socket.io disconnected from '${room}'`)
+        });
+    });
+
+    previousData = store.getState().data;
     store.subscribe(() => {
-        throttledSendChanges(io);
+        throttledSendDataChanges(nsp);
     });
 }
