@@ -30,6 +30,13 @@ function setData(dataType, dataId, data, force = false) {
 	});
 }
 
+function deleteData(dataType, dataId) {
+	store.dispatch({
+		type: 'DELETE_DATA',
+		dataType,
+		dataId,
+	})
+}
 
 /**
  * Get all data types in the store.
@@ -120,6 +127,22 @@ router.patch('/:type/:id', (req, res) => {
 	const data = { ...getData(type, id), ...{ version: undefined }, ...req.body };
 	setData(type, id, data, force);
 	res.json(getData(type, id));
+});
+
+
+/**
+ * Delete a specific data blob by type and id.
+ *
+ * @route DELETE /data/{type}/{id}
+ * @group Data - Generic data store operations
+ * @param {string} id.path.required - Data id
+ * @param {string} type.path.required - Data type
+ * @returns {Object} 200 - Updated data value (empty object)
+ */
+router.delete('/:type/:id', (req, res) => {
+	const { type, id } = req.params;
+	deleteData(type, id);
+	res.json({});
 });
 
 

@@ -25,6 +25,15 @@ const dataReducer = createReducer({}, {
 
         state[type][id] = newData;
     },
+
+    "DELETE_DATA": (state, action) => {
+        const id = action.dataId;
+        const type = action.dataType;
+
+        if (state[type]) {
+            delete state[type][id];
+        }
+    }
 })
 
 export default dataReducer
