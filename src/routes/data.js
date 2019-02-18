@@ -39,15 +39,16 @@ function deleteData(dataType, dataId) {
 }
 
 /**
- * Get all data types in the store.
+ * Get all data blobs of all types.
  *
  * @route GET /data
  * @group Data - Generic data store operations
- * @returns {Object} 200 - Array of current data types
+ * @returns {Object} 200 - Array of all data blobs
  */
 router.get('/', (req, res) => {
 	const state = store.getState().data;
-	res.json(Object.keys(state));
+	const datas = Object.values(state).flatMap(e => Object.values(e));
+	res.json(datas);
 });
 
 
