@@ -42,8 +42,8 @@ export function initStoreSocket(io) {
 		logger.info(`Socket.io listening to data changes for '${room}'`);
 
 		socket.on('disconnect', () => {
-		  socket.leave(room);
-		  logger.info(`Socket.io disconnected from '${room}'`);
+			socket.leave(room);
+			logger.info(`Socket.io disconnected from '${room}'`);
 		});
 	});
 
