@@ -9,9 +9,11 @@ import { getEmptyEpsilonClient, setStateRouteHandler } from './emptyepsilon';
 import { loadInitialTasks } from './engineering/tasks';
 import { loadEvents } from './eventhandler';
 import { loadMessaging } from './messaging';
+import { Store } from './models/store';
 import cors from 'cors';
 
 import { initStoreSocket } from './store/storeSocket';
+import store from './store/store';
 import engineering from './routes/engineering';
 import fleet from './routes/fleet';
 import starmap from './routes/starmap';
@@ -51,10 +53,7 @@ app.use('/log', log);
 app.use('/science', science);
 app.get('/state', (req, res) => res.json(gameState));
 app.put('/state', setStateRouteHandler);
-<<<<<<< HEAD
 app.use('/infoboard', infoboard);
-=======
->>>>>>> feat: Implement generic data store based on Redux
 app.use('/data', data);
 
 // Error handling middleware
@@ -90,12 +89,22 @@ const EE_UPDATE_INTERVAL = 1000;
 logger.watch(`Starting to poll Empty Epsilon game state every ${EE_UPDATE_INTERVAL}ms`);
 setInterval(getEmptyEpsilonState, EE_UPDATE_INTERVAL);
 
-const { APP_PORT } = process.env;
-http.listen(APP_PORT, () => logger.start(`Odysseus backend listening to port ${APP_PORT}`));
+// Load initial state from database before starting the HTTP listener
+Store.forge({ id: 'data' }).fetch().then(model => {
+	const data = model ? model.get('data') : {};
+	store.dispatch({ type: 'OVERWRITE_STATE', data });
+	logger.info('State initialized');
+	startServer();
+});
 
 // Generate and serve API documentation using Swagger at /api-docs
 loadSwagger(app);
 
 initStoreSocket(io);
+
+function startServer() {
+	const { APP_PORT } = process.env;
+	http.listen(APP_PORT, () => logger.start(`Odysseus backend listening to port ${APP_PORT}`));
+}
 
 export { app };
