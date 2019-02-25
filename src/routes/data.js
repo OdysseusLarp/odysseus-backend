@@ -1,4 +1,4 @@
-import store from '../store/store'
+import store from '../store/store';
 import httpErrors from 'http-errors';
 
 import { Router } from 'express';
@@ -35,7 +35,7 @@ function deleteData(dataType, dataId) {
 		type: 'DELETE_DATA',
 		dataType,
 		dataId,
-	})
+	});
 }
 
 /**
