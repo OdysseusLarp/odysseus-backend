@@ -25,7 +25,6 @@ const dataReducer = createReducer({}, {
 
 		state[type][id] = newData;
 	},
-
 	DELETE_DATA: (state, action) => {
 		const id = action.dataId;
 		const type = action.dataType;
@@ -33,6 +32,9 @@ const dataReducer = createReducer({}, {
 		if (state[type]) {
 			delete state[type][id];
 		}
+	},
+	OVERWRITE_STATE: (state, action) => {
+		return { ...action.data };
 	}
 });
 
