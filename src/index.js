@@ -14,6 +14,7 @@ import cors from 'cors';
 
 import { initStoreSocket } from './store/storeSocket';
 import store from './store/store';
+import './store/storePersistance';
 import engineering from './routes/engineering';
 import fleet from './routes/fleet';
 import starmap from './routes/starmap';
