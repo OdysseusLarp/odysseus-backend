@@ -34,7 +34,7 @@ const dataReducer = createReducer({}, {
 		}
 	},
 	OVERWRITE_STATE: (state, action) => {
-		return { ...action.data };
+		return { ...action.state };
 	}
 });
 

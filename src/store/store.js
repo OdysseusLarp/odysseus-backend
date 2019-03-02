@@ -1,7 +1,11 @@
 import { configureStore } from 'redux-starter-kit';
 import dataReducer from './reducers/dataReducer';
 
-const store = configureStore({
+let resolver;
+export let initialized = false;
+export let initPromise = new Promise((resolve, reject) => { resolver = resolve });
+
+export const store = configureStore({
 	reducer: {
 		data: dataReducer,
 	}
@@ -25,10 +29,21 @@ export function watch(path, callback) {
 	store.subscribe(() => {
 		const newObject = getPath(path);
 		if (newObject !== previousObject) {
-			callback(newObject, previousObject);
+			if (initialized) {
+				callback(newObject, previousObject);
+			}
 			previousObject = newObject;
 		}
 	});
+}
+
+export function initState(state) {
+	store.dispatch({
+		type: 'OVERWRITE_STATE',
+		state
+	});
+	initialized = true;
+	resolver();
 }
 
 export default store;

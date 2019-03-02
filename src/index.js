@@ -13,7 +13,7 @@ import { Store } from './models/store';
 import cors from 'cors';
 
 import { initStoreSocket } from './store/storeSocket';
-import store from './store/store';
+import { initState } from './store/store';
 import './store/storePersistance';
 import engineering from './routes/engineering';
 import fleet from './routes/fleet';
@@ -91,7 +91,7 @@ setInterval(getEmptyEpsilonState, EE_UPDATE_INTERVAL);
 // Load initial state from database before starting the HTTP listener
 Store.forge({ id: 'data' }).fetch().then(model => {
 	const data = model ? model.get('data') : {};
-	store.dispatch({ type: 'OVERWRITE_STATE', data });
+	initState(data);
 	logger.info('State initialized');
 	startServer();
 });
