@@ -26,6 +26,8 @@ import log from './routes/log';
 import science from './routes/science';
 import data from './routes/data';
 
+import './rules/rules'
+
 // Setup logging middleware and body parsing
 app.use(bodyParser.json());
 app.use(loggerMiddleware);
