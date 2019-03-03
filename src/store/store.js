@@ -27,12 +27,14 @@ export function getPath(path) {
 export function watch(path, callback) {
 	let previousObject = getPath(path);
 	store.subscribe(() => {
-		const newObject = getPath(path);
-		if (newObject !== previousObject) {
+		const currentObject = getPath(path);
+		const currentState = store.getState();
+		if (currentObject !== previousObject) {
 			if (initialized) {
-				callback(newObject, previousObject);
+				// Use setTimeout instead of nextTick to not starve IO in case of infinite loop
+				setTimeout(() => callback(currentObject, previousObject, currentState), 0);
 			}
-			previousObject = newObject;
+			previousObject = currentObject;
 		}
 	});
 }
