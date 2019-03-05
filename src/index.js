@@ -27,7 +27,7 @@ import science from './routes/science';
 import data from './routes/data'
 import infoboard from './routes/infoboard';
 
-import './rules/rules'
+import './rules/rules';
 
 // Setup logging middleware and body parsing
 app.use(bodyParser.json());

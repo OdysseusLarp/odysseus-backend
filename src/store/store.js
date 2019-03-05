@@ -9,7 +9,7 @@ export let initialized = false;
 /**
  * Promise that will be resolved when the Redux store is initialized with the initial values.
  */
-export let initPromise = new Promise((resolve, reject) => { resolver = resolve });
+export const initPromise = new Promise((resolve, reject) => { resolver = resolve; });
 
 export const store = configureStore({
 	reducer: {
@@ -19,9 +19,9 @@ export const store = configureStore({
 
 /**
  * Return an object at a specific path in the Redux store.
- * 
+ *
  * @param {string[]} path 	array of strings defining the object path to watch, e.g. `['data','task','myid']`
- * @returns					object at the path, or `undefined` 
+ * @returns					object at the path, or `undefined`
  */
 export function getPath(path) {
 	let o = store.getState();
@@ -31,7 +31,7 @@ export function getPath(path) {
 		} else {
 			return undefined;
 		}
-		path = path.slice(1)
+		path = path.slice(1);
 	}
 	return o;
 }
@@ -39,10 +39,10 @@ export function getPath(path) {
 /**
  * Watch a specific path of the Redux store. The callback is called
  * asynchronously with parameters `(currentObject, previousObject, currentState)`.
- * 
+ *
  * `currentObject` and `currentState` represent the state at the time when the event
  * occurred, and is not necessarily the same as the current state.
- * 
+ *
  * @param {string[]} path 		array of strings defining the object path to watch, e.g. `['data','task','myid']`
  * @param {function} callback 	function to call asynchronously
  */
