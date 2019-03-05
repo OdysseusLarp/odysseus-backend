@@ -4,6 +4,7 @@
 import { watch, store } from '../../store/store';
 import { logger } from '../../logger';
 import { interval, postpone } from '../helpers';
+import { get } from 'lodash';
 
 /**
  * Mark a task as broken and commit to store.
@@ -79,7 +80,7 @@ export function setTaskFixed(task) {
 const DECREASE_INTERVAL = 3;
 interval(DECREASE_INTERVAL * 1000, () => {
 	let calibrationSlots = 3; // FIXME: Read from somewhere instead of having fixed value
-	const calibrating = Object.values(store.getState().data.task)
+	const calibrating = Object.values(get(store.getState(), 'data.task', {}))
 		.filter(task => task.status === 'calibrating')
 		.sort((a, b) => a.sort - b.sort);
 	calibrating.forEach(t => {
