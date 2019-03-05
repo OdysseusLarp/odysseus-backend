@@ -33,9 +33,7 @@ const dataReducer = createReducer({}, {
 			delete state[type][id];
 		}
 	},
-	OVERWRITE_STATE: (state, action) => {
-		return { ...action.state };
-	}
+	OVERWRITE_STATE: (state, action) => ({ ...action.state })
 });
 
 export default dataReducer;
