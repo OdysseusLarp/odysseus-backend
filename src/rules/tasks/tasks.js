@@ -1,7 +1,7 @@
 /*
  * Generic task rules relating to moving between broken, calibrating and fixed states.
  */
-import { watch, store } from '../../store/store';
+import { store } from '../../store/store';
 import { logger } from '../../logger';
 import { interval, postpone } from '../helpers';
 import { get } from 'lodash';
@@ -14,7 +14,7 @@ import { get } from 'lodash';
 export function setTaskBroken(task) {
 	task = { ...task };
 	task.status = 'broken';
-	task.sort = Time.now();
+	task.sort = Date.now();
 	postpone(() => {
 		store.dispatch({
 			type: 'SET_DATA',
@@ -42,7 +42,7 @@ export function setTaskCalibrating(task) {
 		task.status = 'calibrating';
 		task.calibrationRemaining = new Array(task.calibrationSlots).fill(task.calibrationTime);
 		task.calibrationSpeed = new Array(task.calibrationSlots).map(() => Math.random * 0.5 + 0.8);
-		task.sort = Time.now();
+		task.sort = Date.now();
 		postpone(() => {
 			store.dispatch({
 				type: 'SET_DATA',

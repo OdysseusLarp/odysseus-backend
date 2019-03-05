@@ -72,10 +72,7 @@
 		}
 	},
 	"lint-staged": {
-		"*.{js,ts,scss,md}": [
-			"eslint --fix src test db",
-			"git add"
-		]
+		"*.js": "eslint --fix"
 	},
 	"babel": {
 		"sourceMaps": "inline",
