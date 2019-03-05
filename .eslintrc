@@ -51,6 +51,10 @@
         "radix": 2,
         "array-bracket-spacing": 2,
         "comma-spacing": 2,
+        "no-unused-vars": [
+            2,
+            { "argsIgnorePattern": "next" }
+        ],
         "operator-linebreak": [
             2,
             "after"
