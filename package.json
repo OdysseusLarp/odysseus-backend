@@ -11,6 +11,7 @@
 		"test": "cross-env NODE_ENV=test ./node_modules/nyc/bin/nyc.js ./node_modules/ava/cli.js --verbose",
 		"test:nc": "cross-env NODE_ENV=test ./node_modules/ava/cli.js --verbose",
 		"lint": "eslint src test db",
+		"lint:fix": "eslint --fix src test db",
 		"start": "cross-env NODE_ENV=development node_modules/nodemon/bin/nodemon.js --watch src src/index.js --exec babel-node --inspect",
 		"start:prod": "cross-env NODE_ENV=production babel-node src/index.js",
 		"db:build": "docker build -t odysseus-postgis:latest ./db",
@@ -56,12 +57,25 @@
 		"babel-preset-stage-0": "^6.24.1",
 		"csvtojson": "^2.0.8",
 		"eslint": "^5.2.0",
+		"husky": "^1.3.1",
+		"lint-staged": "^8.1.5",
 		"nock": "^9.6.1",
 		"nodemon": "^1.18.3",
 		"nyc": "^12.0.2",
 		"rewire": "^4.0.1",
 		"sinon": "^6.1.5",
 		"supertest": "^3.3.0"
+	},
+	"husky": {
+		"hooks": {
+			"pre-commit": "lint-staged"
+		}
+	},
+	"lint-staged": {
+		"*.{js,ts,scss,md}": [
+			"eslint --fix src test db",
+			"git add"
+		]
 	},
 	"babel": {
 		"sourceMaps": "inline",
