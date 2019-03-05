@@ -1,7 +1,7 @@
 import moment from 'moment';
 import { isEmpty, pick, inRange, get, isInteger } from 'lodash';
 import { Event } from './models/event';
-import { Ship, Grid } from './models/ship';
+import { Ship, Grid, GridAction } from './models/ship';
 import { MapObject } from './models/map-object';
 import { logger } from './logger';
 
@@ -121,8 +121,8 @@ async function addJumpEvent(event) {
 	if (!validateJumpRange(ship, grid)) throw new Error('Jump can not be made from current position');
 
 	// Set timer to execute jump
-	eventTimers.set(id, setTimeout(() => {
-		performShipJump(shipId, grid.get('id'));
+	eventTimers.set(id, setTimeout(async () => {
+		await performShipJump(shipId, grid.get('id'));
 		finishEvent(event);
 	}, occursIn));
 
@@ -167,9 +167,16 @@ function getTimeUntilEvent(event) {
  */
 async function performShipJump(shipId, gridId) {
 	const ship = await Ship.forge({ id: shipId }).fetch();
+	const gridCenter = await Grid.forge({ id: gridId }).fetch().then(grid => {
+		if (grid) return grid.getCenter();
+		else {
+			logger.error('Could not calculate new geometry for ship when jumping to grid', gridId);
+		}
+	});
 	// Reset jump range back to 1
 	const metadata = { ...ship.get('metadata', {}), jump_range: 1 };
-	await ship.save({ grid_id: gridId, metadata });
+	await ship.save({ grid_id: gridId, metadata, the_geom: gridCenter });
+	await GridAction.forge().save({ grid_id: gridId, ship_id: shipId, type: 'JUMP' });
 	logger.success(`${shipId} succesfully jumped to grid ${gridId}`);
 }
 

@@ -1,4 +1,5 @@
-import Bookshelf from '../../db';
+import Bookshelf, { knex } from '../../db';
+import { get } from 'lodash';
 
 /* eslint-disable object-shorthand */
 
@@ -25,7 +26,26 @@ export const Grid = Bookshelf.Model.extend({
 	},
 	getCoordinates: function () {
 		return { x: this.get('x'), y: this.get('y') };
-	}
+	},
+	// Returns grid centroid as geometry, used when getting a new geometry for the ship during jump
+	getCenter: function () {
+		return knex.raw('SELECT ST_Centroid(grid.the_geom) AS center FROM grid WHERE id = ?', this.get('id'))
+			.then(res => get(res, 'rows[0].center'));
+	},
+});
+
+/**
+ * @typedef {object} GridAction
+ * @property {string} id.required - ID
+ * @property {string} grid_id.required - Grid ID
+ * @property {string} ship_id.required - Ship ID
+ * @property {string} type - Event type (SCAN, JUMP...)
+ * @property {string} created_at - Date-time when object was created
+ * @property {string} updated_at - Date-time when object was last updated
+ */
+export const GridAction = Bookshelf.Model.extend({
+	tableName: 'grid_action',
+	hasTimestamps: true
 });
 
 const shipWithRelated = [
