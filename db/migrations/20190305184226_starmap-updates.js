@@ -29,7 +29,7 @@ exports.up = async knex => {
 		t.text('sub_quadrant');
 	});
 
-	// Drop and re-create views because of added columns
+	// Drop and re-create old views because of added columns
 	await fixViews(knex);
 
 	// View for fetching grid data
@@ -56,7 +56,9 @@ exports.up = async knex => {
 };
 
 exports.down = async knex => {
-	await knex.raw(`DROP VIEW starmap_grid_info`);
+	await knex.raw(`DROP VIEW IF EXISTS starmap_grid_info`);
+	await knex.raw('DROP VIEW IF EXISTS starmap_object_star');
+	await knex.raw('DROP VIEW IF EXISTS starmap_object_visible');
 	await knex.schema.alterTable('starmap_object', t => {
 		t.dropColumn('distance');
 		t.dropColumn('surface_gravity');
@@ -65,6 +67,6 @@ exports.down = async knex => {
 		t.dropColumn('sub_quadrant');
 	});
 
-	// Drop and re-create views because of removed columns
+	// Drop and re-create old views because of removed columns
 	await fixViews(knex);
 };
