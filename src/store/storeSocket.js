@@ -28,7 +28,7 @@ function sendDataChanges(io) {
 
 	previousData = currentData;
 }
-const throttledSendDataChanges = throttle(sendDataChanges, 10, { leading: false, trailing: true });
+const throttledSendDataChanges = throttle(sendDataChanges, 100, { leading: false, trailing: true });
 
 
 export function initStoreSocket(io) {
