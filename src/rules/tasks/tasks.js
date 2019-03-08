@@ -36,12 +36,12 @@ export function setTaskBroken(task) {
  */
 export function setTaskCalibrating(task) {
 	task = { ...task };
-	if (!task.calibrationSlots || !task.calibrationTime) {
+	if (!task.calibrationCount || !task.calibrationTime) {
 		setTaskFixed(task);
 	} else {
 		task.status = 'calibrating';
-		task.calibrationRemaining = new Array(task.calibrationSlots).fill(task.calibrationTime);
-		task.calibrationSpeed = new Array(task.calibrationSlots).map(() => Math.random * 0.5 + 0.8);
+		task.calibrationRemaining = new Array(task.calibrationCount).fill(task.calibrationTime);
+		task.calibrationSpeed = task.calibrationRemaining.map(e => Math.random() * 0.5 + 0.8);
 		task.sort = Date.now();
 		postpone(() => {
 			store.dispatch({
@@ -77,7 +77,7 @@ export function setTaskFixed(task) {
 /**
  * Decrease calibration times and mark tasks as fixed once calibration times are zero.
  */
-const DECREASE_INTERVAL = 3;
+const DECREASE_INTERVAL = 2;
 interval(DECREASE_INTERVAL * 1000, () => {
 	let calibrationSlots = 3; // FIXME: Read from somewhere instead of having fixed value
 	const calibrating = Object.values(get(store.getState(), 'data.task', {}))
