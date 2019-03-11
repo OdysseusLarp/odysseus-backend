@@ -34,10 +34,11 @@ router.get('/', handleAsyncErrors(async (req, res) => {
 		if( hours > 0 ) {
 			time = hours + " hours, " + time;
 		}
+		time = "Next safe jump in " + time;
 		if( seconds <  0 || minutes < 0 || hours < 0 ) {
 			time = "JUMPING NOW";
 		}
-		entry.attributes.time_to_jump = time;
+		entry.attributes.jump_text = time;
 	}
 	res.json(entry);
 }));
