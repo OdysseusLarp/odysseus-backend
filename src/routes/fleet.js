@@ -10,7 +10,7 @@ const router = new Router();
  * @returns {Array.<Ship>} 200 - List of all ships in the fleet
  */
 router.get('/', handleAsyncErrors(async (req, res) => {
-	res.json(await Ship.forge().fetchAllWithRelated());
+	res.json(await Ship.forge().fetchAllWithRelated({ withGeometry: true }));
 }));
 
 /**
@@ -21,7 +21,7 @@ router.get('/', handleAsyncErrors(async (req, res) => {
  * @returns {Ship.model} 200 - Specific ship
  */
 router.get('/:id', handleAsyncErrors(async (req, res) => {
-	res.json(await Ship.forge({ id: req.params.id }).fetchWithRelated());
+	res.json(await Ship.forge({ id: req.params.id }).fetchWithRelated({ withGeometry: true }));
 }));
 
 /**

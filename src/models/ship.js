@@ -53,6 +53,13 @@ const shipWithRelated = [
 	// 'persons'
 ];
 
+// Add 'geom' column that contains 'the_geom' parsed as GeoJSON so that it is
+// easier to work with in OpenLayers (starmap)
+function getColumns(withGeometry) {
+	if (!withGeometry) return;
+	return ['ship.*', knex.raw(`ST_AsGeoJSON(ship.the_geom)::jsonb AS geom`)];
+}
+
 /**
  * @typedef {object} Ship
  * @property {string} id.required - ID
@@ -73,11 +80,13 @@ export const Ship = Bookshelf.Model.extend({
 	position: function () {
 		return this.hasOne(Grid, 'id', 'grid_id');
 	},
-	fetchAllWithRelated: function () {
-		return this.fetchAll({ withRelated: shipWithRelated });
+	fetchAllWithRelated: function ({ withGeometry = false } = {}) {
+		const columns = getColumns(withGeometry);
+		return this.fetchAll({ withRelated: shipWithRelated, columns });
 	},
-	fetchWithRelated: function () {
-		return this.fetch({ withRelated: shipWithRelated });
+	fetchWithRelated: function ({ withGeometry = false } = {}) {
+		const columns = getColumns(withGeometry);
+		return this.fetch({ withRelated: shipWithRelated, columns });
 	},
 	getGrid: function () {
 		return this.related('position');
