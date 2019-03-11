@@ -36,8 +36,11 @@ export async function addEvent(event) {
 		case 'SCAN_OBJECT': {
 			return addScanObjectEvent(event);
 		}
+		case 'SCAN_GRID': {
+			return addScanGridEvent(event);
+		}
 		default: {
-			return logger.warn(`Unknown event type '${
+			throw new Error(`Unknown event type '${
 				event.get('type')}' for event with id ${event.get('id')}`);
 		}
 	}
@@ -100,6 +103,31 @@ async function addScanObjectEvent(event) {
 	currentEvents.set(event.get('id'), event);
 }
 
+async function addScanGridEvent(event) {
+	const id = event.get('id');
+	const gridId = get(event.get('metadata'), 'target');
+	const occursIn = getTimeUntilEvent(event);
+	const shipId = event.get('ship_id');
+
+	// Get target grid and ship from database to validate if jump can be made
+	const grid = await Grid.forge({ id: gridId }).fetch();
+	if (!grid) throw new Error('Given grid does not exist');
+	const ship = await Ship.forge({ id: shipId }).fetchWithRelated();
+	if (!ship) throw new Error('Invalid ship id');
+	if (!validateRange(ship, grid, 'scan_range')) throw new Error('Scan can not be made from current position');
+	if (occursIn < 0) throw new Error(`Event ${id} occurs in the past`);
+	if (!isInteger(gridId)) throw new Error(`Event ${id} target object ID ${gridId} is invalid`);
+
+	// TODO: Check if ship has probes left, remove 1 probe from state
+
+	// Set timer to execute scan
+	eventTimers.set(id, setTimeout(() => {
+		performGridScan(gridId);
+		finishEvent(event);
+	}, occursIn));
+	currentEvents.set(event.get('id'), event);
+}
+
 /**
  * Processing function for new jump event
  * @param {Event.model} event model
@@ -118,7 +146,7 @@ async function addJumpEvent(event) {
 	if (!grid) throw new Error('Given grid does not exist');
 	const ship = await Ship.forge({ id: shipId }).fetchWithRelated();
 	if (!ship) throw new Error('Invalid ship id');
-	if (!validateJumpRange(ship, grid)) throw new Error('Jump can not be made from current position');
+	if (!validateRange(ship, grid, 'jump_range')) throw new Error('Jump can not be made from current position');
 
 	// Set timer to execute jump
 	eventTimers.set(id, setTimeout(async () => {
@@ -130,13 +158,14 @@ async function addJumpEvent(event) {
 }
 
 /**
- * Validate if ship can jump to a target grid or not
+ * Validate if ship can scan or jump to a target grid
  * @param {Ship.model} ship Ship model
  * @param {Grid.model} targetGrid Grid model
+ * @param {string} rangeField either jump_range or scan_range
  * @returns {boolean} Boolean stating if jump can be made or not
  */
-function validateJumpRange(ship, targetGrid) {
-	const jumpRange = get(ship.get('metadata'), 'jump_range', 1);
+function validateRange(ship, targetGrid, rangeField = 'jump_range') {
+	const jumpRange = get(ship.get('metadata'), rangeField, 1);
 	const current = ship.related('position').getCoordinates();
 	const target = targetGrid.getCoordinates();
 	const min = { x: current.x - jumpRange, y: current.y - jumpRange };
@@ -184,4 +213,9 @@ async function performObjectScan(objectId) {
 	const object = await MapObject.forge({ id: objectId }).fetch();
 	await object.save({ is_scanned: true });
 	logger.success(`Object ${objectId} was succesfully scanned`);
+}
+
+async function performGridScan(gridId) {
+	await GridAction.forge().save({ grid_id: gridId, ship_id: 'odysseus', type: 'SCAN' });
+	logger.success(`Grid ${gridId} was succesfully scanned`);
 }
