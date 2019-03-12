@@ -2,12 +2,30 @@ import moment from 'moment';
 import { isEmpty, pick, inRange, get, isInteger } from 'lodash';
 import { Event } from './models/event';
 import { Ship, Grid, GridAction } from './models/ship';
+import { LogEntry } from './models/log';
 import { MapObject } from './models/map-object';
 import { logger } from './logger';
 
 const currentEvents = new Map();
 const eventTimers = new Map();
 let io;
+
+/** Adds log entry to database and emits it via Socket.IO
+ * @param  {string} type INFO, SUCCESS, WARNING, ERROR
+ * @param  {string} message Message
+ * @param  {string} shipId='odysseus' Ship ID
+ * @param  {object} metadata=null Any metadata
+ */
+async function addLogEntry(type, message, shipId = 'odysseus', metadata = null) {
+	const body = {
+		ship_id: shipId,
+		message,
+		metadata,
+		type
+	};
+	const logEntry = await LogEntry.forge().save(body, { method: 'insert' });
+	io.emit('logEntryAdded', logEntry);
+}
 
 /**
  * Loads active events from database on when application is initialized
@@ -101,6 +119,11 @@ async function addScanObjectEvent(event) {
 		finishEvent(event);
 	}, occursIn));
 	currentEvents.set(event.get('id'), event);
+	const object = await MapObject.forge({ id: objectId }).fetch();
+	addLogEntry(
+		'INFO',
+		`Scanning initiated on space object ${object.get('name_generated')}`
+	);
 }
 
 async function addScanGridEvent(event) {
@@ -126,6 +149,11 @@ async function addScanGridEvent(event) {
 		finishEvent(event);
 	}, occursIn));
 	currentEvents.set(event.get('id'), event);
+	const gridName = grid.get('name');
+	addLogEntry(
+		'INFO',
+		`Probe was sent to scan grid ${gridName}`
+	);
 }
 
 /**
@@ -155,6 +183,12 @@ async function addJumpEvent(event) {
 	}, occursIn));
 
 	currentEvents.set(event.get('id'), event);
+	const gridName = grid.get('name');
+	addLogEntry(
+		'INFO',
+		`Odysseus initiated a jump to grid ${gridName}`,
+		shipId
+	);
 }
 
 /**
@@ -196,26 +230,43 @@ function getTimeUntilEvent(event) {
  */
 async function performShipJump(shipId, gridId) {
 	const ship = await Ship.forge({ id: shipId }).fetch();
-	const gridCenter = await Grid.forge({ id: gridId }).fetch().then(grid => {
-		if (grid) return grid.getCenter();
-		else {
-			logger.error('Could not calculate new geometry for ship when jumping to grid', gridId);
-		}
-	});
+	const grid = await Grid.forge({ id: gridId }).fetch();
+	let gridCenter;
+	if (grid) gridCenter = await grid.getCenter();
+	else {
+		logger.error('Could not calculate new geometry for ship when jumping to grid', gridId);
+	}
 	// Reset jump range back to 1
 	const metadata = { ...ship.get('metadata', {}), jump_range: 1 };
 	await ship.save({ grid_id: gridId, metadata, the_geom: gridCenter });
 	await GridAction.forge().save({ grid_id: gridId, ship_id: shipId, type: 'JUMP' });
 	logger.success(`${shipId} succesfully jumped to grid ${gridId}`);
+	const gridName = grid.get('name');
+	addLogEntry(
+		'SUCCESS',
+		`Odysseus completed the jump to grid ${gridName}`,
+		shipId
+	);
 }
 
 async function performObjectScan(objectId) {
 	const object = await MapObject.forge({ id: objectId }).fetch();
 	await object.save({ is_scanned: true });
 	logger.success(`Object ${objectId} was succesfully scanned`);
+	const objectName = object.get('name_generated');
+	addLogEntry(
+		'SUCCESS',
+		`Space object ${objectName} was scanned`
+	);
 }
 
 async function performGridScan(gridId) {
 	await GridAction.forge().save({ grid_id: gridId, ship_id: 'odysseus', type: 'SCAN' });
+	const grid = await  Grid.forge({ id: gridId }).fetch();
 	logger.success(`Grid ${gridId} was succesfully scanned`);
+	const gridName = grid.get('name');
+	addLogEntry(
+		'SUCCESS',
+		`Probe finished scanning grid ${gridName}`
+	);
 }
