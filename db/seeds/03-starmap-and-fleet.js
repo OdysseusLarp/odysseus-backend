@@ -29,7 +29,11 @@ const ships = [
 		game_state: '{}',
 		grid_id: 1500,
 		the_geom,
-		metadata: { jump_range: 1 },
+		metadata: {
+			jump_range: 1,
+			scan_range: 1,
+			probe_count: 100
+		},
 		type: 'RESEARCH',
 		class: 'FIREFLY'
 	},
