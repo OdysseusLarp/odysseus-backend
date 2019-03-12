@@ -169,7 +169,7 @@ async function addJumpEvent(event) {
 
 	// Get target grid and ship from database to validate if jump can be made
 	// TODO: Include planet_orbit in query if it is set
-	const jumpTargetParameters = pick(metadata, ['quadrant', 'sector', 'sub_sector']);
+	const jumpTargetParameters = pick(metadata, ['sub_quadrant', 'sector', 'sub_sector']);
 	const grid = await Grid.forge().where(jumpTargetParameters).fetch();
 	if (!grid) throw new Error('Given grid does not exist');
 	const ship = await Ship.forge({ id: shipId }).fetchWithRelated();
