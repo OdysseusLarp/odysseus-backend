@@ -1,0 +1,17 @@
+{
+    "pg": {
+        "database": "postgres",
+        "user": "postgres",
+        "password": "",
+        "schema": "public"
+    },
+    "server": {
+        "port": 8889
+    },
+    "app": {
+        "layouts": true,
+        "themes": true,
+        "languages": true,
+        "root": "/database"
+    }
+}
