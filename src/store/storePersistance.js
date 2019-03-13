@@ -20,3 +20,5 @@ store.subscribe(() => {
 	if (isEmpty(data)) return;
 	throttledSaveState(data, 'data');
 });
+
+export { saveState, throttledSaveState };
