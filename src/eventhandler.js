@@ -132,16 +132,27 @@ async function addScanGridEvent(event) {
 	const occursIn = getTimeUntilEvent(event);
 	const shipId = event.get('ship_id');
 
-	// Get target grid and ship from database to validate if jump can be made
+	// Get target grid and ship from database to validate if scan can be made
 	const grid = await Grid.forge({ id: gridId }).fetch();
 	if (!grid) throw new Error('Given grid does not exist');
 	const ship = await Ship.forge({ id: shipId }).fetchWithRelated();
 	if (!ship) throw new Error('Invalid ship id');
+	const probeCount = get(ship.get('metadata'), 'probe_count');
+	if (!isInteger(probeCount)) throw new Error('Probe count is unavailable');
+	if (probeCount < 1) throw new Error('No probes available');
 	if (!validateRange(ship, grid, 'scan_range')) throw new Error('Scan can not be made from current position');
 	if (occursIn < 0) throw new Error(`Event ${id} occurs in the past`);
 	if (!isInteger(gridId)) throw new Error(`Event ${id} target object ID ${gridId} is invalid`);
 
-	// TODO: Check if ship has probes left, remove 1 probe from state
+	// Remove 1 probe from Odysseus if that has not been done for this scan yet
+	const shipMetadata = ship.get('metadata');
+	ship.save(
+		{ metadata: { ...shipMetadata, probe_count: probeCount - 1 } },
+		{ type: 'update', patch: true })
+		.then(() => {
+			logger.info(`Decreased probe count by 1 because of grid scan`);
+			emitShipUpdated();
+		});
 
 	// Set timer to execute scan
 	eventTimers.set(id, setTimeout(() => {
@@ -247,6 +258,7 @@ async function performShipJump(shipId, gridId) {
 		`Odysseus completed the jump to grid ${gridName}`,
 		shipId
 	);
+	emitShipUpdated();
 }
 
 async function performObjectScan(objectId) {
@@ -269,4 +281,11 @@ async function performGridScan(gridId) {
 		'SUCCESS',
 		`Probe finished scanning grid ${gridName}`
 	);
+}
+
+async function emitShipUpdated(ship = null) {
+	io.emit('shipUpdated',
+		ship ||
+		await Ship.forge({ id: 'odysseus' })
+			.fetchWithRelated({ withGeometry: true }));
 }
