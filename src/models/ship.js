@@ -36,7 +36,7 @@ export const Grid = Bookshelf.Model.extend({
 	containsObject(nameGenerated) {
 		return knex.raw(
 			`SELECT ST_WITHIN(
-				(SELECT the_geom FROM starmap_object WHERE name_generated = ?), the_geom) AS has_object
+				(SELECT the_geom FROM starmap_object WHERE name_generated = ? AND celestial_body != 'star'), the_geom) AS has_object
 				FROM grid WHERE id = ?`,
 			[nameGenerated, this.get('id')])
 			.then(res => get(res, 'rows[0].has_object'));
