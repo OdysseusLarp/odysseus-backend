@@ -179,17 +179,19 @@ async function addJumpEvent(event) {
 	if (occursIn < 0) return logger.error(`Event ${id} occurs in the past`);
 
 	// Get target grid and ship from database to validate if jump can be made
-	// TODO: Include planet_orbit in query if it is set
 	const jumpTargetParameters = pick(metadata, ['sub_quadrant', 'sector', 'sub_sector']);
+	const targetPlanetName = get(metadata, 'planet_orbit');
 	const grid = await Grid.forge().where(jumpTargetParameters).fetch();
 	if (!grid) throw new Error('Given grid does not exist');
+	if (targetPlanetName && !(await grid.containsObject(targetPlanetName)))
+		throw new Error('Given planet not found in target grid');
 	const ship = await Ship.forge({ id: shipId }).fetchWithRelated();
 	if (!ship) throw new Error('Invalid ship id');
 	if (!validateRange(ship, grid, 'jump_range')) throw new Error('Jump can not be made from current position');
 
 	// Set timer to execute jump
 	eventTimers.set(id, setTimeout(async () => {
-		await performShipJump(shipId, grid.get('id'));
+		await performShipJump(shipId, grid.get('id'), targetPlanetName);
 		finishEvent(event);
 	}, occursIn));
 
@@ -236,21 +238,27 @@ function getTimeUntilEvent(event) {
 
 /**
  * Jumps the ship to a new grid by setting grid_id of the ship to given value
- * @param {string} shipId
- * @param {number} gridId
+ * @param {string} shipId Ship ID
+ * @param {number} gridId Target grid ID
+ * @param {string} targetPlanetName name_generated of target planet if jumping to orbit
  */
-async function performShipJump(shipId, gridId) {
-	const ship = await Ship.forge({ id: shipId }).fetch();
-	const grid = await Grid.forge({ id: gridId }).fetch();
-	let gridCenter;
-	if (grid) gridCenter = await grid.getCenter();
-	else {
-		logger.error('Could not calculate new geometry for ship when jumping to grid', gridId);
-	}
+async function performShipJump(shipId, gridId, targetPlanetName) {
+	const promises = [
+		Ship.forge({ id: shipId }).fetch(),
+		Grid.forge({ id: gridId }).fetch()
+	];
+	if (targetPlanetName) promises.push(MapObject.forge({ name_generated: targetPlanetName }).fetch());
+	const [ship, grid, targetPlanet] = await Promise.all(promises);
+	let targetGeometry;
+	if (targetPlanet) targetGeometry = targetPlanet.get('the_geom');
+	else targetGeometry = await grid.getCenter();
+	if (!targetGeometry) logger.error('Could not calculate new geometry for ship when jumping to grid', gridId);
 	// Reset jump range back to 1
 	const metadata = { ...ship.get('metadata', {}), jump_range: 1 };
-	await ship.save({ grid_id: gridId, metadata, the_geom: gridCenter });
-	await GridAction.forge().save({ grid_id: gridId, ship_id: shipId, type: 'JUMP' });
+	await Promise.all([
+		ship.save({ grid_id: gridId, metadata, the_geom: targetGeometry }),
+		GridAction.forge().save({ grid_id: gridId, ship_id: shipId, type: 'JUMP' })
+	]);
 	logger.success(`${shipId} succesfully jumped to grid ${gridId}`);
 	const gridName = grid.get('name');
 	addLogEntry(
