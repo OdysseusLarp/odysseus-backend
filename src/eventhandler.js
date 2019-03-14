@@ -8,6 +8,7 @@ import { logger } from './logger';
 
 const currentEvents = new Map();
 const eventTimers = new Map();
+const LOW_PROBE_COUNT_WARNING_LIMIT = 3;
 let io;
 
 /** Adds log entry to database and emits it via Socket.IO
@@ -122,7 +123,7 @@ async function addScanObjectEvent(event) {
 	const object = await MapObject.forge({ id: objectId }).fetch();
 	addLogEntry(
 		'INFO',
-		`Scanning initiated on space object ${object.get('name_generated')}`
+		`Scanning initiated on space object ${object.get('name_generated')}.`
 	);
 }
 
@@ -146,11 +147,19 @@ async function addScanGridEvent(event) {
 
 	// Remove 1 probe from Odysseus if that has not been done for this scan yet
 	const shipMetadata = ship.get('metadata');
+	const newProbeCount = probeCount - 1;
 	ship.save(
-		{ metadata: { ...shipMetadata, probe_count: probeCount - 1 } },
+		{ metadata: { ...shipMetadata, probe_count: newProbeCount } },
 		{ type: 'update', patch: true })
 		.then(() => {
 			logger.info(`Decreased probe count by 1 because of grid scan`);
+			let probeWarningMessage;
+			if (newProbeCount === 0) {
+				probeWarningMessage = `No probes left.`;
+			} else if (newProbeCount < LOW_PROBE_COUNT_WARNING_LIMIT) {
+				probeWarningMessage = `Probe count is low (${newProbeCount} pcs).`;
+			}
+			if (probeWarningMessage) addLogEntry('WARNING', probeWarningMessage);
 			emitShipUpdated();
 		});
 
@@ -163,7 +172,7 @@ async function addScanGridEvent(event) {
 	const gridName = grid.get('name');
 	addLogEntry(
 		'INFO',
-		`Probe was sent to scan grid ${gridName}`
+		`Probe was sent to scan grid ${gridName}.`
 	);
 }
 
@@ -182,12 +191,22 @@ async function addJumpEvent(event) {
 	const jumpTargetParameters = pick(metadata, ['sub_quadrant', 'sector', 'sub_sector']);
 	const targetPlanetName = get(metadata, 'planet_orbit');
 	const grid = await Grid.forge().where(jumpTargetParameters).fetch();
-	if (!grid) throw new Error('Given grid does not exist');
-	if (targetPlanetName && !(await grid.containsObject(targetPlanetName)))
+	if (!grid) {
+		addLogEntry('ERROR', `Jump initialization failed: Unknown jump target.`, shipId);
+		throw new Error('Given grid does not exist');
+	}
+	if (targetPlanetName && !(await grid.containsObject(targetPlanetName))) {
+		addLogEntry('ERROR',
+			`Jump initialization failed: Given orbit not found in target sub-sector.`, shipId);
 		throw new Error('Given planet not found in target grid');
+	}
 	const ship = await Ship.forge({ id: shipId }).fetchWithRelated();
 	if (!ship) throw new Error('Invalid ship id');
-	if (!validateRange(ship, grid, 'jump_range')) throw new Error('Jump can not be made from current position');
+	if (!validateRange(ship, grid, 'jump_range')) {
+		addLogEntry('ERROR',
+			`Jump initialization failed: Target coordinates too far away.`, shipId);
+		throw new Error('Jump can not be made from current position');
+	}
 
 	// Set timer to execute jump
 	eventTimers.set(id, setTimeout(async () => {
@@ -199,7 +218,7 @@ async function addJumpEvent(event) {
 	const gridName = grid.get('name');
 	addLogEntry(
 		'INFO',
-		`Odysseus initiated a jump to grid ${gridName}`,
+		`Odysseus initiated a jump to grid ${gridName}.`,
 		shipId
 	);
 }
@@ -263,7 +282,7 @@ async function performShipJump(shipId, gridId, targetPlanetName) {
 	const gridName = grid.get('name');
 	addLogEntry(
 		'SUCCESS',
-		`Odysseus completed the jump to grid ${gridName}`,
+		`Odysseus completed the jump to grid ${gridName}.`,
 		shipId
 	);
 	emitShipUpdated();
@@ -276,7 +295,7 @@ async function performObjectScan(objectId) {
 	const objectName = object.get('name_generated');
 	addLogEntry(
 		'SUCCESS',
-		`Space object ${objectName} was scanned`
+		`Space object ${objectName} was scanned.`
 	);
 }
 
@@ -287,7 +306,7 @@ async function performGridScan(gridId) {
 	const gridName = grid.get('name');
 	addLogEntry(
 		'SUCCESS',
-		`Probe finished scanning grid ${gridName}`
+		`Probe finished scanning grid ${gridName}.`
 	);
 }
 
