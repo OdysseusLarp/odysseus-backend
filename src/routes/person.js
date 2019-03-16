@@ -5,12 +5,13 @@ const router = new Router();
 
 /**
  * Get a list of all persons. Also contains their family, medical and military data.
+ * Query parameters can contain fields to match exactly.
  * @route GET /person
  * @group Person - Operations for person related data
  * @returns {Array.<Person>} 200 - List of all persons
  */
 router.get('/', handleAsyncErrors(async (req, res) => {
-	res.json(await Person.forge().fetchAllWithRelated());
+	res.json(await Person.where(req.query).fetchAllWithRelated());
 }));
 
 /**
