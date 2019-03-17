@@ -2,40 +2,33 @@ import { watch } from '../../store/store';
 import { logger } from '../../logger';
 import { setTaskBroken, setTaskCalibrating } from '../tasks/tasks';
 
-const BOX_IDS = [
-    'fusebox-science',
-    'fusebox-medical',
-    'fusebox-engineering',
-];
+/**
+ * Mark fuse box tasks as broken or fixed automatically.
+ */
+watch(['data', 'box'], (currentBoxes, previousBoxes, state) => {
+	for (const box of Object.values(currentBoxes)) {
+		if (box.rules !== 'fusebox' || !box.fuses) {
+			continue;
+		}
 
-for (let boxId of BOX_IDS) {
-    
-    /**
-     * Mark fuse box tasks as broken or fixed automatically.
-     */
-    watch(['data', 'box', boxId], (current, previous, state) => {
-        if (!current || !current.fuses) {
-            logger.error(`Invalid fusebox data: ${JSON.stringify(current)})`);
-            return;
-        }
-        if (!state.data.task || !state.data.task[boxId]) {
-            logger.error(`Could not find task corresponding to fuse box ID '${boxId}'`)
-            return;
-        }
-        const task = state.data.task[boxId];
-        
-        const broken = current.fuses.find(e => e === 0) !== undefined;
-        if (broken) {
-            if (task.status !== 'broken') {
-                logger.info(`Marking task '${boxId}' as broken due to fuses being blown: ${JSON.stringify(current.fuses)}`)
-                setTaskBroken(task);
-            }
-        } else {
-            if (task.status === 'broken') {
-                logger.info(`Marking task '${boxId}' as calibrating due to fuses being fixed: ${JSON.stringify(current.fuses)}`)
-                setTaskCalibrating(task);
-            }
-        }
-    });
+		const id = box.id;
+		if (!state.data.task || !state.data.task[id]) {
+			logger.error(`Could not find task corresponding to fuse box ID '${id}'`);
+			continue;
+		}
+		const task = state.data.task[id];
 
-}
+		const broken = box.fuses.find(e => e === 0) !== undefined;
+		if (broken) {
+			if (task.status !== 'broken') {
+				logger.info(`Marking task '${id}' as broken due to fuses being blown: ${JSON.stringify(box.fuses)}`);
+				setTaskBroken(task);
+			}
+		} else {
+			if (task.status === 'broken') {
+				logger.info(`Marking task '${id}' as calibrating due to fuses being fixed: ${JSON.stringify(box.fuses)}`);
+				setTaskCalibrating(task);
+			}
+		}
+	}
+});
