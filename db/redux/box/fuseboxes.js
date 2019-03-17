@@ -80,8 +80,9 @@ const tasks = [
 ];
 
 boxes.forEach(e => {
+	e.status = 'initial';
+	e.task = e.id;
 	e.fuses = e.config.blowing.map(() => 1);
-	e.rules = 'fusebox';
 	e.presets = {
 		blow_one: {
 			blow: [0]
