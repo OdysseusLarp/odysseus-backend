@@ -29,12 +29,14 @@ import science from './routes/science';
 import data from './routes/data';
 import infoboard from './routes/infoboard';
 
+import { connection as dbConfig } from '../knexfile';
+
 import './rules/rules';
 
 // Temporary store for game state
 export let gameState = {};
 
-var config = {
+const config = {
 	dpath: './express-admin-config/',
 	config: JSON.parse(fs.readFileSync('express-admin-config/config.json')),
 	settings: JSON.parse(fs.readFileSync('express-admin-config/settings.json')),
@@ -43,8 +45,10 @@ var config = {
 	// additionally you can pass your own session middleware to use
 	// session: session({...})
 };
+// Overwrite express-admin database config to match the database config from env
+config.config['pg'] = dbConfig;
 
-expressAdmin.init(config, function(err, admin) {
+expressAdmin.init(config, (err, admin) => {
 	if (err) return console.log(err);
 
 	app.use('/database', admin);

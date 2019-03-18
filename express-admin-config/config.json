@@ -1,10 +1,4 @@
 {
-    "pg": {
-        "database": "postgres",
-        "user": "postgres",
-        "password": "",
-        "schema": "public"
-    },
     "server": {
         "port": 8889
     },
