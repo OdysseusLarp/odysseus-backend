@@ -22,7 +22,7 @@ export const MedicalData = Bookshelf.Model.extend({
 
 /**
  * @typedef {object} MedicalEntry
- * @property {integer} id.required - Incrementing integer used as primary key,
+ * @property {integer} id - Incrementing integer used as primary key,
  * linked to person_id in joining table person_medical_entry
  * @property {string} time - Time
  * @property {string} details - Details
@@ -60,7 +60,7 @@ const withRelated = [
 
 /**
  * @typedef {object} Person
- * @property {string} id.required - Citizen ID used for soft authentication
+ * @property {string} id - Citizen ID used for soft authentication
  * @property {string} chip_id.required - Chip ID used for hard authentication
  * @property {string} first_name.required - First name
  * @property {string} last_name.required - Last name

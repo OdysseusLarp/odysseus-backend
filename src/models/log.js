@@ -4,7 +4,7 @@ import Bookshelf from '../../db';
 
 /**
  * @typedef {object} LogEntry
- * @property {integer} id.required - Log Entry ID
+ * @property {integer} id - Log Entry ID
  * @property {string} ship_id - Ship ID
  * @property {string} message.required - Human readable log message
  * @property {object} metadata - JSON formatted metadata related to the log entry

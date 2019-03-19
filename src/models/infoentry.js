@@ -4,7 +4,7 @@ import Bookshelf from '../../db';
 
 /**
  * @typedef {object} InfoEntry
- * @property {integer} id.required - ID
+ * @property {integer} id - ID
  * @property {integer} priority.required - Priority of the entry in display sequence
  * @property {boolean} enabled.required - Enable the entry in display sequence
  * @property {string} title.required - Title of the entry

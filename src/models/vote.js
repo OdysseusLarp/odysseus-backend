@@ -5,7 +5,7 @@ import { Person } from './person';
 
 /**
  * @typedef {object} VoteOption
- * @property {integer} id.required - ID
+ * @property {integer} id - ID
  * @property {integer} vote_id.required - Vote ID
  * @property {string} text.required - Description of the option
  * @property {string} created_at - ISO 8601 String Date-time when object was created
@@ -34,7 +34,7 @@ const voteWithRelated = ['author', 'entries', 'options'];
 
 /**
  * @typedef {object} Vote
- * @property {integer} id.required - ID
+ * @property {integer} id - ID
  * @property {string} person_id - ID of person who created the vote
  * @property {string} title.required - Title
  * @property {string} description.required - Description of what the vote is about

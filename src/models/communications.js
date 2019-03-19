@@ -7,7 +7,7 @@ const messageWithRelated = ['sender', 'receiver', 'channel'];
 
 /**
  * @typedef {object} ComMessage
- * @property {integer} id.required - ID
+ * @property {integer} id - ID
  * @property {string} person_id.required - Person ID of the message sender
  * @property {string} target_person - Person ID of the receiver (if private message)
  * @property {string} target_channel - Channel ID of the receiver (if message to channel)
@@ -60,7 +60,7 @@ export const ComMessage = Bookshelf.Model.extend({
 
 /**
  * @typedef {object} ComChannel
- * @property {string} id.required - Channel ID
+ * @property {string} id - Channel ID
  * @property {string} description - Channel description
  * @property {string} created_at - ISO 8601 String Date-time when object was created
  * @property {string} updated_at - ISO 8601 String Date-time when object was last updated
@@ -72,7 +72,7 @@ export const ComChannel = Bookshelf.Model.extend({
 
 /**
  * @typedef {object} ComChannelEvent
- * @property {integer} id.required - ID
+ * @property {integer} id - ID
  * @property {string} type - Event type
  * @property {object} metadata - Event metadata
  * @property {string} created_at - ISO 8601 String Date-time when object was created

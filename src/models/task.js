@@ -3,7 +3,7 @@ import Bookshelf from '../../db';
 
 /**
  * @typedef {object} Task
- * @property {integer} id.required
+ * @property {integer} id
  * @property {string} name.required - Task name
  * @property {string} description.required - Task description
  * @property {string} type.required - Task type, for example "SCHEDULED", "GM"

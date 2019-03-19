@@ -5,7 +5,7 @@ import { get } from 'lodash';
 
 /**
  * @typedef {object} Grid
- * @property {string} id.required - ID
+ * @property {string} id - ID
  * @property {string} name.required - Name
  * @property {integer} zoom - Zoom level
  * @property {string} quadrant - Quadrant of the grid. Map is made of 16 quadrants.
@@ -45,7 +45,7 @@ export const Grid = Bookshelf.Model.extend({
 
 /**
  * @typedef {object} GridAction
- * @property {string} id.required - ID
+ * @property {string} id - ID
  * @property {string} grid_id.required - Grid ID
  * @property {string} ship_id.required - Ship ID
  * @property {string} type - Event type (SCAN, JUMP...)

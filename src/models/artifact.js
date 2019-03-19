@@ -26,7 +26,7 @@ const artifactWithRelated = ['research', 'research.discoverer'];
 
 /**
  * @typedef {object} Artifact
- * @property {integer} id.required - ID
+ * @property {integer} id - ID
  * @property {string} name.required - Name
  * @property {string} created_at - ISO 8601 String Date-time when object was created
  * @property {string} updated_at - ISO 8601 String Date-time when object was last updated
