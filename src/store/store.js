@@ -9,7 +9,7 @@ export let initialized = false;
 /**
  * Promise that will be resolved when the Redux store is initialized with the initial values.
  */
-export const initPromise = new Promise((resolve, reject) => { resolver = resolve; });
+export const initPromise = new Promise((resolve) => { resolver = resolve; });
 
 export const store = configureStore({
 	reducer: {
@@ -53,8 +53,9 @@ export function watch(path, callback) {
 		const currentState = store.getState();
 		if (currentObject !== previousObject) {
 			if (initialized) {
+				const myPrevious = previousObject;
 				// Use setTimeout instead of nextTick to not starve IO in case of infinite loop
-				setTimeout(() => callback(currentObject, previousObject, currentState), 0);
+				setTimeout(() => callback(currentObject, myPrevious, currentState), 0);
 			}
 			previousObject = currentObject;
 		}
