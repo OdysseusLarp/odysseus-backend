@@ -1,5 +1,6 @@
 import { saveBlob, interval, schedule } from '../helpers';
 import store, { watch } from '../../store/store';
+import * as dmx from '../../dmx';
 import { logger } from '../../logger';
 
 // Jump drive state spec:
@@ -18,9 +19,9 @@ function handleTransition(jump, currentStatus, previousStatus) {
 	const lastJump = jump.last_jump || Date.now();
 	switch (`${previousStatus}>${currentStatus}`) {
 		case 'jumping>cooldown':
-			logger.info(`Firing DMX JumpEnd; updating jump drive times`);
-			// FIXME: Fire JumpEnd DMX signal
+			dmx.fireEvent(dmx.CHANNELS.JumpEnd);
 			// FIXME: Turn on necessary power sockets (unless done by tekniikkatiimi)
+			logger.info(`Updating jump drive times`);
 			saveBlob({
 				...jump,
 				prep_at: lastJump + COOLDOWN_LIMIT,
@@ -31,50 +32,46 @@ function handleTransition(jump, currentStatus, previousStatus) {
 			break;
 
 		case 'cooldown>ready_to_prep':
-			// no-op
+			dmx.fireEvent(dmx.CHANNELS.JumpPrepReady);
 			break;
 
 		case 'ready_to_prep>calculating':
-			logger.info(`Firing DMX JumpPrepStart`);
-			// FIXME: Fire JumpPrepStart DMX signal
+			dmx.fireEvent(dmx.CHANNELS.JumpPrepStart);
 			break;
 
 		case 'calculating>ready_to_prep':
-			// no-op;
+			dmx.fireEvent(dmx.CHANNELS.JumpRejected);
 			break;
 
 		case 'calculating>preparation':
+			dmx.fireEvent(dmx.CHANNELS.JumpApproved);
 			logger.info(`Initializing jump drive tasks`);
 			// FIXME: Add tasks for engineers
 			break;
 
 		case 'preparation>prep_complete':
-			logger.info(`Firing DMX JumpPrepEnd`);
-			// FIXME: Fire JumpPrepEnd DMX signal
+			dmx.fireEvent(dmx.CHANNELS.JumpPrepEnd);
 			break;
 
 		case 'prep_complete>ready':
-			// no-op
+			dmx.fireEvent(dmx.CHANNELS.JumpReady);
 			break;
 
 		case 'jump_initiated>prep_complete':
-			logger.info(`Firing DMX JumpAbort`);
-			// FIXME: Fire JumpAbort DMX signal
+			dmx.fireEvent(dmx.CHANNELS.JumpAbort);
 			break;
 
 		case 'prep_complete>jump_initiated':
-			logger.info(`Firing DMX JumpInitBreaking`);
-			// FIXME: Fire JumpInitBreaking DMX signal
+			dmx.fireEvent(dmx.CHANNELS.JumpInitBreaking);
 			break;
 
 		case 'ready>jump_initiated':
-			logger.info(`Firing DMX JumpInit`);
-			// FIXME: Fire JumpInit DMX signal
+			dmx.fireEvent(dmx.CHANNELS.JumpInit);
 			break;
 
 		case 'jump_initiated>jumping':
-			logger.info(`Firing DMX JumpStart; updating jump times`);
-			// FIXME: Fire JumpStart DMX signal
+			dmx.fireEvent(dmx.CHANNELS.JumpStart);
+			logger.info(`Updating jump drive times`);
 			// FIXME: Turn off necessary power sockets (unless done by tekniikkatiimi)
 			saveBlob({
 				...jump,
@@ -155,7 +152,7 @@ function handleStatic(jump) {
 
 		case 'ready':
 			if (!jump.safe_jump && Date.now() >= jump.safe_at) {
-				console.warn('Jump drive in \'ready\' state without safe_jump flag, fixing');
+				logger.warn('Jump drive in \'ready\' state without safe_jump flag, fixing');
 				saveBlob({
 					...jump,
 					status: 'ready',
