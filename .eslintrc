@@ -53,7 +53,7 @@
         "comma-spacing": 2,
         "no-unused-vars": [
             2,
-            { "argsIgnorePattern": "next" }
+            { "args": "none" }
         ],
         "operator-linebreak": [
             2,
