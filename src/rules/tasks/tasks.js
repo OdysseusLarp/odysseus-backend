@@ -3,7 +3,7 @@
  */
 import { store } from '../../store/store';
 import { logger } from '../../logger';
-import { interval, postpone } from '../helpers';
+import { interval, timeout } from '../helpers';
 import { get } from 'lodash';
 
 /**
@@ -15,7 +15,7 @@ export function setTaskBroken(task) {
 	task = { ...task };
 	task.status = 'broken';
 	task.sort = Date.now();
-	postpone(() => {
+	timeout(() => {
 		store.dispatch({
 			type: 'SET_DATA',
 			dataType: task.type,
@@ -43,7 +43,7 @@ export function setTaskCalibrating(task) {
 		task.calibrationRemaining = new Array(task.calibrationCount).fill(task.calibrationTime);
 		task.calibrationSpeed = task.calibrationRemaining.map(e => Math.random() * 0.5 + 0.8);
 		task.sort = Date.now();
-		postpone(() => {
+		timeout(() => {
 			store.dispatch({
 				type: 'SET_DATA',
 				dataType: task.type,
@@ -64,7 +64,7 @@ export function setTaskFixed(task) {
 	task.status = 'fixed';
 	task.fixed_at = Date.now();
 	task.sort = -task.fixed_at;
-	postpone(() => {
+	timeout(() => {
 		store.dispatch({
 			type: 'SET_DATA',
 			dataType: task.type,
@@ -78,7 +78,7 @@ export function setTaskFixed(task) {
  * Decrease calibration times and mark tasks as fixed once calibration times are zero.
  */
 const DECREASE_INTERVAL = 2;
-interval(DECREASE_INTERVAL * 1000, () => {
+interval(() => {
 	let calibrationSlots = 3; // FIXME: Read from somewhere instead of having fixed value
 	const calibrating = Object.values(get(store.getState(), 'data.task', {}))
 		.filter(task => task.status === 'calibrating')
@@ -107,7 +107,7 @@ interval(DECREASE_INTERVAL * 1000, () => {
 		if (fixed) {
 			setTaskFixed(task);
 		} else if (modified) {
-			postpone(() => {
+			timeout(() => {
 				store.dispatch({
 					type: 'SET_DATA',
 					dataType: task.type,
@@ -117,4 +117,4 @@ interval(DECREASE_INTERVAL * 1000, () => {
 			});
 		}
 	});
-});
+}, DECREASE_INTERVAL * 1000);
