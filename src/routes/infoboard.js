@@ -60,7 +60,7 @@ router.get('/', handleAsyncErrors(async (req, res) => {
  * @returns {Array.<InfoEntry>} 200 - List of all enabled entries
  */
 router.get('/enabled', handleAsyncErrors(async (req, res) => {
-	res.json(await InfoEntry.forge({ enabled: true }).fetch());
+	res.json(await InfoEntry.forge({ enabled: true }).fetchAll());
 }));
 
 /**
