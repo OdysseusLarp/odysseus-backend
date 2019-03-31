@@ -1,17 +1,25 @@
 import { Router } from 'express';
 import { LogEntry } from '../models/log';
 import { handleAsyncErrors } from '../helpers';
+import { get } from 'lodash';
+import httpErrors from 'http-errors';
 const router = new Router();
+
+const DEFAULT_LOG_PAGE = 1;
+const DEFAULT_LOG_ENTRIES_PER_PAGE = 150;
 
 /**
  * Get a list of all log entries
  * @route GET /log
  * @group Log - Ship log related operations
- * @returns {Array.<LogEntry>} 200 - List of all log entries
+ * @param {number} page.query - Page number - e.g: 1
+ * @param {number} entries.query - Number of entries per page - e.g: 150
+ * @returns {Array.<LogEntry>} 200 - Page of log entries
  */
 router.get('/', handleAsyncErrors(async (req, res) => {
-	// TODO: add pagination
-	res.json(await LogEntry.forge().fetchAll());
+	const page = parseInt(get(req.query, 'page', DEFAULT_LOG_PAGE), 10);
+	const pageSize = parseInt(get(req.query, 'entries', DEFAULT_LOG_ENTRIES_PER_PAGE), 10);
+	res.json(await LogEntry.forge().orderBy('-created_at').fetchPage({ page, pageSize }));
 }));
 
 /**
@@ -35,6 +43,22 @@ router.put('/', handleAsyncErrors(async (req, res) => {
 		req.io.emit('logEntryUpdated', logEntry);
 	}
 	res.json(logEntry);
+}));
+
+/**
+ * Delete log entry by id
+ * @route DELETE /log/{id}
+ * @group Log - Ship log related operations
+ * @param {string} id.path.required - Log entry id
+ * @returns {object} 204 - Empty response on success
+ */
+router.delete('/:id', handleAsyncErrors(async (req, res) => {
+	const id = parseInt(req.params.id, 10);
+	const logEntry = await LogEntry.forge({ id }).fetch();
+	if (!logEntry) throw new httpErrors.NotFound('Log entry not found');
+	await logEntry.destroy();
+	req.io.emit('logEntryDeleted', { id });
+	res.sendStatus(204);
 }));
 
 export default router;
