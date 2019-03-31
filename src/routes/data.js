@@ -43,7 +43,7 @@ function deleteData(dataType, dataId) {
  *
  * @route GET /data
  * @group Data - Generic data store operations
- * @returns {Object} 200 - Array of all data blobs
+ * @returns {object} 200 - Array of all data blobs
  */
 router.get('/', (req, res) => {
 	const state = store.getState().data;
@@ -58,7 +58,7 @@ router.get('/', (req, res) => {
  * @route GET /data/{type}
  * @group Data - Generic data store operations
  * @param {string} type.path.required - Data type
- * @returns {Object} 200 - Array of data blobs
+ * @returns {object} 200 - Array of data blobs
  */
 router.get('/:type', (req, res) => {
 	const { type } = req.params;
@@ -75,7 +75,7 @@ router.get('/:type', (req, res) => {
  * @group Data - Generic data store operations
  * @param {string} id.path.required - Data id
  * @param {string} type.path.required - Data type
- * @returns {Object} 200 - Data value
+ * @returns {object} 200 - Data value
  */
 router.get('/:type/:id', (req, res) => {
 	const { type, id } = req.params;
@@ -93,9 +93,9 @@ router.get('/:type/:id', (req, res) => {
  * @group Data - Generic data store operations
  * @param {string} id.path.required - Data id
  * @param {string} type.path.required - Data type
- * @param {Object} any.body.required - New data value
+ * @param {object} any.body.required - New data value
  * @param {boolean} force.query - Force value to be set regardless of version
- * @returns {Object} 200 - Updated data value
+ * @returns {object} 200 - Updated data value
  * @returns {Error}  409 - Error if submitted version is different that current version
  */
 router.post('/:type/:id', (req, res) => {
@@ -117,9 +117,9 @@ router.post('/:type/:id', (req, res) => {
  * @group Data - Generic data store operations
  * @param {string} id.path.required - Data id
  * @param {string} type.path.required - Data type
- * @param {Object} any.body.required - Fields to update
+ * @param {object} any.body.required - Fields to update
  * @param {boolean} force.query - Force value to be set regardless of version
- * @returns {Object} 200 - Updated data value
+ * @returns {object} 200 - Updated data value
  * @returns {Error}  409 - Error if submitted version is different that current version
  */
 router.patch('/:type/:id', (req, res) => {
@@ -138,7 +138,7 @@ router.patch('/:type/:id', (req, res) => {
  * @group Data - Generic data store operations
  * @param {string} id.path.required - Data id
  * @param {string} type.path.required - Data type
- * @returns {Object} 200 - Updated data value (empty object)
+ * @returns {object} 200 - Updated data value (empty object)
  */
 router.delete('/:type/:id', (req, res) => {
 	const { type, id } = req.params;
