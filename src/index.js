@@ -59,6 +59,21 @@ app.put('/state', setStateRouteHandler);
 app.use('/data', data);
 app.use('/infoboard', infoboard);
 
+/**
+ * Emit any Socket.IO event manually
+ * @route POST /emit/{eventName}
+ * @consumes application/json
+ * @group SocketIO - Operations related to Socket.IO
+ * @param {string} eventName.path.required - Name/Key of the Socket.IO event
+ * @param {object} data.body - Data to be emitted to clients
+ * @returns {object} 204 - Empty response
+ */
+app.post('/emit/:eventName', (req, res) => {
+	const { eventName } = req.params;
+	io.emit(eventName, req.body || {});
+	res.sendStatus(204);
+});
+
 // Error handling middleware
 app.use(async (err, req, res, next) => {
 	logger.error(err.message);
