@@ -30,7 +30,7 @@ async function addLogEntry(type, message, shipId = 'odysseus', metadata = null) 
 
 /**
  * Loads active events from database on when application is initialized
- * @param {Object} socketIo Socket IO instance
+ * @param {object} socketIo Socket IO instance
  */
 export function loadEvents(socketIo) {
 	io = socketIo;
