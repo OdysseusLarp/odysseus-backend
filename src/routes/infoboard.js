@@ -87,6 +87,24 @@ router.put('/', handleAsyncErrors(async (req, res) => {
 }));
 
 /**
+ * Update infoboard entry by id
+ * @route PUT /infoboard/{id}
+ * @consumes application/json
+ * @group Infoboard - Infoboard related operations
+ * @param {string} id.path.required - Citizen ID of the person
+ * @param {InfoEntry.model} info_entry.body.required - InfoEntry model to be updated
+ * @returns {InfoEntry.model} 200 - Updated InfoEntry values
+ */
+router.put('/:id', handleAsyncErrors(async (req, res) => {
+	const { id } = req.params;
+	// TODO: Validate input
+	const info = await InfoEntry.forge({ id }).fetch();
+	if (!info) throw new Error('Infoboard entry not found');
+	await info.save(req.body, { method: 'update' });
+	res.json(info);
+}));
+
+/**
  * Delete infoboard entry by id
  * @route DELETE /infoboard/{id}
  * @group Infoboard - Infoboard related operations
