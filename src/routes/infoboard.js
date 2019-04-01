@@ -28,11 +28,11 @@ let timeTo = function(time, prefix, expired) {
 
 /**
  * Get a single infoboard entry to display
- * @route GET /infoboard
+ * @route GET /infoboard/display
  * @group Infoboard - Infoboard related operations
  * @returns {<InfoEntry>} 200 - An infoboard entry
  */
-router.get('/', handleAsyncErrors(async (req, res) => {
+router.get('/display', handleAsyncErrors(async (req, res) => {
 	const jumpEvent = await Event.forge().where({ship_id: 'odysseus', is_active: true, type: 'JUMP'}).fetch();
 	const prepEvent = await Event.forge().where({ship_id: 'odysseus', is_active: true, type: 'JUMP_PREP'}).fetch();
 	const now = new Date();
@@ -64,6 +64,16 @@ router.get('/enabled', handleAsyncErrors(async (req, res) => {
 }));
 
 /**
+ * Get a list of all infoboard entries
+ * @route GET /infoboard/
+ * @group Infoboard - Infoboard related operations
+ * @returns {Array.<InfoEntry>} 200 - List of all entries
+ */
+router.get('/', handleAsyncErrors(async (req, res) => {
+	res.json(await InfoEntry.forge().fetchAll());
+}));
+
+/**
  * Add a new infoboard entry
  * @route PUT /infoboard
  * @consumes application/json
@@ -71,9 +81,27 @@ router.get('/enabled', handleAsyncErrors(async (req, res) => {
  * @param {InfoEntry.model} info_entry.body.required - InfoEntry model to be inserted
  * @returns {InfoEntry.model} 200 - Inserted InfoEntry values
  */
-router.put('/infoboard', handleAsyncErrors(async (req, res) => {
+router.put('/', handleAsyncErrors(async (req, res) => {
 	const infoEntry = await InfoEntry.forge().save(req.body, { method: 'insert' });
 	res.json(infoEntry);
 }));
+
+/**
+ * Delete infoboard entry by id
+ * @route DELETE /infoboard/{id}
+ * @group Infoboard - Infoboard related operations
+ * @param {string} id.path.required - Infoboard entry id
+ * @returns {object} 204 - Empty response on success
+ */
+router.delete('/:id', handleAsyncErrors(async (req, res) => {
+	const id = parseInt(req.params.id, 10);
+	const infoEntry = await InfoEntry.forge({ id }).fetch();
+	if (!infoEntry) throw new httpErrors.NotFound('Infoboard entry not found');
+	await infoEntry.destroy();
+	req.io.emit('infoEntryDeleted', { id });
+	res.sendStatus(204);
+}));
+
+
 
 export default router;
