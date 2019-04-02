@@ -41,41 +41,52 @@ const boxes = [
 	},
 ];
 
+// FIXME: Update maps to final versions
 const tasks = [
 	{
 		type: 'task',
 		id: 'fusebox_medbay',
 		title: 'Fuses blown (medbay)',
 		description: 'Fuses have blown in medbay.',
-		map: 'fusebox_medbay.png',
+		map: 'map01.png',
+		mapX: 100,
+		mapY: 200,
 	},
 	{
 		type: 'task',
 		id: 'fusebox_engineering',
 		title: 'Fuses blown (engineering)',
 		description: 'Fuses have blown in engineering room.',
-		map: 'fusebox_engineering.png',
+		map: 'map02.png',
+		mapX: 150,
+		mapY: 250,
 	},
 	{
 		type: 'task',
 		id: 'fusebox_bridge',
 		title: 'Fuses blown (bridge)',
 		description: 'Fuses have blown in bridge.',
-		map: 'fusebox_bridge.png',
+		map: 'map03.png',
+		mapX: 200,
+		mapY: 100,
 	},
 	{
 		type: 'task',
 		id: 'fusebox_science',
 		title: 'Fuses blown (science lab)',
 		description: 'Fuses have blown in science lab.',
-		map: 'fusebox_science.png',
+		map: 'map04.png',
+		mapX: 350,
+		mapY: 150,
 	},
 	{
 		type: 'task',
 		id: 'fusebox_lounge',
 		title: 'Fuses blown (officer\'s lounge)',
 		description: 'Fuses have blown in officer\'s lounge.',
-		map: 'fusebox_lounge.png',
+		map: 'map05.png',
+		mapX: 50,
+		mapY: 300,
 	},
 ];
 
