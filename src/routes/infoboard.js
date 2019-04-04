@@ -4,6 +4,7 @@ import { InfoEntry } from '../models/infoentry';
 import { InfoPriority } from '../models/infoentry';
 import { handleAsyncErrors } from '../helpers';
 import { logger, loggerMiddleware } from '../logger';
+import Bookshelf from '../../db';
 
 const router = new Router();
 
@@ -25,6 +26,19 @@ let timeTo = function(time, prefix, expired) {
 	}
 	return text;
 }
+
+/**
+ * Update current priority
+ * @route PUT /infoboard/priority
+ * @consumes application/json
+ * @group Infoboard - Infoboard related operations
+ * @param {integer} priority.required - New priority to set
+ * @returns {object} 200 - Empty response on success
+ */
+router.put('/priority', handleAsyncErrors(async (req, res) => {
+	await Bookshelf.knex('infoboard_priority').where('priority', '>', 0).update({priority: req.body.priority});
+	res.sendStatus(200);
+}));
 
 /**
  * Get a single infoboard entry to display
@@ -64,13 +78,14 @@ router.get('/enabled', handleAsyncErrors(async (req, res) => {
 }));
 
 /**
- * Get a list of all infoboard entries
+ * Get a list of all infoboard entries and the current priority
  * @route GET /infoboard/
  * @group Infoboard - Infoboard related operations
  * @returns {Array.<InfoEntry>} 200 - List of all entries
  */
 router.get('/', handleAsyncErrors(async (req, res) => {
-	res.json(await InfoEntry.forge().fetchAll());
+	const priority = await InfoPriority.forge().fetch();
+    res.json({priority: priority, infoboards: await InfoEntry.forge().fetchAll()});
 }));
 
 /**
