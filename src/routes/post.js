@@ -45,7 +45,7 @@ router.put('/', handleAsyncErrors(async (req, res) => {
 	if (!post) {
 		if (!data.status) data.status =
 			data.type === 'CAPTAINS_LOG' ? STATUS_APPROVED : STATUS_PENDING;
-		post = Post.forge().save(data, { method: 'insert' });
+		post = await Post.forge().save(data, { method: 'insert' });
 		req.io.emit('postAdded', post);
 	} else {
 		await post.save(data, { method: 'update', patch: true });
