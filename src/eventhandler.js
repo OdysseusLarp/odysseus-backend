@@ -175,6 +175,34 @@ async function addScanGridEvent(event) {
 		`Probe was sent to scan grid ${gridName}.`
 	);
 }
+/** Validate jump target coordinates
+ * @param  {string} shipId Ship id
+ * @param  {object} metadata Jump coordinates and settings
+ */
+export async function validateJumpTarget(shipId, metadata) {
+	// Get target grid and ship from database to validate if jump can be made
+	const jumpTargetParameters = pick(metadata, ['sub_quadrant', 'sector', 'sub_sector']);
+	const targetPlanetName = get(metadata, 'planet_orbit');
+	const grid = await Grid.forge().where(jumpTargetParameters).fetch();
+	const shouldAddLogEntries = get(metadata, 'should_add_log_entries', true);
+	if (!grid) {
+		if (shouldAddLogEntries) addLogEntry('ERROR', `Jump initialization failed: Unknown jump target.`, shipId);
+		return { isValid: false, message: 'Given grid does not exist' };
+	}
+	if (targetPlanetName && !(await grid.containsObject(targetPlanetName))) {
+		if (shouldAddLogEntries) addLogEntry('ERROR',
+			`Jump initialization failed: Given orbit not found in target sub-sector.`, shipId);
+		return { isValid: false, message: 'Given planet not found in target grid' };
+	}
+	const ship = await Ship.forge({ id: shipId }).fetchWithRelated();
+	if (!ship) throw new Error('Invalid ship id');
+	if (!validateRange(ship, grid, 'jump_range')) {
+		if (shouldAddLogEntries) addLogEntry('ERROR',
+			`Jump initialization failed: Target coordinates too far away.`, shipId);
+		return { isValid: false, message: 'Jump can not be made from current position' };
+	}
+	return { isValid: true };
+}
 
 /**
  * Processing function for new jump event
@@ -187,26 +215,12 @@ async function addJumpEvent(event) {
 	const occursIn = getTimeUntilEvent(event);
 	if (occursIn < 0) return logger.error(`Event ${id} occurs in the past`);
 
-	// Get target grid and ship from database to validate if jump can be made
+	const jumpValidationData = await validateJumpTarget(shipId, metadata);
+	if (!jumpValidationData.isValid) throw new Error(jumpValidationData.message);
+
 	const jumpTargetParameters = pick(metadata, ['sub_quadrant', 'sector', 'sub_sector']);
 	const targetPlanetName = get(metadata, 'planet_orbit');
 	const grid = await Grid.forge().where(jumpTargetParameters).fetch();
-	if (!grid) {
-		addLogEntry('ERROR', `Jump initialization failed: Unknown jump target.`, shipId);
-		throw new Error('Given grid does not exist');
-	}
-	if (targetPlanetName && !(await grid.containsObject(targetPlanetName))) {
-		addLogEntry('ERROR',
-			`Jump initialization failed: Given orbit not found in target sub-sector.`, shipId);
-		throw new Error('Given planet not found in target grid');
-	}
-	const ship = await Ship.forge({ id: shipId }).fetchWithRelated();
-	if (!ship) throw new Error('Invalid ship id');
-	if (!validateRange(ship, grid, 'jump_range')) {
-		addLogEntry('ERROR',
-			`Jump initialization failed: Target coordinates too far away.`, shipId);
-		throw new Error('Jump can not be made from current position');
-	}
 
 	// Set timer to execute jump
 	eventTimers.set(id, setTimeout(async () => {
@@ -301,7 +315,7 @@ async function performObjectScan(objectId) {
 
 async function performGridScan(gridId) {
 	await GridAction.forge().save({ grid_id: gridId, ship_id: 'odysseus', type: 'SCAN' });
-	const grid = await  Grid.forge({ id: gridId }).fetch();
+	const grid = await Grid.forge({ id: gridId }).fetch();
 	logger.success(`Grid ${gridId} was succesfully scanned`);
 	const gridName = grid.get('name');
 	addLogEntry(

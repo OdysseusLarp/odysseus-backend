@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import { Ship } from '../models/ship';
 import { handleAsyncErrors } from '../helpers';
+import { validateJumpTarget } from '../eventhandler';
 const router = new Router();
 
 /**
@@ -44,6 +45,18 @@ router.put('/:id', handleAsyncErrors(async (req, res) => {
 	req.io.emit('shipUpdated', ship);
 	res.json(ship);
 }));
+
+/**
+ * Validate jump coordinates
+ * @route POST /fleet/{id}/jump/validate
+ * @consumes application/json
+ * @group Fleet - Fleet and ship related operations
+ * @param {string} id.path.required - Ship id
+ * @param {object} jump_details.body.required - Ship object fields to be updated
+ * @returns {object} 200 - Info if jump can be made or not
+ */
+router.post('/:id/jump/validate', handleAsyncErrors(async (req, res) =>
+	res.json(await validateJumpTarget(req.params.id, req.body))));
 
 router.get('/:id/population', (req, res) => {
 	const { id } = req.params;
