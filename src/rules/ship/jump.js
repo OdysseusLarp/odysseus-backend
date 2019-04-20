@@ -62,10 +62,18 @@ function handleTransition(jump, currentStatus, previousStatus) {
 			break;
 
 		case 'prep_complete>jump_initiated':
+			saveBlob({
+				...jump,
+				breaking_jump: true,
+			});
 			dmx.fireEvent(dmx.CHANNELS.JumpInitBreaking);
 			break;
 
 		case 'ready>jump_initiated':
+			saveBlob({
+				...jump,
+				breaking_jump: false,
+			});
 			dmx.fireEvent(dmx.CHANNELS.JumpInit);
 			break;
 

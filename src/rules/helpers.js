@@ -94,3 +94,23 @@ function removeFromScheduled(fn, timestamp) {
 		delete scheduled[timestamp];
 	}
 }
+
+/**
+ * Generate Brownian values within a range.
+ *
+ * @param {number} max Value is kept within range [-max, max]
+ * @param {number} multiplier Max difference of value in one step
+ */
+export function* brownianGenerator(max, multiplier = max/10) {
+	let value = 0;
+	while (true) {
+		value = Math.min(value, max);
+		value = Math.max(value, -max);
+		value += (Math.random() - 0.5) * 2 * multiplier;
+		yield value;
+	}
+}
+
+export function clamp(num, min, max) {
+	return num < min ? min : num > max ? max : num;
+}

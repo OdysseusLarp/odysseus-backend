@@ -45,3 +45,14 @@ saveBlob({
 		},
 	},
 });
+
+saveBlob({
+	type: 'ship',
+	id: 'jumpstate',
+	status: 'ready_to_prep',
+	statusno: 2, // corresponds to above state
+	cooldown_time: 'T-0:00',
+	jump_time: 'T-0:00',
+	jump_drive_temp_exact: 800,
+	jump_drive_temp: 800,
+});
