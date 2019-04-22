@@ -24,8 +24,7 @@ function handleTransition(jump, currentStatus, previousStatus) {
 			logger.info(`Updating jump drive times`);
 			saveBlob({
 				...jump,
-				prep_at: lastJump + COOLDOWN_LIMIT,
-				safe_at: lastJump + SAFE_JUMP_LIMIT,
+				last_jump: lastJump,
 				jump_at: 0,
 				safe_jump: false,
 			});
@@ -85,8 +84,6 @@ function handleTransition(jump, currentStatus, previousStatus) {
 				...jump,
 				last_jump: now,
 				jump_at: 0,
-				prep_at: now + COOLDOWN_LIMIT,
-				safe_at: now + SAFE_JUMP_LIMIT,
 			});
 			break;
 
@@ -110,27 +107,15 @@ function handleTransition(jump, currentStatus, previousStatus) {
 function handleStatic(jump) {
 	switch (jump.status) {
 		case 'cooldown':
-			if (jump.prep_at) {
-				if (Date.now() >= jump.prep_at) {
+			if (Date.now() >= jump.last_jump + COOLDOWN_LIMIT) {
 					logger.info('Changing jump drive status to \'ready_to_prep\'');
 					saveBlob({
 						...jump,
 						status: 'ready_to_prep'
 					});
 				} else {
-					schedule(update, jump.prep_at);
+				schedule(update, jump.last_jump + COOLDOWN_LIMIT);
 				}
-			} else {
-				logger.warn('Jump drive prep_at time is zero, setting it up properly');
-				const lastJump = jump.last_jump || Date.now();
-				saveBlob({
-					...jump,
-					prep_at: lastJump + COOLDOWN_LIMIT,
-					safe_at: lastJump + SAFE_JUMP_LIMIT,
-					jump_at: 0,
-					safe_jump: false,
-				});
-			}
 			break;
 
 		case 'ready_to_prep':
@@ -146,7 +131,7 @@ function handleStatic(jump) {
 			break;
 
 		case 'prep_complete':
-			if (Date.now() >= jump.safe_at) {
+			if (Date.now() >= jump.last_jump + SAFE_JUMP_LIMIT) {
 				logger.info('Changing jump drive status to \'ready\'');
 				saveBlob({
 					...jump,
@@ -154,13 +139,13 @@ function handleStatic(jump) {
 					safe_jump: true
 				});
 			} else {
-				schedule(update, jump.safe_at);
+				schedule(update, jump.last_jump + SAFE_JUMP_LIMIT);
 			}
 			break;
 
 		case 'ready':
-			if (!jump.safe_jump && Date.now() >= jump.safe_at) {
-				logger.warn('Jump drive in \'ready\' state without safe_jump flag, fixing');
+			if (!jump.safe_jump && Date.now() >= jump.last_jump + SAFE_JUMP_LIMIT) {
+				logger.error('Jump drive in \'ready\' state without safe_jump flag, fixing');
 				saveBlob({
 					...jump,
 					status: 'ready',
