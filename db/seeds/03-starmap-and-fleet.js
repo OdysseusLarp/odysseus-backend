@@ -4,7 +4,7 @@ const isEmpty = require('lodash').isEmpty;
 
 // Read the grid from CSV and convert the columns to have correct types
 async function getGrid() {
-	const csvPath = path.join(__dirname, '../../fixtures/grid.csv');
+	const csvPath = path.join(__dirname, '../data/grid.csv');
 	const grids = await csv().fromFile(csvPath);
 	return grids.map(grid => {
 		['quadrant', 'sector', 'sub_sector', 'name'].forEach(col => {
@@ -105,11 +105,11 @@ exports.seed = async knex => {
 	await knex('grid').del();
 	await knex('starmap_object').del();
 	await knex('starmap_bg').del();
-	// Importing starmap bg/objects from CSV works only if fixtures are available on the database server.
-	// If this needs to be done to a remote PostgreSQL server that does not have the fixtures,
+	// Importing starmap bg/objects from CSV works only if the CSV files are available on the database server.
+	// If seeds need to be run on a remote PostgreSQL server that does not have the files,
 	// PSQL copy command can be used:
-	// \copy starmap_bg FROM '/project/path/here/odysseus-backend/fixtures/starmap_bg.csv' DELIMETER ',' CSV HEADER
-	// \copy starmap_object FROM '/project/path/here/odysseus-backend/fixtures/starmap_object.csv' DELIMETER ',' CSV HEADER
+	// \copy starmap_bg FROM '/project/path/here/odysseus-backend/db/data/starmap_bg.csv' DELIMETER ',' CSV HEADER
+	// \copy starmap_object FROM '/project/path/here/odysseus-backend/db/data/starmap_object.csv' DELIMETER ',' CSV HEADER
 	// Otherwise this will work:
 	// await knex.raw(`COPY starmap_bg FROM '/fixtures/starmap_bg.csv' DELIMITER ',' CSV HEADER`);
 	// await knex.raw(`COPY starmap_object FROM '/fixtures/starmap_object.csv' DELIMITER ',' CSV HEADER`);
