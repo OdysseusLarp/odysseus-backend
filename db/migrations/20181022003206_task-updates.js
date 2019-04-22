@@ -23,7 +23,7 @@ exports.down = async knex => {
 		t.timestamps(true, true);
 	});
 
-	await knex.schema.updateTable('task', t => {
+	await knex.schema.table('task', t => {
 		t.dropColumn('is_active');
 	});
 };

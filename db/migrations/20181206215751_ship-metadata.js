@@ -5,7 +5,7 @@ exports.up = async knex => {
 };
 
 exports.down = async knex => {
-	await knex.schema.updateTable('ship', t => {
+	await knex.schema.table('ship', t => {
 		t.dropColumn('metadata');
 	});
 };
