@@ -7,10 +7,8 @@ saveBlob({
 	type: 'ship',
 	id: 'jump',
 	status: 'ready_to_prep',
-	prep_at: 0,     // timestamps
-	safe_at: 0,
-	jump_at: 0,
-	last_jump: 0,
+	jump_at: 0,		// millisecond timestamp
+	last_jump: 0,	// millisecond timestamp
 	safe_jump: true,
 	presets: {
 		cooldown: {
@@ -44,4 +42,15 @@ saveBlob({
 			note: 'Why would you use this?!?',
 		},
 	},
+});
+
+saveBlob({
+	type: 'ship',
+	id: 'jumpstate',
+	status: 'ready_to_prep',
+	statusno: 2, // corresponds to above state
+	cooldown_time: 'T-0:00',
+	jump_time: 'T-0:00',
+	jump_drive_temp_exact: 800,
+	jump_drive_temp: 800,
 });
