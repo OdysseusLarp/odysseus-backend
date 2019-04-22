@@ -69,11 +69,33 @@ const ships = [
 	},
 ];
 
-const gridActions = [{
-	ship_id: 'odysseus',
-	grid_id: 7,
-	type: 'SCAN'
-}];
+const discoveredGrids = [
+	5236,
+	5237,
+	5238,
+	5239,
+	5252,
+	5253,
+	5254,
+	5255,
+	5268,
+	5269,
+	5270,
+	5271,
+	5285,
+	5286,
+	5287,
+	5302,
+	5303,
+	5318,
+	5319,
+	5334,
+	5350,
+	5366
+];
+
+/* eslint-disable-next-line camelcase */
+const gridActions = discoveredGrids.map(grid_id => ({ ship_id: 'odysseus', grid_id, type: 'SCAN' }));
 
 const personIds = ['593201', '593202', '593203', '593204', '593205'];
 
@@ -81,6 +103,16 @@ exports.seed = async knex => {
 	await knex('event').del();
 	await knex('ship').del();
 	await knex('grid').del();
+	await knex('starmap_object').del();
+	await knex('starmap_bg').del();
+	// Importing starmap bg/objects from CSV works only if fixtures are available on the database server.
+	// If this needs to be done to a remote PostgreSQL server that does not have the fixtures,
+	// PSQL copy command can be used:
+	// \copy starmap_bg FROM '/project/path/here/odysseus-backend/fixtures/starmap_bg.csv' DELIMETER ',' CSV HEADER
+	// \copy starmap_object FROM '/project/path/here/odysseus-backend/fixtures/starmap_object.csv' DELIMETER ',' CSV HEADER
+	// Otherwise this will work:
+	// await knex.raw(`COPY starmap_bg FROM '/fixtures/starmap_bg.csv' DELIMITER ',' CSV HEADER`);
+	// await knex.raw(`COPY starmap_object FROM '/fixtures/starmap_object.csv' DELIMITER ',' CSV HEADER`);
 	await knex('grid').insert(await getGrid());
 	await knex('ship').insert(ships);
 	await knex('grid_action').insert(gridActions);
