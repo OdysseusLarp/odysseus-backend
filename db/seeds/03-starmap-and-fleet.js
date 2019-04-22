@@ -108,8 +108,8 @@ exports.seed = async knex => {
 	// Importing starmap bg/objects from CSV works only if the CSV files are available on the database server.
 	// If seeds need to be run on a remote PostgreSQL server that does not have the files,
 	// PSQL copy command can be used:
-	// \copy starmap_bg FROM '/project/path/here/odysseus-backend/db/data/starmap_bg.csv' DELIMETER ',' CSV HEADER
-	// \copy starmap_object FROM '/project/path/here/odysseus-backend/db/data/starmap_object.csv' DELIMETER ',' CSV HEADER
+	// \copy starmap_bg FROM '/home/nicou/git/odysseus-backend/db/data/starmap_bg.csv' DELIMITER ',' CSV HEADER
+	// \copy starmap_object FROM '/home/nicou/git/odysseus-backend/db/data/starmap_object.csv' DELIMITER ',' CSV HEADER
 	// Otherwise this will work:
 	// await knex.raw(`COPY starmap_bg FROM '/fixtures/starmap_bg.csv' DELIMITER ',' CSV HEADER`);
 	// await knex.raw(`COPY starmap_object FROM '/fixtures/starmap_object.csv' DELIMITER ',' CSV HEADER`);
