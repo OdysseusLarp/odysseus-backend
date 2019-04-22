@@ -9,8 +9,8 @@ import { logger } from '../../logger';
 const HOUR = 60 * 60 * 1000;
 const MIN = 60 * 1000;
 
-const COOLDOWN_LIMIT = 2 * HOUR + 15 * MIN;
-const SAFE_JUMP_LIMIT = 2 * HOUR + 47 * MIN;
+export const COOLDOWN_LIMIT = 2 * HOUR + 15 * MIN;
+export const SAFE_JUMP_LIMIT = 2 * HOUR + 47 * MIN;
 const COUNTDOWN = 1 * MIN;
 
 function handleTransition(jump, currentStatus, previousStatus) {
@@ -108,14 +108,14 @@ function handleStatic(jump) {
 	switch (jump.status) {
 		case 'cooldown':
 			if (Date.now() >= jump.last_jump + COOLDOWN_LIMIT) {
-					logger.info('Changing jump drive status to \'ready_to_prep\'');
-					saveBlob({
-						...jump,
-						status: 'ready_to_prep'
-					});
-				} else {
+				logger.info('Changing jump drive status to \'ready_to_prep\'');
+				saveBlob({
+					...jump,
+					status: 'ready_to_prep'
+				});
+			} else {
 				schedule(update, jump.last_jump + COOLDOWN_LIMIT);
-				}
+			}
 			break;
 
 		case 'ready_to_prep':
