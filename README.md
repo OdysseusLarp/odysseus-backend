@@ -6,7 +6,7 @@ Backend for multiple systems used in Odysseus LARP.
 * Copy `.env.dist` file to a file named `.env` and changle the default environmental variables if needed
 * Run `npm run db:start` to start a local dev database inside Docker. First time start will take time as the Docker image used contains PostGIS which is around 700mb.
 * Run `npm run db:migrate` to run latest database migrations
-* Run `npm run db:seed` to seed the database
+* Run `npm run db:seed` to seed the database (check [odysseus-geoserver](https://github.com/OdysseusLarp/odysseus-geoserver) repository readme for seeding starmap tables)
 * Run `npm start` to start the backend server
 
 ## Tech
@@ -19,10 +19,8 @@ Backend for multiple systems used in Odysseus LARP.
 * Socket.IO
 * Knex + Bookshelf.js
 
-
 ## REST APIs
-
-TBD
+REST API routes are documented in Swagger UI accessible via `/docs` route.
 
 ## Socket.io APIs
 

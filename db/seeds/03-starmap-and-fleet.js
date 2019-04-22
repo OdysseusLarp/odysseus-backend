@@ -7,7 +7,7 @@ async function getGrid() {
 	const csvPath = path.join(__dirname, '../data/grid.csv');
 	const grids = await csv().fromFile(csvPath);
 	return grids.map(grid => {
-		['quadrant', 'sector', 'sub_sector', 'name'].forEach(col => {
+		['quadrant', 'sector', 'sub_sector', 'sub_quadrant', 'name'].forEach(col => {
 			if (!grid[col]) delete grid[col];
 		});
 		['id', 'zoom', 'x', 'y'].forEach(col => {
@@ -18,8 +18,12 @@ async function getGrid() {
 	});
 }
 
+// Initial geometry for other fleet ships
 /* eslint-disable-next-line camelcase */
 const the_geom = '0101000020110F000000000000000000000000000000000000';
+
+// Initial geometry for Odysseus (On top of A3 jump point, id 5401)
+const odysseusGeom = '0101000020110F000071416E1D82344B4140FB654BF3CA51C1';
 
 const ships = [
 	{
@@ -27,12 +31,13 @@ const ships = [
 		name: 'Odysseus',
 		status: 'OPERATIONAL',
 		game_state: '{}',
-		grid_id: 1500,
-		the_geom,
+		grid_id: 5254,
+		the_geom: odysseusGeom,
 		metadata: {
 			jump_range: 1,
 			scan_range: 1,
-			probe_count: 100
+			probe_count: 100,
+			jump_crystal_count: 100,
 		},
 		type: 'RESEARCH',
 		class: 'FIREFLY'
@@ -69,6 +74,7 @@ const ships = [
 	},
 ];
 
+// Grids that are discovered from the beginning of the game
 const discoveredGrids = [
 	5236,
 	5237,
@@ -97,6 +103,7 @@ const discoveredGrids = [
 /* eslint-disable-next-line camelcase */
 const gridActions = discoveredGrids.map(grid_id => ({ ship_id: 'odysseus', grid_id, type: 'SCAN' }));
 
+// Persons aboard Odysseus
 const personIds = ['593201', '593202', '593203', '593204', '593205'];
 
 exports.seed = async knex => {
