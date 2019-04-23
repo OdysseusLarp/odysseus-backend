@@ -14,7 +14,7 @@ const router = new Router();
  */
 router.get('/', handleAsyncErrors(async (req, res) => {
 	const where = req.query.status ? { status: req.query.status } : {};
-	res.json(await Post.forge().where(where).fetchAllWithRelated());
+	res.json(await Post.forge().orderBy('-created_at').where(where).fetchAllWithRelated());
 }));
 
 /**
