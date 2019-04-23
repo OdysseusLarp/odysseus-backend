@@ -104,7 +104,7 @@ const discoveredGrids = [
 const gridActions = discoveredGrids.map(grid_id => ({ ship_id: 'odysseus', grid_id, type: 'SCAN' }));
 
 // Persons aboard Odysseus
-const personIds = ['593201', '593202', '593203', '593204', '593205'];
+const personIds = ['1', '2', '3', '4', '5'];
 
 exports.seed = async knex => {
 	await knex('event').del();

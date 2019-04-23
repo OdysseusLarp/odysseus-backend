@@ -32,14 +32,14 @@ const artifactResearch = [
 		artifact_id: 2,
 		text: `DNA Test indicates that the duck is indeed made of rubber.`,
 		discovered_by: 'HANSCA_DNA',
-		person_id: '593203',
+		person_id: '3',
 		is_visible: true
 	},
 	{
 		artifact_id: 2,
 		text: `X-Ray pictures show that there is something inside the duck.`,
 		discovered_by: 'HANSCA_XRAY',
-		person_id: '593203',
+		person_id: '3',
 		is_visible: true
 	}
 ];

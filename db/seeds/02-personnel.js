@@ -1,36 +1,36 @@
 const persons = [
 	{
-		id: '593201', chip_id: '028293', first_name: 'Maud', last_name: 'Maltby',
+		id: '1', card_id: '593201', bio_id: '028293', first_name: 'Maud', last_name: 'Maltby',
 		occupation: 'medic', home_planet: 'Kobol', dynasty: 'Xia',
 		dynasty_rank: 1, birth_year: 2179, status: 'unknown'
 	},
 	{
-		id: '593202', chip_id: '038294', first_name: 'Tremaine', last_name: 'Vlies',
+		id: '2', card_id: '593202', bio_id: '038294', first_name: 'Tremaine', last_name: 'Vlies',
 		occupation: 'soldier', home_planet: 'Kobol', dynasty: 'Xia',
 		dynasty_rank: 2, birth_year: 2179, status: 'on_duty'
 	},
 	{
-		id: '593203', chip_id: '038295', first_name: 'Lizzie', last_name: 'Scarrisbrick',
+		id: '3', card_id: '593203', bio_id: '038295', first_name: 'Lizzie', last_name: 'Scarrisbrick',
 		occupation: 'researcher', home_planet: 'Kobol', dynasty: 'Xia',
 		dynasty_rank: 3, birth_year: 2179, status: 'unknown'
 	},
 	{
-		id: '593204', chip_id: '038296', first_name: 'Bent', last_name: 'Gingel',
+		id: '4', card_id: '593204', bio_id: '038296', first_name: 'Bent', last_name: 'Gingel',
 		occupation: 'soldier', home_planet: 'Kobol', dynasty: 'Xia',
 		dynasty_rank: 4, birth_year: 2179, status: 'on_duty'
 	},
 	{
-		id: '593205', chip_id: '038297', first_name: 'Cleon', last_name: 'Hubble',
+		id: '5', card_id: '593205', bio_id: '038297', first_name: 'Cleon', last_name: 'Hubble',
 		occupation: 'engineer', home_planet: 'Kobol', dynasty: 'Xia',
 		dynasty_rank: 5, birth_year: 2179, status: 'on_duty'
-	}
+	},
 ];
 
 const personFamily = [
-	{ person1_id: '593201', person2_id: '593202', relation: 'cousin' },
-	{ person1_id: '593202', person2_id: '593201', relation: 'cousin' },
-	{ person1_id: '593203', person2_id: '593204', relation: 'sister' },
-	{ person1_id: '593204', person2_id: '593203', relation: 'brother' },
+	{ person1_id: '1', person2_id: '2', relation: 'cousin' },
+	{ person1_id: '2', person2_id: '1', relation: 'cousin' },
+	{ person1_id: '3', person2_id: '4', relation: 'sister' },
+	{ person1_id: '4', person2_id: '3', relation: 'brother' },
 ];
 
 const medicalData = persons.map(person => (
@@ -60,19 +60,19 @@ const personMedicalEntries = persons.map((person, i) => ({
 
 const militaryData = [
 	{
-		person_id: '593201', rank: 'Private', unit: 'Platoon A',
+		person_id: '1', rank: 'Private', unit: 'Platoon A',
 		remarks: 'Lorem ipsum', service_history: 'Lorem ipsum'
 	},
 	{
-		person_id: '593202', rank: 'Sergeant', unit: 'Platoon A',
+		person_id: '2', rank: 'Sergeant', unit: 'Platoon A',
 		remarks: null, service_history: 'Lorem ipsum'
 	},
 	{
-		person_id: '593203', rank: 'First sergeant', unit: 'Platoon B',
+		person_id: '3', rank: 'First sergeant', unit: 'Platoon B',
 		remarks: 'Lorem ipsum', service_history: 'Lorem ipsum'
 	},
 	{
-		person_id: '593204', rank: 'Sergeant', unit: 'Platoon B',
+		person_id: '4', rank: 'Sergeant', unit: 'Platoon B',
 		remarks: null, service_history: 'Lorem ipsum'
 	}
 ];

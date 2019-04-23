@@ -60,8 +60,9 @@ const withRelated = [
 
 /**
  * @typedef {object} Person
- * @property {string} id - Citizen ID used for soft authentication
- * @property {string} chip_id.required - Chip ID used for hard authentication
+ * @property {string} id - Generated ID used in the system internally
+ * @property {string} bio_id.required - Bio ID used for hard authentication
+ * @property {string} card_id.required - Card ID used for soft authentication
  * @property {string} first_name.required - First name
  * @property {string} last_name.required - Last name
  * @property {string} ship_id - ID of the current ship where the person is located
@@ -103,6 +104,11 @@ export const Person = Bookshelf.Model.extend({
 	},
 	fetchWithRelated: function () {
 		return this.fetch({ withRelated });
+	},
+	search: function (name) {
+		return this.query(qb =>
+			qb.whereRaw(`LOWER(CONCAT(first_name, ' ', last_name)) LIKE ?`, [`%${name}%`])
+		).fetchAll();
 	}
 });
 
