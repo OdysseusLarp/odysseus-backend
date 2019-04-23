@@ -1,7 +1,7 @@
 import { logger } from './logger';
 import { Person } from './models/person';
 import { ComMessage } from './models/communications';
-import { isEmpty } from 'lodash';
+import { isEmpty, uniqBy } from 'lodash';
 
 let messaging;
 const connectedUsers = new Map();
@@ -42,9 +42,12 @@ async function onConnection(socket) {
 	socket.on('messagesSeen', messageIds => onMessagesSeen(socket, messageIds));
 	socket.on('fetchHistory', payload => onFetchHistory(socket, payload));
 	socket.on('fetchUnseenMessages', () => onFetchUnseenMessages(socket));
+	socket.on('searchUsers', name => onSearchUsers(socket, name));
+	socket.on('getUserList', async () => socket.emit(
+		'userList', await getInitialUserList(socket.userId)));
 
 	// Emit list of all persons to new client
-	socket.emit('userList', await getUserList());
+	socket.emit('userList', await getInitialUserList(socket.userId));
 
 	// Emit all unseen private mesages to new client
 	onFetchUnseenMessages(socket);
@@ -53,6 +56,21 @@ async function onConnection(socket) {
 	messaging.emit('status', { state: 'connected', user: socket.user });
 
 	logger.info(`User ${socket.userId} connected to messaging`);
+}
+
+async function onSearchUsers(socket, name) {
+	if (!name) return socket.emit('userList', await getInitialUserList(socket.userId));
+	const [foundUsers, usersWithMessageHistory] = await Promise.all([
+		new Person().search(name),
+		getInitialUserList(socket.userId)
+	]);
+	const users = uniqBy([
+		...foundUsers.toArray(),
+		...usersWithMessageHistory.toArray()
+	], person => person.get('id'));
+	users.forEach(person =>
+		person.set('is_online', connectedUsers.has(person.get('id'))));
+	socket.emit('userList', users);
 }
 
 /**
@@ -144,8 +162,11 @@ function onUserDisconnect(socket) {
  * Gets a list of all Persons. Adds 'is_online' attribute to models.
  * @returns {Array.<Person>} List of persons
  */
-async function getUserList() {
-	const users = await Person.forge().fetchAll();
+async function getInitialUserList(personId) {
+	const users = await Person.query(qb => {
+		qb.whereRaw(`id IN (SELECT DISTINCT target_person FROM com_message WHERE person_id = ?) OR id IN (SELECT DISTINCT person_id FROM com_message WHERE target_person = ?)`,
+			[personId, personId]);
+	}).fetchAll();
 	users.forEach(person =>
 		person.set('is_online', connectedUsers.has(person.get('id'))));
 	return users;
