@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import { Person, MedicalData, MedicalEntry, MilitaryData } from '../models/person';
 import { handleAsyncErrors } from '../helpers';
+import { get } from 'lodash';
 const router = new Router();
 
 /**
@@ -18,11 +19,46 @@ router.get('/', handleAsyncErrors(async (req, res) => {
  * Get a specific person by id. Also contains their family, medical and military data.
  * @route GET /person/{id}
  * @group Person - Operations for person related data
- * @param {integer} id.path.required - Citizen ID of the person
+ * @param {integer} id.path.required - ID of the person
  * @returns {Person.model} 200 - Specific person
  */
 router.get('/:id', handleAsyncErrors(async (req, res) => {
 	res.json(await Person.forge({ id: req.params.id }).fetchWithRelated());
+}));
+
+/**
+ * Get a specific person by card id. Also contains their family, medical and military data.
+ * @route GET /person/card/{id}
+ * @group Person - Operations for person related data
+ * @param {integer} id.path.required - Card ID of the person
+ * @returns {Person.model} 200 - Specific person
+ */
+router.get('/card/:id', handleAsyncErrors(async (req, res) => {
+	res.json(await Person.forge({ card_id: req.params.id }).fetchWithRelated());
+}));
+
+/**
+ * Get a specific person by bio id. Also contains their family, medical and military data.
+ * @route GET /person/bio/{id}
+ * @group Person - Operations for person related data
+ * @param {integer} id.path.required - Bio ID of the person
+ * @returns {Person.model} 200 - Specific person
+ */
+router.get('/bio/:id', handleAsyncErrors(async (req, res) => {
+	res.json(await Person.forge({ bio_id: req.params.id }).fetchWithRelated());
+}));
+
+/**
+ * Search for a person using their name
+ * @route GET /person/search/{name}
+ * @group Person - Operations for person related data
+ * @param {integer} name.path.required - Name or partial name of the person
+ * @returns {Person.model} 200 - List of persons matching search criteria
+ */
+router.get('/search/:name', handleAsyncErrors(async (req, res) => {
+	const name = get(req.params, 'name', '').toLowerCase();
+	const persons = await new Person().search(name);
+	res.json(persons);
 }));
 
 /**
