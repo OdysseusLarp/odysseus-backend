@@ -2,9 +2,9 @@ const posts = [
 	{
 		person_id: '593201',
 		title: 'The Cosmos Awaits',
-		body: `Extraordinary claims require extraordinary evidence realm of the galaxies Drake Equation dispassionate extraterrestrial observer Sea of Tranquility across the centuries. A mote of dust suspended in a sunbeam a very small stage in a vast cosmic arena rings of Uranus muse about the only home we've ever known encyclopaedia galactica. A still more glorious dawn awaits laws of physics invent the universe preserve and cherish that pale blue dot network of wormholes vanquish the impossible?
+		body: `Extraordinary claims require extraordinary evidence realm of the galaxies **Drake Equation** dispassionate extraterrestrial observer Sea of Tranquility across the centuries. A mote of dust suspended in a sunbeam a very small stage in a vast cosmic arena rings of Uranus muse about the only home we've ever known encyclopaedia galactica. A still more glorious dawn awaits laws of physics invent the universe preserve and cherish that pale blue dot network of wormholes vanquish the impossible?
 
-		Not a sunrise but a galaxyrise a still more glorious dawn awaits astonishment Vangelis circumnavigated explorations. Two ghostly white figures in coveralls and helmets are soflty dancing vanquish the impossible concept of the number one vastness is bearable only through love inconspicuous motes of rock and gas vanquish the impossible. Muse about light years the sky calls to us with pretty stories for which there's little good evidence at the edge of forever vastness is bearable only through love and billions upon billions upon billions upon billions upon billions upon billions upon billions.`,
+Not a *sunrise* but a *galaxyrise* a still more glorious dawn awaits astonishment Vangelis circumnavigated explorations. Two ghostly white figures in coveralls and helmets are soflty dancing vanquish the impossible concept of the number one vastness is bearable only through love inconspicuous motes of rock and gas vanquish the impossible. Muse about light years the sky calls to us with pretty stories for which there's little good evidence at the edge of forever vastness is bearable only through love and billions upon billions upon billions upon billions upon billions upon billions upon billions.`,
 		type: 'NEWS',
 		is_visible: true,
 		status: 'APPROVED'
@@ -12,9 +12,10 @@ const posts = [
 	{
 		person_id: '593202',
 		title: 'Hearts of the stars corpus',
-		body: `Tingling of the spine permanence of the stars prime number two ghostly white figures in coveralls and helmets are soflty dancing science the only home we've ever known. Orion's sword how far away venture rich in heavy atoms invent the universe with pretty stories for which there's little good evidence. Courage of our questions finite but unbounded brain is the seed of intelligence network of wormholes a very small stage in a vast cosmic arena are creatures of the cosmos.
+		body: `Tingling of the spine permanence of the stars prime number two ghostly white figures in coveralls and helmets are soflty dancing science the only home we've ever known. Orion's sword how far away venture rich in heavy atoms invent the universe with pretty stories for which there's little good evidence. Courage of our questions finite but unbounded brain is the seed of intelligence network of wormholes a very small stage in a vast cosmic arena are *creatures of the cosmos*.
 
-		Sea of Tranquility tesseract light years citizens of distant epochs Hypatia dispassionate extraterrestrial observer. Take root and flourish the ash of stellar alchemy rings of Uranus shores of the cosmic ocean hundreds of thousands tendrils of gossamer clouds. Take root and flourish not a sunrise but a galaxyrise another world not a sunrise but a galaxyrise not a sunrise but a galaxyrise extraordinary claims require extraordinary evidence. Not a sunrise but a galaxyrise rich in heavy atoms invent the universe not a sunrise but a galaxyrise shores of the cosmic ocean another world and billions upon billions upon billions upon billions upon billions upon billions upon billions.`,
+## This is a markdown subtitle
+Sea of Tranquility tesseract light years citizens of distant epochs **Hypatia dispassionate extraterrestrial** observer. Take root and flourish the ash of stellar alchemy rings of Uranus shores of the cosmic ocean hundreds of thousands tendrils of gossamer clouds. Take root and flourish not a sunrise but a galaxyrise another world not a sunrise but a galaxyrise not a sunrise but a galaxyrise extraordinary claims require extraordinary evidence. Not a sunrise but a galaxyrise rich in heavy atoms invent the universe not a sunrise but a galaxyrise shores of the cosmic ocean another world and billions upon billions upon billions upon billions upon billions upon billions upon billions.`,
 		type: 'NEWS',
 		is_visible: true,
 		status: 'APPROVED'
@@ -22,8 +23,26 @@ const posts = [
 	{
 		person_id: '593202',
 		title: 'I like turtles',
-		body: `Turtles are the best!`,
+		body: `List of my favorite animals:
+* Turtles
+* Turtles
+* Turtles
+
+That's just **my** 5 cents.`,
 		type: 'OPINION',
+		is_visible: true,
+		status: 'APPROVED'
+	},
+	{
+		person_id: '593203',
+		title: 'Initial test entry',
+		body: `This is a test entry for captain's log.
+
+## Markdown styling
+Yup, markdown *should* work. Here is a dog:
+
+![Yup, it's a dog](https://odysseus.nicou.me/staticfiles/doge.jpg)`,
+		type: 'CAPTAINS_LOG',
 		is_visible: true,
 		status: 'APPROVED'
 	},
