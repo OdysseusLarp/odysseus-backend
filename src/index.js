@@ -9,7 +9,7 @@ import { getEmptyEpsilonClient, setStateRouteHandler } from './emptyepsilon';
 import { loadEvents } from './eventhandler';
 import { loadMessaging } from './messaging';
 import { Store } from './models/store';
-import { isEqual, omit } from 'lodash';
+import { get, isEqual, omit } from 'lodash';
 import cors from 'cors';
 
 import { initStoreSocket } from './store/storeSocket';
@@ -85,11 +85,14 @@ loadMessaging(io);
 
 // Get latest Empty Epsilon game state and save it to store
 function getEmptyEpsilonState() {
-	// TODO: Validate state and make sure that EE mission did not just change
 	getEmptyEpsilonClient().getGameState().then(state => {
+		// Do not update state if request to EE failed
 		if (state.error) return;
+		// Do not update state if EE sync is disabled
+		if (!get(getData('ship', 'metadata'), 'ee_sync_enabled')) return;
 		const metadataKeys = ['id', 'type', 'created_at', 'updated_at', 'version'];
 		const currentState = omit(getData('ship', 'ee'), metadataKeys);
+		// Do not update state if state has not changed
 		if (isEqual(state, currentState)) return;
 		setData('ship', 'ee', state, true);
 	});

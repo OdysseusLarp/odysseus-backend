@@ -54,3 +54,10 @@ saveBlob({
 	jump_drive_temp_exact: 800,
 	jump_drive_temp: 800,
 });
+
+saveBlob({
+	type: 'ship',
+	id: 'metadata',
+	ee_sync_enabled: true,
+	jump_ui_enabled: true
+});
