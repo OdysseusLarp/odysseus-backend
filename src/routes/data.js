@@ -2,10 +2,10 @@ import store from '../store/store';
 import httpErrors from 'http-errors';
 
 import { Router } from 'express';
-const router = new Router();
+export const router = new Router();
 
 
-function getData(dataType, dataId) {
+export function getData(dataType, dataId) {
 	const state = store.getState().data;
 	if (state[dataType] && state[dataType][dataId]) {
 		return state[dataType][dataId];
@@ -14,7 +14,7 @@ function getData(dataType, dataId) {
 	}
 }
 
-function setData(dataType, dataId, data, force = false) {
+export function setData(dataType, dataId, data, force = false) {
 	if (!force) {
 		const oldData = getData(dataType, dataId);
 		if (oldData.version && oldData.version !== data.version) {

@@ -10,6 +10,7 @@ import { loadInitialTasks } from './engineering/tasks';
 import { loadEvents } from './eventhandler';
 import { loadMessaging } from './messaging';
 import { Store } from './models/store';
+import { isEqual, omit } from 'lodash';
 import cors from 'cors';
 
 import { initStoreSocket } from './store/storeSocket';
@@ -24,7 +25,7 @@ import post from './routes/post';
 import vote from './routes/vote';
 import log from './routes/log';
 import science from './routes/science';
-import data from './routes/data';
+import { setData, getData, router as data } from './routes/data';
 import infoboard from './routes/infoboard';
 
 import './rules/rules';
@@ -33,9 +34,6 @@ import './rules/rules';
 app.use(bodyParser.json());
 app.use(loggerMiddleware);
 app.use(cors());
-
-// Temporary store for game state
-export let gameState = {};
 
 // Add Socket.IO reference to all requests so route handlers can call it
 app.use((req, res, next) => {
@@ -54,7 +52,6 @@ app.use('/post', post);
 app.use('/vote', vote);
 app.use('/log', log);
 app.use('/science', science);
-app.get('/state', (req, res) => res.json(gameState));
 app.put('/state', setStateRouteHandler);
 app.use('/data', data);
 app.use('/infoboard', infoboard);
@@ -89,13 +86,15 @@ io.on('connection', socket => {
 });
 loadMessaging(io);
 
-// Get Empty Epsilon game state and emit it to clients
+// Get latest Empty Epsilon game state and save it to store
 function getEmptyEpsilonState() {
 	// TODO: Validate state and make sure that EE mission did not just change
 	getEmptyEpsilonClient().getGameState().then(state => {
 		if (state.error) return;
-		gameState = state;
-		io.emit('gameStateUpdated', state);
+		const metadataKeys = ['id', 'type', 'created_at', 'updated_at', 'version'];
+		const currentState = omit(getData('ship', 'ee'), metadataKeys);
+		if (isEqual(state, currentState)) return;
+		setData('ship', 'ee', state, true);
 	});
 }
 
@@ -103,7 +102,7 @@ function getEmptyEpsilonState() {
 loadInitialTasks();
 loadEvents(io);
 
-const EE_UPDATE_INTERVAL = 1000;
+const EE_UPDATE_INTERVAL = parseInt(process.env.EMPTY_EPSILON_UPDATE_INTERVAL_MS || '1000', 10);
 logger.watch(`Starting to poll Empty Epsilon game state every ${EE_UPDATE_INTERVAL}ms`);
 setInterval(getEmptyEpsilonState, EE_UPDATE_INTERVAL);
 
