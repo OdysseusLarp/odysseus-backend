@@ -69,15 +69,25 @@ export const setStateRouteHandler = handleAsyncErrors((req, res) => {
 export class EmptyEpsilonClient {
 	constructor({ host = EMPTY_EPSILON_HOST, port = EMPTY_EPSILON_PORT } = {}) {
 		if (host && port) {
+			this.isEmulated = false;
 			const url = `http://${host}:${port}`;
 			this.getUrl = `${url}/get.lua`;
 			this.setUrl = `${url}/set.lua`;
 		} else {
+			this.isEmulated = true;
 			logger.info('Empty Epsilon configuration not provided, initializing emulator');
 			this.getUrl = 'http://ee-emulation.local/get.lua';
 			this.setUrl = 'http://ee-emulation.local/set.lua';
 			initEmulator();
 		}
+	}
+
+	getConnectionStatus() {
+		return {
+			isConnectionHealthy: this.isConnectionHealthy,
+			lastErrorMessage: this.lastErrorMessage || null,
+			isEmulated: this.isEmulated
+		};
 	}
 
 	setIsConnectionHealthy(value, error) {
