@@ -6,7 +6,6 @@ const io = require('socket.io')(http);
 import { logger, loggerMiddleware } from './logger';
 import { loadSwagger } from './docs';
 import { getEmptyEpsilonClient, setStateRouteHandler } from './emptyepsilon';
-import { loadInitialTasks } from './engineering/tasks';
 import { loadEvents } from './eventhandler';
 import { loadMessaging } from './messaging';
 import { Store } from './models/store';
@@ -16,7 +15,6 @@ import cors from 'cors';
 import { initStoreSocket } from './store/storeSocket';
 import { initState } from './store/store';
 import './store/storePersistance';
-import engineering from './routes/engineering';
 import fleet from './routes/fleet';
 import starmap from './routes/starmap';
 import person from './routes/person';
@@ -43,7 +41,6 @@ app.use((req, res, next) => {
 
 // Setup routes
 app.get('/', (req, res) => res.redirect('/api-docs'));
-app.use('/engineering', engineering);
 app.use('/fleet', fleet);
 app.use('/starmap', starmap);
 app.use('/person', person);
@@ -98,8 +95,7 @@ function getEmptyEpsilonState() {
 	});
 }
 
-// Load initial engineering tasks and current events
-loadInitialTasks();
+// Load current events
 loadEvents(io);
 
 const EE_UPDATE_INTERVAL = parseInt(process.env.EMPTY_EPSILON_UPDATE_INTERVAL_MS || '1000', 10);
