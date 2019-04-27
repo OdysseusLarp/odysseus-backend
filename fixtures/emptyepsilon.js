@@ -22,7 +22,7 @@ const emptyEpsilonState = {
 	warpHealth: 1,
 	beamweaponsHealth: 1,
 	empCount: 6,
-	alertLevel: 'NORMAL'
+	alertLevel: 'Normal'
 };
 
 module.exports = emptyEpsilonState;
