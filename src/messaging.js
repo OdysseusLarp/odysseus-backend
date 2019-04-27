@@ -2,6 +2,21 @@ import { logger } from './logger';
 import { Person } from './models/person';
 import { ComMessage } from './models/communications';
 import { isEmpty, uniqBy } from 'lodash';
+import { Router } from 'express';
+
+export const router = new Router();
+
+/**
+ * Get all unread messages
+ *
+ * @route GET /messaging/unread
+ * @group Messaging - Messaging related admin operations
+ * @returns {object} 200 - List of all unread messages
+ */
+router.get('/unread', async (req, res) => {
+	const messages = await new ComMessage().where('seen', false).fetchAllWithRelated();
+	res.json(messages);
+});
 
 let messaging;
 const connectedUsers = new Map();

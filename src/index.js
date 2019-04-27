@@ -7,7 +7,7 @@ import { logger, loggerMiddleware } from './logger';
 import { loadSwagger } from './docs';
 import { getEmptyEpsilonClient, setStateRouteHandler } from './emptyepsilon';
 import { loadEvents } from './eventhandler';
-import { loadMessaging } from './messaging';
+import { loadMessaging, router as messaging } from './messaging';
 import { Store } from './models/store';
 import { get, isEqual, omit } from 'lodash';
 import cors from 'cors';
@@ -52,6 +52,7 @@ app.use('/science', science);
 app.put('/state', setStateRouteHandler);
 app.use('/data', data);
 app.use('/infoboard', infoboard);
+app.use('/messaging', messaging);
 
 /**
  * Emit any Socket.IO event manually
