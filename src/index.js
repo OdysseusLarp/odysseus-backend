@@ -9,7 +9,8 @@ import { getEmptyEpsilonClient, setStateRouteHandler } from './emptyepsilon';
 import { loadEvents } from './eventhandler';
 import { loadMessaging, router as messaging } from './messaging';
 import { Store } from './models/store';
-import { get, isEqual, omit } from 'lodash';
+import { handleAsyncErrors } from './helpers';
+import { get, isEqual, omit, isEmpty } from 'lodash';
 import cors from 'cors';
 
 import { initStoreSocket } from './store/storeSocket';
@@ -49,10 +50,20 @@ app.use('/post', post);
 app.use('/vote', vote);
 app.use('/log', log);
 app.use('/science', science);
-app.put('/state', setStateRouteHandler);
 app.use('/data', data);
 app.use('/infoboard', infoboard);
 app.use('/messaging', messaging);
+
+// Empty Epsilon routes
+app.put('/state', setStateRouteHandler);
+
+// Empty Epsilon full state push route
+app.post('/state/full-push', handleAsyncErrors(async (req, res) => {
+	const state = getData('ship', 'ee');
+	if (isEmpty(state)) throw new Error('Empty Epsilon state is empty');
+	const response = await getEmptyEpsilonClient().pushFullGameState(state);
+	res.json(response);
+}));
 
 /**
  * Emit any Socket.IO event manually

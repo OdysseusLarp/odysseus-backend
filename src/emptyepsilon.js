@@ -2,7 +2,7 @@ require('dotenv').config({ silent: true });
 import { logger } from './logger';
 import axios from 'axios';
 import nock from 'nock';
-import { get, set } from 'lodash';
+import { get, set, forIn } from 'lodash';
 import { handleAsyncErrors } from './helpers';
 
 const { EMPTY_EPSILON_HOST, EMPTY_EPSILON_PORT } = process.env,
@@ -65,6 +65,34 @@ export const setStateRouteHandler = handleAsyncErrors((req, res) => {
 			});
 	}
 });
+
+function fullStateToCommands(state) {
+	const { heat, health } = state.systems;
+	const { weapons } = state;
+	const commands = [];
+	forIn(heat, (value, key) => commands.push({
+		command: 'setSystemHeat',
+		target: key.replace(/Heat$/, ''),
+		value
+	}));
+	forIn(health, (value, key) => commands.push({
+		command: 'setSystemHealth',
+		target: key.replace(/Health$/, ''),
+		value
+	}));
+	forIn(weapons, (value, key) => commands.push({
+		command: 'setWeaponStorage',
+		target: key.replace(/Count$/, ''),
+		value
+	}));
+	return commands;
+}
+
+const alertStates = new Map([
+	['Normal', 'normal'],
+	['YELLOW ALERT', 'yellow'],
+	['RED ALERT', 'red']
+]);
 
 export class EmptyEpsilonClient {
 	constructor({ host = EMPTY_EPSILON_HOST, port = EMPTY_EPSILON_PORT } = {}) {
@@ -151,6 +179,17 @@ export class EmptyEpsilonClient {
 			return res;
 		});
 	}
+
+	async pushFullGameState(state) {
+		const commands = fullStateToCommands(state);
+		const alertLevel = alertStates.get(state.general.alertLevel);
+		const res = await Promise.all([
+			...commands.map(({ command, target, value }) => this.setGameState(command, target, value)),
+			this.setAlertLevel(alertLevel)
+		]);
+		console.log('Done =>', res);
+		return { success: true };
+	}
 }
 
 let emptyEpsilonClient;
@@ -197,7 +236,7 @@ function initEmulator() {
 			if (req.includes('commandSetAlertLevel')) {
 				let alertLevel;
 				value = req.replace(/.*"(\w.*)".*/, '$1');
-				if (value === 'normal') alertLevel = 'NORMAL';
+				if (value === 'normal') alertLevel = 'Normal';
 				else if (value === 'yellow') alertLevel = 'YELLOW ALERT';
 				else if (value === 'red') alertLevel = 'RED ALERT';
 				mockState.alertLevel = alertLevel;
