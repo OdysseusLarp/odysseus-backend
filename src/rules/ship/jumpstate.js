@@ -1,7 +1,7 @@
 /* eslint-disable camelcase, no-unused-vars */
 
 import { saveBlob, interval, brownianGenerator, clamp } from '../helpers';
-import { SAFE_JUMP_LIMIT } from './jump';
+import { SAFE_JUMP_LIMIT, COOLDOWN_LIMIT } from './jump';
 import store from '../../store/store';
 
 
@@ -85,6 +85,88 @@ function updateCoherence(jumpstate, jump) {
 	}
 }
 
+function twodigit(x) {
+	if (x < 10) {
+		return `0${x}`;
+	} else {
+		return `${x}`;
+	}
+}
+
+function formatT(t) {
+	// Positive --> T-01:23:45
+	// Zero     --> T-00:00:00
+	// Negative --> T+00:01:23
+
+	let sign;
+	if (t < 0) {
+		sign = '+';
+	} else {
+		sign = '-';
+	}
+
+	const abs = Math.abs(t);
+	const hour = Math.floor(abs / 60 / 60);
+	const min = Math.floor((abs / 60) % 60);
+	const sec = Math.floor(abs % 60);
+
+	return `T${sign}${twodigit(hour)}:${twodigit(min)}:${twodigit(sec)}`;
+}
+
+function updateTValues(jumpstate, jump) {
+	let dt;
+
+	// readyT
+	switch (jumpstate.status) {
+		case 'broken':
+		case 'cooldown':
+		case 'ready_to_prep':
+		case 'calculating':
+		case 'preparation':
+		case 'prep_complete':
+
+			dt = Math.ceil((jump.last_jump + SAFE_JUMP_LIMIT - Date.now()) / 1000);
+			dt = Math.max(dt, 0);
+			jumpstate.readyRemaining = dt;
+			jumpstate.readyT = formatT(dt);
+			break;
+
+		case 'ready':
+		// This is separately in case state is manually changed to 'ready'
+			jumpstate.readyRemaining = 0;
+			jumpstate.readyT = formatT(0);
+			break;
+
+
+		case 'jump_initiated':
+		case 'jumping':
+		// Do not update
+			break;
+	}
+
+	// cooldownT
+	if (jumpstate.status === 'broken' || jumpstate.status === 'cooldown') {
+		dt = Math.ceil((jump.last_jump + COOLDOWN_LIMIT - Date.now()) / 1000);
+		dt = Math.max(dt, 0);
+		jumpstate.cooldownRemaining = dt;
+		jumpstate.cooldownT = formatT(dt);
+	} else {
+		jumpstate.cooldownRemaining = 0;
+		jumpstate.cooldownT = formatT(0);
+	}
+
+	// jumpT
+	if (jumpstate.status === 'jump_initiated') {
+		dt = Math.ceil((jump.jump_at - Date.now()) / 1000);
+		jumpstate.jumpT = formatT(dt);
+	} else if (jumpstate.status === 'jumping') {
+		dt = Math.ceil((jump.last_jump - Date.now()) / 1000);
+		jumpstate.jumpT = formatT(dt);
+	} else {
+		jumpstate.jumpT = '';
+	}
+}
+
 function updateData() {
 	const jump = store.getState().data.ship.jump;
 	const jumpstate = {
@@ -95,6 +177,7 @@ function updateData() {
 	};
 	updateTemperature(jumpstate);
 	updateCoherence(jumpstate, jump);
+	updateTValues(jumpstate, jump);
 	saveBlob(jumpstate);
 }
 

@@ -8,8 +8,9 @@ import { logger } from '../../logger';
 
 const HOUR = 60 * 60 * 1000;
 const MIN = 60 * 1000;
+const SEC = 1000;
 
-export const COOLDOWN_LIMIT = 2 * HOUR + 15 * MIN;
+export const COOLDOWN_LIMIT = 2 * HOUR + 15 * MIN + 43 * SEC;
 export const SAFE_JUMP_LIMIT = 2 * HOUR + 47 * MIN;
 const COUNTDOWN = 1 * MIN;
 
