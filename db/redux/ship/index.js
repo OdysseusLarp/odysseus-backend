@@ -9,7 +9,7 @@ saveBlob({
 	status: 'ready_to_prep',
 	jump_at: 0,		// millisecond timestamp
 	last_jump: 0,	// millisecond timestamp
-	safe_jump: true,
+	breaking_jump: true,
 	presets: {
 		cooldown: {
 			status: 'cooldown',
@@ -32,7 +32,7 @@ saveBlob({
 		},
 		ready: {
 			status: 'ready',
-			safe_jump: true,
+			breaking_jump: false,
 		},
 		jump_initiated: {
 			status: 'jump_initiated',
