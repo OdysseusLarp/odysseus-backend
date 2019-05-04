@@ -12,7 +12,7 @@ const SEC = 1000;
 
 export const COOLDOWN_LIMIT = 2 * HOUR + 15 * MIN + 43 * SEC;
 export const SAFE_JUMP_LIMIT = 2 * HOUR + 47 * MIN;
-export const BREAKING_JUMP_TIME = 1 * MIN;  // FIXME 5min
+export const BREAKING_JUMP_TIME = 5 * MIN;
 const COUNTDOWN = 1 * MIN;
 
 function handleTransition(jump, currentStatus, previousStatus) {
