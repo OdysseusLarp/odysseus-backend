@@ -69,7 +69,13 @@ function handleTransition(jump, currentStatus, previousStatus) {
 			break;
 
 		case 'jump_initiated>prep_complete':
+			// Admin aborted jump, reset jump_at + breaking_jump states
 			dmx.fireEvent(dmx.CHANNELS.JumpAbort);
+			saveBlob({
+				...jump,
+				jump_at: 0,
+				breaking_jump: true,
+			});
 			break;
 
 		case 'prep_complete>jump_initiated':
@@ -146,7 +152,7 @@ function handleStatic(jump) {
 			break;
 
 		case 'ready':
-			if (jump.breaking_jump && Date.now() >= jump.last_jump + SAFE_JUMP_LIMIT) {
+			if (jump.breaking_jump) {
 				logger.error('Jump drive in \'ready\' state with breaking_jump flag, fixing');
 				saveBlob({
 					...jump,
