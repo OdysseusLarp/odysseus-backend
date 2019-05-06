@@ -2,6 +2,7 @@ import { logger } from './logger';
 
 // const UNIVERSE = 2;
 export const CHANNELS = {
+	JumpFixed: 0,
 	JumpPrepReady: 1,
 	JumpPrepStart: 2,
 	JumpApproved: 3,
@@ -9,10 +10,11 @@ export const CHANNELS = {
 	JumpPrepEnd: 5,
 	JumpReady: 6,
 	JumpInit: 7,
-	JumpInitBreaking: 8,
-	JumpStart: 9,
+	JumpStart: 8,
+	JumpBreaking: 9,
 	JumpEnd: 10,
-	JumpAbort: 11,
+	JumpEndBreaking: 11,
+	JumpAbort: 12,
 };
 
 export function setValue(channel, value) {

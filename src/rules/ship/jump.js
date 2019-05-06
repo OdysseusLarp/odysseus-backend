@@ -12,23 +12,34 @@ const SEC = 1000;
 
 export const COOLDOWN_LIMIT = 2 * HOUR + 15 * MIN + 43 * SEC;
 export const SAFE_JUMP_LIMIT = 2 * HOUR + 47 * MIN;
+export const BREAKING_JUMP_TIME = 5 * MIN;
 const COUNTDOWN = 1 * MIN;
 
 function handleTransition(jump, currentStatus, previousStatus) {
 	logger.info(`Jump drive transition ${previousStatus} -> ${currentStatus}`);
-	const now = Date.now();
 	const lastJump = jump.last_jump || Date.now();
 	switch (`${previousStatus}>${currentStatus}`) {
+		case 'jumping>broken':
+			// FIXME: Add broken tasks
+			// fall through
 		case 'jumping>cooldown':
-			dmx.fireEvent(dmx.CHANNELS.JumpEnd);
+			if (jump.breaking_jump) {
+				dmx.fireEvent(dmx.CHANNELS.JumpEndBreaking);
+			} else {
+				dmx.fireEvent(dmx.CHANNELS.JumpEnd);
+			}
 			// FIXME: Turn on necessary power sockets (unless done by tekniikkatiimi)
 			logger.info(`Updating jump drive times`);
 			saveBlob({
 				...jump,
 				last_jump: lastJump,
 				jump_at: 0,
-				safe_jump: false,
+				breaking_jump: true,
 			});
+			break;
+
+		case 'broken>cooldown':
+			dmx.fireEvent(dmx.CHANNELS.JumpFixed);
 			break;
 
 		case 'cooldown>ready_to_prep':
@@ -58,34 +69,23 @@ function handleTransition(jump, currentStatus, previousStatus) {
 			break;
 
 		case 'jump_initiated>prep_complete':
+			// Admin aborted jump, reset jump_at + breaking_jump states
 			dmx.fireEvent(dmx.CHANNELS.JumpAbort);
+			saveBlob({
+				...jump,
+				jump_at: 0,
+				breaking_jump: true,
+			});
 			break;
 
 		case 'prep_complete>jump_initiated':
-			saveBlob({
-				...jump,
-				breaking_jump: true,
-			});
-			dmx.fireEvent(dmx.CHANNELS.JumpInitBreaking);
-			break;
-
 		case 'ready>jump_initiated':
-			saveBlob({
-				...jump,
-				breaking_jump: false,
-			});
-			dmx.fireEvent(dmx.CHANNELS.JumpInit);
+			// Handled below in if-statement
 			break;
 
 		case 'jump_initiated>jumping':
 			dmx.fireEvent(dmx.CHANNELS.JumpStart);
-			logger.info(`Updating jump drive times`);
 			// FIXME: Turn off necessary power sockets (unless done by tekniikkatiimi)
-			saveBlob({
-				...jump,
-				last_jump: now,
-				jump_at: 0,
-			});
 			break;
 
 		default:
@@ -101,12 +101,19 @@ function handleTransition(jump, currentStatus, previousStatus) {
 		saveBlob({
 			...jump,
 			jump_at: jumpAt,
+			breaking_jump: previousStatus !== 'ready',
+			break_notified: false,
 		});
+		dmx.fireEvent(dmx.CHANNELS.JumpInit);
 	}
 }
 
 function handleStatic(jump) {
 	switch (jump.status) {
+		case 'broken':
+			// FIXME: Check if all necessary tasks are fixed
+			break;
+
 		case 'cooldown':
 			if (Date.now() >= jump.last_jump + COOLDOWN_LIMIT) {
 				logger.info('Changing jump drive status to \'ready_to_prep\'');
@@ -137,7 +144,7 @@ function handleStatic(jump) {
 				saveBlob({
 					...jump,
 					status: 'ready',
-					safe_jump: true
+					breaking_jump: false
 				});
 			} else {
 				schedule(update, jump.last_jump + SAFE_JUMP_LIMIT);
@@ -145,31 +152,47 @@ function handleStatic(jump) {
 			break;
 
 		case 'ready':
-			if (!jump.safe_jump && Date.now() >= jump.last_jump + SAFE_JUMP_LIMIT) {
-				logger.error('Jump drive in \'ready\' state without safe_jump flag, fixing');
+			if (jump.breaking_jump) {
+				logger.error('Jump drive in \'ready\' state with breaking_jump flag, fixing');
 				saveBlob({
 					...jump,
 					status: 'ready',
-					safe_jump: true
+					breaking_jump: false
 				});
 			}
 			break;
 
 		case 'jump_initiated':
 			// Ignore if jump_at is zero/undefined (may occur during transition)
-			if (jump.jump_at && Date.now() >= jump.jump_at) {
-				logger.info('Changing jump drive status to \'jumping\'');
-				saveBlob({
-					...jump,
-					status: 'jumping'
-				});
-			} else if (jump.jump_at) {
-				schedule(update, jump.jump_at);
+			if (jump.jump_at) {
+				if (Date.now() >= jump.jump_at) {
+					logger.info('Changing jump drive status to \'jumping\'');
+					saveBlob({
+						...jump,
+						last_jump: Date.now(),
+						jump_at: 0,
+						break_notified: false,
+						status: 'jumping'
+					});
+				} else {
+					schedule(update, jump.jump_at);
+				}
 			}
 			break;
 
 		case 'jumping':
 			// no-op
+			if (jump.breaking_jump && !jump.break_notified) {
+				if (Date.now() >= jump.last_jump + BREAKING_JUMP_TIME) {
+					saveBlob({
+						...jump,
+						break_notified: true,
+					});
+					dmx.fireEvent(dmx.CHANNELS.JumpBreaking);
+				} else {
+					schedule(update, jump.last_jump + BREAKING_JUMP_TIME);
+				}
+			}
 			break;
 
 		default:
