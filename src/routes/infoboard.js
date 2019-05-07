@@ -2,6 +2,7 @@ import { Router } from 'express';
 import { Event } from '../models/event';
 import { InfoEntry } from '../models/infoentry';
 import { InfoPriority } from '../models/infoentry';
+import { Post } from '../models/post';
 import { handleAsyncErrors } from '../helpers';
 import Bookshelf from '../../db';
 import httpErrors from 'http-errors';
@@ -50,12 +51,19 @@ router.get('/display', handleAsyncErrors(async (req, res) => {
 	const jumpEvent = await Event.forge().where({ ship_id: 'odysseus', is_active: true, type: 'JUMP' }).fetch();
 	const prepEvent = await Event.forge().where({ ship_id: 'odysseus', is_active: true, type: 'JUMP_PREP' }).fetch();
 	const now = new Date();
-	const selector = parseInt((now.getMinutes() * 60 + now.getSeconds()) / 5, 10);
+	const selector = parseInt((now.getMinutes() * 60 + now.getSeconds()), 10);
 	const priority = await InfoPriority.forge().fetch();
 	const entries = await InfoEntry.forge().where({ priority: priority.attributes.priority }).fetchAll();
-	const count = entries.length;
+	const news = await Post.forge().where({ type: 'NEWS', status: 'APPROVED' }).fetchAll();
+	const count = entries.length + (priority.attributes.priority < 5 ? news.length : 0);
 	const realSelector = selector % count;
-	const entry = entries.models[realSelector];
+	let entry = null;
+	if( realSelector > entries.length - 1 ) {
+		entry = news.models[realSelector - entries.length];
+		entry.attributes.body = entry.attributes.body.substring(0, 100);
+	} else {
+		entry = entries.models[realSelector];
+	}
 	if ( prepEvent ) {
 		const time = timeTo(prepEvent.attributes.occurs_at, 'Ready to jump in ', 'Ready to jump.');
 		entry.attributes.jump_text = time;
