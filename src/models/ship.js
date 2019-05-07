@@ -1,5 +1,7 @@
 import Bookshelf, { knex } from '../../db';
 import { get } from 'lodash';
+import { getSocketIoClient } from '../index';
+import { logger } from '../logger';
 
 /* eslint-disable object-shorthand */
 
@@ -86,6 +88,19 @@ function getColumns(withGeometry) {
 export const Ship = Bookshelf.Model.extend({
 	tableName: 'ship',
 	hasTimestamps: true,
+	initialize() {
+		// Emit new ship model to Socket.IO clients after Odysseus data is updated
+		this.on('updated', async model => {
+			if (model.get('id') !== 'odysseus') return;
+			const io = getSocketIoClient();
+			if (!io) {
+				logger.warning('Could not emit shipUpdated when Odysseus ship model was updated');
+				return;
+			}
+			io.emit('shipUpdated', await Ship.forge({ id: 'odysseus' })
+				.fetchWithRelated({ withGeometry: true }));
+		});
+	},
 	position: function () {
 		return this.hasOne(Grid, 'id', 'grid_id');
 	},

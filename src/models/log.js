@@ -1,4 +1,5 @@
 import Bookshelf from '../../db';
+import { getSocketIoClient } from '../index';
 
 /* eslint-disable object-shorthand */
 
@@ -15,4 +16,31 @@ import Bookshelf from '../../db';
 export const LogEntry = Bookshelf.Model.extend({
 	tableName: 'ship_log',
 	hasTimestamps: true,
+	initialize() {
+		this.on('destroyed', model => {
+			getSocketIoClient().emit('logEntryDeleted', { id: model.get('id') });
+		});
+		this.on('created', model => {
+			getSocketIoClient().emit('logEntryAdded', model);
+		});
+		this.on('updated', model => {
+			getSocketIoClient().emit('logEntryUpdated', model);
+		});
+	}
 });
+
+/** Adds log entry to database and emits it via Socket.IO
+ * @param  {string} type INFO, SUCCESS, WARNING, ERROR
+ * @param  {string} message Message
+ * @param  {string} shipId='odysseus' Ship ID
+ * @param  {object} metadata=null Any metadata
+ */
+export async function addShipLogEntry(type, message, shipId = 'odysseus', metadata = null) {
+	const body = {
+		ship_id: shipId,
+		message,
+		metadata,
+		type
+	};
+	await LogEntry.forge().save(body, { method: 'insert' });
+}

@@ -35,13 +35,8 @@ router.put('/', handleAsyncErrors(async (req, res) => {
 	// TODO: Validate input
 	let logEntry;
 	if (id) logEntry = await LogEntry.forge({ id }).fetch();
-	if (!logEntry) {
-		logEntry = await LogEntry.forge().save(req.body, { method: 'insert' });
-		req.io.emit('logEntryAdded', logEntry);
-	} else {
-		await logEntry.save(req.body, { method: 'update' });
-		req.io.emit('logEntryUpdated', logEntry);
-	}
+	if (!logEntry) logEntry = await LogEntry.forge().save(req.body, { method: 'insert' });
+	else await logEntry.save(req.body, { method: 'update' });
 	res.json(logEntry);
 }));
 
@@ -57,7 +52,6 @@ router.delete('/:id', handleAsyncErrors(async (req, res) => {
 	const logEntry = await LogEntry.forge({ id }).fetch();
 	if (!logEntry) throw new httpErrors.NotFound('Log entry not found');
 	await logEntry.destroy();
-	req.io.emit('logEntryDeleted', { id });
 	res.sendStatus(204);
 }));
 

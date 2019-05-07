@@ -37,13 +37,10 @@ router.get('/:id', handleAsyncErrors(async (req, res) => {
 router.put('/:id', handleAsyncErrors(async (req, res) => {
 	const { id } = req.params;
 	// TODO: Validate input
-	let ship = await Ship.forge({ id }).fetch();
+	const ship = await Ship.forge({ id }).fetch();
 	if (!ship) throw new Error('Ship not found');
 	await ship.save(req.body, { method: 'update' });
-	req.io.to('fleet').emit('shipUpdated', ship);
-	ship = await ship.fetchWithRelated({ withGeometry: true });
-	req.io.emit('shipUpdated', ship);
-	res.json(ship);
+	res.json(await ship.fetchWithRelated({ withGeometry: true }));
 }));
 
 /**

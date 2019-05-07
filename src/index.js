@@ -139,4 +139,7 @@ function startServer() {
 	http.listen(APP_PORT, () => logger.start(`Odysseus backend listening to port ${APP_PORT}`));
 }
 
-export { app };
+// For emitting Socket.IO events from rule files
+export function getSocketIoClient() {
+	return io;
+}
