@@ -2,6 +2,10 @@ import { saveBlob, interval, schedule } from '../helpers';
 import store, { watch } from '../../store/store';
 import * as dmx from '../../dmx';
 import { logger } from '../../logger';
+import { pick, get } from 'lodash';
+import { Ship, Grid, GridAction } from '../../models/ship';
+import { addShipLogEntry } from '../../models/log';
+import { MapObject } from '../../models/map-object';
 
 // Jump drive state spec:
 // https://docs.google.com/presentation/d/1nbXQE9N10Zm7uS45eW4R1VvYU4zZQ0PZbRovUq7bA5o/edit#slide=id.g4d32841109_0_0
@@ -14,6 +18,50 @@ export const COOLDOWN_LIMIT = 2 * HOUR + 15 * MIN + 43 * SEC;
 export const SAFE_JUMP_LIMIT = 2 * HOUR + 47 * MIN;
 export const BREAKING_JUMP_TIME = 5 * MIN;
 const COUNTDOWN = 1 * MIN;
+
+function setJumpUiEnabled(value = true) {
+	const shipMetadata = store.getState().data.ship.metadata;
+	saveBlob({
+		...shipMetadata,
+		jump_ui_enabled: value
+	});
+}
+
+/**
+ * Jumps the ship to a new grid by setting grid_id of the ship
+ * @param {object} coordinates Target coordinates from jump state
+ */
+async function performShipJump(coordinates) {
+	// Hard coded ship ID at this point, we are not going to jump other ships than Odysseus
+	// TODO: Figure out a process for moving rest of the fleet around
+	const shipId = 'odysseus';
+	const jumpTargetParameters = pick(coordinates, ['sub_quadrant', 'sector', 'sub_sector']);
+	const targetPlanetName = get(coordinates, 'planet_orbit');
+	const promises = [
+		Ship.forge({ id: shipId }).fetch(),
+		Grid.forge().where(jumpTargetParameters).fetch()
+	];
+	if (targetPlanetName) promises.push(MapObject.forge().where({ name_generated: targetPlanetName }).fetch());
+	const [ship, grid, targetPlanet] = await Promise.all(promises);
+	let targetGeometry;
+	if (targetPlanet) targetGeometry = targetPlanet.get('the_geom');
+	else targetGeometry = await grid.getCenter();
+	const gridId = grid ? grid.get('id') : null;
+	if (!targetGeometry) logger.error('Could not calculate new geometry for ship when jumping to grid', gridId);
+	// Reset jump range back to 1
+	const metadata = { ...ship.get('metadata', {}), jump_range: 1 };
+	await Promise.all([
+		ship.save({ grid_id: gridId, metadata, the_geom: targetGeometry }),
+		GridAction.forge().save({ grid_id: gridId, ship_id: shipId, type: 'JUMP' })
+	]);
+	logger.success(`${shipId} performed jumped to grid ${gridId}`);
+	const gridName = grid.get('name');
+	addShipLogEntry(
+		'SUCCESS',
+		`Odysseus completed the jump to grid ${gridName}.`,
+		shipId
+	);
+}
 
 function handleTransition(jump, currentStatus, previousStatus) {
 	logger.info(`Jump drive transition ${previousStatus} -> ${currentStatus}`);
@@ -36,6 +84,9 @@ function handleTransition(jump, currentStatus, previousStatus) {
 				jump_at: 0,
 				breaking_jump: true,
 			});
+			// Actually perform the jump and hope that the async stuff works nicely here
+			performShipJump(jump.coordinates);
+			setJumpUiEnabled(true);
 			break;
 
 		case 'broken>cooldown':
@@ -83,10 +134,13 @@ function handleTransition(jump, currentStatus, previousStatus) {
 			// Handled below in if-statement
 			break;
 
-		case 'jump_initiated>jumping':
+		case 'jump_initiated>jumping': {
+			// Disable Jump UI for the duration of the jump
+			setJumpUiEnabled(false);
 			dmx.fireEvent(dmx.CHANNELS.JumpStart);
 			// FIXME: Turn off necessary power sockets (unless done by tekniikkatiimi)
 			break;
+		}
 
 		default:
 			logger.error(`Invalid jump drive transition from '${previousStatus}' to '${currentStatus}'`);
@@ -220,4 +274,3 @@ watch(['data', 'ship', 'jump'], (current, previous, state) => {
 
 // Check current state every 10 secs for safety
 interval(update, 10000);
-

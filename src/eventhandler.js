@@ -2,7 +2,7 @@ import moment from 'moment';
 import { isEmpty, pick, inRange, get, isInteger } from 'lodash';
 import { Event } from './models/event';
 import { Ship, Grid, GridAction } from './models/ship';
-import { LogEntry } from './models/log';
+import { addShipLogEntry } from './models/log';
 import { MapObject } from './models/map-object';
 import { logger } from './logger';
 
@@ -10,23 +10,6 @@ const currentEvents = new Map();
 const eventTimers = new Map();
 const LOW_PROBE_COUNT_WARNING_LIMIT = 3;
 let io;
-
-/** Adds log entry to database and emits it via Socket.IO
- * @param  {string} type INFO, SUCCESS, WARNING, ERROR
- * @param  {string} message Message
- * @param  {string} shipId='odysseus' Ship ID
- * @param  {object} metadata=null Any metadata
- */
-async function addLogEntry(type, message, shipId = 'odysseus', metadata = null) {
-	const body = {
-		ship_id: shipId,
-		message,
-		metadata,
-		type
-	};
-	const logEntry = await LogEntry.forge().save(body, { method: 'insert' });
-	io.emit('logEntryAdded', logEntry);
-}
 
 /**
  * Loads active events from database on when application is initialized
@@ -49,9 +32,6 @@ export function loadEvents(socketIo) {
  */
 export async function addEvent(event) {
 	switch (event.get('type')) {
-		case 'JUMP': {
-			return addJumpEvent(event);
-		}
 		case 'SCAN_OBJECT': {
 			return addScanObjectEvent(event);
 		}
@@ -121,7 +101,7 @@ async function addScanObjectEvent(event) {
 	}, occursIn));
 	currentEvents.set(event.get('id'), event);
 	const object = await MapObject.forge({ id: objectId }).fetch();
-	addLogEntry(
+	addShipLogEntry(
 		'INFO',
 		`Scanning initiated on space object ${object.get('name_generated')}.`
 	);
@@ -159,8 +139,7 @@ async function addScanGridEvent(event) {
 			} else if (newProbeCount < LOW_PROBE_COUNT_WARNING_LIMIT) {
 				probeWarningMessage = `Probe count is low (${newProbeCount} pcs).`;
 			}
-			if (probeWarningMessage) addLogEntry('WARNING', probeWarningMessage);
-			emitShipUpdated();
+			if (probeWarningMessage) addShipLogEntry('WARNING', probeWarningMessage);
 		});
 
 	// Set timer to execute scan
@@ -170,7 +149,7 @@ async function addScanGridEvent(event) {
 	}, occursIn));
 	currentEvents.set(event.get('id'), event);
 	const gridName = grid.get('name');
-	addLogEntry(
+	addShipLogEntry(
 		'INFO',
 		`Probe was sent to scan grid ${gridName}.`
 	);
@@ -186,55 +165,22 @@ export async function validateJumpTarget(shipId, metadata) {
 	const grid = await Grid.forge().where(jumpTargetParameters).fetch();
 	const shouldAddLogEntries = get(metadata, 'should_add_log_entries', true);
 	if (!grid) {
-		if (shouldAddLogEntries) addLogEntry('ERROR', `Jump initialization failed: Unknown jump target.`, shipId);
+		if (shouldAddLogEntries) addShipLogEntry('ERROR', `Jump initialization failed: Unknown jump target.`, shipId);
 		return { isValid: false, message: 'Given grid does not exist' };
 	}
 	if (targetPlanetName && !(await grid.containsObject(targetPlanetName))) {
-		if (shouldAddLogEntries) addLogEntry('ERROR',
+		if (shouldAddLogEntries) addShipLogEntry('ERROR',
 			`Jump initialization failed: Given orbit not found in target sub-sector.`, shipId);
 		return { isValid: false, message: 'Given planet not found in target grid' };
 	}
 	const ship = await Ship.forge({ id: shipId }).fetchWithRelated();
 	if (!ship) throw new Error('Invalid ship id');
 	if (!validateRange(ship, grid, 'jump_range')) {
-		if (shouldAddLogEntries) addLogEntry('ERROR',
+		if (shouldAddLogEntries) addShipLogEntry('ERROR',
 			`Jump initialization failed: Target coordinates too far away.`, shipId);
 		return { isValid: false, message: 'Jump can not be made from current position' };
 	}
 	return { isValid: true };
-}
-
-/**
- * Processing function for new jump event
- * @param {Event.model} event model
- */
-async function addJumpEvent(event) {
-	const id = event.get('id');
-	const shipId = event.get('ship_id');
-	const metadata = event.get('metadata');
-	const occursIn = getTimeUntilEvent(event);
-	if (occursIn < 0) return logger.error(`Event ${id} occurs in the past`);
-
-	const jumpValidationData = await validateJumpTarget(shipId, metadata);
-	if (!jumpValidationData.isValid) throw new Error(jumpValidationData.message);
-
-	const jumpTargetParameters = pick(metadata, ['sub_quadrant', 'sector', 'sub_sector']);
-	const targetPlanetName = get(metadata, 'planet_orbit');
-	const grid = await Grid.forge().where(jumpTargetParameters).fetch();
-
-	// Set timer to execute jump
-	eventTimers.set(id, setTimeout(async () => {
-		await performShipJump(shipId, grid.get('id'), targetPlanetName);
-		finishEvent(event);
-	}, occursIn));
-
-	currentEvents.set(event.get('id'), event);
-	const gridName = grid.get('name');
-	addLogEntry(
-		'INFO',
-		`Odysseus initiated a jump to grid ${gridName}.`,
-		shipId
-	);
 }
 
 /**
@@ -249,7 +195,7 @@ function validateRange(ship, targetGrid, rangeField = 'jump_range') {
 	const current = ship.related('position').getCoordinates();
 	const target = targetGrid.getCoordinates();
 	const min = { x: current.x - jumpRange, y: current.y - jumpRange };
-	const max = { x: current.x + jumpRange + 1, y: current.x + jumpRange + 1 };
+	const max = { x: current.x + jumpRange + 1, y: current.y + jumpRange + 1 };
 	return (
 		inRange(target.x, min.x, max.x) &&
 		inRange(target.y, min.y, max.y));
@@ -269,45 +215,12 @@ function getTimeUntilEvent(event) {
 	return occursAt.diff(moment());
 }
 
-/**
- * Jumps the ship to a new grid by setting grid_id of the ship to given value
- * @param {string} shipId Ship ID
- * @param {number} gridId Target grid ID
- * @param {string} targetPlanetName name_generated of target planet if jumping to orbit
- */
-async function performShipJump(shipId, gridId, targetPlanetName) {
-	const promises = [
-		Ship.forge({ id: shipId }).fetch(),
-		Grid.forge({ id: gridId }).fetch()
-	];
-	if (targetPlanetName) promises.push(MapObject.forge({ name_generated: targetPlanetName }).fetch());
-	const [ship, grid, targetPlanet] = await Promise.all(promises);
-	let targetGeometry;
-	if (targetPlanet) targetGeometry = targetPlanet.get('the_geom');
-	else targetGeometry = await grid.getCenter();
-	if (!targetGeometry) logger.error('Could not calculate new geometry for ship when jumping to grid', gridId);
-	// Reset jump range back to 1
-	const metadata = { ...ship.get('metadata', {}), jump_range: 1 };
-	await Promise.all([
-		ship.save({ grid_id: gridId, metadata, the_geom: targetGeometry }),
-		GridAction.forge().save({ grid_id: gridId, ship_id: shipId, type: 'JUMP' })
-	]);
-	logger.success(`${shipId} succesfully jumped to grid ${gridId}`);
-	const gridName = grid.get('name');
-	addLogEntry(
-		'SUCCESS',
-		`Odysseus completed the jump to grid ${gridName}.`,
-		shipId
-	);
-	emitShipUpdated();
-}
-
 async function performObjectScan(objectId) {
 	const object = await MapObject.forge({ id: objectId }).fetch();
 	await object.save({ is_scanned: true });
 	logger.success(`Object ${objectId} was succesfully scanned`);
 	const objectName = object.get('name_generated');
-	addLogEntry(
+	addShipLogEntry(
 		'SUCCESS',
 		`Space object ${objectName} was scanned.`
 	);
@@ -318,15 +231,8 @@ async function performGridScan(gridId) {
 	const grid = await Grid.forge({ id: gridId }).fetch();
 	logger.success(`Grid ${gridId} was succesfully scanned`);
 	const gridName = grid.get('name');
-	addLogEntry(
+	addShipLogEntry(
 		'SUCCESS',
 		`Probe finished scanning grid ${gridName}.`
 	);
-}
-
-async function emitShipUpdated(ship = null) {
-	io.emit('shipUpdated',
-		ship ||
-		await Ship.forge({ id: 'odysseus' })
-			.fetchWithRelated({ withGeometry: true }));
 }
