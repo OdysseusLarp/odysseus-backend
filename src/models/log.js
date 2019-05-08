@@ -44,3 +44,10 @@ export async function addShipLogEntry(type, message, shipId = 'odysseus', metada
 	};
 	await LogEntry.forge().save(body, { method: 'insert' });
 }
+
+export const shipLogger = {
+	info: (message, metadata = null) => addShipLogEntry('INFO', message, 'odysseus', metadata),
+	success: (message, metadata = null) => addShipLogEntry('SUCCESS', message, 'odysseus', metadata),
+	warning: (message, metadata = null) => addShipLogEntry('WARNING', message, 'odysseus', metadata),
+	error: (message, metadata = null) => addShipLogEntry('ERROR', message, 'odysseus', metadata)
+};

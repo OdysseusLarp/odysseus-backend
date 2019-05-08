@@ -4,7 +4,7 @@ import * as dmx from '../../dmx';
 import { logger } from '../../logger';
 import { pick, get } from 'lodash';
 import { Ship, Grid, GridAction } from '../../models/ship';
-import { addShipLogEntry } from '../../models/log';
+import { shipLogger } from '../../models/log';
 import { MapObject } from '../../models/map-object';
 
 // Jump drive state spec:
@@ -55,12 +55,13 @@ async function performShipJump(coordinates) {
 		GridAction.forge().save({ grid_id: gridId, ship_id: shipId, type: 'JUMP' })
 	]);
 	logger.success(`${shipId} performed jumped to grid ${gridId}`);
-	const gridName = grid.get('name');
-	addShipLogEntry(
-		'SUCCESS',
-		`Odysseus completed the jump to grid ${gridName}.`,
-		shipId
-	);
+}
+
+function getReadableJumpTarget(coordinates) {
+	const { sub_quadrant, sub_sector, sector } = pick(coordinates, ['sub_quadrant', 'sector', 'sub_sector']);
+	const targetPlanetName = get(coordinates, 'planet_orbit');
+	const gridName = `${sub_quadrant}-${sector}-${sub_sector}`;
+	return targetPlanetName ? `${gridName} (orbit ${targetPlanetName})` : gridName;
 }
 
 function handleTransition(jump, currentStatus, previousStatus) {
@@ -85,7 +86,10 @@ function handleTransition(jump, currentStatus, previousStatus) {
 				breaking_jump: true,
 			});
 			// Actually perform the jump and hope that the async stuff works nicely here
-			performShipJump(jump.coordinates);
+			performShipJump(jump.coordinates).then(() => {
+				const jumpTarget = getReadableJumpTarget(jump.coordinates);
+				shipLogger.success(`Odysseus completed the jump to grid ${jumpTarget}.`);
+			});
 			setJumpUiEnabled(true);
 			break;
 
@@ -95,28 +99,36 @@ function handleTransition(jump, currentStatus, previousStatus) {
 
 		case 'cooldown>ready_to_prep':
 			dmx.fireEvent(dmx.CHANNELS.JumpPrepReady);
+			shipLogger.info(`Jump drive is ready for jump preparations`);
 			break;
 
-		case 'ready_to_prep>calculating':
+		case 'ready_to_prep>calculating': {
 			dmx.fireEvent(dmx.CHANNELS.JumpPrepStart);
+			const jumpTarget = getReadableJumpTarget(jump.coordinates);
+			shipLogger.info(`Calculating jump coordinates to target ${jumpTarget}.`);
 			break;
+		}
 
 		case 'calculating>ready_to_prep':
 			dmx.fireEvent(dmx.CHANNELS.JumpRejected);
+			shipLogger.error(`Failed to calculate jump coordinates`);
 			break;
 
 		case 'calculating>preparation':
 			dmx.fireEvent(dmx.CHANNELS.JumpApproved);
 			logger.info(`Initializing jump drive tasks`);
+			shipLogger.success(`Jump coordinates have been calculated`);
 			// FIXME: Add tasks for engineers
 			break;
 
 		case 'preparation>prep_complete':
 			dmx.fireEvent(dmx.CHANNELS.JumpPrepEnd);
+			shipLogger.success(`Jump drive preparations have been completed`);
 			break;
 
 		case 'prep_complete>ready':
 			dmx.fireEvent(dmx.CHANNELS.JumpReady);
+			shipLogger.success(`Jump drive is ready for jump`);
 			break;
 
 		case 'jump_initiated>prep_complete':
@@ -137,6 +149,8 @@ function handleTransition(jump, currentStatus, previousStatus) {
 		case 'jump_initiated>jumping': {
 			// Disable Jump UI for the duration of the jump
 			setJumpUiEnabled(false);
+			const jumpTarget = getReadableJumpTarget(jump.coordinates);
+			shipLogger.info(`Jumping to coordinates ${jumpTarget}.`);
 			dmx.fireEvent(dmx.CHANNELS.JumpStart);
 			// FIXME: Turn off necessary power sockets (unless done by tekniikkatiimi)
 			break;
