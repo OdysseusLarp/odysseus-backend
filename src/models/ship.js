@@ -97,8 +97,7 @@ export const Ship = Bookshelf.Model.extend({
 				logger.warning('Could not emit shipUpdated when Odysseus ship model was updated');
 				return;
 			}
-			io.emit('shipUpdated', await Ship.forge({ id: 'odysseus' })
-				.fetchWithRelated({ withGeometry: true }));
+			io.emit('shipUpdated', await model.fetchWithRelated({ withGeometry: true }));
 		});
 	},
 	position: function () {

@@ -1,5 +1,7 @@
 import Bookshelf from '../../db';
+import { getSocketIoClient } from '../index';
 import { Person } from './person';
+import { logger } from '../logger';
 
 /* eslint-disable object-shorthand */
 
@@ -20,6 +22,22 @@ const postWithRelated = ['author'];
 export const Post = Bookshelf.Model.extend({
 	tableName: 'post',
 	hasTimestamps: true,
+	initialize() {
+		// Emit during 'destroying' instead of 'destroyed' since 'destroyed' event
+		// no longer has access to the model id
+		this.on('destroying', model => {
+			logger.success('Deleted post', model.get('id'));
+			getSocketIoClient().emit('postDeleted', { id: model.get('id') });
+		});
+		this.on('created', model => {
+			logger.success('Created new post', model.get('id'));
+			getSocketIoClient().emit('postAdded', model);
+		});
+		this.on('updated', model => {
+			logger.success('Updated post', model.get('id'));
+			getSocketIoClient().emit('postUpdated', model);
+		});
+	},
 	author: function () {
 		return this.hasOne(Person, 'id', 'person_id');
 	},

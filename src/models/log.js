@@ -1,5 +1,6 @@
 import Bookshelf from '../../db';
 import { getSocketIoClient } from '../index';
+import { logger } from '../logger';
 
 /* eslint-disable object-shorthand */
 
@@ -17,13 +18,18 @@ export const LogEntry = Bookshelf.Model.extend({
 	tableName: 'ship_log',
 	hasTimestamps: true,
 	initialize() {
-		this.on('destroyed', model => {
+		// Emit during 'destroying' instead of 'destroyed' since 'destroyed' event
+		// no longer has access to the model id
+		this.on('destroying', model => {
+			logger.success('Deleted log entry', model.get('id'));
 			getSocketIoClient().emit('logEntryDeleted', { id: model.get('id') });
 		});
 		this.on('created', model => {
+			logger.success('Created new log entry', model.get('id'));
 			getSocketIoClient().emit('logEntryAdded', model);
 		});
 		this.on('updated', model => {
+			logger.success('Updated log entry', model.get('id'));
 			getSocketIoClient().emit('logEntryUpdated', model);
 		});
 	}

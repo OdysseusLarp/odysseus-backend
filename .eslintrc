@@ -75,10 +75,7 @@
             }
         ],
         "camelcase": [
-            2,
-            {
-                "properties": "never"
-            }
+            0
         ],
         "brace-style": [
             2,
