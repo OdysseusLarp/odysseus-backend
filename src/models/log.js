@@ -21,15 +21,15 @@ export const LogEntry = Bookshelf.Model.extend({
 		// Emit during 'destroying' instead of 'destroyed' since 'destroyed' event
 		// no longer has access to the model id
 		this.on('destroying', model => {
-			logger.success('Deleted log entry', model.get('id'));
+			logger.success('Deleted log entry', model.get('id'), model.get('type'), model.get('message'));
 			getSocketIoClient().emit('logEntryDeleted', { id: model.get('id') });
 		});
 		this.on('created', model => {
-			logger.success('Created new log entry', model.get('id'));
+			logger.success('Created new log entry', model.get('id'), model.get('type'), model.get('message'));
 			getSocketIoClient().emit('logEntryAdded', model);
 		});
 		this.on('updated', model => {
-			logger.success('Updated log entry', model.get('id'));
+			logger.success('Updated log entry', model.get('id'), model.get('type'), model.get('message'));
 			getSocketIoClient().emit('logEntryUpdated', model);
 		});
 	}
