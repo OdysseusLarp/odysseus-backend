@@ -114,6 +114,13 @@ function handleTransition(jump, currentStatus, previousStatus) {
 			shipLogger.error(`Failed to calculate jump coordinates`);
 			break;
 
+		case 'preparation>ready_to_prep':
+		case 'prep_complete>ready_to_prep':
+		case 'ready>ready_to_prep':
+			dmx.fireEvent(dmx.CHANNELS.JumpRejected);
+			shipLogger.warning(`Jump process was cancelled`);
+			break;
+
 		case 'calculating>preparation':
 			dmx.fireEvent(dmx.CHANNELS.JumpApproved);
 			logger.info(`Initializing jump drive tasks`);
