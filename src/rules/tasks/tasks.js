@@ -5,16 +5,20 @@ import { store } from '../../store/store';
 import { logger } from '../../logger';
 import { interval, timeout } from '../helpers';
 import { get } from 'lodash';
+import Handlebars from 'handlebars';
 
 /**
  * Mark a task as broken and commit to store.
  *
  * @param {*} task Task to mark as broken
  */
-export function setTaskBroken(task) {
+export function setTaskBroken(task, ctx) {
 	task = { ...task };
 	task.status = 'broken';
 	task.sort = Date.now();
+	if (task.description_template && ctx) {
+		task.description =  Handlebars.compile(task.description_template)(ctx);
+	}
 	timeout(() => {
 		store.dispatch({
 			type: 'SET_DATA',
@@ -34,15 +38,18 @@ export function setTaskBroken(task) {
  *
  * @param {*} task Task to mark as calibrating
  */
-export function setTaskCalibrating(task) {
+export function setTaskCalibrating(task, ctx) {
 	task = { ...task };
 	if (!task.calibrationCount || !task.calibrationTime) {
-		setTaskFixed(task);
+		setTaskFixed(task, ctx);
 	} else {
 		task.status = 'calibrating';
 		task.calibrationRemaining = new Array(task.calibrationCount).fill(task.calibrationTime);
 		task.calibrationSpeed = task.calibrationRemaining.map(e => Math.random() * 0.5 + 0.8);
 		task.sort = Date.now();
+		if (task.description_template && ctx) {
+			task.description =  Handlebars.compile(task.description_template)(ctx);
+		}
 		timeout(() => {
 			store.dispatch({
 				type: 'SET_DATA',
@@ -59,11 +66,14 @@ export function setTaskCalibrating(task) {
  *
  * @param {*} task Task to mark as fixed
  */
-export function setTaskFixed(task) {
+export function setTaskFixed(task, ctx) {
 	task = { ...task };
 	task.status = 'fixed';
 	task.fixed_at = Date.now();
 	task.sort = -task.fixed_at;
+	if (task.description_template && ctx) {
+		task.description =  Handlebars.compile(task.description_template)(ctx);
+	}
 	timeout(() => {
 		store.dispatch({
 			type: 'SET_DATA',

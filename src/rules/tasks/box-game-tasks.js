@@ -19,13 +19,13 @@ function updateTask(blob, data) {
 		if (task.status !== 'broken') {
 			logger.info(`Marking task '${blob.task}' as broken based on ` +
 				`${blob.type} '${blob.id}' status '${blob.status}'`);
-			setTaskBroken(task);
+			setTaskBroken(task, blob.context);
 		}
 	} else {
 		if (task.status === 'broken') {
 			logger.info(`Marking task '${blob.task}' as calibrating based on ` +
 				`${blob.type} '${blob.id}' status '${blob.status}'`);
-			setTaskCalibrating(task);
+			setTaskCalibrating(task, blob.context);
 		}
 	}
 }
