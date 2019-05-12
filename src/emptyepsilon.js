@@ -45,6 +45,22 @@ const { EMPTY_EPSILON_HOST, EMPTY_EPSILON_PORT } = process.env,
 		alertLevel: 'getAlertLevel()'
 	};
 
+/**
+ * @typedef EmptyEpsilonCommand
+ * @property {enum} command.required - Command - eg: setSystemHealth,setSystemHeat,setWeaponStorage,setAlertLevel
+ * @property {enum} target - Target (not needed for setAlertLevel) - eg: reactor,beamweapons,missilesystem,maneuver,impulse,warp,jumpdrive,frontshield,rearshield,homing,nuke,mine,emp,hvli
+ * @property {object} value.required - Value, integer for weapon counts, float for health/heat (0.5 == 50%), normal/yellow/red for alert level - eg: 1
+ */
+
+/**
+ * Send a command to EmptyEpsilon to mutate game state
+ * @route PUT /state
+ * @group EmptyEpsilon - EmptyEpsilon integration
+ * @consumes application/json
+ * @produces application/json
+ * @param {EmptyEpsilonCommand.model} command.body
+ * @returns {object} 204 - Empty response
+ */
 export const setStateRouteHandler = handleAsyncErrors((req, res) => {
 	const { command, target, value } = req.body;
 	const client = getEmptyEpsilonClient();
@@ -183,11 +199,10 @@ export class EmptyEpsilonClient {
 	async pushFullGameState(state) {
 		const commands = fullStateToCommands(state);
 		const alertLevel = alertStates.get(state.general.alertLevel);
-		const res = await Promise.all([
+		await Promise.all([
 			...commands.map(({ command, target, value }) => this.setGameState(command, target, value)),
 			this.setAlertLevel(alertLevel)
 		]);
-		console.log('Done =>', res);
 		return { success: true };
 	}
 }

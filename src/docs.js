@@ -16,7 +16,7 @@ const options = {
 		securityDefinitions: {}
 	},
 	basedir: __dirname,
-	files: ['./routes/**/*.js', './models/**/*.js', './index.js', './messaging.js']
+	files: ['./routes/**/*.js', './models/**/*.js', './index.js', './messaging.js', './emptyepsilon.js']
 };
 
 

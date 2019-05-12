@@ -57,7 +57,12 @@ app.use('/messaging', messaging);
 // Empty Epsilon routes
 app.put('/state', setStateRouteHandler);
 
-// Empty Epsilon full state push route
+/**
+ * Push the full state from ship/ee data store to EmptyEpsilon. This will completely overwrite the current EmptyEpsilon state.
+ * @route POST /state/full-push
+ * @group EmptyEpsilon - EmptyEpsilon integration
+ * @returns {object} 200 - Object containing success: true/false
+ */
 app.post('/state/full-push', handleAsyncErrors(async (req, res) => {
 	const state = getData('ship', 'ee');
 	if (isEmpty(state)) throw new Error('Empty Epsilon state is empty');

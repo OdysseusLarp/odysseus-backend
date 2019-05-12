@@ -22,6 +22,21 @@ Backend for multiple systems used in Odysseus LARP.
 ## REST APIs
 REST API routes are documented in Swagger UI accessible via `/docs` route.
 
+### Empty Epsilon integration
+Backend will poll data from EmptyEpsilon and store it in `ship/ee` data store. Metadata related to the integration state (is connection active, possible error messages) are stored in `ship/ee_metadata` data store. Target EmptyEpsilon server and polling frequency needs to be set up in the `.env` file:
+
+```
+EMPTY_EPSILON_HOST=localhost
+EMPTY_EPSILON_PORT=8080
+EMPTY_EPSILON_UPDATE_INTERVAL_MS=1000
+```
+
+If connection details are not provided in the config, the backend will start a very simple emulated server. It keeps healths/heats/weapon counts in memory (initial values are read from `fixtures/emptyepsilon.js`) and they can be read and updated by using the API.
+
+EmptyEpsilon state can be mutated by sending single commands as PUT requests to `/state` route. Check `/state` route and `EmptyEpsilonCommand` model in Swagger docs for more. Current state in `ship/ee` data store can be pushed to EmptyEpsilon by making a POST request to `/state/full-push`.
+
+EmptyEpsilon integration can be paused by setting `ee_sync_enabled` to `false` in `ship/metadata` data store, and enabled again by setting the value to `true`.
+
 ## Socket.io APIs
 
 ### Generic data store
@@ -37,4 +52,3 @@ Events fired by server are:
 
     'dataUpdate', type, id, {...new content...}
     'dataDelete', type, id
-
