@@ -11,12 +11,7 @@ const dataReducer = createReducer({}, {
 
 		newData.id = id;
 		newData.type = type;
-		if (oldData.created_at) {
-			newData.created_at = oldData.created_at;
-		} else {
-			newData.created_at = new Date().toISOString();
-		}
-		newData.updated_at = new Date().toISOString();
+		newData.updated_at = Date.now();
 		if (typeof oldData.version !== 'number') {
 			newData.version = 1;
 		} else {

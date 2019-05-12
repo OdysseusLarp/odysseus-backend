@@ -64,6 +64,37 @@ function getReadableJumpTarget(coordinates) {
 	return targetPlanetName ? `${gridName} (orbit ${targetPlanetName})` : gridName;
 }
 
+function areJumpDriveTasksDone() {
+	const tasks = store.getState().data.task;
+	return (tasks.jump_drive_spectral_calibration.status === 'fixed') &&
+	  (tasks.jump_drive_crystal.status === 'fixed');
+}
+
+function setupJumpDriveTasks() {
+	const boxes = store.getState().data.box;
+	// Spectral calibration + new color
+	if (boxes.jump_drive_spectral_calibration) {
+		saveBlob({
+			...boxes.jump_drive_spectral_calibration,
+			status: 'broken',
+			context: {
+				color: (Math.random() < 0.5 ? 'red' : 'blue')  // FIXME: Proper values, do not allow choosing previous value
+			}
+		});
+	} else {
+		logger.error('No box with id \'jump_drive_spectral_calibration\'');
+	}
+	// Crystal installation
+	if (boxes.jump_drive_crystal) {
+		saveBlob({
+			...boxes.jump_drive_crystal,
+			status: 'broken',
+		});
+	} else {
+		logger.error('No box with id \'jump_drive_crystal\'');
+	}
+}
+
 function handleTransition(jump, currentStatus, previousStatus) {
 	logger.info(`Jump drive transition ${previousStatus} -> ${currentStatus}`);
 	const lastJump = jump.last_jump || Date.now();
@@ -114,11 +145,18 @@ function handleTransition(jump, currentStatus, previousStatus) {
 			shipLogger.error(`Failed to calculate jump coordinates`);
 			break;
 
+		case 'preparation>ready_to_prep':
+		case 'prep_complete>ready_to_prep':
+		case 'ready>ready_to_prep':
+			dmx.fireEvent(dmx.CHANNELS.JumpRejected);
+			shipLogger.warning(`Jump process was cancelled`);
+			break;
+
 		case 'calculating>preparation':
 			dmx.fireEvent(dmx.CHANNELS.JumpApproved);
 			logger.info(`Initializing jump drive tasks`);
 			shipLogger.success(`Jump coordinates have been calculated`);
-			// FIXME: Add tasks for engineers
+			setupJumpDriveTasks();
 			break;
 
 		case 'preparation>prep_complete':
@@ -203,7 +241,17 @@ function handleStatic(jump) {
 			break;
 
 		case 'preparation':
-			// handled elsewhere
+			// Avoid race condition when transitioning to 'preparation' and tasks are not yet set up
+			if (Date.now() > jump.updated_at + 500) {
+				if (areJumpDriveTasksDone()) {
+					saveBlob({
+						...jump,
+						status: 'prep_complete'
+					});
+				}
+			} else {
+				logger.info('Skipping \'preparation\' check due to updated_at being too recent');
+			}
 			break;
 
 		case 'prep_complete':
