@@ -1,7 +1,7 @@
 import Bookshelf from '../../db';
 
 /**
- * @typedef {object} Box
+ * @typedef Box
  * @property {string} id
  * @property {object} value.required - Any JSON data
  * @property {integer} version.required - Version number used for optimistic locking

@@ -6,7 +6,7 @@ import { logger } from '../logger';
 /* eslint-disable object-shorthand */
 
 /**
- * @typedef {object} Grid
+ * @typedef Grid
  * @property {string} id - ID
  * @property {string} name.required - Name
  * @property {integer} zoom - Zoom level
@@ -46,7 +46,7 @@ export const Grid = Bookshelf.Model.extend({
 });
 
 /**
- * @typedef {object} GridAction
+ * @typedef GridAction
  * @property {string} id - ID
  * @property {string} grid_id.required - Grid ID
  * @property {string} ship_id.required - Ship ID
@@ -72,7 +72,7 @@ function getColumns(withGeometry) {
 }
 
 /**
- * @typedef {object} Ship
+ * @typedef Ship
  * @property {string} id.required - ID
  * @property {string} name.required - Name
  * @property {string} status.required - Status

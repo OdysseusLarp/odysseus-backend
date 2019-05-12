@@ -1,7 +1,7 @@
 import Bookshelf from '../../db';
 
 /**
- * @typedef {object} Store
+ * @typedef Store
  * @property {string} id.required
  * @property {object} data.required - JSON Data
  * @property {string} created_at - Date-time when object was created

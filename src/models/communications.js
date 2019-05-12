@@ -6,7 +6,7 @@ import { Person } from './person';
 const messageWithRelated = ['sender', 'receiver', 'channel'];
 
 /**
- * @typedef {object} ComMessage
+ * @typedef ComMessage
  * @property {integer} id - ID
  * @property {string} person_id.required - Person ID of the message sender
  * @property {string} target_person - Person ID of the receiver (if private message)
@@ -59,7 +59,7 @@ export const ComMessage = Bookshelf.Model.extend({
 });
 
 /**
- * @typedef {object} ComChannel
+ * @typedef ComChannel
  * @property {string} id - Channel ID
  * @property {string} description - Channel description
  * @property {string} created_at - ISO 8601 String Date-time when object was created
@@ -71,7 +71,7 @@ export const ComChannel = Bookshelf.Model.extend({
 });
 
 /**
- * @typedef {object} ComChannelEvent
+ * @typedef ComChannelEvent
  * @property {integer} id - ID
  * @property {string} type - Event type
  * @property {object} metadata - Event metadata

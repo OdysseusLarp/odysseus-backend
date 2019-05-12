@@ -7,7 +7,7 @@ const shipWithRelated = [
 ];
 
 /**
- * @typedef {object} MapObject
+ * @typedef MapObject
  * @property {string} id - ID
  * @property {string} the_geom - Position of the ship as a geometry point in EPSG:3857 projection
  * @property {string} created_at - Date-time when object was created

@@ -4,7 +4,7 @@ import { Person } from './person';
 /* eslint-disable object-shorthand */
 
 /**
- * @typedef {object} VoteOption
+ * @typedef VoteOption
  * @property {integer} id - ID
  * @property {integer} vote_id.required - Vote ID
  * @property {string} text.required - Description of the option
@@ -17,7 +17,7 @@ export const VoteOption = Bookshelf.Model.extend({
 });
 
 /**
- * @typedef {object} VoteEntry
+ * @typedef VoteEntry
  * @property {string} person_id.required - Person ID
  * @property {integer} vote_id.required - Vote ID
  * @property {integer} vote_option_id.required - Vote option ID
@@ -33,7 +33,7 @@ export const VoteEntry = Bookshelf.Model.extend({
 const voteWithRelated = ['author', 'entries', 'options'];
 
 /**
- * @typedef {object} Vote
+ * @typedef Vote
  * @property {integer} id - ID
  * @property {string} person_id - ID of person who created the vote
  * @property {string} title.required - Title

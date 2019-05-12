@@ -4,7 +4,7 @@ import { Ship } from './ship';
 /* eslint-disable object-shorthand */
 
 /**
- * @typedef {object} MedicalData
+ * @typedef MedicalData
  * @property {string} person_id.required - Citizen ID of the person that the data belongs to
  * @property {string} blood_type - Blood type
  * @property {string} medication - Medication
@@ -21,7 +21,7 @@ export const MedicalData = Bookshelf.Model.extend({
 });
 
 /**
- * @typedef {object} MedicalEntry
+ * @typedef MedicalEntry
  * @property {integer} id - Incrementing integer used as primary key,
  * linked to person_id in joining table person_medical_entry
  * @property {string} time - Time
@@ -35,7 +35,7 @@ export const MedicalEntry = Bookshelf.Model.extend({
 });
 
 /**
- * @typedef {object} MilitaryData
+ * @typedef MilitaryData
  * @property {string} person_id.required - Citizen ID of the person that the data belongs to
  * @property {string} rank - Military rank
  * @property {string} unit - Military unit
@@ -59,7 +59,7 @@ const withRelated = [
 ];
 
 /**
- * @typedef {object} Person
+ * @typedef Person
  * @property {string} id - Generated ID used in the system internally
  * @property {string} bio_id.required - Bio ID used for hard authentication
  * @property {string} card_id.required - Card ID used for soft authentication

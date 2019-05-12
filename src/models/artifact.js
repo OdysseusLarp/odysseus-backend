@@ -4,7 +4,7 @@ import { Person } from './person';
 /* eslint-disable object-shorthand */
 
 /**
- * @typedef {object} ArtifactResearch
+ * @typedef ArtifactResearch
  * @property {integer} id - ID
  * @property {integer} artifact_id.required - Artifact ID
  * @property {string} person_id - ID of the Person who performed the research
@@ -25,7 +25,7 @@ export const ArtifactResearch = Bookshelf.Model.extend({
 const artifactWithRelated = ['research', 'research.discoverer'];
 
 /**
- * @typedef {object} Artifact
+ * @typedef Artifact
  * @property {integer} id - ID
  * @property {string} name.required - Name
  * @property {string} created_at - ISO 8601 String Date-time when object was created

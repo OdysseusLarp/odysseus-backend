@@ -8,7 +8,7 @@ import { logger } from '../logger';
 const postWithRelated = ['author'];
 
 /**
- * @typedef {object} Post
+ * @typedef Post
  * @property {integer} id - ID
  * @property {string} title.required - Title / Headline
  * @property {string} body.required - Post body

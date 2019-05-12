@@ -5,7 +5,7 @@ import { logger } from '../logger';
 /* eslint-disable object-shorthand */
 
 /**
- * @typedef {object} LogEntry
+ * @typedef LogEntry
  * @property {integer} id - Log Entry ID
  * @property {string} ship_id - Ship ID
  * @property {string} message.required - Human readable log message
