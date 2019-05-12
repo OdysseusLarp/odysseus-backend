@@ -6,6 +6,7 @@ initState({});
 
 require('./box');
 require('./ship');
+require('./game');
 
 console.log('Saving the Redux state');
 saveState(store.getState().data, 'data').then(() => process.exit());
