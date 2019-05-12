@@ -37,7 +37,7 @@
 		"dotenv": "^6.0.0",
 		"dotenv-cli": "^1.4.0",
 		"express": "^4.16.3",
-		"express-swagger-generator": "^1.1.14",
+		"express-swagger-generator": "git+https://github.com/nicou/express-swagger-generator.git",
 		"handlebars": "^4.1.2",
 		"http-errors": "^1.7.1",
 		"knex": "^0.15.2",
