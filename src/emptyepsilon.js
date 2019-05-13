@@ -47,8 +47,8 @@ const { EMPTY_EPSILON_HOST, EMPTY_EPSILON_PORT } = process.env,
 
 /**
  * @typedef EmptyEpsilonCommand
- * @property {enum} command.required - Command - eg: setSystemHealth,setSystemHeat,setWeaponStorage,setAlertLevel
- * @property {enum} target - Target (not needed for setAlertLevel) - eg: reactor,beamweapons,missilesystem,maneuver,impulse,warp,jumpdrive,frontshield,rearshield,homing,nuke,mine,emp,hvli
+ * @property {object} command.required - Command - eg: setSystemHealth,setSystemHeat,setWeaponStorage,setAlertLevel
+ * @property {object} target - Target (not needed for setAlertLevel) - eg: reactor,beamweapons,missilesystem,maneuver,impulse,warp,jumpdrive,frontshield,rearshield,homing,nuke,mine,emp,hvli
  * @property {object} value.required - Value, integer for weapon counts, float for health/heat (0.5 == 50%), normal/yellow/red for alert level - eg: 1
  */
 
