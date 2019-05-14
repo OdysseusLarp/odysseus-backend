@@ -175,7 +175,9 @@ export async function validateJumpTarget(shipId, metadata) {
 	}
 	const ship = await Ship.forge({ id: shipId }).fetchWithRelated();
 	if (!ship) throw new Error('Invalid ship id');
-	if (ship.get('grid_id') === grid.get('id')) throw new Error('Ship is already in given grid');
+	if (ship.get('grid_id') === grid.get('id')) {
+		return { isValid: false, message: 'Given planet not found in target grid' };
+	}
 	if (!validateRange(ship, grid, 'jump_range')) {
 		if (shouldAddLogEntries) addShipLogEntry('ERROR',
 			`Jump initialization failed: Target coordinates too far away.`, shipId);
