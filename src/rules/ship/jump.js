@@ -161,7 +161,7 @@ function handleTransition(jump, currentStatus, previousStatus) {
 
 		case 'preparation>prep_complete':
 			dmx.fireEvent(dmx.CHANNELS.JumpPrepEnd);
-			shipLogger.success(`Jump drive preparations have been completed`);
+			shipLogger.success(`Jump drive preparations have been completed`, { showPopup: true });
 			break;
 
 		case 'prep_complete>ready':
@@ -182,6 +182,7 @@ function handleTransition(jump, currentStatus, previousStatus) {
 		case 'prep_complete>jump_initiated':
 		case 'ready>jump_initiated':
 			// Handled below in if-statement
+			shipLogger.warning(`Jump sequence initiated`);
 			break;
 
 		case 'jump_initiated>jumping': {
