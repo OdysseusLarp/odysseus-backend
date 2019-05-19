@@ -61,3 +61,43 @@ saveBlob({
 	ee_sync_enabled: true,
 	jump_ui_enabled: true
 });
+
+// Generated using emulator
+saveBlob({
+	id: 'ee',
+	type: 'ship',
+	systems: {
+		heat: {
+			reactorHeat: 0,
+			rearshieldHeat: 0,
+			missilesystemHeat: 0,
+			maneuverHeat: 0,
+			beamweaponsHeat: 0,
+			frontshieldHeat: 0,
+			impulseHeat: 0,
+			jumpdriveHeat: 0,
+			warpHeat: 0
+		},
+		health: {
+			frontshieldHealth: 1,
+			jumpdriveHealth: 1,
+			rearshieldHealth: 1,
+			impulseHealth: 1,
+			missilesystemHealth: 1,
+			reactorHealth: 1,
+			maneuverHealth: 1,
+			warpHealth: 1,
+			beamweaponsHealth: 1
+		}
+	},
+	weapons: {
+		homingCount: 12,
+		nukeCount: 4,
+		hvliCount: 20,
+		mineCount: 8,
+		empCount: 6
+	},
+	general: {
+		alertLevel: 'Normal'
+	},
+});
