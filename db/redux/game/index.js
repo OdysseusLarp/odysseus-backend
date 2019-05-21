@@ -1,4 +1,4 @@
 import { saveBlob } from '../helpers';
-import reactor from './reactor';
+import eeHealth from './eeHealthTasks';
 
-reactor.forEach(saveBlob);
+eeHealth.forEach(saveBlob);

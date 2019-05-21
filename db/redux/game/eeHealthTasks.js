@@ -17,6 +17,9 @@ for (let i=0; i < 20; i++) {
 	blobs.push({
 		type: 'task',
 		id,
+		eeType: 'reactor',
+		eeHealth: 0.05,  // fixes 5%
+		game: id,
 		status: 'initial',
 		calibrationTime: 0,
 		calibrationCount: 0,

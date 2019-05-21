@@ -114,3 +114,7 @@ export function* brownianGenerator(max, multiplier = max/10) {
 export function clamp(num, min, max) {
 	return num < min ? min : num > max ? max : num;
 }
+
+export function chooseRandom(array) {
+	return array[Math.floor(Math.random() * array.length)];
+}

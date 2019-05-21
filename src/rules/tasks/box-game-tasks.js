@@ -1,6 +1,7 @@
-import { watch } from '../../store/store';
+import { watch, store } from '../../store/store';
 import { logger } from '../../logger';
 import { setTaskBroken, setTaskCalibrating } from './tasks';
+import { interval } from '../helpers';
 
 
 function updateTask(blob, data) {
@@ -33,11 +34,26 @@ function updateTask(blob, data) {
 /**
  * Mark box tasks as broken or calibrating automatically.
  */
-watch(['data'], (data) => {
-	for (const blob of Object.values(data.box || [])) {
-		updateTask(blob, data);
+watch(['data'], (data, previous) => {
+	for (const id of Object.keys(data.box || [])) {
+		if (data.box[id].status !== previous.box[id].status) {
+			updateTask(data.box[id], data);
+		}
 	}
-	for (const blob of Object.values(data.game || [])) {
-		updateTask(blob, data);
+	for (const id of Object.keys(data.game || [])) {
+		if (data.game[id].status !== previous.game[id].status) {
+			updateTask(data.game[id], data);
+		}
 	}
 });
+
+// Check regularly just for safety
+interval(() => {
+	const data = store.getState().data;
+	for (const id of Object.keys(data.box || [])) {
+		updateTask(data.box[id], data);
+	}
+	for (const id of Object.keys(data.game || [])) {
+		updateTask(data.game[id], data);
+	}
+}, 10000);
