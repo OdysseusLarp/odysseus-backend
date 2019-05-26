@@ -59,6 +59,9 @@ const odysseusMetadata = {
 };
 
 exports.seed = async knex => {
+	// set current person ships to null before dropping ships
+	await knex.raw(`UPDATE person SET ship_id = NULL`);
+
 	await knex('event').del();
 	await knex('ship').del();
 	await knex('grid').del();
