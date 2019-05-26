@@ -4,7 +4,7 @@ discovery,ESS Discovery,Present and accounted for,5236,,,,0101000020110F000009E1
 memory,ESS Memory,Present and accounted for,5236,,,,0101000020110F000009E118F1906341412C1293A78C064EC1,Corvette,Civilian,0,2,,FALSE
 ravager,OSS Ravager,Present and accounted for,5236,,,,0101000020110F000009E118F1906341412C1293A78C064EC1,Corvette,Civilian,0,1,,FALSE
 vulture,OSS Vulture,Present and accounted for,5236,,,,0101000020110F000009E118F1906341412C1293A78C064EC1,Corvette,Civilian,0,2,Cargo ship,FALSE
-centurio,CSS Centurio,Present and accounted for,5236,,,,0101000020110F000009E118F1906341412C1293A78C064EC1,Cruiser,Civilian,0,0,,FALSE
+centurion,CSS Centurion,Present and accounted for,5236,,,,0101000020110F000009E118F1906341412C1293A78C064EC1,Cruiser,Civilian,0,0,,FALSE
 cyclone,CSS Cyclone,Present and accounted for,5236,,,,0101000020110F000009E118F1906341412C1293A78C064EC1,Cruiser,Civilian,0,4,Transport ship,FALSE
 polaris,ESS Polaris,Present and accounted for,5236,,,,0101000020110F000009E118F1906341412C1293A78C064EC1,Cruiser,Civilian,0,2,Large transport ship,FALSE
 spectrum,ESS Spectrum,Present and accounted for,5236,,,,0101000020110F000009E118F1906341412C1293A78C064EC1,Cruiser,Civilian,0,0,Large transport ship,FALSE
