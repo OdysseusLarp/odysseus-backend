@@ -1,0 +1,29 @@
+id,name,status,grid_id,created_at,updated_at,metadata,the_geom,class,type,fighter_count,transporter_count,description,is_visible
+whirlwind,CSS Whirlwind,Present and accounted for,5236,,,,0101000020110F000009E118F1906341412C1293A78C064EC1,Corvette,Civilian,0,3,Large cargo ship,FALSE
+discovery,ESS Discovery,Present and accounted for,5236,,,,0101000020110F000009E118F1906341412C1293A78C064EC1,Corvette,Civilian,0,0,Science vessel,FALSE
+memory,ESS Memory,Present and accounted for,5236,,,,0101000020110F000009E118F1906341412C1293A78C064EC1,Corvette,Civilian,0,2,,FALSE
+ravager,OSS Ravager,Present and accounted for,5236,,,,0101000020110F000009E118F1906341412C1293A78C064EC1,Corvette,Civilian,0,1,,FALSE
+vulture,OSS Vulture,Present and accounted for,5236,,,,0101000020110F000009E118F1906341412C1293A78C064EC1,Corvette,Civilian,0,2,Cargo ship,FALSE
+centurio,CSS Centurio,Present and accounted for,5236,,,,0101000020110F000009E118F1906341412C1293A78C064EC1,Cruiser,Civilian,0,0,,FALSE
+cyclone,CSS Cyclone,Present and accounted for,5236,,,,0101000020110F000009E118F1906341412C1293A78C064EC1,Cruiser,Civilian,0,4,Transport ship,FALSE
+polaris,ESS Polaris,Present and accounted for,5236,,,,0101000020110F000009E118F1906341412C1293A78C064EC1,Cruiser,Civilian,0,2,Large transport ship,FALSE
+spectrum,ESS Spectrum,Present and accounted for,5236,,,,0101000020110F000009E118F1906341412C1293A78C064EC1,Cruiser,Civilian,0,0,Large transport ship,FALSE
+immortal,OSS Immortal,Present and accounted for,5236,,,,0101000020110F000009E118F1906341412C1293A78C064EC1,Cruiser,Civilian,0,3,Worker transport ship,FALSE
+starfall,OSS Starfall,Present and accounted for,5236,,,,0101000020110F000009E118F1906341412C1293A78C064EC1,Cruiser,Civilian,0,2,Prison ship,FALSE
+aurora,ESS Aurora,Present and accounted for,5236,,,,0101000020110F000009E118F1906341412C1293A78C064EC1,Battlecruiser,Military,69,2,Flagship,FALSE
+halo,ESS Halo,Present and accounted for,5236,,,,0101000020110F000009E118F1906341412C1293A78C064EC1,Battlecruiser,Military,51,0,,FALSE
+burro,OSS Burro,Present and accounted for,5236,,,,0101000020110F000009E118F1906341412C1293A78C064EC1,Cargoship,Military,0,0,Cargoship,FALSE
+odysseus,ESS Odysseus,Present and accounted for,5254,,,,0101000020110F000071416E1D82344B4140FB654BF3CA51C1,Corvette,Military,3,2,,TRUE
+taurus,CSS Taurus,Present and accounted for,5236,,,,0101000020110F000009E118F1906341412C1293A78C064EC1,Corvette,Military,10,2,,FALSE
+bluecoat,ESS Bluecoat,Present and accounted for,5236,,,,0101000020110F000009E118F1906341412C1293A78C064EC1,Corvette,Military,0,2,,FALSE
+envoy,ESS Envoy,Present and accounted for,5236,,,,0101000020110F000009E118F1906341412C1293A78C064EC1,Corvette,Military,4,1,,FALSE
+valkyrie,ESS Valkyrie,Present and accounted for,5236,,,,0101000020110F000009E118F1906341412C1293A78C064EC1,Corvette,Military,9,1,,FALSE
+harbinger,ESS Harbinger,Present and accounted for,5236,,,,0101000020110F000009E118F1906341412C1293A78C064EC1,Cruiser,Military,16,6,,FALSE
+inferno,ESS Inferno,Present and accounted for,5236,,,,0101000020110F000009E118F1906341412C1293A78C064EC1,Cruiser,Military,27,2,,FALSE
+valor,ESS Valor,Present and accounted for,5236,,,,0101000020110F000009E118F1906341412C1293A78C064EC1,Cruiser,Military,20,4,,FALSE
+warrior,ESS Warrior,Present and accounted for,5236,,,,0101000020110F000009E118F1906341412C1293A78C064EC1,Cruiser,Military,18,0,,FALSE
+aries,ESS Aries,Present and accounted for,5236,,,,0101000020110F000009E118F1906341412C1293A78C064EC1,Scoutship,Military,0,1,,FALSE
+arthas,ESS Arthas,Present and accounted for,5236,,,,0101000020110F000009E118F1906341412C1293A78C064EC1,Scoutship,Military,0,0,,FALSE
+prophet,CSS Prophet,Present and accounted for,5236,,,,0101000020110F000009E118F1906341412C1293A78C064EC1,Scoutship,Civilian,0,0,Faith of the high science ship,FALSE
+karma,OSS Karma,Present and accounted for,5236,,,,0101000020110F000009E118F1906341412C1293A78C064EC1,Scoutship,Civilian,0,0,Unregistered,FALSE
+marauder,OSS Marauder,Present and accounted for,5236,,,,0101000020110F000009E118F1906341412C1293A78C064EC1,Scoutship,Civilian,0,0,,FALSE
