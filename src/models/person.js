@@ -23,6 +23,15 @@ const withRelated = [
 ];
 
 /**
+ * @typedef PersonCollection
+ * @property {Array.<Person>} persons - Array of persons
+ * @property {integer} rowCount - Number of rows before pagination
+ * @property {integer} pageCount - Number of pages
+ * @property {integer} page - Page number
+ * @property {integer} pageSize - Page size
+ */
+
+/**
  * @typedef Person
  * @property {string} id - Generated ID used in the system internally
  * @property {string} bio_id.required - Bio ID used for hard authentication
@@ -72,8 +81,24 @@ export const Person = Bookshelf.Model.extend({
 	ship: function () {
 		return this.belongsTo(Ship, 'ship_id', 'id');
 	},
-	fetchAllWithRelated: function () {
-		return this.fetchAll({ withRelated });
+	fetchListPage: function ({ page, pageSize }) {
+		return this.fetchPage({
+			page,
+			pageSize,
+			columns: [
+				'id',
+				'first_name',
+				'last_name',
+				'dynasty',
+				'ship_id',
+				'status',
+				'home_planet',
+				'is_visible'
+			],
+			withRelated: [{
+				ship: qb => qb.column('id', 'name')
+			}]
+		});
 	},
 	fetchWithRelated: function () {
 		return this.fetch({ withRelated });

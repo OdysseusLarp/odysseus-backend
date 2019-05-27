@@ -1,18 +1,31 @@
 import { Router } from 'express';
-import { Person, MedicalData, MedicalEntry, MilitaryData } from '../models/person';
+import { Person, Entry } from '../models/person';
 import { handleAsyncErrors } from '../helpers';
-import { get } from 'lodash';
+import { get, pick } from 'lodash';
 const router = new Router();
 
+const DEFAULT_PERSON_PAGE = 1;
+const DEFAULT_PERSON_ENTRIES_PER_PAGE = 1000;
+
 /**
- * Get a list of all persons. Also contains their family, medical and military data.
- * Query parameters can contain fields to match exactly.
+ * Get a page of persons
  * @route GET /person
  * @group Person - Operations for person related data
- * @returns {Array.<Person>} 200 - List of all persons
+ * @param {integer} page.query - Page number
+ * @param {integer} entries.query - Amount of items returned per page
+ * @param {boolean} show_hidden.query - Should hidden persons be shown
+ * @returns {PersonCollection} 200 - Page of persons
  */
 router.get('/', handleAsyncErrors(async (req, res) => {
-	res.json(await Person.where(req.query).fetchAllWithRelated());
+	const page = parseInt(get(req.query, 'page', DEFAULT_PERSON_PAGE), 10);
+	const pageSize = parseInt(get(req.query, 'entries', DEFAULT_PERSON_ENTRIES_PER_PAGE), 10);
+	const is_visible = !(get(req.query, 'show_hidden') === 'true');
+	const persons = await Person.where({ is_visible }).fetchListPage({ page, pageSize });
+	const pagination = pick(get(persons, 'pagination', {}), ['rowCount', 'pageCount', 'page', 'pageSize']);
+	res.json({
+		persons,
+		...pagination
+	});
 }));
 
 /**
@@ -100,58 +113,18 @@ router.put('/:id/family', handleAsyncErrors(async (req, res) => {
 }));
 
 /**
- * Update medical data of a person by person id
- * @route PUT /person/{id}/medical/data
+ * Insert new entry for a person by person id
+ * @route POST /person/{id}/entry
  * @consumes application/json
  * @group Person - Operations for person related data
- * @param {string} id.path.required - Citizen ID of the person
- * @param {MedicalData.model} medical_data.body.required - MedicalData object fields to be updated
- * @returns {MedicalData.model} 200 - Updated MedicalData values
+ * @param {string} id.path.required - ID of the person
+ * @param {Entry.model} entry.body.required - Entry object fields to be updated
+ * @returns {Entry.model} 200 - Inserted Entry value
  */
-router.put('/:id/medical/data', handleAsyncErrors(async (req, res) => {
-	// TODO: Validate input
-	const medicalData = await MedicalData.forge({ person_id: req.params.id }).fetch();
-	if (!medicalData) throw new Error('Person medical data not found');
-	await medicalData.save(req.body, { method: 'update' });
-	res.json(medicalData);
-}));
-
-/**
- * Insert new medical entry for a person by person id
- * @route POST /person/{id}/medical/entry
- * @consumes application/json
- * @group Person - Operations for person related data
- * @param {string} id.path.required - Citizen ID of the person
- * @param {MedicalEntry.model} medical_entry.body.required - MedicalEntry object fields to be updated
- * @returns {MedicalEntry.model} 200 - Inserted MedicalEntry value
- */
-router.post('/:id/medical/entry', handleAsyncErrors(async (req, res) => {
+router.post('/:id/entry', handleAsyncErrors(async (req, res) => {
 	const { id } = req.params;
-	// TODO: Validate input
-	const person = await Person.forge({ id }).fetch();
-	if (!person) throw new Error('Person not found');
-	const medicalEntry = await MedicalEntry.forge().save(req.body, { method: 'insert' });
-	await person.medical_entries().attach(medicalEntry);
-	res.json(medicalEntry);
-}));
-
-/**
- * Update or insert military data of a person by person id
- * @route PUT /person/{id}/military
- * @consumes application/json
- * @group Person - Operations for person related data
- * @param {string} id.path.required - Citizen ID of the person
- * @param {MilitaryData.model} military_data.body.required - MilitaryData object fields to be updated
- * @returns {MilitaryData.model} 200 - Updated MilitaryData values
- */
-router.put('/:id/military', handleAsyncErrors(async (req, res) => {
-	const { id } = req.params;
-	// TODO: Validate input
-	let militaryData = await MilitaryData.forge({ person_id: id }).fetch();
-	if (militaryData) await militaryData.save(req.body);
-	else militaryData = await MilitaryData.forge().save(
-		{ person_id: id, ...req.body }, { method: 'insert' });
-	res.json(militaryData);
+	const entry = await Entry.forge().save({ person_id: id, ...req.body }, { method: 'insert' });
+	res.json(entry);
 }));
 
 export default router;
