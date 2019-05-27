@@ -76,8 +76,10 @@ function getColumns(withGeometry) {
  * @property {string} id.required - ID
  * @property {string} name.required - Name
  * @property {string} status.required - Status
- * @property {object} game_state - JSON representation of EmptyEpsilon state
+ * @property {integer} transporter_count - Transporter count
+ * @property {integer} fighter_count - Fighter count
  * @property {object} metadata - Ship metadata
+ * @property {boolean} is_visible - Has the ship been discovered yet
  * @property {integer} grid_id - ID of the grid the ship is currently located in
  * @property {string} type - Ship type like MILITARY, CARGO, RESEARCH etc.
  * @property {string} class - Ship class

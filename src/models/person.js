@@ -4,56 +4,20 @@ import { Ship } from './ship';
 /* eslint-disable object-shorthand */
 
 /**
- * @typedef MedicalData
- * @property {string} person_id.required - Citizen ID of the person that the data belongs to
- * @property {string} blood_type - Blood type
- * @property {string} medication - Medication
- * @property {string} immunization - Immunization
- * @property {string} allergies - Allergies
- * @property {string} medical_history - Medical history
+ * @typedef Entry
+ * @property {integer} id - Incrementing integer used as primary key
+ * @property {string} type - Entry type, e.g. - MILITARY, PERSONAL, MEDICAL
+ * @property {string} entry - Entry content
  * @property {string} created_at - Date-time when object was created
  * @property {string} updated_at - Date-time when object was last updated
  */
-export const MedicalData = Bookshelf.Model.extend({
-	tableName: 'person_medical_data',
-	idAttribute: 'person_id',
+export const Entry = Bookshelf.Model.extend({
+	tableName: 'person_entry',
 	hasTimestamps: true,
-});
-
-/**
- * @typedef MedicalEntry
- * @property {integer} id - Incrementing integer used as primary key,
- * linked to person_id in joining table person_medical_entry
- * @property {string} time - Time
- * @property {string} details - Details
- * @property {string} created_at - Date-time when object was created
- * @property {string} updated_at - Date-time when object was last updated
- */
-export const MedicalEntry = Bookshelf.Model.extend({
-	tableName: 'medical_entry',
-	hasTimestamps: true,
-});
-
-/**
- * @typedef MilitaryData
- * @property {string} person_id.required - Citizen ID of the person that the data belongs to
- * @property {string} rank - Military rank
- * @property {string} unit - Military unit
- * @property {string} remarks - Any remarks
- * @property {string} service_history - Military service history
- * @property {string} created_at - Date-time when object was created
- * @property {string} updated_at - Date-time when object was last updated
- */
-export const MilitaryData = Bookshelf.Model.extend({
-	tableName: 'person_military_data',
-	idAttribute: 'person_id',
-	hasTimestamps: true
 });
 
 const withRelated = [
-	'medical_data',
-	'medical_entries',
-	'military_data',
+	'entries',
 	'family',
 	'ship'
 ];
@@ -63,16 +27,31 @@ const withRelated = [
  * @property {string} id - Generated ID used in the system internally
  * @property {string} bio_id.required - Bio ID used for hard authentication
  * @property {string} card_id.required - Card ID used for soft authentication
+ * @property {string} citizen_id - Citizen ID, like HETU, no real use
  * @property {string} first_name.required - First name
  * @property {string} last_name.required - Last name
  * @property {string} ship_id - ID of the current ship where the person is located
  * @property {string} title - Title
  * @property {string} status - Current status
  * @property {string} occupation - Occupation
- * @property {string} home_planet.required - Home planet
+ * @property {string} home_planet - Home planet
  * @property {string} dynasty - Dynasty that the player belongs to
- * @property {string} dynasty_rank - Rank of the person in their dynasty
- * @property {integer} birth_year.required - Birth year of the person
+ * @property {integer} birth_year - Birth year of the person
+ * @property {string} religion - Religion
+ * @property {string} citizenship - Citizenship status
+ * @property {string} social_class - Social class
+ * @property {string} political_party - Political party
+ * @property {string} military_rank - Military rank
+ * @property {string} occupation - Occupation
+ * @property {string} military_remarks - Any previous military remarks
+ * @property {string} medical_fitness_level - Fitness level
+ * @property {integer} medical_last_fitness_check - Year when the last fitness check took place
+ * @property {string} medical_blood_type - Blood type (single letter)
+ * @property {string} medical_allergies - Any allergies
+ * @property {string} medical_active_conditions - Any active medical conditions
+ * @property {string} medical_current_medication - Any current medication
+ * @property {string} created_year - When the person was inserted into the system
+ * @property {string} is_visible - Is the person visible or not (have they been discovered)
  * @property {string} created_at - Date-time when object was created
  * @property {string} updated_at - Date-time when object was last updated
  */
@@ -84,14 +63,8 @@ export const Person = Bookshelf.Model.extend({
 			return `${this.get('first_name')} ${this.get('last_name')}`;
 		}
 	},
-	medical_data: function () {
-		return this.belongsTo(MedicalData, 'id', 'person_id');
-	},
-	medical_entries: function () {
-		return this.belongsToMany(MedicalEntry, 'person_medical_entry', 'person_id', 'entry_id');
-	},
-	military_data: function () {
-		return this.belongsTo(MilitaryData, 'id', 'person_id');
+	entries: function () {
+		return this.hasMany(Entry);
 	},
 	family: function () {
 		return this.belongsToMany(Person, 'person_family', 'person1_id', 'person2_id').withPivot(['relation']);
@@ -111,4 +84,3 @@ export const Person = Bookshelf.Model.extend({
 		).fetchAll();
 	}
 });
-
