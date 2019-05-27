@@ -1,4 +1,4 @@
-id,first_name,last_name,dunasty,ship_id,status,home_planet,is_visible
+id,first_name,last_name,dynasty,ship_id,status,home_planet,is_visible
 1,Jessika,Ignatiev,Tenacity,polaris,Present and accounted for,Ellarion,FALSE
 2,Demetria,Ilbert,Excellence,halo,Present and accounted for,Ellarion,FALSE
 ,Arkhip,Popov,Purity,polaris,Present and accounted for,Ellarion,FALSE
