@@ -78,7 +78,7 @@ async function parseSurvivors() {
 	const survivorsCsvPath = path.join(dataPath, 'survivors.csv');
 	const survivors = (await csv().fromFile(survivorsCsvPath)).map((s, id) => ({
 		...characterFields,
-		id: String(id),
+		id: String(id + 1),
 		...pick(s, ['first_name', 'last_name', 'dynasty', 'ship_id', 'status', 'home_planet']),
 		is_visible: s.is_visible === 'TRUE'
 	}));
