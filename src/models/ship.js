@@ -2,6 +2,7 @@ import Bookshelf, { knex } from '../../db';
 import { get } from 'lodash';
 import { getSocketIoClient } from '../index';
 import { logger } from '../logger';
+import { Person } from './person';
 
 /* eslint-disable object-shorthand */
 
@@ -71,6 +72,8 @@ function getColumns(withGeometry) {
 	return ['ship.*', knex.raw(`ST_AsGeoJSON(ship.the_geom)::jsonb AS geom`)];
 }
 
+const PERSON_IS_ALIVE_STATUS = 'Present and accounted for';
+
 /**
  * @typedef Ship
  * @property {string} id.required - ID
@@ -81,6 +84,7 @@ function getColumns(withGeometry) {
  * @property {object} metadata - Ship metadata
  * @property {boolean} is_visible - Has the ship been discovered yet
  * @property {integer} grid_id - ID of the grid the ship is currently located in
+ * @property {integer} person_count - Number of visible persons with 'Present and accounted for' status aboard the ship
  * @property {string} type - Ship type like MILITARY, CARGO, RESEARCH etc.
  * @property {string} class - Ship class
  * @property {string} the_geom - Position of the ship as a geometry point in EPSG:3857 projection
@@ -101,13 +105,25 @@ export const Ship = Bookshelf.Model.extend({
 			}
 			io.emit('shipUpdated', await model.fetchWithRelated({ withGeometry: true }));
 		});
+		this.on('fetching fetching:collection', (model, columns, options) => {
+			options.query.select(knex.raw(
+				`(SELECT COUNT(*) FROM person WHERE person.ship_id = ship.id AND person.is_visible IS TRUE AND person.status = ?) AS person_count`,
+				[PERSON_IS_ALIVE_STATUS]
+			));
+		});
 	},
 	position: function () {
 		return this.hasOne(Grid, 'id', 'grid_id');
 	},
+	persons: function () {
+		return this.hasMany(Person);
+	},
 	fetchAllWithRelated: function ({ withGeometry = false } = {}) {
 		const columns = getColumns(withGeometry);
-		return this.fetchAll({ withRelated: shipWithRelated, columns });
+		return this.fetchAll({
+			withRelated: shipWithRelated,
+			columns
+		});
 	},
 	fetchWithRelated: function ({ withGeometry = false } = {}) {
 		const columns = getColumns(withGeometry);
