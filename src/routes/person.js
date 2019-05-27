@@ -19,8 +19,10 @@ const DEFAULT_PERSON_ENTRIES_PER_PAGE = 1000;
 router.get('/', handleAsyncErrors(async (req, res) => {
 	const page = parseInt(get(req.query, 'page', DEFAULT_PERSON_PAGE), 10);
 	const pageSize = parseInt(get(req.query, 'entries', DEFAULT_PERSON_ENTRIES_PER_PAGE), 10);
-	const is_visible = !(get(req.query, 'show_hidden') === 'true');
-	const persons = await Person.where({ is_visible }).fetchListPage({ page, pageSize });
+	const showHidden = get(req.query, 'show_hidden') === 'true';
+	const params = {};
+	if (!showHidden) params.is_visible = true;
+	const persons = await Person.where(params).fetchListPage({ page, pageSize });
 	const pagination = pick(get(persons, 'pagination', {}), ['rowCount', 'pageCount', 'page', 'pageSize']);
 	res.json({
 		persons,
