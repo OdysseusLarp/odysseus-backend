@@ -36,12 +36,12 @@ function updateTask(blob, data) {
  */
 watch(['data'], (data, previous) => {
 	for (const id of Object.keys(data.box || [])) {
-		if (data.box[id].status !== previous.box[id].status) {
+		if (previous.box[id] && data.box[id].status !== previous.box[id].status) {
 			updateTask(data.box[id], data);
 		}
 	}
 	for (const id of Object.keys(data.game || [])) {
-		if (data.game[id].status !== previous.game[id].status) {
+		if (previous.game[id] && data.game[id].status !== previous.game[id].status) {
 			updateTask(data.game[id], data);
 		}
 	}
