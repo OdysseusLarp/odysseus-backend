@@ -8,6 +8,7 @@ import { Ship } from './ship';
  * @property {integer} id - Incrementing integer used as primary key
  * @property {string} type - Entry type, e.g. - MILITARY, PERSONAL, MEDICAL
  * @property {string} entry - Entry content
+ * @property {integer} added_by - ID of the person who added the entry
  * @property {string} created_at - Date-time when object was created
  * @property {string} updated_at - Date-time when object was last updated
  */
