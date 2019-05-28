@@ -120,7 +120,7 @@ export const Ship = Bookshelf.Model.extend({
 	},
 	fetchAllWithRelated: function ({ withGeometry = false } = {}) {
 		const columns = getColumns(withGeometry);
-		return this.fetchAll({
+		return this.orderBy('name').fetchAll({
 			withRelated: shipWithRelated,
 			columns
 		});
