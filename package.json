@@ -4,8 +4,9 @@
 	"private": true,
 	"description": "Backend for multiple services used in Odysseus LARP",
 	"engines": {
-		"node": "*"
+		"node": ">=10.10.0"
 	},
+	"engineStrict": true,
 	"main": "index.js",
 	"scripts": {
 		"test": "cross-env NODE_ENV=test ./node_modules/nyc/bin/nyc.js ./node_modules/ava/cli.js --verbose",
