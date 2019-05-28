@@ -81,8 +81,11 @@ export const Person = Bookshelf.Model.extend({
 	ship: function () {
 		return this.belongsTo(Ship, 'ship_id', 'id');
 	},
-	fetchListPage: function ({ page, pageSize }) {
-		return this.fetchPage({
+	fetchListPage: function ({ page, pageSize, showHidden, nameFilter }) {
+		return this.query(qb => {
+			if (!showHidden) qb.where('is_visible', true);
+			if (nameFilter) qb.whereRaw(`LOWER(CONCAT(first_name, ' ', last_name)) LIKE ?`, [`%${nameFilter}%`]);
+		}).orderBy('first_name', 'last_name').fetchPage({
 			page,
 			pageSize,
 			columns: [

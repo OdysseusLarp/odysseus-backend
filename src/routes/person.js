@@ -14,15 +14,20 @@ const DEFAULT_PERSON_ENTRIES_PER_PAGE = 1000;
  * @param {integer} page.query - Page number
  * @param {integer} entries.query - Amount of items returned per page
  * @param {boolean} show_hidden.query - Should hidden persons be shown
+ * @param {string} name.query - Person name filter
  * @returns {PersonCollection} 200 - Page of persons
  */
 router.get('/', handleAsyncErrors(async (req, res) => {
 	const page = parseInt(get(req.query, 'page', DEFAULT_PERSON_PAGE), 10);
 	const pageSize = parseInt(get(req.query, 'entries', DEFAULT_PERSON_ENTRIES_PER_PAGE), 10);
 	const showHidden = get(req.query, 'show_hidden') === 'true';
-	const params = {};
-	if (!showHidden) params.is_visible = true;
-	const persons = await Person.where(params).fetchListPage({ page, pageSize });
+	const nameFilter = get(req.query, 'name');
+	const persons = await Person.forge().fetchListPage({
+		page,
+		pageSize,
+		showHidden,
+		nameFilter
+	});
 	const pagination = pick(get(persons, 'pagination', {}), ['rowCount', 'pageCount', 'page', 'pageSize']);
 	res.json({
 		persons,
