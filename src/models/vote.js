@@ -59,7 +59,7 @@ export const Vote = Bookshelf.Model.extend({
 		return this.hasMany(VoteOption);
 	},
 	fetchAllWithRelated: function () {
-		return this.fetchAll({ withRelated: voteWithRelated });
+		return this.orderBy('-is_active').fetchAll({ withRelated: voteWithRelated });
 	},
 	fetchWithRelated: function () {
 		return this.fetch({ withRelated: voteWithRelated });
