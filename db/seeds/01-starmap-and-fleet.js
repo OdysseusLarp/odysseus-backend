@@ -103,7 +103,7 @@ async function seedLocal(knex) {
 async function seedServer(knex) {
 	if (shell.exec('psql --version').code !== 0) throw new Error('No PSQL installed');
 
-	const scriptPath = `${__dirname}/scripts`;
+	const scriptPath = `${__dirname}/../../scripts`;
 
 	await cleanup(knex);
 
@@ -122,7 +122,7 @@ exports.seed = async knex => {
 	try {
 		await seedLocal(knex);
 	} catch (err) {
-		console.log('Local seeds failed, attempting server seed', err);
+		console.log('Local seeds failed, attempting server seed');
 		await seedServer(knex);
 	}
 };

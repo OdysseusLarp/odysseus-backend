@@ -7,6 +7,10 @@ DATA_DIR="$DIR/../db/data"
 
 source "$DIR/../.env"
 
+export PGPASSWORD="$DB_PASSWORD"
+
 # Insert data from CSVs
 psql -h $DB_HOST -U $DB_USER -d $DB_NAME \
 	-c "\copy ship FROM '$DATA_DIR/ship.csv' DELIMITER ',' CSV HEADER"
+
+unset PGPASSWORD

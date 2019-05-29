@@ -7,6 +7,8 @@ DATA_DIR="$DIR/../db/data"
 
 source "$DIR/../.env"
 
+export PGPASSWORD="$DB_PASSWORD"
+
 # Insert data from CSVs
 psql -h $DB_HOST -U $DB_USER -d $DB_NAME \
 	-c "\copy starmap_bg FROM '$DATA_DIR/starmap_bg.csv' DELIMITER ',' CSV HEADER" \
@@ -16,3 +18,5 @@ psql -h $DB_HOST -U $DB_USER -d $DB_NAME \
 # COPY public.grid TO '/tmp/grid.csv' DELIMITER ',' CSV HEADER;
 # COPY public.starmap_bg TO '/tmp/starmap_bg.csv' DELIMITER ',' CSV HEADER;
 # COPY public.starmap_object TO '/tmp/starmap_object.csv' DELIMITER ',' CSV HEADER;
+
+unset PGPASSWORD
