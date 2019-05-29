@@ -1,6 +1,7 @@
 const csv = require('csvtojson');
 const path = require('path');
 const isEmpty = require('lodash').isEmpty;
+const shell = require('shelljs');
 
 // Read the grid from CSV and convert the columns to have correct types
 async function getGrid() {
@@ -58,7 +59,7 @@ const odysseusMetadata = {
 	// jump_crystal_count: 100,
 };
 
-exports.seed = async knex => {
+async function cleanup(knex) {
 	// set current person ships to null before dropping ships
 	await knex.raw(`UPDATE person SET ship_id = NULL`);
 
@@ -67,19 +68,13 @@ exports.seed = async knex => {
 	await knex('grid').del();
 	await knex('starmap_object').del();
 	await knex('starmap_bg').del();
+}
 
-	// Importing starmap bg/objects from CSV works only if the CSV files are available on the database server.
-	// If seeds need to be run on a remote PostgreSQL server that does not have the files,
-	// PSQL copy command can be used:
-	// \copy starmap_bg FROM '/home/nicou/git/odysseus-backend/db/data/starmap_bg.csv' DELIMITER ',' CSV HEADER
-	// \copy starmap_object FROM '/home/nicou/git/odysseus-backend/db/data/starmap_object.csv' DELIMITER ',' CSV HEADER
-	// \copy ship FROM '/home/nicou/git/odysseus-backend/db/data/ship.csv' DELIMITER ',' CSV HEADER
-	// Otherwise this will work:
-	await knex.raw(`COPY starmap_bg FROM '/fixtures/starmap_bg.csv' DELIMITER ',' CSV HEADER`);
-	await knex.raw(`COPY starmap_object FROM '/fixtures/starmap_object.csv' DELIMITER ',' CSV HEADER`);
+async function insertGrid(knex) {
 	await knex('grid').insert(await getGrid());
-	// Ships
-	await knex.raw(`COPY ship FROM '/fixtures/ship.csv' DELIMITER ',' CSV HEADER`);
+}
+
+async function insertRest(knex) {
 	await knex.raw(`UPDATE ship SET created_at = NOW(), updated_at = NOW()`);
 	await knex.raw(`UPDATE ship SET metadata = ? WHERE id = 'odysseus'`, [odysseusMetadata]);
 
@@ -88,4 +83,46 @@ exports.seed = async knex => {
 
 	await Promise.all(personIds.map(id =>
 		knex.raw(`UPDATE person SET ship_id = 'odysseus' WHERE id = ?`, id)));
+}
+
+async function seedLocal(knex) {
+	await cleanup(knex);
+
+	// Importing starmap bg/objects from CSV works only if the CSV files are available on the database server.
+	// If seeds need to be run on a remote PostgreSQL server that does not have the files, PSQL copy command can be used.
+	await knex.raw(`COPY starmap_bg FROM '/fixtures/starmap_bg.csv' DELIMITER ',' CSV HEADER`);
+	await knex.raw(`COPY starmap_object FROM '/fixtures/starmap_object.csv' DELIMITER ',' CSV HEADER`);
+
+	await insertGrid(knex);
+
+	await knex.raw(`COPY ship FROM '/fixtures/ship.csv' DELIMITER ',' CSV HEADER`);
+
+	await insertRest(knex);
+}
+
+async function seedServer(knex) {
+	if (shell.exec('psql --version').code !== 0) throw new Error('No PSQL installed');
+
+	const scriptPath = `${__dirname}/scripts`;
+
+	await cleanup(knex);
+
+	// Run starmap seed script
+	shell.exec(`bash ${path.join(scriptPath, 'seed-starmap.sh')}`);
+
+	await insertGrid(knex);
+
+	// Run ship seed script
+	shell.exec(`bash ${path.join(scriptPath, 'seed-ship.sh')}`);
+
+	await insertRest(knex);
+}
+
+exports.seed = async knex => {
+	try {
+		await seedLocal(knex);
+	} catch (err) {
+		console.log('Local seeds failed, attempting server seed', err);
+		await seedServer(knex);
+	}
 };
