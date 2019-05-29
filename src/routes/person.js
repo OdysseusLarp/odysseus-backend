@@ -21,7 +21,7 @@ router.get('/', handleAsyncErrors(async (req, res) => {
 	const page = parseInt(get(req.query, 'page', DEFAULT_PERSON_PAGE), 10);
 	const pageSize = parseInt(get(req.query, 'entries', DEFAULT_PERSON_ENTRIES_PER_PAGE), 10);
 	const showHidden = get(req.query, 'show_hidden') === 'true';
-	const nameFilter = get(req.query, 'name');
+	const nameFilter = get(req.query, 'name', '').toLowerCase();
 	const persons = await Person.forge().fetchListPage({
 		page,
 		pageSize,

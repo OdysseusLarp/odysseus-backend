@@ -15,6 +15,12 @@ import { Ship } from './ship';
 export const Entry = Bookshelf.Model.extend({
 	tableName: 'person_entry',
 	hasTimestamps: true,
+	person: function () {
+		return this.hasOne(Person);
+	},
+	added_by: function () {
+		return this.hasOne(Person, 'id', 'added_by');
+	}
 });
 
 const withRelated = [
@@ -105,7 +111,12 @@ export const Person = Bookshelf.Model.extend({
 		});
 	},
 	fetchWithRelated: function () {
-		return this.fetch({ withRelated });
+		return this.fetch({
+			withRelated: [
+				...withRelated,
+				{ 'entries.added_by': qb => qb.columns('id', 'first_name', 'last_name') }
+			]
+		});
 	},
 	search: function (name) {
 		return this.query(qb =>
