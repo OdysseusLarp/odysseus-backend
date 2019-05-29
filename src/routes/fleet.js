@@ -2,16 +2,21 @@ import { Router } from 'express';
 import { Ship } from '../models/ship';
 import { handleAsyncErrors } from '../helpers';
 import { validateJumpTarget } from '../eventhandler';
+import { get } from 'lodash';
 const router = new Router();
 
 /**
  * Get a list of all ships in the fleet. Contains current location of ships.
  * @route GET /fleet
  * @group Fleet - Fleet and ship related operations
+ * @param {boolean} show_hidden.query - Should hidden ships be shown
  * @returns {Array.<Ship>} 200 - List of all ships in the fleet
  */
 router.get('/', handleAsyncErrors(async (req, res) => {
-	res.json(await Ship.forge().fetchAllWithRelated({ withGeometry: true }));
+	const showHidden = get(req.query, 'show_hidden') === 'true';
+	const params = {};
+	if (!showHidden) params.is_visible = true;
+	res.json(await Ship.where(params).fetchAllWithRelated({ withGeometry: true }));
 }));
 
 /**

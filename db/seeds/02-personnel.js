@@ -1,95 +1,19 @@
-const persons = [
-	{
-		id: '1', card_id: '593201', bio_id: '028293', first_name: 'Maud', last_name: 'Maltby',
-		occupation: 'medic', home_planet: 'Kobol', dynasty: 'Xia',
-		dynasty_rank: 1, birth_year: 2179, status: 'unknown'
-	},
-	{
-		id: '2', card_id: '593202', bio_id: '038294', first_name: 'Tremaine', last_name: 'Vlies',
-		occupation: 'soldier', home_planet: 'Kobol', dynasty: 'Xia',
-		dynasty_rank: 2, birth_year: 2179, status: 'on_duty'
-	},
-	{
-		id: '3', card_id: '593203', bio_id: '038295', first_name: 'Lizzie', last_name: 'Scarrisbrick',
-		occupation: 'researcher', home_planet: 'Kobol', dynasty: 'Xia',
-		dynasty_rank: 3, birth_year: 2179, status: 'unknown'
-	},
-	{
-		id: '4', card_id: '593204', bio_id: '038296', first_name: 'Bent', last_name: 'Gingel',
-		occupation: 'soldier', home_planet: 'Kobol', dynasty: 'Xia',
-		dynasty_rank: 4, birth_year: 2179, status: 'on_duty'
-	},
-	{
-		id: '5', card_id: '593205', bio_id: '038297', first_name: 'Cleon', last_name: 'Hubble',
-		occupation: 'engineer', home_planet: 'Kobol', dynasty: 'Xia',
-		dynasty_rank: 5, birth_year: 2179, status: 'on_duty'
-	},
-];
-
-const personFamily = [
-	{ person1_id: '1', person2_id: '2', relation: 'cousin' },
-	{ person1_id: '2', person2_id: '1', relation: 'cousin' },
-	{ person1_id: '3', person2_id: '4', relation: 'sister' },
-	{ person1_id: '4', person2_id: '3', relation: 'brother' },
-];
-
-const medicalData = persons.map(person => (
-	{
-		person_id: person.id,
-		blood_type: 'A',
-		surgeries: 'Heart surgery lorem ipsum',
-		medication: 'Burana a day',
-		immunization: 'Lorem ipsum',
-		allergies: 'Lorem ipsum',
-		medical_history: 'Lorem ipsum'
-	}
-));
-
-const medicalEntries = [
-	{ id: 1, time: '1.1.1970', details: 'Kidney removed' },
-	{ id: 2, time: '1.1.1970', details: 'Common cold' },
-	{ id: 3, time: '1.1.1970', details: 'Common cold' },
-	{ id: 4, time: '1.1.1970', details: 'Radiation poisoning' },
-	{ id: 5, time: '1.1.1970', details: 'Has a pulse' }
-];
-
-const personMedicalEntries = persons.map((person, i) => ({
-	person_id: person.id,
-	entry_id: i + 1
-}));
-
-const militaryData = [
-	{
-		person_id: '1', rank: 'Private', unit: 'Platoon A',
-		remarks: 'Lorem ipsum', service_history: 'Lorem ipsum'
-	},
-	{
-		person_id: '2', rank: 'Sergeant', unit: 'Platoon A',
-		remarks: null, service_history: 'Lorem ipsum'
-	},
-	{
-		person_id: '3', rank: 'First sergeant', unit: 'Platoon B',
-		remarks: 'Lorem ipsum', service_history: 'Lorem ipsum'
-	},
-	{
-		person_id: '4', rank: 'Sergeant', unit: 'Platoon B',
-		remarks: null, service_history: 'Lorem ipsum'
-	}
-];
+const { chunk } = require('lodash');
+const { parseData } = require('../../scripts/person-parser');
 
 exports.seed = async knex => {
-	await knex('person_military_data').del();
+	await knex('person_entry').del();
 	await knex('person_family').del();
-	await knex('person_medical_data').del();
-	await knex('person_medical_entry').del();
-	await knex('medical_entry').del();
 	await knex('person').del();
-	await knex('person').insert(persons);
-	await knex('medical_entry').insert(medicalEntries);
-	await knex('person_family').insert(personFamily);
-	await knex('person_medical_data').insert(medicalData);
-	await knex('person_medical_entry').insert(personMedicalEntries);
-	await knex('person_military_data').insert(militaryData);
-	// fix the medical_entry primary key sequence
-	await knex.raw(`SELECT setval('medical_entry_id_seq', 6)`);
+
+	const { survivors, characters, characterRelations, characterEntries } = await parseData();
+
+	// Insert in chunks of 2000 persons as Knex seems to break otherwise
+	await Promise.all(
+		chunk(survivors, 2000)
+			.map(survivorsChunk => knex('person').insert(survivorsChunk)));
+
+	await knex('person').insert(characters);
+	await knex('person_family').insert(characterRelations);
+	await knex('person_entry').insert(characterEntries);
 };

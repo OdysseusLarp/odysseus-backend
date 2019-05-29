@@ -1,6 +1,6 @@
 const posts = [
 	{
-		person_id: '1',
+		person_id: '20000',
 		title: 'The Cosmos Awaits',
 		body: `Extraordinary claims require extraordinary evidence realm of the galaxies **Drake Equation** dispassionate extraterrestrial observer Sea of Tranquility across the centuries. A mote of dust suspended in a sunbeam a very small stage in a vast cosmic arena rings of Uranus muse about the only home we've ever known encyclopaedia galactica. A still more glorious dawn awaits laws of physics invent the universe preserve and cherish that pale blue dot network of wormholes vanquish the impossible?
 
@@ -10,7 +10,7 @@ Not a *sunrise* but a *galaxyrise* a still more glorious dawn awaits astonishmen
 		status: 'APPROVED'
 	},
 	{
-		person_id: '2',
+		person_id: '20001',
 		title: 'Hearts of the stars corpus',
 		body: `Tingling of the spine permanence of the stars prime number two ghostly white figures in coveralls and helmets are soflty dancing science the only home we've ever known. Orion's sword how far away venture rich in heavy atoms invent the universe with pretty stories for which there's little good evidence. Courage of our questions finite but unbounded brain is the seed of intelligence network of wormholes a very small stage in a vast cosmic arena are *creatures of the cosmos*.
 
@@ -21,7 +21,7 @@ Sea of Tranquility tesseract light years citizens of distant epochs **Hypatia di
 		status: 'APPROVED'
 	},
 	{
-		person_id: '2',
+		person_id: '20002',
 		title: 'I like turtles',
 		body: `List of my favorite animals:
 * Turtles
@@ -34,7 +34,7 @@ That's just **my** 5 cents.`,
 		status: 'APPROVED'
 	},
 	{
-		person_id: '3',
+		person_id: '20003',
 		title: 'Initial test entry',
 		body: `This is a test entry for captain's log.
 
@@ -51,7 +51,7 @@ Yup, markdown *should* work. Here is a dog:
 const votes = [
 	{
 		id: 1,
-		person_id: '2',
+		person_id: '20000',
 		title: 'Cats vs dogs',
 		description: 'Cats and dogs are the most popular pets in the world. Cats are more independent and are generally cheaper and less demanding pets. Dogs are loyal and obedient but require more attention and exercise, including regular walks.',
 		active_until: null,
@@ -60,7 +60,7 @@ const votes = [
 	},
 	{
 		id: 2,
-		person_id: '2',
+		person_id: '20001',
 		title: 'Lötkö vs mötkö',
 		description: ' Kuvaajan iloa ei mitenkään hämmennä se, että hänen kalan nostanut kaverinsa satuttaa itsensä toimituksessa. Videon kommenttipalstalla suurta debattia on aiheuttanut kysymys siitä, sanoiko kuvaaja "lötkö" vai "mötkö".',
 		active_until: '2018-12-08T20:45:09.584Z',
@@ -69,7 +69,7 @@ const votes = [
 	},
 	{
 		id: 3,
-		person_id: '1',
+		person_id: '20002',
 		title: 'Best color',
 		description: 'We need to decide which color is the best.',
 		active_until: null,
@@ -90,9 +90,9 @@ const voteOptions = [
 ];
 
 const voteEntries = [
-	{ person_id: '1', vote_id: 1, vote_option_id: 1 },
-	{ person_id: '1', vote_id: 2, vote_option_id: 4 },
-	{ person_id: '2', vote_id: 3, vote_option_id: 7 },
+	{ person_id: '20000', vote_id: 1, vote_option_id: 1 },
+	{ person_id: '20001', vote_id: 2, vote_option_id: 4 },
+	{ person_id: '20002', vote_id: 3, vote_option_id: 7 },
 ];
 
 const channels = [
