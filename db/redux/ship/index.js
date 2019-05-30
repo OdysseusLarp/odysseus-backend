@@ -98,6 +98,10 @@ saveBlob({
 		empCount: 6
 	},
 	general: {
-		alertLevel: 'Normal'
+		alertLevel: 'Normal',
+		shipEnergy: 1000,
+		shipHull: 250,
+		shipFrontShield: 200,
+		shipRearShield: 200,
 	},
 });

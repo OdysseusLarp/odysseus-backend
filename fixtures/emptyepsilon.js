@@ -22,7 +22,11 @@ const emptyEpsilonState = {
 	warpHealth: 1,
 	beamweaponsHealth: 1,
 	empCount: 6,
-	alertLevel: 'Normal'
+	alertLevel: 'Normal',
+	shipEnergy: 1000,
+	shipHull: 250,
+	shipFrontShield: 200,
+	shipRearShield: 200,
 };
 
 module.exports = emptyEpsilonState;
