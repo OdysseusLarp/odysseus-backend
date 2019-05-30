@@ -102,7 +102,7 @@ function handleTransition(jump, currentStatus, previousStatus) {
 		case 'jumping>broken':
 			// FIXME: Add broken tasks
 			// fall through
-		case 'jumping>cooldown':
+		case 'jumping>cooldown': {
 			if (jump.breaking_jump) {
 				dmx.fireEvent(dmx.CHANNELS.JumpEndBreaking);
 			} else {
@@ -116,14 +116,11 @@ function handleTransition(jump, currentStatus, previousStatus) {
 				jump_at: 0,
 				breaking_jump: true,
 			});
-			// Actually perform the jump and hope that the async stuff works nicely here
-			performShipJump(jump.coordinates).then(() => {
-				const jumpTarget = getReadableJumpTarget(jump.coordinates);
-				shipLogger.success(`Odysseus completed the jump to grid ${jumpTarget}.`);
-			});
+			const jumpTarget = getReadableJumpTarget(jump.coordinates);
+			shipLogger.success(`Odysseus completed the jump to grid ${jumpTarget}.`);
 			setJumpUiEnabled(true);
 			break;
-
+		}
 		case 'broken>cooldown':
 			dmx.fireEvent(dmx.CHANNELS.JumpFixed);
 			break;
@@ -191,6 +188,13 @@ function handleTransition(jump, currentStatus, previousStatus) {
 			const jumpTarget = getReadableJumpTarget(jump.coordinates);
 			shipLogger.info(`Jumping to coordinates ${jumpTarget}.`);
 			dmx.fireEvent(dmx.CHANNELS.JumpStart);
+
+			// Update the ship geometry to target coordinates already so that
+			// they can be fixed by GMs during the jump if needed
+			performShipJump(jump.coordinates);
+			// TODO: Also jump all the visible fleet ships with status 'Present and accounted for'
+			// to the same point
+
 			// FIXME: Turn off necessary power sockets (unless done by tekniikkatiimi)
 			break;
 		}
