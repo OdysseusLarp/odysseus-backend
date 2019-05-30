@@ -111,6 +111,11 @@ export const Ship = Bookshelf.Model.extend({
 				[PERSON_IS_ALIVE_STATUS]
 			));
 		});
+		this.on('saving', (model, columns, options) => {
+			// Unset person_count before updating the model, as the column
+			// does not exist
+			if (model.get('person_count')) model.unset('person_count');
+		});
 	},
 	position: function () {
 		return this.hasOne(Grid, 'id', 'grid_id');
