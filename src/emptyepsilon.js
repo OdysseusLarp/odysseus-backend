@@ -42,6 +42,11 @@ const { EMPTY_EPSILON_HOST, EMPTY_EPSILON_PORT } = process.env,
 		jumpdriveHeat: 'getSystemHeat("jumpdrive")',
 		frontshieldHeat: 'getSystemHeat("frontshield")',
 		rearshieldHeat: 'getSystemHeat("rearshield")',
+		// energy, hull and shield max values depend on ship settings in EE
+		shipEnergy: 'getEnergy()',
+		shipHull: 'getHull()',
+		shipFrontShield: 'getFrontShield()',
+		shipRearShield: 'getRearShield()',
 		alertLevel: 'getAlertLevel()'
 	};
 
