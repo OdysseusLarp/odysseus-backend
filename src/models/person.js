@@ -118,9 +118,10 @@ export const Person = Bookshelf.Model.extend({
 			]
 		});
 	},
-	search: function (name) {
-		return this.query(qb =>
-			qb.whereRaw(`LOWER(CONCAT(first_name, ' ', last_name)) LIKE ?`, [`%${name}%`])
-		).fetchAll();
+	search: function (name, showHidden = false) {
+		return this.query(qb => {
+			qb.where('is_visible', !showHidden);
+			qb.whereRaw(`LOWER(CONCAT(first_name, ' ', last_name)) LIKE ?`, [`%${name}%`]);
+		}).fetchAll();
 	}
 });
