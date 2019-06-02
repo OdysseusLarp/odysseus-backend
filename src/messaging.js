@@ -1,10 +1,17 @@
 import { logger } from './logger';
 import { Person } from './models/person';
 import { ComMessage } from './models/communications';
-import { isEmpty, uniqBy } from 'lodash';
+import { isEmpty, uniqBy, pick } from 'lodash';
 import { Router } from 'express';
 
 export const router = new Router();
+
+/**
+ * @typedef AdminMessageDetails
+ * @property {string} sender.required - Person ID of the sender
+ * @property {string} target.required - Person ID of the target
+ * @property {string} message.required - Message
+ */
 
 /**
  * Get all unread messages
@@ -16,6 +23,28 @@ export const router = new Router();
 router.get('/unread', async (req, res) => {
 	const messages = await new ComMessage().where('seen', false).fetchAllWithRelated();
 	res.json(messages);
+});
+
+/**
+ * Send a private message (for admin use)
+ *
+ * @route POST /messaging/send
+ * @group Messaging - Messaging related admin operations
+ * @param {AdminMessageDetails.model} messageDetails.body.required - Message details
+ * @returns {object} 204 - OK
+ */
+router.post('/send', async (req, res) => {
+	const params = pick(req.body, ['sender', 'target', 'message']);
+	const messageDetails = {
+		target: params.target,
+		type: 'private'
+	};
+	const mockSocket = {
+		emit: () => {},
+		person_id: params.sender
+	};
+	await onSendMessage(mockSocket, messageDetails);
+	res.sendStatus(204);
 });
 
 let messaging;
