@@ -5,6 +5,7 @@ import { handleAsyncErrors } from '../helpers';
 import Bookshelf from '../../db';
 import { pick, get, isInteger } from 'lodash';
 import moment from 'moment';
+import { NotFound } from 'http-errors';
 const router = new Router();
 
 const VOTE_FIELDS = [
@@ -13,7 +14,9 @@ const VOTE_FIELDS = [
 	'description',
 	'is_active',
 	'is_public',
-	'allowed_groups',
+	'duration_minutes',
+	'active_until',
+	'allowed_voters',
 	'status'
 ];
 
@@ -55,14 +58,8 @@ router.put('/create', handleAsyncErrors(async (req, res) => {
 	const data = pick(req.body, VOTE_FIELDS);
 	if (!data.status) data.status = STATUS_PENDING;
 
-	// Calculate when the voting time runs out
-	const activeTime = parseInt(get(req, 'body.activeTime'), 10);
-	const activeUntil = isInteger(activeTime) ?
-		moment().add(activeTime, 'minutes').toDate() :
-		null;
-
 	await Bookshelf.transaction(async transacting => {
-		const voteData = { ...data, is_active: data.status === 'APPROVED', active_until: activeUntil };
+		const voteData = { ...data, is_active: data.status === 'APPROVED' };
 		const vote = await Vote.forge().save(
 			voteData,
 			{ method: 'insert', transacting });
@@ -87,6 +84,14 @@ router.put('/create', handleAsyncErrors(async (req, res) => {
 router.put('/:id', handleAsyncErrors(async (req, res) => {
 	const data = pick(req.body, VOTE_FIELDS);
 	const vote = await Vote.forge({ id: req.params.id }).fetch();
+	if (!vote) throw new NotFound('Vote not found');
+	if (!data.active_until && data.status === 'APPROVED') {
+		// Calculate when the voting time should run out
+		const activeMinutes = vote.get('duration_minutes');
+		data.active_until = isInteger(activeMinutes) ?
+			moment().add(activeMinutes, 'minutes').toDate() :
+			null;
+	}
 	await vote.save(data, { method: 'update', patch: true });
 	res.json(vote);
 }));
