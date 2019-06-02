@@ -55,8 +55,8 @@ function generateCardId() {
 	return id;
 }
 
-function getFullName(c) {
-	return `${c.first_name} ${c.last_name}`;
+function getFullName({ first_name, last_name }) {
+	return `${first_name}${last_name ? last_name : ''}`;
 }
 
 function parseCharacterRelations(characters) {

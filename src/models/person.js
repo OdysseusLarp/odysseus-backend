@@ -76,7 +76,9 @@ export const Person = Bookshelf.Model.extend({
 	hasTimestamps: true,
 	virtuals: {
 		full_name: function () {
-			return `${this.get('first_name')} ${this.get('last_name')}`;
+			const firstName = this.get('first_name');
+			const lastName = this.get('last_name');
+			return firstName + (lastName ? ` ${lastName}` : '');
 		}
 	},
 	entries: function () {
