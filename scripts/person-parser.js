@@ -4,9 +4,6 @@ const { pick, pickBy, forIn, get, omit } = require('lodash');
 
 const dataPath = path.join(__dirname, '../db/data');
 
-// Hold all created IDs here so we can check for duplicates
-const generatedCardIds = new Set([]);
-
 // Hold all character relations here with character ID as key
 const allCharacterRelationsMap = new Map();
 
@@ -46,17 +43,8 @@ const characterFields = {
 	is_visible: null,
 };
 
-function generateCardId() {
-	const chars = '0123456789'.split('');
-	const length = 6;
-	let id = [...Array(length)].map(() => chars[Math.floor(Math.random() * chars.length)]).join('');
-	if (generatedCardIds.has(id)) id = generateCardId();
-	generatedCardIds.add(id);
-	return id;
-}
-
 function getFullName({ first_name, last_name }) {
-	return `${first_name}${last_name ? last_name : ''}`;
+	return `${first_name} ${last_name ? last_name : ''}`.trim();
 }
 
 function parseCharacterRelations(characters) {
@@ -99,10 +87,12 @@ function characterRelationsToMap(characterId, relations, characterName) {
 function parseCharacterEntries(c) {
 	const { personal_file, medical_records, military_service_history } = c;
 	const entry = { person_id: c.id };
-	if (personal_file) allCharacterEntries.push({ ...entry, type: 'PERSONAL', entry: personal_file });
-	if (medical_records) allCharacterEntries.push({ ...entry, type: 'MEDICAL', entry: medical_records });
+	if (personal_file) allCharacterEntries.push(
+		{ ...entry, type: 'PERSONAL', entry: personal_file.replace(/\n/g, '\n\n') });
+	if (medical_records) allCharacterEntries.push(
+		{ ...entry, type: 'MEDICAL', entry: medical_records.replace(/\n/g, '\n\n') });
 	if (military_service_history)
-		allCharacterEntries.push({ ...entry, type: 'MILITARY', entry: military_service_history });
+		allCharacterEntries.push({ ...entry, type: 'MILITARY', entry: military_service_history.replace(/\n/g, '\n\n') });
 }
 
 function parseCharacterData(c) {
@@ -121,8 +111,13 @@ function parseCharacterData(c) {
 	allCharactersNameToIdMap.set(fullName, id);
 
 	// Parse ship_id from ship name
-	let ship_id = c.ship_id.replace(/^[A-Z]SS /, '').toLowerCase();
-	if (ship_id === 'none') ship_id = null;
+	let ship_id = c.ship_id.replace(/^[A-Z]SS /, '').toLowerCase().trim();
+	if (!ship_id || ship_id === 'none') ship_id = null;
+
+	let military_remarks = null;
+	let medical_active_conditions = null;
+	if (c.military_remarks) military_remarks = c.military_remarks.replace(/\n/g, '\n\n');
+	if (c.medical_active_conditions) medical_active_conditions = c.medical_active_conditions.replace(/\n/g, '\n\n');
 
 	return omit({
 		...characterFields,
@@ -131,10 +126,10 @@ function parseCharacterData(c) {
 		medical_last_fitness_check: parseInt(c.medical_last_fitness_check, 10) || null,
 		created_year: parseInt(c.created_year, 10) || null,
 		ship_id,
-		bio_id: generateCardId(),
-		card_id: generateCardId(),
 		is_character: c.is_character === 'TRUE',
-		is_visible: c.is_visible === 'TRUE'
+		is_visible: c.is_visible === 'TRUE',
+		military_remarks,
+		medical_active_conditions,
 	},
 	// Omit the columns that will be saved in the person_entry table
 	['military_service_history', 'personal_file', 'medical_records']);
