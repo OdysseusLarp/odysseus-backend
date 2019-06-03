@@ -1,5 +1,6 @@
 import Bookshelf from '../../db';
 import { Ship } from './ship';
+import { forOwn } from 'lodash';
 
 /* eslint-disable object-shorthand */
 
@@ -90,10 +91,14 @@ export const Person = Bookshelf.Model.extend({
 	ship: function () {
 		return this.belongsTo(Ship, 'ship_id', 'id');
 	},
-	fetchListPage: function ({ page, pageSize, showHidden, nameFilter }) {
+	fetchListPage: function ({ page, pageSize, showHidden, filters = {} }) {
 		return this.query(qb => {
 			if (!showHidden) qb.where('is_visible', true);
-			if (nameFilter) qb.whereRaw(`LOWER(CONCAT(first_name, ' ', last_name)) LIKE ?`, [`%${nameFilter}%`]);
+			if (filters.name) qb.whereRaw(`LOWER(CONCAT(first_name, ' ', last_name)) LIKE ?`, [`%${filters.name}%`]);
+			forOwn(filters, (value, key) => {
+				if (key === 'name') return;
+				qb.where(key, value);
+			});
 		}).orderBy('first_name', 'last_name').fetchPage({
 			page,
 			pageSize,
@@ -127,3 +132,70 @@ export const Person = Bookshelf.Model.extend({
 		}).fetchAll();
 	}
 });
+
+/**
+ * @typedef FilterItem
+ * @property {string} name - Display value of the filter item
+ * @property {string} value - Key value of the filter item
+ */
+
+/**
+ * @typedef FilterCollection
+ * @property {string} name - Name of the filter collection
+ * @property {string} key - Key of the filter collection
+ * @property {Array.<FilterItem>} items - Filter items
+ */
+
+/**
+ * @typedef FilterValuesResponse
+ * @property {Array.<FilterCollection>} filters - Array containing filter collections
+ */
+
+
+export async function getFilterableValues() {
+	const { knex } = Bookshelf;
+	const [statusItems, dynastyItems, shipItems, homePlanetItems] = await Promise.all([
+		knex('person').distinct('status').where('is_visible', true).whereRaw('status IS NOT NULL').orderBy('status'),
+		knex('person').distinct('dynasty').where('is_visible', true).whereRaw('status IS NOT NULL').orderBy('dynasty'),
+		knex('person').distinct('ship_id', 'ship.name')
+			.join('ship', 'ship.id', 'person.ship_id').orderBy('ship_id')
+			.where('person.is_visible', true).where('ship.is_visible', true).whereRaw('ship_id IS NOT NULL'),
+		knex('person').distinct('home_planet').where('is_visible', true).whereRaw('home_planet IS NOT NULL').orderBy('home_planet'),
+	]);
+	return {
+		filters: [
+			{
+				name: 'Dynasty',
+				key: 'dynasty',
+				items: (dynastyItems || []).filter(d => d && d.dynasty).map(({ dynasty }) => ({
+					name: dynasty,
+					value: dynasty
+				}))
+			},
+			{
+				name: 'Home planet',
+				key: 'home_planet',
+				items: (homePlanetItems || []).filter(s => s && s.home_planet).map(({ home_planet }) => ({
+					name: home_planet,
+					value: home_planet
+				}))
+			},
+			{
+				name: 'Current location',
+				key: 'ship_id',
+				items: (shipItems || []).filter(s => s && s.ship_id).map(({ name, ship_id }) => ({
+					name,
+					value: ship_id
+				}))
+			},
+			{
+				name: 'Status',
+				key: 'status',
+				items: (statusItems || []).filter(s => s && s.status).map(({ status }) => ({
+					name: status,
+					value: status
+				}))
+			},
+		]
+	};
+}

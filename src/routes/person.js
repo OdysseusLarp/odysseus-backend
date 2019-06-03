@@ -1,7 +1,7 @@
 import { Router } from 'express';
-import { Person, Entry } from '../models/person';
+import { Person, Entry, getFilterableValues } from '../models/person';
 import { handleAsyncErrors } from '../helpers';
-import { get, pick } from 'lodash';
+import { get, pick, mapKeys, snakeCase } from 'lodash';
 const router = new Router();
 
 const DEFAULT_PERSON_PAGE = 1;
@@ -15,6 +15,10 @@ const DEFAULT_PERSON_ENTRIES_PER_PAGE = 1000;
  * @param {integer} entries.query - Amount of items returned per page
  * @param {boolean} show_hidden.query - Should hidden persons be shown
  * @param {string} name.query - Person name filter
+ * @param {string} dynasty.query - Person dynasty filter
+ * @param {string} home_planet.query - Person home planet filter
+ * @param {string} ship_id.query - Person ship filter
+ * @param {string} status.query - Person status filter
  * @returns {PersonCollection} 200 - Page of persons
  */
 router.get('/', handleAsyncErrors(async (req, res) => {
@@ -22,17 +26,32 @@ router.get('/', handleAsyncErrors(async (req, res) => {
 	const pageSize = parseInt(get(req.query, 'entries', DEFAULT_PERSON_ENTRIES_PER_PAGE), 10);
 	const showHidden = get(req.query, 'show_hidden') === 'true';
 	const nameFilter = get(req.query, 'name', '').toLowerCase();
+	const filters = mapKeys(
+		pick(req.query, ['dynasty', 'home_planet', 'ship_id', 'status']),
+		(_value, key) => snakeCase(key),
+	);
+	if (nameFilter) filters.name = nameFilter;
 	const persons = await Person.forge().fetchListPage({
 		page,
 		pageSize,
 		showHidden,
-		nameFilter
+		filters
 	});
 	const pagination = pick(get(persons, 'pagination', {}), ['rowCount', 'pageCount', 'page', 'pageSize']);
 	res.json({
 		persons,
 		...pagination
 	});
+}));
+
+/**
+ * Get values that persons can be filtered by
+ * @route GET /person/filters
+ * @group Person - Operations for person related data
+ * @returns {FilterValuesResponse.model} 200 - Collection of available filters
+ */
+router.get('/filters', handleAsyncErrors(async (req, res) => {
+	res.json(await getFilterableValues());
 }));
 
 /**
