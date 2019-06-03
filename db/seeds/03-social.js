@@ -54,7 +54,7 @@ const votes = [
 		person_id: '20000',
 		title: 'Cats vs dogs',
 		description: 'Cats and dogs are the most popular pets in the world. Cats are more independent and are generally cheaper and less demanding pets. Dogs are loyal and obedient but require more attention and exercise, including regular walks.',
-		active_until: null,
+		active_until: '2019-07-14T19:51:39.185Z',
 		is_active: true,
 		status: 'APPROVED'
 	},
@@ -63,8 +63,8 @@ const votes = [
 		person_id: '20001',
 		title: 'Lötkö vs mötkö',
 		description: ' Kuvaajan iloa ei mitenkään hämmennä se, että hänen kalan nostanut kaverinsa satuttaa itsensä toimituksessa. Videon kommenttipalstalla suurta debattia on aiheuttanut kysymys siitä, sanoiko kuvaaja "lötkö" vai "mötkö".',
-		active_until: '2018-12-08T20:45:09.584Z',
-		is_active: false,
+		active_until: '2019-07-14T19:51:39.185Z',
+		is_active: true,
 		status: 'APPROVED'
 	},
 	{
@@ -72,8 +72,8 @@ const votes = [
 		person_id: '20002',
 		title: 'Best color',
 		description: 'We need to decide which color is the best.',
-		active_until: null,
-		is_active: true,
+		active_until: '2019-06-02T19:52:48.683Z',
+		is_active: false,
 		status: 'APPROVED'
 	}
 ];
