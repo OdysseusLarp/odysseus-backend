@@ -125,7 +125,7 @@ export const Ship = Bookshelf.Model.extend({
 	},
 	fetchAllWithRelated: function ({ withGeometry = false } = {}) {
 		const columns = getColumns(withGeometry);
-		return this.orderBy('name').fetchAll({
+		return this.orderBy('id').fetchAll({
 			withRelated: shipWithRelated,
 			columns
 		});
