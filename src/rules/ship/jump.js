@@ -51,7 +51,7 @@ async function performShipJump(coordinates) {
 	// Reset jump range back to 1
 	const metadata = { ...ship.get('metadata', {}), jump_range: 1 };
 	await Promise.all([
-		ship.save({ grid_id: gridId, metadata, the_geom: targetGeometry }),
+		ship.jumpFleet({ grid_id: gridId, metadata, the_geom: targetGeometry }),
 		GridAction.forge().save({ grid_id: gridId, ship_id: shipId, type: 'JUMP' })
 	]);
 	logger.success(`${shipId} performed jumped to grid ${gridId}`);

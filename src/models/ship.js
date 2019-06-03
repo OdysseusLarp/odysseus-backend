@@ -73,6 +73,7 @@ function getColumns(withGeometry) {
 }
 
 const PERSON_IS_ALIVE_STATUS = 'Present and accounted for';
+const SHIP_PRESENT_STATUS = 'Present and accounted for';
 
 /**
  * @typedef Ship
@@ -136,6 +137,20 @@ export const Ship = Bookshelf.Model.extend({
 	},
 	getGrid: function () {
 		return this.related('position');
+	},
+	jumpFleet: async function ({ grid_id, metadata, the_geom }) {
+		// Jump rest of the fleet first
+		await Bookshelf.knex.raw(
+			`UPDATE ship SET grid_id = ?, the_geom = ?, updated_at = NOW() WHERE is_visible = TRUE AND status = ?`,
+			[
+				grid_id,
+				the_geom,
+				SHIP_PRESENT_STATUS
+			]
+		);
+
+		// Jump odysseus separately to trigger updated hook
+		return this.save({ grid_id, metadata, the_geom });
 	}
 });
 
