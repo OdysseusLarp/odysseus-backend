@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { LogEntry } from '../models/log';
+import { LogEntry, AuditLogEntry } from '../models/log';
 import { handleAsyncErrors } from '../helpers';
 import { get } from 'lodash';
 import httpErrors from 'http-errors';
@@ -38,6 +38,32 @@ router.put('/', handleAsyncErrors(async (req, res) => {
 	if (!logEntry) logEntry = await LogEntry.forge().save(req.body, { method: 'insert' });
 	else await logEntry.save(req.body, { method: 'update' });
 	res.json(logEntry);
+}));
+
+/**
+ * Get a list of audit log entries
+ * @route GET /log/audit
+ * @group Log - Ship log related operations
+ * @param {number} page.query - Page number - e.g: 1
+ * @param {number} entries.query - Number of entries per page - e.g: 150
+ * @returns {Array.<AuditLogEntry>} 200 - Page of log entries
+ */
+router.get('/audit', handleAsyncErrors(async (req, res) => {
+	const page = parseInt(get(req.query, 'page', DEFAULT_LOG_PAGE), 10);
+	const pageSize = parseInt(get(req.query, 'entries', DEFAULT_LOG_ENTRIES_PER_PAGE), 10);
+	res.json(await AuditLogEntry.forge().orderBy('-created_at').fetchPageWithRelated({ page, pageSize }));
+}));
+
+/**
+ * Insert audit log entry
+ * @route POST /log/audit
+ * @consumes application/json
+ * @group Log - Ship log related operations
+ * @param {AuditLogEntry.model} log_entry.body.required - AuditLogEntry model to be inserted
+ * @returns {AuditLogEntry.model} 200 - Inserted AuditLogEntry values
+ */
+router.post('/audit', handleAsyncErrors(async (req, res) => {
+	res.json(await AuditLogEntry.forge().save(req.body));
 }));
 
 /**

@@ -1,6 +1,7 @@
 import Bookshelf from '../../db';
 import { getSocketIoClient } from '../index';
 import { logger } from '../logger';
+import { Person } from './person';
 
 /* eslint-disable object-shorthand */
 
@@ -33,6 +34,48 @@ export const LogEntry = Bookshelf.Model.extend({
 			getSocketIoClient().emit('logEntryUpdated', model);
 		});
 	}
+});
+
+const auditLogWithRelated = ['person', 'hacker']
+	.map(rel => ({ [rel]: qb => qb.column('id', 'first_name', 'last_name') }));
+
+/**
+ * @typedef AuditLogEntry
+ * @property {integer} id - Log Entry ID
+ * @property {string} person_id - Person ID
+ * @property {string} hacker_id - Person ID of the hacker, if a hacker performed the login
+ * @property {object} metadata - JSON formatted metadata related to the audit log entry
+ * @property {string} type - Type like LOGIN, LOGOUT
+ * @property {string} created_at - ISO 8601 String Date-time when object was created
+ * @property {string} updated_at - ISO 8601 String Date-time when object was last updated
+ */
+export const AuditLogEntry = Bookshelf.Model.extend({
+	tableName: 'audit_log',
+	hasTimestamps: true,
+	initialize() {
+		this.on('created', model => {
+			const hacker = model.get('hacker_id');
+			const hacked = hacker ? `(Hacked by ${hacker})` : '';
+			logger.success('New audit log entry', model.get('type'), 'by', model.get('person_id'), hacked ? hacked : '');
+			getSocketIoClient().emit('auditLogEntryAdded', model);
+		});
+	},
+	person: function () {
+		return this.hasOne(Person, 'id', 'person_id');
+	},
+	hacker: function () {
+		return this.hasOne(Person, 'id', 'hacker_id');
+	},
+	fetchWithRelated: function () {
+		return this.fetch({ withRelated: auditLogWithRelated });
+	},
+	fetchPageWithRelated: function (page) {
+		return this.orderBy('created_at').fetchPage({
+			pageSize: 50,
+			page,
+			withRelated: auditLogWithRelated
+		});
+	},
 });
 
 /** Adds log entry to database and emits it via Socket.IO

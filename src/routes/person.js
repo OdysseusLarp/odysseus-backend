@@ -1,7 +1,9 @@
 import { Router } from 'express';
 import { Person, Entry, getFilterableValues } from '../models/person';
+import { AuditLogEntry } from '../models/log';
 import { handleAsyncErrors } from '../helpers';
 import { get, pick, mapKeys, snakeCase } from 'lodash';
+import { logger } from '../logger';
 const router = new Router();
 
 const DEFAULT_PERSON_PAGE = 1;
@@ -59,10 +61,26 @@ router.get('/filters', handleAsyncErrors(async (req, res) => {
  * @route GET /person/{id}
  * @group Person - Operations for person related data
  * @param {integer} id.path.required - ID of the person
+ * @param {boolean} login.query - True if this query is performed to log in to Social Hub
+ * @param {string} hacker_id.query - ID of the hacker who performed the login
  * @returns {Person.model} 200 - Specific person
  */
 router.get('/:id', handleAsyncErrors(async (req, res) => {
-	res.json(await Person.forge({ id: req.params.id }).fetchWithRelated());
+	const isLogin = req.query.login === 'true';
+	const person_id = req.params.id;
+	const person = await Person.forge({ id: person_id }).fetchWithRelated();
+	if (isLogin && person) {
+		const hacker_id = get(req.query, 'hacker_id', null);
+		if (!hacker_id) {
+			logger.warn(`Social Hub login to /person/${person_id} with no hacker_id in request`);
+		}
+		AuditLogEntry.forge().save({
+			person_id,
+			hacker_id,
+			type: 'HACKER_LOGIN'
+		});
+	}
+	res.json(person);
 }));
 
 /**
@@ -70,10 +88,22 @@ router.get('/:id', handleAsyncErrors(async (req, res) => {
  * @route GET /person/card/{id}
  * @group Person - Operations for person related data
  * @param {integer} id.path.required - Card ID of the person
+ * @param {boolean} login.query - True if this query is performed to log in to Social Hub
  * @returns {Person.model} 200 - Specific person
  */
 router.get('/card/:id', handleAsyncErrors(async (req, res) => {
-	res.json(await Person.forge({ card_id: req.params.id }).fetchWithRelated());
+	const isLogin = req.query.login === 'true';
+	const person = await Person.forge({ card_id: req.params.id }).fetchWithRelated();
+	// Save login to audit log if the login succeeded
+	if (isLogin && person) {
+		AuditLogEntry.forge().save({
+			person_id: person.get('id'),
+			type: 'LOGIN'
+		});
+	} else if (isLogin && !person) {
+		logger.warn('Social Hub login attempted with invalid ID', req.params.id);
+	}
+	res.json(person);
 }));
 
 /**
