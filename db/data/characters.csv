@@ -112,7 +112,7 @@ id,bio_id,card_id,is_character,first_name,last_name,title,birth_year,citizen_id,
 520 Broken middle finger, right hand
 521 Lost four teeth, reattached
 528 Severed fore finger, left hand, reattached",483,TRUE,
-20008,,JIL1T4,TRUE,Idris,McBride,Marine,493,493237E762148,Killed in action,Ellarion,Old Ways,Full citizenship,,Middle,Mercy,The Democratic Pluralist Party,Lieutenant Junior Grade,Career Military,Mel McBride,Spouse,Osha Green,Relative,Lahar Kooris,Sibling,Kasper McNaught,Parent,Viola McNaught,Parent,,,,,,,,,,,,,"512 Basic training
+20008,,JIL1T4,TRUE,Idris,McBride,Marine,493,493237E762148,Killed in action,Ellarion,Old Ways,Full citizenship,None,Middle,Mercy,The Democratic Pluralist Party,Lieutenant Junior Grade,Career Military,Mel McBride,Spouse,Osha Green,Relative,Lahar Kooris,Sibling,Kasper McNaught,Parent,Viola McNaught,Parent,,,,,,,,,,,,,"512 Basic training
 512 Promoted to Seaman Apprentice
 513 Approved for the Postgraduate Studies at the Ashoka Military Academy
 514 Promoted to Petty Officer
@@ -167,7 +167,7 @@ id,bio_id,card_id,is_character,first_name,last_name,title,birth_year,citizen_id,
 538 Named one of the two lead scientists of the Elder Outpost research project
 541 Mission Elders Heart, ESS Odysseus, leader of the science team",C,541,AB,,,,"532 Short acute trauma therapy following the death of child. Given instructions and exercises to help process the loss. Mental condition stable, no follow up necessary. No medication needed.",492,TRUE,
 20011,,H6RT2S,TRUE,Terran,Wells,Scientist,504,504001E048221,Present and accounted for,Velian,Faith of the High Science,Full citizenship,ESS Odysseus,Middle,Hope,Association for Spiritual Technology,None,Scientist,Gregory Wells,Parent,Amelia Wells,Parent,Nicol Wells,Sibling,Gail Wells,Sibling,,,,,,,,,,,,,,,,,"504 Born on Velian, birth parents unknown
-516 Arrived from Velian to Ellarion onboard the ESS ???. Local Velian ambassador consulted, granted permission to stay on Ellarion and integrate into Ellarian society. Adopted by ??? and ??? Wells. 
+516 Arrived from Velian to Ellarion. Local Velian ambassador consulted, granted permission to stay on Ellarion and integrate into Ellarian society. Adopted by Gregory and Amelia Wells. 
 529 Graduates from the Ellarion City University, Faculty of Science and Technology, Alien Technology
 529 Moved from Ellarion City to Santa Anna
 538 Moved from Santa Anna to Ellarion City
@@ -191,7 +191,7 @@ id,bio_id,card_id,is_character,first_name,last_name,title,birth_year,citizen_id,
 541 Mission Elders Heart, ESS Odysseus, part of science team
 541 Spouse Ryane Pearson found dead, cause: fall from a residential balcony. Investigation begun, captain of ESS Odysseus notified.
 542 Found guilty by Ellarion’s High Court of murder of Ryane Pearson. Sentence: ten years in prison. Placed under arrest on ESS Odysseus until return to Ellarion.",B,541,O,,,,"536 Sessions with psychologist Briana Chambers start, prompted by supervisor at ECU. Reason for therapy: interpersonal difficulties at work. Personality: extremely intelligent, callous, aware of social norms but unwilling to follow them. Pearson doubtful of need for therapy, but cooperative. Progress: slow or none. Sessions continued 3-4 times a year until 541.",502,TRUE,
-20014,,Y2DYZF,TRUE,Evin,Reid,Scientist,487,487092E100633,Unknown,Ellarion,Faith of the High Science,Full citizenship,,Middle,Intelligence,Association for Spiritual Technology,Petty Officer,Scientist,Damien Reid,Parent,Elena Reid,Parent,Yera Romero,Ex Spouse,Haven Reid,Child,,,,,,,,,,,,,,,"505 Basic training
+20014,,Y2DYZF,TRUE,Evin,Reid,Scientist,487,487092E100633,Unknown,Ellarion,Faith of the High Science,Full citizenship,Unknown,Middle,Intelligence,Association for Spiritual Technology,Petty Officer,Scientist,Damien Reid,Parent,Elena Reid,Parent,Yera Romero,Ex Spouse,Haven Reid,Child,,,,,,,,,,,,,,,"505 Basic training
 506 Promoted to Seaman Apprentice
 520 Promoted to Petty Officer","506 Basic training specialization: science
 520 Promoted two ranks to Petty Officer, reason: appointment as the head of the Android Research Unit","487 Born
@@ -209,7 +209,7 @@ id,bio_id,card_id,is_character,first_name,last_name,title,birth_year,citizen_id,
 532 Death of child Haven Reid, cause: leukemia
 537 Project Ziva (first fully human-like android) published to great acclaim, Evin Reid the lead scientist of the team
 540 Government mission, Solaris 7",C,540,A,,,,,487,TRUE,
-20015,,CFOP3R,TRUE,Gallan,Reid,Scientist,507,507050E540025,Unknown,Ellarion,Faith of the High Science,Full citizenship,,Middle,Intelligence,None,None,Scientist,Damien Reid,Parent,Elena Reid,Parent,Evin Reid,Sibling,,,,,,,,,,,,,,,,,,,"507 Born
+20015,,CFOP3R,TRUE,Gallan,Reid,Scientist,507,507050E540025,Unknown,Ellarion,Faith of the High Science,Full citizenship,Unknown,Middle,Intelligence,None,None,Scientist,Damien Reid,Parent,Elena Reid,Parent,Evin Reid,Sibling,,,,,,,,,,,,,,,,,,,"507 Born
 531 Graduated from the Ellarion City University, Faculty of Science and Technology, Biomechanical Engineering",B,541,A,,,,,542,TRUE,
 20016,,57PFWF,TRUE,Tyler,Carrillo,Marine / Pilot,515,515319E498994,Present and accounted for,Ellarion,Faith of the High Science,Full citizenship,ESS Odysseus,Upper,Strength,The Democratic Pluralist Party,Lieutenant,Career Military,Vincent Carrillo,Parent,Julia Carrillo,Parent,Reese Carrillo,Sibling,,,,,,,,,,,,,,,,,"532 Basic training
 532 Promoted to Seaman Apprentice
@@ -315,11 +315,11 @@ Callsign: Tempest","515 Born
 521 Swanson has an identical twin, Aydan Swanson (not in service)","504 Born
 521 Enlisted to the EOC Star Fleet
 526 Graduated from the Imperial Academy of Defence (Ellarion City)",B,541,B,,,,,504,TRUE,
-20022,,V7AK4R,TRUE,Jardan,,Protector / Mission Commander,474,12H48/89G4D*G*7965F,Present and accounted for,Velian,Other,No citizenship,ESS Odysseus,None,Floater,None,None,Unknown,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,542,FALSE,
-20023,,1IKKHG,TRUE,Zaera,,Sentinel,514,8H948/OPG4D*G*7J468,Present and accounted for,Velian,Other,No citizenship,ESS Odysseus,None,Floater,None,None,Unknown,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,542,FALSE,
-20024,,Q1FNHB,TRUE,Mael,,Sentinel,517,796F12/R145K*G*85LO9,Present and accounted for,Velian,Other,No citizenship,ESS Odysseus,None,Floater,None,None,Unknown,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,542,FALSE,
-20025,,C62THV,TRUE,Jaeco,,Protector,487,K8542/9659A*G*R145K,Present and accounted for,Velian,Other,No citizenship,ESS Odysseus,None,Floater,None,None,Unknown,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,542,FALSE,
-20026,,THMJ67,TRUE,Naethan,,Aid,518,365L4/1648P*G*25R64,Present and accounted for,Velian,Other,No citizenship,ESS Odysseus,None,Floater,None,None,Unknown,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,542,FALSE,
+20022,,V7AK4R,TRUE,Jardan,,Protector / Mission Commander,474,12H48/89G4D*G*7965F,Present and accounted for,Velian,Other,No citizenship,ESS Odysseus,None,None,None,None,Unknown,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,542,FALSE,
+20023,,1IKKHG,TRUE,Zaera,,Sentinel,514,8H948/OPG4D*G*7J468,Present and accounted for,Velian,Other,No citizenship,ESS Odysseus,None,None,None,None,Unknown,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,542,FALSE,
+20024,,Q1FNHB,TRUE,Mael,,Sentinel,517,796F12/R145K*G*85LO9,Present and accounted for,Velian,Other,No citizenship,ESS Odysseus,None,None,None,None,Unknown,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,542,FALSE,
+20025,,C62THV,TRUE,Jaeco,,Protector,487,K8542/9659A*G*R145K,Present and accounted for,Velian,Other,No citizenship,ESS Odysseus,None,None,None,None,Unknown,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,542,FALSE,
+20026,,THMJ67,TRUE,Naethan,,Aid,518,365L4/1648P*G*25R64,Present and accounted for,Velian,Other,No citizenship,ESS Odysseus,None,None,None,None,Unknown,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,542,FALSE,
 20027,,K2W9UJ,FALSE,Caleb,Wong,Marine,514,514291E485029,Present and accounted for,Voidborn,Faith of the High Science,Full citizenship,ESS Polaris,Middle,Excellence,The Democratic Pluralist Party,Chief Petty Officer,Career Military,,,,,,,,,,,,,,,,,,,,,,,"531 Basic training
 531 Promoted to Seaman Apprentice
 532 Approved for Postgraduate Studies at Imperial Academy of Defence (Ellarion City)
@@ -329,11 +329,11 @@ Callsign: Tempest","515 Born
 536 Graduated from Imperial Academy of Defence
 536 Assigned to Ellarion City Military Base
 537 Promoted to Chief Petty Officer",536 Registered specialization: pilot (first),,,,,,,,,514,FALSE,
-20028,,YCR07W,TRUE,Briya,,Cleric,515,876S1/13W12*G*956F4,Present and accounted for,Velian,Other,No citizenship,ESS Odysseus,None,Floater,None,None,Unknown,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,542,FALSE,
+20028,,YCR07W,TRUE,Briya,,Cleric,515,876S1/13W12*G*956F4,Present and accounted for,Velian,Other,No citizenship,ESS Odysseus,None,None,None,None,Unknown,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,542,FALSE,
 20029,,EHI31I,FALSE,Reese,Carrillo,,528,528022E353640,Present and accounted for,Ellarion,Faith of the High Science,Full citizenship,ESS Spectrum,Upper,Strength,None,None,Unknown,Tyler Carrillo,Sibling,Vincent Carrillo,Parent,Julia Carrillo,Parent,,,,,,,,,,,,,,,,,,,528 Born,,,,,,,,528,FALSE,
-20030,,SQVP4A,FALSE,Vincent,Carrillo,,489,489100E476831,Unknown,Ellarion,Faith of the High Science,Full citizenship,,Upper,Strength,Ellarion Centrist Party,Petty Officer,Engineer,Julia Carrillo,Spouse,Tyler Carrillo,Child,Reese Carrillo,Child,,,,,,,,,,,,,,,,,,,,,,,,,,,489,FALSE,
-20031,,L6PGUK,FALSE,Julia,Carrillo,Star Captain,488,488120E676262,Unknown,Ellarion,Faith of the High Science,Full citizenship,,Upper,Strength,Ellarion Centrist Party,Commander-Captain,Career Military,Vincent Carrillo,Spouse,Tyler Carrillo,Child,Reese Carrillo,Child,,,,,,,,,,,,,,,,,,,,,,,,,,,488,FALSE,
-20032,,WZP0PE,FALSE,Aydan,Andrews,,504,504313E398817,Killed in action,Ellarion,Faith of the High Science,Full citizenship,,Upper,Strength,Ellarion Centrist Party,None,Unknown,Caden Andrews,Spouse,Amira Andrews,Child,Alia Swanson,Sibling,Ljubica Swanson,Parent,Aksel Swanson,Parent,,,,,,,,,,,,,,,,,,,,,,,504,FALSE,
+20030,,SQVP4A,FALSE,Vincent,Carrillo,,489,489100E476831,Unknown,Ellarion,Faith of the High Science,Full citizenship,Unknown,Upper,Strength,Ellarion Centrist Party,Petty Officer,Engineer,Julia Carrillo,Spouse,Tyler Carrillo,Child,Reese Carrillo,Child,,,,,,,,,,,,,,,,,,,,,,,,,,,489,FALSE,
+20031,,L6PGUK,FALSE,Julia,Carrillo,Star Captain,488,488120E676262,Unknown,Ellarion,Faith of the High Science,Full citizenship,Unknown,Upper,Strength,Ellarion Centrist Party,Commander-Captain,Career Military,Vincent Carrillo,Spouse,Tyler Carrillo,Child,Reese Carrillo,Child,,,,,,,,,,,,,,,,,,,,,,,,,,,488,FALSE,
+20032,,WZP0PE,FALSE,Aydan,Andrews,,504,504313E398817,Killed in action,Ellarion,Faith of the High Science,Full citizenship,None,Upper,Strength,Ellarion Centrist Party,None,Unknown,Caden Andrews,Spouse,Amira Andrews,Child,Alia Swanson,Sibling,Ljubica Swanson,Parent,Aksel Swanson,Parent,,,,,,,,,,,,,,,,,,,,,,,504,FALSE,
 20033,,9A9NOZ,FALSE,Amira,Andrews,,537,537103E701064,Present and accounted for,Ellarion,Faith of the High Science,Full citizenship,ESS Memory,Upper,Strength,None,None,Unknown,Caden Andrews,Parent,Aydan Andrews,Parent,Elya Andrews,Grandparent,Alia Swanson,Relative,,,,,,,,,,,,,,,,,,,,,,,,,537,FALSE,
 20034,,NEQN8P,FALSE,Salma,Taylor,,484,484281E592989,Present and accounted for,Ellarion,Faith of the High Science,Full citizenship,ESS Spectrum,Upper,Strength,Ellarion Centrist Party,Master Chief,Unknown,Hayden Carson,Child,Joe Carson,Spouse,Arin Carson,Child,,,,,,,,,,,,,,,,,"500 Basic training
 501 Promoted to Seaman Apprentice
@@ -347,7 +347,7 @@ Callsign: Tempest","515 Born
 509 Promoted to Master Chief
 510 Released from Service",,,,,,,,,,484,FALSE,
 20035,,KLPGW0,FALSE,Reid,Komatsu,,482,482164E416019,Present and accounted for,Ellarion,Faith of the High Science,Full citizenship,ESS Spectrum,Upper,Hope,The Democratic Pluralist Party,None,Educator,Jin Komatsu,Spouse,,,,,,,,,,,,,,,,,,,,,,,,E,542,A,,Diabetes type 2,,542 Severe concussion,482,FALSE,
-20036,,O05NNM,FALSE,Szymon,Kovalenko,,482,482112C847483,Unknown,Caelena,Faith of the High Science,Colonial citizenship,,Lower,Unity,None,None,Farmer,Malak Kovalenko,Child,Nadia Kovalenko,Spouse,,,,,,,,,,,,,,,,,,,,,,,,,,,,,482,FALSE,
+20036,,O05NNM,FALSE,Szymon,Kovalenko,,482,482112C847483,Unknown,Caelena,Faith of the High Science,Colonial citizenship,Unknown,Lower,Unity,None,None,Farmer,Malak Kovalenko,Child,Nadia Kovalenko,Spouse,,,,,,,,,,,,,,,,,,,,,,,,,,,,,482,FALSE,
 20037,,RO1QB5,TRUE,Hale,Green,Navigation Officer,497,497356C152887,Present and accounted for,Caelena,Old Ways,Full citizenship,ESS Odysseus,Middle,Mercy,The Democratic Pluralist Party,Commander-Lieutenant,Career Military,Osha Green,Spouse,Naomi Green,Parent,Simon Green,Parent,Hannah Green,Sibling,,,,,,,,,,,,,,,"513 Basic Training
 513 Saigo Imperial Academy of Defence, fighter pilot training
 516 Assigned to the CSS Starfall as a fighter pilot
@@ -424,9 +424,12 @@ Callsign: Tempest","515 Born
 524 Married Hedly Walker
 530 Divorced Hedly Walker",B,542,B,"Nuts, especially peanuts & cashews",531 Suffers from migraines,531 Sonatral for migraine,"542 Anaphylaxis, brought to sickbay, treated with adrenaline injection",492,TRUE,
 20046,,BXV5I0,FALSE,Gira,Hayakawa,Pilot,520,520336E263834,Unknown,Ellarion,Faith of the High Science,Full citizenship,ESS Aurora,Middle,Intelligence,Sustainable Development Alliance,Seaman,Pilot,Isha Hayakawa,Parent,Hedly Walker,Child,,,,,,,,,,,,,,,,,,,,,,A,542,AB,Peanuts & Cashews,,,,520,FALSE,
-20047,,WDE9H0,FALSE,Kara,Bennett,Doctor,493,493099E234777,Present and accounted for,Ellarion,Faith of the High Science,Full citizenship,ESS Memory,Middle,Intelligence,None,Seaman,Scientist,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,493,FALSE,
-20048,,EZJHK1,FALSE,Merissa,Voight,,508,508134E062346,Present and accounted for,Ellarion,Faith of the High Science,Full citizenship,ESS Polaris,Middle,Confidence,Association for Spiritual Technology,Seaman Apprentice,Scientist,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,508,FALSE,
-20049,,Y2SJJS,FALSE,Sodiya,Ishimoto,,482,485202C868711,Present and accounted for,Caelena,Old Ways,Colonial citizenship,CSS Cyclone,Lower,Mercy,The Democratic Pluralist Party,None,Retail,Blake Ishimoto,Child,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,482,FALSE,
+20047,,WDE9H0,FALSE,Kara,Bennett,Doctor,493,493099E234777,Present and accounted for,Ellarion,Faith of the High Science,Full citizenship,ESS Memory,Middle,Intelligence,None,Seaman,Scientist,,,,,,,,,,,,,,,,,,,,,,,"509 Basic training
+510 Promoted to Seaman Apprentice
+538 Promoted to Seaman",,,C,541,AB,,,,,493,FALSE,
+20048,,EZJHK1,FALSE,Merissa,Voight,,508,508134E062346,Present and accounted for,Ellarion,Faith of the High Science,Full citizenship,ESS Polaris,Middle,Confidence,Association for Spiritual Technology,Seaman Apprentice,Scientist,,,,,,,,,,,,,,,,,,,,,,,"524 Basic training
+525 Promoted to Seaman Apprentice",,,C,540,O,,,,,508,FALSE,
+20049,,Y2SJJS,FALSE,Sodiya,Ishimoto,,482,485202C868711,Present and accounted for,Caelena,Old Ways,Colonial citizenship,CSS Cyclone,Lower,Mercy,The Democratic Pluralist Party,None,Retail,Blake Ishimoto,Child,,,,,,,,,,,,,,,,,,,,,,,,D,521,A,,,,,482,FALSE,
 20050,,V8CE4Q,TRUE,Gaylen,Russell,Vice Admiral,477,477102E236123,Present and accounted for,Ellarion,Old Ways,Full citizenship,ESS Odysseus,Lower,Ambition,The Democratic Pluralist Party,Vice Admiral,Engineer,Mike Russell,Spouse,Thomas Russell,Child,Eugenie Russell,Grandchild,,,,,,,,,,,,,,,,,"493 Basic training
 494 Promoted to Seaman Apprentice
 495 Promoted to Seaman
@@ -466,6 +469,7 @@ Callsign: Tempest","515 Born
 503 Leg wound in service, healed well
 508 Concussion in service
 513 Neck trouble, probably from several occasions of whiplash effect, physiotherapy and muscle relaxants
+518 Eye injury in service
 520 Referred for psychotherapy, expired
 522 Trouble with sleep, prescribed medication to help with falling asleep
 523 Sleep troubles continue, several different medications tried
@@ -500,7 +504,7 @@ Callsign: Tempest","515 Born
 522 Charges dropped regarding military accident: flying under the influence of alcohol
 538 Charges dropped regarding commanding under the influence of alcohol",C,540,A,,538 Diagnosed addiction to alcohol,"538 Prescribed medicine for alcohol addiction, ongoing","522 Wounded in flying accident, two days in hospital care
 538 Prescribed medicine for alcohol addiction",487,TRUE,
-20052,,WI7LPV,TRUE,Glen,Hollow,Personal Security,488,488046E911204,Missing in action,Ellarion,Faith of the High Science,Full citizenship,,Upper,Confidence,None,Petty Officer,Bodyguard,Flann Hollow,Sibling,Merriam Hollow,Parent,Don Hollow,Parent,,,,,,,,,,,,,,,,,"504 Basic training
+20052,,WI7LPV,TRUE,Glen,Hollow,Personal Security,488,488046E911204,Missing in action,Ellarion,Faith of the High Science,Full citizenship,Unknown,Upper,Confidence,None,Petty Officer,Bodyguard,Flann Hollow,Sibling,Merriam Hollow,Parent,Don Hollow,Parent,,,,,,,,,,,,,,,,,"504 Basic training
 505 Promoted to Seaman Apprentice
 506 Promoted to Seaman
 507 Approved for Postgraduate Studies at the Saigo Imperial Academy of Defence
@@ -541,8 +545,8 @@ Callsign: Tempest","515 Born
 539 Name appeared in an entertainment show and was in headlines throughout EOC for sibling Jordan Washington claiming to be their brothers lover
 540 Name connected to several cases of frauds, no charges 
 541 Moved to Ellarion",A,541,A,Bananas,,,536 In hospital care for being mugged,500,TRUE,
-20055,,4XEI69,TRUE,Julia,Aurelios Cauruleos,Emperor,522,522003E997682,Missing in action,Ellarion,Faith of the High Science,Full citizenship,,Empirial,Floater,None,None,Unknown,Aurelia Augustos Cauruleos,Parent,Frederic Julios Cauruleos,Parent,Marcio Augustos Cauruleos,Relative,Jovian Aurelios Cauruleos,Sibling,,,,,,,,,,,,,,,,,522 Born,A,542,B,,,,,522,FALSE,
-20056,,W20B9L,FALSE,Marcio,Augustos Cauruleos,Emperor,495,495301E552143,Present and accounted for,Ellarion,Faith of the High Science,Full citizenship,ESS Aurora,Empirial,Floater,None,None,Emperor,Julia Aurelios Cauruleos,Relative,Jovian Aurelios Cauruleos,Relative,Aurelia Augustos Cauruleos,Sibling,Frederic Julios Cauruleos,Relative,,,,,,,,,,,,,,,,,495 Born,C,542,B,,,,,495,FALSE,
+20055,,4XEI69,TRUE,Julia,Aurelios Cauruleos,Emperor ,522,522003E997682,Missing in action,Ellarion,Faith of the High Science,Full citizenship,Unknown,Empirial,None,None,None,None,Aurelia Augustos Cauruleos,Parent,Frederic Julios Cauruleos,Parent,Marcio Augustos Cauruleos,Relative,Jovian Aurelios Cauruleos,Sibling,,,,,,,,,,,,,,,,,522 Born,A,542,B,,,,,522,FALSE,
+20056,,W20B9L,FALSE,Marcio,Augustos Cauruleos,Emperor,495,495301E552143,Present and accounted for,Ellarion,Faith of the High Science,Full citizenship,ESS Aurora,Empirial,None,None,None,Emperor,Julia Aurelios Cauruleos,Relative,Jovian Aurelios Cauruleos,Relative,Aurelia Augustos Cauruleos,Sibling,Frederic Julios Cauruleos,Relative,,,,,,,,,,,,,,,,,495 Born,C,542,B,,,,,495,FALSE,
 20057,,X3AGF2,TRUE,Eugenie,Russell,Weapons Officer,517,517127E336626,Present and accounted for,Ellarion,Faith of the High Science,Full citizenship,ESS Odysseus,Lower,Ambition,None,Petty Officer First Class,Career Military,Thomas Russell,Parent,Li Russell,Parent,Gaylen Russell,Grandparent,Mike Russell,Grandparent,,,,,,,,,,,,,,,"533 Approved for Basic training at the Saigo Imperial Academy of Defence
 534 Promoted to Seaman Apprentice
 535 Promoted to Seaman
@@ -737,7 +741,7 @@ Callsign: Tempest","515 Born
 541 Applied for colonial passport to work in space
 541 Hired for Atlantis 3 as an Engineer",B,541,A,,,,"No records prior 541
 541 Medical examination for work in space",497,TRUE,
-20066,,7HK9UQ,TRUE,Lane,Hayakawa,Engineer,497,497046E908970,Unknown,Ellarion,Faith of the High Science,Full citizenship,,Middle,Intelligence,None,None,Student,Isha Hayakawa,Sibling,,,,,,,,,,,,,,,,,,,,,,,"497 Born
+20066,,7HK9UQ,TRUE,Lane,Hayakawa,Engineer,497,497046E908970,Unknown,Ellarion,Faith of the High Science,Full citizenship,Unknown,Middle,Intelligence,None,None,Student,Isha Hayakawa,Sibling,,,,,,,,,,,,,,,,,,,,,,,"497 Born
 510 Invited into the Ellarion City University classes as a visitor student to participate in the cutting edge study of the mechanics in material strength
 512 Approved to study at the ECU Faculty of Technology
 513 Won Imperial Science Award for developing a branch of new stress theory
@@ -853,8 +857,8 @@ Callsign: Tempest","515 Born
 540 Spouse Delta Bolton died peacefully in their bed   
 542 Sister Amie Bolton died during a routine operation from one of the best surgeons on Ellarion, Eva Ellis",B,538,A,Cherries,542 Insomnia due to the death of their sister,"542 Sleeping pills, Prescribed after the death of their sister","515 Almost lost their middle finger during the repairs of “that bloody damned engine ventilation system” on the OSS Burro
 522 Survived from an enemy missile hit to the engine room. It was a miracle that they survived from the collapse of an engine room ceiling. Luckily ceiling beams formed a protective casing instead of crushing them.",490,TRUE,
-20078,,W92YM7,FALSE,Liz,Bolton,,468,468187C492058,Deceased,Caelena,Old Ways,Colonial citizenship,,Middle,Loyalty,None,Seaman Apprentice,Educator,Mark Bolton,Spouse,Amir Bolton,Child,Amie Bolton,Child,,,,,,,,,,,,,,,,,,,,,,,,,,,468,FALSE,
-20079,,2PQJGA,FALSE,Amie,Bolton,,493,493084C059372,Deceased,Caelena,Old Ways,Colonial citizenship,,Middle,Loyalty,None,None,Educator,Mark Bolton,Parent,Liz Bolton,Parent,Amir Bolton,Sibling,,,,,,,,,,,,,,,,,,,,,,,,,,,493,FALSE,
+20078,,W92YM7,FALSE,Liz,Bolton,,468,468187C492058,Deceased,Caelena,Old Ways,Colonial citizenship,None,Middle,Loyalty,None,Seaman Apprentice,Educator,Mark Bolton,Spouse,Amir Bolton,Child,Amie Bolton,Child,,,,,,,,,,,,,,,,,,,,,,,,,,,468,FALSE,
+20079,,2PQJGA,FALSE,Amie,Bolton,,493,493084C059372,Deceased,Caelena,Old Ways,Colonial citizenship,None,Middle,Loyalty,None,None,Educator,Mark Bolton,Parent,Liz Bolton,Parent,Amir Bolton,Sibling,,,,,,,,,,,,,,,,,,,,,,,,,,,493,FALSE,
 20080,,EUUHKM,TRUE,Koga,Kyoshi,,507,507193O849204,Present and accounted for,Osiris,None,Colonial citizenship,ESS Odysseus,Lower,Defiance,None,None,Unknown,,,,,,,,,,,,,,,,,,,,,,,523 Basic training,524 Dropped out from the basic training,"507 Born
 517 Run away from home 
 527 Moved to Ellarion
@@ -1171,7 +1175,7 @@ Callsign: Tempest","515 Born
 533 Changed surname to Green
 534 Graduated from the Ellarion City University, Faculty of Cultural Sciences
 537 Ordained as a Devoted of the Old Ways",C,542,O,,542 Pregnancy,,,510,TRUE,
-20102,,LDCBYE,TRUE,Lynn,Ryan,Dynasty Heir,512,512328E964521,Unknown,Ellarion,Old Ways,Full citizenship,,Upper,Purity,None,Seaman,Student,Elan Nieze,Grandparent,,,,,,,,,,,,,,,,,,,,,"532 Basic training, pilot program
+20102,,LDCBYE,TRUE,Lynn,Ryan,Dynasty Heir,512,512328E964521,Unknown,Ellarion,Old Ways,Full citizenship,Unknown,Upper,Purity,None,Seaman,Student,Elan Nieze,Grandparent,,,,,,,,,,,,,,,,,,,,,"532 Basic training, pilot program
 533 Promoted to Seaman Apprentice
 534 Promoted to Seaman
 534 Pilot program
@@ -1210,7 +1214,7 @@ Callsign: Tempest","515 Born
 534 Painting ""Impression of Confused Echo"" sold to the Ellarion City Museum
 539 Art gallery exhibition ""Fractalographer Bathing a Star""
 540 Prized painting ""Organic Echo"" sold to a private collector",C,540,A,Peanuts,,,,510,TRUE,
-20106,,G1PU3P,TRUE,Nico,Lawrence,,511,511245C484563,Unknown,Caelena,None,Colonial citizenship,,Lower,Defiance,None,None,Unknown,,,,,,,,,,,,,,,,,,,,,,,,,,,,AB,,,,,511,FALSE,
+20106,,G1PU3P,TRUE,Nico,Lawrence,,511,511245C484563,Unknown,Caelena,None,Colonial citizenship,Unknown,Lower,Defiance,None,None,Unknown,,,,,,,,,,,,,,,,,,,,,,,,,,,,AB,,,,,511,FALSE,
 20107,,8ER9SZ,TRUE,Jonah,Malone,High Priest,498,498123E113232,Present and accounted for,Ellarion,Faith of the High Science,Full citizenship,ESS Odysseus,Upper,Tranquility,Association for Spiritual Technology,Petty Officer,Religious Calling,,,,,,,,,,,,,,,,,,,,,,,"519 Approved for studies in the Imperial Academy of Defence (Ellarion)
 519 Promoted to Seaman Apprentice
 520 Promoted to Seaman
@@ -1406,7 +1410,7 @@ Callsign: Tempest","515 Born
 operate. 
 
 ",510,TRUE,
-20124,,UHI35V,TRUE,Jovian,Aurelios Cauruleos,Emperor,518,518301E487001,Missing in action,Ellarion,Faith of the High Science,Full citizenship,,Empirial,Floater,None,None,Unknown,Aurelia Augustos Cauruleos,Parent,Frederic Julios Cauruleos,Parent,Marcio Augustos Cauruleos,Relative,Julia Aurelios Cauruleos,Sibling,,,,,,,,,,,,,,,,,"518 Born
+20124,,UHI35V,TRUE,Jovian,Aurelios Cauruleos,,518,518301E487001,Deceased,Ellarion,Faith of the High Science,Full citizenship,None,Empirial,None,None,None,None,Aurelia Augustos Cauruleos,Parent,Frederic Julios Cauruleos,Parent,Marcio Augustos Cauruleos,Relative,Julia Aurelios Cauruleos,Sibling,,,,,,,,,,,,,,,,,"518 Born
 519 Kidnapped, not found, presumed dead",C,518,B,,,,,518,FALSE,
 20125,,I3XL74,TRUE,Avery,Higashi,Odysseus Beta Marine Team Leader,515,515014E247408,Present and accounted for,Ellarion,None,Full citizenship,ESS Odysseus,Upper,Strength,None,Lieutenant Junior Grade,Career Military,Arthur Higashi,Parent,Yumi Higashi,Parent,,,,,,,,,,,,,,,,,,,"531 Basic training
 533 Promoted to Seaman Apprentice
@@ -1487,88 +1491,88 @@ operate.
 521 Shot through the left chest, damage to liver
 528 High fewer 
 533 Arm broken on mountain training ",495,TRUE,
-20128,,RCHYTM,TRUE,Aedan,,Ambassador,497,92A68/72P63*G*100E4,Present and accounted for,Velian,Other,No citizenship,ESS Odysseus,None,Floater,None,None,Ambassador,,,,,,,,,,,,,,,,,,,,,,,,,"497 Born
+20128,,RCHYTM,TRUE,Aedan,,Ambassador,497,92A68/72P63*G*100E4,Present and accounted for,Velian,Other,No citizenship,ESS Odysseus,None,None,None,None,Ambassador,,,,,,,,,,,,,,,,,,,,,,,,,"497 Born
 517 First contact to the Atlantis as an Velian Ambassador
 522 Moved to Ellarion",B,541,O,,,,,517,TRUE,
-20129,,6NAEF1,TRUE,Taelor,,Ambassador,477,5FW47/36P47*G*365L4,Present and accounted for,Velian,Other,No citizenship,ESS Odysseus,None,Floater,None,None,Ambassador,,,,,,,,,,,,,,,,,,,,,,,,,"477 Born
+20129,,6NAEF1,TRUE,Taelor,,Ambassador,477,5FW47/36P47*G*365L4,Present and accounted for,Velian,Other,No citizenship,ESS Odysseus,None,None,None,None,Ambassador,,,,,,,,,,,,,,,,,,,,,,,,,"477 Born
 505 First contact to the Atlantis as an Velian Ambassador
 506 Moved to Ellarion",D,541,A,,,,,505,TRUE,
-20130,,CB4DXV,TRUE,Anix,,Mediator,519,320U1/E38P5*G*9JK34,Present and accounted for,Velian,Other,No citizenship,ESS Odysseus,None,Floater,None,None,Unknown,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,542,FALSE,
-20131,,QZYW92,TRUE,Keana,,Researcher,497,289M0/21Y19*G*2W147,Present and accounted for,Velian,Other,No citizenship,ESS Odysseus,None,Floater,None,None,Unknown,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,542,FALSE,
-20132,,4PNG2N,TRUE,Nayel,,Healer,492,90F87/367H9*G*293QE,Present and accounted for,Velian,Other,No citizenship,ESS Odysseus,None,Floater,None,None,Unknown,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,542,FALSE,
-20133,,S1AQ6B,TRUE,Saria,,Researcher,477,2N214/19LB3*G*8C39X,Present and accounted for,Velian,Other,No citizenship,ESS Odysseus,None,Floater,None,None,Unknown,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,542,FALSE,
-20134,,NGJIH4,TRUE,Tarai,,Shield,497,2KG29/984FZ*G*28S90,Present and accounted for,Velian,Other,No citizenship,ESS Odysseus,None,Floater,None,None,Unknown,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,542,FALSE,
-20135,,HZ3SEO,FALSE,Ahmya,Komatsu,,450,450211E503985,Deceased,Ellarion,Faith of the High Science,Full citizenship,,Upper,Hope,The Democratic Pluralist Party,Seaman,Politician,Jin Komatsu,Child,Akimasa Komatsu,Spouse,Elya Cain,Child,Enisa Cain,Grandchild,Jose Cain,Grandchild,,,,,,,,,,,,,,,,,,,,,,,450,FALSE,
-20136,,N1NQCK,FALSE,Akimasa,Komatsu,,452,452012E395730,Deceased,Ellarion,Faith of the High Science,Full citizenship,,None,Floater,None,None,Unknown,Jin Komatsu,Child,Ahmya Komatsu,Spouse,Elya Cain,Child,Enisa Cain,Grandchild,Jose Cain,Grandchild,,,,,,,,,,,,,,,,,,,,,,,452,FALSE,
-20137,,GG0XUG,FALSE,Enisa,Cain,,513,513113E978842,Unknown,Ellarion,None,Full citizenship,,Upper,Hope,None,Seaman Apprentice,Unknown,Jose Cain,Sibling,Jin Komatsu,Relative,Elya Cain,Parent,Idris Cain,Parent,Ahmya Komatsu,Grandparent,Akimasa Komatsu,Grandparent,,,,,,,,,,,,,,,,,,,,,513,FALSE,
-20138,,6IJEDN,FALSE,Elya,Cain,Leader of Hope Dynasty,483,483239E463968,Deceased,Ellarion,Faith of the High Science,Full citizenship,,Upper,Hope,None,Petty Officer,Politician,Jose Cain,Child,Enisa Cain,Child,Idris Cain,Spouse,Ahmya Komatsu,Parent,Akimasa Komatsu,Parent,Jin Komatsu,Sibling,,,,,,,,,,,,,,,,,,,,,483,FALSE,
-20139,,LAVQ20,FALSE,Idris,Cain,,481,481311E385365,Unknown,Ellarion,None,Full citizenship,,Upper,Hope,None,Lieutenant,Unknown,Jose Cain,Child,Enisa Cain,Child,Elya Cain,Spouse,,,,,,,,,,,,,,,,,,,,,,,,,,,481,FALSE,
-20140,,FHWC36,FALSE,Cindi,Jordan,,499,499210E395067,Deceased,Ellarion,Faith of the High Science,Full citizenship,,Upper,Purity,None,None,Unknown,Dallan Jordan,Ex Spouse,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,499,FALSE,
-20141,,04ONNT,FALSE,Michaela,Jordan,,471,471048E824950,Unknown,Ellarion,Faith of the High Science,Full citizenship,,Upper,Purity,None,None,Unknown,Dallan Jordan,Child,Jesse Jordan,Spouse,,,,,,,,,,,,,,,,,,,,,,,,,,,,,471,FALSE,
-20142,,XRIOC0,FALSE,Jesse,Jordan,,467,467301E253894,Deceased,Ellarion,Faith of the High Science,Full citizenship,,Upper,Purity,None,None,Unknown,Dallan Jordan,Child,Michaela Jordan,Spouse,,,,,,,,,,,,,,,,,,,,,,,,,,,,,467,FALSE,
-20143,,755NRW,FALSE,Haven,Reid,,523,523102E375942,Deceased,Ellarion,Faith of the High Science,Full citizenship,,Upper,Tranquility,None,None,Unknown,Yera Romero,Parent,Evin Reid,Parent,,,,,,,,,,,,,,,,,,,,,,,,,,,,,523,FALSE,
-20144,,IC41B9,FALSE,Shira,York,,460,460197E248589,Unknown,Ellarion,Faith of the High Science,Full citizenship,,Upper,Tranquility,None,None,Unknown,Yera Romero,Child,Haven Reid,Grandchild,Mathilda York,Spouse,Yuval York,Child,,,,,,,,,,,,,,,,,,,,,,,,,460,FALSE,
-20145,,VT3BT2,FALSE,Mathilda,York,,461,461003E298593,Unknown,Ellarion,Faith of the High Science,Full citizenship,,Upper,Tranquility,None,None,Unknown,Yera Romero,Child,Haven Reid,Grandchild,Yuval York,Child,Shira York,Spouse,,,,,,,,,,,,,,,,,,,,,,,,,461,FALSE,
-20146,,E9G3PU,FALSE,Yuval,York,,485,485076E249055,Unknown,Ellarion,Faith of the High Science,Full citizenship,,Upper,Tranquility,None,None,Unknown,Yera Romero,Sibling,Haven Reid,Relative,Mathilda York,Parent,Shira York,Parent,,,,,,,,,,,,,,,,,,,,,,,,,485,FALSE,
-20147,,LT32WU,FALSE,Damien,Reid,,454,454300E329522,Deceased,Ellarion,Faith of the High Science,Full citizenship,,Middle,Intelligence,None,None,Unknown,Evin Reid,Child,Elena Reid,Spouse,Haven Reid,Grandchild,,,,,,,,,,,,,,,,,,,,,,,,,,,454,FALSE,
-20148,,VXCIV7,FALSE,Elena,Reid,,456,456100E065429,Deceased,Ellarion,Faith of the High Science,Full citizenship,,Middle,Intelligence,None,None,Unknown,Evin Reid,Child,Damien Reid,Spouse,Haven Reid,Grandchild,,,,,,,,,,,,,,,,,,,,,,,,,,,456,FALSE,
-20149,,SQTPJG,FALSE,Rannulf,Duran,,487,487359E687942,Unknown,Ellarion,Old Ways,Full citizenship,,Upper,Mercy,None,Master Chief,Unknown,Skye Duran,Child,Agatha Duran,Spouse,,,,,,,,,,,,,,,,,,,,,,,,,,,,,487,FALSE,
-20150,,5ZSHZD,FALSE,Agatha,Duran,,488,488277E359388,Unknown,Ellarion,Old Ways,Full citizenship,,Upper,Mercy,None,Petty Officer Second Class,Unknown,Skye Duran,Child,Rannulf Duran,Spouse,,,,,,,,,,,,,,,,,,,,,,,,,,,,,488,FALSE,
-20151,,LYQUF9,FALSE,Reginald,Rogers,Politician,473,473002E354883,Unknown,Ellarion,Faith of the High Science,Full citizenship,,Upper,Tranquility,Association for Spiritual Technology,None,Politician,Kai Rogers,Child,Laura Rogers,Spouse,,,,,,,,,,,,,,,,,,,,,,,,,,,,,473,FALSE,
-20152,,QHC6L7,FALSE,Laura,Rogers,,475,475333E844456,Unknown,Ellarion,Faith of the High Science,Full citizenship,,Upper,Purity,None,None,Business,Kai Rogers,Child,Reginald Rogers,Spouse,,,,,,,,,,,,,,,,,,,,,,,,,,,,,475,FALSE,
-20153,,NAJP8G,FALSE,Alice,Allen,,459,459209E229477,Deceased,Ellarion,Faith of the High Science,Full citizenship,,Middle,Defiance,None,None,Business,Cal Allen,Child,Jack Thomson,Spouse,,,,,,,,,,,,,,,,,,,,,,,,,,,,,459,FALSE,
-20154,,3UOHZI,FALSE,Jack,Thomson,,455,455300E285223,Deceased,Ellarion,Faith of the High Science,Full citizenship,,Middle,Defiance,None,None,Business,Cal Allen,Child,Alice Allen,Spouse,,,,,,,,,,,,,,,,,,,,,,,,,,,,,455,FALSE,
-20155,,MU9UXJ,FALSE,Lahar,Kooris,Priestess,489,489114E845375,Unknown,Ellarion,Old Ways,Full citizenship,,Middle,Mercy,None,None,Religious Calling,Osha Green,Child,Idris McBride,Sibling,Kasper McNaught,Parent,Viola McNaught,Parent,Palak Kooris,Spouse,,,,,,,,,,,,,,,"489 Born
+20130,,CB4DXV,TRUE,Anix,,Mediator,519,320U1/E38P5*G*9JK34,Present and accounted for,Velian,Other,No citizenship,ESS Odysseus,None,None,None,None,Unknown,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,542,FALSE,
+20131,,QZYW92,TRUE,Keana,,Researcher,497,289M0/21Y19*G*2W147,Present and accounted for,Velian,Other,No citizenship,ESS Odysseus,None,None,None,None,Unknown,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,542,FALSE,
+20132,,4PNG2N,TRUE,Nayel,,Healer,492,90F87/367H9*G*293QE,Present and accounted for,Velian,Other,No citizenship,ESS Odysseus,None,None,None,None,Unknown,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,542,FALSE,
+20133,,S1AQ6B,TRUE,Saria,,Researcher,477,2N214/19LB3*G*8C39X,Present and accounted for,Velian,Other,No citizenship,ESS Odysseus,None,None,None,None,Unknown,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,542,FALSE,
+20134,,NGJIH4,TRUE,Tarai,,Shield,497,2KG29/984FZ*G*28S90,Present and accounted for,Velian,Other,No citizenship,ESS Odysseus,None,None,None,None,Unknown,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,542,FALSE,
+20135,,HZ3SEO,FALSE,Ahmya,Komatsu,,450,450211E503985,Deceased,Ellarion,Faith of the High Science,Full citizenship,None,Upper,Hope,The Democratic Pluralist Party,Seaman,Politician,Jin Komatsu,Child,Akimasa Komatsu,Spouse,Elya Cain,Child,Enisa Cain,Grandchild,Jose Cain,Grandchild,,,,,,,,,,,,,,,,,,,,,,,450,FALSE,
+20136,,N1NQCK,FALSE,Akimasa,Komatsu,,452,452012E395730,Deceased,Ellarion,Faith of the High Science,Full citizenship,None,None,Floater,None,None,Unknown,Jin Komatsu,Child,Ahmya Komatsu,Spouse,Elya Cain,Child,Enisa Cain,Grandchild,Jose Cain,Grandchild,,,,,,,,,,,,,,,,,,,,,,,452,FALSE,
+20137,,GG0XUG,FALSE,Enisa,Cain,,513,513113E978842,Unknown,Ellarion,None,Full citizenship,Unknown,Upper,Hope,None,Seaman Apprentice,Unknown,Jose Cain,Sibling,Jin Komatsu,Relative,Elya Cain,Parent,Idris Cain,Parent,Ahmya Komatsu,Grandparent,Akimasa Komatsu,Grandparent,,,,,,,,,,,,,,,,,,,,,513,FALSE,
+20138,,6IJEDN,FALSE,Elya,Cain,Leader of Hope Dynasty,483,483239E463968,Deceased,Ellarion,Faith of the High Science,Full citizenship,None,Upper,Hope,None,Petty Officer,Politician,Jose Cain,Child,Enisa Cain,Child,Idris Cain,Spouse,Ahmya Komatsu,Parent,Akimasa Komatsu,Parent,Jin Komatsu,Sibling,,,,,,,,,,,,,,,,,,,,,483,FALSE,
+20139,,LAVQ20,FALSE,Idris,Cain,,481,481311E385365,Unknown,Ellarion,None,Full citizenship,Unknown,Upper,Hope,None,Lieutenant,Unknown,Jose Cain,Child,Enisa Cain,Child,Elya Cain,Spouse,,,,,,,,,,,,,,,,,,,,,,,,,,,481,FALSE,
+20140,,FHWC36,FALSE,Cindi,Jordan,,499,499210E395067,Deceased,Ellarion,Faith of the High Science,Full citizenship,None,Upper,Purity,None,None,Unknown,Dallan Jordan,Ex Spouse,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,499,FALSE,
+20141,,04ONNT,FALSE,Michaela,Jordan,,471,471048E824950,Unknown,Ellarion,Faith of the High Science,Full citizenship,Unknown,Upper,Purity,None,None,Unknown,Dallan Jordan,Child,Jesse Jordan,Spouse,,,,,,,,,,,,,,,,,,,,,,,,,,,,,471,FALSE,
+20142,,XRIOC0,FALSE,Jesse,Jordan,,467,467301E253894,Deceased,Ellarion,Faith of the High Science,Full citizenship,None,Upper,Purity,None,None,Unknown,Dallan Jordan,Child,Michaela Jordan,Spouse,,,,,,,,,,,,,,,,,,,,,,,,,,,,,467,FALSE,
+20143,,755NRW,FALSE,Haven,Reid,,523,523102E375942,Deceased,Ellarion,Faith of the High Science,Full citizenship,None,Upper,Tranquility,None,None,Unknown,Yera Romero,Parent,Evin Reid,Parent,,,,,,,,,,,,,,,,,,,,,,,,,,,,,523,FALSE,
+20144,,IC41B9,FALSE,Shira,York,,460,460197E248589,Unknown,Ellarion,Faith of the High Science,Full citizenship,Unknown,Upper,Tranquility,None,None,Unknown,Yera Romero,Child,Haven Reid,Grandchild,Mathilda York,Spouse,Yuval York,Child,,,,,,,,,,,,,,,,,,,,,,,,,460,FALSE,
+20145,,VT3BT2,FALSE,Mathilda,York,,461,461003E298593,Unknown,Ellarion,Faith of the High Science,Full citizenship,Unknown,Upper,Tranquility,None,None,Unknown,Yera Romero,Child,Haven Reid,Grandchild,Yuval York,Child,Shira York,Spouse,,,,,,,,,,,,,,,,,,,,,,,,,461,FALSE,
+20146,,E9G3PU,FALSE,Yuval,York,,485,485076E249055,Unknown,Ellarion,Faith of the High Science,Full citizenship,Unknown,Upper,Tranquility,None,None,Unknown,Yera Romero,Sibling,Haven Reid,Relative,Mathilda York,Parent,Shira York,Parent,,,,,,,,,,,,,,,,,,,,,,,,,485,FALSE,
+20147,,LT32WU,FALSE,Damien,Reid,,454,454300E329522,Unknown,Ellarion,Faith of the High Science,Full citizenship,Unknown,Middle,Intelligence,None,None,Unknown,Evin Reid,Child,Elena Reid,Spouse,Haven Reid,Grandchild,,,,,,,,,,,,,,,,,,,,,,,,,,,454,FALSE,
+20148,,VXCIV7,FALSE,Elena,Reid,,456,456100E065429,Unknown,Ellarion,Faith of the High Science,Full citizenship,Unknown,Middle,Intelligence,None,None,Unknown,Evin Reid,Child,Damien Reid,Spouse,Haven Reid,Grandchild,,,,,,,,,,,,,,,,,,,,,,,,,,,456,FALSE,
+20149,,SQTPJG,FALSE,Rannulf,Duran,,487,487359E687942,Unknown,Ellarion,Old Ways,Full citizenship,Unknown,Upper,Mercy,None,Master Chief,Unknown,Skye Duran,Child,Agatha Duran,Spouse,,,,,,,,,,,,,,,,,,,,,,,,,,,,,487,FALSE,
+20150,,5ZSHZD,FALSE,Agatha,Duran,,488,488277E359388,Unknown,Ellarion,Old Ways,Full citizenship,Unknown,Upper,Mercy,None,Petty Officer Second Class,Unknown,Skye Duran,Child,Rannulf Duran,Spouse,,,,,,,,,,,,,,,,,,,,,,,,,,,,,488,FALSE,
+20151,,LYQUF9,FALSE,Reginald,Rogers,Politician,473,473002E354883,Unknown,Ellarion,Faith of the High Science,Full citizenship,Unknown,Upper,Tranquility,Association for Spiritual Technology,None,Politician,Kai Rogers,Child,Laura Rogers,Spouse,,,,,,,,,,,,,,,,,,,,,,,,,,,,,473,FALSE,
+20152,,QHC6L7,FALSE,Laura,Rogers,,475,475333E844456,Unknown,Ellarion,Faith of the High Science,Full citizenship,Unknown,Upper,Purity,None,None,Business,Kai Rogers,Child,Reginald Rogers,Spouse,,,,,,,,,,,,,,,,,,,,,,,,,,,,,475,FALSE,
+20153,,NAJP8G,FALSE,Alice,Allen,,459,459209E229477,Deceased,Ellarion,Faith of the High Science,Full citizenship,None,Middle,Defiance,None,None,Business,Cal Allen,Child,Jack Thomson,Spouse,,,,,,,,,,,,,,,,,,,,,,,,,,,,,459,FALSE,
+20154,,3UOHZI,FALSE,Jack,Thomson,,455,455300E285223,Deceased,Ellarion,Faith of the High Science,Full citizenship,None,Middle,Defiance,None,None,Business,Cal Allen,Child,Alice Allen,Spouse,,,,,,,,,,,,,,,,,,,,,,,,,,,,,455,FALSE,
+20155,,MU9UXJ,FALSE,Lahar,Kooris,Priestess,489,489114E845375,Unknown,Ellarion,Old Ways,Full citizenship,Unknown,Middle,Mercy,None,None,Religious Calling,Osha Green,Child,Idris McBride,Sibling,Kasper McNaught,Parent,Viola McNaught,Parent,Palak Kooris,Spouse,,,,,,,,,,,,,,,"489 Born
 509 Married Palak Kooris
 509 Changed last name from Nicholson to Kooris",,,,,,,,489,FALSE,
-20156,,7PSPG6,FALSE,Palak,Kooris,Lead supervisor of the premises,485,485299E928543,Unknown,Ellarion,Old Ways,Full citizenship,,Middle,Mercy,None,None,Unknown,Lahar Kooris,Spouse,Osha Green,Child,,,,,,,,,,,,,,,,,,,,,,,,,,,,,485,FALSE,
-20157,,0W8VF8,FALSE,Kasper,McNaught,,463,463087E883785,Deceased,Ellarion,Old Ways,Full citizenship,,Middle,Mercy,None,Petty Officer,Unknown,Idris McBride,Child,Lahar Kooris,Child,Osha Green,Grandchild,Viola McNaught,Spouse,,,,,,,,,,,,,,,,,,,,,,,,,463,FALSE,
-20158,,Q7PZQ3,FALSE,Viola,McNaught,Priestess,463,463007E335893,Unknown,Ellarion,Old Ways,Full citizenship,,Middle,Mercy,None,None,Religious Calling,Idris McBride,Child,Lahar Kooris,Child,Osha Green,Grandchild,Kasper McNaught,Spouse,,,,,,,,,,,,,,,,,,,,,,,,,463,FALSE,
-20159,,WV2BGD,FALSE,Rian,Hunter,,492,492333E973657,Deceased,Ellarion,None,Full citizenship,,Middle,Ambition,None,Petty Officer First Class,Career Military,Nolan Hunter,Spouse,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,492,FALSE,
-20160,,PGEDMQ,FALSE,Elena,Hall,,517,517223E365738,Deceased,Ellarion,Faith of the High Science,Full citizenship,,Middle,Floater,None,None,Unknown,Remy Hall,Parent,Nicol Wells,Parent,Anelie Hall,Grandparent,Leroy Hall,Grandparent,Gregory Wells,Grandparent,Amelia Wells,Grandparent,Gail Wells,Relative,Terran Wells,Relative,,,,,,,,,,,,,,,,,517,FALSE,
-20161,,E7LS2P,FALSE,Anelie,Hall,,459,459077E358229,Deceased,Ellarion,Faith of the High Science,Full citizenship,,Middle,Intelligence,Association for Spiritual Technology,Seaman Apprentice,Unknown,Remy Hall,Child,Elena Hall,Grandchild,Leroy Hall,Spouse,,,,,,,,,,,,,,,,,,,,,,,,,,,459,FALSE,
-20162,,WTJGTI,FALSE,Leroy,Hall,,457,457100E352243,Deceased,Ellarion,Faith of the High Science,Full citizenship,,Middle,Intelligence,Association for Spiritual Technology,Petty Officer Second Class,Unknown,Remy Hall,Child,Elena Hall,Grandchild,Anelie Hall,Spouse,,,,,,,,,,,,,,,,,,,,,,,,,,,457,FALSE,
+20156,,7PSPG6,FALSE,Palak,Kooris,Lead supervisor of the premises,485,485299E928543,Unknown,Ellarion,Old Ways,Full citizenship,Unknown,Middle,Mercy,None,None,Unknown,Lahar Kooris,Spouse,Osha Green,Child,,,,,,,,,,,,,,,,,,,,,,,,,,,,,485,FALSE,
+20157,,0W8VF8,FALSE,Kasper,McNaught,,463,463087E883785,Deceased,Ellarion,Old Ways,Full citizenship,None,Middle,Mercy,None,Petty Officer,Unknown,Idris McBride,Child,Lahar Kooris,Child,Osha Green,Grandchild,Viola McNaught,Spouse,,,,,,,,,,,,,,,,,,,,,,,,,463,FALSE,
+20158,,Q7PZQ3,FALSE,Viola,McNaught,Priestess,463,463007E335893,Unknown,Ellarion,Old Ways,Full citizenship,Unknown,Middle,Mercy,None,None,Religious Calling,Idris McBride,Child,Lahar Kooris,Child,Osha Green,Grandchild,Kasper McNaught,Spouse,,,,,,,,,,,,,,,,,,,,,,,,,463,FALSE,
+20159,,WV2BGD,FALSE,Rian,Hunter,,492,492333E973657,Deceased,Ellarion,None,Full citizenship,None,Middle,Ambition,None,Petty Officer First Class,Career Military,Nolan Hunter,Spouse,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,492,FALSE,
+20160,,PGEDMQ,FALSE,Elena,Hall,,517,517223E365738,Deceased,Ellarion,Faith of the High Science,Full citizenship,None,Middle,Intelligence,None,None,Unknown,Remy Hall,Parent,Nicol Wells,Parent,Anelie Hall,Grandparent,Leroy Hall,Grandparent,Gregory Wells,Grandparent,Amelia Wells,Grandparent,Gail Wells,Relative,Terran Wells,Relative,,,,,,,,,,,,,,,,,517,FALSE,
+20161,,E7LS2P,FALSE,Anelie,Hall,,459,459077E358229,Unknown,Ellarion,Faith of the High Science,Full citizenship,Unknown,Middle,Intelligence,Association for Spiritual Technology,Seaman Apprentice,Unknown,Remy Hall,Child,Elena Hall,Grandchild,Leroy Hall,Spouse,,,,,,,,,,,,,,,,,,,,,,,,,,,459,FALSE,
+20162,,WTJGTI,FALSE,Leroy,Hall,,457,457100E352243,Unknown,Ellarion,Faith of the High Science,Full citizenship,Unknown,Middle,Intelligence,Association for Spiritual Technology,Petty Officer Second Class,Unknown,Remy Hall,Child,Elena Hall,Grandchild,Anelie Hall,Spouse,,,,,,,,,,,,,,,,,,,,,,,,,,,457,FALSE,
 20163,,SCF934,FALSE,Gregory,Wells,Scientist,468,468299E923533,Present and accounted for,Ellarion,Faith of the High Science,Full citizenship,ESS Discovery,Middle,Hope,None,None,Scientist,Terran Wells,Child,Nicol Wells,Child,Gail Wells,Child,Amelia Wells,Spouse,Elena Hall,Grandchild,,,,,,,,,,,,,,,,,,,,,,,468,FALSE,
-20164,,QV0IQK,FALSE,Amelia,Wells,,466,466054E322885,Unknown,Ellarion,Faith of the High Science,Full citizenship,,Middle,Hope,None,None,Unknown,Terran Wells,Child,Nicol Wells,Child,Gail Wells,Child,Gregory Wells,Spouse,Elena Hall,Grandchild,,,,,,,,,,,,,,,,,,,,,,,466,FALSE,
-20165,,L33XWF,FALSE,Allen,Pearson,,476,476233E329989,Deceased,Ellarion,Faith of the High Science,Full citizenship,,Middle,Intelligence,Association for Spiritual Technology,Petty Officer Second Class,Unknown,Devyn Pearson,Child,Marian Pearson,Spouse,,,,,,,,,,,,,,,,,,,,,"476 Born
+20164,,QV0IQK,FALSE,Amelia,Wells,Scientist,466,466054E322885,Present and accounted for,Ellarion,Faith of the High Science,Full citizenship,ESS Discovery,Middle,Hope,None,None,Scientist,Terran Wells,Child,Nicol Wells,Child,Gail Wells,Child,Gregory Wells,Spouse,Elena Hall,Grandchild,,,,,,,,,,,,,,,,,,,,,,,466,FALSE,
+20165,,L33XWF,FALSE,Allen,Pearson,,476,476233E329989,Deceased,Ellarion,Faith of the High Science,Full citizenship,None,Middle,Intelligence,Association for Spiritual Technology,Petty Officer Second Class,Unknown,Devyn Pearson,Child,Marian Pearson,Spouse,,,,,,,,,,,,,,,,,,,,,"476 Born
 524 Died in a shuttle accident",,,,,,,,476,FALSE,
-20166,,OI919D,FALSE,Marian,Pearson,,477,477369E329922,Deceased,Ellarion,Faith of the High Science,Full citizenship,,Middle,Intelligence,Association for Spiritual Technology,Seaman Apprentice,Unknown,Devyn Pearson,Child,Allen Pearson,Spouse,,,,,,,,,,,,,,,,,,,,,"477 Born
+20166,,OI919D,FALSE,Marian,Pearson,,477,477369E329922,Deceased,Ellarion,Faith of the High Science,Full citizenship,None,Middle,Intelligence,Association for Spiritual Technology,Seaman Apprentice,Unknown,Devyn Pearson,Child,Allen Pearson,Spouse,,,,,,,,,,,,,,,,,,,,,"477 Born
 524 Died in a shuttle accident",,,,,,,,477,FALSE,
-20167,,DP77QD,FALSE,Ryane,Pearson,,515,515044E258228,Deceased,Ellarion,Faith of the High Science,Full citizenship,,Middle,Confidence,None,None,Unknown,Hali Okuma,Parent,Oriel Cook,Sibling,Mei Okuma,Grandparent,Yono Okuma,Grandparent,Devyn Pearson,Spouse,Alia Okuma,Parent,,,,,,,,,,,,,"515 Born
+20167,,DP77QD,FALSE,Ryane,Pearson,,515,515044E258228,Deceased,Ellarion,Faith of the High Science,Full citizenship,None,Middle,Confidence,None,None,Unknown,Hali Okuma,Parent,Oriel Cook,Sibling,Mei Okuma,Grandparent,Yono Okuma,Grandparent,Devyn Pearson,Spouse,Alia Okuma,Parent,,,,,,,,,,,,,"515 Born
 537 Married Devyn Pearson
 537 Changed last name from Okuma to Pearson
 541 Found dead, cause: fall from a residential balcony. Investigation begun, confirmed to be murder in 542
 542 Spouse Devyn Pearson found guilty of murder by Ellarion’s High Court",,,,,,,,515,FALSE,
-20168,,LAU63N,FALSE,Alia,Okuma,,497,497201E255774,Deceased,Ellarion,Faith of the High Science,Full citizenship,,Middle,Confidence,None,Chief Petty Officer,Unknown,Hali Okuma,Spouse,Ryane Pearson,Child,,,,,,,,,,,,,,,,,,,,,"497 Born
+20168,,LAU63N,FALSE,Alia,Okuma,,497,497201E255774,Deceased,Ellarion,Faith of the High Science,Full citizenship,None,Middle,Confidence,None,Chief Petty Officer,Unknown,Hali Okuma,Spouse,Ryane Pearson,Child,,,,,,,,,,,,,,,,,,,,,"497 Born
 514 Married to Hali Okuma
 514 Changed last name from Williams to Okuma
 515 Birth of child: Ryane Okuma (Pearson)
 520 Dies during a machine attack",,,,,,,,497,FALSE,
-20169,,FTFFJQ,FALSE,Mei,Okuma,,468,468101E322099,Unknown,Ellarion,Faith of the High Science,Full citizenship,,Middle,Confidence,None,None,Unknown,Hali Okuma,Child,Oriel Cook,Child,Ryane Pearson,Grandchild,Yono Okuma,Spouse,,,,,,,,,,,,,,,,,,,,,,,,,468,FALSE,
-20170,,LRFJ95,FALSE,Yono,Okuma,,470,470324E388574,Unknown,Ellarion,Faith of the High Science,Full citizenship,,Middle,Confidence,None,None,Unknown,Hali Okuma,Child,Oriel Cook,Child,Ryane Pearson,Grandchild,Mei Okuma,Spouse,,,,,,,,,,,,,,,,,,,,,,,,,470,FALSE,
-20171,,ADCCUF,FALSE,Sibylla,Lee,Devout,487,487099E358833,Unknown,Ellarion,Old Ways,Full citizenship,,Upper,Mercy,None,None,Religious Calling,Gladys Lee,Spouse,Sierra Lee,Parent,Zyra Lee,Child,,,,,,,,,,,,,,,,,,,,,,,,,,,487,FALSE,
-20172,,P26AD6,FALSE,Gladys,Lee,,488,488330E659755,Unknown,Ellarion,Old Ways,Full citizenship,,Upper,Mercy,Ellarion Centrist Party,None,Politician,Sibylla Lee,Spouse,Zyra Lee,Child,,,,,,,,,,,,,,,,,,,,,,,,,,,,,488,FALSE,
+20169,,FTFFJQ,FALSE,Mei,Okuma,,468,468101E322099,Killed in action,Ellarion,Faith of the High Science,Full citizenship,None,Middle,Confidence,None,None,Unknown,Hali Okuma,Child,Oriel Cook,Child,Ryane Pearson,Grandchild,Yono Okuma,Spouse,,,,,,,,,,,,,,,,,,,,,,,,,468,FALSE,
+20170,,LRFJ95,FALSE,Yono,Okuma,,470,470324E388574,Killed in action,Ellarion,Faith of the High Science,Full citizenship,None,Middle,Confidence,None,None,Unknown,Hali Okuma,Child,Oriel Cook,Child,Ryane Pearson,Grandchild,Mei Okuma,Spouse,,,,,,,,,,,,,,,,,,,,,,,,,470,FALSE,
+20171,,ADCCUF,FALSE,Sibylla,Lee,Devout,487,487099E358833,Unknown,Ellarion,Old Ways,Full citizenship,Unknown,Upper,Mercy,None,None,Religious Calling,Gladys Lee,Spouse,Sierra Lee,Parent,Zyra Lee,Child,,,,,,,,,,,,,,,,,,,,,,,,,,,487,FALSE,
+20172,,P26AD6,FALSE,Gladys,Lee,,488,488330E659755,Unknown,Ellarion,Old Ways,Full citizenship,Unknown,Upper,Mercy,Ellarion Centrist Party,None,Politician,Sibylla Lee,Spouse,Zyra Lee,Child,,,,,,,,,,,,,,,,,,,,,,,,,,,,,488,FALSE,
 20173,,T0RA13,FALSE,Sierra,Lee,Leader of Mercy,464,464303E096885,Present and accounted for,Ellarion,Old Ways,Full citizenship,ESS Aurora,Upper,Mercy,None,Seaman Apprentice,Politician,Sibylla Lee,Child,Zyra Lee,Grandchild,,,,,,,,,,,,,,,,,,,,,,,,,,,,,464,FALSE,
-20174,,O02VPV,FALSE,Nadia,Kovalenko,,481,481222C593398,Unknown,Caelena,Faith of the High Science,Colonial citizenship,,Lower,Unity,None,None,Farmer,Malak Kovalenko,Child,Szymon Kovalenko,Spouse,,,,,,,,,,,,,,,,,,,,,,,,,,,,,481,FALSE,
+20174,,O02VPV,FALSE,Nadia,Kovalenko,,481,481222C593398,Unknown,Caelena,Faith of the High Science,Colonial citizenship,Unknown,Lower,Unity,None,None,Farmer,Malak Kovalenko,Child,Szymon Kovalenko,Spouse,,,,,,,,,,,,,,,,,,,,,,,,,,,,,481,FALSE,
 20175,,QKT51B,FALSE,Aksel,Swanson,,481,481111E094588,Present and accounted for,Ellarion,Faith of the High Science,Full citizenship,ESS Spectrum,Upper,Strength,Ellarion Centrist Party,Lieutenant,Career Military,Alia Swanson,Child,Aydan Andrews,Sibling,Amira Andrews,Grandchild,Ljubica Swanson,Spouse,,,,,,,,,,,,,,,,,,,,,,,,,481,FALSE,
-20176,,5FM3IP,FALSE,Ljubica,Swanson,,477,477199E557364,Unknown,Ellarion,Faith of the High Science,Full citizenship,,Upper,Strength,Ellarion Centrist Party,Seaman Apprentice,Unknown,Aydan Andrews,Child,Alia Swanson,Child,Amira Andrews,Grandchild,Aksel Swanson,Spouse,,,,,,,,,,,,,,,,,,,,,,,,,477,FALSE,
+20176,,5FM3IP,FALSE,Ljubica,Swanson,,477,477199E557364,Unknown,Ellarion,Faith of the High Science,Full citizenship,Unknown,Upper,Strength,Ellarion Centrist Party,Seaman Apprentice,Unknown,Aydan Andrews,Child,Alia Swanson,Child,Amira Andrews,Grandchild,Aksel Swanson,Spouse,,,,,,,,,,,,,,,,,,,,,,,,,477,FALSE,
 20177,,JACLOA,FALSE,Elya,Andrews,Grand Admiral of the EOC starfleet,479,479209E604884,Present and accounted for,Ellarion,Faith of the High Science,Full citizenship,ESS Aurora,Upper,Strength,None,Admiral,Career Military,Caden Andrews,Child,Amira Andrews,Grandchild,John Andrews,Spouse,,,,,,,,,,,,,,,,,,,,,,,,,,,479,FALSE,
-20178,,LXZSF3,FALSE,John,Andrews,,480,480099E875774,Unknown,Ellarion,Faith of the High Science,Full citizenship,,Upper,Strength,None,Master Chief,Career Military,Elya Andrews,Spouse,Caden Andrews,Child,Amira Andrews,Grandchild,,,,,,,,,,,,,,,,,,,,,,,,,,,480,FALSE,
-20179,,IKCZ8T,FALSE,Joe,Carson,Financial Management Technician,483,483163E688474,Deceased,Ellarion,Faith of the High Science,Full citizenship,,Upper,Strength,None,Master Chief,Career Military,Salma Taylor,Spouse,Arin Carson,Child,,,,,,,,,,,,,,,,,,,,,,,,,,,,,483,FALSE,
-20180,,EUVK5Y,FALSE,Arin,Carson,,513,513288E485554,Unknown,Ellarion,Faith of the High Science,Full citizenship,,Upper,Strength,Ellarion Centrist Party,Petty Officer Second Class,Unknown,Salma Taylor,Parent,Joe Carson,Parent,Hayden Carson,Sibling,,,,,,,,,,,,,,,,,,,,,,,,,,,513,FALSE,
-20181,,JNWJZZ,FALSE,Hannah,Green,Priestess,505,505202C547785,Deceased,Caelena,Old Ways,Colonial citizenship,,Middle,Mercy,None,None,Religious Calling,Hale Green,Sibling,Naomi Green,Parent,Simon Green,Parent,,,,,,,,,,,,,,,,,,,"500 Born
+20178,,LXZSF3,FALSE,John,Andrews,,480,480099E875774,Unknown,Ellarion,Faith of the High Science,Full citizenship,Unknown,Upper,Strength,None,Master Chief,Career Military,Elya Andrews,Spouse,Caden Andrews,Child,Amira Andrews,Grandchild,,,,,,,,,,,,,,,,,,,,,,,,,,,480,FALSE,
+20179,,IKCZ8T,FALSE,Joe,Carson,Financial Management Technician,483,483163E688474,Deceased,Ellarion,Faith of the High Science,Full citizenship,None,Upper,Strength,None,Master Chief,Career Military,Salma Taylor,Spouse,Arin Carson,Child,,,,,,,,,,,,,,,,,,,,,,,,,,,,,483,FALSE,
+20180,,EUVK5Y,FALSE,Arin,Carson,,513,513288E485554,Unknown,Ellarion,Faith of the High Science,Full citizenship,Unknown,Upper,Strength,Ellarion Centrist Party,Petty Officer Second Class,Unknown,Salma Taylor,Parent,Joe Carson,Parent,Hayden Carson,Sibling,,,,,,,,,,,,,,,,,,,,,,,,,,,513,FALSE,
+20181,,JNWJZZ,FALSE,Hannah,Green,Priestess,505,505202C547785,Deceased,Caelena,Old Ways,Colonial citizenship,None,Middle,Mercy,None,None,Religious Calling,Hale Green,Sibling,Naomi Green,Parent,Simon Green,Parent,,,,,,,,,,,,,,,,,,,"500 Born
 529 Killed, strangled to death and found in an alley, victim of a serial killer called ""Chain Strangler""",,,,,,,,505,FALSE,
 20182,,GUGRX4,FALSE,Naomi,Green,,471,471045C566312,Present and accounted for,Caelena,Old Ways,Colonial citizenship,CSS Prophet,Middle,Mercy,The Democratic Pluralist Party,Petty Officer First Class,Military Career at Mercy,Hale Green,Child,Hannah Green,Child,Simon Green,Spouse,,,,,,,,,,,,,,,,,,,,,,,,,,,471,FALSE,
-20183,,ECHDG7,FALSE,Simon,Green,,468,468066C751121,Deceased,Caelena,Old Ways,Colonial citizenship,,Middle,Mercy,The Democratic Pluralist Party,Lieutenant,Military Career at Mercy,Hale Green,Child,Hannah Green,Child,Naomi Green,Spouse,,,,,,,,,,,,,,,,,,,,,,,,,,,468,FALSE,
-20184,,Q398UP,FALSE,Paula,Anderson,Politician,473,473233E244321,Unknown,Ellarion,None,Full citizenship,,Upper,Intelligence,None,Seaman Apprentice,Politician,Ashlin Hall,Child,Serg Anderson,Spouse,,,,,,,,,,,,,,,,,,,,,,,,,,,,,473,FALSE,
-20185,,OIZIAM,FALSE,Serg,Anderson,Pilot,470,470007E352411,Deceased,Ellarion,None,Full citizenship,,Upper,Intelligence,None,Lieutenant,Career Military,Ashlin Hall,Child,Paula Anderson,Spouse,,,,,,,,,,,,,,,,,,,,"516 Killed in action, fighter was shot down by the Machines",,,,,,,,,470,FALSE,
-20186,,GWJUSV,FALSE,Mary,Meadows,,480,480198O234221,Deceased,Osiris,None,Colonial citizenship,,Lower,Floater,None,None,Mine Worker,Noe Walker,Child,Gene Hawkins,Child,Theosin Walker,Ex Spouse,Don Meadows,Parent,Kerry Meadows,Sibling,Noah Booth,Relative,Eli Booth,Relative,Jack Hawkins,Ex Spouse,,,,,,,,,,,,,,,,,480,FALSE,
+20183,,ECHDG7,FALSE,Simon,Green,,468,468066C751121,Deceased,Caelena,Old Ways,Colonial citizenship,None,Middle,Mercy,The Democratic Pluralist Party,Lieutenant,Military Career at Mercy,Hale Green,Child,Hannah Green,Child,Naomi Green,Spouse,,,,,,,,,,,,,,,,,,,,,,,,,,,468,FALSE,
+20184,,Q398UP,FALSE,Paula,Anderson,Politician,473,473233E244321,Unknown,Ellarion,None,Full citizenship,Unknown,Upper,Intelligence,None,Seaman Apprentice,Politician,Ashlin Hall,Child,Serg Anderson,Spouse,,,,,,,,,,,,,,,,,,,,,,,,,,,,,473,FALSE,
+20185,,OIZIAM,FALSE,Serg,Anderson,Pilot,470,470007E352411,Deceased,Ellarion,None,Full citizenship,None,Upper,Intelligence,None,Lieutenant,Career Military,Ashlin Hall,Child,Paula Anderson,Spouse,,,,,,,,,,,,,,,,,,,,"516 Killed in action, fighter was shot down by the Machines",,,,,,,,,470,FALSE,
+20186,,GWJUSV,FALSE,Mary,Meadows,,480,480198O234221,Deceased,Osiris,None,Colonial citizenship,None,Lower,Floater,None,None,Mine Worker,Noe Walker,Child,Gene Hawkins,Child,Theosin Walker,Ex Spouse,Don Meadows,Parent,Kerry Meadows,Sibling,Noah Booth,Relative,Eli Booth,Relative,Jack Hawkins,Ex Spouse,,,,,,,,,,,,,,,,,480,FALSE,
 20187,,WWD3AX,FALSE,Theosin,Walker,,472,472209O394553,Present and accounted for,Osiris,None,Colonial citizenship,OSS Vulture,Lower,Defiance,None,Petty Officer,Logistics,Noe Walker,Child,Mary Meadows,Ex Spouse,Hedly Walker,Child,Edina Walker,Spouse,,,,,,,,,,,,,,,,,,,,,,,,,472,FALSE,
-20188,,QOBQFH,FALSE,Don,Meadows,Researcher,446,446201O358380,Deceased,Osiris,None,Colonial citizenship,,Lower,Floater,None,Seaman,Scientist,Mary Meadows,Child,Kerry Meadows,Child,Noe Walker,Grandchild,Eli Booth,Grandchild,Noah Booth,Grandchild,Gene Hawkins,Grandchild,,,,,,,,,,,,,,,,,,,,,446,FALSE,
+20188,,QOBQFH,FALSE,Don,Meadows,Researcher,446,446201O358380,Deceased,Osiris,None,Colonial citizenship,None,Lower,Floater,None,Seaman,Scientist,Mary Meadows,Child,Kerry Meadows,Child,Noe Walker,Grandchild,Eli Booth,Grandchild,Noah Booth,Grandchild,Gene Hawkins,Grandchild,,,,,,,,,,,,,,,,,,,,,446,FALSE,
 20189,,5N6S0K,FALSE,Kerry,Meadows,Researcher,490,490011O549881,Present and accounted for,Osiris,None,Colonial citizenship,ESS Discovery,Lower,Loyalty,None,None,Scientist,Noe Walker,Relative,Eli Booth,Child,Noah Booth,Child,Arlyn Booth,Ex Spouse,Gene Hawkins,Relative,,,,,,,,,,,,,,,,,,,,,,,490,FALSE,
-20190,,XW0JGT,FALSE,Noah,Booth,Pilot,522,522322E433864,Deceased,Ellarion,None,Full citizenship,,Lower,Loyalty,None,Master Chief,Career Military,Eli Booth,Sibling,Arlyn Booth,Parent,Kerry Meadows,Parent,Don Meadows,Grandparent,Mary Meadows,Relative,Noe Walker,Relative,Gene Hawkins,Relative,Pax Houghton,Relative,,,,,,,541 Died on fighter accident,,,,,,,,,,522,FALSE,
-20191,,566I44,FALSE,Jack,Hawkins,,478,478055O209399,Deceased,Osiris,None,Colonial citizenship,,Lower,Floater,None,Seaman,Mine Worker,Gene Hawkins,Child,Mary Meadows,Ex Spouse,,,,,,,,,,,,,,,,,,,,,510 Died in a mining accident,,,,,,,,478,FALSE,
-20192,,FQX18Q,FALSE,Mike,Russell,,476,476002E77676,Deceased,Ellarion,Faith of the High Science,Full citizenship,,Lower,Ambition,None,Petty Officer First Class,Career Military,Gaylen Russell,Spouse,Thomas Russell,Child,Eugenie Russell,Grandchild,,,,,,,,,,,,,,,,,"492 Basic training
+20190,,XW0JGT,FALSE,Noah,Booth,Pilot,522,522322E433864,Deceased,Ellarion,None,Full citizenship,None,Lower,Loyalty,None,Master Chief,Career Military,Eli Booth,Sibling,Arlyn Booth,Parent,Kerry Meadows,Parent,Don Meadows,Grandparent,Mary Meadows,Relative,Noe Walker,Relative,Gene Hawkins,Relative,Pax Houghton,Relative,,,,,,,541 Died on fighter accident,,,,,,,,,,522,FALSE,
+20191,,566I44,FALSE,Jack,Hawkins,,478,478055O209399,Deceased,Osiris,None,Colonial citizenship,None,Lower,Floater,None,Seaman,Mine Worker,Gene Hawkins,Child,Mary Meadows,Ex Spouse,,,,,,,,,,,,,,,,,,,,,510 Died in a mining accident,,,,,,,,478,FALSE,
+20192,,FQX18Q,FALSE,Mike,Russell,,476,476002O77676,Deceased,Osiris,Faith of the High Science,Full citizenship,None,Lower,Ambition,None,Petty Officer First Class,Career Military,Gaylen Russell,Spouse,Thomas Russell,Child,Eugenie Russell,Grandchild,,,,,,,,,,,,,,,,,"492 Basic training
 493 Promoted to Seaman Apprentice
 494 Promoted to Seaman
 494 Approved for Postgraduate Studies at Imperial Academy of Defence (Ellarion)
@@ -1580,57 +1584,58 @@ operate.
 510 Promoted to Petty Officer First Class
 514 Assigned to Ellarion Special Operations
 519 Killed in action",,"476 Born
+492 Moved to Ellarion from Osiris
 497 Married Gaylen Russell (changed name from Mike Stevens to Mike Russell)
 499 Child was born: Thomas Russell
 517 Grandchild was born: Eugenie Russell
 519 Deceased",C,,B,,,,,476,FALSE,
-20193,,AY5HM0,FALSE,Merriam,Hollow,Senator,468,468324E345211,Killed in action,Ellarion,Faith of the High Science,Full citizenship,,Upper,Confidence,Association for Spiritual Technology,Chief Petty Officer,Politician,Don Hollow,Spouse,Glen Hollow,Child,Flann Hollow,Child,,,,,,,,,,,,,,,,,,,"468 Born as Merriam Voight
+20193,,AY5HM0,FALSE,Merriam,Hollow,Senator,468,468324E345211,Killed in action,Ellarion,Faith of the High Science,Full citizenship,None,Upper,Confidence,Association for Spiritual Technology,Chief Petty Officer,Politician,Don Hollow,Spouse,Glen Hollow,Child,Flann Hollow,Child,,,,,,,,,,,,,,,,,,,"468 Born as Merriam Voight
 487 Married Don Hollow and changed surname to Hollow
 488 Birth of child: Glen Hollow
 503 Birth of child: Flann Hollow
 532 Becomes Senator
 ",,,O,,,,,468,FALSE,
-20194,,9VR9EY,FALSE,Don,Hollow,Mr.,468,468111E467465,Killed in action,Ellarion,Faith of the High Science,Full citizenship,,Upper,Confidence,Association for Spiritual Technology,Petty Officer First Class,Politician,Merriam Hollow,Spouse,Glen Hollow,Child,Flann Hollow,Child,,,,,,,,,,,,,,,,,,,"468 Born
+20194,,9VR9EY,FALSE,Don,Hollow,Mr.,468,468111E467465,Killed in action,Ellarion,Faith of the High Science,Full citizenship,None,Upper,Confidence,Association for Spiritual Technology,Petty Officer First Class,Politician,Merriam Hollow,Spouse,Glen Hollow,Child,Flann Hollow,Child,,,,,,,,,,,,,,,,,,,"468 Born
 487 Married Merriam Voight who changed surname to Hollow
 488 Birth of child: Glen Hollow
 503 Birth of child: Flann Hollow",,,O,,,,,468,FALSE,
-20195,,XQYM0R,FALSE,Aurelia,Augustos Cauruleos,Emperor,491,491053E120098,Killed in action,Ellarion,Faith of the High Science,Full citizenship,,Empirial,Floater,None,None,Emperor,Frederic Julios Cauruleos,Spouse,Julia Aurelios Cauruleos,Child,Jovian Aurelios Cauruleos,Child,Juno Aurelios Cauruleos,Child,Marcio Augustos Cauruleos,Sibling,,,,,,,,,,,,,,,"491 Born
+20195,,XQYM0R,FALSE,Aurelia,Augustos Cauruleos,Emperor,491,491053E120098,Killed in action,Ellarion,Faith of the High Science,Full citizenship,None,Empirial,None,None,None,Emperor,Frederic Julios Cauruleos,Spouse,Julia Aurelios Cauruleos,Child,Jovian Aurelios Cauruleos,Child,Juno Aurelios Cauruleos,Child,Marcio Augustos Cauruleos,Sibling,,,,,,,,,,,,,,,"491 Born
 511 Death of father August Severus Cauruleos
 511 Becomes Emperor
 512 Marries Frederic Julios Cauruleos
 513 Birth of a child
 518 Birth of a child Jovian Aurelios Cauruleos
 522 Birth of a child Julia Aurelios Cauruleos",B,542,B,,,,,491,FALSE,
-20196,,VEJ9X6,FALSE,Samantha,Richard,,484,484228E485224,Unknown,Ellarion,None,Full citizenship,,Upper,Strength,Ellarion Centrist Party,None,Unknown,Deron Richard,Child,David Richard,Spouse,,,,,,,,,,,,,,,,,,,,,,,,,,,,,484,FALSE,
-20197,,VFOO90,FALSE,Frederic,Julios Cauruleos,Emperor Consort,490,490298E671123,Killed in action,Ellarion,Faith of the High Science,Full citizenship,,Empirial,Floater,None,None,Emperor Consort,Aurelia Augustos Cauruleos,Spouse,Julia Aurelios Cauruleos,Child,Jovian Aurelios Cauruleos,Child,Marcio Augustos Cauruleos,Relative,,,,,,,,,,,,,,,,,"490 Born
+20196,,VEJ9X6,FALSE,Samantha,Richard,,484,484228E485224,Unknown,Ellarion,None,Full citizenship,Unknown,Upper,Strength,Ellarion Centrist Party,None,Unknown,Deron Richard,Child,David Richard,Spouse,,,,,,,,,,,,,,,,,,,,,,,,,,,,,484,FALSE,
+20197,,VFOO90,FALSE,Frederic,Julios Cauruleos,Emperor Consort,490,490298E671123,Killed in action,Ellarion,Faith of the High Science,Full citizenship,None,Empirial,None,None,None,Emperor Consort,Aurelia Augustos Cauruleos,Spouse,Julia Aurelios Cauruleos,Child,Jovian Aurelios Cauruleos,Child,Marcio Augustos Cauruleos,Relative,,,,,,,,,,,,,,,,,"490 Born
 512 Marries Emperor Aurelia Augustos Cauruleos
 518 Birth of a child Jovian Aurelios Cauruleos
 522 Birth of a child Julia Aurelios Cauruleos",A,542,B,,,,,490,FALSE,
-20198,,UPK4TA,FALSE,Bren,Richard,,485,485211E520009,Deceased,Ellarion,None,Full citizenship,,Upper,Strength,None,Commander,Career Military,David Richard,Sibling,Deron Richard,Relative,,,,,,,,,,,,,,,,,,,,,,,,,,,,,485,FALSE,
-20199,,KRL8XY,FALSE,Amy,Ramirez,Farmer,483,483099C392229,Unknown,Caelena,None,Colonial citizenship,,Lower,Floater,None,None,Farmer,Nickie Ramirez,Child,Lonnie Gordon,Sibling,Hedly Walker,Sibling,Edina Walker,Parent,,,,,,,,,,,,,,,,,"483 Born
+20198,,UPK4TA,FALSE,Bren,Richard,,485,485211E520009,Deceased,Ellarion,None,Full citizenship,None,Upper,Strength,None,Commander,Career Military,David Richard,Sibling,Deron Richard,Relative,,,,,,,,,,,,,,,,,,,,,,,,,,,,,485,FALSE,
+20199,,KRL8XY,FALSE,Amy,Ramirez,Farmer,483,483099C392229,Unknown,Caelena,None,Colonial citizenship,Unknown,Lower,Floater,None,None,Farmer,Nickie Ramirez,Child,Lonnie Gordon,Sibling,Hedly Walker,Sibling,Edina Walker,Parent,,,,,,,,,,,,,,,,,"483 Born
 502 Changed name from Gordon to Ramirez",,,,,,,,483,FALSE,
-20200,,MGMS9O,FALSE,Wendel,Goodman,,470,470001E002232,Deceased,Ellarion,Faith of the High Science,Full citizenship,,Middle,Hope,None,Lieutenant,Career Military,Merryl Goodman,Spouse,Tristan Fukui,Child,,,,,,,,,,,,,,,,,,,,,"470 Born
+20200,,MGMS9O,FALSE,Wendel,Goodman,,470,470001E002232,Deceased,Ellarion,Faith of the High Science,Full citizenship,None,Middle,Hope,None,Lieutenant,Career Military,Merryl Goodman,Spouse,Tristan Fukui,Child,,,,,,,,,,,,,,,,,,,,,"470 Born
 492 Married Merryl Stevens
 502 Birth of child: Tristan Goodman
 538 Deceased (neurodegenerative disease)",,,,,,,,470,FALSE,
-20201,,BUXBWI,FALSE,Merryl,Goodman,,475,475123E234567,Missing in action,Ellarion,Faith of the High Science,Full citizenship,,Middle,Hope,None,Master Chief,Career Military,Wendel Goodman,Spouse,Tristan Fukui,Child,,,,,,,,,,,,,,,,,,,,,"475 Born as Merryl Stevens
+20201,,BUXBWI,FALSE,Merryl,Goodman,,475,475123E234567,Missing in action,Ellarion,Faith of the High Science,Full citizenship,Unknown,Middle,Hope,None,Master Chief,Career Military,Wendel Goodman,Spouse,Tristan Fukui,Child,,,,,,,,,,,,,,,,,,,,,"475 Born as Merryl Stevens
 492 Married Wendel Goodman and changed name to Goodman
 502 Birth of child Tristan Goodman
 538 Death of spouse",C,539,B,,,,,475,FALSE,
-20202,,1N30E4,FALSE,Laura,Romero,,502,502149E243828,Deceased,Ellarion,Faith of the High Science,Full citizenship,,Upper,Tranquility,None,None,Unknown,Vincent Romero,Parent,Laurel Romero,Parent,Sofie Romero,Relative,Sasha Romero,Relative,,,,,,,,,,,,,,,,,"500 Born
+20202,,1N30E4,FALSE,Laura,Romero,,502,502149E243828,Deceased,Ellarion,Faith of the High Science,Full citizenship,None,Upper,Tranquility,None,None,Unknown,Vincent Romero,Parent,Laurel Romero,Parent,Sofie Romero,Relative,Sasha Romero,Relative,,,,,,,,,,,,,,,,,"500 Born
 513 Died in a car accident",,,,,,,,502,FALSE,
-20203,,XM04SB,FALSE,Aran,Arima,,502,502222E343322,Deceased,Ellarion,Faith of the High Science,Full citizenship,,Upper,Purity,None,None,Educator,Abe Arima,Spouse,Ismy Arima,Child,,,,,,,,,,,,,,,,,,,,,"502 Born as Aran Matthews
+20203,,XM04SB,FALSE,Aran,Arima,,502,502222E343322,Deceased,Ellarion,Faith of the High Science,Full citizenship,None,Upper,Purity,None,None,Educator,Abe Arima,Spouse,Ismy Arima,Child,,,,,,,,,,,,,,,,,,,,,"502 Born as Aran Matthews
 522 Married to Abe Arima, changed surname to Arima
 523 Birth of child Ismy Arima
 525 Deceased (blood cancer)",,,,,,,,502,FALSE,
-20204,,KVJ16E,FALSE,Sofie,Romero,,500,500285E298746,Deceased,Ellarion,Faith of the High Science,Full citizenship,,Upper,Tranquility,None,None,Unknown,Sasha Romero,Sibling,Laura Romero,Relative,Lowan Romero,Relative,,,,,,,,,,,,,,,,,,,"500 Born
+20204,,KVJ16E,FALSE,Sofie,Romero,,500,500285E298746,Deceased,Ellarion,Faith of the High Science,Full citizenship,None,Upper,Tranquility,None,None,Unknown,Sasha Romero,Sibling,Laura Romero,Relative,Lowan Romero,Relative,,,,,,,,,,,,,,,,,,,"500 Born
 513 Died in a car accident",,,,,,,,500,FALSE,
 20205,,5IPR9D,FALSE,Sasha,Romero,,499,499094E322896,Present and accounted for,Ellarion,Faith of the High Science,Full citizenship,CSS Prophet,Upper,Tranquility,None,Seaman,Religious Calling,Sofie Romero,Sibling,Laura Romero,Relative,Lowan Romero,Relative,,,,,,,,,,,,,,,,,,,,,,,,,,,499,FALSE,
-20206,,IJ1JLP,FALSE,Vincent,Romero,Devoted,474,474334E329755,Deceased,Ellarion,Faith of the High Science,Full citizenship,,Upper,Tranquility,None,None,Religious Calling,Lowan Romero,Child,Laura Romero,Child,Laurel Romero,Spouse,Sasha Romero,Relative,Sofie Romero,Relative,,,,,,,,,,,,,,,,,,,,,,,474,FALSE,
-20207,,UU4AJ6,FALSE,Laurel,Romero,Politician,475,475154E225800,Deceased,Ellarion,Faith of the High Science,Full citizenship,,Upper,Tranquility,Association for Spiritual Technology,None,Politician,Lowan Romero,Child,Laura Romero,Child,Vincent Romero,Spouse,,,,,,,,,,,,,,,,,,,,,,,,,,,475,FALSE,
-20208,,QK62RF,FALSE,Arthur,Higashi,,487,487145E234227,Unknown,Ellarion,None,Full citizenship,,Upper,Strength,None,Petty Officer Second Class,Unknown,Avery Higashi,Child,Yumi Higashi,Spouse,,,,,,,,,,,,,,,,,,,,,,,,,,,,,487,FALSE,
-20209,,ZP3RAT,FALSE,Yumi,Higashi,,485,485126E238577,Unknown,Ellarion,None,Full citizenship,,Upper,Strength,None,None,Unknown,Avery Higashi,Child,Arthur Higashi,Spouse,,,,,,,,,,,,,,,,,,,,,,,,,,,,,485,FALSE,
-20210,,3HBE6A,FALSE,Hyun,Agaki,,482,482146E454321,Deceased,Ellarion,Faith of the High Science,Full citizenship,,Middle,Floater,None,Petty Officer,Career Military,Momoko Agaki,Spouse,Jodey Agaki,Child,Young Ho Agaki,Sibling,,,,,,,,,,,,,,,,,"498 Basic Training
+20206,,IJ1JLP,FALSE,Vincent,Romero,Devoted,474,474334E329755,Deceased,Ellarion,Faith of the High Science,Full citizenship,None,Upper,Tranquility,None,None,Religious Calling,Lowan Romero,Child,Laura Romero,Child,Laurel Romero,Spouse,Sasha Romero,Relative,Sofie Romero,Relative,,,,,,,,,,,,,,,,,,,,,,,474,FALSE,
+20207,,UU4AJ6,FALSE,Laurel,Romero,Politician,475,475154E225800,Deceased,Ellarion,Faith of the High Science,Full citizenship,None,Upper,Tranquility,Association for Spiritual Technology,None,Politician,Lowan Romero,Child,Laura Romero,Child,Vincent Romero,Spouse,,,,,,,,,,,,,,,,,,,,,,,,,,,475,FALSE,
+20208,,QK62RF,FALSE,Arthur,Higashi,,487,487145E234227,Unknown,Ellarion,None,Full citizenship,Unknown,Upper,Strength,None,Petty Officer Second Class,Unknown,Avery Higashi,Child,Yumi Higashi,Spouse,,,,,,,,,,,,,,,,,,,,,,,,,,,,,487,FALSE,
+20209,,ZP3RAT,FALSE,Yumi,Higashi,,485,485126E238577,Unknown,Ellarion,None,Full citizenship,Unknown,Upper,Strength,None,None,Unknown,Avery Higashi,Child,Arthur Higashi,Spouse,,,,,,,,,,,,,,,,,,,,,,,,,,,,,485,FALSE,
+20210,,3HBE6A,FALSE,Hyun,Agaki,,482,482146E454321,Deceased,Ellarion,Faith of the High Science,Full citizenship,None,Middle,Floater,None,Petty Officer,Career Military,Momoko Agaki,Spouse,Jodey Agaki,Child,Young Ho Agaki,Sibling,,,,,,,,,,,,,,,,,"498 Basic Training
 499 Promoted to Seaman Apprentice
 500 Promoted to Seaman
 500 Stationed to Ellarion Military Base
@@ -1638,29 +1643,29 @@ operate.
 506 Killed in action",,"482 Born
 505 Married Momoko Agaki
 506 Deceased",,,,,,,,482,FALSE,
-20211,,VVZE7T,FALSE,Momoko,Agaki,,483,483334E099801,Deceased,Ellarion,Faith of the High Science,Full citizenship,,Lower,Floater,None,None,Nurse,Hyun Agaki,Spouse,Jodey Agaki,Child,,,,,,,,,,,,,,,,,,,,,"483 Born as Momoko Ngyen
+20211,,VVZE7T,FALSE,Momoko,Agaki,,483,483334E099801,Deceased,Ellarion,Faith of the High Science,Full citizenship,None,Lower,Floater,None,None,Nurse,Hyun Agaki,Spouse,Jodey Agaki,Child,,,,,,,,,,,,,,,,,,,,,"483 Born as Momoko Ngyen
 505 Married to Hyun Agaki
 506 Death of spouse
 506 Birth of child Jodey Agaki
 506 Deceased (childbirth complications)",,,O,,,,,483,FALSE,
-20212,,THQL0L,FALSE,Young Ho,Agaki,,480,480009E039900,Deceased,Ellarion,Faith of the High Science,Full citizenship,,Middle,Floater,None,None,Logistics,Hyun Agaki,Sibling,Jodey Agaki,Relative,,,,,,,,,,,,,,,,,,,,,"480 Born
+20212,,THQL0L,FALSE,Young Ho,Agaki,,480,480009E039900,Deceased,Ellarion,Faith of the High Science,Full citizenship,None,Middle,Floater,None,None,Logistics,Hyun Agaki,Sibling,Jodey Agaki,Relative,,,,,,,,,,,,,,,,,,,,,"480 Born
 506 Adopted child of sibling Hyun Agaki; Jodey Agaki
 516 Deceased (cancer)",,,O,,,,,480,FALSE,
-20213,,1J3MBO,FALSE,Richard,Tremor,Senator,462,462183E488837,Deceased,Ellarion,Faith of the High Science,Full citizenship,,Upper,Purity,Ellarion Centrist Party,Petty Officer,Politician,Susan Tremor,Spouse,Eva Ellis,Child,Fenix Ellis,Grandchild,Harper Ellis,Grandparent,,,,,,,,,,,,,,,,,"462 Born
+20213,,1J3MBO,FALSE,Richard,Tremor,Senator,462,462183E488837,Deceased,Ellarion,Faith of the High Science,Full citizenship,None,Upper,Purity,Ellarion Centrist Party,Petty Officer,Politician,Susan Tremor,Spouse,Eva Ellis,Child,Fenix Ellis,Grandchild,Harper Ellis,Grandparent,,,,,,,,,,,,,,,,,"462 Born
 542 Murdered in his home, Executed at his sleep, Investigation on going",,,,,,,,462,FALSE,
-20214,,5TZPNB,FALSE,Susan,Tremor,Doctor,463,463008E345836,Unknown,Ellarion,Faith of the High Science,Full citizenship,,Upper,Hope,None,None,Doctor,Richard Tremor,Spouse,Eva Ellis,Child,Harper Ellis,Grandchild,Fenix Ellis,Grandchild,,,,,,,,,,,,,,,,,,,,,,,,,463,FALSE,
-20215,,1MH34G,FALSE,Delta,Bolton,,493,493223C385766,Deceased,Caelena,Old Ways,Colonial citizenship,,Middle,Loyalty,None,None,Secretary,Amir Bolton,Spouse,,,,,,,,,,,,,,,,,,,,,,,"493 Born
+20214,,5TZPNB,FALSE,Susan,Tremor,Doctor,463,463008E345836,Unknown,Ellarion,Faith of the High Science,Full citizenship,Unknown,Upper,Hope,None,None,Doctor,Richard Tremor,Spouse,Eva Ellis,Child,Harper Ellis,Grandchild,Fenix Ellis,Grandchild,,,,,,,,,,,,,,,,,,,,,,,,,463,FALSE,
+20215,,1MH34G,FALSE,Delta,Bolton,,493,493223C385766,Deceased,Caelena,Old Ways,Colonial citizenship,None,Middle,Loyalty,None,None,Secretary,Amir Bolton,Spouse,,,,,,,,,,,,,,,,,,,,,,,"493 Born
 523 Married Amir Bolton
 540 Died piecefully in their bed",,,,,,,,493,FALSE,
-20216,,DR6825,FALSE,Suran,Sewi,,494,494100E100230,Unknown,Ellarion,Faith of the High Science,Full citizenship,,Middle,Excellence,Association for Spiritual Technology,None,Doctor,Aeran Lester,Ex Spouse,Anyran Lester,Child,,,,,,,,,,,,,,,,,,,,,"484 Born
+20216,,DR6825,FALSE,Suran,Sewi,,494,494100E100230,Unknown,Ellarion,Faith of the High Science,Full citizenship,Unknown,Middle,Excellence,Association for Spiritual Technology,None,Doctor,Aeran Lester,Ex Spouse,Anyran Lester,Child,,,,,,,,,,,,,,,,,,,,,"484 Born
 519 Graduated from the Ellarion City Medical Collage
 520 Married Aeran Lester
 521 Birth of child: Anyran Lester
 525 Death of a child: Anyran Lester
 528 Divorced from Aeran Laster",B,542,AB,,,,,494,FALSE,
-20217,,TUQBKT,FALSE,Anyran,Lester,,521,521005E444531,Deceased,Ellarion,Faith of the High Science,Full citizenship,,Middle,Excellence,None,None,Unknown,Aeran Lester,Parent,Suran Sewi,Parent,,,,,,,,,,,,,,,,,,,,,"521 Born
+20217,,TUQBKT,FALSE,Anyran,Lester,,521,521005E444531,Deceased,Ellarion,Faith of the High Science,Full citizenship,None,Middle,Excellence,None,None,Unknown,Aeran Lester,Parent,Suran Sewi,Parent,,,,,,,,,,,,,,,,,,,,,"521 Born
 525 Deceased: died during a tumor removal operation performed by Aeran Lester, incident was recorded as an unfortunate accident",,,,,,,,521,FALSE,
-20218,,RZ1O5J,FALSE,Gabe,Abrankowich,,494,494225E200211,Unknown,Ellarion,Faith of the High Science,Full citizenship,,Middle,Ambition,The Democratic Pluralist Party,Master Chief,Politician,Fran Abrankowich,Spouse,,,,,,,,,,,,,,,,,,,,,"510 Basic training
+20218,,RZ1O5J,FALSE,Gabe,Abrankowich,,494,494225E200211,Unknown,Ellarion,Faith of the High Science,Full citizenship,Unknown,Middle,Ambition,The Democratic Pluralist Party,Master Chief,Politician,Fran Abrankowich,Spouse,,,,,,,,,,,,,,,,,,,,,"510 Basic training
 511 Promoted to Seaman Apprentice
 512 Promoted to Seaman
 512 Stationed to the Ashoka Military Base
@@ -1675,21 +1680,21 @@ operate.
 522 Resigned from service",,"494 Born as Gabe Mills
 523 Joined DPP
 536 Married Fran Abrankowich",B,542,A,,,,,494,FALSE,
-20219,,SCX441,FALSE,Ethan,Ellis,,474,474251E547877,Unknown,Ellarion,Faith of the High Science,Full citizenship,,Upper,Hope,None,None,Unknown,Tan Ellis,Sibling,Nathan Ellis,Sibling,Jeremy Ellis,Sibling,Jasmine Ellis,Child,Nora Ellis,Child,Alice Ellis,Spouse,Harper Ellis,Relative,Fenix Ellis,Relative,,,,,,,,,"474 Born
+20219,,SCX441,FALSE,Ethan,Ellis,,474,474251E547877,Unknown,Ellarion,Faith of the High Science,Full citizenship,Unknown,Upper,Hope,None,None,Unknown,Tan Ellis,Sibling,Nathan Ellis,Sibling,Jeremy Ellis,Sibling,Jasmine Ellis,Child,Nora Ellis,Child,Alice Ellis,Spouse,Harper Ellis,Relative,Fenix Ellis,Relative,,,,,,,,,"474 Born
 497 Big brother Nathan Ellis died in action
 498 Mother, Jenny Ellis, died in a heart failure
 498 Father, Matt Ellis, died in a heart failure
 500 Married Alice Ellis
 502 Birth of child, Jasmine Ellis
 502 Birth of child, Nora Ellis",,,,,,,,474,FALSE,
-20220,,L8O9J0,FALSE,Nathan,Ellis,,497,497198E389755,Deceased,Ellarion,Faith of the High Science,Full citizenship,,Upper,Hope,None,Lieutenant,Career Military,Tan Ellis,Sibling,Ethan Ellis,Sibling,Jeremy Ellis,Sibling,Jasmine Ellis,Relative,Nora Ellis,Relative,Jenny Ellis,Parent,Matt Ellis,Parent,Harper Ellis,Relative,Fenix Ellis,Relative,,,,,497 Killed in action,,,,,,,,,,497,FALSE,
+20220,,L8O9J0,FALSE,Nathan,Ellis,,497,497198E389755,Deceased,Ellarion,Faith of the High Science,Full citizenship,None,Upper,Hope,None,Lieutenant,Career Military,Tan Ellis,Sibling,Ethan Ellis,Sibling,Jeremy Ellis,Sibling,Jasmine Ellis,Relative,Nora Ellis,Relative,Jenny Ellis,Parent,Matt Ellis,Parent,Harper Ellis,Relative,Fenix Ellis,Relative,,,,,497 Killed in action,,,,,,,,,,497,FALSE,
 20221,,B3GFQY,FALSE,Jeremy,Ellis,,489,489045E548853,Present and accounted for,Ellarion,Faith of the High Science,Full citizenship,ESS Harbinger,Upper,Hope,None,Seaman,Unknown,Nathan Ellis,Sibling,Ethan Ellis,Sibling,Tan Ellis,Sibling,Jenny Ellis,Parent,Matt Ellis,Parent,Nora Ellis,Relative,Jasmine Ellis,Relative,Harper Ellis,Relative,Fenix Ellis,Relative,,,,,,,"489 Born
 497 Big brother Nathan Ellis died in action
 498 Mother, Jenny Ellis, died in a heart failure
 498 Father, Matt Ellis, died in a heart failure",,,,,,,,489,FALSE,
-20222,,SNCNVI,FALSE,Jasmine,Ellis,,502,502123E349699,Unknown,Ellarion,Faith of the High Science,Full citizenship,,Upper,Hope,None,None,Unknown,Ethan Ellis,Parent,Alice Ellis,Parent,Nora Ellis,Sibling,Nathan Ellis,Relative,Tan Ellis,Relative,Jeremy Ellis,Relative,Harper Ellis,Relative,Fenix Ellis,Relative,Jenny Ellis,Grandparent,Matt Ellis,Grandparent,,,,,,,,,,,,,502,FALSE,
-20223,,SSWH1W,FALSE,Nora,Ellis,,502,502123E646658,Unknown,Ellarion,Faith of the High Science,Full citizenship,,Upper,Hope,None,None,Unknown,Ethan Ellis,Parent,Alice Ellis,Parent,Nora Ellis,Sibling,Nathan Ellis,Relative,Tan Ellis,Relative,Jeremy Ellis,Relative,Harper Ellis,Relative,Fenix Ellis,Relative,Jenny Ellis,Grandparent,Matt Ellis,Grandparent,,,,,,,,,,,,,502,FALSE,
-20224,,LZLD4E,FALSE,Matt,Ellis,,442,442332E464577,Deceased,Ellarion,Faith of the High Science,Full citizenship,,Upper,Hope,None,None,Unknown,Tan Ellis,Child,Nathan Ellis,Child,Ethan Ellis,Child,Jeremy Ellis,Child,Jenny Ellis,Spouse,Jasmine Ellis,Grandchild,Nora Ellis,Grandchild,Harper Ellis,Grandchild,Fenix Ellis,Grandchild,,,,,,,"442 Born
+20222,,SNCNVI,FALSE,Jasmine,Ellis,,502,502123E349699,Unknown,Ellarion,Faith of the High Science,Full citizenship,Unknown,Upper,Hope,None,None,Unknown,Ethan Ellis,Parent,Alice Ellis,Parent,Nora Ellis,Sibling,Nathan Ellis,Relative,Tan Ellis,Relative,Jeremy Ellis,Relative,Harper Ellis,Relative,Fenix Ellis,Relative,Jenny Ellis,Grandparent,Matt Ellis,Grandparent,,,,,,,,,,,,,502,FALSE,
+20223,,SSWH1W,FALSE,Nora,Ellis,,502,502123E646658,Unknown,Ellarion,Faith of the High Science,Full citizenship,Unknown,Upper,Hope,None,None,Unknown,Ethan Ellis,Parent,Alice Ellis,Parent,Nora Ellis,Sibling,Nathan Ellis,Relative,Tan Ellis,Relative,Jeremy Ellis,Relative,Harper Ellis,Relative,Fenix Ellis,Relative,Jenny Ellis,Grandparent,Matt Ellis,Grandparent,,,,,,,,,,,,,502,FALSE,
+20224,,LZLD4E,FALSE,Matt,Ellis,,442,442332E464577,Deceased,Ellarion,Faith of the High Science,Full citizenship,None,Upper,Hope,None,None,Unknown,Tan Ellis,Child,Nathan Ellis,Child,Ethan Ellis,Child,Jeremy Ellis,Child,Jenny Ellis,Spouse,Jasmine Ellis,Grandchild,Nora Ellis,Grandchild,Harper Ellis,Grandchild,Fenix Ellis,Grandchild,,,,,,,"442 Born
 470 Married Jenny Ellis
 472 Birth of child, Nathan Ellis
 474 Birth of child, Ethan Ellis
@@ -1697,68 +1702,68 @@ operate.
 489 Birth of child, Jeremy Ellis
 497 Child Nathan Ellis is killed in action
 498 Dies in a heart failure",,,,,,,,442,FALSE,
-20225,,AQOUHP,FALSE,Jenny,Ellis,,448,448068E123411,Deceased,Ellarion,Faith of the High Science,Full citizenship,,Upper,Hope,None,None,Unknown,Nathan Ellis,Child,Ethan Ellis,Child,Tan Ellis,Child,Jeremy Ellis,Child,Jasmine Ellis,Grandchild,Nora Ellis,Grandchild,Harper Ellis,Grandchild,Fenix Ellis,Grandchild,Matt Ellis,Spouse,,,,,,,"448 Born
+20225,,AQOUHP,FALSE,Jenny,Ellis,,448,448068E123411,Deceased,Ellarion,Faith of the High Science,Full citizenship,None,Upper,Hope,None,None,Unknown,Nathan Ellis,Child,Ethan Ellis,Child,Tan Ellis,Child,Jeremy Ellis,Child,Jasmine Ellis,Grandchild,Nora Ellis,Grandchild,Harper Ellis,Grandchild,Fenix Ellis,Grandchild,Matt Ellis,Spouse,,,,,,,"448 Born
 497 Child Nathan Ellis is killed in action
 498 Dies in a heart failure",,,,,,,,448,FALSE,
-20226,,5GIKEY,FALSE,Lydia,Sharp,,494,494099O546445,Unknown,Osiris,None,Colonial citizenship,,Lower,Floater,None,None,Unknown,Remi Sharp,Child,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,494,FALSE,
+20226,,5GIKEY,FALSE,Lydia,Sharp,,494,494099O546445,Unknown,Osiris,None,Colonial citizenship,Unknown,Lower,Floater,None,None,Unknown,Remi Sharp,Child,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,494,FALSE,
 20227,,KOSS7A,FALSE,Corey,Mills,Politician,457,457057E983328,Present and accounted for,Ellarion,Faith of the High Science,Full citizenship,ESS Aurora,Upper,Purity,None,None,Politician,Yuri Mills,Child,Leone Mills,Child,,,,,,,,,,,,,,,,,,,,,,,,,,,,,457,FALSE,
-20228,,UNLLKA,FALSE,Morgan,Yates,Security Officer at Velian Embassy,480,480321E098001,Unknown,Ellarion,Faith of the High Science,Full citizenship,,Middle,Confidence,None,Petty Officer,Security,Taren Yates,Child,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,480,FALSE,
-20229,,95ZJIC,FALSE,Mortimer,Barnes,,472,472088E132211,Deceased,Ellarion,Old Ways,Full citizenship,,Middle,Mercy,None,None,Unknown,Han Barnes,Child,Catherine Barnes,Spouse,Reyna Barnes,Child,Kira Steele,Child,,,,,,,,,,,,,,,,,,,,,,,,,472,FALSE,
-20230,,RMTVZ2,FALSE,Catherine,Barnes,Teacher,475,475176E446558,Unknown,Ellarion,Old Ways,Full citizenship,,Middle,Mercy,None,None,Educator,Han Barnes,Child,Reyna Barnes,Child,Kira Steele,Child,Mortimer Barnes,Spouse,,,,,,,,,,,,,,,,,,,,,,,,,475,FALSE,
+20228,,UNLLKA,FALSE,Morgan,Yates,Security Officer at Velian Embassy,480,480321E098001,Unknown,Ellarion,Faith of the High Science,Full citizenship,Unknown,Middle,Confidence,None,Petty Officer,Security,Taren Yates,Child,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,480,FALSE,
+20229,,95ZJIC,FALSE,Mortimer,Barnes,,472,472088E132211,Deceased,Ellarion,Old Ways,Full citizenship,None,Middle,Mercy,None,None,Unknown,Han Barnes,Child,Catherine Barnes,Spouse,Reyna Barnes,Child,Kira Steele,Child,,,,,,,,,,,,,,,,,,,,,,,,,472,FALSE,
+20230,,RMTVZ2,FALSE,Catherine,Barnes,Teacher,475,475176E446558,Unknown,Ellarion,Old Ways,Full citizenship,Unknown,Middle,Mercy,None,None,Educator,Han Barnes,Child,Reyna Barnes,Child,Kira Steele,Child,Mortimer Barnes,Spouse,,,,,,,,,,,,,,,,,,,,,,,,,475,FALSE,
 20231,,0NW5LZ,FALSE,Reyna,Barnes,,495,495028E123442,Present and accounted for,Ellarion,Old Ways,Full citizenship,ESS Inferno,Middle,Mercy,None,None,Unknown,Han Barnes,Sibling,Kira Steele,Sibling,Catherine Barnes,Parent,Mortimer Barnes,Parent,,,,,,,,,,,,,,,,,,,,,,,,,495,FALSE,
-20232,,D7ZIRN,FALSE,Kira,Steele,Assistant of the Consul General of the Osiris Embassy,497,497350E674771,Deceased,Ellarion,Old Ways,Full citizenship,,Middle,Mercy,None,None,Assistant,Han Barnes,Sibling,Reyna Barnes,Sibling,Mortimer Barnes,Parent,Catherine Barnes,Parent,Heath Steele,Spouse,,,,,,,,,,,,,,,"497 Born
+20232,,D7ZIRN,FALSE,Kira,Steele,Assistant of the Consul General of the Osiris Embassy,497,497350E674771,Deceased,Ellarion,Old Ways,Full citizenship,None,Middle,Mercy,None,None,Assistant,Han Barnes,Sibling,Reyna Barnes,Sibling,Mortimer Barnes,Parent,Catherine Barnes,Parent,Heath Steele,Spouse,,,,,,,,,,,,,,,"497 Born
 528 Married Heath Steele
 528 Changes last name from Barnes to Steele
 541 Dies in an attack to Osiris Embassy",,,,,,,,497,FALSE,
-20233,,I0YKRJ,FALSE,Sheryl,Steele,,454,454182E697741,Deceased,Ellarion,Old Ways,Full citizenship,,Middle,Defiance,None,Petty Officer,Unknown,Heath Steele,Child,James Steele,Spouse,,,,,,,,,,,,,,,,,,,,,"454 Born
+20233,,I0YKRJ,FALSE,Sheryl,Steele,,454,454182E697741,Deceased,Ellarion,Old Ways,Full citizenship,None,Middle,Defiance,None,Petty Officer,Unknown,Heath Steele,Child,James Steele,Spouse,,,,,,,,,,,,,,,,,,,,,"454 Born
 495 Married James Steele
 497 Birth of Child, Heath Steele
 530 Died in an accident",,,,,,,,454,FALSE,
-20234,,AHMW8J,FALSE,James,Steele,,451,451241E071311,Deceased,Ellarion,Old Ways,Full citizenship,,Middle,Defiance,None,Lieutenant,Career Military,Heath Steele,Child,Sheryl Steele,Spouse,,,,,,,,,,,,,,,,,,,,,"451 Born
+20234,,AHMW8J,FALSE,James,Steele,,451,451241E071311,Deceased,Ellarion,Old Ways,Full citizenship,None,Middle,Defiance,None,Lieutenant,Career Military,Heath Steele,Child,Sheryl Steele,Spouse,,,,,,,,,,,,,,,,,,,,,"451 Born
 495 Married James Steele
 497 Birth of Child, Heath Steele
 530 Died in an accident",,,,,,,,451,FALSE,
-20235,,OD2C56,FALSE,Alice,Ellis,,477,477320E1544475,Unknown,Ellarion,Faith of the High Science,Full citizenship,,Upper,Hope,None,None,Unknown,Ethan Ellis,Spouse,Jasmine Ellis,Nora Ellis,,,,,,,,,,,,,,,,,,,,,,,,,,,,,477,FALSE,
-20236,,HHRC4F,FALSE,Juno,Aurelios Cauruleos,,497,,Unknown,Ellarion,None,Full citizenship,,None,Floater,None,None,Unknown,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,497,FALSE,
-20237,,5W6MGQ,FALSE,Edina,Walker,,473,473221O748771,Unknown,Osiris,None,Colonial citizenship,,Lower,Defiance,None,None,Logistics,Lonnie Gordon,Child,Amy Ramirez,Child,Hedly Walker,Child,Theosin Walker,Spouse,Nickie Ramirez,Relative,,,,,,,,,,,,,,,,,,,,,,,473,FALSE,
-20238,,C0VA7I,FALSE,Yin,Laurence,Journalist,466,466117E149753,Deceased,Ellarion,Faith of the High Science,Full citizenship,,Middle,Unity,Sustainable Development Alliance,None,Journalist,Dayle Rogers,Child,Lila Laurence,Spouse,Eddar Laurence,Sibling,,,,,,,,,,,,,,,,,,,"466 Born
+20235,,OD2C56,FALSE,Alice,Ellis,,477,477320E1544475,Unknown,Ellarion,Faith of the High Science,Full citizenship,Unknown,Upper,Hope,None,None,Unknown,Ethan Ellis,Spouse,Jasmine Ellis,Nora Ellis,,,,,,,,,,,,,,,,,,,,,,,,,,,,,477,FALSE,
+20236,,HHRC4F,TRUE,Juno,Aurelios Cauruleos,,513,513022E009088,Unknown,Ellarion,Faith of the High Science,Full citizenship,Unknown,None,none,None,None,Unknown,Aurelia Augustos Cauruleos,Parent,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,497,FALSE,
+20237,,5W6MGQ,FALSE,Edina,Walker,,473,473221O748771,Unknown,Osiris,None,Colonial citizenship,Unknown,Lower,Defiance,None,None,Logistics,Lonnie Gordon,Child,Amy Ramirez,Child,Hedly Walker,Child,Theosin Walker,Spouse,Nickie Ramirez,Relative,,,,,,,,,,,,,,,,,,,,,,,473,FALSE,
+20238,,C0VA7I,FALSE,Yin,Laurence,Journalist,466,466117E149753,Deceased,Ellarion,Faith of the High Science,Full citizenship,None,Middle,Unity,Sustainable Development Alliance,None,Journalist,Dayle Rogers,Child,Lila Laurence,Spouse,Eddar Laurence,Sibling,,,,,,,,,,,,,,,,,,,"466 Born
 503 Birth of Child, Dayle Rogers
 519 Arrested for treason against the emperor and the state, confessed, part of terrorist group called The Black Amaranth, found guilty and sentenced to death",,,,,,,,466,FALSE,
-20239,,KGNBL7,FALSE,Lila,Laurence,Environmental Scientist,471,471066E463997,Deceased,Ellarion,Faith of the High Science,Full citizenship,,Middle,Unity,Sustainable Development Alliance,None,Scientist,Dayle Rogers,Child,Yin Laurence,Spouse,,,,,,,,,,,,,,,,,,,,,"471 Born
+20239,,KGNBL7,FALSE,Lila,Laurence,Environmental Scientist,471,471066E463997,Deceased,Ellarion,Faith of the High Science,Full citizenship,None,Middle,Unity,Sustainable Development Alliance,None,Scientist,Dayle Rogers,Child,Yin Laurence,Spouse,,,,,,,,,,,,,,,,,,,,,"471 Born
 503 Birth of Child, Dayle Rogers
 519 Arrested for treason against the emperor and the state, confessed, part of terrorist group called The Black Amaranth, found guilty and sentenced to death",,,,,,,,471,FALSE,
 20240,,OKBI0W,FALSE,Eddar,Laurence,,464,464304E578992,Present and accounted for,Ellarion,Faith of the High Science,Full citizenship,,Middle,Unity,None,Lieutenant,Career Military,Dayle Rogers,Relative,Yin Laurence,Sibling,,,,,,,,,,,,,,,,,,,487 Injured severly in action,,"464 Born
 490 Wife dies during machine attack",,,,,,,,464,FALSE,
-20241,,8PAAJ9,FALSE,Gerda,McBride,Singer,463,463109E487713,Unknown,Ellarion,Faith of the High Science,Full citizenship,,Middle,Ambition,None,None,Singer,Mel McBride,Child,James McBride,Spouse,,,,,,,,,,,,,,,,,,,,,,,,,,,,,463,FALSE,
-20242,,C93JI2,FALSE,James,McBride,Nurse,470,470098E795113,Unknown,Ellarion,Faith of the High Science,Full citizenship,,Middle,Mercy,None,None,Nurse,Mel McBride,Child,Gerda McBride,Spouse,,,,,,,,,,,,,,,,,,,,,,,,,,,,,470,FALSE,
-20243,,OHRVQJ,FALSE,Lucas,Wilson,,479,479207E678996,Deceased,Ellarion,Faith of the High Science,Full citizenship,,Upper,Confidence,None,Lieutenant,Career Military,Briana Chambers,Spouse,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,479,FALSE,
+20241,,8PAAJ9,FALSE,Gerda,McBride,Singer,463,463109E487713,Unknown,Ellarion,Faith of the High Science,Full citizenship,Unknown,Middle,Ambition,None,None,Singer,Mel McBride,Child,James McBride,Spouse,,,,,,,,,,,,,,,,,,,,,,,,,,,,,463,FALSE,
+20242,,C93JI2,FALSE,James,McBride,Nurse,470,470098E795113,Unknown,Ellarion,Faith of the High Science,Full citizenship,Unknown,Middle,Mercy,None,None,Nurse,Mel McBride,Child,Gerda McBride,Spouse,,,,,,,,,,,,,,,,,,,,,,,,,,,,,470,FALSE,
+20243,,OHRVQJ,FALSE,Lucas,Wilson,,479,479207E678996,Deceased,Ellarion,Faith of the High Science,Full citizenship,None,Upper,Confidence,None,Lieutenant,Career Military,Briana Chambers,Spouse,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,479,FALSE,
 20244,,HH3JLA,FALSE,Elan,Nieze,Leader of Purity,460,460302E879631,Present and accounted for,Ellarion,Old Ways,Full citizenship,ESS Valkyrie,Upper,Purity,None,None,Leader of dynasty,Lynn Ryan,Grandchild,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,460,FALSE,
-20245,,81TGNM,FALSE,Toichi,Fukui,Teacher,468,468101E974144,Unknown,Ellarion,None,Full citizenship,,Middle,Ambition,None,None,Educator,Malak Fukui,Child,Valerian Fukui,Child,Hide Fukui,Spouse,,,,,,,,,,,,,,,,,,,"468 Born
+20245,,81TGNM,FALSE,Toichi,Fukui,Teacher,468,468101E974144,Unknown,Ellarion,None,Full citizenship,Unknown,Middle,Ambition,None,None,Educator,Malak Fukui,Child,Valerian Fukui,Child,Hide Fukui,Spouse,,,,,,,,,,,,,,,,,,,"468 Born
 490 Married Hide Fukui
 495 Birth of Child, Valerian Fukui
 496 Birth of Child, Malak Fukui",,,,,,,,468,FALSE,
-20246,,SRIGAY,FALSE,Hide,Fukui,Teacher,463,463257E89742,Unknown,Ellarion,None,Full citizenship,,Middle,Ambition,None,None,Educator,Malak Fukui,Child,Valerian Fukui,Child,Toichi Fukui,Spouse,,,,,,,,,,,,,,,,,,,"463 Born
+20246,,SRIGAY,FALSE,Hide,Fukui,Teacher,463,463257E89742,Unknown,Ellarion,None,Full citizenship,Unknown,Middle,Ambition,None,None,Educator,Malak Fukui,Child,Valerian Fukui,Child,Toichi Fukui,Spouse,,,,,,,,,,,,,,,,,,,"463 Born
 490 Married Toichi Fukui
 495 Birth of Child, Valerian Fukui
 496 Birth of Child, Malak Fukui",,,,,,,,463,FALSE,
-20247,,IM7DWS,FALSE,Ami,Nakahara,Mine owner,474,474055E364219,Unknown,Ellarion,Faith of the High Science,Full citizenship,,Upper,Confidence,Association for Spiritual Technology,None,Mine owner,Espen Nakahara,Child,Anri Nakahara,Child,Eisen Nakahara,Spouse,,,,,,,,,,,,,,,,,,,"474 Born
+20247,,IM7DWS,FALSE,Ami,Nakahara,Mine owner,474,474055E364219,Unknown,Ellarion,Faith of the High Science,Full citizenship,Unknown,Upper,Confidence,Association for Spiritual Technology,None,Mine owner,Espen Nakahara,Child,Anri Nakahara,Child,Eisen Nakahara,Spouse,,,,,,,,,,,,,,,,,,,"474 Born
 501 Married Eisen Nakahara
 505 Birth of Child, Anri Nakahara
 508 Birth of Child, Espen Nakahara",,,,,,,,474,FALSE,
-20248,,D55KAU,FALSE,Eisen,Nakahara,Mine owner,471,471073E652712,Unknown,Ellarion,Faith of the High Science,Full citizenship,,Upper,Confidence,Association for Spiritual Technology,None,Mine owner,Espen Nakahara,Child,Anri Nakahara,Child,Ami Nakahara,Spouse,,,,,,,,,,,,,,,,,,,"471 Born
+20248,,D55KAU,FALSE,Eisen,Nakahara,Mine owner,471,471073E652712,Unknown,Ellarion,Faith of the High Science,Full citizenship,Unknown,Upper,Confidence,Association for Spiritual Technology,None,Mine owner,Espen Nakahara,Child,Anri Nakahara,Child,Ami Nakahara,Spouse,,,,,,,,,,,,,,,,,,,"471 Born
 501 Married Ami Nakahara
 505 Birth of Child, Anri Nakahara
 508 Birth of Child, Espen Nakahara",,,,,,,,471,FALSE,
-20249,,C1G9ES,FALSE,Anri,Nakahara,,505,505262E325614,Unknown,Ellarion,Faith of the High Science,Full citizenship,,Upper,Confidence,Association for Spiritual Technology,None,Unknown,Espen Nakahara,Sibling,Ami Nakahara,Parent,Eisen Nakahara,Parent,,,,,,,,,,,,,,,,,,,,,,,,,,,505,FALSE,
-20250,,99EVOH,FALSE,Argus,Cook,Commander-Lieutenant,477,477166E874473,Unknown,Ellarion,Faith of the High Science,Full citizenship,,Middle,Ambition,None,Commander-Lieutenant,Career Military,Zeya Cook,Child,Nolan Hunter,Relative,Tabitha Cook,Spouse,,,,,,,,,,,,,,,,,,,"477 Born
+20249,,C1G9ES,FALSE,Anri,Nakahara,,505,505262E325614,Unknown,Ellarion,Faith of the High Science,Full citizenship,Unknown,Upper,Confidence,Association for Spiritual Technology,None,Unknown,Espen Nakahara,Sibling,Ami Nakahara,Parent,Eisen Nakahara,Parent,,,,,,,,,,,,,,,,,,,,,,,,,,,505,FALSE,
+20250,,99EVOH,FALSE,Argus,Cook,Commander-Lieutenant,477,477166E874473,Unknown,Ellarion,Faith of the High Science,Full citizenship,Unknown,Middle,Ambition,None,Commander-Lieutenant,Career Military,Zeya Cook,Child,Nolan Hunter,Relative,Tabitha Cook,Spouse,,,,,,,,,,,,,,,,,,,"477 Born
 501 Married Tabitha Cook
 506 Birth of Child, Zeya Cook",,,,,,,,477,FALSE,
-20251,,B67HSD,FALSE,Tabitha,Cook,Commander,481,481073E677132,Unknown,Ellarion,Faith of the High Science,Full citizenship,,Middle,Ambition,None,Commander,Career Military,Zeya Cook,Child,Argus Cook,Spouse,,,,,,,,,,,,,,,,,,,,,"481 Born
+20251,,B67HSD,FALSE,Tabitha,Cook,Commander,481,481073E677132,Unknown,Ellarion,Faith of the High Science,Full citizenship,Unknown,Middle,Ambition,None,Commander,Career Military,Zeya Cook,Child,Argus Cook,Spouse,,,,,,,,,,,,,,,,,,,,,"481 Born
 501 Married Tabitha Cook
 506 Birth of Child, Zeya Cook",,,,,,,,481,FALSE,
-20252,,76Z9D8,FALSE,Eliza,Ray,,474,474021E784311,Unknown,Ellarion,None,Full citizenship,,Middle,Loyalty,None,None,Unknown,Kerrie Ray,Adoptive Child,Gareth Ray,Spouse,Vane Hodge,Relative,,,,,,,,,,,,,,,,,,,,,,,,,,,474,FALSE,
-20253,,GEIC99,FALSE,Gareth,Ray,,470,470108E189332,Unknown,Ellarion,None,Full citizenship,,Middle,Loyalty,None,None,Unknown,Kerrie Ray,Adoptive Child,Eliza Ray,Spouse,,,,,,,,,,,,,,,,,,,,,,,,,,,,,470,FALSE,
-20254,,QU1EZF,FALSE,Sandor,Savage,Lieutenant,470,470277E651246,Unknown,Ellarion,None,Full citizenship,,Middle,Ambition,None,Lieutenant,Career Military,Celia Savage,Spouse,Lee Savage,Child,Flare Savage,Child,Kian Savage,Child,Orion Savage,Child,Mio Savage,Child,,,,,,,,,,,,,"470 Born
+20252,,76Z9D8,FALSE,Eliza,Ray,,474,474021E784311,Unknown,Ellarion,None,Full citizenship,Unknown,Middle,Loyalty,None,None,Unknown,Kerrie Ray,Adoptive Child,Gareth Ray,Spouse,Vane Hodge,Relative,,,,,,,,,,,,,,,,,,,,,,,,,,,474,FALSE,
+20253,,GEIC99,FALSE,Gareth,Ray,,470,470108E189332,Unknown,Ellarion,None,Full citizenship,Unknown,Middle,Loyalty,None,None,Unknown,Kerrie Ray,Adoptive Child,Eliza Ray,Spouse,,,,,,,,,,,,,,,,,,,,,,,,,,,,,470,FALSE,
+20254,,QU1EZF,FALSE,Sandor,Savage,Lieutenant,470,470277E651246,Unknown,Ellarion,None,Full citizenship,Unknown,Middle,Ambition,None,Lieutenant,Career Military,Celia Savage,Spouse,Lee Savage,Child,Flare Savage,Child,Kian Savage,Child,Orion Savage,Child,Mio Savage,Child,,,,,,,,,,,,,"470 Born
 486 Enlisted to EOC Star Fleet
 488 Marine training
 497 Injured on a mission, relieved from duty
@@ -1771,7 +1776,7 @@ operate.
 521 Death of Child, Kian Savage
 523 Convicted from assault, Sentenced to house arrest
 523 Lost an engineering job at the city traffic department",,,,,,,,470,FALSE,
-20255,,6YNEXG,FALSE,Celia,Savage,,476,476099E326975,Unknown,Ellarion,None,Full citizenship,,Middle,Ambition,None,None,Unknown,Sandor Savage,Spouse,Lee Savage,Child,Flare Savage,Child,Kian Savage,Child,Orion Savage,Child,Mio Savage,Child,,,,,,,,,,,,,"476 Born
+20255,,6YNEXG,FALSE,Celia,Savage,,476,476099E326975,Unknown,Ellarion,None,Full citizenship,Unknown,Middle,Ambition,None,None,Unknown,Sandor Savage,Spouse,Lee Savage,Child,Flare Savage,Child,Kian Savage,Child,Orion Savage,Child,Mio Savage,Child,,,,,,,,,,,,,"476 Born
 498 Married Sandor Savage
 499 Birth of Child, Flare Savage
 501 Birth of Child, Kian Savage
@@ -1779,20 +1784,20 @@ operate.
 510 Birth of Child, Lee Savage
 513 Birth of Child, Mio Savage
 521 Death of Child, Kian Savage",,,,,,,,476,FALSE,
-20256,,IO50WH,FALSE,Flare,Savage,,499,499198E736146,Unknown,Ellarion,None,Full citizenship,,Middle,Ambition,None,None,Unknown,Sandor Savage,Parent,Celia Savage,Parent,Lee Savage,Sibling,Kian Savage,Sibling,Orion Savage,Sibling,Mio Savage,Sibling,,,,,,,,,,,,,,,,,,,,,499,FALSE,
-20257,,Y8S6Q0,FALSE,Kian,Savage,Seaman,501,501061E258742,Deceased,Ellarion,None,Full citizenship,,Middle,Ambition,None,Seaman,Career Military,Sandor Savage,Parent,Celia Savage,Parent,Flare Savage,Sibling,Lee Savage,Sibling,Orion Savage,Sibling,Mio Savage,Sibling,,,,,,,,,,,,,"501 Born
+20256,,IO50WH,FALSE,Flare,Savage,,499,499198E736146,Unknown,Ellarion,None,Full citizenship,Unknown,Middle,Ambition,None,None,Unknown,Sandor Savage,Parent,Celia Savage,Parent,Lee Savage,Sibling,Kian Savage,Sibling,Orion Savage,Sibling,Mio Savage,Sibling,,,,,,,,,,,,,,,,,,,,,499,FALSE,
+20257,,Y8S6Q0,FALSE,Kian,Savage,Seaman,501,501061E258742,Deceased,Ellarion,None,Full citizenship,None,Middle,Ambition,None,Seaman,Career Military,Sandor Savage,Parent,Celia Savage,Parent,Flare Savage,Sibling,Lee Savage,Sibling,Orion Savage,Sibling,Mio Savage,Sibling,,,,,,,,,,,,,"501 Born
 521 Killed in action",,,,,,,,501,FALSE,
-20258,,S3MI56,FALSE,Orion,Savage,,502,502344E557412,Unknown,Ellarion,None,Full citizenship,,Middle,Ambition,None,None,Unknown,Sandor Savage,Parent,Celia Savage,Parent,Flare Savage,Sibling,Kian Savage,Sibling,Lee Savage,Sibling,Mio Savage,Sibling,,,,,,,,,,,,,,,,,,,,,502,FALSE,
-20259,,A7YUB1,FALSE,Mio,Savage,,513,513060E578974,Unknown,Ellarion,None,Full citizenship,,Middle,Ambition,None,None,Unknown,Sandor Savage,Parent,Celia Savage,Parent,Flare Savage,Sibling,Kian Savage,Sibling,Orion Savage,Sibling,Lee Savage,Sibling,,,,,,,,,,,,,,,,,,,,,513,FALSE,
-20260,,Y2D6WO,FALSE,Hailey,Carroll,,496,496012C789776,Deceased,Caelena,None,Colonial citizenship,,Middle,Unity,None,None,Career Military,Oren Carroll,Parent,Maisey Carroll ,Parent,Harley Carroll,Sibling,,,,,,,,,,,,,,,,,,,"496 Born
+20258,,S3MI56,FALSE,Orion,Savage,,502,502344E557412,Unknown,Ellarion,None,Full citizenship,Unknown,Middle,Ambition,None,None,Unknown,Sandor Savage,Parent,Celia Savage,Parent,Flare Savage,Sibling,Kian Savage,Sibling,Lee Savage,Sibling,Mio Savage,Sibling,,,,,,,,,,,,,,,,,,,,,502,FALSE,
+20259,,A7YUB1,FALSE,Mio,Savage,,513,513060E578974,Unknown,Ellarion,None,Full citizenship,Unknown,Middle,Ambition,None,None,Unknown,Sandor Savage,Parent,Celia Savage,Parent,Flare Savage,Sibling,Kian Savage,Sibling,Orion Savage,Sibling,Lee Savage,Sibling,,,,,,,,,,,,,,,,,,,,,513,FALSE,
+20260,,Y2D6WO,FALSE,Hailey,Carroll,,496,496012C789776,Deceased,Caelena,None,Colonial citizenship,None,Middle,Unity,None,None,Career Military,Oren Carroll,Parent,Maisey Carroll ,Parent,Harley Carroll,Sibling,,,,,,,,,,,,,,,,,,,"496 Born
 511 Enlistment to the EOC Marine Core
 519 Killed in action ",,,,,,,,496,FALSE,
-20261,,E928T7,FALSE,Oren,Carroll,Priest,472,472098C632147,Unknown,Caelena,Faith of the High Science,Colonial citizenship,,Middle,Unity,None,None,Religious Calling,Harley Carroll,Child,Hailey Carroll,Child,Maisey Carroll,Spouse,,,,,,,,,,,,,,,,,,,"572 Born
+20261,,E928T7,FALSE,Oren,Carroll,Priest,472,472098C632147,Unknown,Caelena,Faith of the High Science,Colonial citizenship,Unknown,Middle,Unity,None,None,Religious Calling,Harley Carroll,Child,Hailey Carroll,Child,Maisey Carroll,Spouse,,,,,,,,,,,,,,,,,,,"572 Born
 490 Married Maisey Carroll
 495 Birth of Child, Harley Carroll
 496 Birth of Child, Hailey Carroll
 519 Death of Child, Hailey Carroll",,,,,,,,472,FALSE,
-20262,,63KKOO,FALSE,Maisey,Carroll,,468,468306C677414,Unknown,Caelena,Faith of the High Science,Colonial citizenship,,Middle,Unity,None,None,Unknown,Harley Carroll,Child,Hailey Carroll,Child,Oren Carroll,Spouse,,,,,,,,,,,,,,,,,,,"568 Born
+20262,,63KKOO,FALSE,Maisey,Carroll,,468,468306C677414,Unknown,Caelena,Faith of the High Science,Colonial citizenship,Unknown,Middle,Unity,None,None,Unknown,Harley Carroll,Child,Hailey Carroll,Child,Oren Carroll,Spouse,,,,,,,,,,,,,,,,,,,"568 Born
 490 Married Oren Carroll
 495 Birth of Child, Harley Carroll
 496 Birth of Child, Hailey Carroll
