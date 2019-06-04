@@ -19,11 +19,16 @@ export const SAFE_JUMP_LIMIT = 2 * HOUR + 47 * MIN;
 export const BREAKING_JUMP_TIME = 5 * MIN;
 const COUNTDOWN = 1 * MIN;
 
-function setJumpUiEnabled(value = true) {
+/**
+ * Enable or disable Jump UI and EOC Datahub
+ * @param {boolean} value=true
+ */
+function setSystemsEnabled(value = true) {
 	const shipMetadata = store.getState().data.ship.metadata;
 	saveBlob({
 		...shipMetadata,
-		jump_ui_enabled: value
+		jump_ui_enabled: value,
+		social_ui_enabled: value,
 	});
 }
 
@@ -118,7 +123,7 @@ function handleTransition(jump, currentStatus, previousStatus) {
 			});
 			const jumpTarget = getReadableJumpTarget(jump.coordinates);
 			shipLogger.success(`Odysseus completed the jump to grid ${jumpTarget}.`);
-			setJumpUiEnabled(true);
+			setSystemsEnabled(true);
 			break;
 		}
 		case 'broken>cooldown':
@@ -184,7 +189,7 @@ function handleTransition(jump, currentStatus, previousStatus) {
 
 		case 'jump_initiated>jumping': {
 			// Disable Jump UI for the duration of the jump
-			setJumpUiEnabled(false);
+			setSystemsEnabled(false);
 			const jumpTarget = getReadableJumpTarget(jump.coordinates);
 			shipLogger.info(`Jumping to coordinates ${jumpTarget}.`);
 			dmx.fireEvent(dmx.CHANNELS.JumpStart);
