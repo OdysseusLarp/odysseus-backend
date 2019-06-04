@@ -2,6 +2,8 @@ const csv = require('csvtojson');
 const path = require('path');
 const { pick, pickBy, forIn, get, omit } = require('lodash');
 
+/* eslint-disable no-console */
+
 const dataPath = path.join(__dirname, '../db/data');
 
 // Hold all character relations here with character ID as key
@@ -9,6 +11,9 @@ const allCharacterRelationsMap = new Map();
 
 // Used for mapping a character name to character ID for family relations
 const allCharactersNameToIdMap = new Map();
+
+// All valid ship IDs to help debugging invalid ship_id fields of persons
+const ships = new Set();
 
 const allCharacterEntries = [];
 
@@ -62,6 +67,15 @@ function parseCharacterRelations(characters) {
 	return relations;
 }
 
+// Load Ship IDs to help debug invalid ship id entries of persons
+async function parseShipIds() {
+	const shipsCsvPath = path.join(dataPath, 'ship.csv');
+	(await csv().fromFile(shipsCsvPath))
+		.map(s => get(s, 'id'))
+		.filter(Boolean)
+		.forEach(shipId => ships.add(shipId));
+}
+
 async function parseSurvivors() {
 	const survivorsCsvPath = path.join(dataPath, 'survivors.csv');
 	const survivors = (await csv().fromFile(survivorsCsvPath)).map((s, id) => ({
@@ -112,7 +126,8 @@ function parseCharacterData(c) {
 
 	// Parse ship_id from ship name
 	let ship_id = c.ship_id.replace(/^[A-Z]SS /, '').toLowerCase().trim();
-	if (!ship_id || ship_id === 'none') ship_id = null;
+	if (!ship_id || ship_id === 'none' || ship_id === 'unknown') ship_id = null;
+	if (ship_id && !ships.has(ship_id)) console.warn(`Character ${fullName} has an invalid ship_id ${ship_id}`);
 
 	let military_remarks = null;
 	let medical_active_conditions = null;
@@ -142,6 +157,7 @@ async function parseCharacters() {
 }
 
 async function parseData() {
+	await parseShipIds();
 	const survivors = await parseSurvivors();
 	const characters = await parseCharacters();
 	const characterRelations = parseCharacterRelations(characters);
