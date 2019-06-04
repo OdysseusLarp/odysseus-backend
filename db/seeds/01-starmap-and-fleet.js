@@ -62,6 +62,8 @@ const odysseusMetadata = {
 async function cleanup(knex) {
 	// set current person ships to null before dropping ships
 	await knex.raw(`UPDATE person SET ship_id = NULL`);
+	// delete audit logs since they have references to persons
+	await knex.raw(`DELETE FROM audit_log`);
 
 	await knex('event').del();
 	await knex('ship').del();
