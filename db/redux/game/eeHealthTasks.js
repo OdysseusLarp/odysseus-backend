@@ -11,8 +11,10 @@ for (let i=0; i < 20; i++) {
 		id,
 		task: id,
 		game_config: 'reactor',
-		title: `Reactor power segment ${code}`,
 		status: 'fixed',
+		config: {
+			title: `Reactor power segment ${code}`,
+		},
 	});
 	blobs.push({
 		type: 'task',
@@ -35,15 +37,21 @@ for (let i=0; i < 20; i++) {
 blobs.push({
 	type: 'game_config',
 	id: 'reactor',
-	description: 'Reactor phase sync',  // FIXME: babbletize
 	default: {
-		game: 'phasesync'
-		// FIXME: Settings
+		initDescription: 'Reactor power segment needs phase calibration',  // FIXME: babbletize
+		endDescription: 'Phase calibration successful!',
+		game: 'phasesync',
+
+		// FIXME: Fine-tune settings for suitable difficulty
+		dimensions: 2,
+		difficulty: 0.2,
+		duration: 1,
+		drift: 0,
 	},
-	engineer_proficient: {
-		game: 'phasesync'
-		// FIXME: Settings
-	}
+	// engineer_proficient: {
+	// 	game: 'phasesync'
+	// 	...
+	// }
 });
 
 export default blobs;
