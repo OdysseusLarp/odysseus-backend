@@ -2,11 +2,13 @@
 const artifacts = [
 	{
 		id: 1,
-		name: 'Shadowmourne'
+		name: 'Shadowmourne',
+		catalog_id: 'ABC123'
 	},
 	{
 		id: 2,
-		name: 'Rubber Duck'
+		name: 'Rubber Duck',
+		catalog_id: 'DEF456'
 	}
 ];
 
@@ -44,9 +46,32 @@ const artifactResearch = [
 	}
 ];
 
+const tags = [
+	{
+		tag_id: 'TAG001',
+		type: 'DIAGNOSIS',
+		description: 'Seems like this hand is broken.',
+		metadata: null
+	},
+	{
+		tag_id: 'TAG002',
+		type: 'DIAGNOSIS',
+		description: 'Smells like blood poisoning.',
+		metadata: null
+	},
+	{
+		tag_id: 'TAG003',
+		type: 'ENGINEERING', // Some generic engineering tag
+		description: 'Not sure about this',
+		metadata: null
+	}
+];
+
 exports.seed = async knex => {
 	await knex('artifact_research').del();
 	await knex('artifact').del();
+	await knex('tag').del();
+	await knex('tag').insert(tags);
 	await knex('artifact').insert(artifacts);
 	await knex('artifact_research').insert(artifactResearch);
 };
