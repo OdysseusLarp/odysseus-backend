@@ -29,7 +29,7 @@ exports.up = async knex => {
 
 exports.down = async knex => {
 	await knex.raw(`DROP TABLE operation_result`);
-	await knex.raw(`DROP TABLE tags`);
+	await knex.raw(`DROP TABLE tag`);
 	await knex.schema.alterTable('artifact', t => {
 		t.dropColumn('catalog_id');
 	});
