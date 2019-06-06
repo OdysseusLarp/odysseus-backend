@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { Person, Entry, getFilterableValues } from '../models/person';
-import { AuditLogEntry } from '../models/log';
+import { addShipLogEntry, AuditLogEntry } from '../models/log';
 import { handleAsyncErrors } from '../helpers';
 import { get, pick, mapKeys, snakeCase } from 'lodash';
 import { logger } from '../logger';
@@ -79,6 +79,7 @@ router.get('/:id', handleAsyncErrors(async (req, res) => {
 			hacker_id,
 			type: 'HACKER_LOGIN'
 		});
+		addShipLogEntry('WARNING', 'Intrusion detection system has detected malicious activity');
 	}
 	res.json(person);
 }));
@@ -93,7 +94,7 @@ router.get('/:id', handleAsyncErrors(async (req, res) => {
  */
 router.get('/card/:id', handleAsyncErrors(async (req, res) => {
 	const isLogin = req.query.login === 'true';
-	const person = await Person.forge({ card_id: req.params.id }).fetchWithRelated();
+	const person = await Person.forge({ card_id: get(req.params, 'id', '').toUpperCase() }).fetchWithRelated();
 	// Save login to audit log if the login succeeded
 	if (isLogin && person) {
 		AuditLogEntry.forge().save({
