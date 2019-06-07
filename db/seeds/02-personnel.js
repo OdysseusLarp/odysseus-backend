@@ -2,9 +2,11 @@ const { chunk } = require('lodash');
 const { parseData } = require('../../scripts/person-parser');
 
 exports.seed = async knex => {
+	await knex('person_group').del();
 	await knex('person_entry').del();
 	await knex('person_family').del();
 	await knex('person').del();
+	await knex('group').del();
 
 	const {
 		survivors,

@@ -145,7 +145,7 @@ function parseCharacterData(c) {
 
 	// Parse person groups
 	forIn(c, (value, key) => {
-		if (groups.has(key)) characterGroups.push({ group_id: key, person_id: id });
+		if (groups.has(key) && value === 'TRUE') characterGroups.push({ group_id: key, person_id: id });
 	});
 
 	// Columns that will be rendered as markdown need to have newlines replaced by two newlines
