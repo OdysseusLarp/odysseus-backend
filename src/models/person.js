@@ -24,10 +24,26 @@ export const Entry = Bookshelf.Model.extend({
 	}
 });
 
+/**
+ * @typedef Group
+ * @property {string} id - Incrementing integer used as primary key
+ * @property {string} created_at - Date-time when object was created
+ * @property {string} updated_at - Date-time when object was last updated
+ */
+export const Group = Bookshelf.Model.extend({
+	tableName: 'group',
+	hasTimestamps: true,
+	// Serialize to just the group ID
+	serialize: function () {
+		return this.get('id');
+	}
+});
+
 const withRelated = [
 	'entries',
-	'family',
-	'ship'
+	// 'family',
+	'ship',
+	'groups'
 ];
 
 /**
@@ -91,6 +107,9 @@ export const Person = Bookshelf.Model.extend({
 	ship: function () {
 		return this.belongsTo(Ship, 'ship_id', 'id');
 	},
+	groups: function () {
+		return this.belongsToMany(Group, 'person_group');
+	},
 	fetchListPage: function ({ page, pageSize, showHidden, filters = {} }) {
 		return this.query(qb => {
 			if (!showHidden) qb.where('is_visible', true);
@@ -121,6 +140,7 @@ export const Person = Bookshelf.Model.extend({
 		return this.fetch({
 			withRelated: [
 				...withRelated,
+				{ family: qb => qb.columns('id', 'first_name', 'last_name', 'ship_id', 'status', 'is_visible') },
 				{ 'entries.added_by': qb => qb.columns('id', 'first_name', 'last_name') }
 			]
 		});
