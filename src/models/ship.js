@@ -1,4 +1,5 @@
 import Bookshelf, { knex } from '../../db';
+import { addShipLogEntry } from './log';
 import { get } from 'lodash';
 import { getSocketIoClient } from '../index';
 import { logger } from '../logger';
@@ -58,6 +59,47 @@ export const Grid = Bookshelf.Model.extend({
 export const GridAction = Bookshelf.Model.extend({
 	tableName: 'grid_action',
 	hasTimestamps: true
+});
+
+/**
+ * @typedef Beacon
+ * @property {string} id - ID also acting as the signal decryption key
+ * @property {integer} grid_id.required - Grid ID
+ * @property {boolean} is_active.required - If the beacon is currently active or not
+ * @property {string} created_at - Date-time when object was created
+ * @property {string} updated_at - Date-time when object was last updated
+ */
+export const Beacon = Bookshelf.Model.extend({
+	tableName: 'starmap_beacon',
+	hasTimestamps: true,
+	grid: function () {
+		return this.hasOne(Grid, 'id', 'grid_id');
+	},
+	fetchWithRelated: function () {
+		return this.fetch({ withRelated: ['grid'] });
+	},
+	activate: function () {
+		// Set this beacon as active and others as inactive
+		return knex.transaction(async trx =>
+			Promise.all([
+				knex('starmap_beacon')
+					.transacting(trx)
+					.update({ is_active: false })
+					.whereNot('id', this.get('id')),
+				knex('starmap_beacon')
+					.transacting(trx)
+					.update({ is_active: true, is_decrypted: true })
+					.where('id', this.get('id'))
+			]).then(() => trx.commit())
+				.then(() => addShipLogEntry(
+					'SUCCESS',
+					`Successfully decrypted an unknown signal originating from area ${this.related('grid').get('name')}`,
+					'odysseus',
+					{ showPopup: true }
+				))
+				.then(() => getSocketIoClient().emit('refreshMap'))
+				.catch(() => trx.rollback()));
+	}
 });
 
 const shipWithRelated = [
@@ -153,4 +195,3 @@ export const Ship = Bookshelf.Model.extend({
 		return this.save({ grid_id, metadata, the_geom });
 	}
 });
-

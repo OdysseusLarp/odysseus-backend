@@ -3,6 +3,7 @@ exports.up = async knex => {
 		t.string('id').primary();
 		t.integer('grid_id').references('id').inTable('grid');
 		t.boolean('is_active').notNullable();
+		t.boolean('is_decrypted').notNullable();
 		t.timestamps(true, true);
 	});
 
