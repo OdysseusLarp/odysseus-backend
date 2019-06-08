@@ -2,7 +2,7 @@ require('dotenv').config({ silent: true });
 import { logger } from './logger';
 import axios from 'axios';
 import nock from 'nock';
-import { get, set, forIn } from 'lodash';
+import { get, set, forIn, pick, isInteger } from 'lodash';
 import { handleAsyncErrors } from './helpers';
 
 const { EMPTY_EPSILON_HOST, EMPTY_EPSILON_PORT } = process.env,
@@ -170,6 +170,12 @@ export class EmptyEpsilonClient {
 				else keyPrefix = 'general';
 				return set(data, `${keyPrefix}.${key}`, res.data[key]);
 			}, {});
+		}).then(state => {
+			const { shipHull, shipHullMax } = pick(get(state, 'general', {}), ['shipHull', 'shipHullMax']);
+			if (isInteger(shipHull) && isInteger(shipHullMax)) {
+				set(state, 'general.shipHullPercent', Math.floor((shipHull / shipHullMax) * 100));
+			}
+			return state;
 		}).catch(error => {
 			this.setIsConnectionHealthy(false, error);
 			return { error };
