@@ -103,6 +103,7 @@ saveBlob({
 		shipEnergy: 1000,
 		shipHull: 250,
 		shipHullMax: 250,
+		shipHullPercent: 1,
 		shipFrontShield: 200,
 		shipRearShield: 200,
 	},
