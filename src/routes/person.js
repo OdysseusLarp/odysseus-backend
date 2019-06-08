@@ -21,6 +21,7 @@ const DEFAULT_PERSON_ENTRIES_PER_PAGE = 1000;
  * @param {string} home_planet.query - Person home planet filter
  * @param {string} ship_id.query - Person ship filter
  * @param {string} status.query - Person status filter
+ * @param {string} title.query - Person title filter
  * @returns {PersonCollection} 200 - Page of persons
  */
 router.get('/', handleAsyncErrors(async (req, res) => {
@@ -29,7 +30,7 @@ router.get('/', handleAsyncErrors(async (req, res) => {
 	const showHidden = get(req.query, 'show_hidden') === 'true';
 	const nameFilter = get(req.query, 'name', '').toLowerCase();
 	const filters = mapKeys(
-		pick(req.query, ['dynasty', 'home_planet', 'ship_id', 'status']),
+		pick(req.query, ['dynasty', 'home_planet', 'ship_id', 'status', 'title']),
 		(_value, key) => snakeCase(key),
 	);
 	if (nameFilter) filters.name = nameFilter;

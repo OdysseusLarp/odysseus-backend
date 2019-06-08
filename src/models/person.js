@@ -174,16 +174,26 @@ export const Person = Bookshelf.Model.extend({
 
 export async function getFilterableValues() {
 	const { knex } = Bookshelf;
-	const [statusItems, dynastyItems, shipItems, homePlanetItems] = await Promise.all([
+	const [titleItems, statusItems, dynastyItems, shipItems, homePlanetItems] = await Promise.all([
+		knex('person').distinct('title').where('is_visible', true).whereRaw('title IS NOT NULL').orderBy('title'),
 		knex('person').distinct('status').where('is_visible', true).whereRaw('status IS NOT NULL').orderBy('status'),
 		knex('person').distinct('dynasty').where('is_visible', true).whereRaw('status IS NOT NULL').orderBy('dynasty'),
 		knex('person').distinct('ship_id', 'ship.name')
 			.join('ship', 'ship.id', 'person.ship_id').orderBy('ship_id')
 			.where('person.is_visible', true).where('ship.is_visible', true).whereRaw('ship_id IS NOT NULL'),
-		knex('person').distinct('home_planet').where('is_visible', true).whereRaw('home_planet IS NOT NULL').orderBy('home_planet'),
+		knex('person').distinct('home_planet').where('is_visible', true).whereRaw('home_planet IS NOT NULL')
+			.orderBy('home_planet'),
 	]);
 	return {
 		filters: [
+			{
+				name: 'Title',
+				key: 'title',
+				items: (titleItems || []).filter(s => s && s.title).map(({ title }) => ({
+					name: title,
+					value: title
+				}))
+			},
 			{
 				name: 'Dynasty',
 				key: 'dynasty',
