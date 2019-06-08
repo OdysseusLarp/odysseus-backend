@@ -102,6 +102,7 @@ saveBlob({
 		alertLevel: 'Normal',
 		shipEnergy: 1000,
 		shipHull: 250,
+		shipHullMax: 250,
 		shipFrontShield: 200,
 		shipRearShield: 200,
 	},

@@ -45,6 +45,7 @@ const { EMPTY_EPSILON_HOST, EMPTY_EPSILON_PORT } = process.env,
 		// energy, hull and shield max values depend on ship settings in EE
 		shipEnergy: 'getEnergy()',
 		shipHull: 'getHull()',
+		shipHullMax: 'getHullMax()',
 		shipFrontShield: 'getFrontShield()',
 		shipRearShield: 'getRearShield()',
 		alertLevel: 'getAlertLevel()'
