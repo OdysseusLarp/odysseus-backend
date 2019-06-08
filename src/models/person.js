@@ -36,6 +36,9 @@ export const Group = Bookshelf.Model.extend({
 	// Serialize to just the group ID
 	serialize: function () {
 		return this.get('id');
+	},
+	persons: function () {
+		return this.belongsToMany(Person, 'person_group');
 	}
 });
 

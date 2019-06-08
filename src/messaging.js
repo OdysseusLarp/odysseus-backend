@@ -1,5 +1,5 @@
 import { logger } from './logger';
-import { Person } from './models/person';
+import { Person, Group } from './models/person';
 import { ComMessage } from './models/communications';
 import { isEmpty, uniqBy, pick } from 'lodash';
 import { Router } from 'express';
@@ -207,11 +207,20 @@ function onUserDisconnect(socket) {
  * @returns {Array.<Person>} List of persons
  */
 async function getInitialUserList(personId) {
-	const users = await Person.query(qb => {
-		qb.whereRaw(`id IN (SELECT DISTINCT target_person FROM com_message WHERE person_id = ?) OR id IN (SELECT DISTINCT person_id FROM com_message WHERE target_person = ?)`,
-			[personId, personId]);
-	}).fetchAll();
+	const [users, adminUsers] = await Promise.all([
+		Person.query(qb => {
+			qb.whereRaw(`id IN (SELECT DISTINCT target_person FROM com_message WHERE person_id = ?) OR id IN (SELECT DISTINCT person_id FROM com_message WHERE target_person = ?)`,
+				[personId, personId]);
+		}).fetchAll(),
+		getAdminUserList()
+	]);
+	adminUsers.forEach(u => users.add(u));
 	users.forEach(person =>
 		person.set('is_online', connectedUsers.has(person.get('id'))));
 	return users;
+}
+
+async function getAdminUserList() {
+	const adminGroup = await Group.where({ id: 'role:admin' }).fetch({ withRelated: ['persons'] });
+	return adminGroup.related('persons');
 }
