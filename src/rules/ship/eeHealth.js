@@ -44,7 +44,7 @@ function breakTasks(type, targetHealth) {
 	const tasks = getEETasks(type);
 	const brokenTasks = tasks.filter(isBroken);
 	const unbrokenTasks = tasks.filter(notBroken);
-	const originalHealth = clamp(computeHealth(brokenTasks), 0, 1);
+	const originalHealth = clamp(computeHealth(brokenTasks), -1, 1);
 	let currentHealth = originalHealth;
 
 	while (currentHealth > targetHealth && unbrokenTasks.length > 0) {
@@ -82,7 +82,7 @@ watch(['data', 'task'], (tasks, previousTasks, state) => {
 			const ee = store.getState().data.ship.ee;
 			const type = task.eeType;
 			const typeHealth = `${type}Health`;
-			const health = clamp(ee.systems.health[typeHealth] + task.eeHealth, 0, 1);
+			const health = clamp(ee.systems.health[typeHealth] + task.eeHealth, -1, 1);
 			logger.info(`Detected EE ${type} health task ${task.id} fixed, increasing health by `+
 			  `${task.eeHealth} to ${health}`);
 			if (health) {
