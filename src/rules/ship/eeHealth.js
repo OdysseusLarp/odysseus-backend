@@ -1,14 +1,43 @@
 import { saveBlob, clamp, interval } from '../helpers';
 import store, { watch } from '../../store/store';
 import { getEmptyEpsilonClient } from '../../emptyepsilon';
+import { updateEmptyEpsilonState } from '../../index';
 import { logger } from '../../logger';
+import { isFinite } from 'lodash';
 
 /*
  * Rules binding to EE health states.
  */
 
-const TYPES = ['reactor'];
+const TYPES = [
+	'reactor',
+	'impulse',
+	'maneuver',
+	'frontshield',
+	'rearshield',
+	'missilesystem',
+	'beamweapons',
+	'hull',  // special case
+];
 
+function getEEHealth(ee, type) {
+	if (type === 'hull') {
+		return ee.general.shipHullPercent;
+	} else {
+		const typeHealth = `${type}Health`;
+		return ee.systems.health[typeHealth];
+	}
+}
+
+async function setEEHealth(type, health) {
+	if (type === 'hull') {
+		await getEmptyEpsilonClient().setHullHealthPercent(health);
+		await updateEmptyEpsilonState();
+	} else {
+		await getEmptyEpsilonClient().setGameState('setSystemHealth', type, health);
+		await updateEmptyEpsilonState();
+	}
+}
 
 function breakTask(task) {
 	let toBeBroken;
@@ -63,30 +92,35 @@ function breakTasks(type, targetHealth) {
 // Rules for breaking tasks when EE health decreases
 watch(['data', 'ship', 'ee'], (ee, previous, state) => {
 	for (const type of TYPES) {
-		const typeHealth = `${type}Health`;
-		logger.info(`Check ${typeHealth} now=${ee.systems.health[typeHealth]} previous=${previous.systems.health[typeHealth]}`);
-		if (ee.systems.health[typeHealth] < previous.systems.health[typeHealth]) {
-			logger.info(`Detected EE ${type} health drop from ${previous.systems.health[typeHealth]} `+
-			  `to ${ee.systems.health[typeHealth]}`);
-			breakTasks(type, ee.systems.health[typeHealth]);
+		const previousHealth = getEEHealth(previous, type);
+		const nowHealth = getEEHealth(ee, type);
+		if (nowHealth < previousHealth) {
+			logger.info(`Detected EE ${type} health drop from ${previousHealth} `+
+			  `to ${nowHealth}`);
+			breakTasks(type, nowHealth);
 		}
 	}
 });
 
 // Rules for increasing EE health when tasks are fixed
-watch(['data', 'task'], (tasks, previousTasks, state) => {
+watch(['data', 'task'], async (tasks, previousTasks, state) => {
 	for (const id of Object.keys(tasks)) {
 		const task = tasks[id];
 		const previous = previousTasks[id];
 		if (task.eeType && task.eeHealth && task.status === 'fixed' && previous.status !== 'fixed') {
 			const ee = store.getState().data.ship.ee;
 			const type = task.eeType;
-			const typeHealth = `${type}Health`;
-			const health = clamp(ee.systems.health[typeHealth] + task.eeHealth, -1, 1);
+			const health = clamp(getEEHealth(ee, type) + task.eeHealth, -1, 1);
+			if (task.singleUse) {
+				saveBlob({
+					...task,
+					eeType: `${task.eeType}-used`,
+				});
+			}
 			logger.info(`Detected EE ${type} health task ${task.id} fixed, increasing health by `+
 			  `${task.eeHealth} to ${health}`);
-			if (health) {
-				getEmptyEpsilonClient().setGameState('setSystemHealth', type, health);
+			if (isFinite(health)) {
+				await setEEHealth(type, health);
 			} else {
 				logger.error(`Attempted to set EE ${type} health to ${health} (after fixing something)`);
 			}
@@ -103,8 +137,7 @@ interval(() => {
 		const taskHealth = computeHealth(brokenTasks);
 
 		const ee = store.getState().data.ship.ee;
-		const typeHealth = `${type}Health`;
-		const eeHealth = ee.systems.health[typeHealth];
+		const eeHealth = getEEHealth(ee, type);
 
 		//  eeHealth - 10% - epsilon <= taskHealth <= eeHealth + epsilon
 		const epsilon = 0.001;
