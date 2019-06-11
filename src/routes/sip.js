@@ -7,7 +7,7 @@ const router = new Router();
 
 /**
  * @typedef SipConfig
- * @property {string} url- SIP URL, e.g. wss://xxx.yyy:1234/ws
+ * @property {string} url - SIP URL, e.g. wss://xxx.yyy:1234/ws
  * @property {string} realm - SIP Realm, e.g. xxx.yyy
  */
 
