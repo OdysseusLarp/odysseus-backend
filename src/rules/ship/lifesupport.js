@@ -1,8 +1,11 @@
 import { saveBlob } from '../helpers';
-import { watch } from '../../store/store';
+import store, { watch } from '../../store/store';
+import { CHANNELS, fireEvent } from '../../dmx';
 import { logger } from '../../logger';
+import { shipLogger } from '../../models/log';
+import { getEmptyEpsilonClient } from '../../emptyepsilon';
 
-// FIXME: Add DMX output of life support health (if needed)
+const LEVEL_NOTIFICATION_DELAY = 4.5*60*1000;
 
 // Life support is hard-coded to correspond to fuse boxes
 watch(['data', 'box'], (boxes, previousBoxes, state) => {
@@ -25,6 +28,44 @@ watch(['data', 'box'], (boxes, previousBoxes, state) => {
 			total,
 			unbroken,
 		});
+		setTimeout(checkLevel, LEVEL_NOTIFICATION_DELAY);
 	}
 });
 
+
+const NORMAL = 1;
+const LOW = 2;
+const CRITICAL = 3;
+
+let oldLevel = NORMAL;
+function checkLevel() {
+	const currentLevel = getLevel(store.getState().data.ship.lifesupport.health);
+	if (oldLevel !== currentLevel) {
+		switch (currentLevel) {
+			case NORMAL:
+				fireEvent(CHANNELS.LifeSupportNormal);
+				shipLogger.info(`Life support back to normal.`, { showPopup: true });
+				break;
+			case LOW:
+				fireEvent(CHANNELS.LifeSupportLow);
+				shipLogger.warning(`Life support level degraded. CO2 levels elevated.`, { showPopup: true });
+				break;
+			case CRITICAL:
+				fireEvent(CHANNELS.LifeSupportCritical);
+				shipLogger.warning(`Life support level critical. Oxygen level low.`, { showPopup: true });
+				getEmptyEpsilonClient().setAlertLevel('red');
+				break;
+		}
+		oldLevel = currentLevel;
+	}
+}
+
+function getLevel(health) {
+	if (health >= 0.7) {
+		return NORMAL;
+	} else if (health >= 0.2) {
+		return LOW;
+	} else {
+		return CRITICAL;
+	}
+}

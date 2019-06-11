@@ -20,6 +20,10 @@ export const CHANNELS = {
 	JumpEndBreaking: 111,
 	JumpAbort: 112,
 
+	LifeSupportNormal: 115,
+	LifeSupportLow: 116,
+	LifeSupportCritical: 117,
+
 	BridgePowerSocketOn: 120,
 	BridgePowerSocketOff: 121,
 	EngineeringPowerSocketOn: 122,
