@@ -71,6 +71,12 @@ saveBlob({
 	social_ui_enabled: true
 });
 
+saveBlob({
+	type: 'ship',
+	id: 'calibration',
+	slots: 3,
+});
+
 // Generated using emulator
 saveBlob({
 	id: 'ee',
