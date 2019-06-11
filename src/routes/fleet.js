@@ -45,7 +45,7 @@ router.put('/:id', handleAsyncErrors(async (req, res) => {
 	const ship = await Ship.forge({ id }).fetch();
 	if (!ship) throw new Error('Ship not found');
 	await ship.save(req.body, { method: 'update' });
-	res.json(await ship.fetchWithRelated({ withGeometry: true }));
+	res.json(await Ship.forge({ id }).fetchWithRelated({ withGeometry: true }));
 }));
 
 /**

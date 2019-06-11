@@ -56,6 +56,14 @@ const odysseusMetadata = {
 	jump_range: 1,
 	scan_range: 1,
 	probe_count: 27,
+	object_scan_duration: {
+		min_seconds: 30,
+		max_seconds: 60
+	},
+	grid_scan_duration: {
+		min_seconds: 30,
+		max_seconds: 60
+	},
 	// jump_crystal_count: 100,
 };
 
@@ -67,6 +75,7 @@ async function cleanup(knex) {
 
 	await knex('event').del();
 	await knex('ship').del();
+	await knex('starmap_beacon').del();
 	await knex('grid').del();
 	await knex('starmap_object').del();
 	await knex('starmap_bg').del();
@@ -85,6 +94,18 @@ async function insertRest(knex) {
 
 	await Promise.all(personIds.map(id =>
 		knex.raw(`UPDATE person SET ship_id = 'odysseus' WHERE id = ?`, id)));
+
+	// Beacons
+	const beacons = [
+		{ id: '964UUQETEI', grid_id: 5236, is_active: false, is_decrypted: false },
+		{ id: 'CCVC85Z527', grid_id: 5218, is_active: false, is_decrypted: false },
+		{ id: 'WSB9U1BQ94', grid_id: 5185, is_active: false, is_decrypted: false },
+		{ id: '5F5BLT4QY2', grid_id: 4943, is_active: false, is_decrypted: false },
+		{ id: '7MNWRRXWHW', grid_id: 4911, is_active: false, is_decrypted: false },
+		{ id: 'SYOYI0KO29', grid_id: 5137, is_active: false, is_decrypted: false },
+		{ id: 'TXNN8WM6FR', grid_id: 4863, is_active: false, is_decrypted: false },
+	];
+	await knex('starmap_beacon').insert(beacons);
 }
 
 async function seedLocal(knex) {

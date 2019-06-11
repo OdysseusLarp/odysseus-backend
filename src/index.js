@@ -101,8 +101,9 @@ io.on('connection', socket => {
 loadMessaging(io);
 
 // Get latest Empty Epsilon game state and save it to store
-function getEmptyEpsilonState() {
-	getEmptyEpsilonClient().getGameState().then(state => {
+// TODO: This is a stupid location for this method
+export function updateEmptyEpsilonState() {
+	return getEmptyEpsilonClient().getGameState().then(state => {
 		const metadataKeys = ['id', 'type', 'created_at', 'updated_at', 'version'];
 		// Save Empty Epsilon connection status to EE metadata blob
 		const connectionStatus = getEmptyEpsilonClient().getConnectionStatus();
@@ -124,7 +125,7 @@ loadEvents(io);
 
 const EE_UPDATE_INTERVAL = parseInt(process.env.EMPTY_EPSILON_UPDATE_INTERVAL_MS || '1000', 10);
 logger.watch(`Starting to poll Empty Epsilon game state every ${EE_UPDATE_INTERVAL}ms`);
-setInterval(getEmptyEpsilonState, EE_UPDATE_INTERVAL);
+setInterval(updateEmptyEpsilonState, EE_UPDATE_INTERVAL);
 
 // Load initial state from database before starting the HTTP listener
 Store.forge({ id: 'data' }).fetch().then(model => {

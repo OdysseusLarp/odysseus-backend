@@ -16,6 +16,7 @@ const allCharactersNameToIdMap = new Map();
 const ships = new Set();
 
 const allCharacterEntries = [];
+const characterGroups = [];
 
 const characterFields = {
 	id: null,
@@ -47,6 +48,19 @@ const characterFields = {
 	created_year: null,
 	is_visible: null,
 };
+
+const groups = new Set([
+	'role:medic',
+	'role:security',
+	'role:science',
+	'role:engineer',
+	'role:captain',
+	'role:hacker',
+	'role:admin',
+	'skill:novice',
+	'skill:master',
+	'skill:expert',
+]);
 
 function getFullName({ first_name, last_name }) {
 	return `${first_name} ${last_name ? last_name : ''}`.trim();
@@ -129,6 +143,12 @@ function parseCharacterData(c) {
 	if (!ship_id || ship_id === 'none' || ship_id === 'unknown') ship_id = null;
 	if (ship_id && !ships.has(ship_id)) console.warn(`Character ${fullName} has an invalid ship_id ${ship_id}`);
 
+	// Parse person groups
+	forIn(c, (value, key) => {
+		if (groups.has(key) && value === 'TRUE') characterGroups.push({ group_id: key, person_id: id });
+	});
+
+	// Columns that will be rendered as markdown need to have newlines replaced by two newlines
 	let military_remarks = null;
 	let medical_active_conditions = null;
 	if (c.military_remarks) military_remarks = c.military_remarks.replace(/\n/g, '\n\n');
@@ -136,7 +156,7 @@ function parseCharacterData(c) {
 
 	return omit({
 		...characterFields,
-		...pickBy(c, (value, key) => !key.match(/^[0-9]*_/) && !!value),
+		...pickBy(c, (value, key) => !key.match(/^[0-9]*_/) && !!value && !groups.has(key)),
 		birth_year: parseInt(c.birth_year, 10) || null,
 		medical_last_fitness_check: parseInt(c.medical_last_fitness_check, 10) || null,
 		created_year: parseInt(c.created_year, 10) || null,
@@ -161,7 +181,14 @@ async function parseData() {
 	const survivors = await parseSurvivors();
 	const characters = await parseCharacters();
 	const characterRelations = parseCharacterRelations(characters);
-	return { survivors, characters, characterRelations, characterEntries: allCharacterEntries };
+	return {
+		survivors,
+		characters,
+		characterRelations,
+		characterGroups,
+		characterEntries: allCharacterEntries,
+		groups: Array.from(groups).map(id => ({ id })),
+	};
 }
 
 module.exports = { parseData };

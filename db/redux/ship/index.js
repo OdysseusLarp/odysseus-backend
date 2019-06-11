@@ -57,6 +57,14 @@ saveBlob({
 
 saveBlob({
 	type: 'ship',
+	id: 'lifesupport',
+	health: 1,
+	total: 10,
+	unbroken: 10,
+});
+
+saveBlob({
+	type: 'ship',
 	id: 'metadata',
 	ee_sync_enabled: true,
 	jump_ui_enabled: true,
@@ -102,6 +110,8 @@ saveBlob({
 		alertLevel: 'Normal',
 		shipEnergy: 1000,
 		shipHull: 250,
+		shipHullMax: 250,
+		shipHullPercent: 1,
 		shipFrontShield: 200,
 		shipRearShield: 200,
 	},

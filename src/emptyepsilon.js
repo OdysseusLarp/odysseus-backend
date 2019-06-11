@@ -2,7 +2,7 @@ require('dotenv').config({ silent: true });
 import { logger } from './logger';
 import axios from 'axios';
 import nock from 'nock';
-import { get, set, forIn } from 'lodash';
+import { get, set, forIn, pick, isInteger } from 'lodash';
 import { handleAsyncErrors } from './helpers';
 
 const { EMPTY_EPSILON_HOST, EMPTY_EPSILON_PORT } = process.env,
@@ -45,6 +45,7 @@ const { EMPTY_EPSILON_HOST, EMPTY_EPSILON_PORT } = process.env,
 		// energy, hull and shield max values depend on ship settings in EE
 		shipEnergy: 'getEnergy()',
 		shipHull: 'getHull()',
+		shipHullMax: 'getHullMax()',
 		shipFrontShield: 'getFrontShield()',
 		shipRearShield: 'getRearShield()',
 		alertLevel: 'getAlertLevel()'
@@ -77,6 +78,10 @@ export const setStateRouteHandler = handleAsyncErrors((req, res) => {
 			logger.error('Error setting alert level to Empty Epsilon', error);
 			res.sendStatus(500);
 		});
+	} else if (command === 'setHull') {
+		client.setHullHealthPercent(value)
+			.then(() => res.sendStatus(204))
+			.catch(err => res.sendStatus(500));
 	} else {
 		client.setGameState(command, target, value)
 			.then(() => res.sendStatus(204))
@@ -169,6 +174,15 @@ export class EmptyEpsilonClient {
 				else keyPrefix = 'general';
 				return set(data, `${keyPrefix}.${key}`, res.data[key]);
 			}, {});
+		}).then(state => {
+			const { shipHull, shipHullMax } = pick(get(state, 'general', {}), ['shipHull', 'shipHullMax']);
+			if (isInteger(shipHull) && isInteger(shipHullMax)) {
+				set(state, 'general.shipHullPercent', shipHull / shipHullMax);
+			}
+			return state;
+		}).then(state => {
+			this.previousState = state;
+			return state;
 		}).catch(error => {
 			this.setIsConnectionHealthy(false, error);
 			return { error };
@@ -181,12 +195,23 @@ export class EmptyEpsilonClient {
 	}
 
 	setAlertLevel(level) {
-		const urli = `${this.setUrl}?commandSetAlertLevel("${level}")`;
+		const url = `${this.setUrl}?commandSetAlertLevel("${level}")`;
 		if (!['normal', 'yellow', 'red'].includes(level))
 			throw new Error(`Allowed alert levels are 'normal', 'yellow' and 'red'`);
-		return axios.get(urli).then(res => {
+		return axios.get(url).then(res => {
 			if (get(res, 'data.ERROR')) throw new Error(res.data.ERROR);
 			logger.success(`Ship alert level set to ${level}`);
+		});
+	}
+
+	setHullHealthPercent(percentValue) {
+		const hullMaxHealth = get(this.previousState, 'general.shipHullMax');
+		if (!hullMaxHealth) throw new Error('No hull max health available');
+		const healthPointValue = Math.floor(percentValue * hullMaxHealth);
+		const url = `${this.setUrl}?setHull("${healthPointValue}")`;
+		return axios.get(url).then(res => {
+			if (get(res, 'data.ERROR')) throw new Error(res.data.ERROR);
+			logger.success(`Ship hull health set to ${healthPointValue}`);
 		});
 	}
 
