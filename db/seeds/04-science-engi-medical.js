@@ -48,19 +48,19 @@ const artifactResearch = [
 
 const tags = [
 	{
-		tag_id: 'TAG001',
+		id: 'TAG001',
 		type: 'DIAGNOSIS',
 		description: 'Seems like this hand is broken.',
 		metadata: null
 	},
 	{
-		tag_id: 'TAG002',
+		id: 'TAG002',
 		type: 'DIAGNOSIS',
 		description: 'Smells like blood poisoning.',
 		metadata: null
 	},
 	{
-		tag_id: 'TAG003',
+		id: 'TAG003',
 		type: 'ENGINEERING', // Some generic engineering tag
 		description: 'Not sure about this',
 		metadata: null
