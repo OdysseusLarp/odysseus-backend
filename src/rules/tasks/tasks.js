@@ -89,7 +89,7 @@ export function setTaskFixed(task, ctx) {
  */
 const DECREASE_INTERVAL = 2;
 interval(() => {
-	let calibrationSlots = 3; // FIXME: Read from somewhere instead of having fixed value
+	let calibrationSlots = getCalibrationSlots();
 	const calibrating = Object.values(get(store.getState(), 'data.task', {}))
 		.filter(task => task.status === 'calibrating')
 		.sort((a, b) => a.sort - b.sort);
@@ -128,3 +128,14 @@ interval(() => {
 		}
 	});
 }, DECREASE_INTERVAL * 1000);
+
+function getCalibrationSlots() {
+	const data = store.getState().data;
+	if (data.ship.calibration && data.ship.calibration.slots) {
+		return data.ship.calibration.slots;
+	} else {
+		logger.error('Data blob ship:calibration not present, defaulting to 3 slots');
+		return 3;
+	}
+}
+
