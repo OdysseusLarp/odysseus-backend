@@ -26,6 +26,7 @@ import log from './routes/log';
 import science from './routes/science';
 import tag from './routes/tag';
 import operation from './routes/operation';
+import sip from './routes/sip';
 import { setData, getData, router as data } from './routes/data';
 import infoboard from './routes/infoboard';
 
@@ -57,6 +58,7 @@ app.use('/infoboard', infoboard);
 app.use('/messaging', messaging);
 app.use('/tag', tag);
 app.use('/operation', operation);
+app.use('/sip', sip);
 
 // Empty Epsilon routes
 app.put('/state', setStateRouteHandler);
