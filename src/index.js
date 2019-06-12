@@ -29,6 +29,7 @@ import operation from './routes/operation';
 import sip from './routes/sip';
 import { setData, getData, router as data } from './routes/data';
 import infoboard from './routes/infoboard';
+import dmxRoutes from './routes/dmx';
 
 import './rules/rules';
 
@@ -55,6 +56,7 @@ app.use('/log', log);
 app.use('/science', science);
 app.use('/data', data);
 app.use('/infoboard', infoboard);
+app.use('/dmx', dmxRoutes);
 app.use('/messaging', messaging);
 app.use('/tag', tag);
 app.use('/operation', operation);

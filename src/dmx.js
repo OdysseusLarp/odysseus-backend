@@ -24,6 +24,8 @@ export const CHANNELS = {
 	LifeSupportLow: 116,
 	LifeSupportCritical: 117,
 
+	ShipAnnouncement: 119,
+
 	BridgePowerSocketOn: 120,
 	BridgePowerSocketOff: 121,
 	EngineeringPowerSocketOn: 122,
@@ -55,9 +57,9 @@ export function setValue(channel, value) {
 	dmx.update(UNIVERSE_NAME, { channel: value });
 }
 
-export function fireEvent(channel) {
-	logger.debug(`Firing event on DMX channel ${channel} (${findChannelName(channel)})`);
-	dmx.update(UNIVERSE_NAME, { channel: 255 });
+export function fireEvent(channel, value = 255) {
+	logger.debug(`Firing event on DMX channel ${channel} (${findChannelName(channel)}) value ${value}`);
+	dmx.update(UNIVERSE_NAME, { channel: value });
 	setTimeout(() => dmx.update(UNIVERSE_NAME, { channel: 0 }), EVENT_DURATION);
 }
 
