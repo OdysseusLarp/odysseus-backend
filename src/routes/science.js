@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { Artifact, ArtifactResearch } from '../models/artifact';
+import { Artifact, ArtifactEntry } from '../models/artifact';
 import { handleAsyncErrors } from '../helpers';
 const router = new Router();
 
@@ -49,24 +49,24 @@ router.put('/artifact', handleAsyncErrors(async (req, res) => {
 }));
 
 /**
- * Update or insert science artifact research
- * @route PUT /science/artifact/research
+ * Update or insert science artifact entry
+ * @route PUT /science/artifact/entry
  * @consumes application/json
  * @group Artifact - Science artifact related operations
- * @param {ArtifactResearch.model} post.body.required - ArtifactResearch model to be updated or inserted
- * @returns {ArtifactResearch.model} 200 - Updated or inserted ArtifactResearch values
+ * @param {ArtifactEntry.model} post.body.required - ArtifactEntry model to be updated or inserted
+ * @returns {ArtifactEntry.model} 200 - Updated or inserted ArtifactEntry values
  */
-router.put('/artifact/research', handleAsyncErrors(async (req, res) => {
+router.put('/artifact/entry', handleAsyncErrors(async (req, res) => {
 	const { id } = req.body;
 	// TODO: Validate input
-	let artifactResearch;
-	if (id) artifactResearch = await ArtifactResearch.forge({ id }).fetch();
-	if (!artifactResearch) {
-		artifactResearch = ArtifactResearch.forge().save(req.body, { method: 'insert' });
+	let artifactEntry;
+	if (id) artifactEntry = await ArtifactEntry.forge({ id }).fetch();
+	if (!artifactEntry) {
+		artifactEntry = ArtifactEntry.forge().save(req.body, { method: 'insert' });
 	} else {
-		await artifactResearch.save(req.body, { method: 'update' });
+		await artifactEntry.save(req.body, { method: 'update' });
 	}
-	res.json(artifactResearch);
+	res.json(artifactEntry);
 }));
 
 export default router;

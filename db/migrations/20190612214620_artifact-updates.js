@@ -12,11 +12,10 @@ exports.up = async knex => {
 	await knex.schema.createTable('artifact_entry', t => {
 		t.increments('id').primary();
 		t.string('artifact_id').references('id').inTable('person').notNullable();
-		t.string('added_by').references('id').inTable('person');
+		t.string('person_id').references('id').inTable('person');
 		t.text('entry');
 		t.timestamps(true, true);
 		t.index(['person_id']);
-		t.index(['type']);
 	});
 };
 

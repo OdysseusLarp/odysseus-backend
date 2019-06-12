@@ -3,6 +3,7 @@ const { parseData } = require('../../scripts/person-parser');
 
 exports.seed = async knex => {
 	await knex('operation_result').del();
+	await knex('sip_contact').del();
 	await knex('person_group').del();
 	await knex('person_entry').del();
 	await knex('person_family').del();
@@ -28,4 +29,8 @@ exports.seed = async knex => {
 	await knex('person_family').insert(characterRelations);
 	await knex('person_entry').insert(characterEntries);
 	await knex('person_group').insert(characterGroups);
+	await knex('sip_contact').insert([
+		{ id: '6001', name: 'Contact #6001', video_allowed: false },
+		{ id: '6002', name: 'Contact #6002', video_allowed: false },
+	]);
 };

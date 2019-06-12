@@ -1,48 +1,51 @@
-
 const artifacts = [
 	{
 		id: 1,
 		name: 'Shadowmourne',
-		catalog_id: 'ABC123'
+		catalog_id: 'ABC123',
+		discovered_by: 'Some guy',
+		discovered_at: 'Some planet',
+		discovered_from: 'What is this field even',
+		type: 'Alien artifact',
+		text: 'Some sort of an axe'
 	},
 	{
 		id: 2,
 		name: 'Rubber Duck',
-		catalog_id: 'DEF456'
+		catalog_id: 'DEF456',
+		discovered_by: 'Some other guy',
+		discovered_at: 'Some other planet',
+		discovered_from: 'What is this field even still',
+		type: 'Alien artifact',
+		text: 'Yellow duck'
 	}
 ];
 
-const artifactResearch = [
+const artifactEntry = [
 	{
 		artifact_id: 1,
-		discovered_by: 'DEFAULT', // Default initial data
-		text: `Scary looking axe that requires further analysis.`,
-		is_visible: true
-	},
-	{
-		artifact_id: 1,
-		text: `Looks like it was once used by a gladiator in another universe.`,
-		is_visible: false
-	},
-	{
-		artifact_id: 2,
-		text: `Duck says quack.`,
-		discovered_by: 'DEFAULT', // Default initial data
-		is_visible: true
-	},
-	{
-		artifact_id: 2,
-		text: `DNA Test indicates that the duck is indeed made of rubber.`,
-		discovered_by: 'HANSCA_DNA',
 		person_id: '20000',
-		is_visible: true
+		entry: `Scary looking axe that requires further analysis.`,
+	},
+	{
+		artifact_id: 1,
+		person_id: '20000',
+		entry: `Looks like it was once used by a gladiator in another universe.`,
 	},
 	{
 		artifact_id: 2,
-		text: `X-Ray pictures show that there is something inside the duck.`,
-		discovered_by: 'HANSCA_XRAY',
+		person_id: '20000',
+		entry: `Duck says quack.`,
+	},
+	{
+		artifact_id: 2,
+		entry: `DNA Test indicates that the duck is indeed made of rubber.`,
+		person_id: '20000',
+	},
+	{
+		artifact_id: 2,
+		entry: `X-Ray pictures show that there is something inside the duck.`,
 		person_id: '20001',
-		is_visible: true
 	}
 ];
 
@@ -68,10 +71,10 @@ const tags = [
 ];
 
 exports.seed = async knex => {
-	await knex('artifact_research').del();
+	await knex('artifact_entry').del();
 	await knex('artifact').del();
 	await knex('tag').del();
 	await knex('tag').insert(tags);
 	await knex('artifact').insert(artifacts);
-	await knex('artifact_research').insert(artifactResearch);
+	await knex('artifact_entry').insert(artifactEntry);
 };
