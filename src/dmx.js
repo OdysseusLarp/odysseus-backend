@@ -24,6 +24,8 @@ export const CHANNELS = {
 	LifeSupportLow: 116,
 	LifeSupportCritical: 117,
 
+	ShipAnnouncement: 119,
+
 	BridgePowerSocketOn: 120,
 	BridgePowerSocketOff: 121,
 	EngineeringPowerSocketOn: 122,
