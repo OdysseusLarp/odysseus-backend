@@ -41,7 +41,7 @@ router.put('/artifact', handleAsyncErrors(async (req, res) => {
 	let artifact;
 	if (id) artifact = await Artifact.forge({ id }).fetch();
 	if (!artifact) {
-		artifact = Artifact.forge().save(req.body, { method: 'insert' });
+		artifact = await Artifact.forge().save(req.body, { method: 'insert' });
 	} else {
 		await artifact.save(req.body, { method: 'update' });
 	}
