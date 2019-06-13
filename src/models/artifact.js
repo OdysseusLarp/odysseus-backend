@@ -48,7 +48,7 @@ export const Artifact = Bookshelf.Model.extend({
 		return this.hasMany(ArtifactEntry);
 	},
 	fetchAllWithRelated: function () {
-		return this.fetchAll({ withRelated: artifactWithRelated });
+		return this.orderBy('-created_at').fetchAll({ withRelated: artifactWithRelated });
 	},
 	fetchWithRelated: function () {
 		return this.fetch({ withRelated: artifactWithRelated });
