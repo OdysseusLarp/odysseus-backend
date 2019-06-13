@@ -77,4 +77,5 @@ exports.seed = async knex => {
 	await knex('tag').insert(tags);
 	await knex('artifact').insert(artifacts);
 	await knex('artifact_entry').insert(artifactEntry);
+	await knex.raw(`SELECT setval('artifact_id_seq', 3)`);
 };
