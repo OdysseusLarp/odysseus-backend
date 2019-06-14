@@ -1,8 +1,9 @@
 import { Router } from 'express';
-import { Person, Entry, getFilterableValues } from '../models/person';
+import { Person, Entry, Group, getFilterableValues } from '../models/person';
 import { addShipLogEntry, AuditLogEntry } from '../models/log';
 import { handleAsyncErrors } from '../helpers';
 import { get, pick, mapKeys, snakeCase } from 'lodash';
+import { NotFound } from 'http-errors';
 import { logger } from '../logger';
 const router = new Router();
 
@@ -137,7 +138,7 @@ router.get('/search/:name', handleAsyncErrors(async (req, res) => {
  * @route PUT /person/{id}
  * @consumes application/json
  * @group Person - Operations for person related data
- * @param {string} id.path.required - Citizen ID of the person
+ * @param {string} id.path.required - ID of the person
  * @param {Person.model} person.body.required - Person object fields to be updated
  * @returns {Person.model} 200 - Updated Person values
  */
@@ -155,8 +156,8 @@ router.put('/:id', handleAsyncErrors(async (req, res) => {
  * @route PUT /person/{id}/family
  * @consumes application/json
  * @group Person - Operations for person related data
- * @param {string} id.path.required - Citizen ID of the person
- * @param {string} familyMemberId.body.required - Citizen ID of the person being added/updated as a relative
+ * @param {string} id.path.required - ID of the person
+ * @param {string} familyMemberId.body.required - ID of the person being added/updated as a relative
  * @param {string} relation.body.required - Description of the relation, e.g. brother, sister, father...
  * @returns {Person.model} 200 - Updated Person values containing all family members
  */
@@ -183,6 +184,50 @@ router.post('/:id/entry', handleAsyncErrors(async (req, res) => {
 	const { id } = req.params;
 	const entry = await Entry.forge().save({ person_id: id, ...req.body }, { method: 'insert' });
 	res.json(entry);
+}));
+
+/**
+ * Attach person to a group
+ * @route PUT /person/{id}/group/{groupId}
+ * @consumes application/json
+ * @group Person - Operations for person related data
+ * @param {string} id.path.required - ID of the person
+ * @param {string} groupId.path.required - ID of the group
+ * @returns {Error} 404 - Group or person not found
+ * @returns {object} 204 - Empty response
+ */
+router.put('/:id/group/:groupId', handleAsyncErrors(async (req, res) => {
+	const { id, groupId } = req.params;
+	const [person, group] = await Promise.all([
+		Person.forge({ id }).fetch(),
+		Group.forge({ id: groupId }).fetch()
+	]);
+	if (!person) throw new NotFound('Person not found');
+	if (!group) throw new NotFound('Group not found');
+	await person.addToGroup(group.get('id'));
+	res.sendStatus(204);
+}));
+
+/**
+ * Detach person from a group
+ * @route DELETE /person/{id}/group/{groupId}
+ * @consumes application/json
+ * @group Person - Operations for person related data
+ * @param {string} id.path.required - ID of the person
+ * @param {string} groupId.path.required - ID of the group
+ * @returns {Error} 404 - Group or person not found
+ * @returns {object} 204 - Empty response
+ */
+router.delete('/:id/group/:groupId', handleAsyncErrors(async (req, res) => {
+	const { id, groupId } = req.params;
+	const [person, group] = await Promise.all([
+		Person.forge({ id }).fetch(),
+		Group.forge({ id: groupId }).fetch()
+	]);
+	if (!person) throw new NotFound('Person not found');
+	if (!group) throw new NotFound('Group not found');
+	await person.deleteFromGroup(group.get('id'));
+	res.sendStatus(204);
 }));
 
 export default router;

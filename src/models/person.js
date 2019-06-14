@@ -153,7 +153,19 @@ export const Person = Bookshelf.Model.extend({
 			qb.where('is_visible', !showHidden);
 			qb.whereRaw(`LOWER(CONCAT(first_name, ' ', last_name)) LIKE ?`, [`%${name}%`]);
 		}).fetchAll();
-	}
+	},
+	addToGroup: function (groupId) {
+		return Bookshelf.knex.raw(
+			`INSERT INTO person_group (person_id, group_id) VALUES (?, ?)`,
+			[this.get('id'), groupId]
+		);
+	},
+	deleteFromGroup: function (groupId) {
+		return Bookshelf.knex.raw(
+			`DELETE FROM person_group WHERE person_id = ? AND group_id = ?`,
+			[this.get('id'), groupId]
+		);
+	},
 });
 
 /**

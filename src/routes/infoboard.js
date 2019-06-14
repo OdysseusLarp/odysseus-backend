@@ -114,7 +114,7 @@ router.put('/', handleAsyncErrors(async (req, res) => {
  * @route PUT /infoboard/{id}
  * @consumes application/json
  * @group Infoboard - Infoboard related operations
- * @param {string} id.path.required - Citizen ID of the person
+ * @param {string} id.path.required - ID of the person
  * @param {InfoEntry.model} info_entry.body.required - InfoEntry model to be updated
  * @returns {InfoEntry.model} 200 - Updated InfoEntry values
  */
