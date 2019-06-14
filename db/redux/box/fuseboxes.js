@@ -6,6 +6,9 @@ const boxes = [
 			blowing: [4, 15, 18, 22, 24,  9, 11, 7,  6, 13, 16, 20],
 			measure: [14, 17, 27, 23, 10, 25,  8, 5, 12, 19, 26, 21],
 		},
+		dmxFuse: 5,  // Which fuse index triggers the following DMX events (optional)
+		dmxFixed: 'MedbayFuseFixed',
+		dmxBroken: 'MedbayFuseBroken',
 	},
 	{
 		type: 'box',
@@ -14,6 +17,9 @@ const boxes = [
 			blowing: [4, 15, 18, 22, 24,  9, 11, 7,  6, 13, 16, 20],
 			measure: [14, 17, 27, 23, 10, 25,  8, 5, 12, 19, 26, 21],
 		},
+		dmxFuse: 7,
+		dmxFixed: 'EngineeringFuseFixed',
+		dmxBroken: 'EngineeringFuseBroken',
 	},
 	{
 		type: 'box',
@@ -22,6 +28,9 @@ const boxes = [
 			blowing: [4, 15, 18, 22, 24,  9, 11, 7,  6, 13, 16, 20],
 			measure: [14, 17, 27, 23, 10, 25,  8, 5, 12, 19, 26, 21],
 		},
+		dmxFuse: 4,
+		dmxFixed: 'BridgeFuseFixed',
+		dmxBroken: 'BridgeFuseBroken',
 	},
 	{
 		type: 'box',
@@ -30,6 +39,9 @@ const boxes = [
 			blowing: [4, 15, 18, 22, 24,  9, 11, 7,  6, 13, 16, 20],
 			measure: [14, 17, 27, 23, 10, 25,  8, 5, 12, 19, 26, 21],
 		},
+		dmxFuse: 1,
+		dmxFixed: 'ScienceFuseFixed',
+		dmxBroken: 'ScienceFuseBroken',
 	},
 	{
 		type: 'box',
@@ -38,10 +50,14 @@ const boxes = [
 			blowing: [4, 15, 18, 22, 24,  9, 11, 7,  6, 13, 16, 20],
 			measure: [14, 17, 27, 23, 10, 25,  8, 5, 12, 19, 26, 21],
 		},
+		dmxFuse: 6,
+		dmxFixed: 'LoungeFuseFixed',
+		dmxBroken: 'LoungeFuseBroken',
 	},
 ];
 
 // FIXME: Update maps to final versions
+// FIXME: Update texts to refer to life support
 const tasks = [
 	{
 		type: 'task',

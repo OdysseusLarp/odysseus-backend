@@ -1,5 +1,6 @@
 import { logger } from './logger';
 import DMX from 'dmx';
+import { isNumber } from 'lodash';
 
 
 const UNIVERSE_NAME = 'backend';
@@ -26,16 +27,17 @@ export const CHANNELS = {
 
 	ShipAnnouncement: 119,
 
-	BridgePowerSocketOn: 120,
-	BridgePowerSocketOff: 121,
-	EngineeringPowerSocketOn: 122,
-	EngineeringPowerSocketOff: 123,
-	MedbayPowerSocketOn: 124,
-	MedbayPowerSocketOff: 125,
-	SciencePowerSocketOn: 126,
-	SciencePowerSocketOff: 127,
-	LoungePowerSocketOn: 128,
-	LoungePowerSocketOff: 129,
+	// Used in fuse box configuration
+	BridgeFuseBroken: 120,
+	BridgeFuseFixed: 121,
+	EngineeringFuseBroken: 122,
+	EngineeringFuseFixed: 123,
+	MedbayFuseBroken: 124,
+	MedbayFuseFixed: 125,
+	ScienceFuseBroken: 126,
+	ScienceFuseFixed: 127,
+	LoungeFuseBroken: 128,
+	LoungeFuseFixed: 129,
 };
 
 const dmx = init();
@@ -58,6 +60,10 @@ export function setValue(channel, value) {
 }
 
 export function fireEvent(channel, value = 255) {
+	if (!isNumber(channel) || !isNumber(value) || channel < 0 || channel > 255 || value < 0 || value > 255) {
+		logger.error(`Attempted DMX fireEvent with invalid channel=${channel} or value=${value}`);
+		return;
+	}
 	logger.debug(`Firing event on DMX channel ${channel} (${findChannelName(channel)}) value ${value}`);
 	dmx.update(UNIVERSE_NAME, { channel: value });
 	setTimeout(() => dmx.update(UNIVERSE_NAME, { channel: 0 }), EVENT_DURATION);
