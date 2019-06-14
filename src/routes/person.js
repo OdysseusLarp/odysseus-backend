@@ -89,7 +89,7 @@ router.get('/:id', handleAsyncErrors(async (req, res) => {
  * Get a specific person by card id. Also contains their family, medical and military data.
  * @route GET /person/card/{id}
  * @group Person - Operations for person related data
- * @param {integer} id.path.required - Card ID of the person
+ * @param {string} id.path.required - Card ID of the person
  * @param {boolean} login.query - True if this query is performed to log in to Social Hub
  * @returns {Person.model} 200 - Specific person
  */
@@ -112,7 +112,7 @@ router.get('/card/:id', handleAsyncErrors(async (req, res) => {
  * Get a specific person by bio id. Also contains their family, medical and military data.
  * @route GET /person/bio/{id}
  * @group Person - Operations for person related data
- * @param {integer} id.path.required - Bio ID of the person
+ * @param {string} id.path.required - Bio ID of the person
  * @returns {Person.model} 200 - Specific person
  */
 router.get('/bio/:id', handleAsyncErrors(async (req, res) => {
@@ -146,7 +146,7 @@ router.put('/:id', handleAsyncErrors(async (req, res) => {
 	// TODO: Validate input
 	const person = await Person.forge({ id }).fetch();
 	if (!person) throw new Error('Person not found');
-	await person.save(req.body, { method: 'update' });
+	await person.save(req.body, { method: 'update', patch: true });
 	res.json(person);
 }));
 

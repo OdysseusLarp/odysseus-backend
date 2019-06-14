@@ -43,7 +43,7 @@ router.put('/artifact', handleAsyncErrors(async (req, res) => {
 	if (!artifact) {
 		artifact = await Artifact.forge().save(req.body, { method: 'insert' });
 	} else {
-		await artifact.save(req.body, { method: 'update' });
+		await artifact.save(req.body, { method: 'update', patch: true });
 	}
 	res.json(artifact);
 }));
@@ -64,7 +64,7 @@ router.put('/artifact/entry', handleAsyncErrors(async (req, res) => {
 	if (!artifactEntry) {
 		artifactEntry = ArtifactEntry.forge().save(req.body, { method: 'insert' });
 	} else {
-		await artifactEntry.save(req.body, { method: 'update' });
+		await artifactEntry.save(req.body, { method: 'update', patch: true });
 	}
 	res.json(artifactEntry);
 }));

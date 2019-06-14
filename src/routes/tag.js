@@ -51,7 +51,7 @@ router.put('/', handleAsyncErrors(async (req, res) => {
 			Tag.forge().save(req.body, { method: 'insert', transacting }));
 	} else {
 		await Bookshelf.transaction(transacting =>
-			Tag.forge().save(req.body, { method: 'update', transacting }));
+			Tag.forge().save(req.body, { method: 'update', transacting, patch: true }));
 	}
 	res.json(tag);
 }));

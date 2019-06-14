@@ -64,7 +64,7 @@ router.put('/contact', handleAsyncErrors(async (req, res) => {
 			SipContact.forge().save(req.body, { method: 'insert', transacting }));
 	} else {
 		await Bookshelf.transaction(transacting =>
-			SipContact.forge().save(req.body, { method: 'update', transacting }));
+			SipContact.forge().save(req.body, { method: 'update', transacting, patch: true }));
 	}
 	res.json(sipContact);
 }));

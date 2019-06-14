@@ -59,7 +59,7 @@ router.post('/', handleAsyncErrors(async (req, res) => {
 router.put('/:id', handleAsyncErrors(async (req, res) => {
 	const operationResult = await OperationResult.forge({ id: req.params.id }).fetch();
 	if (!operationResult) throw new NotFound('OperationResult not found');
-	await operationResult.save(req.body, { method: 'update' });
+	await operationResult.save(req.body, { method: 'update', patch: true });
 	res.json(operationResult);
 }));
 

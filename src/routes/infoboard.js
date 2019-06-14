@@ -123,7 +123,7 @@ router.put('/:id', handleAsyncErrors(async (req, res) => {
 	// TODO: Validate input
 	const info = await InfoEntry.forge({ id }).fetch();
 	if (!info) throw new Error('Infoboard entry not found');
-	await info.save(req.body, { method: 'update' });
+	await info.save(req.body, { method: 'update', patch: true });
 	res.json(info);
 }));
 

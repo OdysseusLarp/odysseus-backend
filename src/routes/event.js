@@ -45,7 +45,7 @@ router.put('/', handleAsyncErrors(async (req, res) => {
 		req.io.emit('eventAdded', event);
 	} else {
 		await Bookshelf.transaction(transacting =>
-			Event.forge().save(req.body, { method: 'update', transacting }).tap(updateEvent));
+			Event.forge().save(req.body, { method: 'update', transacting, patch: true }).tap(updateEvent));
 		req.io.emit('eventUpdated', event);
 	}
 	res.json(event);
