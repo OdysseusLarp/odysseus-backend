@@ -61,7 +61,6 @@ export const OperationResult = Bookshelf.Model.extend({
 		return this.hasOne(Artifact, 'catalog_id', 'catalog_id');
 	},
 	fetchWithRelated: function () {
-		console.log('fetching with related');
 		return this.fetch({ withRelated: operationResultWithRelated });
 	},
 	fetchAllWithRelated: function () {

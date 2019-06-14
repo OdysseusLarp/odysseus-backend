@@ -2,6 +2,7 @@ import { Router } from 'express';
 import { Vote, VoteEntry, VoteOption } from '../models/vote';
 import { STATUS_PENDING } from '../models';
 import { handleAsyncErrors } from '../helpers';
+import { adminSendMessage } from '../messaging';
 import Bookshelf from '../../db';
 import { pick, get, isInteger } from 'lodash';
 import moment from 'moment';
@@ -78,11 +79,15 @@ router.put('/create', handleAsyncErrors(async (req, res) => {
  * @consumes application/json
  * @group Vote - Voting related operations
  * @param {integer} id.path.required - Vote id
+ * @param {boolean} sendMessage.query- True if vote creator should receive "vote approved/rejected" message
  * @param {Vote.model} vote.body.required - VoteEntry model to be inserted
  * @returns {Vote.model} 200 - Updated Vote values
  */
 router.put('/:id', handleAsyncErrors(async (req, res) => {
 	const data = pick(req.body, VOTE_FIELDS);
+	const sendMessage = get(req, 'query.sendMessage') === 'true';
+	const isApproved = data.status === 'APPROVED';
+	const isRejected = data.status === 'REJECTED';
 	const vote = await Vote.forge({ id: req.params.id }).fetch();
 	if (!vote) throw new NotFound('Vote not found');
 	if (!data.active_until && data.status === 'APPROVED') {
@@ -93,6 +98,16 @@ router.put('/:id', handleAsyncErrors(async (req, res) => {
 			null;
 	}
 	await vote.save(data, { method: 'update', patch: true });
+	if (sendMessage && (isApproved || isRejected)) {
+		const message = isApproved ?
+			`Your vote '${vote.get('title')}' was approved and released.` :
+			`Your vote '${vote.get('title')}' was rejected and will not be published.`;
+		adminSendMessage(process.env.FLEET_SECRETARY_ID, {
+			target: vote.get('person_id'),
+			type: 'private',
+			message
+		});
+	}
 	res.json(vote);
 }));
 

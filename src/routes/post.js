@@ -2,7 +2,8 @@ import { Router } from 'express';
 import { Post } from '../models/post';
 import { STATUS_PENDING, STATUS_APPROVED } from '../models';
 import { handleAsyncErrors } from '../helpers';
-import { pick } from 'lodash';
+import { adminSendMessage } from '../messaging';
+import { get, pick } from 'lodash';
 const router = new Router();
 
 /**
@@ -34,12 +35,16 @@ router.get('/:id', handleAsyncErrors(async (req, res) => {
  * @consumes application/json
  * @group Post - Social Hub News/Opinion post related operations
  * @param {Post.model} post.body.required - Post model to be updated or inserted
+ * @param {boolean} sendMessage.query- True if post creator should receive "post approved/rejected" message on update
  * @returns {Post.model} 200 - Updated or inserted Post values
  */
 router.put('/', handleAsyncErrors(async (req, res) => {
 	const { id } = req.body;
 	// TODO: Validate input
 	const data = pick(req.body, ['title', 'body', 'person_id', 'type', 'status', 'is_visible']);
+	const sendMessage = get(req, 'query.sendMessage') === 'true';
+	const isApproved = data.status === 'APPROVED';
+	const isRejected = data.status === 'REJECTED';
 	let post;
 	if (id) post = await Post.forge({ id }).fetch();
 	if (!post) {
@@ -50,6 +55,16 @@ router.put('/', handleAsyncErrors(async (req, res) => {
 	} else {
 		await post.save(data, { method: 'update', patch: true });
 		req.io.emit('postUpdated', post);
+		if (sendMessage && (isApproved || isRejected)) {
+			const message = isApproved ?
+				`Your ${post.get('type').toLowerCase()} post '${post.get('title')}' was approved and released.` :
+				`Your ${post.get('type').toLowerCase()} post '${post.get('title')}' was rejected and will not be published.`;
+			adminSendMessage(process.env.FLEET_SECRETARY_ID, {
+				target: post.get('person_id'),
+				type: 'private',
+				message
+			});
+		}
 	}
 	res.json(post);
 }));

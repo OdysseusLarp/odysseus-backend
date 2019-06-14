@@ -41,11 +41,19 @@ router.post('/send', async (req, res) => {
 	};
 	const mockSocket = {
 		emit: () => {},
-		person_id: params.sender
+		userId: params.sender
 	};
 	await onSendMessage(mockSocket, messageDetails);
 	res.sendStatus(204);
 });
+
+export function adminSendMessage(userId, messageDetails) {
+	const mockSocket = {
+		emit: () => {},
+		userId
+	};
+	return onSendMessage(mockSocket, messageDetails);
+}
 
 let messaging;
 const connectedUsers = new Map();
