@@ -58,7 +58,7 @@ router.get('/display', handleAsyncErrors(async (req, res) => {
 	const count = entries.length + (priority.attributes.priority < 5 ? news.length : 0);
 	const realSelector = selector % count;
 	let entry = null;
-	if( realSelector > entries.length - 1 ) {
+	if ( realSelector > entries.length - 1 ) {
 		entry = news.models[realSelector - entries.length];
 		entry.attributes.body = entry.attributes.body.substring(0, 100);
 	} else {

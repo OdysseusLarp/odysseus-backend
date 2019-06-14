@@ -123,7 +123,7 @@ router.get('/bio/:id', handleAsyncErrors(async (req, res) => {
  * Search for a person using their name
  * @route GET /person/search/{name}
  * @group Person - Operations for person related data
- * @param {integer} name.path.required - Name or partial name of the person
+ * @param {string} name.path.required - Name or partial name of the person
  * @returns {Person.model} 200 - List of persons matching search criteria
  */
 router.get('/search/:name', handleAsyncErrors(async (req, res) => {
