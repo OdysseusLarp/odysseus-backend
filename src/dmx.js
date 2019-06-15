@@ -38,6 +38,10 @@ export const CHANNELS = {
 	ScienceFuseFixed: 127,
 	LoungeFuseBroken: 128,
 	LoungeFuseFixed: 129,
+
+	// Fired manually from admin ui
+	BreachEventStarting: 140,
+	BreachEventBreach: 141,
 };
 
 const dmx = init();
