@@ -3,8 +3,8 @@ const boxes = [
 		type: 'box',
 		id: 'fusebox_medbay',
 		config: {
-			blowing: [4, 15, 18, 22, 24,  9, 11, 7,  6, 13, 16, 20],
-			measure: [14, 17, 27, 23, 10, 25,  8, 5, 12, 19, 26, 21],
+			blowing: [ 4, 15, 18, 22, 24,  9, 11, 7],
+			measure: [14, 17, 27, 23, 10, 25,  8, 5],
 		},
 		dmxFuse: 5,  // Which fuse index triggers the following DMX events (optional)
 		dmxFixed: 'MedbayFuseFixed',
@@ -14,8 +14,8 @@ const boxes = [
 		type: 'box',
 		id: 'fusebox_engineering',
 		config: {
-			blowing: [4, 15, 18, 22, 24,  9, 11, 7,  6, 13, 16, 20],
-			measure: [14, 17, 27, 23, 10, 25,  8, 5, 12, 19, 26, 21],
+			blowing: [ 4, 15, 18, 22, 24,  9, 11, 7],
+			measure: [14, 17, 27, 23, 10, 25,  8, 5],
 		},
 		dmxFuse: 7,
 		dmxFixed: 'EngineeringFuseFixed',
@@ -36,8 +36,8 @@ const boxes = [
 		type: 'box',
 		id: 'fusebox_science',
 		config: {
-			blowing: [4, 15, 18, 22, 24,  9, 11, 7,  6, 13, 16, 20],
-			measure: [14, 17, 27, 23, 10, 25,  8, 5, 12, 19, 26, 21],
+			blowing: [ 4, 15, 18, 22, 24,  9, 11, 7],
+			measure: [14, 17, 27, 23, 10, 25,  8, 5],
 		},
 		dmxFuse: 1,
 		dmxFixed: 'ScienceFuseFixed',
@@ -47,8 +47,8 @@ const boxes = [
 		type: 'box',
 		id: 'fusebox_lounge',
 		config: {
-			blowing: [4, 15, 18, 22, 24,  9, 11, 7,  6, 13, 16, 20],
-			measure: [14, 17, 27, 23, 10, 25,  8, 5, 12, 19, 26, 21],
+			blowing: [ 4, 15, 18, 22, 24,  9, 11, 7],
+			measure: [14, 17, 27, 23, 10, 25,  8, 5],
 		},
 		dmxFuse: 6,
 		dmxFixed: 'LoungeFuseFixed',
