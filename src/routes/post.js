@@ -35,7 +35,7 @@ router.get('/:id', handleAsyncErrors(async (req, res) => {
  * @consumes application/json
  * @group Post - Social Hub News/Opinion post related operations
  * @param {Post.model} post.body.required - Post model to be updated or inserted
- * @param {boolean} sendMessage.query- True if post creator should receive "post approved/rejected" message on update
+ * @param {boolean} sendMessage.query - True if post creator should receive "post approved/rejected" message on update
  * @returns {Post.model} 200 - Updated or inserted Post values
  */
 router.put('/', handleAsyncErrors(async (req, res) => {

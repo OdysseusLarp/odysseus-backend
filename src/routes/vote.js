@@ -79,7 +79,7 @@ router.put('/create', handleAsyncErrors(async (req, res) => {
  * @consumes application/json
  * @group Vote - Voting related operations
  * @param {integer} id.path.required - Vote id
- * @param {boolean} sendMessage.query- True if vote creator should receive "vote approved/rejected" message
+ * @param {boolean} sendMessage.query - True if vote creator should receive "vote approved/rejected" message
  * @param {Vote.model} vote.body.required - VoteEntry model to be inserted
  * @returns {Vote.model} 200 - Updated Vote values
  */
