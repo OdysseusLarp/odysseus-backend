@@ -49,7 +49,7 @@ const dmx = init();
 function init() {
 	if (process.env.DMX_DRIVER) {
 		const dmx = new DMX();
-		dmx.addUniverse(UNIVERSE_NAME, process.env.DMX_DRIVER);
+		dmx.addUniverse(UNIVERSE_NAME, process.env.DMX_DRIVER, process.env.DMX_DEVICE_PATH);
 		return dmx;
 	} else {
 		return {
@@ -60,7 +60,7 @@ function init() {
 
 export function setValue(channel, value) {
 	logger.debug(`Setting DMX channel ${channel} (${findChannelName(channel)}) to ${value}`);
-	dmx.update(UNIVERSE_NAME, { channel: value });
+	dmx.update(UNIVERSE_NAME, { [channel]: value });
 }
 
 export function fireEvent(channel, value = 255) {
@@ -69,8 +69,8 @@ export function fireEvent(channel, value = 255) {
 		return;
 	}
 	logger.debug(`Firing event on DMX channel ${channel} (${findChannelName(channel)}) value ${value}`);
-	dmx.update(UNIVERSE_NAME, { channel: value });
-	setTimeout(() => dmx.update(UNIVERSE_NAME, { channel: 0 }), EVENT_DURATION);
+	dmx.update(UNIVERSE_NAME, { [channel]: value });
+	setTimeout(() => dmx.update(UNIVERSE_NAME, { [channel]: 0 }), EVENT_DURATION);
 }
 
 function findChannelName(channel) {
