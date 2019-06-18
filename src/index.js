@@ -13,6 +13,9 @@ import { handleAsyncErrors } from './helpers';
 import { get, isEqual, omit, isEmpty } from 'lodash';
 import cors from 'cors';
 
+import prometheusIoMetrics from 'socket.io-prometheus';
+import prometheusMiddleware from 'express-prometheus-middleware';
+
 import { initStoreSocket } from './store/storeSocket';
 import { initState } from './store/store';
 import './store/storePersistance';
@@ -37,6 +40,21 @@ import './rules/rules';
 app.use(bodyParser.json());
 app.use(loggerMiddleware);
 app.use(cors());
+
+/**
+ * Get Prometheus metrics of all API routes and Socket.IO clients
+ * @route GET /metrics
+ * @group Metrics - Prometheus metrics
+ * @produces text/plain
+ * @returns {string} 200 - Prometheus metrics
+ */
+app.use(prometheusMiddleware({
+	metricsPath: '/metrics',
+	collectDefaultMetrics: true,
+	requestDurationBuckets: [0.1, 0.5, 1, 1.5],
+}));
+// Also export prometheus metrics of Socket.IO, available via same /metrics route
+prometheusIoMetrics(io);
 
 // Add Socket.IO reference to all requests so route handlers can call it
 app.use((req, res, next) => {

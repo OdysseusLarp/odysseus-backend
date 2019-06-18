@@ -38,6 +38,7 @@
 		"dotenv": "^6.0.0",
 		"dotenv-cli": "^1.4.0",
 		"express": "^4.16.3",
+		"express-prometheus-middleware": "^0.6.1",
 		"express-swagger-generator": "git+https://github.com/nicou/express-swagger-generator.git",
 		"handlebars": "^4.1.2",
 		"http-errors": "^1.7.1",
@@ -45,10 +46,12 @@
 		"lodash": "^4.17.11",
 		"moment": "^2.22.2",
 		"pg": "^7.4.3",
+		"prom-client": "^11.5.1",
 		"redux-starter-kit": "^0.4.3",
 		"shelljs": "^0.8.3",
 		"signale": "^1.2.1",
-		"socket.io": "^2.1.1"
+		"socket.io": "^2.1.1",
+		"socket.io-prometheus": "^0.2.1"
 	},
 	"devDependencies": {
 		"ava": "^0.25.0",
