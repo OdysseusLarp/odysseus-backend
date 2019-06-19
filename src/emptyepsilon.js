@@ -231,7 +231,8 @@ export class EmptyEpsilonClient {
 		const alertLevel = alertStates.get(state.general.alertLevel);
 		await Promise.all([
 			...commands.map(({ command, target, value }) => this.setGameState(command, target, value)),
-			this.setAlertLevel(alertLevel)
+			this.setAlertLevel(alertLevel),
+			this.setHullHealthPercent(get(state, 'general.shipHullPercent', 1)),
 		]);
 		return { success: true };
 	}
