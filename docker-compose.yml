@@ -22,7 +22,7 @@ services:
     volumes:
       # Set this to the same as DMX_DEVICE_PATH in .backend.env.prod
       - "/dev/ttyUSB0:/dev/dmxtty"
-      - "./backend.env.prod:/app/.env:ro"
+      - "./.backend.env.prod:/app/.env:ro"
     healthcheck:
       test: ["CMD-SHELL", "curl -sS http://127.0.0.1:8888/ping || exit 1"]
       interval: 30s
