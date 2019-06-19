@@ -28,6 +28,7 @@ export const Tag = Bookshelf.Model.extend({
 });
 
 const operationResultWithRelated = [
+	'author',
 	'tag',
 	'person',
 	'artifact',
@@ -39,6 +40,7 @@ const operationResultWithRelated = [
  * @property {string} bio_id - A bio_id of a person that this operation relates to
  * @property {string} catalog_id - A catalog_id of an artifact that this operation relates to
  * @property {string} tag_id - A tag_id of a tag that this operation relates to
+ * @property {string} author_id - ID of the person who performed the operation
  * @property {string} description - Operation description
  * @property {string} sample_id - E.g. a vial number
  * @property {object} type - Operation type
@@ -56,6 +58,9 @@ export const OperationResult = Bookshelf.Model.extend({
 	},
 	person: function () {
 		return this.hasOne(Person, 'bio_id', 'bio_id');
+	},
+	author: function () {
+		return this.hasOne(Person, 'id', 'author_id');
 	},
 	artifact: function () {
 		return this.hasOne(Artifact, 'catalog_id', 'catalog_id');
