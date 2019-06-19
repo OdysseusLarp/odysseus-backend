@@ -19,6 +19,9 @@ services:
       - odysseus-net
     depends_on:
       - database
+    volumes:
+      # Set this to the same as DMX_DEVICE_PATH in .backend.env.prod
+      - "/dev/ttyUSB0:/dev/dmxtty"
     healthcheck:
       test: ["CMD-SHELL", "curl -sS http://127.0.0.1:8888/ping || exit 1"]
       interval: 30s
@@ -38,7 +41,7 @@ services:
     networks:
       - odysseus-net
     environment:
-      # Set POSTGRES_PASSWORD to same as .backend.env.prod DB_PASSWORD
+      # Set POSTGRES_PASSWORD to same as DB_PASSWORD in .backend.env.prod
       - POSTGRES_PASSWORD=
     volumes:
       - "/home/odysseus/data/postgres:/var/lib/postgresql/data"
