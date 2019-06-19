@@ -67,6 +67,7 @@ saveBlob({
 	type: 'ship',
 	id: 'metadata',
 	ee_sync_enabled: true,
+	ee_connection_enabled: true,
 	jump_ui_enabled: true,
 	social_ui_enabled: true
 });

@@ -129,6 +129,12 @@ loadMessaging(io);
 // Get latest Empty Epsilon game state and save it to store
 // TODO: This is a stupid location for this method
 export function updateEmptyEpsilonState() {
+	// Exit straight away if EE connection is disabled. It needs to be disabled before
+	// the EE server is launched, because the EE HTTP server is buggy and will crash the
+	// game server if it gets a request before fully loading.
+	const isEeConnectionEnabled = !!get(getData('ship', 'metadata'), 'ee_connection_enabled');
+	if (!isEeConnectionEnabled) return;
+
 	return getEmptyEpsilonClient().getGameState().then(state => {
 		const metadataKeys = ['id', 'type', 'created_at', 'updated_at', 'version'];
 		// Save Empty Epsilon connection status to EE metadata blob
@@ -149,10 +155,6 @@ export function updateEmptyEpsilonState() {
 // Load current events
 loadEvents(io);
 
-const EE_UPDATE_INTERVAL = parseInt(process.env.EMPTY_EPSILON_UPDATE_INTERVAL_MS || '1000', 10);
-logger.watch(`Starting to poll Empty Epsilon game state every ${EE_UPDATE_INTERVAL}ms`);
-setInterval(updateEmptyEpsilonState, EE_UPDATE_INTERVAL);
-
 // Load initial state from database before starting the HTTP listener and loading rules
 Store.forge({ id: 'data' }).fetch().then(model => {
 	const data = model ? model.get('data') : {};
@@ -160,6 +162,10 @@ Store.forge({ id: 'data' }).fetch().then(model => {
 	logger.info('State initialized');
 	loadRules();
 	startServer();
+
+	const EE_UPDATE_INTERVAL = parseInt(process.env.EMPTY_EPSILON_UPDATE_INTERVAL_MS || '1000', 10);
+	logger.watch(`Starting to poll Empty Epsilon game state every ${EE_UPDATE_INTERVAL}ms`);
+	setInterval(updateEmptyEpsilonState, EE_UPDATE_INTERVAL);
 });
 
 // Generate and serve API documentation using Swagger at /api-docs
