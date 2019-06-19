@@ -44,5 +44,6 @@ testem.log
 Thumbs.db
 
 .env
+.backend.env.prod
 
 .nyc_output

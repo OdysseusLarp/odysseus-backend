@@ -1,0 +1,15 @@
+.circleci
+.vscode
+.test
+.editorconfig
+.env
+.env.dist
+.eslintrc
+.gitignore
+.git
+node_modules
+appspec.yml
+docker-compose.yml
+Dockerfile
+nginx-config.conf
+README.md

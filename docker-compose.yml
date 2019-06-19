@@ -1,0 +1,50 @@
+version: '2.1'
+
+networks:
+  odysseus-net:
+    driver: bridge
+
+services:
+  backend:
+    image: odysseus-backend:latest
+    container_name: odysseus-backend
+    build:
+      context: ./
+    restart: unless-stopped
+    expose:
+      - 8888
+    ports:
+      - 8888:8888
+    networks:
+      - odysseus-net
+    depends_on:
+      - database
+    healthcheck:
+      test: ["CMD-SHELL", "curl -sS http://127.0.0.1:8888/ping || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  database:
+    image: odysseus-database:latest
+    container_name: odysseus-database
+    build:
+      context: ./db
+    restart: unless-stopped
+    expose:
+      - 5432
+    ports:
+      - 5432:5432
+    networks:
+      - odysseus-net
+    environment:
+      # Set POSTGRES_PASSWORD to same as .backend.env.prod DB_PASSWORD
+      - POSTGRES_PASSWORD=
+    volumes:
+      - "/home/odysseus/data/postgres:/var/lib/postgresql/data"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -q"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+

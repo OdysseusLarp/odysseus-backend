@@ -52,3 +52,10 @@ Events fired by server are:
 
     'dataUpdate', type, id, {...new content...}
     'dataDelete', type, id
+
+## Production setup
+* Copy `.env.dist` to `.backend.env.prod` and set the correct settings
+* Check that `docker-compose.yml` has the correct `POSTGRES_PASSWORD` env
+* Check that `docker-compose.yml` has the correct volume mount path for the host computer, since PostgreSQL data will be persisted there
+* Run `docker-compose build` to build the database and backend images
+* Run `docker-compose up -d` to start the database and bakend containers
