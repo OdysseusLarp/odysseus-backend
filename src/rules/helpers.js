@@ -115,6 +115,24 @@ export function clamp(num, min, max) {
 	return num < min ? min : num > max ? max : num;
 }
 
-export function chooseRandom(array) {
-	return array[Math.floor(Math.random() * array.length)];
+export function random(min, max) {
+	return min + Math.random() * (max-min);
+}
+
+/**
+ * Return a random integer between min-max, both inclusive.
+ * @param {integer} min Minimun value (inclusive)
+ * @param {integer} max Maximum value (inclusive)
+ */
+export function randomInt(min, max) {
+	return Math.floor(Math.random() * (max-min+1)) + min;
+}
+
+// From https://stackoverflow.com/a/49479872/412896
+export function chooseRandom(array, n = 1) {
+	return array
+	  .map(x => ({ x, r: Math.random() }))
+	  .sort((a, b) => a.r - b.r)
+	  .map(a => a.x)
+	  .slice(0, n);
 }
