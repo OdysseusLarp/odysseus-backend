@@ -2,7 +2,7 @@ import { Router } from 'express';
 import { Ship } from '../models/ship';
 import { handleAsyncErrors } from '../helpers';
 import { validateJumpTarget } from '../eventhandler';
-import { get } from 'lodash';
+import { get, set, clone } from 'lodash';
 const router = new Router();
 
 /**
@@ -46,6 +46,28 @@ router.put('/:id', handleAsyncErrors(async (req, res) => {
 	if (!ship) throw new Error('Ship not found');
 	await ship.save(req.body, { method: 'update', patch: true });
 	res.json(await Ship.forge({ id }).fetchWithRelated({ withGeometry: true }));
+}));
+
+/**
+ * Patch ship metadata by ship id. Only allows setting a value to a single key inside the ship metadata object.
+ * @route PATCH /fleet/{id}/metadata
+ * @consumes application/json
+ * @group Fleet - Fleet and ship related operations
+ * @param {string} id.path.required - Ship id
+ * @param {string} key_path.body.required - Path to the key inside metadata object
+ * @param {string} value.body.required - Value to set
+ * @returns {string} 204 - OK Empty Response
+ */
+router.patch('/:id/metadata', handleAsyncErrors(async (req, res) => {
+	const { id } = req.params;
+	const { key_path, value } = req.body;
+	if (!key_path || value === undefined) throw new Error('key_path or value not found in req body');
+	const ship = await Ship.forge({ id }).fetch();
+	if (!ship) throw new Error('Ship not found');
+	const metadata = clone(ship.get('metadata') || {});
+	set(metadata, key_path, value);
+	await ship.save({ metadata }, { method: 'update', patch: true });
+	res.sendStatus(204);
 }));
 
 /**

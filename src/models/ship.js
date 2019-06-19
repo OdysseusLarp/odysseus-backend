@@ -140,13 +140,15 @@ export const Ship = Bookshelf.Model.extend({
 	initialize() {
 		// Emit new ship model to Socket.IO clients after Odysseus data is updated
 		this.on('updated', async model => {
-			if (model.get('id') !== 'odysseus') return;
+			const id = model.get('id');
+			if (id !== 'odysseus') return;
 			const io = getSocketIoClient();
 			if (!io) {
 				logger.warning('Could not emit shipUpdated when Odysseus ship model was updated');
 				return;
 			}
-			io.emit('shipUpdated', await model.fetchWithRelated({ withGeometry: true }));
+			const newShip = await Ship.forge({ id }).fetchWithRelated({ withGeometry: true });
+			io.emit('shipUpdated', newShip);
 		});
 		this.on('fetching fetching:collection', (model, columns, options) => {
 			options.query.select(knex.raw(
