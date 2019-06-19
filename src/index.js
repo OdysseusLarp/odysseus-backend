@@ -34,7 +34,7 @@ import { setData, getData, router as data } from './routes/data';
 import infoboard from './routes/infoboard';
 import dmxRoutes from './routes/dmx';
 
-import './rules/rules';
+import { loadRules } from './rules/rules';
 
 // Setup logging middleware and body parsing
 app.use(bodyParser.json());
@@ -153,11 +153,12 @@ const EE_UPDATE_INTERVAL = parseInt(process.env.EMPTY_EPSILON_UPDATE_INTERVAL_MS
 logger.watch(`Starting to poll Empty Epsilon game state every ${EE_UPDATE_INTERVAL}ms`);
 setInterval(updateEmptyEpsilonState, EE_UPDATE_INTERVAL);
 
-// Load initial state from database before starting the HTTP listener
+// Load initial state from database before starting the HTTP listener and loading rules
 Store.forge({ id: 'data' }).fetch().then(model => {
 	const data = model ? model.get('data') : {};
 	initState(data);
 	logger.info('State initialized');
+	loadRules();
 	startServer();
 });
 
@@ -170,6 +171,11 @@ function startServer() {
 	const { APP_PORT } = process.env;
 	http.listen(APP_PORT, () => logger.start(`Odysseus backend listening to port ${APP_PORT}`));
 }
+
+// Health check route
+app.get('/ping', (req, res) => {
+	res.send('pong');
+});
 
 // For emitting Socket.IO events from rule files
 export function getSocketIoClient() {
