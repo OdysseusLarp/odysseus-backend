@@ -6,6 +6,7 @@ import { pick, get } from 'lodash';
 import { Ship, Grid, GridAction } from '../../models/ship';
 import { shipLogger } from '../../models/log';
 import { MapObject } from '../../models/map-object';
+import { getEmptyEpsilonClient } from '../../emptyepsilon';
 
 // Jump drive state spec:
 // https://docs.google.com/presentation/d/1nbXQE9N10Zm7uS45eW4R1VvYU4zZQ0PZbRovUq7bA5o/edit#slide=id.g4d32841109_0_0
@@ -30,6 +31,19 @@ function setSystemsEnabled(value = true) {
 		jump_ui_enabled: value,
 		social_ui_enabled: value,
 	});
+}
+
+/**
+ * Enable or disable Jump UI and EOC Datahub
+ * @param {boolean} value=true
+ */
+export function setEeSyncEnabled(value = true) {
+	const shipMetadata = store.getState().data.ship.metadata;
+	saveBlob({
+		...shipMetadata,
+		ee_sync_enabled: value
+	});
+	logger.info('Empty Epsilon state synchronization set to', value ? 'ENABLED' : 'DISABLED');
 }
 
 /**
@@ -190,6 +204,12 @@ function handleTransition(jump, currentStatus, previousStatus) {
 		case 'jump_initiated>jumping': {
 			// Disable Jump UI for the duration of the jump
 			setSystemsEnabled(false);
+
+			// Set Empty Epsilon alert state back to NORMAL, and disable EE
+			// state synchronization after 2 seconds (we should have latest state by then)
+			getEmptyEpsilonClient().setAlertLevel('normal');
+			setInterval(() => setEeSyncEnabled(false), 2000);
+
 			const jumpTarget = getReadableJumpTarget(jump.coordinates);
 			shipLogger.info(`Jumping to coordinates ${jumpTarget}.`);
 			dmx.fireEvent(dmx.CHANNELS.JumpStart);
@@ -197,8 +217,7 @@ function handleTransition(jump, currentStatus, previousStatus) {
 			// Update the ship geometry to target coordinates already so that
 			// they can be fixed by GMs during the jump if needed
 			performShipJump(jump.coordinates);
-			// TODO: Also jump all the visible fleet ships with status 'Present and accounted for'
-			// to the same point
+
 
 			// FIXME: Turn off necessary power sockets (unless done by tekniikkatiimi)
 			break;
