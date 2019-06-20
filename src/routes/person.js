@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { Person, Entry, Group, getFilterableValues } from '../models/person';
+import { Person, Entry, Group, getFilterableValues, setPersonsVisible } from '../models/person';
 import { addShipLogEntry, AuditLogEntry } from '../models/log';
 import { handleAsyncErrors } from '../helpers';
 import { get, pick, mapKeys, snakeCase } from 'lodash';
@@ -131,6 +131,18 @@ router.get('/search/:name', handleAsyncErrors(async (req, res) => {
 	const name = get(req.params, 'name', '').toLowerCase();
 	const persons = await new Person().search(name);
 	res.json(persons);
+}));
+
+/**
+ * Set is_visible=true for all persons except for those in PERMANENTLY_HIDDEN_PERSONS
+ * @route PUT /person/set-visible
+ * @consumes application/json
+ * @group Person - Operations for person related data
+ * @returns {object} 204 - OK Empty Response
+ */
+router.put('/set-visible', handleAsyncErrors(async (req, res) => {
+	await setPersonsVisible();
+	res.sendStatus(204);
 }));
 
 /**

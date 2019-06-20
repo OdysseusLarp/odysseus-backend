@@ -197,3 +197,9 @@ export const Ship = Bookshelf.Model.extend({
 		return this.save({ grid_id, metadata, the_geom });
 	}
 });
+
+export function setShipsVisible() {
+	return Bookshelf.knex.raw(`UPDATE ship SET is_visible = true`).then(() => {
+		getSocketIoClient().emit('refreshMap');
+	});
+}

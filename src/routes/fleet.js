@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { Ship } from '../models/ship';
+import { Ship, setShipsVisible } from '../models/ship';
 import { handleAsyncErrors } from '../helpers';
 import { validateJumpTarget } from '../eventhandler';
 import { get, set, clone } from 'lodash';
@@ -28,6 +28,18 @@ router.get('/', handleAsyncErrors(async (req, res) => {
  */
 router.get('/:id', handleAsyncErrors(async (req, res) => {
 	res.json(await Ship.forge({ id: req.params.id }).fetchWithRelated({ withGeometry: true }));
+}));
+
+/**
+ * Set is_visible=true for all ships
+ * @route PUT /fleet/set-visible
+ * @consumes application/json
+ * @group Fleet - Fleet and ship related operations
+ * @returns {object} 204 - OK Empty Response
+ */
+router.put('/set-visible', handleAsyncErrors(async (req, res) => {
+	await setShipsVisible();
+	res.sendStatus(204);
 }));
 
 /**
@@ -81,12 +93,5 @@ router.patch('/:id/metadata', handleAsyncErrors(async (req, res) => {
  */
 router.post('/:id/jump/validate', handleAsyncErrors(async (req, res) =>
 	res.json(await validateJumpTarget(req.params.id, req.body))));
-
-router.get('/:id/population', (req, res) => {
-	const { id } = req.params;
-	// TODO: Reply with current population of the ship with the given ID
-	// Might not be needed as this can be just included in the /ship/:id route response
-	res.json({ id });
-});
 
 export default router;

@@ -244,3 +244,9 @@ export async function getFilterableValues() {
 		]
 	};
 }
+
+export function setPersonsVisible() {
+	const blacklistedIds = (process.env.PERMANENTLY_HIDDEN_PERSONS || '').split(',').map(s => s.trim());
+	// TODO: Send ship log message?
+	return Bookshelf.knex('person').where('id', 'not in', blacklistedIds).update({ is_visible: true });
+}
