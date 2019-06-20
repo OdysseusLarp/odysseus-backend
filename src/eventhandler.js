@@ -157,13 +157,14 @@ async function addScanGridEvent(event) {
 /** Validate jump target coordinates
  * @param  {string} shipId Ship id
  * @param  {object} metadata Jump coordinates and settings
+ * @param  {boolean} shouldValidateRange Should distance to grid be validated or not
  */
-export async function validateJumpTarget(shipId, metadata) {
+export async function validateJumpTarget(shipId, metadata, shouldValidateRange = true) {
 	// Get target grid and ship from database to validate if jump can be made
 	const jumpTargetParameters = pick(metadata, ['sub_quadrant', 'sector', 'sub_sector']);
 	const targetPlanetName = get(metadata, 'planet_orbit');
 	const grid = await Grid.forge().where(jumpTargetParameters).fetch();
-	const shouldAddLogEntries = get(metadata, 'should_add_log_entries', true);
+	const shouldAddLogEntries = get(metadata, 'should_add_log_entries', false);
 	if (!grid) {
 		if (shouldAddLogEntries) addShipLogEntry('ERROR', `Jump initialization failed: Unknown jump target.`, shipId);
 		return { isValid: false, message: 'Given grid does not exist' };
@@ -178,7 +179,7 @@ export async function validateJumpTarget(shipId, metadata) {
 	if (ship.get('grid_id') === grid.get('id')) {
 		return { isValid: false, message: 'Given planet not found in target grid' };
 	}
-	if (!validateRange(ship, grid, 'jump_range')) {
+	if (shouldValidateRange && !validateRange(ship, grid, 'jump_range')) {
 		if (shouldAddLogEntries) addShipLogEntry('ERROR',
 			`Jump initialization failed: Target coordinates too far away.`, shipId);
 		return { isValid: false, message: 'Jump can not be made from current position' };
