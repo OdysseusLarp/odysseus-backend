@@ -37,7 +37,7 @@ export const LogEntry = Bookshelf.Model.extend({
 });
 
 const auditLogWithRelated = ['person', 'hacker']
-	.map(rel => ({ [rel]: qb => qb.column('id', 'first_name', 'last_name') }));
+	.map(rel => ({ [rel]: qb => qb.column('id', 'first_name', 'last_name', 'is_character') }));
 
 /**
  * @typedef AuditLogEntry
