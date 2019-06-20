@@ -95,32 +95,19 @@ function getReadableJumpTarget(coordinates) {
 
 function areJumpDriveTasksDone() {
 	const tasks = store.getState().data.task;
-	return (tasks.jump_drive_spectral_calibration.status === 'fixed') &&
-	  (tasks.jump_drive_crystal.status === 'fixed');
+	return (tasks.jump_drive_spectral_calibration.status === 'fixed');
 }
 
 function setupJumpDriveTasks() {
 	const boxes = store.getState().data.box;
-	// Spectral calibration + new color
+	// Spectral calibration
 	if (boxes.jump_drive_spectral_calibration) {
 		saveBlob({
 			...boxes.jump_drive_spectral_calibration,
 			status: 'broken',
-			context: {
-				color: (Math.random() < 0.5 ? 'red' : 'blue')  // FIXME: Proper values, do not allow choosing previous value
-			}
 		});
 	} else {
 		logger.error('No box with id \'jump_drive_spectral_calibration\'');
-	}
-	// Crystal installation
-	if (boxes.jump_drive_crystal) {
-		saveBlob({
-			...boxes.jump_drive_crystal,
-			status: 'broken',
-		});
-	} else {
-		logger.error('No box with id \'jump_drive_crystal\'');
 	}
 }
 
