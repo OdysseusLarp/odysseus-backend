@@ -163,7 +163,7 @@ function handleTransition(jump, currentStatus, previousStatus) {
 				minor_breaking_jump: (Math.random() < 0.33),  // randomize after jump, so first jump is always value from seed
 			});
 			const jumpTarget = getReadableJumpTarget(jump.coordinates);
-			shipLogger.success(`Odysseus completed the jump to grid ${jumpTarget}.`);
+			shipLogger.success(`Odysseus completed the jump to grid ${jumpTarget}`, { showPopup: true });
 			setSystemsEnabled(true);
 			break;
 		}
@@ -179,13 +179,13 @@ function handleTransition(jump, currentStatus, previousStatus) {
 		case 'ready_to_prep>calculating': {
 			dmx.fireEvent(dmx.CHANNELS.JumpPrepStart);
 			const jumpTarget = getReadableJumpTarget(jump.coordinates);
-			shipLogger.info(`Calculating jump coordinates to target ${jumpTarget}.`);
+			shipLogger.info(`Calculating jump vectors to target ${jumpTarget}.`, { showPopup: true });
 			break;
 		}
 
 		case 'calculating>ready_to_prep':
 			dmx.fireEvent(dmx.CHANNELS.JumpRejected);
-			shipLogger.error(`Failed to calculate jump coordinates`);
+			shipLogger.error(`Failed to calculate jump vectors`, { showPopup: true });
 			break;
 
 		case 'preparation>ready_to_prep':
@@ -198,7 +198,7 @@ function handleTransition(jump, currentStatus, previousStatus) {
 		case 'calculating>preparation':
 			dmx.fireEvent(dmx.CHANNELS.JumpApproved);
 			logger.info(`Initializing jump drive tasks`);
-			shipLogger.success(`Jump coordinates have been calculated`);
+			shipLogger.success(`Jump vectors have been calculated and jump drive preparation configuration sent to engineering`, { showPopup: true });
 			setupJumpDriveTasks();
 			break;
 
