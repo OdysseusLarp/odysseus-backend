@@ -211,7 +211,7 @@ function handleTransition(jump, currentStatus, previousStatus) {
 			// Set Empty Epsilon alert state back to NORMAL, and disable EE
 			// state synchronization after 2 seconds (we should have latest state by then)
 			getEmptyEpsilonClient().setAlertLevel('normal');
-			setInterval(() => setEeSyncEnabled(false), 2000);
+			setTimeout(() => setEeSyncEnabled(false), 2000);
 
 			const jumpTarget = getReadableJumpTarget(jump.coordinates);
 			shipLogger.info(`Jumping to coordinates ${jumpTarget}.`);
