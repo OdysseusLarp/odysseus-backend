@@ -44,7 +44,7 @@ function setSystemsEnabled(value = true) {
 }
 
 /**
- * Enable or disable Jump UI and EOC Datahub
+ * Enable or disable EE state synchronization
  * @param {boolean} value=true
  */
 export function setEeSyncEnabled(value = true) {
