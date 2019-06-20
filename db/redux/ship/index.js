@@ -10,6 +10,7 @@ saveBlob({
 	jump_at: 0,		// millisecond timestamp
 	last_jump: 0,	// millisecond timestamp
 	breaking_jump: true,
+	minor_breaking_jump: true,  // first jump is always minor-breaking
 	presets: {
 		cooldown: {
 			status: 'cooldown',

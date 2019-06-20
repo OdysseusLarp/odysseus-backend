@@ -266,7 +266,7 @@ function initEmulator() {
 		.reply(function (uri, requestBody, cb) {
 			const req = decodeURI(this.req.path);
 			const target = req.replace(/.*"(\w.*)".*/, '$1');
-			let value = Number(req.replace(/.*,([0-9.]*)\)/, '$1'));
+			let value = Number(req.replace(/.*,(-?[0-9.]*)\)/, '$1'));
 			if (req.includes('setSystemHealth') && systems.includes(target)) {
 				mockState[`${target}Health`] = value;
 				return cb(null, [200, mockState, []]);

@@ -1,4 +1,4 @@
-import { saveBlob, interval, schedule } from '../helpers';
+import { saveBlob, interval, schedule, random, chooseRandom, randomInt, clamp } from '../helpers';
 import store, { watch } from '../../store/store';
 import * as dmx from '../../dmx';
 import { logger } from '../../logger';
@@ -19,6 +19,16 @@ export const COOLDOWN_LIMIT = 2 * HOUR + 15 * MIN + 43 * SEC;
 export const SAFE_JUMP_LIMIT = 2 * HOUR + 47 * MIN;
 export const BREAKING_JUMP_TIME = 5 * MIN;
 const COUNTDOWN = 1 * MIN;
+
+const EE_TYPES = [
+	'reactor',
+	'impulse',
+	'maneuver',
+	'frontshield',
+	'rearshield',
+	'missilesystem',
+	'beamweapons',
+];
 
 /**
  * Enable or disable Jump UI and EOC Datahub
@@ -119,7 +129,14 @@ function handleTransition(jump, currentStatus, previousStatus) {
 	const lastJump = jump.last_jump || Date.now();
 	switch (`${previousStatus}>${currentStatus}`) {
 		case 'jumping>broken':
-			// FIXME: Add broken tasks
+			if (jump.breaking_jump) {
+				breakTasksMajor();
+			} else if (jump.minor_breaking_jump) {
+				breakTasksMinor();
+			} else {
+				breakTasksNormal();
+			}
+			// FIXME: Add tasks required for broken>cooldown transition
 			// fall through
 		case 'jumping>cooldown': {
 			if (jump.breaking_jump) {
@@ -127,13 +144,13 @@ function handleTransition(jump, currentStatus, previousStatus) {
 			} else {
 				dmx.fireEvent(dmx.CHANNELS.JumpEnd);
 			}
-			// FIXME: Turn on necessary power sockets (unless done by tekniikkatiimi)
 			logger.info(`Updating jump drive times`);
 			saveBlob({
 				...jump,
 				last_jump: lastJump,
 				jump_at: 0,
 				breaking_jump: true,
+				minor_breaking_jump: (Math.random() < 0.33),  // randomize after jump, so first jump is always value from seed
 			});
 			const jumpTarget = getReadableJumpTarget(jump.coordinates);
 			shipLogger.success(`Odysseus completed the jump to grid ${jumpTarget}.`);
@@ -217,9 +234,6 @@ function handleTransition(jump, currentStatus, previousStatus) {
 			// Update the ship geometry to target coordinates already so that
 			// they can be fixed by GMs during the jump if needed
 			performShipJump(jump.coordinates);
-
-
-			// FIXME: Turn off necessary power sockets (unless done by tekniikkatiimi)
 			break;
 		}
 
@@ -346,6 +360,61 @@ function handleStatic(jump) {
 	}
 }
 
+/*
+ * Jump breakage spec: https://docs.google.com/presentation/d/1nbXQE9N10Zm7uS45eW4R1VvYU4zZQ0PZbRovUq7bA5o/edit#slide=id.g5bd843658b_0_0
+ */
+function breakTasksMajor() {
+	breakFuses(5, 10);
+	for (const type of EE_TYPES) {
+		breakEE(type, 0.50, 0.80);
+	}
+
+}
+
+function breakTasksMinor() {
+	breakFuses(0, 2);
+	for (const type of EE_TYPES) {
+		if (Math.random() < 0.5) {
+			breakEE(type, 0.05, 0.20);
+		}
+	}
+}
+
+function breakTasksNormal() {
+	breakFuses(0, 2);
+}
+
+/**
+ * Break a random amount of health between (min - max) from EE type.
+ */
+function breakEE(type, min, max) {
+	const damage = random(min, max);
+	const current = store.getState().data.ship.ee.systems.health[`${type}Health`];
+	const health = clamp(current - damage, -1, 1);
+	logger.info(`Breaking EE '${type}' by ${damage} to ${health}`);
+	// async, fire and forget
+	getEmptyEpsilonClient().setGameState('setSystemHealth', type, health);
+}
+
+/**
+ * Break (min - max) fuses from all fuse boxes.
+ */
+function breakFuses(min, max) {
+	Object.values(store.getState().data.box).forEach(box => {
+		if (box.fuses) {
+			const count = randomInt(min, Math.min(max, box.config.blowing.length));
+			logger.info(`Blowing ${count} fuses from fuse box ${box.id}`);
+			if (count > 0) {
+				const all = box.config.blowing.map((e, index) => index);
+				const blow = chooseRandom(all, count);
+				saveBlob({
+					...box,
+					blow,
+				});
+			}
+		}
+	});
+}
 
 function update() {
 	try {
