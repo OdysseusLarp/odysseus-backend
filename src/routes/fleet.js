@@ -105,7 +105,7 @@ router.patch('/:id/metadata', handleAsyncErrors(async (req, res) => {
  * @consumes application/json
  * @group Fleet - Fleet and ship related operations
  * @param {string} id.path.required - Ship id
- * @param {object} jump_details.body - Ship object fields to be updated
+ * @param {JumpTargetInput.model} jump_details.body.required - Jump target details
  * @param {boolean} validate_distance.query - Should distance be validated or not, defaults to true
  * @returns {object} 200 - Info if jump can be made or not
  */
