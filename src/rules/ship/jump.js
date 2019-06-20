@@ -7,6 +7,7 @@ import { Ship, Grid, GridAction } from '../../models/ship';
 import { shipLogger } from '../../models/log';
 import { MapObject } from '../../models/map-object';
 import { getEmptyEpsilonClient } from '../../emptyepsilon';
+import * as reactor from '../reactorHelper';
 
 // Jump drive state spec:
 // https://docs.google.com/presentation/d/1nbXQE9N10Zm7uS45eW4R1VvYU4zZQ0PZbRovUq7bA5o/edit#slide=id.g4d32841109_0_0
@@ -98,8 +99,12 @@ function areJumpDriveTasksDone() {
 }
 
 function setupJumpDriveTasks() {
+	breakSpectralCalibration();
+	breakJumpReactor();
+}
+
+function breakSpectralCalibration() {
 	const boxes = store.getState().data.box;
-	// Spectral calibration
 	if (boxes.jump_drive_spectral_calibration) {
 		saveBlob({
 			...boxes.jump_drive_spectral_calibration,
@@ -108,6 +113,25 @@ function setupJumpDriveTasks() {
 	} else {
 		logger.error('No box with id \'jump_drive_spectral_calibration\'');
 	}
+}
+
+function breakJumpReactor() {
+	const boxes = store.getState().data.box;
+	if (boxes.jump_reactor) {
+		const n = randomInt(1, 1023);
+		saveBlob({
+			...boxes.jump_reactor,
+			status: 'broken',
+			expected: reactor.randomGauges(),
+			lights: reactor.getLights(n),
+			context: {
+				code: reactor.getCode(n),
+			},
+		});
+	} else {
+		logger.error('No box with id \'jump_reactor\'');
+	}
+
 }
 
 function handleTransition(jump, currentStatus, previousStatus) {
