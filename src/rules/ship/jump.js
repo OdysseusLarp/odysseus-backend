@@ -62,7 +62,6 @@ export function setEeSyncEnabled(value = true) {
  */
 async function performShipJump(coordinates) {
 	// Hard coded ship ID at this point, we are not going to jump other ships than Odysseus
-	// TODO: Figure out a process for moving rest of the fleet around
 	const shipId = 'odysseus';
 	const jumpTargetParameters = pick(coordinates, ['sub_quadrant', 'sector', 'sub_sector']);
 	const targetPlanetName = get(coordinates, 'planet_orbit');
@@ -74,7 +73,7 @@ async function performShipJump(coordinates) {
 	const [ship, grid, targetPlanet] = await Promise.all(promises);
 	let targetGeometry;
 	if (targetPlanet) targetGeometry = targetPlanet.get('the_geom');
-	else targetGeometry = await grid.getCenter();
+	else targetGeometry = await grid.getRandomJumpTarget();
 	const gridId = grid ? grid.get('id') : null;
 	if (!targetGeometry) logger.error('Could not calculate new geometry for ship when jumping to grid', gridId);
 	// Reset jump range back to 1

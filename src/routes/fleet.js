@@ -1,8 +1,9 @@
 import { Router } from 'express';
-import { Ship, setShipsVisible } from '../models/ship';
+import { Ship, setShipsVisible, moveShips } from '../models/ship';
 import { handleAsyncErrors } from '../helpers';
 import { validateJumpTarget } from '../eventhandler';
-import { get, set, clone } from 'lodash';
+import { get, set, clone, isPlainObject } from 'lodash';
+import { BadRequest } from 'http-errors';
 const router = new Router();
 
 /**
@@ -39,6 +40,22 @@ router.get('/:id', handleAsyncErrors(async (req, res) => {
  */
 router.put('/set-visible', handleAsyncErrors(async (req, res) => {
 	await setShipsVisible();
+	res.sendStatus(204);
+}));
+
+/**
+ * Move given ships to given grid/object inside the grid
+ * @route POST /fleet/move
+ * @consumes application/json
+ * @group Fleet - Fleet and ship related operations
+ * @param {MoveShipsInput.model} move_ships_input.body - List of ships to move and the target
+ * @returns {object} 204 - OK Empty Response
+ */
+router.post('/move', handleAsyncErrors(async (req, res) => {
+	const { shipIds, jumpTarget } = req.body;
+	if (!Array.isArray(shipIds)) throw new BadRequest('Array of shipIds missing');
+	if (!isPlainObject(jumpTarget)) throw new BadRequest('jumpTarget object missing');
+	await moveShips(shipIds, jumpTarget);
 	res.sendStatus(204);
 }));
 
@@ -88,10 +105,13 @@ router.patch('/:id/metadata', handleAsyncErrors(async (req, res) => {
  * @consumes application/json
  * @group Fleet - Fleet and ship related operations
  * @param {string} id.path.required - Ship id
- * @param {object} jump_details.body.required - Ship object fields to be updated
+ * @param {object} jump_details.body - Ship object fields to be updated
+ * @param {boolean} validate_distance.query - Should distance be validated or not, defaults to true
  * @returns {object} 200 - Info if jump can be made or not
  */
-router.post('/:id/jump/validate', handleAsyncErrors(async (req, res) =>
-	res.json(await validateJumpTarget(req.params.id, req.body))));
+router.post('/:id/jump/validate', handleAsyncErrors(async (req, res) => {
+	const shouldValidateRange = get(req.query, 'validate_distance') !== 'false';
+	res.json(await validateJumpTarget(req.params.id, req.body, shouldValidateRange));
+}));
 
 export default router;

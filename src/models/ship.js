@@ -1,6 +1,7 @@
 import Bookshelf, { knex } from '../../db';
 import { addShipLogEntry } from './log';
-import { get } from 'lodash';
+import { MapObject } from './map-object';
+import { get, pick } from 'lodash';
 import { getSocketIoClient } from '../index';
 import { logger } from '../logger';
 import { Person } from './person';
@@ -31,10 +32,10 @@ export const Grid = Bookshelf.Model.extend({
 	getCoordinates: function () {
 		return { x: this.get('x'), y: this.get('y') };
 	},
-	// Returns grid centroid as geometry, used when getting a new geometry for the ship during jump
-	getCenter: function () {
-		return knex.raw('SELECT ST_Centroid(grid.the_geom) AS center FROM grid WHERE id = ?', this.get('id'))
-			.then(res => get(res, 'rows[0].center'));
+	// Returns a random point around the grid centroid
+	getRandomJumpTarget: function () {
+		return knex.raw('SELECT ST_Translate(grid.the_geom, (SELECT FLOOR(RANDOM() * 300000 - 150000)), (SELECT FLOOR(RANDOM() * 300000 - 150000))) AS jump_target FROM grid WHERE grid.id = ?', this.get('id'))
+			.then(res => get(res, 'rows[0].jump_target'));
 	},
 	// Check if a starmap_object with given name_generated is located within this grid's geometry
 	containsObject(nameGenerated) {
@@ -194,12 +195,57 @@ export const Ship = Bookshelf.Model.extend({
 		);
 
 		// Jump odysseus separately to trigger updated hook
-		return this.save({ grid_id, metadata, the_geom });
+		return this.save({ grid_id, metadata, the_geom }, { patch: true });
+	},
+	moveTo: async function (grid_id, the_geom) {
+		return this.save({ grid_id, the_geom }, { patch: true });
 	}
+});
+
+export const Ships = Bookshelf.Collection.extend({
+	model: Ship
 });
 
 export function setShipsVisible() {
 	return Bookshelf.knex.raw(`UPDATE ship SET is_visible = true`).then(() => {
 		getSocketIoClient().emit('refreshMap');
 	});
+}
+
+/**
+ * @typedef MoveShipsInput
+ * @property {Array.<string>} shipIds.required - IDs of the ships that should be moved
+ * @property {JumpTargetInput.model} jumpTarget.required - Jump target data
+ */
+
+/**
+ * @typedef JumpTargetInput
+ * @property {string} sub_quadrant.required - Grid sub_quadrant, e.g. Alpha-6
+ * @property {string} sector.required - Grid sector, e.g. C3
+ * @property {string} sub_sector.required - Grid sub_sector, e.g. 70
+ * @property {string} planet_orbit - name_generated of the target planet, e.g. P-CO79-MR75
+ */
+
+/**
+ * Move multiple ships to given coordinates
+ * @param {Array.<string>} shipIds Array of Ship IDs that should be moved
+ * @param {object} coordinates Target coordinates from jump state
+ */
+export async function moveShips(shipIds, coordinates) {
+	const jumpTargetParameters = pick(coordinates, ['sub_quadrant', 'sector', 'sub_sector']);
+	const targetPlanetName = get(coordinates, 'planet_orbit');
+	const promises = [
+		Ships.forge().query(qb => qb.where('id', 'IN', shipIds)).fetch(),
+		Grid.forge().where(jumpTargetParameters).fetch()
+	];
+	if (targetPlanetName) promises.push(MapObject.forge().where({ name_generated: targetPlanetName }).fetch());
+	const [ships, grid, targetPlanet] = await Promise.all(promises);
+	let targetGeometry;
+	if (targetPlanet) targetGeometry = targetPlanet.get('the_geom');
+	else targetGeometry = await grid.getRandomJumpTarget();
+	const gridId = grid ? grid.get('id') : null;
+	if (!targetGeometry) logger.error('Could not calculate new geometry for ships when moving to grid', gridId);
+	await Promise.all([ships.map(ship => ship.moveTo(gridId, targetGeometry))]);
+	logger.success(`Moved ships ${shipIds.join(', ')} to grid ${gridId}`);
+	getSocketIoClient().emit('refreshMap');
 }
