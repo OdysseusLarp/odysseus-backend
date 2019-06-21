@@ -145,7 +145,7 @@ export const Ship = Bookshelf.Model.extend({
 			if (id !== 'odysseus') return;
 			const io = getSocketIoClient();
 			if (!io) {
-				logger.warning('Could not emit shipUpdated when Odysseus ship model was updated');
+				logger.warn('Could not emit shipUpdated when Odysseus ship model was updated');
 				return;
 			}
 			const newShip = await Ship.forge({ id }).fetchWithRelated({ withGeometry: true });
@@ -199,7 +199,30 @@ export const Ship = Bookshelf.Model.extend({
 	},
 	moveTo: async function (grid_id, the_geom) {
 		return this.save({ grid_id, the_geom }, { patch: true });
-	}
+	},
+	destroyShip: async function () {
+		const shipName = this.get('name');
+		if (this.get('id') === 'odysseus') throw new Error(`Don't destroy Odysseus`);
+		logger.info('Destroying ship', this.get('id'));
+		const personsOnBoard = await Bookshelf.knex('person').select('id').where('ship_id', '=', this.get('id'));
+		const personIds = (personsOnBoard || []).map(({ id }) => id);
+		knex.transaction(async trx => {
+			await knex('ship').transacting(trx).update({ status: 'Destroyed' }).where('id', '=', this.get('id'));
+			await knex('person').transacting(trx).update({ status: 'Killed in action' }).where('id', 'IN', personIds);
+			// Killed in action entries to personal log must be done individually for each person
+			return Promise.all(personIds.map(person_id =>
+				knex('person_entry')
+					.transacting(trx)
+					.insert({
+						person_id,
+						type: 'PERSONAL',
+						entry: `542 - Killed in action on board of ${shipName}`,
+						added_by: process.env.FLEET_SECRETARY_ID,
+					})
+			));
+		});
+		logger.success(`${shipName} was destroyed and all ${personIds.length} on board killed succesfully`);
+	},
 });
 
 export const Ships = Bookshelf.Collection.extend({

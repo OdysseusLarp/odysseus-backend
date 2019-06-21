@@ -3,7 +3,7 @@ import { Ship, setShipsVisible, moveShips } from '../models/ship';
 import { handleAsyncErrors } from '../helpers';
 import { validateJumpTarget } from '../eventhandler';
 import { get, set, clone, isPlainObject } from 'lodash';
-import { BadRequest } from 'http-errors';
+import { BadRequest, NotFound } from 'http-errors';
 const router = new Router();
 
 /**
@@ -112,6 +112,24 @@ router.patch('/:id/metadata', handleAsyncErrors(async (req, res) => {
 router.post('/:id/jump/validate', handleAsyncErrors(async (req, res) => {
 	const shouldValidateRange = get(req.query, 'validate_distance') !== 'false';
 	res.json(await validateJumpTarget(req.params.id, req.body, shouldValidateRange));
+}));
+
+/**
+ * Destroy a ship and kill everyone on board
+ * @route POST /fleet/{id}/destroy
+ * @consumes application/json
+ * @group Fleet - Fleet and ship related operations
+ * @param {string} id.path.required - Ship id
+ * @returns {object} 204 - OK Empty Response
+ */
+router.post('/:id/destroy', handleAsyncErrors(async (req, res) => {
+	const { id } = req.params;
+	if (id === 'odysseus') throw new BadRequest(`I'm sorry Dave, I'm afraid I can't do that`);
+	const ship = await Ship.forge({ id }).fetch();
+	if (!ship) throw new NotFound('Ship not found');
+	if (ship.get('status') === 'Destroyed') throw new BadRequest(`Ship ${id} is already destroyed`);
+	await ship.destroyShip();
+	res.sendStatus(204);
 }));
 
 export default router;
