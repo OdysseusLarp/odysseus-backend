@@ -3,7 +3,7 @@ import { Person, Entry, Group, getFilterableValues, setPersonsVisible } from '..
 import { addShipLogEntry, AuditLogEntry } from '../models/log';
 import { handleAsyncErrors } from '../helpers';
 import { get, pick, mapKeys, snakeCase } from 'lodash';
-import { NotFound } from 'http-errors';
+import { NotFound, BadRequest } from 'http-errors';
 import { logger } from '../logger';
 const router = new Router();
 
@@ -196,6 +196,23 @@ router.post('/:id/entry', handleAsyncErrors(async (req, res) => {
 	const { id } = req.params;
 	const entry = await Entry.forge().save({ person_id: id, ...req.body }, { method: 'insert' });
 	res.json(entry);
+}));
+
+/**
+ * Kill this person (set status to deceased and add a personal entry that says deceased)
+ * @route PUT /person/{id}/kill
+ * @consumes application/json
+ * @group Person - Operations for person related data
+ * @param {string} id.path.required - ID of the person
+ * @returns {Object} 204 - OK Empty Response
+ */
+router.put('/:id/kill', handleAsyncErrors(async (req, res) => {
+	const { id } = req.params;
+	const person = await Person.forge({ id }).fetch();
+	if (!person) throw new NotFound('Person not found');
+	if (person.get('status') === 'Deceased') throw new BadRequest('Person is already deceased');
+	await person.killPerson();
+	res.sendStatus(204);
 }));
 
 /**

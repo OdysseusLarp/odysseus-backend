@@ -1,4 +1,4 @@
-import Bookshelf from '../../db';
+import Bookshelf, { knex } from '../../db';
 import { Ship } from './ship';
 import { forOwn } from 'lodash';
 
@@ -166,6 +166,19 @@ export const Person = Bookshelf.Model.extend({
 			[this.get('id'), groupId]
 		);
 	},
+	killPerson: function () {
+		return knex.transaction(async trx => {
+			await knex('person').transacting(trx).update({ status: 'Deceased' }).where('id', '=', this.get('id'));
+			return knex('person_entry')
+				.transacting(trx)
+				.insert({
+					person_id: this.get('id'),
+					type: 'PERSONAL',
+					entry: `542 - Deceased`,
+					added_by: process.env.FLEET_SECRETARY_ID,
+				});
+		});
+	}
 });
 
 /**
