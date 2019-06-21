@@ -221,6 +221,7 @@ export const Ship = Bookshelf.Model.extend({
 					})
 			));
 		});
+		getSocketIoClient().emit('refreshMap');
 		logger.success(`${shipName} was destroyed and all ${personIds.length} on board killed succesfully`);
 	},
 });
