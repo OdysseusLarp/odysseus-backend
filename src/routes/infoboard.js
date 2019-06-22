@@ -2,6 +2,7 @@ import { Router } from 'express';
 import { Event } from '../models/event';
 import { InfoEntry } from '../models/infoentry';
 import { InfoPriority } from '../models/infoentry';
+import { LogEntry } from '../models/log';
 import { Post } from '../models/post';
 import { handleAsyncErrors } from '../helpers';
 import Bookshelf from '../../db';
@@ -51,18 +52,31 @@ router.get('/display', handleAsyncErrors(async (req, res) => {
 	const jumpEvent = await Event.forge().where({ ship_id: 'odysseus', is_active: true, type: 'JUMP' }).fetch();
 	const prepEvent = await Event.forge().where({ ship_id: 'odysseus', is_active: true, type: 'JUMP_PREP' }).fetch();
 	const now = new Date();
+	const minuteAgo = new Date();
+	minuteAgo.setMinutes(minuteAgo.getMinutes()-1);
 	const selector = parseInt((now.getMinutes() * 60 + now.getSeconds()), 10);
 	const priority = await InfoPriority.forge().fetch();
 	const entries = await InfoEntry.forge().where({ priority: priority.attributes.priority }).fetchAll();
 	const news = await Post.forge().where({ type: 'NEWS', status: 'APPROVED' }).fetchAll();
+	const log = await LogEntry.forge().orderBy('id', 'DESC').fetch();
 	const count = entries.length + (priority.attributes.priority < 5 ? news.length : 0);
 	const realSelector = selector % count;
 	let entry = null;
-	if ( realSelector > entries.length - 1 ) {
-		entry = news.models[realSelector - entries.length];
-		entry.attributes.body = entry.attributes.body.substring(0, 100);
+	if ( log && (log.attributes.message.startsWith('Jumping to coordinates') || log.attributes.message === 'Jump sequence initiated' || (log.attributes.metadata && log.attributes.metadata.showPopup && log.attributes.created_at > minuteAgo ))) {
+		entry = log;
+		entry.attributes.body = log.attributes.message;
+		if ( log.attributes.message === 'Jump sequence initiated' ) {
+	    entry.attributes.title = log.attributes.message;
+		} else {
+	    entry.attributes.title = 'Ship Log Entry';
+		}
 	} else {
-		entry = entries.models[realSelector];
+		if ( realSelector > entries.length - 1 ) {
+			entry = news.models[realSelector - entries.length];
+			entry.attributes.body = entry.attributes.body.substring(0, 100);
+		} else {
+			entry = entries.models[realSelector];
+		}
 	}
 	if ( prepEvent ) {
 		const time = timeTo(prepEvent.attributes.occurs_at, 'Ready to jump in ', 'Ready to jump.');
