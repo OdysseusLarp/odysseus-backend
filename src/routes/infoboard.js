@@ -32,7 +32,7 @@ router.get('/display', handleAsyncErrors(async (req, res) => {
 	const now = new Date();
 	const minuteAgo = new Date();
 	minuteAgo.setMinutes(minuteAgo.getMinutes()-1);
-	const selector = parseInt((now.getMinutes() * 60 + now.getSeconds()), 10);
+	const selector = parseInt((now.getMinutes() * 6 + now.getSeconds() / 10), 10);
 	const priority = await InfoPriority.forge().fetch();
 	const entries = await InfoEntry.forge().where({ priority: priority.attributes.priority }).fetchAll();
 	const news = await Post.forge().where({ type: 'NEWS', status: 'APPROVED' }).fetchAll();
@@ -43,13 +43,13 @@ router.get('/display', handleAsyncErrors(async (req, res) => {
 	if ( log && log.attributes.metadata && log.attributes.metadata.showPopup && log.attributes.created_at > minuteAgo ) {
 		entry = log;
 		entry.attributes.body = log.attributes.message;
-	    entry.attributes.title = 'Ship Log Entry';
+	        entry.attributes.title = 'Ship Log Entry';
 	} else {
 		if ( realSelector > entries.length - 1 ) {
-		    entry = news.models[realSelector - entries.length];
-		    if ( entry.attributes.body.length > 260 ) {
+		        entry = news.models[realSelector - entries.length];
+		        if ( entry.attributes.body.length > 260 ) {
 				entry.attributes.body = `${entry.attributes.body.substring(0, 260)}...`;
-		    }
+		        }
 		} else {
 			entry = entries.models[realSelector];
 		}
