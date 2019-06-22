@@ -79,7 +79,7 @@ export const Beacon = Bookshelf.Model.extend({
 	fetchWithRelated: function () {
 		return this.fetch({ withRelated: ['grid'] });
 	},
-	activate: function () {
+	activate: function (velianMessage) {
 		// Set this beacon as active and others as inactive
 		return knex.transaction(async trx =>
 			Promise.all([
@@ -93,8 +93,10 @@ export const Beacon = Bookshelf.Model.extend({
 					.where('id', this.get('id'))
 			]).then(() => trx.commit())
 				.then(() => addShipLogEntry(
-					'SUCCESS',
-					`Successfully decrypted an unknown signal originating from area ${this.related('grid').get('name')}`,
+					velianMessage ? 'WARNING' : 'SUCCESS',
+					velianMessage ?
+						`Received a distress signal from area Alpha-5-D2-100: ${velianMessage}`:
+						`Decryption key '${this.get('id')}' successfully decrypted an unknown signal originating from area ${this.related('grid').get('name')}`,
 					'odysseus',
 					{ showPopup: true }
 				))
