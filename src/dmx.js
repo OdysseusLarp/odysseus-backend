@@ -42,6 +42,8 @@ export const CHANNELS = {
 	// Fired manually from admin ui
 	BreachEventStarting: 140,
 	BreachEventBreach: 141,
+	CaptainDisplayOn: 160,
+	CaptainDisplayOff: 161,
 };
 
 const dmx = init();
