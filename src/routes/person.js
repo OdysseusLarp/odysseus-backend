@@ -59,6 +59,17 @@ router.get('/filters', handleAsyncErrors(async (req, res) => {
 }));
 
 /**
+ * Get a list of all groups
+ * @route GET /person/groups
+ * @consumes application/json
+ * @group Person - Operations for person related data
+ * @returns {Array.<Group>} 200 - List of all groups
+ */
+router.get('/groups', handleAsyncErrors(async (req, res) => {
+	res.json(await Group.forge().fetchAll());
+}));
+
+/**
  * Get a specific person by id. Also contains their family, medical and military data.
  * @route GET /person/{id}
  * @group Person - Operations for person related data
