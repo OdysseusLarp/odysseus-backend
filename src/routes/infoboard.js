@@ -1,5 +1,4 @@
 import { Router } from 'express';
-import { Event } from '../models/event';
 import { InfoEntry } from '../models/infoentry';
 import { InfoPriority } from '../models/infoentry';
 import { LogEntry } from '../models/log';
@@ -9,25 +8,6 @@ import Bookshelf from '../../db';
 import httpErrors from 'http-errors';
 
 const router = new Router();
-
-const timeTo = function (time, prefix, expired) {
-	let seconds = parseInt((time.getTime() - (new Date()).getTime()) / 1000, 10);
-	const hours = parseInt(seconds / 3600, 10);
-	const minutes = parseInt((seconds - hours * 3600) / 60, 10);
-	seconds %= 60;
-	let text = `${seconds} seconds`;
-	if ( minutes > 0 ) {
-		text = `${minutes} minutes, ${text}`;
-	}
-	if ( hours > 0 ) {
-		text = `${hours} hours, ${text}`;
-	}
-	text = prefix + text;
-	if ( seconds <  0 || minutes < 0 || hours < 0 ) {
-		text = expired;
-	}
-	return text;
-};
 
 /**
  * Update current priority
@@ -49,12 +29,10 @@ router.put('/priority', handleAsyncErrors(async (req, res) => {
  * @returns {<InfoEntry>} 200 - An infoboard entry
  */
 router.get('/display', handleAsyncErrors(async (req, res) => {
-	const jumpEvent = await Event.forge().where({ ship_id: 'odysseus', is_active: true, type: 'JUMP' }).fetch();
-	const prepEvent = await Event.forge().where({ ship_id: 'odysseus', is_active: true, type: 'JUMP_PREP' }).fetch();
 	const now = new Date();
 	const minuteAgo = new Date();
 	minuteAgo.setMinutes(minuteAgo.getMinutes()-1);
-	const selector = parseInt((now.getMinutes() * 60 + now.getSeconds()), 10);
+	const selector = parseInt((now.getMinutes() * 6 + now.getSeconds() / 10), 10);
 	const priority = await InfoPriority.forge().fetch();
 	const entries = await InfoEntry.forge().where({ priority: priority.attributes.priority }).fetchAll();
 	const news = await Post.forge().where({ type: 'NEWS', status: 'APPROVED' }).fetchAll();
@@ -62,31 +40,19 @@ router.get('/display', handleAsyncErrors(async (req, res) => {
 	const count = entries.length + (priority.attributes.priority < 5 ? news.length : 0);
 	const realSelector = selector % count;
 	let entry = null;
-	if ( log && (log.attributes.message.startsWith('Jumping to coordinates') || log.attributes.message === 'Jump sequence initiated' || (log.attributes.metadata && log.attributes.metadata.showPopup && log.attributes.created_at > minuteAgo ))) {
+	if ( log && log.attributes.metadata && log.attributes.metadata.showPopup && log.attributes.created_at > minuteAgo ) {
 		entry = log;
 		entry.attributes.body = log.attributes.message;
-		if ( log.attributes.message === 'Jump sequence initiated' ) {
-	    entry.attributes.title = log.attributes.message;
-		} else {
-	    entry.attributes.title = 'Ship Log Entry';
-		}
+	        entry.attributes.title = 'Ship Log Entry';
 	} else {
 		if ( realSelector > entries.length - 1 ) {
-		    entry = news.models[realSelector - entries.length];
-		    if( entry.attributes.body.length > 260 ) {
-			entry.attributes.body = entry.attributes.body.substring(0, 260) + "...";
-		    }
+		        entry = news.models[realSelector - entries.length];
+		        if ( entry.attributes.body.length > 260 ) {
+				entry.attributes.body = `${entry.attributes.body.substring(0, 260)}...`;
+		        }
 		} else {
 			entry = entries.models[realSelector];
 		}
-	}
-	if ( prepEvent ) {
-		const time = timeTo(prepEvent.attributes.occurs_at, 'Ready to jump in ', 'Ready to jump.');
-		entry.attributes.jump_text = time;
-	}
-	if ( jumpEvent ) {
-		const time = timeTo(jumpEvent.attributes.occurs_at, 'Jump in ', 'Jumping now!');
-		entry.attributes.jump_text = time;
 	}
 	res.json(entry);
 }));

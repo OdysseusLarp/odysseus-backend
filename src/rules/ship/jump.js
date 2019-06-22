@@ -93,9 +93,14 @@ function getReadableJumpTarget(coordinates) {
 	return targetPlanetName ? `${gridName} (orbit ${targetPlanetName})` : gridName;
 }
 
-function areJumpDriveTasksDone() {
+function isJumpSpectralCalibrationDone() {
 	const tasks = store.getState().data.task;
 	return (tasks.jump_drive_spectral_calibration.status === 'fixed');
+}
+
+function isJumpReactorDone() {
+	const tasks = store.getState().data.task;
+	return (tasks.jump_reactor.status === 'fixed');
 }
 
 function setupJumpDriveTasks() {
@@ -146,7 +151,7 @@ function handleTransition(jump, currentStatus, previousStatus) {
 			} else {
 				breakTasksNormal();
 			}
-			// FIXME: Add tasks required for broken>cooldown transition
+			breakJumpReactor();  // task for broken>cooldown transition
 			// fall through
 		case 'jumping>cooldown': {
 			if (jump.breaking_jump) {
@@ -270,7 +275,17 @@ function handleTransition(jump, currentStatus, previousStatus) {
 function handleStatic(jump) {
 	switch (jump.status) {
 		case 'broken':
-			// FIXME: Check if all necessary tasks are fixed
+			// Avoid race condition when transitioning
+			if (Date.now() > jump.updated_at + 500) {
+				if (isJumpReactorDone()) {
+					saveBlob({
+						...jump,
+						status: 'cooldown'
+					});
+				}
+			} else {
+				logger.info('Skipping \'broken\' check due to updated_at being too recent');
+			}
 			break;
 
 		case 'cooldown':
@@ -296,7 +311,7 @@ function handleStatic(jump) {
 		case 'preparation':
 			// Avoid race condition when transitioning to 'preparation' and tasks are not yet set up
 			if (Date.now() > jump.updated_at + 500) {
-				if (areJumpDriveTasksDone()) {
+				if (isJumpSpectralCalibrationDone() && isJumpReactorDone()) {
 					saveBlob({
 						...jump,
 						status: 'prep_complete'
