@@ -97,13 +97,13 @@ async function insertRest(knex) {
 
 	// Beacons
 	const beacons = [
-		{ id: '964UUQETEI', grid_id: 5236, is_active: false, is_decrypted: false },
-		{ id: 'CCVC85Z527', grid_id: 5218, is_active: false, is_decrypted: false },
-		{ id: 'WSB9U1BQ94', grid_id: 5185, is_active: false, is_decrypted: false },
-		{ id: '5F5BLT4QY2', grid_id: 4943, is_active: false, is_decrypted: false },
-		{ id: '7MNWRRXWHW', grid_id: 4911, is_active: false, is_decrypted: false },
-		{ id: 'SYOYI0KO29', grid_id: 5137, is_active: false, is_decrypted: false },
-		{ id: 'TXNN8WM6FR', grid_id: 4863, is_active: false, is_decrypted: false },
+		{ id: 'VELIAN', grid_id: 5236, is_active: false, is_decrypted: false },
+		{ id: 'WAYHOME', grid_id: 5218, is_active: false, is_decrypted: false },
+		{ id: 'JOURNEY', grid_id: 5185, is_active: false, is_decrypted: false },
+		{ id: 'SALVATION', grid_id: 4943, is_active: false, is_decrypted: false },
+		{ id: 'CONFESSION', grid_id: 4911, is_active: false, is_decrypted: false },
+		{ id: 'EARTH', grid_id: 5137, is_active: false, is_decrypted: false },
+		{ id: 'HOPE', grid_id: 4863, is_active: false, is_decrypted: false },
 	];
 	await knex('starmap_beacon').insert(beacons);
 }
