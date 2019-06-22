@@ -72,8 +72,10 @@ router.get('/display', handleAsyncErrors(async (req, res) => {
 		}
 	} else {
 		if ( realSelector > entries.length - 1 ) {
-			entry = news.models[realSelector - entries.length];
-			entry.attributes.body = entry.attributes.body.substring(0, 100);
+		    entry = news.models[realSelector - entries.length];
+		    if( entry.attributes.body.length > 260 ) {
+			entry.attributes.body = entry.attributes.body.substring(0, 260) + "...";
+		    }
 		} else {
 			entry = entries.models[realSelector];
 		}
