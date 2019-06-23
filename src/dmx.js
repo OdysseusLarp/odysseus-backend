@@ -39,9 +39,12 @@ export const CHANNELS = {
 	LoungeFuseBroken: 128,
 	LoungeFuseFixed: 129,
 
+	DriftingValueOutOfRange: 145,
+	DriftingValueInRange: 146,
+
 	// Fired manually from admin ui
-	BreachEventStarting: 140,
-	BreachEventBreach: 141,
+	BreachEventStarting: 150,
+	BreachEventBreach: 151,
 	CaptainDisplayOn: 160,
 	CaptainDisplayOff: 161,
 };
