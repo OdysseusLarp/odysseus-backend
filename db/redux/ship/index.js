@@ -1,7 +1,5 @@
 import { saveBlob } from '../helpers';
 
-// FIXME: Setup jump drive using pre-determined last_jump time.
-
 // Jump drive state
 saveBlob({
 	type: 'ship',
@@ -20,7 +18,6 @@ saveBlob({
 		},
 		calculating: {
 			status: 'calculating',
-			coordinates: '...', // FIXME: Update to correct parameters later
 			note: 'Set proper coordinate values',
 		},
 		preparation: {
