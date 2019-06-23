@@ -170,6 +170,22 @@ function handleTransition(jump, currentStatus, previousStatus) {
 			const jumpTarget = getReadableJumpTarget(jump.coordinates);
 			shipLogger.success(`Odysseus completed the jump to grid ${jumpTarget}`, { showPopup: true });
 			setSystemsEnabled(true);
+
+			// Remove a jump crystal and send a warning if they drop below 5
+			Ship.forge({ id: 'odysseus' }).fetch().then(model => {
+				const metadata = model.get('metadata');
+				const jumpCrystalCount = get(metadata, 'jump_crystal_count', 1);
+				const jump_crystal_count = jumpCrystalCount - 1;
+				if (jump_crystal_count === 0) {
+					shipLogger.warning(`Out of jump crystals`);
+				} else if (jump_crystal_count < 6) {
+					shipLogger.warning(`Jump crystal count is low (${jump_crystal_count} pcs)`);
+				}
+				model.save(
+					{ metadata: { ...metadata, jump_crystal_count } },
+					{ method: 'update', patch: true }
+				);
+			});
 			break;
 		}
 		case 'broken>cooldown':

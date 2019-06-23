@@ -56,6 +56,7 @@ const odysseusMetadata = {
 	jump_range: 1,
 	scan_range: 1,
 	probe_count: 27,
+	jump_crystal_count: 22,
 	object_scan_duration: {
 		min_seconds: 30,
 		max_seconds: 60
@@ -64,7 +65,6 @@ const odysseusMetadata = {
 		min_seconds: 30,
 		max_seconds: 60
 	},
-	// jump_crystal_count: 100,
 };
 
 async function cleanup(knex) {
