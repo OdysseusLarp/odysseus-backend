@@ -40,8 +40,8 @@ export const CHANNELS = {
 	LoungeFuseFixed: 129,
 
 	// Fired manually from admin ui
-	BreachEventStarting: 140,
-	BreachEventBreach: 141,
+	BreachEventStarting: 150,
+	BreachEventBreach: 151,
 	CaptainDisplayOn: 160,
 	CaptainDisplayOff: 161,
 };
