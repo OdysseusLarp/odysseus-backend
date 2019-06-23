@@ -172,13 +172,10 @@ export async function validateJumpTarget(shipId, metadata, shouldValidateRange =
 	if (targetPlanetName && !(await grid.containsObject(targetPlanetName))) {
 		if (shouldAddLogEntries) addShipLogEntry('ERROR',
 			`Jump initialization failed: Given orbit not found in target sub-sector.`, shipId);
-		return { isValid: false, message: 'Given planet not found in target grid' };
+		return { isValid: false, message: 'Given orbit not found in target grid' };
 	}
 	const ship = await Ship.forge({ id: shipId }).fetchWithRelated();
 	if (!ship) throw new Error('Invalid ship id');
-	if (ship.get('grid_id') === grid.get('id')) {
-		return { isValid: false, message: 'Given planet not found in target grid' };
-	}
 	if (shouldValidateRange && !validateRange(ship, grid, 'jump_range')) {
 		if (shouldAddLogEntries) addShipLogEntry('ERROR',
 			`Jump initialization failed: Target coordinates too far away.`, shipId);

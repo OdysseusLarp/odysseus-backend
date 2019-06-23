@@ -43,7 +43,7 @@ export const Grid = Bookshelf.Model.extend({
 			`SELECT ST_WITHIN(
 				(SELECT the_geom FROM starmap_object WHERE name_generated = ? AND celestial_body != 'star'), the_geom) AS has_object
 				FROM grid WHERE id = ?`,
-			[nameGenerated, this.get('id')])
+			[nameGenerated.toUpperCase(), this.get('id')])
 			.then(res => get(res, 'rows[0].has_object'));
 	}
 });
