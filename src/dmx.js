@@ -47,6 +47,7 @@ export const CHANNELS = {
 	BreachEventBreach: 151,
 	CaptainDisplayOn: 160,
 	CaptainDisplayOff: 161,
+	GasLeakEvent: 162,
 };
 
 const dmx = init();
