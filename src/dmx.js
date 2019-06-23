@@ -39,6 +39,11 @@ export const CHANNELS = {
 	LoungeFuseBroken: 128,
 	LoungeFuseFixed: 129,
 
+	ReactorNormal: 140,
+	ReactorCritical: 141,
+	ReactorOff: 142,
+	GeneralStatusNormal: 143,
+	GeneralStatusBroken: 144,
 	DriftingValueOutOfRange: 145,
 	DriftingValueInRange: 146,
 
