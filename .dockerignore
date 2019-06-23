@@ -2,7 +2,6 @@
 .vscode
 .test
 .editorconfig
-.env
 .env.dist
 .eslintrc
 .gitignore
