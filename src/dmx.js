@@ -55,6 +55,8 @@ export const CHANNELS = {
 	GasLeakEvent: 162,
 	StartStandingScanner: 163,
 	StartTableScanner: 164,
+	SmallBreachEventStarting: 165,
+	SmallBreachEventBreach: 166,
 };
 
 const dmx = init();
