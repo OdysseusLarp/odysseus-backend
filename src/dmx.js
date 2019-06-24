@@ -53,6 +53,8 @@ export const CHANNELS = {
 	CaptainDisplayOn: 160,
 	CaptainDisplayOff: 161,
 	GasLeakEvent: 162,
+	StartStandingScanner: 163,
+	StartTableScanner: 164,
 };
 
 const dmx = init();
