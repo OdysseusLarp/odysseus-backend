@@ -15,9 +15,10 @@ blobs.push({
 	description: '...',  // FIXME: Add description
 	calibrationTime: 60,
 	calibrationCount: 1,
-	map: 'map01.png',
-	mapX: 100,
-	mapY: 200,
+	location: 'Upper deck, engineering',
+	map: 'upper-5.png',
+	mapX: 400,
+	mapY: 180,
 });
 
 blobs.push({
@@ -41,9 +42,10 @@ blobs.push({
 	description_template: 'Configure to state {{code}}',  // FIXME: Add description + reference to paper manual page
 	calibrationTime: 60,
 	calibrationCount: 1,
-	map: 'map01.png',
-	mapX: 100,
-	mapY: 200,
+	location: 'Upper deck, engineering',
+	map: 'upper-5.png',
+	mapX: 230,
+	mapY: 130,
 });
 
 export default blobs;

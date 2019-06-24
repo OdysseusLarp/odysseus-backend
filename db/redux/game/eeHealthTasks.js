@@ -27,9 +27,10 @@ for (let i=0; i < 20; i++) {
 		calibrationCount: 0,
 		title: `Reactor power segment ${code}`,
 		description: `Reactor power segment ${code} has failed.`, // FIXME: babbletize
-		map: 'map.png', // FIXME: map
-		mapX: 100,
-		mapY: 200,
+		location: 'Upper deck, security room',
+		map: 'upper-7.png',
+		mapX: 240,
+		mapY: 310 + i*2,
 	});
 }
 

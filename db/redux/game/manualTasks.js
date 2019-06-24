@@ -45,8 +45,8 @@ blobs.push({
 	calibrationTime: 0,       // Calibration time for each slot
 	title: `Manual work`,     // Title shown in task list
 	description: `Manual labor is needed. Use HANSCA for details.`,  // Description in task list (no HTML, may contain line breaks)
-	map: 'map.png',           // Map to display
-	mapX: 100,                // Location on map to highlight
+	map: 'lower-7.png',       // Map to display (from odysseus-misc-ui repo)
+	mapX: 100,                // Location on map to highlight (see -overlay.png to locate)
 	mapY: 200,
 });
 
