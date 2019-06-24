@@ -57,6 +57,7 @@ export const CHANNELS = {
 	StartTableScanner: 164,
 	SmallBreachEventStarting: 165,
 	SmallBreachEventBreach: 166,
+	BreachEventEnd: 167,
 };
 
 const dmx = init();
