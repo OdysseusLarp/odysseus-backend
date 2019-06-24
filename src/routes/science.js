@@ -17,7 +17,18 @@ router.get('/artifact', handleAsyncErrors(async (req, res) => {
 }));
 
 /**
- * Get a list of all science artifacts
+ * Get a specific artifact by catalog id
+ * @route GET /science/artifact/catalog/{catalog_id}
+ * @group Artifact - Science artifact related operations
+ * @param {string} catalog_id.path.required - Catalog ID
+ * @returns {Artifact.model} 200 - Specific artifact
+ */
+router.get('/artifact/catalog/:id', handleAsyncErrors(async (req, res) => {
+	res.json(await Artifact.forge().where({ catalog_id: req.params.id }).fetchWithRelated());
+}));
+
+/**
+ * Get a specific artifact by artifact id
  * @route GET /science/artifact/{id}
  * @group Artifact - Science artifact related operations
  * @param {integer} id.path.required -Artifact ID
