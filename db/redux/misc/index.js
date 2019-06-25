@@ -17,7 +17,26 @@ const blobs = [
 Delectus culpa magnam blanditiis. Ipsa aut ipsum nostrum nihil debitis illo aut.
 Placeat nobis amet ipsa. Suscipit vero tenetur non et. Ratione magni quam
 sunt eaque dolor id nisi magni.`
-	}
+	},
+	// Used for artifacts that trigger some actions
+	{
+		type: 'misc',
+		id: 'artifact_actions',
+		actions: {
+			CRYSTAL_GENERATOR: {
+				is_usable: true,
+				is_used: false,
+				used_at: null,
+				log_message: 'Jump crystal generator artifact has been activated. Jump crystals are now regenerated during jumps.'
+			},
+			HEALTH_BOOST: {
+				is_usable: true,
+				is_used: false,
+				used_at: null,
+				log_message: 'An artifact increased ship hull health to 100%'
+			}
+		}
+	},
 ];
 
 blobs.forEach(saveBlob);

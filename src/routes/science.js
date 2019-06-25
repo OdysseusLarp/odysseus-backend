@@ -1,6 +1,10 @@
 import { Router } from 'express';
 import { Artifact, ArtifactEntry } from '../models/artifact';
 import { handleAsyncErrors } from '../helpers';
+import { getData, setData } from '../routes/data';
+import { getEmptyEpsilonClient } from '../emptyepsilon';
+import { get, set, cloneDeep, pick } from 'lodash';
+import { shipLogger } from '../models/log';
 const router = new Router();
 
 /**
@@ -78,6 +82,72 @@ router.put('/artifact/entry', handleAsyncErrors(async (req, res) => {
 		await artifactEntry.save(req.body, { method: 'update', patch: true });
 	}
 	res.json(artifactEntry);
+}));
+
+/**
+ * Trigger an artifact action using a secret code
+ * @route PUT /science/artifact/use/{code}
+ * @consumes application/json
+ * @group Artifact - Science artifact related operations
+ * @param {string} code.path.required - Super secret code that either triggers something or it doesn't
+ * @returns {object} 200 - Object containing a message if the code did anything
+ */
+router.put('/artifact/use/:code', handleAsyncErrors(async (req, res) => {
+	const data = cloneDeep(getData('misc', 'artifact_actions'));
+	switch (req.params.code) {
+		// No longer burn through jump crystals
+		case 'CRYSTAL_GENERATOR': {
+			const artifact = pick(get(data, 'actions.CRYSTAL_GENERATOR'), ['is_usable', 'is_used', 'log_message']);
+
+			// Artifact can only be used once per game
+			if (artifact.is_used) return res.json({ message: 'Artifact has already been used' });
+			if (!artifact.is_usable) return res.json({ message: 'Artifact cannot be used at this time' });
+
+			set(data, 'actions.CRYSTAL_GENERATOR', {
+				...data.actions.CRYSTAL_GENERATOR,
+				is_usable: false,
+				is_used: true,
+				used_at: Date.now()
+			});
+			setData('misc', 'artifact_actions', data);
+			if (artifact.log_message) shipLogger.success(artifact.log_message, { showPopup: true });
+			return res.json({ message: 'Artifact used. Jump crystals will now regenerate while jumping.' });
+		}
+
+		// Set ship hull health to 100%
+		case 'HEALTH_BOOST': {
+			const artifact = pick(get(data, 'actions.HEALTH_BOOST'), ['is_usable', 'is_used', 'log_message']);
+
+			// Artifact can only used once per game
+			if (artifact.is_used) return res.json({ message: 'Artifact has already been used' });
+			if (!artifact.is_usable) return res.json({ message: 'Artifact cannot be used at this time' });
+
+			// Check that we have connection to EE and state sync enabled
+			const { isConnectionHealthy } = getEmptyEpsilonClient().getConnectionStatus();
+			const { ee_sync_enabled } = getData('ship', 'metadata');
+			if (!isConnectionHealthy || !ee_sync_enabled) return res.json(
+				{ message: 'Artifact is ready to use, but connection to ship systems could not be established' }
+			);
+
+			// Set EE hull health to 100%
+			getEmptyEpsilonClient().setHullHealthPercent(1).then(() => {
+				set(data, 'actions.HEALTH_BOOST', {
+					...data.actions.HEALTH_BOOST,
+					is_usable: false,
+					is_used: true,
+					used_at: Date.now()
+				});
+				setData('misc', 'artifact_actions', data);
+				if (artifact.log_message) shipLogger.success(artifact.log_message, { showPopup: true });
+				return res.json({ message: 'Artifact used. Ship hull health was increased to 100%.' });
+			}).catch(err =>
+				res.json({ message: 'Error using the artifact, could not establish connection to ship systems. ' }));
+			break;
+		}
+		default: {
+			res.json({ message: 'Unknown code' });
+		}
+	}
 }));
 
 export default router;
