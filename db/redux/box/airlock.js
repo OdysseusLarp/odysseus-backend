@@ -13,15 +13,15 @@ blobs.push({
 	config: {
 		// transition time delays (milliseconds)
 		pressurize: {
-			start_delay: 2000,
-			duration: 25000,
-			end_delay: 3000,
-			malfunction_delay: 2000,
+			start_delay: 0,
+			duration: 30000,
+			end_delay: 5000,
+			malfunction_delay: 3000
 		},
 		depressurize: {
 			start_delay: 10000,
-			duration: 20000,
-			end_delay: 0,
+			duration: 23000,
+			end_delay: 2000
 		},
 		dmx: {
 			airlock_open: 'HangarBayAirlockOpen',
@@ -33,11 +33,18 @@ blobs.push({
 			pressurize_end: 'Unlocking door',
 			open: 'Door unlocked',
 			malfunction: 'Door malfunction',
-			depressurize_start: 'Locking door',
+			depressurize_start: 'Close the door',
 			depressurize_airflow: 'Depressurizing',
-			depressurize_end: 'Depressurization complete',
+			depressurize_end: 'Depressurizing',
 			vacuum: 'Vacuum',
 			error: 'Error',
+			default: 'Nominal',  // unused?
+		},
+		door_states: {
+			open: 'Unlocked',
+			depressurize_start: 'Locking',
+			default: 'Locked',
+			pressurize_end: 'Unlocking',
 		},
 		audio: {
 			// TODO
@@ -58,13 +65,13 @@ blobs.push({
 	config: {
 		// transition time delays (milliseconds)
 		pressurize: {
-			start_delay: 2000,
-			duration: 25000,
+			start_delay: 0,
+			duration: 50000,
 			end_delay: 10000,  // FIXME: how long does the door take to open?
-			malfunction_delay: 2000,
+			malfunction_delay: 0,  // unused
 		},
 		depressurize: {
-			start_delay: 10000,
+			start_delay: 10000,  // FIXME: how long does the door take to close?
 			duration: 600000,  // 10 minutes(!)
 			end_delay: 2000,
 		},
@@ -80,9 +87,16 @@ blobs.push({
 			malfunction: 'Door malfunction',
 			depressurize_start: 'Closing door',
 			depressurize_airflow: 'Depressurizing',
-			depressurize_end: 'Depressurization complete',
+			depressurize_end: 'Depressurizing',
 			vacuum: 'Vacuum',
 			error: 'Error',
+			default: 'Nominal',  // unused?
+		},
+		door_states: {
+			open: 'Open',
+			depressurize_start: 'Closing',
+			default: 'Closed',
+			pressurize_end: 'Opening',
 		},
 		audio: {
 			// TODO

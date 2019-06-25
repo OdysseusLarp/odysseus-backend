@@ -42,17 +42,23 @@ function Airlock(airlockName) {
 Airlock.prototype = {
 	startWatching() {
 		logger.debug(`Airlock ${this.name} watching for status changes`);
-		watch(['data', 'box', this.name], (newData, previous, globalState) => {
-			const statusChanged = (newData.status !== previous.status);
+		watch(['data', 'box', this.name], (newData) => {
+			const statusChanged = (newData.status !== this.data.status);
 			this.data = copy(newData);
-			if (statusChanged) this.statusChanged(newData.status, previous.status);
+			if (statusChanged) this.statusChanged(newData.status, this.data.status);
 		});
 		this.statusChanged(this.data.status, 'initial');
 	},
-
+	setStatus(status) {
+		const oldStatus = this.data.status;
+		this.data.status = status;
+		if (status !== oldStatus) this.statusChanged(status, oldStatus);
+		// caller is expected to .pushData() after changing the status
+	},
 	statusChanged(status, previous) {
 		logger.debug(`Airlock ${this.name} changed status from ${previous} to ${status}`);
 		this.stopAnimation();
+		this.data.transition_status = null;
 
 		if (status === 'open') {
 			this.dmx('airlock_open');
@@ -71,9 +77,8 @@ Airlock.prototype = {
 			this.data.pressure = 0.0;
 		} else if (status !== 'malfunction' && status !== 'error') {
 			logger.warn(`Airlock ${this.name} has unknown status ${status}!`);
-			this.data.status = 'error';
+			this.setStatus('error');
 		}
-		this.data.transition_status = null;
 		this.pushData();
 	},
 	dmx(eventName) {
@@ -143,10 +148,10 @@ Airlock.prototype = {
 
 		if (this.data.malfunction) {
 			await this.pushAndWaitUntil(pumpStop + (config.pressurize.malfunction_delay || 0));
-			this.data.status = 'malfunction';
+			this.setStatus('malfunction');
 		} else {
 			await this.pushAndWaitUntil(endTime);
-			this.data.status = 'open';
+			this.setStatus('open');
 		}
 		this.data.transition_status = null;
 		this.data.countdown_to = 0;
@@ -167,10 +172,11 @@ Airlock.prototype = {
 
 		this.data.countdown_to = endTime;
 
-		if (pressure > 0.0) {
+		if (pressure >= 1.0) {
 			this.data.transition_status = 'depressurize_start';
 			await this.pushAndWaitUntil(pumpStart);
-
+		}
+		if (pressure > 0.0) {
 			this.data.transition_status = 'depressurize_airflow';
 			await this.rampPressure(pressure, 0.0, pumpStop);
 		}
@@ -181,7 +187,7 @@ Airlock.prototype = {
 
 		this.data.countdown_to = 0;
 		this.data.transition_status = null;
-		this.data.status = 'vacuum';
+		this.setStatus('vacuum');
 		this.pushData();
 		logger.debug(`Airlock ${this.name} depressurization complete`);
 	},
