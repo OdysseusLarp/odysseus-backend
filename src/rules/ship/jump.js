@@ -7,6 +7,7 @@ import { Ship, Grid, GridAction } from '../../models/ship';
 import { shipLogger } from '../../models/log';
 import { MapObject } from '../../models/map-object';
 import { getEmptyEpsilonClient } from '../../emptyepsilon';
+import { getData } from '../../routes/data';
 import * as reactor from '../reactorHelper';
 
 // Jump drive state spec:
@@ -171,7 +172,9 @@ function handleTransition(jump, currentStatus, previousStatus) {
 			shipLogger.success(`Odysseus completed the jump to grid ${jumpTarget}`, { showPopup: true });
 			setSystemsEnabled(true);
 
-			// Remove a jump crystal and send a warning if they drop below 5
+			// Remove a jump crystal and send a warning if they drop below 5, unless CRYSTAL_GENERATOR artifact has been used
+			const hasCrystalGenerator = get(getData('misc', 'artifact_actions'), 'actions.CRYSTAL_GENERATOR.is_used');
+			if (hasCrystalGenerator) break;
 			Ship.forge({ id: 'odysseus' }).fetch().then(model => {
 				const metadata = model.get('metadata');
 				const jumpCrystalCount = get(metadata, 'jump_crystal_count', 1);
