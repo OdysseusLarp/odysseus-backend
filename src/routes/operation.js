@@ -9,12 +9,15 @@ const router = new Router();
  * Get a list of all operation results
  * @route GET /operation
  * @group Operation - HANSCA Operation related operations
- * @param {boolean} relations.query - True if all relations and not just IDs should be included in response
+ * @param {boolean} relations.query - True if all relations and not just IDs should be included, defaults to false
+ * @param {boolean} include_complete.query - True if completed results should be included, defaults to false
  * @returns {Array.<OperationResult>} 200 - List of all OperationResult models
  */
 router.get('/', handleAsyncErrors(async (req, res) => {
 	const shouldContainRelations = get(req, 'query.relations') === 'true';
-	res.json(await OperationResult.forge()[shouldContainRelations ? 'fetchWithRelated' : 'fetch']());
+	const include_complete = get(req, 'query.include_complete') === 'true';
+	const where = include_complete ? {} : { is_complete: false };
+	res.json(await OperationResult.forge().where(where)[shouldContainRelations ? 'fetchAllWithRelated' : 'fetchAll']());
 }));
 
 /**
