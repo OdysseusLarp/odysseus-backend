@@ -74,6 +74,9 @@ export function setTaskFixed(task, ctx) {
 	if (task.description_template && ctx) {
 		task.description =  Handlebars.compile(task.description_template)(ctx);
 	}
+	if (task.singleUse) {
+		task.used = true;
+	}
 	timeout(() => {
 		store.dispatch({
 			type: 'SET_DATA',

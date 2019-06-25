@@ -38,7 +38,10 @@ blobs.push({
 	type: 'task',
 	id: 'manual_example',     // ID of task (typically same as of 'game')
 	game: 'manual_example',   // Reference to 'game' ID
-	eeType: 'reactor',        // What EE health this is related to (omit or put e.g. 'reactor-notyet' for non-EE-bound)
+	singleUse: true,          // Make this task single-use
+	used: false,              // Set to true to keep out of breaking pool until ready (Updated by backend once used - optional)
+	eeType: 'none',           // What EE health this is related to (omit for non-EE-bound)
+	                          // Values: 'reactor', 'impulse', 'maneuver', 'frontshield', 'rearshield', 'missilesystem', 'beamweapons', 'hull'
 	eeHealth: 0.05,           // How much health it fixed (5%)
 	status: 'initial',        // Initially 'initial'
 	calibrationCount: 0,      // How many calibration slots the task takes (0 for no calibration)

@@ -59,7 +59,7 @@ function breakTask(task) {
 }
 
 function getEETasks(type) {
-	return Object.values(store.getState().data.task).filter(task => task.eeType === type);
+	return Object.values(store.getState().data.task).filter(task => task.eeType === type && !task.used);
 }
 
 const isBroken = task => task.status === 'broken' || task.status === 'calibrating';
@@ -111,12 +111,6 @@ watch(['data', 'task'], async (tasks, previousTasks, state) => {
 			const ee = store.getState().data.ship.ee;
 			const type = task.eeType;
 			const health = clamp(getEEHealth(ee, type) + task.eeHealth, -1, 1);
-			if (task.singleUse) {
-				saveBlob({
-					...task,
-					eeType: `${task.eeType}-used`,
-				});
-			}
 			logger.info(`Detected EE ${type} health task ${task.id} fixed, increasing health by `+
 			  `${task.eeHealth} to ${health}`);
 			if (isFinite(health)) {
