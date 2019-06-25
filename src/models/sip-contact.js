@@ -8,6 +8,7 @@ import Bookshelf from '../../db';
  * @property {string} name - Contact display name
  * @property {string} type - Contact type, e.g. MEDBAY, BRIDGE
  * @property {boolean} video_allowed - True if video from/to this contact is allowed
+ * @property {boolean} is_visible - True if the contact should appear visible in contacts
  * @property {string} created_at - ISO 8601 String Date-time when object was created
  * @property {string} updated_at - ISO 8601 String Date-time when object was last updated
  */
