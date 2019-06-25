@@ -279,6 +279,11 @@ function initEmulator() {
 				mockState[`${target}Count`] = value;
 				return cb(null, [200, mockState, []]);
 			}
+			if (req.includes('setHull')) {
+				const val = Number(req.replace(/.*setHull\("([0-9]*)"\).*/, '$1'));
+				mockState.shipHull = val;
+				return cb(null, [200, mockState, []]);
+			}
 			if (req.includes('commandSetAlertLevel')) {
 				let alertLevel;
 				value = req.replace(/.*"(\w.*)".*/, '$1');
