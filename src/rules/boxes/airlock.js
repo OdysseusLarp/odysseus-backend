@@ -94,9 +94,11 @@ Airlock.prototype = {
 	},
 
 	runAnimation(promise) {
-		promise.then(() => logger.debug(`Airlock ${this.name} animation completed`))
-			.catch(err => err && logger.warn(`Airlock ${this.name} animation failed: ${err}`));
-		logger.debug(`Airlock ${this.name} started animation ${this.animation}`);
+		const anim = this.animation;
+		promise
+			.then(() => logger.debug(`Airlock ${this.name} animation ${anim} completed`))
+			.catch(err => err && logger.warn(`Airlock ${this.name} animation ${anim} failed: ${err}`));
+		logger.debug(`Airlock ${this.name} started animation ${anim}`);
 	},
 	stopAnimation() {
 		this.animation++;
@@ -110,8 +112,6 @@ Airlock.prototype = {
 		// logger.debug(`Airlock ${this.name} pushing and waiting for ${time - t0} ms`);
 		this.pushData();
 
-		if (t0 >= time) return Promise.resolve();
-
 		const animation = this.animation;
 		return new Promise((resolve, reject) => timeout(() => {
 			if (animation && this.animation === animation) {
@@ -121,7 +121,7 @@ Airlock.prototype = {
 				logger.debug(`Airlock ${this.name} timeout aborted: ${animation} != ${this.animation}`);
 				reject(null);
 			}
-		}, time - t0));
+		}, Math.max(0, time - t0)));
 	},
 
 	// (de)pressurization animations
@@ -216,9 +216,10 @@ Airlock.prototype = {
 		const endTime = startTime + delay;
 
 		logger.debug(`Airlock ${this.name} automatically closing after ${delay} ms at ${endTime}`);
+		await this.pushAndWaitUntil(startTime);  // hack?!
 
-		this.data.transition_status = 'auto_closing';
 		this.data.countdown_to = endTime;
+		this.data.transition_status = 'auto_closing';
 		await this.pushAndWaitUntil(endTime);
 
 		this.data.countdown_to = 0;
