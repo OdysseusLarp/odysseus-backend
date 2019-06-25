@@ -58,6 +58,14 @@ export const CHANNELS = {
 	SmallBreachEventStarting: 165,
 	SmallBreachEventBreach: 166,
 	BreachEventEnd: 167,
+
+	// Airlock events
+	SmallAirLockEntryPossible: 168,
+	SmallAirLockNoEntry: 169,
+	MainAirLockEntryPossible: 170,
+	MainAirLockNoEntry: 171,
+	MainAirLockOpenInnerDoor: 172,
+	MainAirLockCloseInnerDoor: 173,
 };
 
 const dmx = init();
