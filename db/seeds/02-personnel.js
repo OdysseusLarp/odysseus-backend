@@ -53,6 +53,8 @@ exports.seed = async knex => {
 		{ name: 'Fleet Secretary 1 ', id: '6019', video_allowed: true, is_visible: false, type: 'PERSONAL' },
 		{ name: 'Fleet Secretary 2 ', id: '6020', video_allowed: true, is_visible: false, type: 'PERSONAL' },
 		{ name: 'Fleet Secretary 3 ', id: '6021', video_allowed: true, is_visible: false, type: 'PERSONAL' },
+		{ name: 'Fleet Secretary (Conference)', id: '4001', video_allowed: false, is_visible: true, type: 'CONFERENCE' },
+		{ name: 'Fighters (Conference)', id: '4002', video_allowed: false, is_visible: true, type: 'CONFERENCE' },
 	];
 	await knex('sip_contact').insert(sipContacts);
 };
