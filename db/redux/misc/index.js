@@ -24,13 +24,13 @@ sunt eaque dolor id nisi magni.`
 		id: 'artifact_actions',
 		actions: {
 			CRYSTAL_GENERATOR: {
-				is_usable: true,
+				is_usable: false,
 				is_used: false,
 				used_at: null,
 				log_message: 'Jump crystal generator artifact has been activated. Jump crystals are now regenerated during jumps.'
 			},
 			HEALTH_BOOST: {
-				is_usable: true,
+				is_usable: false,
 				is_used: false,
 				used_at: null,
 				log_message: 'An artifact increased ship hull health to 100%'
