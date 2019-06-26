@@ -3,20 +3,22 @@ const LETTER1 = ['C', 'E', 'F', 'H'];
 const LETTER2 = ['D', 'R', 'T', 'X'];
 const LETTER3 = ['A', 'E', 'I', 'U'];
 
-const ARRAY = [0, 1, 2, 3, 4, 5, 6];
 // https://docs.google.com/document/d/1zdeoUQ3YgztciU4yB1AYPC0FBCUCMWxsuXX7z59Or_U/edit#heading=h.u2wurxs8aa9t
 const LIGHTS = [
-	ARRAY.map(i => `${i}_3`),
-	ARRAY.map(i => `3_${i}`),
-	ARRAY.map(i => `${i}_2`),
-	ARRAY.map(i => `2_${i}`),
-	ARRAY.map(i => `${i}_4`),
-	ARRAY.map(i => `4_${i}`),
-	ARRAY.map(i => `${i}_1`),
-	ARRAY.map(i => `1_${i}`),
-	ARRAY.map(i => `${i}_5`),
-	ARRAY.map(i => `5_${i}`),
+	['0_3', '1_3', '2_3', '3_3', '4_3', '5_3', '6_3'],
+	['3_0', '3_1', '3_2', '3_3', '3_4', '3_5', '3_6'],
+	['0_2', '2_2', '3_2', '4_2', '5_2', '6_2'],
+	['2_0', '2_1', '2_2', '2_3', '2_4', '2_6'],
+	['0_4', '1_4', '2_4', '3_4', '4_4', '6_4'],
+	['4_0', '4_2', '4_3', '4_4', '4_5', '4_6'],
+	['1_1', '2_1', '3_1', '5_1'],
+	['1_1', '1_3', '1_4', '1_5'],
+	['1_5', '3_5', '4_5', '5_5'],
+	['5_1', '5_2', '5_3', '5_5'],
 ];
+
+// Broken leds are always black
+const BROKEN_LEDS = ['5_3', '3_0'];
 
 export function getCode(n) {
 	/*
@@ -53,12 +55,20 @@ export function getLights(n) {
 			}
 		}
 	}
+	for (const broken of BROKEN_LEDS) {
+		lights[broken] = 0;
+	}
+
 	return lights;
 }
 
 export function randomGauges() {
 	// Round values so that resulting JSON is smaller
-	return filled(() => Math.floor(Math.random()*100)/100);
+	const values = filled(() => Math.floor(Math.random()*100)/100);
+	for (const broken of BROKEN_LEDS) {
+		delete values[broken];
+	}
+	return values;
 }
 
 // for (let i=0; i<1024; i++) {
