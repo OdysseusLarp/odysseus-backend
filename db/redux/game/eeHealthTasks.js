@@ -89,7 +89,7 @@ for (let i=0; i < 20; i++) {
 		calibrationCount: 0,
 		title: `Engine power segment ${code}`,
 		description: `Engine power segment ${code} has failed.`, // FIXME: babbletize
-		location: 'Upper deck, security room', // FIXME: location + map
+		location: 'Lower deck, mess hall', // FIXME: location + map, baaritiski
 		map: 'upper-7.png',
 		mapX: 240,
 		mapY: 310 + i*2,
@@ -152,7 +152,7 @@ for (let i=0; i < 20; i++) {
 		calibrationCount: 0,
 		title: `Maneuver power segment ${code}`,
 		description: `Maneuver power segment ${code} has failed.`, // FIXME: babbletize
-		location: 'Upper deck, security room', // FIXME: location + map
+		location: 'Upper deck, medbay (left) corridor (right)', // FIXME: location + map
 		map: 'upper-7.png',
 		mapX: 240,
 		mapY: 310 + i*2,
@@ -212,7 +212,7 @@ for (let i=0; i < 20; i++) {
 		calibrationCount: 0,
 		title: `Front shield generator power segment ${code}`,
 		description: `Front shield generator power segment ${code} has failed.`, // FIXME: babbletize
-		location: 'Upper deck, security room', // FIXME: location + map
+		location: 'Lower deck, corridor', // FIXME: location + map
 		map: 'upper-7.png',
 		mapX: 240,
 		mapY: 310 + i*2,
@@ -270,7 +270,7 @@ for (let i=0; i < 20; i++) {
 		calibrationCount: 0,
 		title: `Rear shield generator power segment ${code}`,
 		description: `Rear shield generator power segment ${code} has failed.`, // FIXME: babbletize
-		location: 'Upper deck, security room', // FIXME: location + map
+		location: 'Upper deck, war room', // FIXME: location + map
 		map: 'upper-7.png',
 		mapX: 240,
 		mapY: 310 + i*2,
@@ -386,7 +386,7 @@ for (let i=0; i < 20; i++) {
 		calibrationCount: 0,
 		title: `Beam weapons power segment ${code}`,
 		description: `Beam weapons power segment ${code} has failed.`, // FIXME: babbletize
-		location: 'Upper deck, security room', // FIXME: location + map
+		location: 'Upper ramp', // FIXME: location + map  - ramp
 		map: 'upper-7.png',
 		mapX: 240,
 		mapY: 310 + i*2,
@@ -451,7 +451,7 @@ for (let i=0; i < 20; i++) {
 		calibrationCount: 0,
 		title: `Hull power segment ${code}`,
 		description: `Hull power segment ${code} has failed.`, // FIXME: babbletize
-		location: 'Upper deck, security room', // FIXME: location + map
+		location: 'Lower deck, stairways', // FIXME: location + map portaat
 		map: 'upper-7.png',
 		mapX: 240,
 		mapY: 310 + i*2,
