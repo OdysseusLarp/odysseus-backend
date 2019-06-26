@@ -43,9 +43,9 @@ Airlock.prototype = {
 	startWatching() {
 		logger.debug(`Airlock ${this.name} watching for status changes`);
 		watch(['data', 'box', this.name], (newData) => {
-			const statusChanged = (newData.status !== this.data.status);
+			const oldStatus = this.data.status;
 			this.data = copy(newData);
-			if (statusChanged) this.statusChanged(newData.status, this.data.status);
+			if (this.data.status !== oldStatus) this.statusChanged(this.data.status, oldStatus);
 		});
 		this.statusChanged(this.data.status, 'initial');
 	},
@@ -68,14 +68,17 @@ Airlock.prototype = {
 
 		// transitions just launch animations
 		if (status === 'pressurizing') {
-			return this.runAnimation(this.pressurize()); // skip rest of method
+			if (previous === 'open') this.setStatus('open'); // just reset the auto-close timer!
+			else return this.runAnimation(this.pressurize()); // skip rest of method
 		} else if (status === 'depressurizing') {
 			return this.runAnimation(this.depressurize()); // skip rest of method
 		} else if (status === 'open') {
 			this.data.pressure = 1.0;
+			const delay = this.data.config.auto_close_delay;
+			if (delay) return this.runAnimation(this.autoClose(delay)); // skip rest of method
 		} else if (status === 'vacuum') {
 			this.data.pressure = 0.0;
-		} else if (status !== 'malfunction' && status !== 'error') {
+		} else if (status !== 'closed' && status !== 'malfunction' && status !== 'error') {
 			logger.warn(`Airlock ${this.name} has unknown status ${status}!`);
 			this.setStatus('error');
 		}
@@ -91,9 +94,11 @@ Airlock.prototype = {
 	},
 
 	runAnimation(promise) {
-		promise.then(() => logger.debug(`Airlock ${this.name} animation completed`))
-			.catch(err => err && logger.warn(`Airlock ${this.name} animation failed: ${err}`));
-		logger.debug(`Airlock ${this.name} started animation ${this.animation}`);
+		const anim = this.animation;
+		promise
+			.then(() => logger.debug(`Airlock ${this.name} animation ${anim} completed`))
+			.catch(err => err && logger.warn(`Airlock ${this.name} animation ${anim} failed: ${err}`));
+		logger.debug(`Airlock ${this.name} started animation ${anim}`);
 	},
 	stopAnimation() {
 		this.animation++;
@@ -107,8 +112,6 @@ Airlock.prototype = {
 		// logger.debug(`Airlock ${this.name} pushing and waiting for ${time - t0} ms`);
 		this.pushData();
 
-		if (t0 >= time) return Promise.resolve();
-
 		const animation = this.animation;
 		return new Promise((resolve, reject) => timeout(() => {
 			if (animation && this.animation === animation) {
@@ -118,7 +121,7 @@ Airlock.prototype = {
 				logger.debug(`Airlock ${this.name} timeout aborted: ${animation} != ${this.animation}`);
 				reject(null);
 			}
-		}, time - t0));
+		}, Math.max(0, time - t0)));
 	},
 
 	// (de)pressurization animations
@@ -170,12 +173,13 @@ Airlock.prototype = {
 
 		logger.debug(`Airlock ${this.name} depressurizing from ${startTime} to ${endTime}`);
 
-		this.data.countdown_to = endTime;
-
 		if (pressure >= 1.0) {
+			this.data.countdown_to = pumpStart;
 			this.data.transition_status = 'depressurize_start';
 			await this.pushAndWaitUntil(pumpStart);
 		}
+
+		this.data.countdown_to = endTime;
 		if (pressure > 0.0) {
 			this.data.transition_status = 'depressurize_airflow';
 			await this.rampPressure(pressure, 0.0, pumpStop);
@@ -191,6 +195,7 @@ Airlock.prototype = {
 		this.pushData();
 		logger.debug(`Airlock ${this.name} depressurization complete`);
 	},
+
 	async rampPressure(from, to, until) {
 		const t0 = now();
 		let t = t0;
@@ -204,6 +209,24 @@ Airlock.prototype = {
 		this.data.pressure = to;
 		// logger.debug(`Airlock ${this.name} pressure = ${this.data.pressure}`)
 		this.pushData();
+	},
+
+	async autoClose(delay) {
+		const startTime = now();
+		const endTime = startTime + delay;
+
+		logger.debug(`Airlock ${this.name} automatically closing after ${delay} ms at ${endTime}`);
+		await this.pushAndWaitUntil(startTime);  // hack?!
+
+		this.data.countdown_to = endTime;
+		this.data.transition_status = 'auto_closing';
+		await this.pushAndWaitUntil(endTime);
+
+		this.data.countdown_to = 0;
+		this.data.transition_status = null;
+		this.setStatus('closed');
+		this.pushData();
+		logger.debug(`Airlock ${this.name} auto close complete`);
 	},
 };
 
