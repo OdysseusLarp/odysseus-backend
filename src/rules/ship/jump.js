@@ -197,7 +197,7 @@ function handleTransition(jump, currentStatus, previousStatus) {
 
 		case 'cooldown>ready_to_prep':
 			dmx.fireEvent(dmx.CHANNELS.JumpPrepReady);
-			shipLogger.info(`Jump drive is ready for jump preparations`);
+			shipLogger.info(`Jump drive is ready for jump preparations`, { showPopup: true });
 			break;
 
 		case 'ready_to_prep>calculating': {
