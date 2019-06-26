@@ -67,7 +67,8 @@ saveBlob({
 	ee_sync_enabled: true,
 	ee_connection_enabled: true,
 	jump_ui_enabled: true,
-	social_ui_enabled: true
+	social_ui_enabled: true,
+	infoboard_enabled: true,
 });
 
 saveBlob({

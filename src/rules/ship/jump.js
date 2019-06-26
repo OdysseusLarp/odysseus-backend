@@ -42,6 +42,7 @@ function setSystemsEnabled(value = true) {
 		...shipMetadata,
 		jump_ui_enabled: value,
 		social_ui_enabled: value,
+		infoboard_enabled: value,
 	});
 }
 
@@ -170,7 +171,9 @@ function handleTransition(jump, currentStatus, previousStatus) {
 			});
 			const jumpTarget = getReadableJumpTarget(jump.coordinates);
 			shipLogger.success(`Odysseus completed the jump to grid ${jumpTarget}`, { showPopup: true });
-			setSystemsEnabled(true);
+
+			// Enable systems after 3600ms, which is around the time when the JumpEnd audio reaches climax
+			setTimeout(() => setSystemsEnabled(true), 3600);
 
 			// Remove a jump crystal and send a warning if they drop below 5, unless CRYSTAL_GENERATOR artifact has been used
 			const hasCrystalGenerator = get(getData('misc', 'artifact_actions'), 'actions.CRYSTAL_GENERATOR.is_used');
