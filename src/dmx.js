@@ -66,6 +66,24 @@ export const CHANNELS = {
 	MainAirLockNoEntry: 171,
 	MainAirLockOpenInnerDoor: 172,
 	MainAirLockCloseInnerDoor: 173,
+
+	// Announcements
+	AnnouncementDisregardPrevious: 174,
+	AnnouncementAutomatedEmergency: 175,
+	AnnouncementBraceForShip2ShipCombat: 176,
+	AnnouncementUnknownShip: 177,
+	AnnouncementEnemyDetected: 178,
+	AnnouncementMissilesDetected: 179,
+	AnnouncementAnomalyJumpIncoming: 180,
+	AnnouncementCommsSignalDetected: 181,
+	AnnouncementBridgeSysMalfunction: 182,
+	AnnouncementCommandAuthNotRecog: 183,
+	AnnouncementWelcomeCapt: 184,
+	AnnouncementStartingUp: 185,
+	AnnouncementAuthorizationRequired: 186,
+	AnnouncementIdentifyyourself: 187,
+	AnnouncementScancompl: 188,
+	AnnouncementAnalysiscompl: 189,
 };
 
 const dmx = init();
