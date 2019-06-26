@@ -4,6 +4,7 @@ import axios from 'axios';
 import nock from 'nock';
 import { get, set, forIn, pick, isInteger } from 'lodash';
 import { handleAsyncErrors } from './helpers';
+import { getData } from './routes/data';
 
 const { EMPTY_EPSILON_HOST, EMPTY_EPSILON_PORT } = process.env,
 	systems = [
@@ -216,6 +217,11 @@ export class EmptyEpsilonClient {
 	}
 
 	setGameState(command, target, value) {
+		const isEeConnectionEnabled = !!get(getData('ship', 'metadata'), 'ee_connection_enabled');
+		if (!isEeConnectionEnabled) {
+			logger.error('setGameState was called while Backend <-> EE connection is disabled', { command, target, value });
+			return Promise.reject('Backend connection to Empty Epsilon is currently disabled');
+		}
 		// Only allow known commands to be used
 		if (!['setSystemHealth', 'setSystemHeat', 'setWeaponStorage'].includes(command))
 			return Promise.reject('Invalid command', command);
