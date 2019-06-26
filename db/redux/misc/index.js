@@ -37,6 +37,12 @@ sunt eaque dolor id nisi magni.`
 			}
 		}
 	},
+	// Dynamic HANSCA configs
+	{
+		type: 'misc',
+		id: 'hansca',
+		analyseBaseTime: 90
+	}
 ];
 
 blobs.forEach(saveBlob);
