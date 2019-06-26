@@ -4,7 +4,6 @@ import { logger } from '../../logger';
 import { saveBlob, clamp, timeout } from '../helpers';
 
 const airlockNames = ['airlock_main', 'airlock_hangarbay'];
-const pressureUpdateInterval = 250;  // four updates per second
 
 const DEFAULT_CONFIG = {
 	pressurize: {
@@ -127,7 +126,7 @@ Airlock.prototype = {
 	// (de)pressurization animations
 	async pressurize() {
 		const config = this.data.config || DEFAULT_CONFIG;
-		const pressure = clamp(this.data.pressure || 0.0, 0, 1);
+		const pressure = clamp(this.getPressure() || 0.0, 0, 1);
 
 		const startTime = now();
 		const pumpStart = startTime + (pressure < 1 ? config.pressurize.start_delay || 0 : 0);
@@ -164,7 +163,7 @@ Airlock.prototype = {
 
 	async depressurize() {
 		const config = this.data.config || DEFAULT_CONFIG;
-		const pressure = clamp(this.data.pressure || 0.0, 0, 1);
+		const pressure = clamp(this.getPressure() || 0.0, 0, 1);
 
 		const startTime = now();
 		const pumpStart = startTime + (pressure > 0 ? config.depressurize.start_delay || 0 : 0);
@@ -197,18 +196,22 @@ Airlock.prototype = {
 	},
 
 	async rampPressure(from, to, until) {
-		const t0 = now();
-		let t = t0;
-		while (t < until) {
-			const x = 1 - (until - t) / (until - t0);
-			this.data.pressure = from + x * (to - from);
-			// logger.debug(`Airlock ${this.name} pressure = ${this.data.pressure}...`)
-			await this.pushAndWaitUntil(Math.min(until, t + pressureUpdateInterval));
-			t = now();
-		}
-		this.data.pressure = to;
-		// logger.debug(`Airlock ${this.name} pressure = ${this.data.pressure}`)
-		this.pushData();
+		// the ramping is now done on the client side!
+		const start = now() + 250;  // 1/4 sec delay to stagger UI state changes!
+		this.data.pressure = { t0: start, t1: until, p0: from, p1: to };
+		await this.pushAndWaitUntil(until);
+	},
+	// convert ramp object back to numeric pressure value
+	getPressure() {
+		const pressure = this.data.pressure || 0;
+		if (typeof pressure === 'number') return pressure;
+
+		const t = now();
+		if (t <= pressure.t0) return pressure.p0;
+		if (t >= pressure.t1) return pressure.p1;
+
+		const x = (t - pressure.t0) / (pressure.t1 - pressure.t0);
+		return pressure.p0 + x * (pressure.p1 - pressure.p0);
 	},
 
 	async autoClose(delay) {
