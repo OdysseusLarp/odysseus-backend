@@ -1,4 +1,4 @@
-import { store, watch } from '../../store/store';
+import { store, watch, getPath } from '../../store/store';
 import { CHANNELS, fireEvent } from '../../dmx';
 import { logger } from '../../logger';
 import { saveBlob, clamp, timeout } from '../helpers';
@@ -6,27 +6,9 @@ import { saveBlob, clamp, timeout } from '../helpers';
 const airlockNames = ['airlock_main', 'airlock_hangarbay'];
 
 const DEFAULT_CONFIG = {
-	pressurize: {
-		start_delay: 2000,
-		duration: 25000,
-		end_delay: 3000,
-		malfunction_delay: 2000,
-	},
-	depressurize: {
-		start_delay: 10000,
-		duration: 20000,
-		end_delay: 0,
-	},
-	dmx: {
-		airlock_open: 'AirlockDoorOpen',
-		airlock_close: 'AirlockDoorClose',
-	},
+	transition_times: {},
+	dmx_events: {},
 };
-
-// klugy work-around for https://redux.js.org/troubleshooting#never-mutate-reducer-arguments
-function copy(obj) {
-	return JSON.parse(JSON.stringify(obj));
-}
 
 function now() {
 	return new Date().getTime();
@@ -34,174 +16,171 @@ function now() {
 
 function Airlock(airlockName) {
 	this.name = airlockName;
-	this.data = copy(store.getState().data.box[airlockName] || {});
-	this.animation = 0;
-	logger.debug(`Airlock ${this.name} initialized`);
+	this.data = store.getState().data.box[airlockName] || {};
+	this.commandCounter = 0;
+
+	watch(['data', 'box', this.name], (data) => {
+		this.data = data;
+		if (data.command) this.command(data.command);
+	});
+
+	if (this.data.status === 'initial') {
+		this.patchData({ status: 'closed', pressure: 1.0, countdown_to: 0, command: null });
+	} else if (this.data.command) {
+		this.command(this.data.command);
+	}
 }
 Airlock.prototype = {
-	startWatching() {
-		logger.debug(`Airlock ${this.name} watching for status changes`);
-		watch(['data', 'box', this.name], (newData) => {
-			const oldStatus = this.data.status;
-			this.data = copy(newData);
-			if (this.data.status !== oldStatus) this.statusChanged(this.data.status, oldStatus);
-		});
-		this.statusChanged(this.data.status, 'initial');
+	patchData(changes) {
+		logger.debug(`Airlock ${this.name} setting ${JSON.stringify(changes)}`);
+		return saveBlob(this.data = Object.assign({}, this.data, changes));
 	},
-	setStatus(status) {
-		const oldStatus = this.data.status;
-		this.data.status = status;
-		if (status !== oldStatus) this.statusChanged(status, oldStatus);
-		// caller is expected to .pushData() after changing the status
-	},
-	statusChanged(status, previous) {
-		logger.debug(`Airlock ${this.name} changed status from ${previous} to ${status}`);
-		this.stopAnimation();
-		this.data.transition_status = null;
 
-		if (status === 'open') {
-			this.dmx('airlock_open');
-		} else if (previous === 'open') {
-			this.dmx('airlock_close');
-		}
-
-		// transitions just launch animations
-		if (status === 'pressurizing') {
-			if (previous === 'open') this.setStatus('open'); // just reset the auto-close timer!
-			else return this.runAnimation(this.pressurize()); // skip rest of method
-		} else if (status === 'depressurizing') {
-			return this.runAnimation(this.depressurize()); // skip rest of method
-		} else if (status === 'open') {
-			this.data.pressure = 1.0;
-			const delay = this.data.config.auto_close_delay;
-			if (delay) return this.runAnimation(this.autoClose(delay)); // skip rest of method
-		} else if (status === 'vacuum') {
-			this.data.pressure = 0.0;
-		} else if (status !== 'closed' && status !== 'malfunction' && status !== 'error') {
-			logger.warn(`Airlock ${this.name} has unknown status ${status}!`);
-			this.setStatus('error');
-		}
-		this.pushData();
-	},
 	dmx(eventName) {
 		try {
-			const event = this.data.config.dmx[eventName];
-			if (CHANNELS[event]) fireEvent(CHANNELS[event]);
+			const config = this.data.config || DEFAULT_CONFIG;
+			const event = config.dmx_events[eventName];
+			if (event && CHANNELS[event]) fireEvent(CHANNELS[event]);
 		} catch (err) {
-			logger.warn(`Airlock ${this.name} failed to fire DMX event ${eventName}: ${err}`);
+			logger.warn(`Airlock ${this.name} failed to fire DMX event ${eventName}): ${err}`);
 		}
 	},
 
-	runAnimation(promise) {
-		const anim = this.animation;
-		promise
-			.then(() => logger.debug(`Airlock ${this.name} animation ${anim} completed`))
-			.catch(err => err && logger.warn(`Airlock ${this.name} animation ${anim} failed: ${err}`));
-		logger.debug(`Airlock ${this.name} started animation ${anim}`);
-	},
-	stopAnimation() {
-		this.animation++;
-	},
+	command(command) {
+		if (!command) return;
+		this.patchData({ command: null, last_command: command, last_command_at: now() });
 
-	pushData() {
-		return saveBlob(copy(this.data));
-	},
-	async pushAndWaitUntil(time) {
-		const t0 = now();
-		// logger.debug(`Airlock ${this.name} pushing and waiting for ${time - t0} ms`);
-		this.pushData();
+		const counter = ++this.commandCounter;  // the increment cancels any current transitions
+		logger.debug(`Airlock ${this.name} received command ${counter}: ${command}`);
 
-		const animation = this.animation;
+		const transitions = {
+			pressurize: ['pressurize'],
+			open: ['pressurize', 'openDoor', 'autoClose'],
+			depressurize: ['closeDoor', 'depressurize'],
+			close: ['closeDoor'],
+		};
+		const sequence = transitions[command] || ['unknownCommand'];
+
+		let promise = this.waitUntil(0);
+		for (const method of sequence) {
+			promise = promise.then(this[method].bind(this));
+		}
+		promise.then(() => this.commandDone(command, counter))
+			.catch(err => this.commandFailed(command, counter, err));
+	},
+	commandDone(command, counter) {
+		logger.info(`Airlock ${this.name} completed command ${counter} (${command})`);
+	},
+	commandFailed(command, counter, error) {
+		if (error === 'cancel') {
+			logger.info(`Airlock ${this.name} command ${counter} (${command}) canceled`);
+		} else {
+			logger.error(`Airlock ${this.name} command ${counter} (${command}) failed: ${error}`);
+		}
+	},
+	waitUntil(time) {
+		const start = now(), counter = this.commandCounter;
 		return new Promise((resolve, reject) => timeout(() => {
-			if (animation && this.animation === animation) {
-				// logger.debug(`Airlock ${this.name} timeout completed`);
-				resolve();
-			} else {
-				logger.debug(`Airlock ${this.name} timeout aborted: ${animation} != ${this.animation}`);
-				reject(null);
-			}
-		}, Math.max(0, time - t0)));
+			if (counter === this.commandCounter) resolve();
+			else reject('cancel');
+		}, Math.max(0, time - start)));
 	},
 
-	// (de)pressurization animations
+	async unknownCommand() {
+		logger.warn(`Airlock ${this.name} ignored unknown command "${this.data.command}"`);
+	},
+
+	// transition animations
 	async pressurize() {
 		const config = this.data.config || DEFAULT_CONFIG;
 		const pressure = clamp(this.getPressure() || 0.0, 0, 1);
+		if (pressure >= 1) return;  // already pressurized
 
 		const startTime = now();
-		const pumpStart = startTime + (pressure < 1 ? config.pressurize.start_delay || 0 : 0);
-		const pumpStop = pumpStart + (1 - pressure) * (config.pressurize.duration || 25000);
-		const endTime = pumpStop + (config.pressurize.end_delay || 0);
-
+		const endTime = startTime + config.transition_times.pressurize;
 		logger.debug(`Airlock ${this.name} pressurizing from ${startTime} to ${endTime}`);
 
-		this.data.countdown_to = endTime;
-
-		if (pressure < 1.0) {
-			this.data.transition_status = 'pressurize_start';
-			await this.pushAndWaitUntil(pumpStart);
-
-			this.data.transition_status = 'pressurize_airflow';
-			await this.rampPressure(pressure, 1.0, pumpStop);
-		}
-
-		this.data.pressure = 1.0;
-		this.data.transition_status = 'pressurize_end';
-
-		if (this.data.malfunction) {
-			await this.pushAndWaitUntil(pumpStop + (config.pressurize.malfunction_delay || 0));
-			this.setStatus('malfunction');
-		} else {
-			await this.pushAndWaitUntil(endTime);
-			this.setStatus('open');
-		}
-		this.data.transition_status = null;
-		this.data.countdown_to = 0;
-		this.pushData();
-		logger.debug(`Airlock ${this.name} pressurization complete`);
+		this.dmx('pressurize');
+		this.patchData({
+			status: 'pressurizing',
+			countdown_to: endTime,
+			pressure: { t0: startTime, p0: pressure, t1: endTime, p1: 1.0 },
+		});
+		await this.waitUntil(endTime);
+		this.patchData({ status: 'closed', countdown_to: 0, pressure: 1.0 });
 	},
-
 	async depressurize() {
 		const config = this.data.config || DEFAULT_CONFIG;
 		const pressure = clamp(this.getPressure() || 0.0, 0, 1);
+		if (pressure <= 0) return;  // already depressurized
 
 		const startTime = now();
-		const pumpStart = startTime + (pressure > 0 ? config.depressurize.start_delay || 0 : 0);
-		const pumpStop = pumpStart + pressure * (config.depressurize.duration || 2500);
-		const endTime = pumpStop + (config.depressurize.end_delay || 0);
-
+		const endTime = startTime + config.transition_times.depressurize;
 		logger.debug(`Airlock ${this.name} depressurizing from ${startTime} to ${endTime}`);
 
-		if (pressure >= 1.0) {
-			this.data.countdown_to = pumpStart;
-			this.data.transition_status = 'depressurize_start';
-			await this.pushAndWaitUntil(pumpStart);
-		}
+		this.dmx('depressurize');
+		this.patchData({
+			status: 'depressurizing',
+			countdown_to: endTime,
+			pressure: { t0: startTime, p0: pressure, t1: endTime, p1: 0.0 },
+		});
+		await this.waitUntil(endTime);
+		this.patchData({ status: 'vacuum', countdown_to: 0, pressure: 0.0 });
+	},
+	async openDoor() {
+		const config = this.data.config || DEFAULT_CONFIG, status = this.data.status;
+		if (status === 'open') return;  // already open
+		if (this.isBroken()) return await this.malfunction();
 
-		this.data.countdown_to = endTime;
-		if (pressure > 0.0) {
-			this.data.transition_status = 'depressurize_airflow';
-			await this.rampPressure(pressure, 0.0, pumpStop);
-		}
+		const startTime = now();
+		const endTime = startTime + config.transition_times.open;
+		logger.debug(`Airlock ${this.name} opening from ${startTime} to ${endTime}`);
 
-		this.data.pressure = 0.0;
-		this.data.transition_status = 'depressurize_end';
-		await this.pushAndWaitUntil(endTime);
+		this.dmx('open');
+		this.patchData({ status: 'opening', countdown_to: endTime, pressure: 1.0 });
+		await this.waitUntil(endTime);
+		this.patchData({ status: 'open', countdown_to: 0, pressure: 1.0 });
+	},
+	async autoClose() {
+		const config = this.data.config || DEFAULT_CONFIG, status = this.data.status;
+		if (status !== 'open' || !(config.auto_close_delay > 0)) return;
 
-		this.data.countdown_to = 0;
-		this.data.transition_status = null;
-		this.setStatus('vacuum');
-		this.pushData();
-		logger.debug(`Airlock ${this.name} depressurization complete`);
+		const autoCloseTime = now() + config.auto_close_delay;
+		const endTime = autoCloseTime + config.transition_times.close;  // for UI countdown
+		logger.debug(`Airlock ${this.name} automatically closing at ${autoCloseTime}`);
+
+		this.patchData({ status: 'open', countdown_to: endTime, pressure: 1.0 });
+		await this.waitUntil(autoCloseTime);
+		return await this.closeDoor();
+	},
+	async closeDoor() {
+		const config = this.data.config || DEFAULT_CONFIG, status = this.data.status;
+		if (status !== 'open') return;  // not open?!
+
+		const startTime = now();
+		const endTime = startTime + config.transition_times.close;
+		logger.debug(`Airlock ${this.name} closing from ${startTime} to ${endTime}`);
+
+		this.dmx('close');
+		this.patchData({ status: 'closing', countdown_to: endTime, pressure: 1.0 });
+		await this.waitUntil(endTime);
+		this.patchData({ status: 'closed', countdown_to: 0, pressure: 1.0 });
+	},
+	async malfunction() {
+		const config = this.data.config || DEFAULT_CONFIG;
+		if (this.isBroken()) return await this.malfunction();
+
+		const startTime = now();
+		const endTime = startTime + config.transition_times.malfunction;
+		logger.debug(`Airlock ${this.name} malfunction from ${startTime} to ${endTime}`);
+
+		this.dmx('malfunction');
+		this.patchData({ status: 'malfunction', countdown_to: 0, pressure: 1.0 });
+		await this.waitUntil(endTime);
+		this.patchData({ status: 'closed', countdown_to: 0, pressure: 1.0 });
 	},
 
-	async rampPressure(from, to, until) {
-		// the ramping is now done on the client side!
-		const start = now() + 250;  // 1/4 sec delay to stagger UI state changes!
-		this.data.pressure = { t0: start, t1: until, p0: from, p1: to };
-		await this.pushAndWaitUntil(until);
-	},
-	// convert ramp object back to numeric pressure value
+	// convert linear pressure ramp back to a numeric pressure value
 	getPressure() {
 		const pressure = this.data.pressure || 0;
 		if (typeof pressure === 'number') return pressure;
@@ -214,29 +193,18 @@ Airlock.prototype = {
 		return pressure.p0 + x * (pressure.p1 - pressure.p0);
 	},
 
-	async autoClose(delay) {
-		const startTime = now();
-		const endTime = startTime + delay;
-
-		logger.debug(`Airlock ${this.name} automatically closing after ${delay} ms at ${endTime}`);
-		await this.pushAndWaitUntil(startTime);  // hack?!
-
-		this.data.countdown_to = endTime;
-		this.data.transition_status = 'auto_closing';
-		await this.pushAndWaitUntil(endTime);
-
-		this.data.countdown_to = 0;
-		this.data.transition_status = null;
-		this.setStatus('closed');
-		this.pushData();
-		logger.debug(`Airlock ${this.name} auto close complete`);
+	// is the linked task box broken?
+	isBroken() {
+		const config = this.data.config || DEFAULT_CONFIG;
+		const boxId = config.linked_task_id;
+		if (!boxId) return false;
+		const status = getPath(['data', 'box', boxId, 'status']);
+		return status === 'broken';
 	},
 };
 
 // initialize airlock objects
 const airlocks = {};
-airlockNames.forEach(airlockName => {
-	const airlock = new Airlock(airlockName);
-	airlocks[airlockName] = airlock;
-	airlock.startWatching();
+airlockNames.forEach(name => {
+	airlocks[name] = new Airlock(name);
 });
