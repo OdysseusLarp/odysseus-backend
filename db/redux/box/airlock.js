@@ -14,7 +14,8 @@ blobs.push({
 	last_command_at: 0, // last command timestamp
 
 	config: {
-		linked_task_id: null,      // task box that controls whether door can open
+		linked_task_type: 'box', // type of task that controls whether door can open
+		linked_task_id: null,    // ID of task that controls whether door can open
 		auto_close_delay: 15000,   // milliseconds before door closes automatically (0 = never)
 		pressure_curve: 'sigmoid', // adjustment applied to player-visible pressure value
 		title_bar_text: null,      // shown in an extra bar at the top of the UI, if set
@@ -71,9 +72,10 @@ blobs.push({
 	last_command_at: 0, // last command timestamp
 
 	config: {
-		linked_task_id: null,   // task box that controls whether door can open
-		auto_close_delay: 0,    // milliseconds before door closes automatically (0 = never)
-		pressure_curve: 'sqrt', // adjustment applied to player-visible pressure value
+		linked_task_type: 'box', // type of task that controls whether door can open
+		linked_task_id: null,    // ID of task that controls whether door can open
+		auto_close_delay: 0,     // milliseconds before door closes automatically (0 = never)
+		pressure_curve: 'sqrt',  // adjustment applied to player-visible pressure value
 		title_bar_text: 'Main Airlock',  // shown in an extra bar at the top of the UI, if set
 		// transition durations (milliseconds)
 		transition_times: {

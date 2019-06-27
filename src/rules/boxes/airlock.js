@@ -53,13 +53,15 @@ Airlock.prototype = {
 		const counter = ++this.commandCounter;  // the increment cancels any current transitions
 		logger.debug(`Airlock ${this.name} received command ${counter}: ${command}`);
 
-		const transitions = {
+		const commands = {
 			pressurize: ['pressurize'],
 			open: ['pressurize', 'openDoor', 'autoClose'],
 			depressurize: ['closeDoor', 'depressurize'],
 			close: ['closeDoor'],
+			stop: ['stopTransition'],  // also used to force status
+			malfunction: ['malfunction'],  // mostly for testing
 		};
-		const sequence = transitions[command] || ['unknownCommand'];
+		const sequence = commands[command] || ['unknownCommand'];
 
 		let promise = this.waitUntil(0);
 		for (const method of sequence) {
@@ -168,7 +170,6 @@ Airlock.prototype = {
 	},
 	async malfunction() {
 		const config = this.data.config || DEFAULT_CONFIG;
-		if (this.isBroken()) return await this.malfunction();
 
 		const startTime = now();
 		const endTime = startTime + config.transition_times.malfunction;
@@ -178,6 +179,18 @@ Airlock.prototype = {
 		this.patchData({ status: 'malfunction', countdown_to: 0, pressure: 1.0 });
 		await this.waitUntil(endTime);
 		this.patchData({ status: 'closed', countdown_to: 0, pressure: 1.0 });
+	},
+	async stopTransition() {
+		const status = this.data.status;
+		if (status === 'opening' || status === 'pressurizing' || status === 'depressurizing') {
+			this.patchData({ status: 'closed', countdown_to: 0, pressure: this.getPressure() });
+		} else if (status === 'closing') {
+			this.patchData({ status: 'open', countdown_to: 0, pressure: 1.0 });
+		} else if (status === 'vacuum') {
+			this.patchData({ status: 'vacuum', countdown_to: 0, pressure: 0.0 });
+		} else {
+			this.patchData({ status, countdown_to: 0, pressure: 1.0 });
+		}
 	},
 
 	// convert linear pressure ramp back to a numeric pressure value
@@ -196,10 +209,9 @@ Airlock.prototype = {
 	// is the linked task box broken?
 	isBroken() {
 		const config = this.data.config || DEFAULT_CONFIG;
-		const boxId = config.linked_task_id;
-		if (!boxId) return false;
-		const status = getPath(['data', 'box', boxId, 'status']);
-		return status === 'broken';
+		const type = config.linked_task_type || 'box', id = config.linked_task_id;
+		if (!id) return false;
+		return getPath(['data', type, id, 'status']) === 'broken';
 	},
 };
 
