@@ -26,8 +26,8 @@ for (let i=0; i < 20; i++) {
 		eeHealth: 0.10,  // fixes 10%
 		game: id,
 		status: 'initial',
-		calibrationTime: 0,
-		calibrationCount: 0,
+		calibrationTime: 10*60,
+		calibrationCount: 1,
 		title: `Reactor power segment ${code}`,
 		description: `Reactor power segment ${code} has failed. Phase shift needs to be recalibrated using HANSCA.`,
 		location: 'Upper deck, security room',
@@ -103,8 +103,8 @@ for (let i=0; i < 20; i++) {
 		eeHealth: 0.10,  // fixes 10%
 		game: id,
 		status: 'initial',
-		calibrationTime: 0,
-		calibrationCount: 0,
+		calibrationTime: 5*60,
+		calibrationCount: 1,
 		title: `Impulse engine power segment ${code}`,
 		description: `Impulse engine power segment ${code} has failed. Phase shift needs to be recalibrated using HANSCA.`,
 		location: 'Lower deck, mess hall',
@@ -126,7 +126,7 @@ blobs.push({
 
 		dimensions: 1,
 		difficulty: 0,
-		duration: 30,
+		duration: 40,
 		drift: 0.3,
 	},
 
@@ -184,8 +184,8 @@ for (let i=0; i < 20; i++) {
 		eeHealth: 0.10,  // fixes 10%
 		game: id,
 		status: 'initial',
-		calibrationTime: 0,
-		calibrationCount: 0,
+		calibrationTime: 7*60,
+		calibrationCount: 1,
 		title: `Maneuver power segment ${code}`,
 		description: `Maneuver power segment ${code} has failed. Phase shift needs to be recalibrated using HANSCA.`,
 		location: letter === 'L' ? 'Upper deck, medbay' : 'Upper deck, corridor',
@@ -197,8 +197,8 @@ for (let i=0; i < 20; i++) {
 
 
 blobs.push({
-	type: 'game_config',
-	id: 'maneuver',
+	'type': 'game_config',
+	'id': 'maneuver',
 
 	'default': {
 		initDescription: 'Maneuver power segment needs phase calibration.',
@@ -262,8 +262,8 @@ for (let i=0; i < 20; i++) {
 		eeHealth: 0.10,  // fixes 10%
 		game: id,
 		status: 'initial',
-		calibrationTime: 0,
-		calibrationCount: 0,
+		calibrationTime: 2*60,
+		calibrationCount: 5,
 		title: `Front shield segment ${code}`,
 		description: `Front shield generator shield segment ${code} has failed. Segment needs to be repaired using HANSCA.`,
 		location: 'Lower deck, corridor',
@@ -275,37 +275,37 @@ for (let i=0; i < 20; i++) {
 
 
 blobs.push({
-	type: 'game_config',
-	id: 'frontshield',
-	"default": {
+	'type': 'game_config',
+	'id': 'frontshield',
+	'default': {
 		initDescription: `<p>Front shield generator shield segments are faulted.</p>
 		<p>You need to heal all faulty segments. When you click a segment, the segment and all immediately adjacent segments will heal or break. Once all segments are healed (black), the system will become operational.</p>
 		<p>You may reset the shield segments to a random state.</p>`,
 		endDescription: 'All shield segments fixed!',
 
-        "game": "lightsout",
-        "random": 10,
-        "size": 4,
+		game: 'lightsout',
+		random: 10,
+		size: 4,
 	},
-	"skill:master": {
+	'skill:master': {
 		initDescription: `<p>Front shield generator shield segments are faulted.</p>
 		<p>You need to heal all faulty segments. When you click a segment, the segment and all immediately adjacent segments will heal or break. Once all segments are healed (black), the system will become operational.</p>
 		<p>You may reset the shield segments to a random state.</p>`,
 		endDescription: 'All shield segments fixed!',
 
-        "game": "lightsout",
-        "random": 7,
-        "size": 4,
+		game: 'lightsout',
+		random: 7,
+		size: 4,
 	},
-	"skill:expert": {
+	'skill:expert': {
 		initDescription: `<p>Front shield generator shield segments are faulted.</p>
 		<p>You need to heal all faulty segments. When you click a segment, the segment and all immediately adjacent segments will heal or break. Once all segments are healed (black), the system will become operational.</p>
 		<p>You may reset the shield segments to a random state.</p>`,
 		endDescription: 'All shield segments fixed!',
 
-        "game": "lightsout",
-        "random": 4,
-        "size": 4,
+		game: 'lightsout',
+		random: 4,
+		size: 4,
 	},
 });
 
@@ -335,8 +335,8 @@ for (let i=0; i < 20; i++) {
 		eeHealth: 0.10,  // fixes 10%
 		game: id,
 		status: 'initial',
-		calibrationTime: 0,
-		calibrationCount: 0,
+		calibrationTime: 2*60,
+		calibrationCount: 5,
 		title: `Rear shield segment ${code}`,
 		description: `Rear shield generator shield segment ${code} has failed. Segment needs to be repaired using HANSCA.`,
 		location: 'Upper deck, war room',
@@ -348,37 +348,37 @@ for (let i=0; i < 20; i++) {
 
 
 blobs.push({
-	type: 'game_config',
-	id: 'rearshield',
-	"default": {
+	'type': 'game_config',
+	'id': 'rearshield',
+	'default': {
 		initDescription: `<p>Rear shield generator shield segments are faulted.</p>
 		<p>You need to heal all faulty segments. When you click a segment, the segment and all immediately adjacent segments will heal or break. Once all segments are healed (black), the system will become operational.</p>
 		<p>You may reset the shield segments to a random state.</p>`,
 		endDescription: 'All shield segments fixed!',
 
-        "game": "lightsout",
-        "random": 10,
-        "size": 4,
+		game: 'lightsout',
+		random: 10,
+		size: 4,
 	},
-	"skill:master": {
+	'skill:master': {
 		initDescription: `<p>Rear shield generator shield segments are faulted.</p>
 		<p>You need to heal all faulty segments. When you click a segment, the segment and all immediately adjacent segments will heal or break. Once all segments are healed (black), the system will become operational.</p>
 		<p>You may reset the shield segments to a random state.</p>`,
 		endDescription: 'All shield segments fixed!',
 
-        "game": "lightsout",
-        "random": 7,
-        "size": 4,
+		game: 'lightsout',
+		random: 7,
+		size: 4,
 	},
-	"skill:expert": {
+	'skill:expert': {
 		initDescription: `<p>Rear shield generator shield segments are faulted.</p>
 		<p>You need to heal all faulty segments. When you click a segment, the segment and all immediately adjacent segments will heal or break. Once all segments are healed (black), the system will become operational.</p>
 		<p>You may reset the shield segments to a random state.</p>`,
 		endDescription: 'All shield segments fixed!',
 
-        "game": "lightsout",
-        "random": 4,
-        "size": 4,
+		game: 'lightsout',
+		random: 4,
+		size: 4,
 	},
 });
 
@@ -408,8 +408,8 @@ for (let i=0; i < 20; i++) {
 		eeHealth: 0.10,  // fixes 10%
 		game: id,
 		status: 'initial',
-		calibrationTime: 0,
-		calibrationCount: 0,
+		calibrationTime: 6*60,
+		calibrationCount: 2,
 		title: `Missile tube region ${code} damaged`,
 		description: `Missile tube region ${code} is damaged. Drone needs to be sent for repairs. Use HANSCA for performing repairs.`,
 		location: 'Lower deck, under stairway',
@@ -488,8 +488,8 @@ for (let i=0; i < 20; i++) {
 		eeHealth: 0.10,  // fixes 10%
 		game: id,
 		status: 'initial',
-		calibrationTime: 0,
-		calibrationCount: 0,
+		calibrationTime: 8*60,
+		calibrationCount: 1,
 		title: `Beam weapon segment ${code}`,
 		description: `Beam weapon segment ${code} has fallen out-of-sync with the ship quantum state. The quantum phase must be recalibrated using HANSCA.`,
 		location: 'Upper deck, corridor',
@@ -501,8 +501,8 @@ for (let i=0; i < 20; i++) {
 
 
 blobs.push({
-	type: 'game_config',
-	id: 'beamweapons',
+	'type': 'game_config',
+	'id': 'beamweapons',
 
 	'default': {
 		initDescription: 'Beam weapon requires phase recalibration.',
@@ -572,8 +572,8 @@ for (let i=0; i < 20; i++) {
 		eeHealth: 0.05,  // fixes 5% (max 100%)
 		game: id,
 		status: 'initial',
-		calibrationTime: 0,
-		calibrationCount: 0,
+		calibrationTime: 20*60,
+		calibrationCount: 1,
 		title: `Hull region ${code} damaged`,
 		description: `Hull region ${code} is damaged. Drone needs to be sent for repairs. Use HANSCA for performing repairs.`,
 		location: 'Lower deck, stairway',
@@ -625,8 +625,6 @@ blobs.push({
 	},
 
 });
-
-
 
 
 export default blobs;
