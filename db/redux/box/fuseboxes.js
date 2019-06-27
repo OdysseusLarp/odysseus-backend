@@ -3,7 +3,7 @@ const boxes = [
 		type: 'box',
 		id: 'fusebox_medbay',
 		config: {
-			blowing: [ 4, 15, 18, 22, 24,  9, 11, 7],
+			blowing: [4, 15, 18, 22, 24,  9, 11, 7],
 			measure: [14, 17, 27, 23, 10, 25,  8, 5],
 		},
 		dmxFuse: 5,  // Which fuse index triggers the following DMX events (optional)
@@ -14,7 +14,7 @@ const boxes = [
 		type: 'box',
 		id: 'fusebox_engineering',
 		config: {
-			blowing: [ 4, 15, 18, 22, 24,  9, 11, 7],
+			blowing: [4, 15, 18, 22, 24,  9, 11, 7],
 			measure: [14, 17, 27, 23, 10, 25,  8, 5],
 		},
 		dmxFuse: 7,
@@ -36,7 +36,7 @@ const boxes = [
 		type: 'box',
 		id: 'fusebox_science',
 		config: {
-			blowing: [ 4, 15, 18, 22, 24,  9, 11, 7],
+			blowing: [4, 15, 18, 22, 24,  9, 11, 7],
 			measure: [14, 17, 27, 23, 10, 25,  8, 5],
 		},
 		dmxFuse: 1,
@@ -47,7 +47,7 @@ const boxes = [
 		type: 'box',
 		id: 'fusebox_lounge',
 		config: {
-			blowing: [ 4, 15, 18, 22, 24,  9, 11, 7],
+			blowing: [4, 15, 18, 22, 24,  9, 11, 7],
 			measure: [14, 17, 27, 23, 10, 25,  8, 5],
 		},
 		dmxFuse: 6,
@@ -56,24 +56,22 @@ const boxes = [
 	},
 ];
 
-// FIXME: Update maps to final versions
-// FIXME: Update texts to refer to life support
 const tasks = [
 	{
 		type: 'task',
 		id: 'fusebox_medbay',
-		title: 'Fuses blown (medbay)',
-		description: 'Fuses have blown in medbay.',
+		title: 'Life support fuse failure (medbay)',
+		description: 'Life support fuses have blown in medbay.\n\nReplace broken fuses as instructed in Ship knowledge database code SQ-3 or operation manual page 2.2-38.',
 		location: 'Upper deck, medbay',
 		map: 'upper-6.png',
-		mapX: 120,  // FIXME: correct coordinates
-		mapY: 320,
+		mapX: 80,
+		mapY: 40,
 	},
 	{
 		type: 'task',
 		id: 'fusebox_engineering',
-		title: 'Fuses blown (engineering)',
-		description: 'Fuses have blown in engineering room.',
+		title: 'Life support fuse failure (engineering)',
+		description: 'Life support fuses have blown in engineering.\n\nReplace broken fuses as instructed in Ship knowledge database code SQ-3 or operation manual page 2.2-38.',
 		location: 'Upper deck, engineering storage',
 		map: 'upper-4.png',
 		mapX: 230,
@@ -82,18 +80,18 @@ const tasks = [
 	{
 		type: 'task',
 		id: 'fusebox_bridge',
-		title: 'Fuses blown (bridge)',
-		description: 'Fuses have blown in bridge.',
+		title: 'Life support fuse failure (bridge)',
+		description: 'Life support fuses have blown in bridge.\n\nReplace broken fuses as instructed in Ship knowledge database code SQ-3 or operation manual page 2.2-38.',
 		location: 'Upper deck, bridge',
 		map: 'upper-2.png',
-		mapX: 180,  // FIXME: correct coordinate
-		mapY: 375,
+		mapX: 140,
+		mapY: 100,
 	},
 	{
 		type: 'task',
 		id: 'fusebox_science',
-		title: 'Fuses blown (science lab)',
-		description: 'Fuses have blown in science lab.',
+		title: 'Life support fuse failure (science lab)',
+		description: 'Life support fuses have blown in science lab.\n\nReplace broken fuses as instructed in Ship knowledge database code SQ-3 or operation manual page 2.2-38.',
 		location: 'Lower deck, science lab',
 		map: 'lower-13.png',
 		mapX: 350,
@@ -102,12 +100,12 @@ const tasks = [
 	{
 		type: 'task',
 		id: 'fusebox_lounge',
-		title: 'Fuses blown (officer\'s lounge)',
-		description: 'Fuses have blown in officer\'s lounge.',
+		title: 'Life support fuse failure (celestial lounge)',
+		description: 'Life support fuses have blown in celestial lounge.\n\nReplace broken fuses as instructed in Ship knowledge database code SQ-3 or operation manual page 2.2-38.',
 		location: 'Upper deck, officer\'s lounge',
 		map: 'upper-9.png',
-		mapX: 250,  // FIXME: correct coordinate
-		mapY: 300,
+		mapX: 250,
+		mapY: 220,
 	},
 ];
 
