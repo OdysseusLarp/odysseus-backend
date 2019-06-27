@@ -12,8 +12,8 @@ blobs.push({
 	type: 'task',
 	status: 'initial',
 	title: 'Jump drive spectral calibration',
-	description: '...',  // FIXME: Add description
-	calibrationTime: 60,
+	description: 'Perform jump drive spectral calibration (separate instructions).',
+	calibrationTime: 2.5*60,
 	calibrationCount: 1,
 	location: 'Upper deck, engineering',
 	map: 'upper-5.png',
@@ -39,9 +39,11 @@ blobs.push({
 	status: 'initial',
 	title: 'Jump reactor realignment',
 	description: '...',
-	description_template: 'Configure to state {{code}}',  // FIXME: Add description + reference to paper manual page
-	calibrationTime: 60,
-	calibrationCount: 1,
+	description_template: `Jump drive reactor cores need to be realigned to state {{code}}.
+	
+	States can be found in Ship knowledge database code JD-33 or operation manual page 2.6-23`,
+	calibrationTime: 10,
+	calibrationCount: 33,
 	location: 'Upper deck, engineering',
 	map: 'upper-5.png',
 	mapX: 230,

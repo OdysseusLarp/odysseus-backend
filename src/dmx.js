@@ -59,14 +59,6 @@ export const CHANNELS = {
 	SmallBreachEventBreach: 166,
 	BreachEventEnd: 167,
 
-	// Airlock events
-	SmallAirLockEntryPossible: 168,
-	SmallAirLockNoEntry: 169,
-	MainAirLockEntryPossible: 170,
-	MainAirLockNoEntry: 171,
-	MainAirLockOpenInnerDoor: 172,
-	MainAirLockCloseInnerDoor: 173,
-
 	// Announcements
 	AnnouncementDisregardPrevious: 174,
 	AnnouncementAutomatedEmergency: 175,
@@ -84,6 +76,18 @@ export const CHANNELS = {
 	AnnouncementIdentifyyourself: 187,
 	AnnouncementScancompl: 188,
 	AnnouncementAnalysiscompl: 189,
+
+	// Airlock events
+	MainAirlockDoorClose: 190,
+	MainAirlockDoorOpen: 191,
+	MainAirlockDoorMalfunction: 192,
+	MainAirlockPressurize: 193,
+	MainAirlockDepressurize: 194,
+	HangarBayDoorLock: 195,
+	HangarBayDoorUnlock: 196,
+	HangarBayDoorMalfunction: 197,
+	HangarBayPressurize: 198,
+	HangarBayDepressurize: 199,
 };
 
 const dmx = init();

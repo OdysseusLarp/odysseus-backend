@@ -134,6 +134,7 @@ function breakJumpReactor() {
 			context: {
 				code: reactor.getCode(n),
 			},
+			toptext: `${n}`,
 		});
 	} else {
 		logger.error('No box with id \'jump_reactor\'');
