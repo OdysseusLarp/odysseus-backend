@@ -123,3 +123,12 @@ saveBlob({
 		shipRearShield: 200,
 	},
 });
+
+// EE Metadata blob, admin EE view won't work without this
+saveBlob({
+	isConnectionHealthy: true,
+	lastErrorMessage: null,
+	isEmulated: true,
+	id: 'ee_metadata',
+	type: 'ship',
+});
