@@ -56,4 +56,19 @@ router.put('/', handleAsyncErrors(async (req, res) => {
 	res.json(tag);
 }));
 
+/**
+ * Delete tag by id
+ * @route DELETE /tag/{id}
+ * @group Tag - Tag related operations
+ * @param {string} id.path.required - Tag id
+ * @returns {object} 204 - OK Empty Response
+ */
+router.delete('/:id', handleAsyncErrors(async (req, res) => {
+	const { id } = req.params;
+	const tag = await Tag.forge({ id }).fetch();
+	if (!tag) throw new NotFound('Tag not found');
+	await tag.destroy();
+	res.sendStatus(204);
+}));
+
 export default router;
