@@ -15,7 +15,7 @@ const router = new Router();
  */
 router.get('/', handleAsyncErrors(async (req, res) => {
 	const shouldContainTags = get(req, 'query.operations') === 'true';
-	res.json(await Tag.forge()[shouldContainTags ? 'fetchWithRelated' : 'fetch']());
+	res.json(await Tag.forge()[shouldContainTags ? 'fetchAllWithRelated' : 'fetchAll']());
 }));
 
 /**
