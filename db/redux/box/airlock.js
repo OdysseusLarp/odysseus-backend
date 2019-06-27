@@ -29,8 +29,8 @@ blobs.push({
 		},
 		// DMX events to fire on transition start
 		dmx_events: {
-			open: 'HangarBayDoorOpen',
-			close: 'HangarBayDoorClose',
+			open: 'HangarBayDoorUnlock',
+			close: 'HangarBayDoorLock',
 			malfunction: 'HangarBayDoorMalfunction',
 			pressurize: 'HangarBayPressurize',
 			depressurize: 'HangarBayDepressurize',
