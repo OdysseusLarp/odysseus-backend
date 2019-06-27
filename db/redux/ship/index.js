@@ -75,6 +75,7 @@ saveBlob({
 	type: 'ship',
 	id: 'calibration',
 	slots: 3,
+	multiplier: 1,
 });
 
 // Generated using emulator

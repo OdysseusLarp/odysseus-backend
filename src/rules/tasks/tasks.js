@@ -93,6 +93,7 @@ export function setTaskFixed(task, ctx) {
 const DECREASE_INTERVAL = 2;
 interval(() => {
 	let calibrationSlots = getCalibrationSlots();
+	const calibrationMultiplier = getCalibrationMultiplier();
 	const calibrating = Object.values(get(store.getState(), 'data.task', {}))
 		.filter(task => task.status === 'calibrating')
 		.sort((a, b) => a.sort - b.sort);
@@ -108,7 +109,7 @@ interval(() => {
 			if (calibrationSlots > 0 && task.calibrationRemaining[i] > 0) {
 				task.calibrationRemaining[i] = Math.max(
 					0,
-					task.calibrationRemaining[i] - task.calibrationSpeed[i] * DECREASE_INTERVAL
+					task.calibrationRemaining[i] - task.calibrationSpeed[i] * DECREASE_INTERVAL * calibrationMultiplier
 				);
 				calibrationSlots -= 1;
 				modified = true;
@@ -142,3 +143,12 @@ function getCalibrationSlots() {
 	}
 }
 
+function getCalibrationMultiplier() {
+	const data = store.getState().data;
+	if (data.ship.calibration && data.ship.calibration.multiplier) {
+		return data.ship.calibration.multiplier;
+	} else {
+		logger.error('Data blob ship:calibration not present, defaulting to multiplier 1');
+		return 1;
+	}
+}
