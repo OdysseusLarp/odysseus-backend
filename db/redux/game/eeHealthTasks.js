@@ -154,7 +154,7 @@ blobs.push({
 });
 
 
-// Maneuver
+// Maneuver  DONE
 
 for (let i=0; i < 20; i++) {
 	let letter;
@@ -187,11 +187,11 @@ for (let i=0; i < 20; i++) {
 		calibrationTime: 0,
 		calibrationCount: 0,
 		title: `Maneuver power segment ${code}`,
-		description: `Maneuver power segment ${code} has failed.`, // FIXME: babbletize
-		location: 'Upper deck, medbay (left) corridor (right)', // FIXME: location + map
-		map: 'upper-7.png',
-		mapX: 240,
-		mapY: 310 + i*2,
+		description: `Maneuver power segment ${code} has failed. Phase shift needs to be recalibrated using HANSCA.`,
+		location: letter === 'L' ? 'Upper deck, medbay' : 'Upper deck, corridor',
+		map: letter === 'L' ? 'upper-6.png' : 'upper-5.png',
+		mapX: letter === 'L' ? 200 : 150,
+		mapY: letter === 'L' ? 40 : 290,
 	});
 }
 
@@ -199,21 +199,39 @@ for (let i=0; i < 20; i++) {
 blobs.push({
 	type: 'game_config',
 	id: 'maneuver',
-	default: {
-		initDescription: 'Maneuver power segment needs phase calibration',  // FIXME: babbletize
+
+	'default': {
+		initDescription: 'Maneuver power segment needs phase calibration.',
 		endDescription: 'Phase calibration successful!',
 		game: 'phasesync',
 
-		// FIXME: Fine-tune settings for suitable difficulty
-		dimensions: 2,
+		dimensions: 4,
 		difficulty: 0.2,
 		duration: 1,
 		drift: 0,
 	},
-	// engineer_proficient: {
-	// 	game: 'phasesync'
-	// 	...
-	// }
+
+	'skill:master': {
+		initDescription: 'Maneuver power segment needs phase calibration.',
+		endDescription: 'Phase calibration successful!',
+		game: 'phasesync',
+
+		dimensions: 4,
+		difficulty: 0.1,
+		duration: 1,
+		drift: 0,
+	},
+
+	'skill:expert': {
+		initDescription: 'Maneuver power segment needs phase calibration.',
+		endDescription: 'Phase calibration successful!',
+		game: 'phasesync',
+
+		dimensions: 4,
+		difficulty: 0.075,
+		duration: 1,
+		drift: 0,
+	},
 });
 
 
@@ -234,7 +252,7 @@ for (let i=0; i < 20; i++) {
 		game_config: 'frontshield',
 		status: 'fixed',
 		config: {
-			title: `Front shield generator power segment ${code}`,
+			title: `Front shield segment ${code}`,
 		},
 	});
 	blobs.push({
@@ -246,12 +264,12 @@ for (let i=0; i < 20; i++) {
 		status: 'initial',
 		calibrationTime: 0,
 		calibrationCount: 0,
-		title: `Front shield generator power segment ${code}`,
-		description: `Front shield generator power segment ${code} has failed.`, // FIXME: babbletize
-		location: 'Lower deck, corridor', // FIXME: location + map
-		map: 'upper-7.png',
-		mapX: 240,
-		mapY: 310 + i*2,
+		title: `Front shield segment ${code}`,
+		description: `Front shield generator shield segment ${code} has failed. Segment needs to be repaired using HANSCA.`,
+		location: 'Lower deck, corridor',
+		map: 'lower-6.png',
+		mapX: 80,
+		mapY: 300,
 	});
 }
 
@@ -259,21 +277,36 @@ for (let i=0; i < 20; i++) {
 blobs.push({
 	type: 'game_config',
 	id: 'frontshield',
-	default: {
-		initDescription: 'Front shield generator power segment needs phase calibration',  // FIXME: babbletize
-		endDescription: 'Phase calibration successful!',
-		game: 'phasesync',
+	"default": {
+		initDescription: `<p>Front shield generator shield segments are faulted.</p>
+		<p>You need to heal all faulty segments. When you click a segment, the segment and all immediately adjacent segments will heal or break. Once all segments are healed (black), the system will become operational.</p>
+		<p>You may reset the shield segments to a random state.</p>`,
+		endDescription: 'All shield segments fixed!',
 
-		// FIXME: Fine-tune settings for suitable difficulty
-		dimensions: 2,
-		difficulty: 0.2,
-		duration: 1,
-		drift: 0,
+        "game": "lightsout",
+        "random": 10,
+        "size": 4,
 	},
-	// engineer_proficient: {
-	// 	game: 'phasesync'
-	// 	...
-	// }
+	"skill:master": {
+		initDescription: `<p>Front shield generator shield segments are faulted.</p>
+		<p>You need to heal all faulty segments. When you click a segment, the segment and all immediately adjacent segments will heal or break. Once all segments are healed (black), the system will become operational.</p>
+		<p>You may reset the shield segments to a random state.</p>`,
+		endDescription: 'All shield segments fixed!',
+
+        "game": "lightsout",
+        "random": 7,
+        "size": 4,
+	},
+	"skill:expert": {
+		initDescription: `<p>Front shield generator shield segments are faulted.</p>
+		<p>You need to heal all faulty segments. When you click a segment, the segment and all immediately adjacent segments will heal or break. Once all segments are healed (black), the system will become operational.</p>
+		<p>You may reset the shield segments to a random state.</p>`,
+		endDescription: 'All shield segments fixed!',
+
+        "game": "lightsout",
+        "random": 4,
+        "size": 4,
+	},
 });
 
 
@@ -292,7 +325,7 @@ for (let i=0; i < 20; i++) {
 		game_config: 'rearshield',
 		status: 'fixed',
 		config: {
-			title: `Rear shield generator power segment ${code}`,
+			title: `Rear shield segment ${code}`,
 		},
 	});
 	blobs.push({
@@ -304,12 +337,12 @@ for (let i=0; i < 20; i++) {
 		status: 'initial',
 		calibrationTime: 0,
 		calibrationCount: 0,
-		title: `Rear shield generator power segment ${code}`,
-		description: `Rear shield generator power segment ${code} has failed.`, // FIXME: babbletize
-		location: 'Upper deck, war room', // FIXME: location + map
-		map: 'upper-7.png',
-		mapX: 240,
-		mapY: 310 + i*2,
+		title: `Rear shield segment ${code}`,
+		description: `Rear shield generator shield segment ${code} has failed. Segment needs to be repaired using HANSCA.`,
+		location: 'Upper deck, war room',
+		map: 'upper-9.png',
+		mapX: 150,
+		mapY: 300,
 	});
 }
 
@@ -317,21 +350,36 @@ for (let i=0; i < 20; i++) {
 blobs.push({
 	type: 'game_config',
 	id: 'rearshield',
-	default: {
-		initDescription: 'Rear shield generator power segment needs phase calibration',  // FIXME: babbletize
-		endDescription: 'Phase calibration successful!',
-		game: 'phasesync',
+	"default": {
+		initDescription: `<p>Rear shield generator shield segments are faulted.</p>
+		<p>You need to heal all faulty segments. When you click a segment, the segment and all immediately adjacent segments will heal or break. Once all segments are healed (black), the system will become operational.</p>
+		<p>You may reset the shield segments to a random state.</p>`,
+		endDescription: 'All shield segments fixed!',
 
-		// FIXME: Fine-tune settings for suitable difficulty
-		dimensions: 2,
-		difficulty: 0.2,
-		duration: 1,
-		drift: 0,
+        "game": "lightsout",
+        "random": 10,
+        "size": 4,
 	},
-	// engineer_proficient: {
-	// 	game: 'phasesync'
-	// 	...
-	// }
+	"skill:master": {
+		initDescription: `<p>Rear shield generator shield segments are faulted.</p>
+		<p>You need to heal all faulty segments. When you click a segment, the segment and all immediately adjacent segments will heal or break. Once all segments are healed (black), the system will become operational.</p>
+		<p>You may reset the shield segments to a random state.</p>`,
+		endDescription: 'All shield segments fixed!',
+
+        "game": "lightsout",
+        "random": 7,
+        "size": 4,
+	},
+	"skill:expert": {
+		initDescription: `<p>Rear shield generator shield segments are faulted.</p>
+		<p>You need to heal all faulty segments. When you click a segment, the segment and all immediately adjacent segments will heal or break. Once all segments are healed (black), the system will become operational.</p>
+		<p>You may reset the shield segments to a random state.</p>`,
+		endDescription: 'All shield segments fixed!',
+
+        "game": "lightsout",
+        "random": 4,
+        "size": 4,
+	},
 });
 
 
@@ -430,7 +478,7 @@ for (let i=0; i < 20; i++) {
 		game_config: 'beamweapons',
 		status: 'fixed',
 		config: {
-			title: `Beam weapons power segment ${code}`,
+			title: `Beam weapon segment ${code}`,
 		},
 	});
 	blobs.push({
@@ -442,12 +490,12 @@ for (let i=0; i < 20; i++) {
 		status: 'initial',
 		calibrationTime: 0,
 		calibrationCount: 0,
-		title: `Beam weapons power segment ${code}`,
-		description: `Beam weapons power segment ${code} has failed.`, // FIXME: babbletize
-		location: 'Upper ramp', // FIXME: location + map  - ramp
-		map: 'upper-7.png',
+		title: `Beam weapon segment ${code}`,
+		description: `Beam weapon segment ${code} has fallen out-of-sync with the ship quantum state. The quantum phase must be recalibrated using HANSCA.`,
+		location: 'Upper deck, corridor',
+		map: 'upper-3.png',
 		mapX: 240,
-		mapY: 310 + i*2,
+		mapY: 20,
 	});
 }
 
@@ -455,21 +503,40 @@ for (let i=0; i < 20; i++) {
 blobs.push({
 	type: 'game_config',
 	id: 'beamweapons',
-	default: {
-		initDescription: 'Beam weapons power segment needs phase calibration',  // FIXME: babbletize
+
+	'default': {
+		initDescription: 'Beam weapon requires phase recalibration.',
 		endDescription: 'Phase calibration successful!',
 		game: 'phasesync',
 
-		// FIXME: Fine-tune settings for suitable difficulty
+		dimensions: 2,
+		difficulty: 0.4,
+		duration: 1,
+		drift: 0.15,
+	},
+
+	'skill:master': {
+		initDescription: 'Beam weapon requires phase recalibration.',
+		endDescription: 'Phase calibration successful!',
+		game: 'phasesync',
+
+		dimensions: 2,
+		difficulty: 0.4,
+		duration: 1,
+		drift: 0.05,
+	},
+
+	'skill:expert': {
+		initDescription: 'Beam weapon requires phase recalibration.',
+		endDescription: 'Phase calibration successful!',
+		game: 'phasesync',
+
 		dimensions: 2,
 		difficulty: 0.2,
 		duration: 1,
 		drift: 0,
 	},
-	// engineer_proficient: {
-	// 	game: 'phasesync'
-	// 	...
-	// }
+
 });
 
 
