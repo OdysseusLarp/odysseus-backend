@@ -137,6 +137,9 @@ async function onSendMessage(socket, messageDetails) {
 		message,
 		seen: false
 	};
+	if (target === socket.userId) {
+		return logger.warn(`${target} tried to message themself, returning`);
+	}
 	if (type === 'private') {
 		messageData.target_person = target;
 	} else if (type === 'channel') {

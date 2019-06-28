@@ -36,7 +36,9 @@ export const ComMessage = Bookshelf.Model.extend({
 	},
 	fetchPageWithRelated: function (page) {
 		return this.orderBy('created_at').fetchPage({
-			pageSize: 50,
+			// Feature that caused us great distress, fetching the FIRST 50 entries with no way to fetch more
+			// Quick and dirty fix: increase pageSize to a large number
+			pageSize: 500000,
 			page,
 			withRelated: messageWithRelated
 		});
