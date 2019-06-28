@@ -176,6 +176,13 @@ function handleTransition(jump, currentStatus, previousStatus) {
 			// Enable systems after 3600ms, which is around the time when the JumpEnd audio reaches climax
 			setTimeout(() => setSystemsEnabled(true), 3600);
 
+			// Enable Empty Epsilon state synchronization if connection status is healthy
+			if (getEmptyEpsilonClient().getConnectionStatus().isConnectionHealthy) {
+				setEeSyncEnabled(true);
+			} else {
+				logger.error('Could not enable Empty Epsilon state synchronization, connection is not healthy');
+			}
+
 			// Remove a jump crystal and send a warning if they drop below 5, unless CRYSTAL_GENERATOR artifact has been used
 			const hasCrystalGenerator = get(getData('misc', 'artifact_actions'), 'actions.CRYSTAL_GENERATOR.is_used');
 			if (hasCrystalGenerator) break;
