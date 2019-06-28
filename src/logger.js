@@ -1,9 +1,11 @@
 import logger from 'signale';
 
 export const loggerMiddleware = (req, res, next) => {
-	const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
-	logger.log(ip, req.method, req.url);
 	next();
+	res.on('finish', () => {
+		if (res.statusCode < 400) return;
+		logger.error(`HTTP ${res.statusCode} ${req.method} ${req.url}`);
+	});
 };
 
 export { logger };
