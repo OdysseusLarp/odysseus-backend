@@ -62,7 +62,7 @@ router.put('/', handleAsyncErrors(async (req, res) => {
 				`Your ${post.get('type').toLowerCase()} post '${post.get('title')}' was rejected and will not be published.`;
 
 			// If fleet secretary messages themself, stuff breaks in very unexpected ways
-			if (post.get('person_id') === process.env.FLEET_SECRETARY_ID) {
+			if (String(post.get('person_id')) === process.env.FLEET_SECRETARY_ID) {
 				return logger.debug('Denying fleet secretary from messaging themself');
 			}
 			adminSendMessage(process.env.FLEET_SECRETARY_ID, {

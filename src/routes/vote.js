@@ -104,7 +104,7 @@ router.put('/:id', handleAsyncErrors(async (req, res) => {
 			`Your vote '${vote.get('title')}' was approved and released.` :
 			`Your vote '${vote.get('title')}' was rejected and will not be published.`;
 		// If fleet secretary messages themself, stuff breaks in very unexpected ways
-		if (vote.get('person_id') === process.env.FLEET_SECRETARY_ID) {
+		if (String(vote.get('person_id')) === process.env.FLEET_SECRETARY_ID) {
 			return logger.debug('Denying fleet secretary from messaging themself');
 		}
 		adminSendMessage(process.env.FLEET_SECRETARY_ID, {
