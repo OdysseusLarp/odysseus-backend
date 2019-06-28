@@ -4,6 +4,7 @@ import { STATUS_PENDING, STATUS_APPROVED } from '../models';
 import { handleAsyncErrors } from '../helpers';
 import { adminSendMessage } from '../messaging';
 import { get, pick } from 'lodash';
+import { logger } from '../logger';
 const router = new Router();
 
 /**
@@ -59,6 +60,11 @@ router.put('/', handleAsyncErrors(async (req, res) => {
 			const message = isApproved ?
 				`Your ${post.get('type').toLowerCase()} post '${post.get('title')}' was approved and released.` :
 				`Your ${post.get('type').toLowerCase()} post '${post.get('title')}' was rejected and will not be published.`;
+
+			// If fleet secretary messages themself, stuff breaks in very unexpected ways
+			if (post.get('person_id') === process.env.FLEET_SECRETARY_ID) {
+				return logger.debug('Denying fleet secretary from messaging themself');
+			}
 			adminSendMessage(process.env.FLEET_SECRETARY_ID, {
 				target: post.get('person_id'),
 				type: 'private',
