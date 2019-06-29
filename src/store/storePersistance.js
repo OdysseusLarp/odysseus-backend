@@ -22,11 +22,13 @@ store.subscribe(() => {
 	throttledSaveState(data, 'data');
 });
 
-process.on('SIGINT', async () => {
-	const { data } = store.getState();
-	await saveState(data, 'data');
-	logger.info('Redux state saved to database, exiting process');
-	process.exit(0);
-});
+export function enableGracefulShutdown() {
+	process.on('SIGINT', async () => {
+		const { data } = store.getState();
+		await saveState(data, 'data');
+		logger.info('Redux state saved to database, exiting process');
+		process.exit(0);
+	});
+}
 
 export { saveState, throttledSaveState };

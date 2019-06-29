@@ -17,7 +17,7 @@ import prometheusIoMetrics from 'socket.io-prometheus';
 import prometheusMiddleware from 'express-prometheus-middleware';
 
 import { initStoreSocket } from './store/storeSocket';
-import { initState } from './store/store';
+import { initState, enableGracefulShutdown } from './store/store';
 import './store/storePersistance';
 import fleet from './routes/fleet';
 import starmap from './routes/starmap';
@@ -162,6 +162,7 @@ Store.forge({ id: 'data' }).fetch().then(model => {
 	logger.info('State initialized');
 	loadRules();
 	startServer();
+	enableGracefulShutdown();
 
 	const EE_UPDATE_INTERVAL = parseInt(process.env.EMPTY_EPSILON_UPDATE_INTERVAL_MS || '1000', 10);
 	logger.watch(`Starting to poll Empty Epsilon game state every ${EE_UPDATE_INTERVAL}ms`);
