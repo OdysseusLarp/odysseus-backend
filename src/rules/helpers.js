@@ -128,7 +128,15 @@ export function randomInt(min, max) {
 	return Math.floor(Math.random() * (max-min+1)) + min;
 }
 
-// From https://stackoverflow.com/a/49479872/412896
+/**
+ * Choose n elements (default one) from an array. Returns array of
+ * n elements (or the whole array if shorter than n) in random order.
+ *
+ * From https://stackoverflow.com/a/49479872/412896
+ *
+ * @param {array} array Array from which to choose elements from
+ * @param {number} n How many random elements to choose
+ */
 export function chooseRandom(array, n = 1) {
 	return array
 	  .map(x => ({ x, r: Math.random() }))
