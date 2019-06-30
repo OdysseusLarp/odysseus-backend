@@ -92,6 +92,9 @@ export function setTaskFixed(task, ctx) {
  */
 const DECREASE_INTERVAL = 2;
 interval(() => {
+	if (isJumping()) {
+		return;
+	}
 	let calibrationSlots = getCalibrationSlots();
 	const calibrationMultiplier = getCalibrationMultiplier();
 	const calibrating = Object.values(get(store.getState(), 'data.task', {}))
@@ -132,6 +135,11 @@ interval(() => {
 		}
 	});
 }, DECREASE_INTERVAL * 1000);
+
+function isJumping() {
+	const status = store.getState().data.ship.jump.status;
+	return status === 'jump_initiated' || status === 'jumping';
+}
 
 function getCalibrationSlots() {
 	const data = store.getState().data;
