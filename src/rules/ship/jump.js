@@ -165,7 +165,8 @@ function handleTransition(jump, currentStatus, previousStatus) {
 			logger.info(`Updating jump drive times`);
 			saveBlob({
 				...jump,
-				last_jump: lastJump,
+				last_jump: jump.last_jump_override || lastJump,
+				last_jump_override: undefined,
 				jump_at: 0,
 				breaking_jump: true,
 				minor_breaking_jump: (Math.random() < 0.33),  // randomize after jump, so first jump is always value from seed
