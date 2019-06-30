@@ -85,9 +85,10 @@ export function loadMessaging(io) {
  * @param  {object} socket - Socket
  */
 async function onConnection(socket) {
-	// Add user to list of active sockets for easier private messaging
-	// TODO: Check if user already has an active socket and disconnect that one first
-	connectedUsers.set(socket.userId, socket);
+	// Add user to list of active sockets for private messaging
+	const userSet = connectedUsers.get(socket.userId) || new Set([]);
+	userSet.add(socket);
+	connectedUsers.set(socket.userId, userSet);
 
 	socket.on('disconnect', () => onUserDisconnect(socket));
 	socket.on('message', messageDetails => onSendMessage(socket, messageDetails));
@@ -153,7 +154,7 @@ async function onSendMessage(socket, messageDetails) {
 	// Only emit to target and sender client if message is private
 	if (type === 'private' && connectedUsers.has(target)) {
 		const msgWithRelated = await msg.fetchWithRelated();
-		connectedUsers.get(target).emit('message', msgWithRelated);
+		connectedUsers.get(target).forEach(s => s.emit('message', msgWithRelated));
 		socket.emit('message', msgWithRelated);
 	} else {
 		// Send to general channel for now
@@ -172,7 +173,7 @@ async function onMessagesSeen(socket, messageIds) {
 		.where('id', 'in', messageIds)
 		.save({ seen: true }, { method: 'update', patch: true });
 	const messages = await ComMessage.forge().where('id', 'in', messageIds).fetchPageWithRelated();
-	socket.emit('messagesSeen', messages);
+	connectedUsers.get(socket.userId).forEach(s => s.emit('messagesSeen', messages));
 }
 
 /**
@@ -209,7 +210,9 @@ async function onFetchHistory(socket, payload) {
  */
 function onUserDisconnect(socket) {
 	messaging.emit('status', { state: 'disconnected', user: socket.user });
-	connectedUsers.delete(socket.userId);
+	const userSet = connectedUsers.get(socket.userId);
+	userSet.delete(socket);
+	if (!userSet.size) connectedUsers.delete(socket.userId);
 	logger.info(`User ${socket.userId} disconnected from messaging`);
 }
 
