@@ -1,4 +1,4 @@
-import { saveBlob, clamp, interval } from '../helpers';
+import { saveBlob, clamp, interval, chooseRandom } from '../helpers';
 import store, { watch } from '../../store/store';
 import { getEmptyEpsilonClient } from '../../emptyepsilon';
 import { updateEmptyEpsilonState } from '../../index';
@@ -69,6 +69,11 @@ function computeHealth(brokenTasks) {
 	return brokenTasks.reduce((health, task) => health - task.eeHealth, 1);
 }
 
+function getPriorityTasks(tasks) {
+	const maxPriority = tasks.reduce((max, task) => Math.max(max, task.priority ? task.priority : 0), 0);
+	return tasks.filter(task => (task.priority ? task.priority : 0) === maxPriority);
+}
+
 function breakTasks(type, targetHealth) {
 	const tasks = getEETasks(type);
 	const brokenTasks = tasks.filter(isBroken);
@@ -77,8 +82,8 @@ function breakTasks(type, targetHealth) {
 	let currentHealth = originalHealth;
 
 	while (currentHealth > targetHealth && unbrokenTasks.length > 0) {
-		const index = Math.floor(Math.random() * unbrokenTasks.length);
-		const toBeBroken = unbrokenTasks.splice(index, 1)[0];
+		const priorityTasks = getPriorityTasks(unbrokenTasks);
+		const toBeBroken = chooseRandom(priorityTasks)[0];
 		breakTask(toBeBroken);
 		currentHealth -= toBeBroken.eeHealth;
 	}
