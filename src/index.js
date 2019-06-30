@@ -17,7 +17,8 @@ import prometheusIoMetrics from 'socket.io-prometheus';
 import prometheusMiddleware from 'express-prometheus-middleware';
 
 import { initStoreSocket } from './store/storeSocket';
-import { initState, enableGracefulShutdown } from './store/store';
+import { initState } from './store/store';
+import { enableGracefulShutdown } from './store/storePersistance';
 import './store/storePersistance';
 import fleet from './routes/fleet';
 import starmap from './routes/starmap';
