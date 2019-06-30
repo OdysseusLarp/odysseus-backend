@@ -154,8 +154,8 @@ async function onSendMessage(socket, messageDetails) {
 	// Only emit to target and sender client if message is private
 	if (type === 'private' && connectedUsers.has(target)) {
 		const msgWithRelated = await msg.fetchWithRelated();
-		connectedUsers.get(target).forEach(s => s.emit('message', msgWithRelated));
-		socket.emit('message', msgWithRelated);
+		const socketSet = connectedUsers.get(target);
+		if (socketSet) socketSet.forEach(s => s.emit('message', msgWithRelated));
 	} else {
 		// Send to general channel for now
 		messaging.emit('message', await msg.fetchWithRelated());
@@ -173,7 +173,8 @@ async function onMessagesSeen(socket, messageIds) {
 		.where('id', 'in', messageIds)
 		.save({ seen: true }, { method: 'update', patch: true });
 	const messages = await ComMessage.forge().where('id', 'in', messageIds).fetchPageWithRelated();
-	connectedUsers.get(socket.userId).forEach(s => s.emit('messagesSeen', messages));
+	const socketSet = connectedUsers.get(socket.userId);
+	if (socketSet) socketSet.forEach(s => s.emit('messagesSeen', messages));
 }
 
 /**
@@ -211,8 +212,8 @@ async function onFetchHistory(socket, payload) {
 function onUserDisconnect(socket) {
 	messaging.emit('status', { state: 'disconnected', user: socket.user });
 	const userSet = connectedUsers.get(socket.userId);
-	userSet.delete(socket);
-	if (!userSet.size) connectedUsers.delete(socket.userId);
+	if (userSet) userSet.delete(socket);
+	if (userSet && !userSet.size) connectedUsers.delete(socket.userId);
 	logger.info(`User ${socket.userId} disconnected from messaging`);
 }
 
