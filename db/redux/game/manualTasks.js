@@ -75,7 +75,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Code Unit Model 55f A',
+			title: 'Frontshield Code Unit Model 55f A',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>The code unit model 55F is located in Engineering Technical Space. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions.</p>',
 				'<p>Set up the wires as follows:</p><ul><li>Wire 10 --> Slot 22</li><li>Wires 19 and 15 --> Slot 20</li><li>Wire 11 --> Slot 18</li><li>Wires 13 and 14 --> Slot 15</li><li>Wire 12 --> Slot 14</li></ul>',
@@ -95,7 +95,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Code Unit Model 55f B',
+			title: 'Frontshield Code Unit Model 55f B',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>The code unit model 55F is located in Engineering Technical Space. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions.</p>',
 				'<p>Set up the wires as follows:</p><ul><li>Wire 10 --> Slot 24</li><li>Wires 19 and 15 --> Slot 21</li><li>Wire 11 --> Slot 12</li><li>Wires 13 and 14 --> Slot 15</li><li>Wire 12 --> Slot 19</li></ul>',
@@ -115,7 +115,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Code Unit Model 55f C',
+			title: 'Frontshield Code Unit Model 55f C',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>The code unit model 55F is located in Engineering Technical Space. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions.</p>',
 				'<p>Set up the wires as follows:</p><ul><li>Wire 10 --> Slot 21</li><li>Wires 19 and 15 --> Slot 19</li><li>Wire 11 --> Slot 16</li><li>Wires 13 and 14 --> Slot 20</li><li>Wire 12 --> Slot 15</li></ul>',
@@ -135,9 +135,27 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Electricity storage battery type 472',
+			title: 'Reactor Electricity storage battery type 472',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>The battery is located in Engineering Technical Space. Refer to ESS Odysseus Operations Handbook page 2.1-2 for instructions.</p>',
+				'<p>When the task is complete, move it to calibration.</p>'
+			],
+			buttons: [
+				'Next',
+				'Calibrate'
+			]
+		}
+	},
+	{
+		id: 'reactor_MG9k',
+		type: 'game',
+		task: 'reactor_MG9k',
+		game_config: 'manual',
+		status: 'fixed',
+		config: {
+			title: 'Connect Back-up Reactor MG9k',
+			pages: [
+				'<p>Perform the manual task according to instructions.</p><p>The back-up reactor is located in the medbay behind a picture/poster. Connect all the wires to use back-up reactor MG9k</p>',
 				'<p>When the task is complete, move it to calibration.</p>'
 			],
 			buttons: [
@@ -153,7 +171,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Code Unit Model 55f A',
+			title: 'Rearshield Code Unit Model 55f A',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>The code unit model 55F is located in Engineering Technical Space. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions.</p>',
 				'<p>Set up the wires as follows:</p><ul><li>Wire 10 --> Slot 15</li><li>Wires 19 and 15 --> Slot 17</li><li>Wire 11 --> Slot 21</li><li>Wires 13 and 14 --> Slot 22</li><li>Wire 12 --> Slot 18</li></ul>',
@@ -172,7 +190,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Code Unit Model 55f B',
+			title: 'Rearshield Code Unit Model 55f B',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>The code unit model 55F is located in Engineering Technical Space. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions.</p>',
 				'<p>Set up the wires as follows:</p><ul><li>Wire 10 --> Slot 14</li><li>Wires 19 and 15 --> Slot 16</li><li>Wire 11 --> Slot 18</li><li>Wires 13 and 14 --> Slot 20</li><li>Wire 12 --> Slot 22</li></ul>',
@@ -192,7 +210,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Code Unit Model 55f C',
+			title: 'Rearshield Code Unit Model 55f C',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>The code unit model 55F is located in Engineering Technical Space. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions.</p>',
 				'<p>Set up the wires as follows:</p><ul><li>Wire 10 --> Slot 15</li><li>Wires 19 and 15 --> Slot 17</li><li>Wire 11 --> Slot 19</li><li>Wires 13 and 14 --> Slot 21</li><li>Wire 12 --> Slot 23</li></ul>',
@@ -417,9 +435,27 @@ blobs.push({
 		eeHealth: 0.3,
 		status: 'initial',
 		calibrationCount: 1,
-		calibrationTime: 2220,
+		calibrationTime: 1080,
 		title: 'Change Reactor Electricity Storage Battery Type 472',
-		description: 'Manual labor is needed. The battery is located in Engineering Technical Space. Refer to ESS Odysseus Operations Handbook page 2.1-1 for instructions. Use HANSCA repair for calibration.',
+		description: 'Manual labor is needed. The battery is located in Engineering Technical Space. Refer to ESS Odysseus Operations Handbook page 2.1-1 for instructions. Use HANSCA repair.',
+		location: 'Upper deck, Enineering storage space',
+		map: 'upper-10.png',
+		mapX: 325,
+		mapY: 400
+	},
+	{
+		id: 'reactor_MG9k',
+		type: 'task',
+		game: 'reactor_MG9k',
+		singleUse: true,
+		used: false,
+		eeType: 'reactor',
+		eeHealth: 0.4,
+		status: 'initial',
+		calibrationCount: 1,
+		calibrationTime: 2220,
+		title: 'Connect Back-up Reactor MG9k',
+		description: 'Manual labor is needed. The back-up reactor MG9k is located in the medbay behind a picture/poster. Use HANSCA repair.',
 		location: 'Upper deck, Enineering storage space',
 		map: 'upper-10.png',
 		mapX: 325,
@@ -563,11 +599,11 @@ blobs.push({
 		calibrationCount: 2,
 		calibrationTime: 900,
 		title: 'Impulse Engine Hypersensitive Sensor Module 21 Clean-up',
-		description: 'Manual labor is needed. The Hypersensitive Sensor Module is located in Engineering Technical Space. Refer to ESS Odysseus Operations Handbook page 2.5-45 for instructions. Use HANSCA repair for calibration.',
-		location: 'Upper deck, Enineering storage space',
-		map: 'upper-10.png',
-		mapX: 325,
-		mapY: 400
+		description: 'Manual labor is needed. The Hypersensitive Sensor Module is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.5-45 for instructions. Use HANSCA repair for calibration.',
+		location: 'Upper deck, Bridge',
+		map: 'upper-2.png',
+		mapX: 225,
+		mapY: 300
 	},
 	{
 		id: 'impulse_hsm_22',
@@ -581,11 +617,11 @@ blobs.push({
 		calibrationCount: 2,
 		calibrationTime: 900,
 		title: 'Impulse Engine Hypersensitive Sensor Module 22 Clean-up',
-		description: 'Manual labor is needed. The Hypersensitive Sensor Module is located in Engineering Technical Space. Refer to ESS Odysseus Operations Handbook page 2.5-45 for instructions. Use HANSCA repair for calibration.',
-		location: 'Upper deck, Enineering storage space',
-		map: 'upper-10.png',
-		mapX: 325,
-		mapY: 400
+		description: 'Manual labor is needed. The Hypersensitive Sensor Module is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.5-45 for instructions. Use HANSCA repair for calibration.',
+		location: 'Upper deck, Bridge',
+		map: 'upper-2.png',
+		mapX: 225,
+		mapY: 300
 	},
 	{
 		id: 'impulse_hsm_23',
@@ -599,11 +635,11 @@ blobs.push({
 		calibrationCount: 2,
 		calibrationTime: 900,
 		title: 'Impulse Engine Hypersensitive Sensor Module 23 Clean-up',
-		description: 'Manual labor is needed. The Hypersensitive Sensor Module is located in Engineering Technical Space. Refer to ESS Odysseus Operations Handbook page 2.5-45 for instructions. Use HANSCA repair for calibration.',
-		location: 'Upper deck, Enineering storage space',
-		map: 'upper-10.png',
-		mapX: 325,
-		mapY: 400
+		description: 'Manual labor is needed. The Hypersensitive Sensor Module is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.5-45 for instructions. Use HANSCA repair for calibration.',
+		location: 'Upper deck, Bridge',
+		map: 'upper-2.png',
+		mapX: 225,
+		mapY: 300
 	},
 	{
 		id: 'impulse_hsm_24',
@@ -617,11 +653,11 @@ blobs.push({
 		calibrationCount: 2,
 		calibrationTime: 900,
 		title: 'Impulse Engine Hypersensitive Sensor Module 24 Clean-up',
-		description: 'Manual labor is needed. The Hypersensitive Sensor Module is located in Engineering Technical Space. Refer to ESS Odysseus Operations Handbook page 2.5-45 for instructions. Use HANSCA repair for calibration.',
-		location: 'Upper deck, Enineering storage space',
-		map: 'upper-10.png',
-		mapX: 325,
-		mapY: 400
+		description: 'Manual labor is needed. The Hypersensitive Sensor Module is located in the medbay. Refer to ESS Odysseus Operations Handbook page 2.5-45 for instructions. Use HANSCA repair for calibration.',
+		location: 'Upper deck, Medbay',
+		map: 'upper-6.png',
+		mapX: 60,
+		mapY: 50
 	}
 ].forEach(blob => blobs.push(blob));
 
