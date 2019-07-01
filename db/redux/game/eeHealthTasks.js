@@ -398,7 +398,7 @@ for (let i=0; i < 20; i++) {
 		game_config: 'missilesystem',
 		status: 'fixed',
 		config: {
-			title: `Missile tube region ${code} damaged`,
+			title: `Missile tube region ${code}`,
 		},
 	});
 	blobs.push({
@@ -410,7 +410,7 @@ for (let i=0; i < 20; i++) {
 		status: 'initial',
 		calibrationTime: 6*60,
 		calibrationCount: 2,
-		title: `Missile tube region ${code} damaged`,
+		title: `Missile tube region ${code}`,
 		description: `Missile tube region ${code} is damaged. Drone needs to be sent for repairs. Use HANSCA for performing repairs.`,
 		location: 'Lower deck, under stairway',
 		map: 'lower-13.png',
@@ -562,7 +562,7 @@ for (let i=0; i < 20; i++) {
 		game_config: 'hull',
 		status: 'fixed',
 		config: {
-			title: `Hull region ${code} damaged`,
+			title: `Hull region ${code}`,
 		},
 	});
 	blobs.push({
@@ -574,7 +574,7 @@ for (let i=0; i < 20; i++) {
 		status: 'initial',
 		calibrationTime: 20*60,
 		calibrationCount: 1,
-		title: `Hull region ${code} damaged`,
+		title: `Hull region ${code}`,
 		description: `Hull region ${code} is damaged. Drone needs to be sent for repairs. Use HANSCA for performing repairs.`,
 		location: 'Lower deck, stairway',
 		map: letter === 'L' ? 'lower-6.png' : 'lower-13.png',
