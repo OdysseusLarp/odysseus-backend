@@ -57,8 +57,6 @@ saveBlob({
 	type: 'ship',
 	id: 'lifesupport',
 	health: 1,
-	total: 10,
-	unbroken: 10,
 });
 
 saveBlob({
