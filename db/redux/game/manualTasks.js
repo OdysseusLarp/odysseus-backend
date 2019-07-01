@@ -66,4 +66,247 @@ blobs.push({
 	},
 });
 
+// Manual games
+[
+	{
+		id: 'frontshield_55f_a',
+		type: 'game',
+		task: 'frontshield_55f_a',
+		game_config: 'manual',
+		status: 'fixed',
+		config: {
+			title: 'Code Unit Model 55f',
+			pages: [
+				'<p>Perform the manual task according to instructions.</p><p>The code unit model 55F is located in Engineering Technical Space. Refer to ESS Odysseus Operations Handbook page 2.1-1 for instructions.</p>',
+				'<p>Set up the wires as follows:</p><ul><li>Wire 10 --> Slot 22</li><li>Wires 19 and 15 --> Slot 20</li><li>Wire 11 --> Slot 18</li><li>Wires 13 and 14 --> Slot 15</li><li>Wire 12 --> Slot 14</li></ul>',
+				'<p>Move to calibrating when complete.</p>'
+			],
+			buttons: [
+				'Wiring instructions',
+				'Next',
+				'Calibrate'
+			]
+		}
+	},
+	{
+		id: 'frontshield_55f_b',
+		type: 'game',
+		task: 'frontshield_55f_b',
+		game_config: 'manual',
+		status: 'fixed',
+		config: {
+			title: 'Code Unit Model 55f',
+			pages: [
+				'<p>Perform the manual task according to instructions.</p><p>The code unit model 55F is located in Engineering Technical Space. Refer to ESS Odysseus Operations Handbook page 2.1-1 for instructions.</p>',
+				'<p>Set up the wires as follows:</p><ul><li>Wire 10 --> Slot 24</li><li>Wires 19 and 15 --> Slot 21</li><li>Wire 11 --> Slot 12</li><li>Wires 13 and 14 --> Slot 15</li><li>Wire 12 --> Slot 19</li></ul>',
+				'<p>Move to calibrating when complete.</p>'
+			],
+			buttons: [
+				'Wiring instructions',
+				'Next',
+				'Calibrate'
+			]
+		}
+	},
+	{
+		id: 'frontshield_55f_c',
+		type: 'game',
+		task: 'frontshield_55f_c',
+		game_config: 'manual',
+		status: 'fixed',
+		config: {
+			title: 'Code Unit Model 55f',
+			pages: [
+				'<p>Perform the manual task according to instructions.</p><p>The code unit model 55F is located in Engineering Technical Space. Refer to ESS Odysseus Operations Handbook page 2.1-1 for instructions.</p>',
+				'<p>Set up the wires as follows:</p><ul><li>Wire 10 --> Slot 21</li><li>Wires 19 and 15 --> Slot 19</li><li>Wire 11 --> Slot 16</li><li>Wires 13 and 14 --> Slot 20</li><li>Wire 12 --> Slot 15</li></ul>',
+				'<p>Move to calibrating when complete.</p>'
+			],
+			buttons: [
+				'Wiring instructions',
+				'Next',
+				'Calibrate'
+			]
+		}
+	},
+	{
+		id: 'reactor_battery_472',
+		type: 'game',
+		task: 'reactor_battery_472',
+		game_config: 'manual',
+		status: 'fixed',
+		config: {
+			title: 'Electricity storage battery type 472',
+			pages: [
+				'<p>Perform the manual task according to instructions.</p><p>The battery is located in Engineering Technical Space. Refer to ESS Odysseus Operations Handbook page 2.1-1 for instructions.</p>',
+				'<p>When the task is complete, move it to calibration.</p>'
+			],
+			buttons: [
+				'Next',
+				'Calibrate'
+			]
+		}
+	},
+	{
+		id: 'rearshield_55f_a',
+		type: 'game',
+		task: 'rearshield_55f_a',
+		game_config: 'manual',
+		status: 'fixed',
+		config: {
+			title: 'Code Unit Model 55f',
+			pages: [
+				'<p>Perform the manual task according to instructions.</p><p>The code unit model 55F is located in Engineering Technical Space. Refer to ESS Odysseus Operations Handbook page 2.1-1 for instructions.</p>',
+				'<p>Set up the wires as follows:</p><ul><li>Wire 10 --> Slot 15</li><li>Wires 19 and 15 --> Slot 17</li><li>Wire 11 --> Slot 21</li><li>Wires 13 and 14 --> Slot 22</li><li>Wire 12 --> Slot 18</li></ul>',
+				'<p>Move to calibrating when complete.</p>'
+			],
+			buttons: [
+				'Wiring instructions',
+				'Next',
+				'Calibrate'
+			]
+		}
+	}, {
+		id: 'rearshield_55f_b',
+		type: 'game',
+		task: 'rearshield_55f_b',
+		game_config: 'manual',
+		status: 'fixed',
+		config: {
+			title: 'Code Unit Model 55f',
+			pages: [
+				'<p>Perform the manual task according to instructions.</p><p>The code unit model 55F is located in Engineering Technical Space. Refer to ESS Odysseus Operations Handbook page 2.1-1 for instructions.</p>',
+				'<p>Set up the wires as follows:</p><ul><li>Wire 10 --> Slot 14</li><li>Wires 19 and 15 --> Slot 16</li><li>Wire 11 --> Slot 18</li><li>Wires 13 and 14 --> Slot 20</li><li>Wire 12 --> Slot 22</li></ul>',
+				'<p>Move to calibrating when complete.</p>'
+			],
+			buttons: [
+				'Wiring instructions',
+				'Next',
+				'Calibrate'
+			]
+		}
+	},
+	{
+		id: 'rearshield_55f_c',
+		type: 'game',
+		task: 'rearshield_55f_c',
+		game_config: 'manual',
+		status: 'fixed',
+		config: {
+			title: 'Code Unit Model 55f',
+			pages: [
+				'<p>Perform the manual task according to instructions.</p><p>The code unit model 55F is located in Engineering Technical Space. Refer to ESS Odysseus Operations Handbook page 2.1-1 for instructions.</p>',
+				'<p>Set up the wires as follows:</p><ul><li>Wire 10 --> Slot 15</li><li>Wires 19 and 15 --> Slot 17</li><li>Wire 11 --> Slot 19</li><li>Wires 13 and 14 --> Slot 21</li><li>Wire 12 --> Slot 23</li></ul>',
+				'<p>Move to calibrating when complete.</p>'
+			],
+			buttons: [
+				'Wiring instructions',
+				'Next',
+				'Calibrate'
+			]
+		}
+	},
+].forEach(blob => blobs.push(blob));
+
+// Manual tasks
+[
+	{
+		id: 'frontshield_55f_a',
+		type: 'task',
+		game: 'frontshield_55f_a',
+		singleUse: false,
+		used: false,
+		eeType: 'frontshield',
+		eeHealth: 0.15,
+		status: 'initial',
+		calibrationCount: 2,
+		calibrationTime: 240,
+		title: 'Recoding Unit Model 55f',
+		description: 'Manual labor is needed. The code unit model 55f is located in Engineering Technical Space. Refer to ESS Odysseus Operations Handbook page 2.1-1 for instructions.'
+	},
+	{
+		id: 'frontshield_55f_b',
+		type: 'task',
+		game: 'frontshield_55f_b',
+		singleUse: false,
+		used: false,
+		eeType: 'frontshield',
+		eeHealth: 0.15,
+		status: 'initial',
+		calibrationCount: 2,
+		calibrationTime: 240,
+		title: 'Recoding Unit Model 55f',
+		description: 'Manual labor is needed. The code unit model 55f is located in Engineering Technical Space. Refer to ESS Odysseus Operations Handbook page 2.1-1 for instructions.'
+	},
+	{
+		id: 'frontshield_55f_c',
+		type: 'task',
+		game: 'frontshield_55f_c',
+		singleUse: false,
+		used: false,
+		eeType: 'frontshield',
+		eeHealth: 0.15,
+		status: 'initial',
+		calibrationCount: 2,
+		calibrationTime: 240,
+		title: 'Recoding Unit Model 55f',
+		description: 'Manual labor is needed. The code unit model 55f is located in Engineering Technical Space. Refer to ESS Odysseus Operations Handbook page 2.1-1 for instructions.'
+	},
+	{
+		id: 'reactor_battery_472',
+		type: 'task',
+		game: 'reactor_battery_472',
+		singleUse: true,
+		used: false,
+		eeType: 'reactor',
+		eeHealth: 0.3,
+		status: 'initial',
+		calibrationCount: 1,
+		calibrationTime: 2220,
+		title: 'Electricity storage battery type 472',
+		description: 'Manual labor is needed. The battery is located in Engineering Technical Space. Refer to ESS Odysseus Operations Handbook page 2.1-1 for instructions.'
+	},
+	{
+		id: 'rearshield_55f_a',
+		type: 'task',
+		game: 'rearshield_55f_a',
+		singleUse: false,
+		used: false,
+		eeType: 'rearshield',
+		eeHealth: 0.15,
+		status: 'initial',
+		calibrationCount: 2,
+		calibrationTime: 240,
+		title: 'Recoding Unit Model 55f',
+		description: 'Manual labor is needed. The code unit model 55f is located in Engineering Technical Space. Refer to ESS Odysseus Operations Handbook page 2.1-1 for instructions.'
+	},
+	{
+		id: 'rearshield_55f_b',
+		type: 'task',
+		game: 'rearshield_55f_b',
+		singleUse: false,
+		used: false,
+		eeType: 'rearshield',
+		eeHealth: 0.15,
+		status: 'initial',
+		calibrationCount: 2,
+		calibrationTime: 240,
+		title: 'Recoding Unit Model 55f',
+		description: 'Manual labor is needed. The code unit model 55f is located in Engineering Technical Space. Refer to ESS Odysseus Operations Handbook page 2.1-1 for instructions.'
+	},
+	{
+		id: 'rearshield_55f_c',
+		type: 'task',
+		game: 'rearshield_55f_c',
+		singleUse: false,
+		used: false,
+		eeType: 'rearshield',
+		eeHealth: 0.15,
+		status: 'initial',
+		calibrationCount: 2,
+		calibrationTime: 240,
+		title: 'Recoding Unit Model 55f',
+		description: 'Manual labor is needed. The code unit model 55f is located in Engineering Technical Space. Refer to ESS Odysseus Operations Handbook page 2.1-1 for instructions.'
+	}
+].forEach(blob => blobs.push(blob));
+
 export default blobs;
