@@ -16,8 +16,8 @@ blobs.push({
 
 	engineBreakProb: 0.1, // probability of 1% engine health dropping PER SECOND
 
-	minDriftPerMinute: 0.55, // minimum drift per MINUTE when randomizing drift  0.55 = 6h
-	maxDriftPerMinute: 1.11, // maximum drift per MINUTE when randomizing drift  1.11 = 3h
+	minDriftPerMinute: 1.11, // minimum drift per MINUTE when randomizing drift  1.11 = 3h
+	maxDriftPerMinute: 2.22, // maximum drift per MINUTE when randomizing drift  2.22 = 1.5h
 
 	config: {
 		safeRangeMin: 330,         // minimum safe value (backend uses)
@@ -32,6 +32,7 @@ blobs.push({
 		driftDelayAfterAdjust: 60, // number of secs to pause drift after adjustment is done
 		adjustUpAmount: 0.3,       // amount to adjust up per call (pressure rise)
 		adjustDownAmount: 1,       // amount to adjust down per call (pressure release)
+		probDriftDown: 0.66,       // probability drift will go downwards (otherwise upward)
 	},
 
 	presets: {
