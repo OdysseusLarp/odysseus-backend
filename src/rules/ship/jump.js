@@ -449,7 +449,11 @@ function breakEE(type, min, max) {
 	const health = clamp(current - damage, -1, 1);
 	logger.info(`Breaking EE '${type}' by ${damage} to ${health}`);
 	// async, fire and forget
-	getEmptyEpsilonClient().setGameState('setSystemHealth', type, health);
+	try {
+		getEmptyEpsilonClient().setGameState('setSystemHealth', type, health);
+	} catch (err) {
+		logger.error('Could not break EE', err);
+	}
 }
 
 /**

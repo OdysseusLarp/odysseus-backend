@@ -21,8 +21,12 @@ interval(async () => {
 			const engineHealth = ee.systems.health.impulseHealth;
 			if (engineHealth > 0) {
 				logger.info(`Dropping impulse engine health by 1% due to drifting value out-of-range (${box.value})`);
-				await getEmptyEpsilonClient().setGameState('setSystemHealth', 'impulse', Math.max(engineHealth - 0.01, 0));
-				await updateEmptyEpsilonState();
+				try {
+					await getEmptyEpsilonClient().setGameState('setSystemHealth', 'impulse', Math.max(engineHealth - 0.01, 0));
+					await updateEmptyEpsilonState();
+				} catch (err) {
+					logger.error('Error dropping impulse engine health', err);
+				}
 			}
 		}
 	} else {

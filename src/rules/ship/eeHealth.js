@@ -30,12 +30,16 @@ function getEEHealth(ee, type) {
 }
 
 async function setEEHealth(type, health) {
-	if (type === 'hull') {
-		await getEmptyEpsilonClient().setHullHealthPercent(health);
-		await updateEmptyEpsilonState();
-	} else {
-		await getEmptyEpsilonClient().setGameState('setSystemHealth', type, health);
-		await updateEmptyEpsilonState();
+	try {
+		if (type === 'hull') {
+			await getEmptyEpsilonClient().setHullHealthPercent(health);
+			await updateEmptyEpsilonState();
+		} else {
+			await getEmptyEpsilonClient().setGameState('setSystemHealth', type, health);
+			await updateEmptyEpsilonState();
+		}
+	} catch (err) {
+		logger.error('Could not set EE health', err);
 	}
 }
 
