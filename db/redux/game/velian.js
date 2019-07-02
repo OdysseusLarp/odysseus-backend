@@ -12,7 +12,7 @@ blobs.push({
 	id: 'velian1',
 
 	default: {
-		initDescription: '...',
+		initDescription: '...',  // FIXME
 		endDescription: '...!',
 		game: 'phasesync',
 
