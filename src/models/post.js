@@ -16,6 +16,7 @@ const postWithRelated = ['author'];
  * @property {string} type.required - Post type (NEWS, OPINION...)
  * @property {string} status.required - Status (PENDING, APPROVED, REJECTED)
  * @property {boolean} is_visible.required - Boolean stating if the post is visible or not
+ * @property {boolean} show_on_infoboard - Boolean stating if the post should be shown on infoboards
  * @property {string} created_at - ISO 8601 String Date-time when object was created
  * @property {string} updated_at - ISO 8601 String Date-time when object was last updated
  */

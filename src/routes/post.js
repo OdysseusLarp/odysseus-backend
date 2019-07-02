@@ -42,7 +42,7 @@ router.get('/:id', handleAsyncErrors(async (req, res) => {
 router.put('/', handleAsyncErrors(async (req, res) => {
 	const { id } = req.body;
 	// TODO: Validate input
-	const data = pick(req.body, ['title', 'body', 'person_id', 'type', 'status', 'is_visible']);
+	const data = pick(req.body, ['title', 'body', 'person_id', 'type', 'status', 'is_visible', 'show_on_infoboard']);
 	const sendMessage = get(req, 'query.sendMessage') === 'true';
 	const isApproved = data.status === 'APPROVED';
 	const isRejected = data.status === 'REJECTED';

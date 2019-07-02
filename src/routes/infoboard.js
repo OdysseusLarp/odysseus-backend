@@ -35,7 +35,17 @@ router.get('/display', handleAsyncErrors(async (req, res) => {
 	const selector = parseInt((now.getMinutes() * 6 + now.getSeconds() / 10), 10);
 	const priority = await InfoPriority.forge().fetch();
 	const entries = await InfoEntry.forge().where({ priority: priority.attributes.priority }).fetchAll();
-	const news = await Post.forge().where({ type: 'NEWS', status: 'APPROVED' }).orderBy('created_at', 'DESC').fetchPage({ pageSize: 5 });
+	let news = await Post.forge()
+		.where({ type: 'NEWS', status: 'APPROVED' })
+		.orderBy('created_at', 'DESC')
+		.fetchPage({ pageSize: 5 });
+
+	// Filter out the news with show_on_infoboard === false
+	if (news) news = news.filter(n => {
+		const showOnInfoboard = n.get('show_on_infoboard');
+		return showOnInfoboard;
+	});
+
 	const log = await LogEntry.forge().orderBy('id', 'DESC').fetch();
 	const count = entries.length + (priority.attributes.priority < 5 ? news.length : 0);
 	const realSelector = selector % count;
@@ -43,10 +53,10 @@ router.get('/display', handleAsyncErrors(async (req, res) => {
 	if ( log && log.attributes.metadata && log.attributes.metadata.showPopup && log.attributes.created_at > minuteAgo ) {
 		entry = log;
 		entry.attributes.body = log.attributes.message;
-	        entry.attributes.title = 'Ship Log Entry';
+		entry.attributes.title = 'Ship Log Entry';
 	} else {
 		if ( realSelector > entries.length - 1 ) {
-		        entry = news.models[realSelector - entries.length];
+			entry = news[realSelector - entries.length];
 		} else {
 			entry = entries.models[realSelector];
 		}
