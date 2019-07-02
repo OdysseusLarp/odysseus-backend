@@ -1,4 +1,5 @@
-import { saveBlob, clamp, interval, chooseRandom } from '../helpers';
+import { clamp, interval, chooseRandom } from '../helpers';
+import { breakTask } from '../breakTask';
 import store, { watch } from '../../store/store';
 import { getEmptyEpsilonClient } from '../../emptyepsilon';
 import { updateEmptyEpsilonState } from '../../index';
@@ -19,6 +20,9 @@ const TYPES = [
 	'beamweapons',
 	'hull',  // special case
 ];
+
+const EPSILON = 0.0001;
+
 
 function getEEHealth(ee, type) {
 	if (type === 'hull') {
@@ -43,24 +47,6 @@ async function setEEHealth(type, health) {
 	}
 }
 
-function breakTask(task) {
-	let toBeBroken;
-	logger.info(`Breaking task ${task.id} of EE type ${task.eeType}`);
-	for (const type of ['game', 'box']) {
-		if (task[type]) {
-			toBeBroken = store.getState().data[type][task[type]];
-			break;
-		}
-	}
-	if (!toBeBroken) {
-		logger.error(`Could not find game/box from task ${JSON.stringify(task)}`);
-		return;
-	}
-	saveBlob({
-		...toBeBroken,
-		status: 'broken'
-	});
-}
 
 function getEETasks(type) {
 	return Object.values(store.getState().data.task).filter(task => task.eeType === type && !task.used);
@@ -85,13 +71,13 @@ function breakTasks(type, targetHealth) {
 	const originalHealth = clamp(computeHealth(brokenTasks), -1, 1);
 	let currentHealth = originalHealth;
 
-	while (currentHealth > targetHealth && unbrokenTasks.length > 0) {
+	while (currentHealth - EPSILON > targetHealth && unbrokenTasks.length > 0) {
 		const priorityTasks = getPriorityTasks(unbrokenTasks);
 		const toBeBroken = chooseRandom(priorityTasks)[0];
 		breakTask(toBeBroken);
 		currentHealth -= toBeBroken.eeHealth;
 	}
-	if (currentHealth > targetHealth) {
+	if (currentHealth - EPSILON > targetHealth) {
 		logger.error(`There were not enough EE tasks of type ${type} to break! `+
 		  `currentHealth=${currentHealth} targetHealth=${targetHealth}`);
 	}
@@ -143,8 +129,7 @@ interval(() => {
 		const eeHealth = getEEHealth(ee, type);
 
 		//  eeHealth - 10% - epsilon <= taskHealth <= eeHealth + epsilon
-		const epsilon = 0.001;
-		if (!(eeHealth - 0.1 - epsilon <= taskHealth && taskHealth <= eeHealth + epsilon)) {
+		if (!(eeHealth - 0.1 - EPSILON <= taskHealth && taskHealth <= eeHealth + EPSILON)) {
 			logger.error(`EE ${type} health has significant mismatch between EE and task-based status: `+
 			  `EE shows ${eeHealth} and tasks show ${taskHealth}`);
 		}
