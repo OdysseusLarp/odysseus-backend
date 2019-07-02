@@ -19,13 +19,14 @@ blobs.push({
 		auto_close_delay: 15000,   // milliseconds before door closes automatically (0 = never)
 		pressure_curve: 'sigmoid', // adjustment applied to player-visible pressure value
 		title_bar_text: null,      // shown in an extra bar at the top of the UI, if set
+		confirm_close_message: null,  // confirm close action in admin UI (set for main airlock!)
 		// transition durations (milliseconds)
 		transition_times: {
 			open: 5000,
 			close: 5000,
-			malfunction: 2000,
-			pressurize: 30000,
-			depressurize: 30000,
+			malfunction: 15000,
+			pressurize: 33000,
+			depressurize: 32000,
 		},
 		// DMX events to fire on transition start
 		dmx_events: {
@@ -42,7 +43,8 @@ blobs.push({
 		  status_opening: 'Unlocking door',
 		  status_closing: 'Locking door',
 		  status_malfunction: 'Door malfunction',
-		  status_closed: 'Door locked',
+			status_closed: 'Door locked',
+			status_vacuum: 'Open to space',
 		  // door status messages
 		  door_open: 'Unlocked',
 		  door_opening: 'Unlocking',
@@ -76,14 +78,15 @@ blobs.push({
 		linked_task_id: null,    // ID of task that controls whether door can open
 		auto_close_delay: 0,     // milliseconds before door closes automatically (0 = never)
 		pressure_curve: 'sqrt',  // adjustment applied to player-visible pressure value
-		title_bar_text: 'Main Airlock',  // shown in an extra bar at the top of the UI, if set
+		title_bar_text: null,  // shown in an extra bar at the top of the UI, if set
+		confirm_close_message: 'Warning: Closing will physically lower door! Make sure nobody stands below!',  // confirm close action in admin UI (set for main airlock!)
 		// transition durations (milliseconds)
 		transition_times: {
 			open: 8000,
-			close: 12500,
+			close: 32000,
 			malfunction: 2000,
-			pressurize: 50000,
-			depressurize: 600000,
+			pressurize: 52000,
+			depressurize: 601500,
 		},
 		// DMX events to fire on transition start
 		dmx_events: {
@@ -94,7 +97,9 @@ blobs.push({
 			depressurize: 'MainAirlockDepressurize',
 		},
 		// custom UI strings
-		messages: {},
+		messages: {
+			status_vacuum: 'Open to space',
+		},
 	},
 });
 
