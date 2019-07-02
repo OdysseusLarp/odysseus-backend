@@ -429,6 +429,8 @@ blobs.push({
 		<p>You must fly the drone to the missile tube. Tap HANSCA to fly upwards.</p>`,
 		endDescription: 'Drone successfully arrived at missile tube. Repairs started.',
 		failDescription: 'Drone destroyed!',
+    preFailDescription: 'No drones available!',
+    preCondition: '/data/misc/flappy_drone'
 		game: 'flappy',
 		gap: 150,
 		interval: 250,
@@ -441,6 +443,8 @@ blobs.push({
 		<p>You must fly the drone to the missile tube. Tap HANSCA to fly upwards.</p>`,
 		endDescription: 'Drone successfully arrived at missile tube. Repairs started.',
 		failDescription: 'Drone destroyed!',
+    preFailDescription: 'No drones available!',
+    preCondition: '/data/misc/flappy_drone'
 		game: 'flappy',
 		gap: 150,
 		interval: 250,
@@ -453,6 +457,8 @@ blobs.push({
 		<p>You must fly the drone to the missile tube. Tap HANSCA to fly upwards.</p>`,
 		endDescription: 'Drone successfully arrived at missile tube. Repairs started.',
 		failDescription: 'Drone destroyed!',
+    preFailDescription: 'No drones available!',
+    preCondition: '/data/misc/flappy_drone'
 		game: 'flappy',
 		gap: 150,
 		interval: 250,
@@ -593,6 +599,8 @@ blobs.push({
 		<p>You must fly the drone to the hull area. Tap HANSCA to fly upwards.</p>`,
 		endDescription: 'Drone successfully arrived at hull. Repairs started.',
 		failDescription: 'Drone destroyed!',
+    preFailDescription: 'No drones available!',
+    preCondition: '/data/misc/flappy_drone'
 		game: 'flappy',
 		gap: 150,
 		interval: 250,
@@ -605,6 +613,8 @@ blobs.push({
 		<p>You must fly the drone to the hull area. Tap HANSCA to fly upwards.</p>`,
 		endDescription: 'Drone successfully arrived at hull. Repairs started.',
 		failDescription: 'Drone destroyed!',
+    preFailDescription: 'No drones available!',
+    preCondition: '/data/misc/flappy_drone'
 		game: 'flappy',
 		gap: 150,
 		interval: 250,
@@ -617,6 +627,8 @@ blobs.push({
 		<p>You must fly the drone to the hull area. Tap HANSCA to fly upwards.</p>`,
 		endDescription: 'Drone successfully arrived at hull. Repairs started.',
 		failDescription: 'Drone destroyed!',
+    preFailDescription: 'No drones available!',
+    preCondition: '/data/misc/flappy_drone'
 		game: 'flappy',
 		gap: 150,
 		interval: 250,
