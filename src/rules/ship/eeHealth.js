@@ -4,7 +4,7 @@ import store, { watch } from '../../store/store';
 import { getEmptyEpsilonClient } from '../../emptyepsilon';
 import { updateEmptyEpsilonState } from '../../index';
 import { logger } from '../../logger';
-import { isFinite } from 'lodash';
+import { isFinite, isEqual } from 'lodash';
 
 /*
  * Rules binding to EE health states.
@@ -67,13 +67,14 @@ function getPriorityTasks(tasks) {
 function breakTasks(type, targetHealth) {
 	const tasks = getEETasks(type);
 	const brokenTasks = tasks.filter(isBroken);
-	const unbrokenTasks = tasks.filter(notBroken);
+	let unbrokenTasks = tasks.filter(notBroken);
 	const originalHealth = clamp(computeHealth(brokenTasks), -1, 1);
 	let currentHealth = originalHealth;
 
 	while (currentHealth - EPSILON > targetHealth && unbrokenTasks.length > 0) {
 		const priorityTasks = getPriorityTasks(unbrokenTasks);
 		const toBeBroken = chooseRandom(priorityTasks)[0];
+		unbrokenTasks = unbrokenTasks.filter(task => !isEqual(task, toBeBroken));
 		breakTask(toBeBroken);
 		currentHealth -= toBeBroken.eeHealth;
 	}
