@@ -16,7 +16,7 @@ async function getBloodTestResult(person_id) {
 	if (!result) return 'Blood could not be analysed';
 	return `**Blood test results:**
 
-	Blood type: ${result.get('blood_type')}
+Blood type: ${result.get('blood_type')}
 
 Hemoglobin: ${result.get('hemoglobin')} g/l
 
