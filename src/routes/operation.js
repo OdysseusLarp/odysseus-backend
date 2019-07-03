@@ -36,8 +36,11 @@ Details: ${result.get('details') || 'None'}`;
 }
 
 async function processXrayOperation(operationResult) {
-	// Add rotating skeleton pic to medical file after an XRAY_SCAN
-	if (operationResult.get('additional_type') === 'XRAY_SCAN' && !operationResult.get('is_complete')) {
+	// Add rotating skeleton pic to medical file after a medical XRAY_SCAN
+	const isXrayScan = operationResult.get('additional_type') === 'XRAY_SCAN';
+	const isComplete = operationResult.get('is_complete');
+	const isMedicalScan = operationResult.get('type') === 'MEDIC';
+	if (isXrayScan && isMedicalScan && !isComplete) {
 		let imageFile = 'skeleton.gif';
 		const person = await new Person().where({ bio_id: operationResult.get('bio_id') }).fetch();
 
