@@ -52,7 +52,7 @@ sunt eaque dolor id nisi magni.`
 	{
 		type: 'misc',
 		id: 'medical',
-		show_20110_tumor: false,
+		show_20110_tumor: true,
 		show_20070_alien: false,
 	},
 ];
