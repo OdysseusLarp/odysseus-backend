@@ -381,8 +381,8 @@ blobs.push({
 				'<p>Move to calibrating when complete.</p>'
 			],
 			buttons: [
-				'Next',
 				'Fixing instructions',
+				'Next',
 				'Calibrate'
 			]
 		}
@@ -401,8 +401,8 @@ blobs.push({
 				'<p>Move to calibrating when complete.</p>'
 			],
 			buttons: [
-				'Next',
 				'Fixing instructions',
+				'Next',
 				'Calibrate'
 			]
 		}
@@ -421,8 +421,8 @@ blobs.push({
 				'<p>Move to calibrating when complete.</p>'
 			],
 			buttons: [
-				'Next',
 				'Fixing instructions',
+				'Next',
 				'Calibrate'
 			]
 		}
@@ -441,8 +441,8 @@ blobs.push({
 				'<p>Move to calibrating when complete.</p>'
 			],
 			buttons: [
-				'Next',
 				'Fixing instructions',
+				'Next',
 				'Calibrate'
 			]
 		}
@@ -461,8 +461,8 @@ blobs.push({
 				'<p>Move to calibrating when complete.</p>'
 			],
 			buttons: [
-				'Next',
 				'Fixing instructions',
+				'Next',
 				'Calibrate'
 			]
 		}
@@ -481,8 +481,8 @@ blobs.push({
 				'<p>Move to calibrating when complete.</p>'
 			],
 			buttons: [
-				'Next',
 				'Fixing instructions',
+				'Next',
 				'Calibrate'
 			]
 		}
@@ -501,8 +501,8 @@ blobs.push({
 				'<p>Move to calibrating when complete.</p>'
 			],
 			buttons: [
-				'Next',
 				'Fixing instructions',
+				'Next',
 				'Calibrate'
 			]
 		}
@@ -521,8 +521,8 @@ blobs.push({
 				'<p>Move to calibrating when complete.</p>'
 			],
 			buttons: [
-				'Next',
 				'Fixing instructions',
+				'Next',
 				'Calibrate'
 			]
 		}
@@ -541,8 +541,8 @@ blobs.push({
 				'<p>Move to calibrating when complete.</p>'
 			],
 			buttons: [
-				'Next',
 				'Fixing instructions',
+				'Next',
 				'Calibrate'
 			]
 		}
@@ -561,8 +561,8 @@ blobs.push({
 				'<p>Move to calibrating when complete.</p>'
 			],
 			buttons: [
-				'Next',
 				'Fixing instructions',
+				'Next',
 				'Calibrate'
 			]
 		}
@@ -581,8 +581,8 @@ blobs.push({
 				'<p>Move to calibrating when complete.</p>'
 			],
 			buttons: [
-				'Next',
 				'Fixing instructions',
+				'Next',
 				'Calibrate'
 			]
 		}
@@ -601,8 +601,8 @@ blobs.push({
 				'<p>Move to calibrating when complete.</p>'
 			],
 			buttons: [
-				'Next',
 				'Fixing instructions',
+				'Next',
 				'Calibrate'
 			]
 		}
@@ -621,8 +621,8 @@ blobs.push({
 				'<p>Move to calibrating when complete.</p>'
 			],
 			buttons: [
-				'Next',
 				'Fixing instructions',
+				'Next',
 				'Calibrate'
 			]
 		}
@@ -641,8 +641,8 @@ blobs.push({
 				'<p>Move to calibrating when complete.</p>'
 			],
 			buttons: [
-				'Next',
 				'Fixing instructions',
+				'Next',
 				'Calibrate'
 			]
 		}
