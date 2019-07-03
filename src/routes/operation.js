@@ -2,6 +2,7 @@ import { Router } from 'express';
 import { OperationResult } from '../models/tag';
 import { Person, BloodTestResult, Entry } from '../models/person';
 import { handleAsyncErrors } from '../helpers';
+import { getData } from './data';
 import { logger } from '../logger';
 import { NotFound } from 'http-errors';
 import { get } from 'lodash';
@@ -107,10 +108,19 @@ router.put('/:id', handleAsyncErrors(async (req, res) => {
 
 	// Add rotating skeleton pic to medical file after an XRAY_SCAN
 	if (operationResult.get('additional_type') === 'XRAY_SCAN' && !operationResult.get('is_complete')) {
+		let imageFile = 'skeleton.gif';
 		const medicalEntryText = `**XRAY Scan:**
 
-![](/images/skeleton.gif)`;
+![](/images/${imageFile})`;
 		const person = await new Person().where({ bio_id: operationResult.get('bio_id') }).fetch();
+
+		// Special cases
+		if (person.get('id') === '20110' && !!get(getData('misc', 'medical'), 'show_20110_tumor')) {
+			imageFile = 'brainscan.gif';
+		} else if (person.get('id') === '20070' && !!get(getData('misc', 'medical'), 'show_20070_alien')) {
+			imageFile = 'kontaminaatio.gif';
+		}
+
 		await new Entry().save({ added_by: EVA_ID, entry: medicalEntryText, person_id: person.get('id'), type: 'MEDICAL' });
 		logger.success(
 			`Added XRAY scan results to ${person.get('full_name')} (${person.get('id')}), marking the operation as complete`

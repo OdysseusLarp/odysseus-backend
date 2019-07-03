@@ -43,13 +43,18 @@ sunt eaque dolor id nisi magni.`
 		id: 'hansca',
 		analyseBaseTime: 90
 	},
-  // Drone count for Flappy drone
+	// Drone count for Flappy drone
 	{
 		type: 'misc',
 		id: 'flappy_drone',
 		amount: 10
-	}
-
+	},
+	{
+		type: 'misc',
+		id: 'medical',
+		show_20110_tumor: false,
+		show_20070_alien: false,
+	},
 ];
 
 blobs.forEach(saveBlob);
