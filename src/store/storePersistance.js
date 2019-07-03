@@ -23,6 +23,7 @@ store.subscribe(() => {
 });
 
 export function enableGracefulShutdown() {
+	logger.info('Graceful shutdown enabled, Redux state will be saved right before exiting');
 	process.on('SIGINT', async () => {
 		const { data } = store.getState();
 		await saveState(data, 'data');

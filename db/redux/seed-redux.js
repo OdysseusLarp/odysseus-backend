@@ -1,9 +1,10 @@
 import store, { initState } from '../../src/store/store';
 import { saveState } from '../../src/store/storePersistance';
 import { knex } from '../../db';
+import { logger } from '../../src/logger';
 
 async function seed() {
-	console.log('Initializing Redux with empty state');
+	logger.info('Initializing Redux with empty state');
 	await knex('store').del();
 	initState({});
 
@@ -12,8 +13,15 @@ async function seed() {
 	require('./game');
 	require('./misc');
 
-	console.log('Saving the Redux state');
-	saveState(store.getState().data, 'data').then(() => process.exit());
+	logger.info('Saving the Redux state to database');
+	saveState(store.getState().data, 'data')
+		.then(() => {
+			logger.success('Redux state saved');
+			process.exit(0);
+		}).catch(err => {
+			logger.error(err);
+			process.exit(1);
+		});
 }
 
 seed();
