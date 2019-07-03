@@ -1,0 +1,132 @@
+tag_id,type,description
+medic:broken_bone,medic,"Broken bone
+
+Level 1: Closed fracture. Stress fractures requires only rest and immobilization.
+
+Level 2: Incomplete fracture. This term means that the bone is cracked, but it isn't separated into two parts. Needs splint, rest and immobilization.
+
+Level 3: Displaced fracture. In this type of fracture, the bone fragments on each side of the break are not aligned. A displaced fracture may require surgery to realign the bones properly. This is a serious condition that requires immediate, aggressive treatment to decrease the chance of an infection. Needs antibitoics, splint, rest and immobilization."
+science:age_100,science,"Carbon dating
+
+100 years old"
+science:radiation_01,science,"Radiation magnitude
+
+0,1 mSv → Chest X-ray"
+science:radiation_3,science,"Radiation magnitude
+
+3,2 mSv → Average dose of radiation per person per year"
+science:radiation_100,science,"Radiation magnitude
+
+100 mSv → Lowest annual dose where increased lifetime risk of cancer is evident"
+science:radiation_1000,science,"Radiation magnitude
+
+1000 mSv → Temporary radiation sickness. Nausea, low blood cell count. Not fatal."
+science:radiation_6000,science,"Radiation magnitude
+
+6000 mSv → Usually fatal withing 2-4 weeks if untreated."
+science:radiation_10000,science,"Radiation magnitude
+
+10000 mSv → Fatal dose, death within 2 weeks if untreated."
+science:radiation_30000,science,"Radiation magnitude
+
+30000 mSv → Seizures & tremors. Death within 48 hours if untreated."
+medic:radiation_poisoning,medic,"Radiation poisoning
+
+Level 1: 1000 mSv, Temporary radiation sickness. Nausea, low blood cell count. Not fatal.
+
+Level 2: 6000 mSv, Usually fatal withing 2-4 weeks if untreated. Nausea, low blood cell count, tremors.
+
+Level 3: 30000 mSv, Seizures & tremors. Death within 48 hours if untreated."
+science:gas_leak_100,science,"Sulfur dioxide
+
+100 ppm → The substance can be absorbed into the body by inhalation. No immediate danger."
+medic:gun_wound,medic,"Gun wound
+
+Level 1: Shallow wound from gun shot, no bullet in. Basic treatment. 
+
+Level 2: More serious wound, some blood loss. Bullet can be removed easily. Basic treatment, some rest.
+
+Level 3: A serious bullet wound, requires surgery to remove the bullet. More blood loss. Needs more rest."
+science:gas_leak_1000,science,"Sulfur dioxide
+
+1000 ppm → The substance can be absorbed into the body by inhalation. Immediate danger. The substance is irritating to the eyes and respiratory tract."
+science:gas_leak_3000,science,"Sulfur dioxide
+
+3000 ppm → The substance can be absorbed into the body by inhalation. Immediate danger. The substance is irritating to the eyes and respiratory tract. Inhalation may cause asthma-like reactions. The substance may cause effects on the respiratory tract. This may result in asthma-like reactions, reflex spasm of the throat and respiratory arrest."
+medic:gas_poisoning,medic,"Gas poisoning
+
+Level 1: The substance can be absorbed into the body by inhalation. No immediate danger.
+
+Level 2: The substance can be absorbed into the body by inhalation. Immediate danger. The substance is irritating to the eyes and respiratory tract.
+
+Level 3: The substance can be absorbed into the body by inhalation. Immediate danger. The substance is irritating to the eyes and respiratory tract. Inhalation may cause asthma-like reactions. The substance may cause effects on the respiratory tract. This may result in asthma-like reactions, reflex spasm of the throat and respiratory arrest."
+medic:sprain,medic,"Sprain
+
+Level 1: Minor injury, resolves in a few days.
+
+Level 2: Medium injury, resolves in a week. Avoid stress.
+
+Level 3: Major rupture of ligament. Requires surgical fixation and immobilization."
+medic:concussion,medic,"Concussion
+
+Level 1: Loss of consciousness, headache
+
+Level 2: Difficulty with thinking, consentration or balance
+
+Level 3: Nausea, blurred vision, sleep disturbances, mood changes"
+science:age_200,science,"Carbon dating
+
+200 years old"
+science:age_300,science,"Carbon dating
+
+300 years old"
+science:age_50,science,"Carbon dating
+50 years old"
+science:age_400,science,"Carbon dating
+400 years old"
+science:age_500,science,"Carbon dating
+
+500 years old"
+science:age_1000,science,"Carbon dating
+
+1000 years old"
+science:material_araknium,science,"Material
+
+Araknium"
+science:material_unknown_metal,science,"Material
+
+Unknown metal alloy"
+medic:burn,medic,"Burn
+
+Level 1: First-degree burn affect only the superficial skin layers. Redness, no blisters. Pain can last up to three days.
+
+Level 2: Second-degree burn: blisters, painful. Healing carn require up to eight weeks and scarring may occur.
+
+Level 3: Third-degree burn extends to all layers of skin. There is no pain and burnt area is stiff. Healing does not occur on its own. "
+medic:infection,medic,"Infection
+
+Level 1: Flu-like symptoms. Will clear in few days by itself.
+
+Level 2: Low fever, fatigue, cough, body aches. Will clear in few weeks.
+
+Level 3: High fever. delirium, pain, swelling, organ failiure. Needs antibiotics and immidiate medical attention. "
+science:age_error,science,"Carbon dating
+
+Cannot be determined"
+medic:mummy,medic,"Mummy
+
+Mummyfied person. Cause of death: Lack of oxygen, plunt force trauma."
+science:energy_level_active,science,"Energy level
+
+Active"
+science:energy_level_inactive,science,"Energy level
+
+Inactive"
+science:age_4000,science,"Carbon dating
+
+4000 years old"
+hapenpuuute,,
+medic: ,,
+science:origin_machine,science,"Origin
+
+Machine"
