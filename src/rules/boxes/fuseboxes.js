@@ -35,11 +35,9 @@ watch(['data', 'box'], (boxes, previousBoxes, state) => {
 		const previous = previousBoxes[id];
 		if (previous && box.fuses && box.failed && !isEqual(box.failed, previous.failed)) {
 			const count = box.failed.length;
-			logger.info(`${count} fuses failed to blow in ${box.id}, breaking life support tasks`);
-			if (count <= 3) {
-				breakTask();
-			} else {
-				breakTask();
+			const breakCount = Math.ceil(count/3);
+			logger.info(`${count} fuses failed to blow in ${box.id}, breaking ${breakCount} life support tasks`);
+			for (let i=0; i<breakCount; i++) {
 				breakTask();
 			}
 		}
