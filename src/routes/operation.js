@@ -39,9 +39,6 @@ async function processXrayOperation(operationResult) {
 	// Add rotating skeleton pic to medical file after an XRAY_SCAN
 	if (operationResult.get('additional_type') === 'XRAY_SCAN' && !operationResult.get('is_complete')) {
 		let imageFile = 'skeleton.gif';
-		const medicalEntryText = `**XRAY Scan:**
-
-![](/images/${imageFile})`;
 		const person = await new Person().where({ bio_id: operationResult.get('bio_id') }).fetch();
 
 		// Special cases
@@ -52,6 +49,10 @@ async function processXrayOperation(operationResult) {
 			imageFile = 'kontaminaatio.gif';
 			logger.info(`Swapping XRAY result image to alien contamination gif`);
 		}
+
+		const medicalEntryText = `**XRAY Scan:**
+
+		![](/images/${imageFile})`;
 
 		await new Entry().save({ added_by: EVA_ID, entry: medicalEntryText, person_id: person.get('id'), type: 'MEDICAL' });
 		logger.success(
