@@ -1,5 +1,35 @@
 const blobs = [];
 
+/*
+ * Priority 0:  default level for tasks, balanced mix of games + manual tasks
+ * Priority -1: "backup" tasks in case all on prio 0 are broken
+ */
+
+
+// Seedable randon number generator for deterministic output
+let seed = 1;
+function rnd() {
+	const x = Math.sin(seed++) * 10000;
+	return x - Math.floor(x);
+}
+
+/**
+  * Generator which returns the provided number of 0's and -1's in random order.
+  * @param {integer} normalCount Number of priority 0 elements
+  * @param {integer} lowCount Number of priority -1 elements
+  */
+function *priorityGenerator(normalCount, lowCount) {
+	const array = [
+		...Array(normalCount).fill(0),
+		...Array(lowCount).fill(-1),
+	];
+	while (array.length > 0) {
+		const index = Math.floor(rnd() * array.length);
+		yield array.splice(index, 1)[0];
+	}
+}
+let priority;
+
 
 // Reactor  DONE
 
@@ -23,6 +53,7 @@ for (let i=0; i < 20; i++) {
 		type: 'task',
 		id,
 		eeType: 'reactor',
+		priority: 0,
 		eeHealth: 0.10,  // fixes 10%
 		game: id,
 		status: 'initial',
@@ -80,6 +111,7 @@ blobs.push({
 
 // Engine  DONE
 
+priority = priorityGenerator(10, 10);
 for (let i=0; i < 20; i++) {
 	const letter = String.fromCharCode('A'.charCodeAt(0) + Math.floor(i/5));
 	const number = i % 5 + 1;
@@ -100,6 +132,7 @@ for (let i=0; i < 20; i++) {
 		type: 'task',
 		id,
 		eeType: 'impulse',
+		priority: priority.next().value,
 		eeHealth: 0.10,  // fixes 10%
 		game: id,
 		status: 'initial',
@@ -156,6 +189,7 @@ blobs.push({
 
 // Maneuver  DONE
 
+priority = priorityGenerator(10, 10);
 for (let i=0; i < 20; i++) {
 	let letter;
 	if (i < 10) {
@@ -181,6 +215,7 @@ for (let i=0; i < 20; i++) {
 		type: 'task',
 		id,
 		eeType: 'maneuver',
+		priority: priority.next().value,
 		eeHealth: 0.10,  // fixes 10%
 		game: id,
 		status: 'initial',
@@ -235,10 +270,9 @@ blobs.push({
 });
 
 
-
-
 // Front shields
 
+priority = priorityGenerator(10, 10);
 for (let i=0; i < 20; i++) {
 	const letter = String.fromCharCode('A'.charCodeAt(0) + Math.floor(i/2));
 	const number = i % 2 + 1;
@@ -259,6 +293,7 @@ for (let i=0; i < 20; i++) {
 		type: 'task',
 		id,
 		eeType: 'frontshield',
+		priority: priority.next().value,
 		eeHealth: 0.10,  // fixes 10%
 		game: id,
 		status: 'initial',
@@ -312,6 +347,7 @@ blobs.push({
 
 // Rear shields
 
+priority = priorityGenerator(10, 10);
 for (let i=0; i < 20; i++) {
 	const letter = String.fromCharCode('A'.charCodeAt(0) + Math.floor(i/2));
 	const number = i % 2 + 1;
@@ -332,6 +368,7 @@ for (let i=0; i < 20; i++) {
 		type: 'task',
 		id,
 		eeType: 'rearshield',
+		priority: priority.next().value,
 		eeHealth: 0.10,  // fixes 10%
 		game: id,
 		status: 'initial',
@@ -386,6 +423,7 @@ blobs.push({
 
 // Missile system  DONE
 
+priority = priorityGenerator(10, 10);
 for (let i=0; i < 20; i++) {
 	const number = i + 1;
 	const code = `${number}`;
@@ -405,6 +443,7 @@ for (let i=0; i < 20; i++) {
 		type: 'task',
 		id,
 		eeType: 'missilesystem',
+		priority: priority.next().value,
 		eeHealth: 0.10,  // fixes 10%
 		game: id,
 		status: 'initial',
@@ -472,6 +511,7 @@ blobs.push({
 
 // Beam weapons
 
+priority = priorityGenerator(10, 10);
 for (let i=0; i < 20; i++) {
 	const letter = String.fromCharCode('A'.charCodeAt(0) + i);
 	const code = `${letter}`;
@@ -491,6 +531,7 @@ for (let i=0; i < 20; i++) {
 		type: 'task',
 		id,
 		eeType: 'beamweapons',
+		priority: priority.next().value,
 		eeHealth: 0.10,  // fixes 10%
 		game: id,
 		status: 'initial',
@@ -550,6 +591,7 @@ blobs.push({
 
 // Hull  DONE
 
+priority = priorityGenerator(5, 15);
 for (let i=0; i < 20; i++) {
 	let letter;
 	if (i < 10) {
@@ -575,6 +617,7 @@ for (let i=0; i < 20; i++) {
 		type: 'task',
 		id,
 		eeType: 'hull',
+		priority: priority.next().value,
 		eeHealth: 0.05,  // fixes 5% (max 100%)
 		game: id,
 		status: 'initial',
