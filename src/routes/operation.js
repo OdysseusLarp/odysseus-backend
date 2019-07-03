@@ -35,6 +35,32 @@ Substance abuse: ${result.get('sub_abuse')}
 Details: ${result.get('details') || 'None'}`;
 }
 
+async function processXrayOperation(operationResult) {
+	// Add rotating skeleton pic to medical file after an XRAY_SCAN
+	if (operationResult.get('additional_type') === 'XRAY_SCAN' && !operationResult.get('is_complete')) {
+		let imageFile = 'skeleton.gif';
+		const medicalEntryText = `**XRAY Scan:**
+
+![](/images/${imageFile})`;
+		const person = await new Person().where({ bio_id: operationResult.get('bio_id') }).fetch();
+
+		// Special cases
+		if (person.get('id') === '20110' && !!get(getData('misc', 'medical'), 'show_20110_tumor')) {
+			imageFile = 'brainscan.gif';
+			logger.info(`Swapping XRAY result image to brain tumor gif`);
+		} else if (person.get('id') === '20070' && !!get(getData('misc', 'medical'), 'show_20070_alien')) {
+			imageFile = 'kontaminaatio.gif';
+			logger.info(`Swapping XRAY result image to alien contamination gif`);
+		}
+
+		await new Entry().save({ added_by: EVA_ID, entry: medicalEntryText, person_id: person.get('id'), type: 'MEDICAL' });
+		logger.success(
+			`Added XRAY scan results to ${person.get('full_name')} (${person.get('id')}), marking the operation as complete`
+		);
+		await operationResult.save({ is_complete: true, is_analysed: true }, { method: 'update', patch: true });
+	}
+}
+
 /**
  * Get a list of all operation results
  * @route GET /operation
@@ -77,6 +103,7 @@ router.get('/:id', handleAsyncErrors(async (req, res) => {
  */
 router.post('/', handleAsyncErrors(async (req, res) => {
 	const operationResult = await OperationResult.forge().save(req.body, { method: 'insert' });
+	await processXrayOperation(operationResult);
 	res.json(operationResult);
 }));
 
@@ -106,27 +133,7 @@ router.put('/:id', handleAsyncErrors(async (req, res) => {
 		await operationResult.save({ is_complete: true }, { method: 'update', patch: true });
 	}
 
-	// Add rotating skeleton pic to medical file after an XRAY_SCAN
-	if (operationResult.get('additional_type') === 'XRAY_SCAN' && !operationResult.get('is_complete')) {
-		let imageFile = 'skeleton.gif';
-		const medicalEntryText = `**XRAY Scan:**
-
-![](/images/${imageFile})`;
-		const person = await new Person().where({ bio_id: operationResult.get('bio_id') }).fetch();
-
-		// Special cases
-		if (person.get('id') === '20110' && !!get(getData('misc', 'medical'), 'show_20110_tumor')) {
-			imageFile = 'brainscan.gif';
-		} else if (person.get('id') === '20070' && !!get(getData('misc', 'medical'), 'show_20070_alien')) {
-			imageFile = 'kontaminaatio.gif';
-		}
-
-		await new Entry().save({ added_by: EVA_ID, entry: medicalEntryText, person_id: person.get('id'), type: 'MEDICAL' });
-		logger.success(
-			`Added XRAY scan results to ${person.get('full_name')} (${person.get('id')}), marking the operation as complete`
-		);
-		await operationResult.save({ is_complete: true }, { method: 'update', patch: true });
-	}
+	await processXrayOperation(operationResult);
 	res.json(operationResult);
 }));
 
