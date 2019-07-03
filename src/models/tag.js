@@ -43,7 +43,8 @@ const operationResultWithRelated = [
  * @property {string} author_id - ID of the person who performed the operation
  * @property {string} description - Operation description
  * @property {string} sample_id - E.g. a vial number
- * @property {object} type - Operation type
+ * @property {string} type - Operation type, e.g. SCIENCE, MEDIC....
+ * @property {string} additional_type - Additional type, e.g. XRAY_SCAN, BLOOD_SAMPLE...
  * @property {object} metadata - JSON representation of any data related to the tag
  * @property {boolean} is_analysed - True when this operation needs no more work from players
  * @property {boolean} is_complete - True when this operation needs no more work from anyone (GMs included)

@@ -1,7 +1,28 @@
-const { chunk } = require('lodash');
+const { chunk, pick } = require('lodash');
 const { parseData } = require('../../scripts/person-parser');
+const csv = require('csvtojson');
+const path = require('path');
+
+async function getBloodTestResults() {
+	const csvPath = path.join(__dirname, '../data/blood-test-results.csv');
+	const bloodTestResults = await csv().fromFile(csvPath);
+	const columns = [
+		'person_id',
+		'blood_type',
+		'hemoglobin',
+		'leukocytes',
+		'kalium',
+		'natrium',
+		'hcg',
+		'acn_enzyme',
+		'sub_abuse',
+		'details'
+	];
+	return bloodTestResults.map(results => pick(results, columns));
+}
 
 exports.seed = async knex => {
+	await knex('person_blood_test_result').del();
 	await knex('artifact_entry').del();
 	await knex('operation_result').del();
 	await knex('sip_contact').del();
@@ -57,4 +78,6 @@ exports.seed = async knex => {
 		{ name: 'Fighters (Conference)', id: '4002', video_allowed: false, is_visible: true, type: 'CONFERENCE' },
 	];
 	await knex('sip_contact').insert(sipContacts);
+
+	await knex('person_blood_test_result').insert(await getBloodTestResults());
 };

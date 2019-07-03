@@ -1,9 +1,38 @@
 import { Router } from 'express';
 import { OperationResult } from '../models/tag';
+import { Person, BloodTestResult, Entry } from '../models/person';
 import { handleAsyncErrors } from '../helpers';
+import { logger } from '../logger';
 import { NotFound } from 'http-errors';
 import { get } from 'lodash';
 const router = new Router();
+
+// Should be in env but not gonna bother at this point
+const EVA_ID = '20263';
+
+async function getBloodTestResult(person_id) {
+	const result = await new BloodTestResult().where({ person_id }).fetch();
+	if (!result) return 'Blood could not be analysed';
+	return `**Blood test results:**
+
+	Blood type: ${result.get('blood_type')}
+
+Hemoglobin: ${result.get('hemoglobin')} g/l
+
+Leukocytes: ${result.get('leukocytes')} E9/l
+
+Kalium: ${result.get('kalium')} mmol/l
+
+Natrium: ${result.get('natrium')} mmol/l
+
+hCG: ${result.get('hcg')} IU/l
+
+ACN enzyme: ${result.get('acn_enzyme')} mmol/l
+
+Substance abuse: ${result.get('sub_abuse')}
+
+Details: ${result.get('details') || 'None'}`;
+}
 
 /**
  * Get a list of all operation results
@@ -63,6 +92,31 @@ router.put('/:id', handleAsyncErrors(async (req, res) => {
 	const operationResult = await OperationResult.forge({ id: req.params.id }).fetch();
 	if (!operationResult) throw new NotFound('OperationResult not found');
 	await operationResult.save(req.body, { method: 'update', patch: true });
+
+	// Add blood samples to medical file once analysed
+	if (operationResult.get('additional_type') === 'BLOOD_SAMPLE' && operationResult.get('is_analysed') && !operationResult.get('is_complete')) {
+		const person = await new Person().where({ bio_id: operationResult.get('bio_id') }).fetch();
+		const bloodTestResult = await getBloodTestResult(person.get('id'));
+		const entry = new Entry();
+		await entry.save({ added_by: EVA_ID, entry: bloodTestResult, person_id: person.get('id'), type: 'MEDICAL' });
+		logger.success(
+			`Added blood test results to ${person.get('full_name')} (${person.get('id')}), marking the operation as complete`
+		);
+		await operationResult.save({ is_complete: true }, { method: 'update', patch: true });
+	}
+
+	// Add rotating skeleton pic to medical file after an XRAY_SCAN
+	if (operationResult.get('additional_type') === 'XRAY_SCAN' && !operationResult.get('is_complete')) {
+		const medicalEntryText = `**XRAY Scan:**
+
+![](/images/skeleton.gif)`;
+		const person = await new Person().where({ bio_id: operationResult.get('bio_id') }).fetch();
+		await new Entry().save({ added_by: EVA_ID, entry: medicalEntryText, person_id: person.get('id'), type: 'MEDICAL' });
+		logger.success(
+			`Added XRAY scan results to ${person.get('full_name')} (${person.get('id')}), marking the operation as complete`
+		);
+		await operationResult.save({ is_complete: true }, { method: 'update', patch: true });
+	}
 	res.json(operationResult);
 }));
 

@@ -42,6 +42,32 @@ export const Group = Bookshelf.Model.extend({
 	}
 });
 
+/**
+ * @typedef BloodTestResult
+ * @property {integer} id - Incrementing integer used as primary key
+ * @property {string} person_id - ID of the person who this test result belongs to
+ * @property {string} hemoglobin - Hemoglobin
+ * @property {string} leukocytes - Leykocytes
+ * @property {string} kalium - Kalium
+ * @property {string} natrium - Natrium
+ * @property {string} hcg - HCG
+ * @property {string} acn_enzyme - ACN Enzyme
+ * @property {string} sub_abuse - Is this person a junkie or not
+ * @property {string} details - Any details
+ * @property {string} created_at - Date-time when object was created
+ * @property {string} updated_at - Date-time when object was last updated
+ */
+export const BloodTestResult = Bookshelf.Model.extend({
+	tableName: 'person_blood_test_result',
+	hasTimestamps: true,
+	person: function () {
+		return this.hasOne(Person);
+	},
+	fetchWithRelated() {
+		this.fetch({ withRelated: ['person'] });
+	}
+});
+
 const withRelated = [
 	'entries',
 	// 'family',
