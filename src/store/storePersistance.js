@@ -16,11 +16,14 @@ const throttledSaveState = throttle(
 	{ leading: false, trailing: true }
 );
 
-store.subscribe(() => {
-	const { data } = store.getState();
-	if (isEmpty(data)) return;
-	throttledSaveState(data, 'data');
-});
+export function enablePersistance() {
+	logger.info(`Store persistance enabled, Redux state will be saved every ${saveFrequency}ms`);
+	store.subscribe(() => {
+		const { data } = store.getState();
+		if (isEmpty(data)) return;
+		throttledSaveState(data, 'data');
+	});
+}
 
 export function enableGracefulShutdown() {
 	logger.info('Graceful shutdown enabled, Redux state will be saved right before exiting');

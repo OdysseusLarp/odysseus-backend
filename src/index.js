@@ -18,8 +18,7 @@ import prometheusMiddleware from 'express-prometheus-middleware';
 
 import { initStoreSocket } from './store/storeSocket';
 import { initState } from './store/store';
-import { enableGracefulShutdown } from './store/storePersistance';
-import './store/storePersistance';
+import { enableGracefulShutdown, enablePersistance } from './store/storePersistance';
 import fleet from './routes/fleet';
 import starmap from './routes/starmap';
 import person from './routes/person';
@@ -160,10 +159,11 @@ loadEvents(io);
 Store.forge({ id: 'data' }).fetch().then(model => {
 	const data = model ? model.get('data') : {};
 	initState(data);
-	logger.info('State initialized');
+	logger.info('Redux state initialized');
+	enablePersistance();
+	enableGracefulShutdown();
 	loadRules();
 	startServer();
-	enableGracefulShutdown();
 
 	const EE_UPDATE_INTERVAL = parseInt(process.env.EMPTY_EPSILON_UPDATE_INTERVAL_MS || '1000', 10);
 	logger.watch(`Starting to poll Empty Epsilon game state every ${EE_UPDATE_INTERVAL}ms`);
