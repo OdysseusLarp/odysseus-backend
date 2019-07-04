@@ -115,18 +115,35 @@ science:age_error,science,"Carbon dating
 Cannot be determined"
 medic:mummy,medic,"Mummy
 
-Mummyfied person. Cause of death: Lack of oxygen, plunt force trauma."
+Mummyfied person. Cause of death: Lack of oxygen, blunt force trauma."
 science:energy_level_active,science,"Energy level
 
 Active"
 science:energy_level_inactive,science,"Energy level
 
-Inactive"
+Inactive, cannot be fixed"
 science:age_4000,science,"Carbon dating
 
 4000 years old"
-hapenpuuute,,
-medic: ,,
 science:origin_machine,science,"Origin
 
 Machine"
+science:energy_level_broken,science,"Energy level
+
+Broken, can be fixed"
+science:origin_elder,science,"Origin
+
+Elder"
+science:origin_eoc,science,"Origin
+
+EOC"
+science:origin_earth,science,"Origin
+
+Earth"
+science:life_form_worm,science,"Worm
+
+Unknown life form, molluscoid, slimy, handled carefully, when scared hides deeper into the tissue (or other bodily cavity), if the molluscoid perishes the regenerative properties cease to function."
+science:material_araknium_unrefined,science,"Material
+
+Unrefined Araknium, can be enriched to refined Araknium and from there to Araknium derivative"
+medic: hapenpuuute,,

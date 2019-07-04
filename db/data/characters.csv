@@ -441,7 +441,7 @@ Callsign: Tempest","515 Born
 520 Birth of child, Gira Hayakawa
 524 Married Hedly Walker
 530 Divorced Hedly Walker",B,542,B,"Nuts, especially peanuts & cashews",531 Suffers from migraines,531 Sonatral for migraine,"542 Anaphylaxis, brought to sickbay, treated with adrenaline injection",492,TRUE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
-20046,bio47,BXV5I0,FALSE,Gira,Hayakawa,Pilot,520,520336E263834,Unknown,Ellarion,Faith of the High Science,Full citizenship,ESS Aurora,Middle,Intelligence,Sustainable Development Alliance,Seaman,Pilot,Isha Hayakawa,Parent,Hedly Walker,Child,Roi Hayakawa,Grandparent,Akun Hayakawa,Grandparent,Lane Hayakawa,Relative,,,,,,,,,,,,,,,,A,542,AB,Peanuts & Cashews,,,,520,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+20046,bio47,BXV5I0,FALSE,Gira,Hayakawa,Pilot,520,520336E263834,Unknown,Ellarion,Faith of the High Science,Full citizenship,ESS Aurora,Middle,Intelligence,Sustainable Development Alliance,Lieutenant Junior Grade,Pilot,Isha Hayakawa,Parent,Hedly Walker,Child,Roi Hayakawa,Grandparent,Akun Hayakawa,Grandparent,Lane Hayakawa,Relative,,,,,,,,,,,,,,,,A,542,AB,Peanuts & Cashews,,,,520,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 20047,bio48,WDE9H0,FALSE,Kara,Bennett,Doctor,493,493099E234777,Present and accounted for,Ellarion,Faith of the High Science,Full citizenship,ESS Memory,Middle,Intelligence,None,Seaman,Scientist,Reiss Bennett,Sibling,Yves Bennett,Sibling,,,,,,,,,,,,,,,,,,,"509 Basic training
 510 Promoted to Seaman Apprentice
 538 Promoted to Seaman",,,C,541,AB,,,,,493,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,TRUE,FALSE,FALSE
@@ -1157,7 +1157,7 @@ Callsign: Tempest","515 Born
 542 Occasional nausea",541 Hydrocortisone,"510 Chickenpox
 520 Severe stress
 521 Depression over spouse's death",499,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
-20098,bio99,DR4DLV,TRUE,Briana,Chambers,Psychiatrist,510,510144E763549,Present and accounted for,Ellarion,Faith of the High Science,Full citizenship,ESS Odysseus,Upper,Confidence,The Democratic Pluralist Party,Seaman Apprentice,Psychiatrist,Karin Alexandrov,Relative,Lucas Wilson,Spouse,,,,,,,,,,,,,,,,,,,"527 Basic training
+20098,bio99,DR4DLV,TRUE,Briana,Chambers,Psychiatrist,510,510144E763549,Present and accounted for,Ellarion,Faith of the High Science,Full citizenship,ESS Odysseus,Upper,Tranquility,The Democratic Pluralist Party,Seaman Apprentice,Psychiatrist,Karin Alexandrov,Relative,Lucas Wilson,Spouse,,,,,,,,,,,,,,,,,,,"527 Basic training
 528 Promoted to Seaman Apprentice
 528 Relieved from service to pursue civilian profession",,"510 Born
 527 Relative Karin Alexandrov was recorded to be missing in action
@@ -1363,7 +1363,7 @@ Callsign: Tempest","515 Born
 513 Adopted
 531 Admitted to the Ellarion City University, Faculty of Medicine
 532 Enlisted to the EOC Star Fleet",B,539,A,,,,"539 Discovered old fracture on the right ankle, not ossified properly, might cause problems in the future
-541 Viral Infection, Stomach flu epidemic in the Alpha Marine Team",513,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,TRUE,TRUE,FALSE
+541 Viral Infection, Stomach flu epidemic in the Alpha Marine Team",513,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,TRUE,FALSE,FALSE
 20116,bio117,XR1E3L,TRUE,Nolan,Hunter,Odysseus Alpha Team Leader,491,491061E238575,Present and accounted for,Ellarion,None,Full citizenship,ESS Odysseus,Middle,Ambition,None,Lieutenant,Career Military,Rian Hunter,Spouse,Zeya Cook,Relative,,,,,,,,,,,,,,,,,,,"508 Basic training
 510 Promoted to Seaman Apprentice
 512 Promoted to Seaman
@@ -2059,4 +2059,8 @@ operate",510,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 528 Hired to Atlantis 3 as a maintenance
 532 Hired to ESS Odysseus as a maintenance",B,542,A,,,542 Painkillers,"541 Same flu epidemic which all Engineers on board except Amir Bolton had
 542 Concussion and fractured collarbone, recommended 5 days rest",503,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
-20381,bio382,SEC542,FALSE,ESS Odysseus,Security,Security account,542,Security,None,None,None,None,ESS Odysseus,None,None,None,None,None,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,542,TRUE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+20381,bio382,SEC5,FALSE,ESS Odysseus,Security,ESS Odysseus Security,542,Security,None,None,None,None,ESS Odysseus,None,None,None,None,None,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,542,TRUE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+20382,bio383,COMMS7,FALSE,ESS Odysseus ,Comms,ESS Odysseus Comms,542,Comms,None,None,None,None,ESS Odysseus,None,None,None,None,None,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,542,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+20383,bio384,COMFLEET1,FALSE,Fleet,Comms,Fleet Comms,542,Comms,None,None,None,None,ESS Odysseus,None,None,None,None,None,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,542,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE
+20384,bio385,MEDIC4,FALSE,ESS Odysseus ,Medics,ESS Odysseus Medics,542,Medics,None,None,None,None,ESS Odysseus,None,None,None,None,None,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,542,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+20385,bio386,SCIENCE9,FALSE,ESS Odysseus ,Scientists,ESS Odysseus Scientists,542,Scientists,None,None,None,None,ESS Odysseus,None,None,None,None,None,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,542,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
