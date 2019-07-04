@@ -647,6 +647,26 @@ blobs.push({
 			]
 		}
 	},
+	{
+		id: 'impulse_ADS',
+		type: 'game',
+		task: 'impulse_ADS',
+		game_config: 'manual',
+		status: 'fixed',
+		config: {
+			title: 'Impulse Antilepton Direction Stabilator, ADS',
+			pages: [
+				'<p>Perform the manual task according to instructions.</p><p>Impulse Antilepton Direction Stabilator is located in the crew bar. Refer to ESS Odysseus Operations Handbook page 2.2-10 for more detailed instructions.</p>',
+				'<p>There are two buttons on the opposite sides of the crew bar counter. These buttons needs to be pressed or pulled at the same time to stabilize the antilepton direction. If the buttons are pressed down, you need to pull them up and vice versa.</p>',
+				'<p>Move to calibrating when complete.</p>'
+			],
+			buttons: [
+				'Fixing instructions',
+				'Next',
+				'Calibrate'
+			]
+		}
+	},
 ].forEach(blob => blobs.push(blob));
 
 // Manual tasks
@@ -964,7 +984,7 @@ blobs.push({
 		singleUse: false,
 		used: false,
 		eeType: 'missilesystem',
-		eeHealth: 0.22,
+		eeHealth: 0.18,
 		status: 'initial',
 		calibrationCount: 2,
 		calibrationTime: 1200,
@@ -982,7 +1002,7 @@ blobs.push({
 		singleUse: false,
 		used: false,
 		eeType: 'missilesystem',
-		eeHealth: 0.22,
+		eeHealth: 0.18,
 		status: 'initial',
 		calibrationCount: 2,
 		calibrationTime: 1200,
@@ -1054,7 +1074,7 @@ blobs.push({
 		singleUse: false,
 		used: false,
 		eeType: 'maneuver',
-		eeHealth: 0.30,
+		eeHealth: 0.20,
 		status: 'initial',
 		calibrationCount: 1,
 		calibrationTime: 3600,
@@ -1190,6 +1210,24 @@ blobs.push({
 		map: 'lower-12.png',
 		mapX: 325,
 		mapY: 425
+	},
+	{
+		id: 'impulse_ADS',
+		type: 'task',
+		game: 'impulse_ADS',
+		singleUse: false,
+		used: false,
+		eeType: 'impulse',
+		eeHealth: 0.11,
+		status: 'initial',
+		calibrationCount: 6,
+		calibrationTime: 40,
+		title: 'Impulse Antilepton Direction Stabilator, ADS',
+		description: 'Manual labor is needed. Impulse Antilepton Direction Stabilator is located in the crew bar. Refer to ESS Odysseus Operations Handbook page 2.2-10 for more detailed instructions. Use HANSCA repair for calibration.',
+		location: 'Lower deck, Crew bar',
+		map: 'lower-11.png',
+		mapX: 130,
+		mapY: 200
 	},
 ].forEach(blob => blobs.push(blob));
 
