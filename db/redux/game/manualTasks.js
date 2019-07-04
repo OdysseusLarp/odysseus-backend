@@ -918,7 +918,7 @@ blobs.push({
 	{
 		id: 'maneuvering_hsm_11',
 		type: 'task',
-		game: 'maneuvering_hsm_1',
+		game: 'maneuvering_hsm_11',
 		singleUse: true,
 		used: false,
 		eeType: 'maneuver',
@@ -936,7 +936,7 @@ blobs.push({
 	{
 		id: 'maneuvering_hsm_12',
 		type: 'task',
-		game: 'maneuvering_hsm_2',
+		game: 'maneuvering_hsm_12',
 		singleUse: true,
 		used: false,
 		eeType: 'maneuver',
@@ -954,7 +954,7 @@ blobs.push({
 	{
 		id: 'maneuvering_hsm_13',
 		type: 'task',
-		game: 'maneuvering_hsm_3',
+		game: 'maneuvering_hsm_13',
 		singleUse: true,
 		used: false,
 		eeType: 'maneuver',
@@ -972,7 +972,7 @@ blobs.push({
 	{
 		id: 'maneuvering_hsm_14',
 		type: 'task',
-		game: 'maneuvering_hsm_4',
+		game: 'maneuvering_hsm_14',
 		singleUse: true,
 		used: false,
 		eeType: 'maneuver',
