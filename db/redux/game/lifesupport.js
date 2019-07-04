@@ -26,10 +26,10 @@ for (let i=0; i < 20; i++) {
 		calibrationCount: 0,
 		title: `Life support power line ${code}`,
 		description: `Life support power line ${code} maximum current has been overloaded. The power line currents must be redistributed using HANSCA.`,
-		location: 'Upper deck, security room',  // FIXME: location
-		map: 'upper-7.png',
-		mapX: 240,
-		mapY: 310 + i*2,
+		location: 'Upper deck, maintenance tunnel',
+		map: 'upper-5.png',
+		mapX: 345,
+		mapY: 70,
 	});
 }
 
