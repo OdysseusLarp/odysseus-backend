@@ -2,7 +2,7 @@ require('dotenv').config({ silent: true });
 import { logger } from './logger';
 import axios from 'axios';
 import nock from 'nock';
-import { get, set, forIn, pick, isInteger } from 'lodash';
+import { get, set, forIn, pick, isNumber } from 'lodash';
 import { handleAsyncErrors } from './helpers';
 import { getData } from './routes/data';
 
@@ -177,7 +177,7 @@ export class EmptyEpsilonClient {
 			}, {});
 		}).then(state => {
 			const { shipHull, shipHullMax } = pick(get(state, 'general', {}), ['shipHull', 'shipHullMax']);
-			if (isInteger(shipHull) && isInteger(shipHullMax)) {
+			if (isNumber(shipHull) && isNumber(shipHullMax)) {
 				set(state, 'general.shipHullPercent', shipHull / shipHullMax);
 			}
 			return state;
