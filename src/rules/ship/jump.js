@@ -179,7 +179,7 @@ function handleTransition(jump, currentStatus, previousStatus) {
 
 			// Enable Empty Epsilon state synchronization if connection status is healthy
 			if (getEmptyEpsilonClient().getConnectionStatus().isConnectionHealthy) {
-				setEeSyncEnabled(true);
+				setTimeout(() => setEeSyncEnabled(true), 3000);
 			} else {
 				logger.error('Could not enable Empty Epsilon state synchronization, connection is not healthy');
 			}
