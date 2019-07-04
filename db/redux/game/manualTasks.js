@@ -667,6 +667,106 @@ blobs.push({
 			]
 		}
 	},
+	{
+		id: 'hull_PCJ_a',
+		type: 'game',
+		task: 'hull_PCJ_a',
+		game_config: 'manual',
+		status: 'fixed',
+		config: {
+			title: 'Hull Polarity Compensator Junction Grid, PCJ A',
+			pages: [
+				'<p>Perform the manual task according to instructions.</p><p>Hull Polarity Compensator Junction Grid is located in the medbay. Refer to ESS Odysseus Operations Handbook page 2.6-45 for more detailed instructions.</p>',
+				'<p>New configuration: green, green, red</p>',
+				'<p>Move to calibrating when complete.</p>'
+			],
+			buttons: [
+				'Fixing instructions',
+				'Next',
+				'Calibrate'
+			]
+		}
+	},
+	{
+		id: 'hull_PCJ_b',
+		type: 'game',
+		task: 'hull_PCJ_b',
+		game_config: 'manual',
+		status: 'fixed',
+		config: {
+			title: 'Hull Polarity Compensator Junction Grid, PCJ B',
+			pages: [
+				'<p>Perform the manual task according to instructions.</p><p>Hull Polarity Compensator Junction Grid is located in the medbay. Refer to ESS Odysseus Operations Handbook page 2.6-45 for more detailed instructions.</p>',
+				'<p>New configuration: green, white, red</p>',
+				'<p>Move to calibrating when complete.</p>'
+			],
+			buttons: [
+				'Fixing instructions',
+				'Next',
+				'Calibrate'
+			]
+		}
+	},
+	{
+		id: 'hull_PCJ_c',
+		type: 'game',
+		task: 'hull_PCJ_c',
+		game_config: 'manual',
+		status: 'fixed',
+		config: {
+			title: 'Hull Polarity Compensator Junction Grid, PCJ C',
+			pages: [
+				'<p>Perform the manual task according to instructions.</p><p>Hull Polarity Compensator Junction Grid is located in the medbay. Refer to ESS Odysseus Operations Handbook page 2.6-45 for more detailed instructions.</p>',
+				'<p>New configuration: white, red, red</p>',
+				'<p>Move to calibrating when complete.</p>'
+			],
+			buttons: [
+				'Fixing instructions',
+				'Next',
+				'Calibrate'
+			]
+		}
+	},
+	{
+		id: 'hull_PCJ_d',
+		type: 'game',
+		task: 'hull_PCJ_d',
+		game_config: 'manual',
+		status: 'fixed',
+		config: {
+			title: 'Hull Polarity Compensator Junction Grid, PCJ D',
+			pages: [
+				'<p>Perform the manual task according to instructions.</p><p>Hull Polarity Compensator Junction Grid is located in the medbay. Refer to ESS Odysseus Operations Handbook page 2.6-45 for more detailed instructions.</p>',
+				'<p>New configuration: green, white, red</p>',
+				'<p>Move to calibrating when complete.</p>'
+			],
+			buttons: [
+				'Fixing instructions',
+				'Next',
+				'Calibrate'
+			]
+		}
+	},
+	{
+		id: 'hull_PCJ_e',
+		type: 'game',
+		task: 'hull_PCJ_e',
+		game_config: 'manual',
+		status: 'fixed',
+		config: {
+			title: 'Hull Polarity Compensator Junction Grid, PCJ E',
+			pages: [
+				'<p>Perform the manual task according to instructions.</p><p>Hull Polarity Compensator Junction Grid is located in the medbay. Refer to ESS Odysseus Operations Handbook page 2.6-45 for more detailed instructions.</p>',
+				'<p>New configuration: green, white, white</p>',
+				'<p>Move to calibrating when complete.</p>'
+			],
+			buttons: [
+				'Fixing instructions',
+				'Next',
+				'Calibrate'
+			]
+		}
+	},
 ].forEach(blob => blobs.push(blob));
 
 // Manual tasks
@@ -753,7 +853,7 @@ blobs.push({
 		eeHealth: 0.4,
 		status: 'initial',
 		calibrationCount: 1,
-		calibrationTime: 2220,
+		calibrationTime: 1220,
 		title: 'Connect Back-up Reactor MG9k, MG9k',
 		description: 'Manual labor is needed. The back-up reactor MG9k is located in the medbay behind a picture/poster. Use HANSCA repair.',
 		location: 'Upper deck, Engineering Technical Space',
@@ -896,8 +996,8 @@ blobs.push({
 		eeType: 'impulse',
 		eeHealth: 0.20,
 		status: 'initial',
-		calibrationCount: 2,
-		calibrationTime: 900,
+		calibrationCount: 1,
+		calibrationTime: 480,
 		title: 'Impulse Engine Hypersensitive Sensor Module 21 Clean-up, HSM 21',
 		description: 'Manual labor is needed. The Hypersensitive Sensor Module is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.5-45 for instructions. Use HANSCA repair for calibration.',
 		location: 'Upper deck, Bridge',
@@ -914,8 +1014,8 @@ blobs.push({
 		eeType: 'impulse',
 		eeHealth: 0.20,
 		status: 'initial',
-		calibrationCount: 2,
-		calibrationTime: 900,
+		calibrationCount: 1,
+		calibrationTime: 480,
 		title: 'Impulse Engine Hypersensitive Sensor Module 22 Clean-up, HSM 22',
 		description: 'Manual labor is needed. The Hypersensitive Sensor Module is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.5-45 for instructions. Use HANSCA repair for calibration.',
 		location: 'Upper deck, Bridge',
@@ -932,8 +1032,8 @@ blobs.push({
 		eeType: 'impulse',
 		eeHealth: 0.20,
 		status: 'initial',
-		calibrationCount: 2,
-		calibrationTime: 900,
+		calibrationCount: 1,
+		calibrationTime: 480,
 		title: 'Impulse Engine Hypersensitive Sensor Module 23 Clean-up. HSM 23',
 		description: 'Manual labor is needed. The Hypersensitive Sensor Module is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.5-45 for instructions. Use HANSCA repair for calibration.',
 		location: 'Upper deck, Bridge',
@@ -950,8 +1050,8 @@ blobs.push({
 		eeType: 'impulse',
 		eeHealth: 0.20,
 		status: 'initial',
-		calibrationCount: 2,
-		calibrationTime: 900,
+		calibrationCount: 1,
+		calibrationTime: 480,
 		title: 'Impulse Engine Hypersensitive Sensor Module 24 Clean-up, HSM 24',
 		description: 'Manual labor is needed. The Hypersensitive Sensor Module is located in the medbay. Refer to ESS Odysseus Operations Handbook page 2.5-45 for instructions. Use HANSCA repair for calibration.',
 		location: 'Upper deck, Medbay',
@@ -986,8 +1086,8 @@ blobs.push({
 		eeType: 'missilesystem',
 		eeHealth: 0.18,
 		status: 'initial',
-		calibrationCount: 2,
-		calibrationTime: 1200,
+		calibrationCount: 1,
+		calibrationTime: 1050,
 		title: 'Missile weapon guidance system fault 1, cooling fan jammed, GS F1',
 		description: 'Manual labor is needed. Missile weapon guidance system is located in Engineering Technical Space. Refer to ESS Odysseus Operations Handbook page 2.7-13 for more detailed instructions. Use HANSCA repair for calibration.',
 		location: 'Lower deck, Engineering Technical Space',
@@ -1004,8 +1104,8 @@ blobs.push({
 		eeType: 'missilesystem',
 		eeHealth: 0.18,
 		status: 'initial',
-		calibrationCount: 2,
-		calibrationTime: 1200,
+		calibrationCount: 1,
+		calibrationTime: 1050,
 		title: 'Missile weapon guidance system fault 2, overheating of the low yield araknium fuel rod, GS F2',
 		description: 'Manual labor is needed. Missile weapon guidance system is located in Engineering Technical Space. Refer to ESS Odysseus Operations Handbook page 2.7-13 for more detailed instructions. Use HANSCA repair for calibration.',
 		location: 'Lower deck, Engineering Technical Space',
@@ -1023,7 +1123,7 @@ blobs.push({
 		eeHealth: 0.17,
 		status: 'initial',
 		calibrationCount: 1,
-		calibrationTime: 1600,
+		calibrationTime: 600,
 		title: 'Beam weapon beam frequency modulator, fried up processor, FM',
 		description: 'Manual labor is needed. Beam weapon beam freaquency modulator is located in engineering technical space. Refer to ESS Odysseus Operations Handbook page 2.2-25 for more detailed instructions. Use HANSCA repair for calibration.',
 		location: 'Lower deck, Engineering Technical Space',
@@ -1041,7 +1141,7 @@ blobs.push({
 		eeHealth: 0.17,
 		status: 'initial',
 		calibrationCount: 1,
-		calibrationTime: 1600,
+		calibrationTime: 600,
 		title: 'Beam weapon memory circulator, memory overflow, MC',
 		description: 'Manual labor is needed. Beam weapon memory circulator is located in engineering technical space. Refer to ESS Odysseus Operations Handbook page 1-38 for more detailed instructions. Use HANSCA repair for calibration.',
 		location: 'Lower deck, Engineering Technical Space',
@@ -1059,7 +1159,7 @@ blobs.push({
 		eeHealth: 0.26,
 		status: 'initial',
 		calibrationCount: 3,
-		calibrationTime: 2600,
+		calibrationTime: 260,
 		title: 'Maneuvering thrusters space dust filter clean-up, SDF',
 		description: 'Manual labor is needed. Maneuvering thrusters space dust filter is located in engineering technical space. Refer to ESS Odysseus Operations Handbook page 2.5-19 for more detailed instructions. Use HANSCA repair for calibration.',
 		location: 'Lower deck, Engineering Technical Space',
@@ -1077,7 +1177,7 @@ blobs.push({
 		eeHealth: 0.20,
 		status: 'initial',
 		calibrationCount: 1,
-		calibrationTime: 3600,
+		calibrationTime: 1100,
 		title: 'Maneuvering thruster spectral dampener autocontrol level recharge conductor, re-leveling, LRC',
 		description: 'Manual labor is needed. Maneuvering thruster spectral dampener autocontrol level recharge conductor is located in engineering technical space. Refer to ESS Odysseus Operations Handbook page 2.8-31 for more detailed instructions. Use HANSCA repair for calibration.',
 		location: 'Lower deck, Engineering Technical Space',
@@ -1095,7 +1195,7 @@ blobs.push({
 		eeHealth: 0.12,
 		status: 'initial',
 		calibrationCount: 4,
-		calibrationTime: 200,
+		calibrationTime: 180,
 		title: 'Maneuvering thruster spectral dampener autocontrol level recharge conductor, re-leveling, DEM',
 		description: 'Manual labor is needed. Maneuvering thruster spectral dampener autocontrol level recharge conductor is located in engineering technical space. Refer to ESS Odysseus Operations Handbook page 2.8-31 for more detailed instructions. Use HANSCA repair for calibration.',
 		location: 'Lower deck, Engineering Technical Space',
@@ -1113,7 +1213,7 @@ blobs.push({
 		eeHealth: 0.09,
 		status: 'initial',
 		calibrationCount: 2,
-		calibrationTime: 1100,
+		calibrationTime: 610,
 		title: 'Front shield reactor encryption enhancement A, re-encrypting (re-wiring) the shield reactor, EE A (F)',
 		description: 'Manual labor is needed. Shield reactor encryption enhancement is located in the armory. Refer to ESS Odysseus Operations Handbook page 2.2-16 for more detailed instructions. Use HANSCA repair for calibration.',
 		location: 'Lower deck, Armory',
@@ -1131,7 +1231,7 @@ blobs.push({
 		eeHealth: 0.09,
 		status: 'initial',
 		calibrationCount: 2,
-		calibrationTime: 1100,
+		calibrationTime: 610,
 		title: 'Front shield reactor encryption enhancement B, re-encrypting (re-wiring) the shield reactor, EE B (F)',
 		description: 'Manual labor is needed. Shield reactor encryption enhancement is located in the armory. Refer to ESS Odysseus Operations Handbook page 2.2-16 for more detailed instructions. Use HANSCA repair for calibration.',
 		location: 'Lower deck, Armory',
@@ -1149,7 +1249,7 @@ blobs.push({
 		eeHealth: 0.09,
 		status: 'initial',
 		calibrationCount: 2,
-		calibrationTime: 1100,
+		calibrationTime: 610,
 		title: 'Front shield reactor encryption enhancement C, re-encrypting (re-wiring) the shield reactor, EE C (F)',
 		description: 'Manual labor is needed. Shield reactor encryption enhancement is located in the armory. Refer to ESS Odysseus Operations Handbook page 2.2-16 for more detailed instructions. Use HANSCA repair for calibration.',
 		location: 'Lower deck, Armory',
@@ -1167,7 +1267,7 @@ blobs.push({
 		eeHealth: 0.09,
 		status: 'initial',
 		calibrationCount: 2,
-		calibrationTime: 1100,
+		calibrationTime: 610,
 		title: 'Rear shield reactor encryption enhancement A, re-encrypting (re-wiring) the shield reactor, EE A (R)',
 		description: 'Manual labor is needed. Shield reactor encryption enhancement is located in the armory. Refer to ESS Odysseus Operations Handbook page 2.2-16 for more detailed instructions. Use HANSCA repair for calibration.',
 		location: 'Lower deck, Armory',
@@ -1185,7 +1285,7 @@ blobs.push({
 		eeHealth: 0.09,
 		status: 'initial',
 		calibrationCount: 2,
-		calibrationTime: 1100,
+		calibrationTime: 610,
 		title: 'Rear shield reactor encryption enhancement B, re-encrypting (re-wiring) the shield reactor, EE B (R)',
 		description: 'Manual labor is needed. Shield reactor encryption enhancement is located in the armory. Refer to ESS Odysseus Operations Handbook page 2.2-16 for more detailed instructions. Use HANSCA repair for calibration.',
 		location: 'Lower deck, Armory',
@@ -1203,7 +1303,7 @@ blobs.push({
 		eeHealth: 0.09,
 		status: 'initial',
 		calibrationCount: 2,
-		calibrationTime: 1100,
+		calibrationTime: 610,
 		title: 'Rear shield reactor encryption enhancement C, re-encrypting (re-wiring) the shield reactor, EE C (R)',
 		description: 'Manual labor is needed. Shield reactor encryption enhancement is located in the armory. Refer to ESS Odysseus Operations Handbook page 2.2-16 for more detailed instructions. Use HANSCA repair for calibration.',
 		location: 'Lower deck, Armory',
@@ -1227,6 +1327,96 @@ blobs.push({
 		location: 'Lower deck, Crew bar',
 		map: 'lower-11.png',
 		mapX: 130,
+		mapY: 200
+	},
+	{
+		id: 'hull_PCJ_a',
+		type: 'task',
+		game: 'hull_PCJ_a',
+		singleUse: false,
+		used: false,
+		eeType: 'hull',
+		eeHealth: 0.13,
+		status: 'initial',
+		calibrationCount: 3,
+		calibrationTime: 230,
+		title: 'Hull Polarity Compensator Junction Grid, PCJ A',
+		description: 'Manual labor is needed. Perform the manual task according to instructions.</p><p>Hull Polarity Compensator Junction Grid is located in the medbay. Refer to ESS Odysseus Operations Handbook page 2.6-45 for more detailed instructions. Use HANSCA repair for calibration.',
+		location: 'Upper deck, Medbay',
+		map: 'lower-6.png',
+		mapX: 30,
+		mapY: 200
+	},
+	{
+		id: 'hull_PCJ_b',
+		type: 'task',
+		game: 'hull_PCJ_b',
+		singleUse: false,
+		used: false,
+		eeType: 'hull',
+		eeHealth: 0.13,
+		status: 'initial',
+		calibrationCount: 3,
+		calibrationTime: 230,
+		title: 'Hull Polarity Compensator Junction Grid, PCJ B',
+		description: 'Manual labor is needed. Perform the manual task according to instructions.</p><p>Hull Polarity Compensator Junction Grid is located in the medbay. Refer to ESS Odysseus Operations Handbook page 2.6-45 for more detailed instructions. Use HANSCA repair for calibration.',
+		location: 'Upper deck, Medbay',
+		map: 'lower-6.png',
+		mapX: 30,
+		mapY: 200
+	},
+	{
+		id: 'hull_PCJ_c',
+		type: 'task',
+		game: 'hull_PCJ_c',
+		singleUse: false,
+		used: false,
+		eeType: 'hull',
+		eeHealth: 0.13,
+		status: 'initial',
+		calibrationCount: 3,
+		calibrationTime: 230,
+		title: 'Hull Polarity Compensator Junction Grid, PCJ C',
+		description: 'Manual labor is needed. Perform the manual task according to instructions.</p><p>Hull Polarity Compensator Junction Grid is located in the medbay. Refer to ESS Odysseus Operations Handbook page 2.6-45 for more detailed instructions. Use HANSCA repair for calibration.',
+		location: 'Upper deck, Medbay',
+		map: 'lower-6.png',
+		mapX: 30,
+		mapY: 200
+	},
+	{
+		id: 'hull_PCJ_d',
+		type: 'task',
+		game: 'hull_PCJ_d',
+		singleUse: false,
+		used: false,
+		eeType: 'hull',
+		eeHealth: 0.13,
+		status: 'initial',
+		calibrationCount: 3,
+		calibrationTime: 230,
+		title: 'Hull Polarity Compensator Junction Grid, PCJ D',
+		description: 'Manual labor is needed. Perform the manual task according to instructions.</p><p>Hull Polarity Compensator Junction Grid is located in the medbay. Refer to ESS Odysseus Operations Handbook page 2.6-45 for more detailed instructions. Use HANSCA repair for calibration.',
+		location: 'Upper deck, Medbay',
+		map: 'lower-6.png',
+		mapX: 30,
+		mapY: 200
+	},
+	{
+		id: 'hull_PCJ_e',
+		type: 'task',
+		game: 'hull_PCJ_e',
+		singleUse: false,
+		used: false,
+		eeType: 'hull',
+		eeHealth: 0.13,
+		status: 'initial',
+		calibrationCount: 3,
+		calibrationTime: 230,
+		title: 'Hull Polarity Compensator Junction Grid, PCJ E',
+		description: 'Manual labor is needed. Perform the manual task according to instructions.</p><p>Hull Polarity Compensator Junction Grid is located in the medbay. Refer to ESS Odysseus Operations Handbook page 2.6-45 for more detailed instructions. Use HANSCA repair for calibration.',
+		location: 'Upper deck, Medbay',
+		map: 'lower-6.png',
+		mapX: 30,
 		mapY: 200
 	},
 ].forEach(blob => blobs.push(blob));
