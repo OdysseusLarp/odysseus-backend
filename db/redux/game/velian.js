@@ -12,8 +12,8 @@ blobs.push({
 	id: 'velian1',
 
 	default: {
-		initDescription: '...',  // FIXME
-		endDescription: '...!',
+		initDescription: `<p>Hyperspace communicator ionic phaser needs to be stabilized.</p>`,
+		endDescription: 'Stabilization successful!',
 		game: 'phasesync',
 
 		dimensions: 2,
@@ -36,8 +36,9 @@ blobs.push({
 	id: 'velian2',
 
 	default: {
-		initDescription: '...',
-		endDescription: '...!',
+		initDescription: `<p>Hyperspace communicator tachyon decoherence levels need to be synchronized.</p>
+		<p>Adjust the decoherence levels until all levels are aligned and in locked state.</p>`,
+		endDescription: 'Tachyon decoherence synchronization successful!',
 		game: 'phasesync',
 
 		dimensions: 5,
@@ -60,8 +61,10 @@ blobs.push({
 	id: 'velian3',
 
 	default: {
-		initDescription: '...',
-		endDescription: '...!',
+		initDescription: `<p>Hyperspace communicator spatial disruptors need to be discharged.</p>
+		<p>You need to discharge all segments. When you click a segment, the segment and all immediately adjacent segments will discharge or recharge. Once all segments are discharged (black), the system will become operational.</p>
+		<p>You may reset the spatial disruptor segments to a random state.</p>`,
+		endDescription: 'Spatial disruptors discharged!',
 		game: 'lightsout',
 		random: 30,
 		size: 5,
