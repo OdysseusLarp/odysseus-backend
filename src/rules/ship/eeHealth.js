@@ -129,13 +129,14 @@ interval(() => {
 	for (const type of TYPES) {
 		const tasks = getEETasks(type);
 		const brokenTasks = tasks.filter(isBroken);
+		const maxHealthTask = brokenTasks.reduce((max, task) => Math.max(max, task.eeHealth ? task.eeHealth : 0), 0);
 		const taskHealth = computeHealth(brokenTasks);
 
 		const ee = store.getState().data.ship.ee;
 		const eeHealth = getEEHealth(ee, type);
 
-		//  eeHealth - 10% - epsilon <= taskHealth <= eeHealth + epsilon
-		if (!(eeHealth - 0.1 - EPSILON <= taskHealth && taskHealth <= eeHealth + EPSILON)) {
+		//  eeHealth - maxHealthTask - epsilon <= taskHealth <= eeHealth + epsilon
+		if (!(eeHealth - maxHealthTask - EPSILON <= taskHealth && taskHealth <= eeHealth + EPSILON)) {
 			logger.error(`EE ${type} health has significant mismatch between EE and task-based status: `+
 			  `EE shows ${eeHealth} and tasks show ${taskHealth}`);
 		}
