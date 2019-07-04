@@ -154,8 +154,10 @@ async function onSendMessage(socket, messageDetails) {
 	// Only emit to target and sender client if message is private
 	if (type === 'private' && connectedUsers.has(target)) {
 		const msgWithRelated = await msg.fetchWithRelated();
-		const socketSet = connectedUsers.get(target);
-		if (socketSet) socketSet.forEach(s => s.emit('message', msgWithRelated));
+		const receiverSocketSet = connectedUsers.get(target);
+		if (receiverSocketSet) receiverSocketSet.forEach(s => s.emit('message', msgWithRelated));
+		const senderSocketSet = connectedUsers.get(socket.userId);
+		if (senderSocketSet) senderSocketSet.forEach(s => s.emit('message', msgWithRelated));
 	} else {
 		// Send to general channel for now
 		messaging.emit('message', await msg.fetchWithRelated());
