@@ -60,7 +60,7 @@ function computeHealth(brokenTasks) {
 }
 
 function getPriorityTasks(tasks) {
-	const maxPriority = tasks.reduce((max, task) => Math.max(max, task.priority ? task.priority : 0), 0);
+	const maxPriority = tasks.reduce((max, task) => Math.max(max, task.priority ? task.priority : 0), -1000000);
 	return tasks.filter(task => (task.priority ? task.priority : 0) === maxPriority);
 }
 
@@ -74,6 +74,11 @@ function breakTasks(type, targetHealth) {
 	while (currentHealth - EPSILON > targetHealth && unbrokenTasks.length > 0) {
 		const priorityTasks = getPriorityTasks(unbrokenTasks);
 		const toBeBroken = chooseRandom(priorityTasks)[0];
+		if (!toBeBroken) {
+			logger.error(`toBeBroken is undefined even though unbrokenTasks.length=${unbrokenTasks.length}, 
+			unbrokenTasks=${JSON.stringify(unbrokenTasks)}`);
+			break;
+		}
 		unbrokenTasks = unbrokenTasks.filter(task => !isEqual(task, toBeBroken));
 		breakTask(toBeBroken);
 		currentHealth -= toBeBroken.eeHealth;
