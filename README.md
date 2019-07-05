@@ -53,9 +53,13 @@ Events fired by server are:
     'dataUpdate', type, id, {...new content...}
     'dataDelete', type, id
 
+## DMX
+The backend sends DMX signals to trigger lights and sound during certain events. Make sure that you have `DMX_DEVICE_PATH` and `DMX_DRIVER` set correctly in `.env` if you actually have a DMX device that you want to use. Otherwise you can leave them blank.
+
 ## Production setup
 * Copy `.env.dist` to `.backend.env.prod` and set the correct settings
 * Check that `docker-compose.yml` has the correct `POSTGRES_PASSWORD` env
 * Check that `docker-compose.yml` has the correct volume mount path for the host computer, since PostgreSQL data will be persisted there
+* Check that `docker-compose.yml` has the correct DMX device path
 * Run `docker-compose build` to build the database and backend images
 * Run `docker-compose up -d` to start the database and bakend containers
