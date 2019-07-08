@@ -146,4 +146,47 @@ Unknown life form, molluscoid, slimy, handled carefully, when scared hides deepe
 science:material_araknium_unrefined,science,"Material
 
 Unrefined Araknium, can be enriched to refined Araknium and from there to Araknium derivative"
-medic: hapenpuuute,,
+,,
+medic:worm,medic,"Patient feels stinging pain in the nape of their neck.
+
+At first there are no external symptoms. Internal: inflammation, mild poisoning, hallucinations.
+
+X-ray scan is highly suggested! 
+
+Small worm like life forms visible around the neck area.
+
+10-15 min after the patient has arrived, there will be a granulated lesion. 
+((Wait for make up team! They will arrive to medbay.))
+
+If any bits of the worm are left in the wound the worm will regenerate from the bits.
+
+((For extra drama you could make a mistake in the removal process, the worm will regenerate and you need to start over.))"
+medic:poison_blood_coagulation,medic,"Poisoning
+
+Poisoning from an unknown life form. Blood does not coagulate. "
+medic:wound,medic,"Wound
+
+Level 1: Clean wound - Skin is torn, cut, or punctured (an open wound), needs to be cleaned and bandaged.
+
+Level 2: Contaminated wound - Pathogenic organisms and foreign bodies in the wound. Possibility for infection. Needs to be cleaned and stitched.
+
+Level 3: Infected wound - Pathogenic organisms present and multiplying, exhibiting clinical signs of infection (yellow appearance, soreness, redness, oozing pus). Give antibiotics, use clamps for closing the wound. If gangrene, remove affected tissue. "
+medic:hypoxia,medic,"Hypoxia
+
+Level 1: Numbness, tingling of extremities, nausea, confusion. Check and clear air ways. Give oxygen.
+
+Level 2: Fatigue, disorientation, hallucinations, severe headaches. Check and clear air ways. Give oxygen as long as necessary.
+
+Level 3: Behavioral change, reduced level of consciousness, cerebral anoxia. Check and clear air ways. Restore blood circulation, give oxygen."
+science:machine_weapon,science,"A very conventional rifle, possibly human made, but adapted slightly for the machines. Surprisingly boring in it's make."
+science:araknium,science,Araknium heat treatment successful
+medic:radiation_stims,medic,"Radiation poisoning is interacting with substance abuse in the patients body, causing the immune system to overload. His mucus membranes and spit glands are going berserk, and patient needs fluids and i.v. hydration. Iodine pills for radiation and a possible liver operation. "
+medic:bartender,medic,"Severe damage to internal organs, internal bleeding (blood in lungs).  
+
+((Bio ID says Jack Lange, but character is Sally Lange. Please let me die for drama. You can extend dying but no miracle saves should work, you can come up with reasons why :))"
+medic:velian_death,medic,"Patient has foreign, serrated, object lodged deep in the throat. Massive damage to carotid artery, larynx and trachea. The patient requires immediate surgery to stop bleeding and to have any possibility of retaining speech functions. Patient is unable to breathe, requires intubating. 
+
+Patient has suffered burns from the blast.
+
+After 10 minutes of intense surgery the patient seizures due to cardiac arrest caused by stress to the body and exsanguination (blood loss). 
+Patient is pronounced dead after 13 minutes of surgery."

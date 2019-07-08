@@ -1,4 +1,4 @@
-id,bio_id,card_id,is_character,first_name,last_name,title,birth_year,citizen_id,status,home_planet,religion,citizenship,ship_id,social_class,dynasty,political_party,military_rank,occupation,1_name,1_relationship,2_name,2_relationship,3_name,3_relationship,4_name,4_relationship,5_name,5_relationship,6_name,6_relationship,7_name,7_relationship,8_name,8_relationship,9_name,9_relationship,10_name,10_relationship,11_name,11_relationship,military_service_history,military_remarks,personal_file,medical_fitness_level,medical_last_fitness_check,medical_blood_type,medical_allergies,medical_active_conditions,medical_current_medication,medical_records,created_year,is_visible,role:medic,role:security,role:science,role:engineer,role:captain,role:hacker,role:admin,skill:novice,skill:master,skill:expert
+n,bio_id,card_id,is_character,first_name,last_name,title,birth_year,citizen_id,status,home_planet,religion,citizenship,ship_id,social_class,dynasty,political_party,military_rank,occupation,1_name,1_relationship,2_name,2_relationship,3_name,3_relationship,4_name,4_relationship,5_name,5_relationship,6_name,6_relationship,7_name,7_relationship,8_name,8_relationship,9_name,9_relationship,10_name,10_relationship,11_name,11_relationship,military_service_history,military_remarks,personal_file,medical_fitness_level,medical_last_fitness_check,medical_blood_type,medical_allergies,medical_active_conditions,medical_current_medication,medical_records,created_year,is_visible,role:medic,role:security,role:science,role:engineer,role:captain,role:hacker,role:admin,skill:novice,skill:master,skill:expert
 20000,bio1,RJGVTW,FALSE,Mark,Bolton,Star Captain,467,467266C483362,Present and accounted for,Caelena,Old Ways,Full citizenship,ESS Harbinger,Middle,Loyalty,None,Commander,Career Military,Amir Bolton,Child,Liz Bolton,Spouse,Amie Bolton,Child,,,,,,,,,,,,,,,,,,,,,,,,,,,467,FALSE,FALSE,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
 20001,bio2,T9EQLB,TRUE,Vane,Hodge,Engineer,497,497036O748265,Present and accounted for,Osiris,Faith of the High Science,Colonial citizenship,ESS Odysseus,Lower,Loyalty,None,Seaman,Engineer,Kerrie Ray,Relative,Eliza Ray,Relative,Keena Marsh,Parent,Garrett Hodge,Parent,Koga Kyoshi,Sibling,,,,,,,,,,,,,"517-519 Basic training, preliminary specialisation in engineering
 519-521 Military academy: specialisation in engineering
@@ -441,7 +441,7 @@ Callsign: Tempest","515 Born
 520 Birth of child, Gira Hayakawa
 524 Married Hedly Walker
 530 Divorced Hedly Walker",B,542,B,"Nuts, especially peanuts & cashews",531 Suffers from migraines,531 Sonatral for migraine,"542 Anaphylaxis, brought to sickbay, treated with adrenaline injection",492,TRUE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
-20046,bio47,BXV5I0,FALSE,Gira,Hayakawa,Pilot,520,520336E263834,Unknown,Ellarion,Faith of the High Science,Full citizenship,ESS Aurora,Middle,Intelligence,Sustainable Development Alliance,Lieutenant Junior Grade,Pilot,Isha Hayakawa,Parent,Hedly Walker,Child,Roi Hayakawa,Grandparent,Akun Hayakawa,Grandparent,Lane Hayakawa,Relative,,,,,,,,,,,,,,,,A,542,AB,Peanuts & Cashews,,,,520,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+20046,bio47,BXV5I0,FALSE,Gira,Hayakawa,Pilot,520,520336E263834,Unknown,Ellarion,Faith of the High Science,Full citizenship,ESS Aurora,Middle,Intelligence,Sustainable Development Alliance,Lieutenant Junior Grade,Pilot,Isha Hayakawa,Parent,Roi Hayakawa,Grandparent,Akun Hayakawa,Grandparent,Lane Hayakawa,Relative,,,,,,,,,,,,,,,,,,A,542,AB,Peanuts & Cashews,,,,520,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 20047,bio48,WDE9H0,FALSE,Kara,Bennett,Doctor,493,493099E234777,Present and accounted for,Ellarion,Faith of the High Science,Full citizenship,ESS Memory,Middle,Intelligence,None,Seaman,Scientist,Reiss Bennett,Sibling,Yves Bennett,Sibling,,,,,,,,,,,,,,,,,,,"509 Basic training
 510 Promoted to Seaman Apprentice
 538 Promoted to Seaman",,,C,541,AB,,,,,493,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,TRUE,FALSE,FALSE
@@ -1115,7 +1115,7 @@ Callsign: Tempest","515 Born
 532 Moved to Osiris to work in as a Junior Researcher
 534 Moved back to Ellarion
 535 Enlisted on a science vessel, the ESS Oedipus",B,541,AB,Animal hair,,,,507,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
-20094,bio95,178CDB,TRUE,Hayden,Carson,Weapons Officer ,510,510043E777389,Present and accounted for,Ellarion,Old Ways,Full citizenship,ESS Odysseus,Upper,Strength,Ellarion Centrist Party,Lieutenant,Career Military,Joe Carson,Parent,Salma Taylor,Parent,Arin Carson,Sibling,,,,,,,,,,,,,,,,,"526 Enlisted to the Saigo Imperial Academy of Defence
+20094,bio95,178CDB,TRUE,Hayden,Carson,Weapons Officer ,510,510043E777389,Present and accounted for,Ellarion,Old Ways,Full citizenship,ESS Odysseus,Upper,Strength,Ellarion Centrist Party,Commander-Lieutenant,Career Military,Joe Carson,Parent,Salma Taylor,Parent,Arin Carson,Sibling,,,,,,,,,,,,,,,,,"526 Enlisted to the Saigo Imperial Academy of Defence
 536 Got internship on the ESS Valkyrie
 537 Graduated from the Saigo Imperial Academy of Defence
 539 Assigned to the ESS Odysseys
@@ -1563,7 +1563,7 @@ operate",510,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 524 Died in a shuttle accident",,,,,,,,476,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 20166,bio167,OI919D,FALSE,Marian,Pearson,Mx,477,477369E329922,Deceased,Ellarion,Faith of the High Science,Full citizenship,None,Middle,Intelligence,Association for Spiritual Technology,Seaman Apprentice,Unknown,Devyn Pearson,Child,Allen Pearson,Spouse,,,,,,,,,,,,,,,,,,,,,"477 Born
 524 Died in a shuttle accident",,,,,,,,477,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
-20167,bio168,DP77QD,FALSE,Ryane,Pearson,Mx,515,515044E258228,Deceased,Ellarion,Faith of the High Science,Full citizenship,None,Middle,Confidence,None,None,Scientist,Hali Okuma,Parent,Oriel Cook,Sibling,Mei Okuma,Grandparent,Yono Okuma,Grandparent,Devyn Pearson,Spouse,Alia Okuma,Parent,,,,,,,,,,,,,"515 Born
+20167,bio168,DP77QD,FALSE,Ryane,Pearson,Mx,515,515044E258228,Deceased,Ellarion,Faith of the High Science,Full citizenship,None,Middle,Confidence,None,None,Scientist,Hali Okuma,Parent,Oriel Cook,Relative,Mei Okuma,Grandparent,Yono Okuma,Grandparent,Devyn Pearson,Spouse,Alia Okuma,Parent,,,,,,,,,,,,,"515 Born
 537 Married Devyn Pearson
 537 Changed last name from Okuma to Pearson
 541 Found dead, cause: fall from a residential balcony. Investigation begun, confirmed to be murder in 542
@@ -1692,7 +1692,7 @@ operate",510,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 528 Divorced from Aeran Laster",B,542,AB,,,,,494,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 20217,bio218,TUQBKT,FALSE,Anyran,Lester,Mx,521,521005E444531,Deceased,Ellarion,Faith of the High Science,Full citizenship,None,Middle,Excellence,None,None,Unknown,Aeran Lester,Parent,Suran Sewi,Parent,,,,,,,,,,,,,,,,,,,,,"521 Born
 525 Deceased: died during a tumor removal operation performed by Aeran Lester, incident was recorded as an unfortunate accident",,,,,,,,521,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
-20218,bio219,RZ1O5J,FALSE,Gabe,Abrankowich,Mx,494,494225E200211,Unknown,Ellarion,Faith of the High Science,Full citizenship,Unknown,Middle,Ambition,The Democratic Pluralist Party,Master Chief,Politician,Fran Abrankowich,Spouse,,,,,,,,,,,,,,,,,,,,,"510 Basic training
+20218,bio219,RZ1O5J,FALSE,Gabe,Abrankowich,Mx,494,494225E200211,Present and accounted for,Ellarion,Faith of the High Science,Full citizenship,ESS Aurora,Middle,Ambition,The Democratic Pluralist Party,Master Chief,Politician,Fran Abrankowich,Spouse,,,,,,,,,,,,,,,,,,,,,"510 Basic training
 511 Promoted to Seaman Apprentice
 512 Promoted to Seaman
 512 Stationed to the Ashoka Military Base
@@ -1933,7 +1933,7 @@ operate",510,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 533 Graduated from the ECU
 540 Studied captured machine-made android on Solaris 7 for Android Research Unit (ARU), a top-secret government research project
 541 Died of carbon monoxide poisoning, ruled as an accident",,,,,,,,507,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
-20291,bio292,XD1ZG4,FALSE,Kiran,Norris,Scientist,502,502109E453872,Deceased,Ellarion,Faith of the High Science,Full citizenship,None,Middle,Intelligence,None,None,Scientist,Ji-Hu Norris,Sibling,,,,,,,,,,,,,,,,,,,,,,,"502 Born
+20291,bio292,XD1ZG4,FALSE,Kiran,Norris,Scientist,502,502109E453872,Unknown,Ellarion,Faith of the High Science,Full citizenship,None,Middle,Intelligence,None,None,Scientist,Ji-Hu Norris,Sibling,,,,,,,,,,,,,,,,,,,,,,,"502 Born
 521 Approved for studies in the Ellarion City University Department of Science, AI technology
 527 Graduated from the ECU
 540 Studied captured machine-made android on Solaris 7 for Android Research Unit (ARU), a top-secret government research project
@@ -2059,8 +2059,10 @@ operate",510,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 528 Hired to Atlantis 3 as a maintenance
 532 Hired to ESS Odysseus as a maintenance",B,542,A,,,542 Painkillers,"541 Same flu epidemic which all Engineers on board except Amir Bolton had
 542 Concussion and fractured collarbone, recommended 5 days rest",503,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
-20381,bio382,SEC5,FALSE,ESS Odysseus,Security,ESS Odysseus Security,542,Security,None,None,None,None,ESS Odysseus,None,None,None,None,None,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,542,TRUE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
-20382,bio383,COMMS7,FALSE,ESS Odysseus ,Comms,ESS Odysseus Comms,542,Comms,None,None,None,None,ESS Odysseus,None,None,None,None,None,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,542,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+20381,bio382,SEC5,TRUE,ESS Odysseus,Security,ESS Odysseus Security,542,Security,None,None,None,None,ESS Odysseus,None,None,None,None,None,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,542,TRUE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+20382,bio383,COMMS7,TRUE,ESS Odysseus ,Comms,ESS Odysseus Comms,542,Comms,None,None,None,None,ESS Odysseus,None,None,None,None,None,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,542,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 20383,bio384,COMFLEET1,FALSE,Fleet,Comms,Fleet Comms,542,Comms,None,None,None,None,ESS Odysseus,None,None,None,None,None,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,542,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE
-20384,bio385,MEDIC4,FALSE,ESS Odysseus ,Medics,ESS Odysseus Medics,542,Medics,None,None,None,None,ESS Odysseus,None,None,None,None,None,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,542,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
-20385,bio386,SCIENCE9,FALSE,ESS Odysseus ,Scientists,ESS Odysseus Scientists,542,Scientists,None,None,None,None,ESS Odysseus,None,None,None,None,None,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,542,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+20384,bio385,MEDIC4,TRUE,ESS Odysseus ,Medics,ESS Odysseus Medics,542,Medics,None,None,None,None,ESS Odysseus,None,None,None,None,None,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,542,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+20385,bio386,SCIENCE9,TRUE,ESS Odysseus ,Scientists,ESS Odysseus Scientists,542,Scientists,None,None,None,None,ESS Odysseus,None,None,None,None,None,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,542,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+20386,bio387,GUARDIAN-1,TRUE,Guardian,,Guardian,542,Unknown,Present and accounted for,Velian,,,Unknown,,None,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,542,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+20387,bio388,NEST-1,FALSE,Nest,,,542,,,,,,Unknown,,None,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,542,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,TRUE,FALSE,FALSE,FALSE
