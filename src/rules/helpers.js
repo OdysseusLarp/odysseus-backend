@@ -144,3 +144,16 @@ export function chooseRandom(array, n = 1) {
 	  .map(a => a.x)
 	  .slice(0, n);
 }
+
+
+/**
+ * Seedable random number generator for deterministic output
+ */
+export function* rng(seed = 1) {
+	while (true) {
+		seed++;
+		const x = Math.sin(seed++) * 10000;
+		yield x - Math.floor(x);
+	}
+}
+
