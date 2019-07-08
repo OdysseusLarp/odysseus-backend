@@ -4,7 +4,7 @@ id,bio_id,card_id,is_character,first_name,last_name,title,birth_year,citizen_id,
 519-521 Military academy: specialisation in engineering
 521-523 Active service: Assistant Seaman Engineer, OSS Burro
 524-528 Active service: Assistant Seaman Engineer - Seaman Engineer, ESS Envoy
-528 Active service: Seaman Engineer, ESS Odysseus",523 Chief Engineer of OSS Burro: Outstanding performance and concentration even under severe pressure ,"497 Born 
+528 Active service: Seaman Engineer, ESS Odysseus",523 Chief Engineer of OSS Burro: Outstanding performance and concentration even under severe pressure ,"497 Born
 503 Father Garrett Hodge granted single guardianship after mother Keena Hodge (Marsh) moved away ",B,542,AB,,"539 Mild sciatica, pain going down the leg from the lower back",,"523 Electrical injury
 523 Resothan (pain medication), expired
 539-540 Resothan (pain medication), expired
@@ -31,9 +31,9 @@ id,bio_id,card_id,is_character,first_name,last_name,title,birth_year,citizen_id,
 521 Re-elected to the Ellarion City Provincial Senate
 525 Re-elected to the Ellarion City Provincial Senate
 529 Re-elected to the Ellarion City Provincial Senate
-530 Elected to the Imperial Senate 
-534 Re-elected to the Imperial Senate 
-538 Re-elected to the Imperial Senate 
+530 Elected to the Imperial Senate
+534 Re-elected to the Imperial Senate
+538 Re-elected to the Imperial Senate
 542 Re-elected to the Imperial Senate ",C,538,AB,Mild pollen allergy,520 High blood pressure,520 Blood pressure medication,520 Diagnosed with high blood pressure,482,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 20004,bio5,GT38V2,TRUE,Dallan,Jordan,Politician,497,497260E649312,Present and accounted for,Ellarion,Faith of the High Science,Full citizenship,ESS Odysseus,Upper,Purity,Ellarion Centrist Party,Lieutenant Junior Grade,Politician,Cindi Jordan,Ex Spouse,Michaela Jordan,Parent,Jesse Jordan,Parent,,,,,,,,,,,,,,,,,"514 Basic training
 515 Promoted to Seaman Apprentice
@@ -52,7 +52,7 @@ id,bio_id,card_id,is_character,first_name,last_name,title,birth_year,citizen_id,
 522 Returned to Service
 522 Released from Service","Callsign: Dice
 518 Disciplinary hearing in regards to reckless flying.
-522 The records of the return interviews have been sealed. 
+522 The records of the return interviews have been sealed.
 522 The records of the release interviews have been sealed.","497 Born
 514 Joined Military service
 515 Married Cindi Miller
@@ -172,7 +172,7 @@ id,bio_id,card_id,is_character,first_name,last_name,title,birth_year,citizen_id,
 542 Tendinitis, right hand",542 Painkillers,"532 Short acute trauma therapy following the death of a child. Given instructions and exercises to help process the loss. Mental condition stable, no follow up necessary. No medication needed.
 534 Mild insomnia. Offered sleeping pills, but refused. ",492,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,TRUE,TRUE,TRUE
 20011,bio12,H6RT2S,TRUE,Terran,Wells,Scientist,504,504001E048221,Present and accounted for,Velian,Faith of the High Science,Full citizenship,ESS Odysseus,Middle,Hope,Association for Spiritual Technology,None,Scientist,Gregory Wells,Adoptive Parent,Amelia Wells,Adoptive Parent,Nicol Wells,Sibling,Gail Wells,Sibling,,,,,,,,,,,,,,,,,"504 Born on Velian, birth parents unknown
-516 Arrived from Velian to Ellarion. Local Velian ambassador consulted, granted permission to stay on Ellarion and integrate into Ellarian society. Adopted by Gregory and Amelia Wells. 
+516 Arrived from Velian to Ellarion. Local Velian ambassador consulted, granted permission to stay on Ellarion and integrate into Ellarian society. Adopted by Gregory and Amelia Wells.
 529 Graduates from the Ellarion City University, Faculty of Science and Technology, Alien Technology
 529 Moved from Ellarion City to Santa Anna
 538 Moved from Santa Anna to Ellarion City
@@ -217,7 +217,7 @@ id,bio_id,card_id,is_character,first_name,last_name,title,birth_year,citizen_id,
 537 Project Ziva (first fully human-like android) published to great acclaim, Evin Reid the lead scientist of the team
 540 Government mission, Solaris 7",C,540,A,Tetracycline (antibiotic),,,"506 Sprained ankle
 518 Tendinitis, left hand
-532 Acute trauma therapy sessions after death of child. Refused medication, no followup arranged. 
+532 Acute trauma therapy sessions after death of child. Refused medication, no followup arranged.
 538 Insomnia, prescribed sleeping pills",487,FALSE,FALSE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,TRUE,TRUE,TRUE
 20015,bio16,CFOP3R,TRUE,Gallan,Reid,Scientist,507,507050E540025,Unknown,Ellarion,Faith of the High Science,Full citizenship,Unknown,Middle,Intelligence,None,None,Scientist,Damien Reid,Parent,Elena Reid,Parent,Evin Reid,Sibling,,,,,,,,,,,,,,,,,,,"507 Born
 531 Graduated from the Ellarion City University, Faculty of Science and Technology, Biomechanical Engineering",B,541,A,,,,,542,FALSE,FALSE,FALSE,TRUE,FALSE,FALSE,TRUE,FALSE,TRUE,TRUE,FALSE
@@ -375,7 +375,7 @@ Callsign: Tempest","515 Born
 530 Assigned to the ESS Curie
 532 Promoted to Commander-lieutenant
 536 Assigned to the ESS Odysseus",Callsign Hydra,"497 Born
-532 Sister Hannah dies (victim of a serial killer called the Chain Strangler) 
+532 Sister Hannah dies (victim of a serial killer called the Chain Strangler)
 533 Married to Osha Green (former Nicholson)",A,541,A,,,,"520 Fractured ribs and punctured lung, broken left collarbone, broken left radius",497,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 20038,bio39,2FNIKY,TRUE,Ashlin,Hall,Navigation Officer,500,500312E356619,Present and accounted for,Ellarion,None,Full citizenship,ESS Odysseus,Upper,Intelligence,None,Lieutenant,Career Military,Remy Hall,Spouse,Serg Anderson,Parent,Paula Anderson,Parent,,,,,,,,,,,,,,,,,"517 Basic Training
 519 Imperial Academy of Defence, fighter pilot training
@@ -388,7 +388,7 @@ Callsign: Tempest","515 Born
 531 Flight instructor at Imperial Academy of Defence
 532 Promoted to Lieutenant
 534 Stationed to the ESS Odysseus as a navigation officer
-537-537, 539-540 Flight instructor at the Imperial Academy of Defence",Callsign Teacher,"500 Born 
+537-537, 539-540 Flight instructor at the Imperial Academy of Defence",Callsign Teacher,"500 Born
 535 Married Remy Hall (Former surname: Anderson)",A,541,B,,527 Light headaches,527 Painkillers,,500,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 20039,bio40,LIM4TH,TRUE,Noe,Walker,Pilot,514,514055O534719,Present and accounted for,Osiris,None,Colonial citizenship,ESS Odysseus,Lower,Floater,None,Lieutenant Junior Grade,Career Military,Gene Hawkins,Sibling,Eli Booth,Relative,Mary Meadows,Parent,Theosin Walker,Parent,Don Meadows,Grandparent,Kerry Meadows,Relative,Noah Booth,Relative,,,,,,,,,"532 Basic training
 534 Imperial Academy of Defence, fighter pilot training
@@ -412,7 +412,7 @@ Callsign: Tempest","515 Born
 522 Saigo Imperial Academy of Defence, fighter pilot training
 525 Stationed to the ESS Proteus as a fighter pilot
 527 Promoted to Lieutenant Junior Grade
-532 Promoted to Lieutenant 
+532 Promoted to Lieutenant
 536 Stationed to the ESS Odysseus as a fighter pilot",Callsign Control,"502 Born
 537 Married to Yera Romero",A,541,AB,,,,,502,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 20043,bio44,4MV02N,TRUE,Gail,Wells,Medic,507,507162E932163,Present and accounted for,Ellarion,Faith of the High Science,Full citizenship,ESS Odysseus,Middle,Hope,The Democratic Pluralist Party,Seaman,Army medic,Terran Wells,Sibling,Nicol Wells,Sibling,Gregory Wells,Parent,Amelia Wells,Parent,,,,,,,,,,,,,,,"524-526 Basic training, preliminary specialisation in the field of medicine
@@ -543,7 +543,7 @@ Callsign: Tempest","515 Born
 536 Suspect in a forging, charges dropped
 537 Suspect in multiple cases, all charges were dropped
 539 Appeared in an entertainment show and was in headlines throughout EOC for claiming to be their brothers lover
-540 Name connected to several cases of fraud, no charges 
+540 Name connected to several cases of fraud, no charges
 541 Moved to Ellarion",B,541,A,Peanuts,539 Diabetes,539 Diabetes medication,"538 Treated in hospital care for blood sugar trouble
 539 Diagnosed with diabetes, prescribed medication
 540 Diabetes control, values ok
@@ -562,7 +562,7 @@ Callsign: Tempest","515 Born
 536 Suspect in a forging, charges dropped
 537 Suspect in multiple cases, all charges were dropped
 539 Name appeared in an entertainment show and was in headlines throughout EOC for sibling Jordan Washington claiming to be their brothers lover
-540 Name connected to several cases of fraud, no charges 
+540 Name connected to several cases of fraud, no charges
 541 Moved to Ellarion",A,541,A,Bananas,,,536 In hospital care for being mugged,500,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 20055,bio56,4XEI69,TRUE,Julia,Aurelios Cauruleos,Emperor ,522,522003E997682,Missing in action,Ellarion,Faith of the High Science,Full citizenship,Unknown,Empirial,None,None,None,None,Aurelia Augustos Cauruleos,Parent,Frederic Julios Cauruleos,Parent,Marcio Augustos Cauruleos,Relative,Jovian Aurelios Cauruleos,Sibling,,,,,,,,,,,,,,,,,522 Born,A,542,B,,,,,522,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 20056,bio57,W20B9L,FALSE,Marcio,Augustos Cauruleos,Emperor,495,495301E552143,Present and accounted for,Ellarion,Faith of the High Science,Full citizenship,ESS Aurora,Empirial,None,None,None,Emperor,Julia Aurelios Cauruleos,Relative,Jovian Aurelios Cauruleos,Relative,Aurelia Augustos Cauruleos,Sibling,Frederic Julios Cauruleos,Relative,,,,,,,,,,,,,,,,,495 Born,C,542,B,,,,,495,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
@@ -629,7 +629,7 @@ Callsign: Tempest","515 Born
 517 Birth of child Elena Hall
 519 Masters degree in anthropology, ECU
 520 Hired as a full time teacher and lecturer, ECU department of anthropology
-521 On Velian participating in an ECU study 
+521 On Velian participating in an ECU study
 523 Publishes an article collection on Velian and receives The Anthro Journal Prize for Young Researchers
 523 Leads a research expedition to Velian
 524 Receives Prize for Best Article on Velian Religion
@@ -737,7 +737,7 @@ Callsign: Tempest","515 Born
 541 Exceptional marks in flight training exams
 542 Exceptional marks in fighter pilot training entrance exams","523 Born
 541 Death of brother Noah Booth",A,542,O,Fresh citrus,,,"540 Full medical examinations prior to acceptance to the basic training pilot program
-541 Full medical examinations, referred to psychiatric care due to traumatic event (loss of sibling) 
+541 Full medical examinations, referred to psychiatric care due to traumatic event (loss of sibling)
 541 Advised to seek counselling (loss of sibling)
 542 Full medical examinations, strong recommendation to seek counselling es",523,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE
 20064,bio65,X1RRQG,TRUE,Ismy,Arima,Singer,523,523013E335343,Present and accounted for,Ellarion,None,Full citizenship,ESS Odysseus,Upper,Purity,None,None,Entertainer,Abe Arima,Parent,Aran Arima,Parent,Amy Arima,Relative,,,,,,,,,,,,,,,,,,,"523 Born
@@ -754,7 +754,7 @@ Callsign: Tempest","515 Born
 542 Record ""Coming home"" released, 2nd on the Top 10 Album Chart
 542 Ellarion Club Tour Announced",A,542,A,,,,"541 Psychiatric care for traumatic event (death of close person)
 542 Routine medical examinations",523,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
-20065,bio66,XDDUY9,TRUE,Lane,Thomas,Engineer,497,497026O009890,Present and accounted for,Osiris,Faith of the High Science,Colonial citizenship,ESS Odysseus,Lower,Floater,None,None,Engineer,Shae Thomas,Child,,,,,,,,,,,,,,,,,,,,,,,"497 Born (record added 515) 
+20065,bio66,XDDUY9,TRUE,Lane,Thomas,Engineer,497,497026O009890,Present and accounted for,Osiris,Faith of the High Science,Colonial citizenship,ESS Odysseus,Lower,Floater,None,None,Engineer,Shae Thomas,Child,,,,,,,,,,,,,,,,,,,,,,,"497 Born (record added 515)
 515 Record of arriving Osiris Space Port
 518 Record of a child being born
 541 Applied for colonial passport to work in space
@@ -784,7 +784,7 @@ Callsign: Tempest","515 Born
 20068,bio69,38AG5B,FALSE,Li,Russell,Mx,499,499246E559968,Present and accounted for,Ellarion,Faith of the High Science,Full citizenship,ESS Polaris,Lower,Ambition,The Democratic Pluralist Party,None,Daycare Worker,Thomas Russell,Spouse,Eugenie Russell,Child,,,,,,,,,,,,,,,,,,,,,"499 Born
 506 Death of father: Joe Rogers
 516 Death of mother: Mona Rogers
-517 Married Thomas Russell 
+517 Married Thomas Russell
 517 Birth of a child: Eugenie Russell
 519 Death of brother: Noe Rogers
 520 Hired to daycare as a trainee
@@ -875,14 +875,14 @@ Callsign: Tempest","515 Born
 523 Rewarded with Extraordinary actions during the machine war
 523 Married Delta Bolton
 527 Best friend Karin Alexandrov was recorded to be missing in action
-540 Spouse Delta Bolton died peacefully in their bed   
+540 Spouse Delta Bolton died peacefully in their bed
 542 Sister Amie Bolton died during a routine operation from one of the best surgeons on Ellarion, Eva Ellis",B,538,A,Cherries,542 Insomnia due to the death of their sister,"542 Sleeping pills, Prescribed after the death of their sister","515 Almost lost their middle finger during the repairs of “that bloody damned engine ventilation system” on the OSS Burro
 522 Survived from an enemy missile hit to the engine room. It was a miracle that they survived the collapse of an engine room ceiling. Luckily ceiling beams formed a protective casing instead of crushing them.
 542 Severe ankle sprain. Required postoperative immobilization and crutches. May be removed when the ankle is healed properly.",490,TRUE,FALSE,FALSE,FALSE,TRUE,FALSE,FALSE,FALSE,TRUE,TRUE,TRUE
 20078,bio79,W92YM7,FALSE,Liz,Bolton,Mx,468,468187C492058,Deceased,Caelena,Old Ways,Colonial citizenship,None,Middle,Loyalty,None,Seaman Apprentice,Educator,Mark Bolton,Spouse,Amir Bolton,Child,Amie Bolton,Child,,,,,,,,,,,,,,,,,,,,,,,,,,,468,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 20079,bio80,2PQJGA,FALSE,Amie,Bolton,Mx,493,493084C059372,Deceased,Caelena,Old Ways,Colonial citizenship,None,Middle,Loyalty,None,None,Educator,Mark Bolton,Parent,Liz Bolton,Parent,Amir Bolton,Sibling,,,,,,,,,,,,,,,,,,,,,,,,,,,493,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 20080,bio81,EUUHKM,TRUE,Koga,Kyoshi,Mx,507,507193O849204,Present and accounted for,Osiris,None,Colonial citizenship,ESS Odysseus,Lower,Defiance,None,None,Unknown,Keena Marsh,Parent,Takumi Kyoshi,Parent,Vane Hodge,Sibling,,,,,,,,,,,,,,,,,523 Basic training,524 Dropped out from the basic training,"507 Born
-517 Run away from home 
+517 Run away from home
 527 Moved to Ellarion
 531 Caught as a Chain Strangler
 531 Partner in crime, Yahir Watts, killed during the arrest
@@ -890,7 +890,7 @@ Callsign: Tempest","515 Born
 531 Interrogation records classified
 532 Willingly participated to memory erasing operation, experimental study
 532 Files sealed due to a memory erasing operation
-532 New identity created 
+532 New identity created
 536 Follow-up study: Drug-induced memory disturbance - Impairing or even erasing existing memory in humans",B,531,B,Sesame seeds,,,"532 Willingly participated to memory erasing operation, experimental study
 532 Files sealed due to a memory erasing operation",507,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 20081,bio82,BX7Z1M,TRUE,Oriel,Cook,Journalist,510,510001E648522,Present and accounted for,Ellarion,None,Full citizenship,ESS Odysseus,Middle,Confidence,The Democratic Pluralist Party,Seaman Apprentice,Journalist,Zeya Cook,Spouse,Hali Okuma,Sibling,Ryane Pearson,Relative,Mei Okuma,Parent,Yono Okuma,Parent,,,,,,,,,,,,,"528 Basic training
@@ -910,9 +910,9 @@ Callsign: Tempest","515 Born
 505 Married Tan Ellis
 505 Changed surname to Ellis
 506 Enlisted to the EOC Star Fleet
-513 Approved to study at the Ellarion City University, Faculty of Medicine, Visceral surgery 
+513 Approved to study at the Ellarion City University, Faculty of Medicine, Visceral surgery
 515 Birth of child, Harper Ellis
-516 Graduated from the Ellarion City University, Faculty of Medicine, Visceral surgery 
+516 Graduated from the Ellarion City University, Faculty of Medicine, Visceral surgery
 517 Doctoral position at the Ellarion City Academic Hospital
 517 Birth of child, Fenix Ellis
 525 Hired Lex Peters to the Ellarion City Academic Hospital
@@ -978,7 +978,7 @@ Callsign: Tempest","515 Born
 524 Graduated from the Imperial Academy of Defence (Ellarion)
 524 Promoted to Petty Officer
 524 Stationed to the Ellarion Military Base
-526 Applied for transfer to the ESS Inferno 
+526 Applied for transfer to the ESS Inferno
 526 Assigned to the ESS Inferno as communications specialist
 528 Promoted to Petty Officer Second Class
 528 Applied for transfer to the ESS Warrior
@@ -1019,7 +1019,7 @@ Callsign: Tempest","515 Born
 521 Child was born, Anyran Lester
 525 A patient, Anyran Lester, died during a tumor removal operation performed by Aeran Lester, incident was recorded as an unfortunate accident
 525 On and off leave from the hospital
-526 Doctoral licence revoked 
+526 Doctoral licence revoked
 528 Divorced from Suran Sewi",C,525,O,Bees,,,,497,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,TRUE,TRUE,TRUE
 20087,bio88,AL0O7J,TRUE,Beva,Drugov,Communication Officer,511,511301C453456,Present and accounted for,Caelena,None,Colonial citizenship,ESS Odysseus,Lower,Floater,None,Master Chief,Career Military,Melisa Drugov,Parent,,,,,,,,,,,,,,,,,,,,,"529 Basic training
 529 Promoted to Seaman Apprentice
@@ -1135,7 +1135,7 @@ Callsign: Tempest","515 Born
 527 Lost fiance in a work related accident",B,539,O,,526 Recurring sleeping problems,526 Hypnotics for sleeping problems,"541 Viral Infection, Flu
 541 Fractured left patella (kneecap), fracture healed, but the leg might still feel weaker and sore. Not recommended heavy strain on the knee.",498,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 20096,bio97,6FMO0Y,TRUE,Dayle,Rogers,Science Specialist ,503,503066E077595,Present and accounted for,Ellarion,Faith of the High Science,Full citizenship,ESS Odysseus,Middle,Tranquility,Association for Spiritual Technology,Master Chief,Scientist,Yin Laurence,Parent,Lila Laurence,Parent,Eddar Laurence,Relative,Kai Rogers,Spouse,,,,,,,,,,,,,,,"524 Enlisted into the Ashoka Military Academy
-527 Graduated from the Ashoka Military Academy 
+527 Graduated from the Ashoka Military Academy
 529 Assigned to the ESS Odysseus as a radar technician
 539 Promoted to a Science Specialist",,"503 Born
 519 Parents executed, guilty of treason
@@ -1161,14 +1161,14 @@ Callsign: Tempest","515 Born
 528 Promoted to Seaman Apprentice
 528 Relieved from service to pursue civilian profession",,"510 Born
 527 Relative Karin Alexandrov was recorded to be missing in action
-528 Admitted to the Ellarion City University, Faculty of Medicine 
+528 Admitted to the Ellarion City University, Faculty of Medicine
 529 Joins Faith of the High Science531 Internship in the Ellarion police psychiatric ward
 532 Graduated from the Ellarion City University, Faculty of Medicine
 532 Specialisation studies in Psychiatry at the the Ellarion City University, Faculty of Medicine
 532 Doctor at the Ellarion Central Hospital
 535 Short Internship at the Ellarion Military Base Psychic Ward536 Married Lucas Wilson
 536 Completed the medical specialisation studies, Psychiatry
-536 Doctor at the Ellarion Central Hospital",C,542,B,,542 Pregnancy,,"527 Abortion made at the request of the parents 
+536 Doctor at the Ellarion Central Hospital",C,542,B,,542 Pregnancy,,"527 Abortion made at the request of the parents
 542 Fertility treatment",510,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,TRUE,FALSE,FALSE
 20099,bio100,325WBC,TRUE,Heath,Steele,Engineer,497,497301E428887,Present and accounted for,Ellarion,Old Ways,Full citizenship,ESS Odysseus,Middle,Defiance,The Democratic Pluralist Party,Seaman,Engineer,Sheryl Steele,Parent,James Steele,Parent,Kira Steele,Spouse,,,,,,,,,,,,,,,,,"513 Basic Training
 513 Ashoka Military Academy, engineer training
@@ -1207,7 +1207,7 @@ Callsign: Tempest","515 Born
 534 Pilot program
 535 Petty Officer
 536 Petty Officer Second Class
-536 Relieved from service due to pursuing a civilian profession",Callsign: Lucky,"512 Born 
+536 Relieved from service due to pursuing a civilian profession",Callsign: Lucky,"512 Born
 530 Admitted to the Ellarion City University, Faculty of Technology",A,536,AB,,,,,512,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE
 20103,bio104,CT249A,TRUE,Valerian,Fukui,Police Officer,495,495149E192355,Present and accounted for,Ellarion,None,Full citizenship,ESS Odysseus,Middle,Ambition,None,Petty Officer,Law Enforcement,Malak Fukui,Sibling,Toichi Fukui,Parent,Hide Fukui,Parent,,,,,,,,,,,,,,,,,"513 Basic training
 515 Promoted to Seaman Apprentice
@@ -1299,7 +1299,7 @@ Callsign: Tempest","515 Born
 540 Engaged to Rory Byrne",B,542,AB,,"542 Brain tumor, type B",542 Medication for nausea and dizziness; Biological medicine for battling effect of tumor,"542 Diagnosed with a brain tumor, type b, scheduled to be operated as soon as possible, prescribed biological medicine to suppress the symptoms and a medicine to help with nausea and dizziness",510,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 20111,bio112,OTRKQE,TRUE,Ziva,Callahan,Communications Specialist,537,537097EANDROID01,Present and accounted for,Ellarion,None,No citizenship,ESS Odysseus,None,Floater,None,Master Chief,Career Military,,,,,,,,,,,,,,,,,,,,,,,"540 Short test missions on the ESS Harbinger and the ESS Bluecoat
 541 Assigned to the ESS Odysseus as a Communications Specialist
-541 Promoted to Master Chief","540 This soldier is an android. Human rights do not apply. This soldier is the property of the EOC government and should be handled with care. All its training has been programmed. 
+541 Promoted to Master Chief","540 This soldier is an android. Human rights do not apply. This soldier is the property of the EOC government and should be handled with care. All its training has been programmed.
 541 This soldier should not be left alone on post in case of programming failures.","537 Created by the Android Research Unit, head creator Evin Reid
 540 Enlisted to the EOC Star Fleet",A,542,O,,,,,537,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 20112,bio113,0BAEX1,TRUE,Zeya,Cook,Star Captain,506,506087E068829,Present and accounted for,Ellarion,Faith of the High Science,Full citizenship,ESS Odysseus,Middle,Ambition,Ellarion Centrist Party,Commander-Captain,Career Military,Oriel Cook,Spouse,Argus Cook,Parent,Tabitha Cook,Parent,Nolan Hunter,Relative,,,,,,,,,,,,,,,"522 Basic training
@@ -1351,7 +1351,7 @@ Callsign: Tempest","515 Born
 539 Promoted to Petty Officer Second Class
 539 Assigned to the ESS Odysseus as an Alpha Marine",,"514 Born
 527 Mother, Sahara Novak, is killed in a car accident
-533 Enlisted to the EOC Star Fleet",B,539,O,,,,"539 Several old scars found around body, recommended scar removing treatment 
+533 Enlisted to the EOC Star Fleet",B,539,O,,,,"539 Several old scars found around body, recommended scar removing treatment
 541 Viral Infection, Stomach flu epidemic in the Alpha Marine Team",514,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 20115,bio116,69FQFF,TRUE,Kerrie,Ray,Odysseus Alpha Marine,513,513308E970551,Present and accounted for,Ellarion,None,Full citizenship,ESS Odysseus,Middle,Loyalty,None,Petty Officer Second Class,Career Military,Eliza Ray,Adoptive Parent,Gareth Ray,Adoptive Parent,Vane Hodge,Relative,Keena Marsh,Relative,Koga Kyoshi,Relative,,,,,,,,,,,,,"532 Basic training at the Imperial Academy of Defence (Ellarion)
 533 Promoted to Seaman Apprentice
@@ -1368,11 +1368,11 @@ Callsign: Tempest","515 Born
 510 Promoted to Seaman Apprentice
 512 Promoted to Seaman
 513 Promoted to Petty Officer
-513 Assigned to the CSS Taurus as a Marine 
+513 Assigned to the CSS Taurus as a Marine
 515 Promoted to Petty Officer Second Class
 518 Promoted to Petty Officer First Class
 522 Promoted to Petty Officer
-524 Assigned to the ESS Arthas as a Marine 
+524 Assigned to the ESS Arthas as a Marine
 526 Promoted to Master Chief
 532 Promoted to Lieutenant Junior Grade
 536 Assigned to the ESS Odysseus as an Alpha Marine team leader
@@ -1409,7 +1409,7 @@ Callsign: Tempest","515 Born
 20121,bio122,3S452X,TRUE,Pax,Houghton,Mx,487,487319O406855,Present and accounted for,Osiris,None,Colonial citizenship,ESS Odysseus,Lower,Loyalty,None,None,Unknown,Arlyn Booth,Sibling,Remi Sharp,Child,Eli Booth,Relative,Noah Booth,Relative,Derek Booth,Adoptive Parent,Sandra Booth,Adoptive Parent,,,,,,,,,,,,,"487 Born
 499 Arrested for petty theft
 503 Arrested for assault
-504 Arrested for assault 
+504 Arrested for assault
 507 Birth of child Ballard Case
 508 Adoptive Parent, Derek Booth, died at drug overdose
 513 Birth of child Remi Sharp",D,530,O,,,,,487,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
@@ -1431,7 +1431,7 @@ Callsign: Tempest","515 Born
 531 Minor Concussion on Boxing match vs Pilot
 533 Four broken ribs in mountain survival training
 536 Asteroid dust fever, should check lungs regularly
-537 Twisted back while surfing 
+537 Twisted back while surfing
 541 Left arm possible hair fracture, no need to
 operate",510,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 20124,bio125,UHI35V,TRUE,Jovian,Aurelios Cauruleos,Mx,518,518301E487001,Deceased,Ellarion,Faith of the High Science,Full citizenship,None,Empirial,None,None,None,None,Aurelia Augustos Cauruleos,Parent,Frederic Julios Cauruleos,Parent,Marcio Augustos Cauruleos,Relative,Julia Aurelios Cauruleos,Sibling,,,,,,,,,,,,,,,,,"518 Born
@@ -1446,9 +1446,9 @@ operate",510,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 540 Officer Promotion to Lieutenant Junior Grade
 541 Assigned to the EES Odysseus as Lieutenant Junior Grade team leader Beta team","536 Graduation from Imperial Academy with Honors and top 3 of class
 538 Recommendation for promotion to Officer Lieutenant Junior Grade","515 Born
-536 Graduated from the Saigo Imperial Academy of Defence 
-540 Promotion to Lieutenant Junior Grade",A,542,A,,,,"532 Twisted right wrist, Skye Basketball game against pilots. Nouce hair frakture. 
-535 Fever 
+536 Graduated from the Saigo Imperial Academy of Defence
+540 Promotion to Lieutenant Junior Grade",A,542,A,,,,"532 Twisted right wrist, Skye Basketball game against pilots. Nouce hair frakture.
+535 Fever
 538 Skye Basketball game, minor concussion. ",515,TRUE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 20126,bio127,CK9NTB,TRUE,Gene,Hawkins,Odysseus Beta Marine,507,507083O889691,Present and accounted for,Osiris,None,Colonial citizenship,ESS Odysseus,Lower,Floater,None,Petty Officer Second Class,Career Military,Mary Meadows,Parent,Jack Hawkins,Parent,Noe Walker,Sibling,Noah Booth,Relative,Eli Booth,Relative,Don Meadows,Relative,Kerry Meadows,Relative,,,,,,,,,"527 Basic training
 530 Promoted to Seaman Apprentice
@@ -1463,57 +1463,57 @@ operate",510,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 536 Graduated from the Osiris Military Academy",E,542,AB,,"542 Episodes of trembling, periodic strain brain, progressive cell death. Symptoms suggest PLS (progressive lateral sclerosis), a very rare disease.","542 Resothan - Effectively soothes especially muscle-related pain and decreases inflammation. Usually used as a painkiller for small muscle injuries, but in larger quantities Resothan and similar products can be used to keep more severe muscle related illnesses at bay.","542 Twisted right ankle, right arm bruised and bitten
 542 Possible PLS diagnosis, Resothan prescribed",507,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 20127,bio128,0GBKQW,TRUE,Harley,Carroll,Odysseus Beta Marine,495,495098C61283,Present and accounted for,Caelena,Other,Full citizenship,ESS Odysseus,Middle,Unity,None,Master Chief,Career Military,Oren Carroll,Parent,Maisey Carroll ,Parent,Hailey Carroll,Sibling,,,,,,,,,,,,,,,,,"495 Born
-511 Basic Training 
+511 Basic Training
 513 Promoted to Seaman Apprentice
 514 Approved for studies at the Imperial Academy of Defence
 515 Promoted to Seaman
-515 Accepted to Advanced Combat Training (ACT) 
+515 Accepted to Advanced Combat Training (ACT)
 515 Accepted to Non-commissioned Officer (NCO) training
-516 Promoted to Petty Officer 
+516 Promoted to Petty Officer
 516 Finished ACT
 517 Graduated from the Imperial Academy of Defence
-517 Deployed to alpha combat area to 23th Marine Trinary 
+517 Deployed to alpha combat area to 23th Marine Trinary
 518 Promoted to Petty officer second class
 518 Classified advanced recon missions
-519 Lost sibling and were granted leave 
-519 Returned to action 
-519 Stationed to the ESS Avenger 
-520 Transferred to the 1st Ellarion Marine Recon battalion 
+519 Lost sibling and were granted leave
+519 Returned to action
+519 Stationed to the ESS Avenger
+520 Transferred to the 1st Ellarion Marine Recon battalion
 520 Deep raids to Machine supply lines
 521 Promotion Petty Officer First Class
 522 Garrison duty at Ellarion
 527 Promotion Master Chief
-532 Assigned to Diplomatic Mission to Ellarion. 
+532 Assigned to Diplomatic Mission to Ellarion.
 536 Granded title Primus inter pares
 537 Applied for transfer to the ESS Odysseus
 538 Assigned to the ESS Odysseus ","515 Recommendation to ACT and NCO training
-515 Recommendation to Promotion Petty Officer 
-517 Remark testified for fellow Marine, that Marine Santiago was not sleeping on duty. Santiago was not found guilty 
+515 Recommendation to Promotion Petty Officer
+517 Remark testified for fellow Marine, that Marine Santiago was not sleeping on duty. Santiago was not found guilty
 518 Recommendation to Promotion Petty officer second class
-518 Recommendation for Silver sunburst for valor in duty 
+518 Recommendation for Silver sunburst for valor in duty
 519 Remark had an argument with XO of the ESS Avenger
 520 Recommendation for Marine heart for wounded in action.
 520 Recommendation for Primus inter pares  
-520 Recommendation for Marine cross for exemplary action 
+520 Recommendation for Marine cross for exemplary action
 521 Recommendation for Promotion Petty Officer First Class
-522 Recommendation for Golden sunburst for valor in Machine war 
-522 Recommendation for Primus inter pares 
+522 Recommendation for Golden sunburst for valor in Machine war
+522 Recommendation for Primus inter pares
 522 Recommendation for Marine heart with ribbon for wounded in action
-527 Recommendation for Promotion to Master Chief 
-533 Recommendation for Primus inter pares 
+527 Recommendation for Promotion to Master Chief
+533 Recommendation for Primus inter pares
 535 Recommendation for Primus inter pares, moved to review board
 536 Recommendation Promotion
 537 Denied Promotion and to Officer training","495 Born
 511 Enlistment to the EOC Marine Core
-519 Lost Sibling Hailey Carrol in action 
+519 Lost Sibling Hailey Carrol in action
 536 Granted title Primus inter pares",A,540,A,,520 Eyes need to be checked yearly after surgery ,,"515 Broken left hands 2 fingers in combat training
 515 Broken ribs
-518 Skull fracture and concussion 
-519 Shot on left arm, right leg 
-519 3 broken ribs, protected fellow Marine 
-520 Eye damaged from close range blast 
+518 Skull fracture and concussion
+519 Shot on left arm, right leg
+519 3 broken ribs, protected fellow Marine
+520 Eye damaged from close range blast
 521 Shot through the left chest, damage to liver
-528 High fewer 
+528 High fewer
 533 Arm broken on mountain training ",495,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 20128,bio129,RCHYTM,TRUE,Aedan,,Ambassador,497,92A68/72P63*G*100E4,Present and accounted for,Velian,Other,No citizenship,ESS Odysseus,None,None,None,None,Ambassador,,,,,,,,,,,,,,,,,,,,,,,,,"497 Born
 517 First contact to the Atlantis as an Velian Ambassador
@@ -2058,4 +2058,4 @@ operate",510,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 20384,bio385,MEDIC4,TRUE,ESS Odysseus ,Medics,ESS Odysseus Medics,542,Medics,None,None,None,None,ESS Odysseus,None,None,None,None,None,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,542,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 20385,bio386,SCIENCE9,TRUE,ESS Odysseus ,Scientists,ESS Odysseus Scientists,542,Scientists,None,None,None,None,ESS Odysseus,None,None,None,None,None,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,542,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 20386,bio387,GUARDIAN-1,TRUE,Guardian,,Guardian,542,Unknown,Present and accounted for,Velian,,,Unknown,,None,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,542,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
-20387,bio388,NEST-1,FALSE,Nest,,,542,,Unknown,Unknown,,,Unknown,,None,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,542,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,TRUE,FALSE,FALSE,FALSE
+20387,bio388,NEST-1,FALSE,Nest,,,542,,Unknown,Unknown,,,Unknown,,None,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,542,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
