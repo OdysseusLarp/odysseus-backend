@@ -23,6 +23,24 @@ blobs.push({
 	},
 });
 
+blobs.push({
+	type: 'game',
+	id: 'velian_skip_1',
+	game_config: 'manual',
+	status: 'broken',
+	config: {
+		title: `Skip task`,
+		pages: [
+			`<p>You can skip a task if it is taking too long to solve.</p>
+			<p>Do you want to skip the task 'Hyperspace communicator ionic phaser needs to be stabilized'?</p>`,
+		],
+		buttons: [
+			'Skip task',
+		],
+	},
+});
+
+
 
 blobs.push({
 	type: 'game',
@@ -48,6 +66,23 @@ blobs.push({
 	},
 });
 
+blobs.push({
+	type: 'game',
+	id: 'velian_skip_2',
+	game_config: 'manual',
+	status: 'broken',
+	config: {
+		title: `Skip task`,
+		pages: [
+			`<p>You can skip a task if it is taking too long to solve.</p>
+			<p>Do you want to skip the task 'Hyperspace communicator tachyon decoherence levels need to be synchronized'?</p>`,
+		],
+		buttons: [
+			'Skip task',
+		],
+	},
+});
+
 
 blobs.push({
 	type: 'game',
@@ -68,6 +103,23 @@ blobs.push({
 		game: 'lightsout',
 		random: 30,
 		size: 5,
+	},
+});
+
+blobs.push({
+	type: 'game',
+	id: 'velian_skip_3',
+	game_config: 'manual',
+	status: 'broken',
+	config: {
+		title: `Skip task`,
+		pages: [
+			`<p>You can skip a task if it is taking too long to solve.</p>
+			<p>Do you want to skip the task 'Hyperspace communicator spatial disruptors need to be discharged'?</p>`,
+		],
+		buttons: [
+			'Skip task',
+		],
 	},
 });
 
