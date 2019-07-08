@@ -17,11 +17,13 @@ function rnd() {
   * Generator which returns the provided number of 0's and -1's in random order.
   * @param {integer} normalCount Number of priority 0 elements
   * @param {integer} lowCount Number of priority -1 elements
+  * @param {integer} highCount Number of priority 1 elements
   */
-function *priorityGenerator(normalCount, lowCount) {
+function *priorityGenerator(normalCount, lowCount, highCount = 0) {
 	const array = [
 		...Array(normalCount).fill(0),
 		...Array(lowCount).fill(-1),
+		...Array(highCount).fill(1),
 	];
 	while (array.length > 0) {
 		const index = Math.floor(rnd() * array.length);
@@ -33,6 +35,7 @@ let priority;
 
 // Reactor  DONE
 
+priority = priorityGenerator(17, 0, 3);
 for (let i=0; i < 20; i++) {
 	const letter = String.fromCharCode('A'.charCodeAt(0) + Math.floor(i/5));
 	const number = i % 5 + 1;
@@ -53,7 +56,7 @@ for (let i=0; i < 20; i++) {
 		type: 'task',
 		id,
 		eeType: 'reactor',
-		priority: 0,
+		priority: priority.next().value,
 		eeHealth: 0.10,  // fixes 10%
 		game: id,
 		status: 'initial',

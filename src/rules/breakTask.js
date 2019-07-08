@@ -1,5 +1,6 @@
-import { saveBlob } from './helpers';
+import { saveBlob, randomInt } from './helpers';
 import * as shield from './shieldHelper';
+import * as wiring from './wiringHelper';
 import store from '../store/store';
 import { logger } from '../logger';
 
@@ -42,6 +43,16 @@ function getAdditionalContext(box, task) {
 				context: shield.randomState()
 			};
 		} while (ctx.context.measuredValue === box.context.measuredValue);
+	} else if (box.boxType === 'reactor_wiring') {
+		const n = randomInt(0, wiring.CODE_COUNT-1);
+		const code = wiring.getCode(n);
+		const expected = wiring.getConnections(n);
+		ctx = {
+			context: {
+				code,
+			},
+			expected,
+		};
 	}
 	return ctx;
 }
