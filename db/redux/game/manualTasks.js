@@ -1343,7 +1343,7 @@ blobs.push({
 		title: 'Hull Polarity Compensator Junction Grid, PCJ A',
 		description: 'Manual labor is needed. Perform the manual task according to instructions.</p><p>Hull Polarity Compensator Junction Grid is located in the medbay. Refer to ESS Odysseus Operations Handbook page 2.6-45 for more detailed instructions. Use HANSCA repair for calibration.',
 		location: 'Upper deck, Medbay',
-		map: 'lower-6.png',
+		map: 'upper-6.png',
 		mapX: 30,
 		mapY: 200
 	},
@@ -1361,7 +1361,7 @@ blobs.push({
 		title: 'Hull Polarity Compensator Junction Grid, PCJ B',
 		description: 'Manual labor is needed. Perform the manual task according to instructions.</p><p>Hull Polarity Compensator Junction Grid is located in the medbay. Refer to ESS Odysseus Operations Handbook page 2.6-45 for more detailed instructions. Use HANSCA repair for calibration.',
 		location: 'Upper deck, Medbay',
-		map: 'lower-6.png',
+		map: 'upper-6.png',
 		mapX: 30,
 		mapY: 200
 	},
@@ -1379,7 +1379,7 @@ blobs.push({
 		title: 'Hull Polarity Compensator Junction Grid, PCJ C',
 		description: 'Manual labor is needed. Perform the manual task according to instructions.</p><p>Hull Polarity Compensator Junction Grid is located in the medbay. Refer to ESS Odysseus Operations Handbook page 2.6-45 for more detailed instructions. Use HANSCA repair for calibration.',
 		location: 'Upper deck, Medbay',
-		map: 'lower-6.png',
+		map: 'upper-6.png',
 		mapX: 30,
 		mapY: 200
 	},
@@ -1397,7 +1397,7 @@ blobs.push({
 		title: 'Hull Polarity Compensator Junction Grid, PCJ D',
 		description: 'Manual labor is needed. Perform the manual task according to instructions.</p><p>Hull Polarity Compensator Junction Grid is located in the medbay. Refer to ESS Odysseus Operations Handbook page 2.6-45 for more detailed instructions. Use HANSCA repair for calibration.',
 		location: 'Upper deck, Medbay',
-		map: 'lower-6.png',
+		map: 'upper-6.png',
 		mapX: 30,
 		mapY: 200
 	},
@@ -1415,7 +1415,7 @@ blobs.push({
 		title: 'Hull Polarity Compensator Junction Grid, PCJ E',
 		description: 'Manual labor is needed. Perform the manual task according to instructions.</p><p>Hull Polarity Compensator Junction Grid is located in the medbay. Refer to ESS Odysseus Operations Handbook page 2.6-45 for more detailed instructions. Use HANSCA repair for calibration.',
 		location: 'Upper deck, Medbay',
-		map: 'lower-6.png',
+		map: 'upper-6.png',
 		mapX: 30,
 		mapY: 200
 	},
