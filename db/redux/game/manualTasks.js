@@ -767,6 +767,26 @@ blobs.push({
 			]
 		}
 	},
+
+
+	{
+		id: 'super_engineer',
+		type: 'game',
+		game_config: 'manual',
+		status: 'fixed',
+		config: {
+			title: 'Special engineer actions',
+			notBrokenDescription: 'No actions available.',
+			pages: [
+				'<p>PÄIVITÄ: You were able to ...</p><p>Confirm you want to perform the task.</p>',
+			],
+			buttons: [
+				'Perform',
+			]
+		}
+	},
+
+
 ].forEach(blob => blobs.push(blob));
 
 // Manual tasks
