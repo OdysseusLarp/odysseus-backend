@@ -20,10 +20,10 @@ blobs.push({
 	id: 'reactor_wiring',
 	box: 'reactor_wiring',
 	eeType: 'reactor',
-	priority: 1,
-	eeHealth: 0.15,  // fixes 15%
+	priority: 0,
+	eeHealth: 0.30,
 	status: 'initial',
-	calibrationTime: 6*60,
+	calibrationTime: 1*60,
 	calibrationCount: 2,
 	title: `Reactor vibration crystal stabilator`,
 	description: '...',

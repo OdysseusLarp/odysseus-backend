@@ -35,11 +35,8 @@ let priority;
 
 // Reactor  DONE
 
-priority = priorityGenerator(17, 0, 3);
-for (let i=0; i < 20; i++) {
-	const letter = String.fromCharCode('A'.charCodeAt(0) + Math.floor(i/5));
-	const number = i % 5 + 1;
-	const code = letter + number;
+for (let i=0; i < 2; i++) {
+	const code = `R${i+1}`;
 	const id = `reactor_${code}`;
 
 	blobs.push({
@@ -56,11 +53,11 @@ for (let i=0; i < 20; i++) {
 		type: 'task',
 		id,
 		eeType: 'reactor',
-		priority: priority.next().value,
-		eeHealth: 0.10,  // fixes 10%
+		priority: 0,
+		eeHealth: 0.3,
 		game: id,
 		status: 'initial',
-		calibrationTime: 10*60,
+		calibrationTime: 1*60,
 		calibrationCount: 1,
 		title: `Reactor power segment ${code}`,
 		description: `Reactor power segment ${code} has failed. Phase shift needs to be recalibrated using HANSCA.`,
@@ -84,29 +81,7 @@ blobs.push({
 		dimensions: 2,
 		difficulty: 0.4,
 		duration: 1,
-		drift: 0.15,
-	},
-
-	'skill:master': {
-		initDescription: 'Reactor power segment needs phase calibration.',
-		endDescription: 'Phase calibration successful!',
-		game: 'phasesync',
-
-		dimensions: 2,
-		difficulty: 0.4,
-		duration: 1,
 		drift: 0.05,
-	},
-
-	'skill:expert': {
-		initDescription: 'Reactor power segment needs phase calibration.',
-		endDescription: 'Phase calibration successful!',
-		game: 'phasesync',
-
-		dimensions: 2,
-		difficulty: 0.2,
-		duration: 1,
-		drift: 0,
 	},
 });
 
@@ -114,11 +89,8 @@ blobs.push({
 
 // Engine  DONE
 
-priority = priorityGenerator(10, 10);
-for (let i=0; i < 20; i++) {
-	const letter = String.fromCharCode('A'.charCodeAt(0) + Math.floor(i/5));
-	const number = i % 5 + 1;
-	const code = letter + number;
+for (let i=0; i < 2; i++) {
+	const code = `E${i+1}`;
 	const id = `impulse_${code}`;
 
 	blobs.push({
@@ -135,12 +107,12 @@ for (let i=0; i < 20; i++) {
 		type: 'task',
 		id,
 		eeType: 'impulse',
-		priority: priority.next().value,
-		eeHealth: 0.10,  // fixes 10%
+		priority: 0,
+		eeHealth: 0.45,
 		game: id,
 		status: 'initial',
-		calibrationTime: 5*60,
-		calibrationCount: 1,
+		calibrationTime: 2*60,
+		calibrationCount: 2,
 		title: `Impulse engine power segment ${code}`,
 		description: `Impulse engine power segment ${code} has failed. Phase shift needs to be recalibrated using HANSCA.`,
 		location: 'Lower deck, mess hall',
@@ -162,124 +134,19 @@ blobs.push({
 
 		dimensions: 1,
 		difficulty: 0,
-		duration: 40,
-		drift: 0.3,
-	},
-
-	'skill:master': {
-		initDescription: 'Impulse engine power segment needs phase calibration.',
-		endDescription: 'Phase calibration successful!',
-		game: 'phasesync',
-
-		dimensions: 1,
-		difficulty: 0,
-		duration: 30,
-		drift: 0.15,
-	},
-
-	'skill:expert': {
-		initDescription: 'Impulse engine power segment needs phase calibration.',
-		endDescription: 'Phase calibration successful!',
-		game: 'phasesync',
-
-		dimensions: 1,
-		difficulty: 0,
 		duration: 20,
-		drift: 0.1,
+		drift: 0.15,
 	},
 });
 
 
 // Maneuver  DONE
 
-priority = priorityGenerator(10, 10);
-for (let i=0; i < 20; i++) {
-	let letter;
-	if (i < 10) {
-		letter = 'L';
-	} else {
-		letter = 'R';
-	}
-	const number = i % 10 + 1;
-	const code = letter + number;
-	const id = `maneuver_${code}`;
-
-	blobs.push({
-		type: 'game',
-		id,
-		task: id,
-		game_config: 'maneuver',
-		status: 'fixed',
-		config: {
-			title: `Maneuver power segment ${code}`,
-		},
-	});
-	blobs.push({
-		type: 'task',
-		id,
-		eeType: 'maneuver',
-		priority: priority.next().value,
-		eeHealth: 0.10,  // fixes 10%
-		game: id,
-		status: 'initial',
-		calibrationTime: 7*60,
-		calibrationCount: 1,
-		title: `Maneuver power segment ${code}`,
-		description: `Maneuver power segment ${code} has failed. Phase shift needs to be recalibrated using HANSCA.`,
-		location: letter === 'L' ? 'Upper deck, medbay' : 'Upper deck, corridor',
-		map: letter === 'L' ? 'upper-6.png' : 'upper-5.png',
-		mapX: letter === 'L' ? 200 : 150,
-		mapY: letter === 'L' ? 40 : 290,
-	});
-}
-
-
-blobs.push({
-	'type': 'game_config',
-	'id': 'maneuver',
-
-	'default': {
-		initDescription: 'Maneuver power segment needs phase calibration.',
-		endDescription: 'Phase calibration successful!',
-		game: 'phasesync',
-
-		dimensions: 4,
-		difficulty: 0.2,
-		duration: 1,
-		drift: 0,
-	},
-
-	'skill:master': {
-		initDescription: 'Maneuver power segment needs phase calibration.',
-		endDescription: 'Phase calibration successful!',
-		game: 'phasesync',
-
-		dimensions: 4,
-		difficulty: 0.1,
-		duration: 1,
-		drift: 0,
-	},
-
-	'skill:expert': {
-		initDescription: 'Maneuver power segment needs phase calibration.',
-		endDescription: 'Phase calibration successful!',
-		game: 'phasesync',
-
-		dimensions: 4,
-		difficulty: 0.075,
-		duration: 1,
-		drift: 0,
-	},
-});
-
 
 // Front shields
 
-priority = priorityGenerator(10, 10);
-for (let i=0; i < 20; i++) {
-	const letter = String.fromCharCode('A'.charCodeAt(0) + Math.floor(i/2));
-	const number = i % 2 + 1;
-	const code = letter + number;
+for (let i=0; i < 2; i++) {
+	const code = `FS${i+1}`;
 	const id = `frontshield_${code}`;
 
 	blobs.push({
@@ -296,11 +163,11 @@ for (let i=0; i < 20; i++) {
 		type: 'task',
 		id,
 		eeType: 'frontshield',
-		priority: priority.next().value,
-		eeHealth: 0.10,  // fixes 10%
+		priority: 0,
+		eeHealth: 0.45,
 		game: id,
 		status: 'initial',
-		calibrationTime: 2*60,
+		calibrationTime: 30,
 		calibrationCount: 5,
 		title: `Front shield segment ${code}`,
 		description: `Front shield generator shield segment ${code} has failed. Segment needs to be repaired using HANSCA.`,
@@ -322,27 +189,7 @@ blobs.push({
 		endDescription: 'All shield segments fixed!',
 
 		game: 'lightsout',
-		random: 10,
-		size: 4,
-	},
-	'skill:master': {
-		initDescription: `<p>Front shield generator shield segments are faulted.</p>
-		<p>You need to heal all faulty segments. When you click a segment, the segment and all immediately adjacent segments will heal or break. Once all segments are healed (black), the system will become operational.</p>
-		<p>You may reset the shield segments to a random state.</p>`,
-		endDescription: 'All shield segments fixed!',
-
-		game: 'lightsout',
 		random: 7,
-		size: 4,
-	},
-	'skill:expert': {
-		initDescription: `<p>Front shield generator shield segments are faulted.</p>
-		<p>You need to heal all faulty segments. When you click a segment, the segment and all immediately adjacent segments will heal or break. Once all segments are healed (black), the system will become operational.</p>
-		<p>You may reset the shield segments to a random state.</p>`,
-		endDescription: 'All shield segments fixed!',
-
-		game: 'lightsout',
-		random: 4,
 		size: 4,
 	},
 });
@@ -350,11 +197,8 @@ blobs.push({
 
 // Rear shields
 
-priority = priorityGenerator(10, 10);
-for (let i=0; i < 20; i++) {
-	const letter = String.fromCharCode('A'.charCodeAt(0) + Math.floor(i/2));
-	const number = i % 2 + 1;
-	const code = letter + number;
+for (let i=0; i < 2; i++) {
+	const code = `RS${i+1}`;
 	const id = `rearshield_${code}`;
 
 	blobs.push({
@@ -371,11 +215,11 @@ for (let i=0; i < 20; i++) {
 		type: 'task',
 		id,
 		eeType: 'rearshield',
-		priority: priority.next().value,
-		eeHealth: 0.10,  // fixes 10%
+		priority: 0,
+		eeHealth: 0.45,
 		game: id,
 		status: 'initial',
-		calibrationTime: 2*60,
+		calibrationTime: 30,
 		calibrationCount: 5,
 		title: `Rear shield segment ${code}`,
 		description: `Rear shield generator shield segment ${code} has failed. Segment needs to be repaired using HANSCA.`,
@@ -391,17 +235,7 @@ blobs.push({
 	'type': 'game_config',
 	'id': 'rearshield',
 	'default': {
-		initDescription: `<p>Rear shield generator shield segments are faulted.</p>
-		<p>You need to heal all faulty segments. When you click a segment, the segment and all immediately adjacent segments will heal or break. Once all segments are healed (black), the system will become operational.</p>
-		<p>You may reset the shield segments to a random state.</p>`,
-		endDescription: 'All shield segments fixed!',
-
-		game: 'lightsout',
-		random: 10,
-		size: 4,
-	},
-	'skill:master': {
-		initDescription: `<p>Rear shield generator shield segments are faulted.</p>
+		initDescription: `<p>Front shield generator shield segments are faulted.</p>
 		<p>You need to heal all faulty segments. When you click a segment, the segment and all immediately adjacent segments will heal or break. Once all segments are healed (black), the system will become operational.</p>
 		<p>You may reset the shield segments to a random state.</p>`,
 		endDescription: 'All shield segments fixed!',
@@ -410,26 +244,15 @@ blobs.push({
 		random: 7,
 		size: 4,
 	},
-	'skill:expert': {
-		initDescription: `<p>Rear shield generator shield segments are faulted.</p>
-		<p>You need to heal all faulty segments. When you click a segment, the segment and all immediately adjacent segments will heal or break. Once all segments are healed (black), the system will become operational.</p>
-		<p>You may reset the shield segments to a random state.</p>`,
-		endDescription: 'All shield segments fixed!',
-
-		game: 'lightsout',
-		random: 4,
-		size: 4,
-	},
 });
 
 
 
 // Missile system  DONE
 
-priority = priorityGenerator(10, 10);
-for (let i=0; i < 20; i++) {
+for (let i=0; i < 2; i++) {
 	const number = i + 1;
-	const code = `${number}`;
+	const code = `MS${number}`;
 	const id = `missilesystem_${code}`;
 
 	blobs.push({
@@ -446,11 +269,11 @@ for (let i=0; i < 20; i++) {
 		type: 'task',
 		id,
 		eeType: 'missilesystem',
-		priority: priority.next().value,
-		eeHealth: 0.10,  // fixes 10%
+		priority: 0,
+		eeHealth: 0.45,
 		game: id,
 		status: 'initial',
-		calibrationTime: 6*60,
+		calibrationTime: 1*60,
 		calibrationCount: 2,
 		title: `Missile tube region ${code}`,
 		description: `Missile tube region ${code} is damaged. Drone needs to be sent for repairs. Use HANSCA for performing repairs.`,
@@ -476,48 +299,17 @@ blobs.push({
 		game: 'flappy',
 		gap: 150,
 		interval: 250,
-		gravity: 1.7,
-		score: 20
-	},
-
-	'skill:master': {
-		initDescription: `<p>Missile system repairs require sending a drone.</p>
-		<p>You must fly the drone to the missile tube. Tap HANSCA to fly upwards.</p>`,
-		endDescription: 'Drone successfully arrived at missile tube. Repairs started.',
-		failDescription: 'Drone destroyed!',
-		preFailDescription: 'No drones available!',
-		preCondition: '/data/misc/flappy_drone',
-		game: 'flappy',
-		gap: 150,
-		interval: 250,
 		gravity: 1.6,
 		score: 10
 	},
-
-	'skill:expert': {
-		initDescription: `<p>Missile system repairs require sending a drone.</p>
-		<p>You must fly the drone to the missile tube. Tap HANSCA to fly upwards.</p>`,
-		endDescription: 'Drone successfully arrived at missile tube. Repairs started.',
-		failDescription: 'Drone destroyed!',
-		preFailDescription: 'No drones available!',
-		preCondition: '/data/misc/flappy_drone',
-		game: 'flappy',
-		gap: 150,
-		interval: 250,
-		gravity: 1.3,
-		score: 7
-	},
-
 });
 
 
 
 // Beam weapons
 
-priority = priorityGenerator(10, 10);
-for (let i=0; i < 20; i++) {
-	const letter = String.fromCharCode('A'.charCodeAt(0) + i);
-	const code = `${letter}`;
+for (let i=0; i < 2; i++) {
+	const code = `BW${i+1}`;
 	const id = `beamweapons_${code}`;
 
 	blobs.push({
@@ -534,12 +326,12 @@ for (let i=0; i < 20; i++) {
 		type: 'task',
 		id,
 		eeType: 'beamweapons',
-		priority: priority.next().value,
-		eeHealth: 0.10,  // fixes 10%
+		priority: 0,
+		eeHealth: 0.45,
 		game: id,
 		status: 'initial',
-		calibrationTime: 8*60,
-		calibrationCount: 1,
+		calibrationTime: 20,
+		calibrationCount: 5,
 		title: `Beam weapon segment ${code}`,
 		description: `Beam weapon segment ${code} has fallen out-of-sync with the ship quantum state. The quantum phase must be recalibrated using HANSCA.`,
 		location: 'Upper deck, corridor',
@@ -555,38 +347,18 @@ blobs.push({
 	'id': 'beamweapons',
 
 	'default': {
-		initDescription: 'Beam weapon requires phase recalibration.',
-		endDescription: 'Phase calibration successful!',
-		game: 'phasesync',
+		initDescription: `<p>Beam weapons power line maximum current has been overloaded. The power line currents must be redistributed.</p>
+		<p>Switch the enabled power lines on and off until the total current is zero. Each power line increases or decreases the total current with a specific amount.</p>`,
+		endDescription: 'Power line current redistribution successful!',
+		game: 'balance',
 
-		dimensions: 2,
-		difficulty: 0.4,
-		duration: 1,
-		drift: 0.15,
+		count: 10,
+		max: 2,
+		unit: 'A',
+		decimals: 1,
+		gameTitle: 'Current balancing',
+		hintAfter: 20,
 	},
-
-	'skill:master': {
-		initDescription: 'Beam weapon requires phase recalibration.',
-		endDescription: 'Phase calibration successful!',
-		game: 'phasesync',
-
-		dimensions: 2,
-		difficulty: 0.4,
-		duration: 1,
-		drift: 0.05,
-	},
-
-	'skill:expert': {
-		initDescription: 'Beam weapon requires phase recalibration.',
-		endDescription: 'Phase calibration successful!',
-		game: 'phasesync',
-
-		dimensions: 2,
-		difficulty: 0.2,
-		duration: 1,
-		drift: 0,
-	},
-
 });
 
 
@@ -595,7 +367,7 @@ blobs.push({
 // Hull  DONE
 
 priority = priorityGenerator(5, 15);
-for (let i=0; i < 20; i++) {
+for (let i=0; i < 2; i++) {
 	let letter;
 	if (i < 10) {
 		letter = 'L';
