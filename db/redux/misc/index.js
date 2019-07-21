@@ -47,7 +47,7 @@ sunt eaque dolor id nisi magni.`
 	{
 		type: 'misc',
 		id: 'flappy_drone',
-		amount: 10
+		amount: 1000000
 	},
 	{
 		type: 'misc',
