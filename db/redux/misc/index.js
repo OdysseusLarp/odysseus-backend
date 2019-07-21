@@ -55,6 +55,17 @@ sunt eaque dolor id nisi magni.`
 		show_20110_tumor: true,
 		show_20070_alien: false,
 	},
+	// Demo functionality
+	// 13 tasks in total
+	{
+		type: 'misc',
+		id: 'demo',
+		eeBreakCount1: 3,	// break first 3 tasks on 30s intervals
+		eeBreakTime1: 30,
+		eeBreakCount2: 10,	// break next 7 tasks on 60s intervals
+		eeBreakTime2: 60,
+		fuseBlowInterval: 5,  // minutes, will only blow if all are intact
+	},
 ];
 
 blobs.forEach(saveBlob);
