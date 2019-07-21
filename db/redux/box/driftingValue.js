@@ -10,14 +10,14 @@ blobs.push({
 	value: 530.5,         // current "real" value
 	rndMagnitude: 0,      // current magnitude of white noise (internal)
 	brownNoiseValue: 0,   // current brown noise value (internal)
-	drift: 1,             // value drift per MINUTE (chosen randomly between min/maxDriftPerMinute)
+	drift: 6,             // value drift per MINUTE (chosen randomly between min/maxDriftPerMinute)
 	driftPause: 0,        // drift pause secs remaining (internal)
 	sinePosition: 0,      // sine wave position (internal)
 
-	engineBreakProb: 0.1, // probability of 1% engine health dropping PER SECOND
+	engineBreakProb: 0,   // probability of 1% engine health dropping PER SECOND
 
-	minDriftPerMinute: 1.11, // minimum drift per MINUTE when randomizing drift  1.11 = 3h
-	maxDriftPerMinute: 2.22, // maximum drift per MINUTE when randomizing drift  2.22 = 1.5h
+	minDriftPerMinute: 3.33, // minimum drift per MINUTE when randomizing drift
+	maxDriftPerMinute: 6.66, // maximum drift per MINUTE when randomizing drift
 
 	config: {
 		safeRangeMin: 330,         // minimum safe value (backend uses)
