@@ -29,7 +29,7 @@ blobs.push({
 	description: '...',
 	description_template: `The reactor vibration crystal that inhibits the vibration reducer prevention from working requires restabilation.
 	
-	Required stabilation wiring configuration {{code}}. Refer to Ship knowledge database code RVSC-3 or Operations manual page 2.3-1 for instructions.`,
+	Required stabilation wiring configuration {{code}}. Refer to Ship knowledge database or Operations manual page 2.3-1 for instructions.`,
 	location: 'Lower deck, science lab',
 	map: 'lower-13.png',
 	mapX: 250,
