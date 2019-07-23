@@ -64,7 +64,15 @@ sunt eaque dolor id nisi magni.`
 		eeBreakTime1: 30,
 		eeBreakCount2: 10,	// break next 7 tasks on 60s intervals
 		eeBreakTime2: 60,
-		fuseBlowInterval: 5,  // minutes, will only blow if all are intact
+		fuseBox: 'fusebox_engineering',
+		fuseBlowIntervalMin: 2,  // minimum delay from fixing fuse to blowing next one, minutes
+		fuseBlowIntervalMax: 10, // minimum delay from blowing fuse to blowing next one, minutes
+	},
+	{
+		type: 'misc',
+		id: 'demostat',
+		eeBroken: 0,
+		fuseBlown: 0,
 	},
 ];
 

@@ -1,4 +1,4 @@
-import { interval, randomInt } from '../helpers';
+import { interval, randomInt, saveBlob } from '../helpers';
 import store from '../../store/store';
 import { logger } from '../../logger';
 import { getEmptyEpsilonClient } from '../../emptyepsilon';
@@ -14,6 +14,8 @@ const BREAKAGE = {
 	beamweapons: 0.45,
 };
 const MIN_HEALTH = 0.10;
+
+let lastBreak = Date.now();
 
 
 async function setEEHealth(type, health) {
@@ -38,6 +40,7 @@ function countBrokenEETasks() {
 
 function breakEE() {
 	const ee = store.getState().data.ship.ee;
+	const stat = store.getState().data.misc.demostat;
 	const types = Object.keys(BREAKAGE);
 	while (types.length > 0) {
 		const index = randomInt(0, types.length-1);
@@ -46,6 +49,12 @@ function breakEE() {
 		if (health > MIN_HEALTH + 0.01) {
 			logger.info(`Changing EE ${type} health from ${health} to ${health - BREAKAGE[type]}`);
 			setEEHealth(type, health - BREAKAGE[type]);
+
+			lastBreak = Date.now();
+			saveBlob({
+				...stat,
+				eeBroken: (stat.eeBroken || 0) + 1,
+			});
 			return;
 		}
 	}
@@ -53,7 +62,6 @@ function breakEE() {
 }
 
 
-let lastBreak = Date.now();
 interval(() => {
 	const demo = store.getState().data.misc.demo;
 	const broken = countBrokenEETasks();
@@ -62,13 +70,11 @@ interval(() => {
 		if (timeSinceBroken > demo.eeBreakTime1) {
 			logger.info(`Breaking some EE type (1), broken=${broken} timeSinceBroken=${Math.floor(timeSinceBroken)}`);
 			breakEE();
-			lastBreak = Date.now();
 		}
 	} else if (broken < demo.eeBreakCount2) {
 		if (timeSinceBroken > demo.eeBreakTime2) {
 			logger.info(`Breaking some EE type (2), broken=${broken} timeSinceBroken=${Math.floor(timeSinceBroken)}`);
 			breakEE();
-			lastBreak = Date.now();
 		}
 	} else {
 		lastBreak = Date.now();
