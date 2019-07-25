@@ -1,8 +1,7 @@
-import store, { watch } from '../../store/store';
+import { watch } from '../../store/store';
 import { CHANNELS, fireEvent } from '../../dmx';
 import { logger } from '../../logger';
-import { isNumber, isEqual } from 'lodash';
-import { chooseRandom, saveBlob } from '../helpers';
+import { isNumber } from 'lodash';
 
 // Fire DMX signals based on dmxFuse configuration
 watch(['data', 'box'], (boxes, previousBoxes, state) => {
@@ -26,40 +25,4 @@ watch(['data', 'box'], (boxes, previousBoxes, state) => {
 		}
 	}
 });
-
-
-// Cause life support tasks to fail if fuse blowing has failed
-watch(['data', 'box'], (boxes, previousBoxes, state) => {
-	for (const id of Object.keys(boxes)) {
-		const box = boxes[id];
-		const previous = previousBoxes[id];
-		if (previous && box.fuses && box.failed && !isEqual(box.failed, previous.failed)) {
-			const count = box.failed.length;
-			const breakCount = Math.ceil(count/3);
-			logger.info(`${count} fuses failed to blow in ${box.id}, breaking ${breakCount} life support tasks`);
-			for (let i=0; i<breakCount; i++) {
-				breakTask();
-			}
-		}
-	}
-});
-
-function breakTask() {
-	const allTasks = Object.values(store.getState().data.task);
-	const tasks = allTasks.filter(task => task.lifesupportHealth && task.status === 'fixed');
-	const task = chooseRandom(tasks)[0];
-	if (!task) {
-		logger.warn(`Cound not find life support task to break`);
-		return;
-	}
-	const game = store.getState().data.game[task.game];
-	if (!game) {
-		logger.error(`Could not find game corresponding to life support task ${task.id}`);
-		return;
-	}
-	saveBlob({
-		...game,
-		status: 'broken',
-	});
-}
 
