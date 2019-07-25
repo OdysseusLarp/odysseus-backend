@@ -27,17 +27,21 @@ interval(() => {
 	if (!isBroken &&
 		lastBlowTime + demo.fuseBlowIntervalMax * MINUTE < Date.now() &&
 		lastFixedTime + demo.fuseBlowIntervalMin * MINUTE < Date.now()) {
-		const fuse = randomInt(0, box.fuses.length-1);
-		logger.info(`Blowing fuse ${fuse} of box ${box.id}`);
-		saveBlob({
-			...box,
-			blow: [fuse],
-		});
+		if (!box.blow) {
+			const fuse = randomInt(0, box.fuses.length-1);
+			logger.info(`Blowing fuse ${fuse} of box ${box.id}`);
+			saveBlob({
+				...box,
+				blow: [fuse],
+			});
+			saveBlob({
+				...stat,
+				fuseBlown: (stat.fuseBlown || 0) + 1,
+			});
+		} else {
+			logger.error(`Fusebox ${box.id} has 'blow' field, box probably not working: ${JSON.stringify(box.blow)}`);
+		}
 		lastBlowTime = Date.now();
-		saveBlob({
-			...stat,
-			fuseBlown: (stat.fuseBlown || 0) + 1,
-		});
 	}
 }, 1000);
 
