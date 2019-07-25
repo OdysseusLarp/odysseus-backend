@@ -41,7 +41,7 @@ sunt eaque dolor id nisi magni.`
 	{
 		type: 'misc',
 		id: 'hansca',
-		analyseBaseTime: 90
+		analyseBaseTime: 20
 	},
 	// Drone count for Flappy drone
 	{
