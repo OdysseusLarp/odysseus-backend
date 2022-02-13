@@ -4,7 +4,7 @@
 	"private": true,
 	"description": "Backend for multiple services used in Odysseus LARP",
 	"engines": {
-		"node": "*"
+		"node": ">=v14.19.0"
 	},
 	"main": "index.js",
 	"scripts": {

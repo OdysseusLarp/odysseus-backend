@@ -10,7 +10,7 @@ Backend for multiple systems used in Odysseus LARP.
 * Run `npm start` to start the backend server
 
 ## Tech
-* Node (version 10 and up should work)
+* Node v14.19.0
 * PostgreSQL 10 + PostGIS
 * Docker can be used for running a local dev database
 
