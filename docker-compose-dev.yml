@@ -1,0 +1,40 @@
+version: '2.1'
+
+networks:
+  odysseus-dev-net:
+    driver: bridge
+
+services:
+  backend:
+    image: odysseus-backend:latest
+    container_name: odysseus-backend
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./
+    restart: "no"
+    expose:
+      - 8888
+    ports:
+      - 8888:8888
+    networks:
+      - odysseus-dev-net
+    depends_on:
+      - database
+    volumes:
+      - "./:/app"
+
+  database:
+    image: odysseus-database:latest
+    container_name: odysseus-database
+    build:
+      context: ./db
+    restart: "no"
+    expose:
+      - 5432
+    ports:
+      - 5432:5432
+    networks:
+      - odysseus-dev-net
+    environment:
+      # Set POSTGRES_PASSWORD to same as DB_PASSWORD in .backend.env.prod
+      - POSTGRES_PASSWORD=postgres
