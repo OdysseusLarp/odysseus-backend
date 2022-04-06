@@ -33,4 +33,4 @@ workflows:
         filters:
           branches:
             only:
-              - master
+              - this-branch-does-not-exist
