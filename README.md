@@ -15,7 +15,7 @@ You can also run the backend in Docker if you do not want to. Update your .env f
 DB_HOST=odysseus-database
 ```
 
-And then run `docker-compose -d -f docker-compose-dev.yml up`. The initial startup will fail because the database is empty. Run `docker exec -it odysseus-backend sh -c "npm run db:migrate && npm run db:seed"` to apply database migrations and seeds. Then restart the backend container `docker restart odysseus-backend`.
+And then run `docker-compose -f docker-compose-dev.yml up`. The initial startup will fail because the database is empty. Run `docker exec -it odysseus-backend sh -c "npm run db:migrate && npm run db:seed"` to apply database migrations and seeds. Then restart the backend container `docker restart odysseus-backend`.
 
 ## Tech
 * Node v14.19.0
