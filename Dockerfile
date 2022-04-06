@@ -1,4 +1,4 @@
-FROM keymetrics/pm2:10-jessie
+FROM keymetrics/pm2:14-stretch
 
 COPY . /app
 
