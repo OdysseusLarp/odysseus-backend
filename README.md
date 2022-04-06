@@ -9,8 +9,16 @@ Backend for multiple systems used in Odysseus LARP.
 * Run `npm run db:seed` to seed the database (check [odysseus-geoserver](https://github.com/OdysseusLarp/odysseus-geoserver) repository readme for seeding starmap tables)
 * Run `npm start` to start the backend server
 
+### Backend in Docker
+You can also run the backend in Docker if you do not want to. Update your .env file:
+```
+DB_HOST=odysseus-database
+```
+
+And then run `docker-compose -f docker-compose-dev.yml up`. The initial startup will fail because the database is empty. Run `docker exec -it odysseus-backend sh -c "npm run db:migrate && npm run db:seed"` to apply database migrations and seeds. Then restart the backend container `docker restart odysseus-backend`.
+
 ## Tech
-* Node (version 10 and up should work)
+* Node v14.19.0
 * PostgreSQL 10 + PostGIS
 * Docker can be used for running a local dev database
 

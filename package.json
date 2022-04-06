@@ -4,7 +4,7 @@
 	"private": true,
 	"description": "Backend for multiple services used in Odysseus LARP",
 	"engines": {
-		"node": "*"
+		"node": ">=v14.19.0"
 	},
 	"main": "index.js",
 	"scripts": {
@@ -34,7 +34,7 @@
 		"common-tags": "^1.8.0",
 		"cors": "^2.8.5",
 		"cross-env": "^5.2.0",
-		"dmx": "^0.2.2",
+		"dmx": "^0.2.5",
 		"dotenv": "^6.0.0",
 		"dotenv-cli": "^1.4.0",
 		"express": "^4.16.3",
@@ -42,10 +42,10 @@
 		"express-swagger-generator": "git+https://github.com/nicou/express-swagger-generator.git",
 		"handlebars": "^4.1.2",
 		"http-errors": "^1.7.1",
-		"knex": "^0.15.2",
+		"knex": "^1.0.3",
 		"lodash": "^4.17.11",
 		"moment": "^2.22.2",
-		"pg": "^7.4.3",
+		"pg": "^8.7.3",
 		"prom-client": "^11.5.1",
 		"redux-starter-kit": "^0.4.3",
 		"shelljs": "^0.8.3",
