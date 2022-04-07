@@ -17,6 +17,7 @@ const DEFAULT_PERSON_ENTRIES_PER_PAGE = 1000;
  * @param {integer} page.query - Page number
  * @param {integer} entries.query - Amount of items returned per page
  * @param {boolean} show_hidden.query - Should hidden persons be shown
+ * @param {boolean} is_character.query - If true, return characters only
  * @param {string} name.query - Person name filter
  * @param {string} dynasty.query - Person dynasty filter
  * @param {string} home_planet.query - Person home planet filter
@@ -31,7 +32,7 @@ router.get('/', handleAsyncErrors(async (req, res) => {
 	const showHidden = get(req.query, 'show_hidden') === 'true';
 	const nameFilter = get(req.query, 'name', '').toLowerCase();
 	const filters = mapKeys(
-		pick(req.query, ['dynasty', 'home_planet', 'ship_id', 'status', 'title']),
+		pick(req.query, ['dynasty', 'home_planet', 'ship_id', 'status', 'title', 'is_character']),
 		(_value, key) => snakeCase(key),
 	);
 	if (nameFilter) filters.name = nameFilter;
