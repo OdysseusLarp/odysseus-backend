@@ -1,6 +1,6 @@
-FROM postgres:10
+FROM postgres:12
 
-RUN apt-get update && apt-get install -y postgresql-10-postgis-2.4
+RUN apt-get update && apt-get install -y postgresql-12-postgis-3
 
 ENV POSTGRES_PASSWORD=postgres
 
