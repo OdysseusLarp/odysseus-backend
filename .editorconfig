@@ -10,3 +10,9 @@ trim_trailing_whitespace = true
 
 [*.yml]
 indent_style = space
+
+[*.js]
+quote_type = single
+
+[*.ts]
+quote_type = single
