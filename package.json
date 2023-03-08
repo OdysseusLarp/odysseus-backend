@@ -54,7 +54,6 @@
 		"socket.io-prometheus": "^0.2.1"
 	},
 	"devDependencies": {
-		"ava": "^0.25.0",
 		"babel-cli": "^6.26.0",
 		"babel-eslint": "^8.2.6",
 		"babel-plugin-istanbul": "^4.1.6",
@@ -69,10 +68,7 @@
 		"lint-staged": "^8.1.5",
 		"nock": "^9.6.1",
 		"nodemon": "^1.18.3",
-		"nyc": "^12.0.2",
-		"rewire": "^4.0.1",
-		"sinon": "^6.1.5",
-		"supertest": "^3.3.0"
+		"rewire": "^4.0.1"
 	},
 	"husky": {
 		"hooks": {
@@ -105,25 +101,5 @@
 	"signale": {
 		"displayTimestamp": true,
 		"displayFilename": true
-	},
-	"nyc": {
-		"include": [
-			"src/**/*.js"
-		],
-		"sourceMap": false,
-		"instrument": false
-	},
-	"ava": {
-		"concurrency": 4,
-		"files": [
-			"test/**/*.js"
-		],
-		"source": [
-			"src/**/*.js"
-		],
-		"babel": "inherit",
-		"require": [
-			"babel-register"
-		]
 	}
 }
