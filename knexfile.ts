@@ -1,6 +1,7 @@
-require('dotenv').config({ silent: true });
+import 'dotenv/config';
+import { Knex } from 'knex';
 
-module.exports = {
+const knexConfig: Knex.Config = {
 	client: 'pg',
 	// debug: process.env.NODE_ENV !== 'production',
 	debug: false,
@@ -24,3 +25,5 @@ module.exports = {
 		directory: `${__dirname}/db/seeds`
 	}
 };
+
+export default knexConfig;
