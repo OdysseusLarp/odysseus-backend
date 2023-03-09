@@ -1,8 +1,8 @@
-require('dotenv').config({ silent: true });
-const app = require('express')();
-const bodyParser = require('body-parser');
-const http = require('http').Server(app);
-const io = require('socket.io')(http);
+import 'dotenv/config';
+import { Server } from 'http';
+import express from 'express';
+import bodyParser from 'body-parser';
+import socketIo from 'socket.io';
 import { logger, loggerMiddleware } from './logger';
 import { loadSwagger } from './docs';
 import { getEmptyEpsilonClient, setStateRouteHandler } from './emptyepsilon';
@@ -36,6 +36,10 @@ import dmxRoutes from './routes/dmx';
 
 import { loadRules } from './rules/rules';
 
+const app = express();
+const http = new Server(app);
+const io = socketIo(http);
+
 // Setup logging middleware and body parsing
 app.use(bodyParser.json());
 app.use(loggerMiddleware);
@@ -58,7 +62,7 @@ prometheusIoMetrics(io);
 
 // Add Socket.IO reference to all requests so route handlers can call it
 app.use((req, res, next) => {
-	req.io = io;
+	(<any>req).io = io;
 	next();
 });
 

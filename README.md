@@ -18,8 +18,8 @@ DB_HOST=odysseus-database
 And then run `docker-compose -f docker-compose-dev.yml up`. The initial startup will fail because the database is empty. Run `docker exec -it odysseus-backend sh -c "npm run db:migrate && npm run db:seed"` to apply database migrations and seeds. Then restart the backend container `docker restart odysseus-backend`.
 
 ## Tech
-* Node v14.19.0
-* PostgreSQL 10 + PostGIS
+* Node v18.14.0
+* PostgreSQL 12 + PostGIS
 * Docker can be used for running a local dev database
 
 ### Key libraries
