@@ -1,6 +1,6 @@
 import store, { initState } from '../../src/store/store';
 import { saveState } from '../../src/store/storePersistance';
-import { knex } from '../../db';
+import { knex } from '../';
 import { logger } from '../../src/logger';
 
 async function seed() {
