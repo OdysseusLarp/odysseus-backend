@@ -1,5 +1,5 @@
-const knex = require('knex')(require('../knexfile'));
-const shell = require('shelljs');
+import { knex } from '../db';
+import shell from 'shelljs';
 
 // Check that DB is up
 knex.raw(`SELECT 1`).then(async () => {
@@ -8,7 +8,12 @@ knex.raw(`SELECT 1`).then(async () => {
 
 	// Check if we have any data in data blobs - if not, run seeds
 	await knex('store').count({ count: '*' }).first().then(res => {
-		const count = parseInt(res.count || 0, 10);
+		let count = 0;
+		if (typeof res === 'string') {
+			count = parseInt(res, 10);
+		} else if (typeof res === 'number') {
+			count = res;
+		}
 
 		if (count === 0) {
 			console.log('Could not find saved data blobs, assuming this is an initial startup, running seeds...');
@@ -23,7 +28,7 @@ knex.raw(`SELECT 1`).then(async () => {
 	// ECONNREFUSED = Not accepting connections yet, wait a bit longer
 	if (err && err.code === 'ECONNREFUSED') {
 		console.log('Database connection refused, sleeping for extra 5 seconds');
-		await new Promise(resolve => setTimeout(() => resolve(), 5000));
+		await new Promise((resolve) => setTimeout(resolve, 5000));
 	}
 	process.exit(1);
 });
