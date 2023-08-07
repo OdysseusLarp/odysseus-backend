@@ -7,15 +7,15 @@ knex.raw(`SELECT 1`).then(async () => {
 	shell.exec('npm run db:migrate');
 
 	// Check if we have any data in data blobs - if not, run seeds
-	await knex('store').count({ count: '*' }).first().then(res => {
-		let count = 0;
-		if (typeof res === 'string') {
-			count = parseInt(res, 10);
-		} else if (typeof res === 'number') {
-			count = res;
+	await knex('store').count({ count: '*' }).first().then((row) => {
+		let dataBlobCount = 0;
+		if (typeof row?.count === 'string') {
+			dataBlobCount = parseInt(row.count, 10);
+		} else if (typeof row?.count === 'number') {
+			dataBlobCount = row.count;
 		}
 
-		if (count === 0) {
+		if (dataBlobCount === 0) {
 			console.log('Could not find saved data blobs, assuming this is an initial startup, running seeds...');
 			shell.exec('npm run db:seed');
 		}

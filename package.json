@@ -19,7 +19,7 @@
 		"db:start": "docker start odysseus-dev || (npm run db:build && npm run db:run) || exit 0",
 		"db:migrate": "knex migrate:latest",
 		"db:rollback": "knex migrate:rollback",
-		"db:seed": "knex seed:run && npm run",
+		"db:seed": "knex seed:run && npm run redux:seed",
 		"redux:seed": "ts-node db/redux/seed-redux.ts"
 	},
 	"author": "",
