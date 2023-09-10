@@ -4,4 +4,4 @@ RUN mkdir /app
 
 WORKDIR /app
 
-CMD ["npm", "start"]
+CMD ["npm", "run", "install-and-start"]

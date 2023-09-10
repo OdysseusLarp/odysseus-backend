@@ -14,6 +14,7 @@
 		"lint:fix": "eslint --fix src test db",
 		"start": "cross-env NODE_ENV=development node_modules/nodemon/bin/nodemon.js --watch src --ext 'ts,js,json'  src/index.ts",
 		"start:prod": "sh ./wait-for-db.sh && cross-env NODE_ENV=production ts-node src/index.ts",
+		"install-and-start": "npm install && npm start",
 		"db:build": "docker build -t odysseus-postgis:latest ./db",
 		"db:run": "(docker network create odysseus-network || true) && docker run --name odysseus-dev -p 127.0.0.1:5432:5432 --network=odysseus-network -d odysseus-postgis:latest",
 		"db:start": "docker start odysseus-dev || (npm run db:build && npm run db:run) || exit 0",
