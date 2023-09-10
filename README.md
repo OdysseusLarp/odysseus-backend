@@ -8,6 +8,7 @@ Backend for multiple systems used in Odysseus LARP.
 * Run `npm run db:migrate` to run latest database migrations
 * Run `npm run db:seed` to seed the database (check [odysseus-geoserver](https://github.com/OdysseusLarp/odysseus-geoserver) repository readme for seeding starmap tables)
 * Run `npm start` to start the backend server
+* Backend should now be available at [http://localhost:8888](http://localhost:8888)
 
 ### Backend in Docker
 You can also run the backend in Docker if you do not want to. Update your .env file:
@@ -28,7 +29,7 @@ And then run `docker-compose -f docker-compose-dev.yml up`. The initial startup 
 * Knex + Bookshelf.js
 
 ## REST APIs
-REST API routes are documented in Swagger UI accessible via `/docs` route.
+REST API routes are documented in Swagger UI accessible via `/api-docs` route.
 
 ### Empty Epsilon integration
 Backend will poll data from EmptyEpsilon and store it in `ship/ee` data store. Metadata related to the integration state (is connection active, possible error messages) are stored in `ship/ee_metadata` data store. Target EmptyEpsilon server and polling frequency needs to be set up in the `.env` file:
