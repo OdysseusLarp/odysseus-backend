@@ -20,6 +20,8 @@ services:
       - odysseus-dev-net
     depends_on:
       - database
+    #environment:
+    #  - CHOKIDAR_USEPOLLING=true
     volumes:
       - "./:/app"
       - .:/workspace:cached
