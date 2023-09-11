@@ -1,0 +1,47 @@
+// For template details, see https://github.com/microsoft/vscode-dev-containers/tree/main/container-templates
+// For image details, see https://github.com/devcontainers/images/tree/main/src/typescript-node
+// For config options, see https://code.visualstudio.com/docs/remote/devcontainerjson-reference
+
+{
+	"name": "Odysseus Backend",
+	"dockerComposeFile": ["docker-compose-dev.yml"],
+	"service": "backend",
+	"workspaceFolder": "/workspace",
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"dbaeumer.vscode-eslint"
+			],
+			"settings": {
+				"dev.containers.copyGitConfig": true,
+				"remote.portsAttributes": {
+					"5432": {
+						"label": "Database",
+						"onAutoForward": "silent",
+						"requireLocalPort": true
+					}
+				}
+			}
+		}
+	},
+	"features": {
+		"ghcr.io/devcontainers/features/github-cli:1": {},
+		"ghcr.io/devcontainers/features/docker-in-docker:2": {},
+		"ghcr.io/devcontainers/features/common-utils:2": {},
+		"ghcr.io/devcontainers/features/docker-outside-of-docker:1": {},
+		"ghcr.io/devcontainers/features/node:1": {},
+		"ghcr.io/eitsupi/devcontainer-features/jq-likes:1": {}
+	},
+	"mounts": [
+		{
+			"source": "${localWorkspaceFolderBasename}-node_modules",
+			"target": "${containerWorkspaceFolder}/node_modules",
+			"type":"volume"
+		}
+	],
+	"postCreateCommand": "bash .postCreateCommand.sh",
+	"remoteEnv": {
+		"VITE_HMR_POLLING": "true"
+	},
+	"remoteUser": "node"
+}

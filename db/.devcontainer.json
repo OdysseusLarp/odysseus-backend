@@ -1,0 +1,22 @@
+{
+	"name": "Odysseus Database",
+	"dockerComposeFile": ["../docker-compose-dev.yml"],
+	"service": "database",
+	"shutdownAction": "none",
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"dbaeumer.vscode-eslint"
+			]
+		}
+	},
+	"features": {
+		"ghcr.io/devcontainers/features/github-cli:1": {}
+	},
+	//"postCreateCommand": "bash .devcontainer/postCreateCommand.sh",
+	"remoteEnv": {
+		"VITE_HMR_POLLING": "true"
+	},
+	"remoteUser": "postgres",
+	"workspaceFolder": "/workspace/db"
+  }

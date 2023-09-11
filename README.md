@@ -18,6 +18,18 @@ DB_HOST=odysseus-database
 
 And then run `docker-compose -f docker-compose-dev.yml up`. The initial startup will fail because the database is empty. Run `docker exec -it odysseus-backend sh -c "npm run db:migrate && npm run db:seed"` to apply database migrations and seeds. Then restart the backend container `docker restart odysseus-backend`.
 
+### Backend in .devcontainer (vscode)
+You can also run the backend using vscode devcontainers. Update/copy your .env file as above.
+
+Install Dev Containers extension for vscode.
+
+* Open new window in vscode
+* Open Folder... `odysseus-backend/db`
+* VS Code will ask do you want to `Reopen in Container` --> Click it
+* VS Code will then start up both containers and connect to both services (`database` and `backend`) and install npm packages, update the database migrations/seeds and start the services
+
+**NOTE:** On Windows automatic file update is not working in the container. You need to stop the service with CTRL+C and start it again with `npm start`
+
 ## Tech
 * Node v18.14.0
 * PostgreSQL 12 + PostGIS

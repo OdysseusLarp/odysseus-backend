@@ -22,6 +22,7 @@ services:
       - database
     volumes:
       - "./:/app"
+      - .:/workspace:cached
 
   database:
     image: odysseus-database:latest
@@ -38,3 +39,5 @@ services:
     environment:
       # Set POSTGRES_PASSWORD to same as DB_PASSWORD in .backend.env.prod
       - POSTGRES_PASSWORD=postgres
+    volumes:
+      - .:/workspace:cached
