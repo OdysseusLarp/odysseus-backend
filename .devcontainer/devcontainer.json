@@ -4,7 +4,7 @@
 
 {
 	"name": "Odysseus Backend",
-	"dockerComposeFile": ["docker-compose-dev.yml"],
+	"dockerComposeFile": ["../docker-compose-dev.yml"],
 	"service": "backend",
 	"workspaceFolder": "/workspace",
 	"customizations": {
@@ -39,7 +39,7 @@
 			"type":"volume"
 		}
 	],
-	"postCreateCommand": "bash .postCreateCommand.sh",
+	"postCreateCommand": "bash .devcontainer/postCreateCommand.sh",
 	"remoteEnv": {
 		"VITE_HMR_POLLING": "true"
 	},
