@@ -41,7 +41,7 @@
 	],
 	"postCreateCommand": "bash .devcontainer/postCreateCommand.sh",
 	"remoteEnv": {
-		"VITE_HMR_POLLING": "true"
+		"CHOKIDAR_USEPOLLING": "true"
 	},
 	"remoteUser": "node"
 }

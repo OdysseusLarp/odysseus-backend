@@ -28,13 +28,6 @@ Install Dev Containers extension for vscode.
 * VS Code will ask do you want to `Reopen in Container` --> Click it
 * VS Code will then start up both containers and connect to both services (`database` and `backend`) and install npm packages, update the database migrations/seeds and start the services
 
-**NOTE:** If you are running devcontainer with `Docker On Windows` uncomment the following lines from `docker-compose-dev.yml`
-
-```yml
-    environment:
-      - CHOKIDAR_USEPOLLING=true
-```
-
 ## Tech
 * Node v18.14.0
 * PostgreSQL 12 + PostGIS
