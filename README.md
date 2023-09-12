@@ -1,23 +1,6 @@
 # Odysseus backend
 Backend for multiple systems used in Odysseus LARP.
 
-## Local setup
-* Run `npm install` to install dependencies
-* Copy `.env.dist` file to a file named `.env` and changle the default environmental variables if needed
-* Run `npm run db:start` to start a local dev database inside Docker. First time start will take time as the Docker image used contains PostGIS which is around 700mb.
-* Run `npm run db:migrate` to run latest database migrations
-* Run `npm run db:seed` to seed the database (check [odysseus-geoserver](https://github.com/OdysseusLarp/odysseus-geoserver) repository readme for seeding starmap tables)
-* Run `npm start` to start the backend server
-* Backend should now be available at [http://localhost:8888](http://localhost:8888)
-
-### Backend in Docker
-You can also run the backend in Docker if you do not want to. Update your .env file:
-```
-DB_HOST=odysseus-database
-```
-
-And then run `docker-compose -f docker-compose-dev.yml up`. The initial startup will fail because the database is empty. Run `docker exec -it odysseus-backend sh -c "npm run db:migrate && npm run db:seed"` to apply database migrations and seeds. Then restart the backend container `docker restart odysseus-backend`.
-
 ## Tech
 * Node v18.14.0
 * PostgreSQL 12 + PostGIS
@@ -27,6 +10,46 @@ And then run `docker-compose -f docker-compose-dev.yml up`. The initial startup 
 * Express
 * Socket.IO
 * Knex + Bookshelf.js
+
+## Local setup
+* Run `npm install` to install dependencies
+* Copy `.env.dist` file to a file named `.env` and changle the default environmental variables if needed
+* Run `npm run db:start` to start a local dev database inside Docker. First time start will take time as the Docker image used contains PostGIS which is around 700mb.
+* Run `npm run db:migrate` to run latest database migrations
+* Run `npm run db:seed` to seed the database (check [odysseus-geoserver](https://github.com/OdysseusLarp/odysseus-geoserver) repository readme for seeding starmap tables)
+* Run `npm start` to start the backend server
+
+Backend should now be available at [http://localhost:8888](http://localhost:8888)
+
+### Backend in Docker
+You can also run the backend in Docker if you do not want to. Update your .env file as above and check:
+
+```
+DB_HOST=odysseus-database
+```
+
+And then run `docker-compose -f docker-compose-dev.yml up`. The initial startup will fail because the database is empty. Run `docker exec -it odysseus-backend sh -c "npm run db:migrate && npm run db:seed"` to apply database migrations and seeds. Then restart the backend container `docker restart odysseus-backend`.
+
+### Backend in VSCode dev containers
+You can also run the backend using [VSCode dev containers](https://code.visualstudio.com/docs/devcontainers/containers). Create/update your .env file like in the local setup instructions.
+
+#### Requirements
+
+- [Docker](https://www.docker.com/)
+- [VSCode](https://code.visualstudio.com/) with [Dev Containers](https://code.visualstudio.com/docs/devcontainers/tutorial#_install-the-extension) extension
+
+Install Dev Containers extension for vscode.
+
+* Open new window in VSCode
+* File --> Open Folder... --> `odysseus-backend`
+* VSCode will ask do you want to `Reopen in Container` --> Click it
+    * If you are too slow --> Click the button in left bottom corner (looks like two L:s or disjointed ><) and choose `Reopen in Container` from the menu.
+* VSCode will then start up both containers/services (`database` and `backend`), installs npm packages, updates the database (migrations/seeds) and starts the services.
+
+#### Problems?
+
+* Try to rebuild the container: Click the button in left bottom corner (looks like two L:s or disjointed >< with the container name) and choose `Rebuild Container` from the menu.
+* You might run into [this issue](https://github.com/microsoft/vscode-remote-release/issues/7305) on ARM processors, see the issue for potential workarounds.
 
 ## REST APIs
 REST API routes are documented in Swagger UI accessible via `/api-docs` route.
