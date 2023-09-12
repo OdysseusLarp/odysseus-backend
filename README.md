@@ -30,27 +30,26 @@ DB_HOST=odysseus-database
 
 And then run `docker-compose -f docker-compose-dev.yml up`. The initial startup will fail because the database is empty. Run `docker exec -it odysseus-backend sh -c "npm run db:migrate && npm run db:seed"` to apply database migrations and seeds. Then restart the backend container `docker restart odysseus-backend`.
 
-### Backend in .devcontainer (VSCode)
-You can also run the backend using VSCode devcontainers. Update/copy your .env file as above.
+### Backend in VSCode dev containers
+You can also run the backend using [VSCode dev containers](https://code.visualstudio.com/docs/devcontainers/containers). Create/update your .env file like in the local setup instructions.
 
 #### Requirements
 
 - [Docker](https://www.docker.com/)
 - [VSCode](https://code.visualstudio.com/) with [Dev Containers](https://code.visualstudio.com/docs/devcontainers/tutorial#_install-the-extension) extension
 
-
 Install Dev Containers extension for vscode.
 
 * Open new window in VSCode
 * File --> Open Folder... --> `odysseus-backend`
 * VSCode will ask do you want to `Reopen in Container` --> Click it
-    * If you are too slow --> Click a blue button left bottom corner (looks like two L:s or disjointed ><) and choose from the menu `Reopen in Container`.
+    * If you are too slow --> Click the button in left bottom corner (looks like two L:s or disjointed ><) and choose `Reopen in Container` from the menu.
 * VSCode will then start up both containers/services (`database` and `backend`), installs npm packages, updates the database (migrations/seeds) and starts the services.
 
 #### Problems?
 
-Try to rebuild the container:
-* Click a blue button left bottom corner (looks like two L:s or disjointed >< with the container name) and choose from the menu `Rebuild Container`.
+* Try to rebuild the container: Click the button in left bottom corner (looks like two L:s or disjointed >< with the container name) and choose `Rebuild Container` from the menu.
+* You might run into [this issue](https://github.com/microsoft/vscode-remote-release/issues/7305) on ARM processors, see the issue for potential workarounds.
 
 ## REST APIs
 REST API routes are documented in Swagger UI accessible via `/api-docs` route.
