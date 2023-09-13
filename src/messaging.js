@@ -40,7 +40,9 @@ router.post('/send', async (req, res) => {
 		type: 'private'
 	};
 	const mockSocket = {
-		emit: () => {},
+		emit: () => {
+			// Empty on purpose
+		},
 		userId: params.sender
 	};
 	await onSendMessage(mockSocket, messageDetails);
@@ -49,7 +51,9 @@ router.post('/send', async (req, res) => {
 
 export function adminSendMessage(userId, messageDetails) {
 	const mockSocket = {
-		emit: () => {},
+		emit: () => {
+			// Empty on purpose
+		},
 		userId
 	};
 	return onSendMessage(mockSocket, messageDetails);
@@ -226,12 +230,21 @@ function onUserDisconnect(socket) {
 async function getInitialUserList(personId) {
 	const [users, adminUsers] = await Promise.all([
 		Person.query(qb => {
+			// eslint-disable-next-line max-len
 			qb.whereRaw(`id IN (SELECT DISTINCT target_person FROM com_message WHERE person_id = ?) OR id IN (SELECT DISTINCT person_id FROM com_message WHERE target_person = ?)`,
 				[personId, personId]);
+			qb.groupBy('id');
 		}).fetchAll(),
 		getAdminUserList()
 	]);
-	adminUsers.forEach(u => users.add(u));
+
+	// Make sure that admin users are not added as duplicates
+	const userIds = new Set(users.map((user) => user.id));
+	adminUsers.forEach((user) => {
+		if (!userIds.has(user.id)) {
+			users.push(user);
+		}
+	});
 	users.forEach(person =>
 		person.set('is_online', connectedUsers.has(person.get('id'))));
 	return users;
