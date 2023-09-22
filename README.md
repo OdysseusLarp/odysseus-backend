@@ -1,6 +1,11 @@
 # Odysseus backend
 Backend for multiple systems used in Odysseus LARP.
 
+## Documentations
+
+* [Odysseus software system description](docs/system-description.md)
+* [Server setup](docs/server-setup.md) (deployments)
+
 ## Tech
 * Node v18.14.0
 * PostgreSQL 12 + PostGIS
