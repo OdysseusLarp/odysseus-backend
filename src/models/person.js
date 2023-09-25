@@ -161,7 +161,8 @@ export const Person = Bookshelf.Model.extend({
 				'ship_id',
 				'status',
 				'home_planet',
-				'is_visible'
+				'is_visible',
+				'card_id'
 			],
 			withRelated: [{
 				ship: qb => qb.column('id', 'name')
