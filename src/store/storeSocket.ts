@@ -1,9 +1,10 @@
 import { throttle } from 'lodash';
 import store from './store';
 import { logger } from '../logger';
+import { Server as SocketIoServer, Namespace as SocketIoNamespace } from 'socket.io';
 
 let previousData;
-function sendDataChanges(io) {
+function sendDataChanges(io: SocketIoServer | SocketIoNamespace) {
 	const currentData = store.getState().data;
 
 	for (const type of Object.keys(currentData)) {
@@ -31,7 +32,7 @@ function sendDataChanges(io) {
 const throttledSendDataChanges = throttle(sendDataChanges, 100, { leading: false, trailing: true });
 
 
-export function initStoreSocket(io) {
+export function initStoreSocket(io: SocketIoServer) {
 
 	// Use /data namespace and 'room' query parameter to subscribe
 	const nsp = io.of('/data');

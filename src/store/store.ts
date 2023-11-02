@@ -1,7 +1,7 @@
 import { configureStore } from 'redux-starter-kit';
 import dataReducer from './reducers/dataReducer';
 
-let resolver;
+let resolver: (value?: unknown) => void;
 /**
  * Boolean indicating whether the Redux store has been initialized with the initial values.
  */
@@ -23,7 +23,7 @@ export const store = configureStore({
  * @param {string[]} path 	array of strings defining the object path to watch, e.g. `['data','task','myid']`
  * @returns					object at the path, or `undefined`
  */
-export function getPath(path) {
+export function getPath(path: string[]) {
 	let o = store.getState();
 	while (path && path.length > 0) {
 		if (o[path[0]]) {
@@ -36,6 +36,8 @@ export function getPath(path) {
 	return o;
 }
 
+type CallbackFn = (currentObject: unknown, previousObject: unknown, currentState: unknown) => any;
+
 /**
  * Watch a specific path of the Redux store. The callback is called
  * asynchronously with parameters `(currentObject, previousObject, currentState)`.
@@ -46,7 +48,7 @@ export function getPath(path) {
  * @param {string[]} path 		array of strings defining the object path to watch, e.g. `['data','task','myid']`
  * @param {function} callback 	function to call asynchronously
  */
-export function watch(path, callback) {
+export function watch(path: string[], callback: CallbackFn) {
 	let previousObject = getPath(path);
 	store.subscribe(() => {
 		const currentObject = getPath(path);
@@ -63,7 +65,7 @@ export function watch(path, callback) {
 }
 
 
-export function initState(state) {
+export function initState(state: Record<string, unknown>) {
 	store.dispatch({
 		type: 'OVERWRITE_STATE',
 		state

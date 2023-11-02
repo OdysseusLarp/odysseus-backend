@@ -99,5 +99,6 @@ module.exports = {
 			},
 		],
 		'dot-location': [2, 'property'],
+		'@typescript-eslint/no-explicit-any': 'off',
 	},
 };

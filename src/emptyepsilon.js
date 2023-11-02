@@ -1,4 +1,3 @@
-require('dotenv').config({ silent: true });
 import { logger } from './logger';
 import axios from 'axios';
 import nock from 'nock';
