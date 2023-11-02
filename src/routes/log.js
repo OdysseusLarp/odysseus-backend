@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { LogEntry, AuditLogEntry } from '../models/log';
-import { handleAsyncErrors } from '../helpers';
+import { handleAsyncErrors } from './helpers';
 import { get } from 'lodash';
 import httpErrors from 'http-errors';
 const router = new Router();

@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import { Ship, Grid, Beacon } from '../models/ship';
 import { NotFound, Conflict, BadRequest } from 'http-errors';
-import { handleAsyncErrors } from '../helpers';
+import { handleAsyncErrors } from './helpers';
 import { getData, setData } from './data';
 const router = new Router();
 

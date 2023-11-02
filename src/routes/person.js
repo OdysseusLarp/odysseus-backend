@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import { Person, Entry, Group, getFilterableValues, setPersonsVisible } from '../models/person';
 import { addShipLogEntry, AuditLogEntry } from '../models/log';
-import { handleAsyncErrors } from '../helpers';
+import { handleAsyncErrors } from './helpers';
 import { get, pick, mapKeys, snakeCase } from 'lodash';
 import { NotFound, BadRequest } from 'http-errors';
 import { logger } from '../logger';

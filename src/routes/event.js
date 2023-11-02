@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import { Event } from '../models/event';
 import { addEvent, updateEvent } from '../eventhandler';
-import { handleAsyncErrors } from '../helpers';
+import { handleAsyncErrors } from './helpers';
 import Bookshelf from '../../db';
 const router = new Router();
 

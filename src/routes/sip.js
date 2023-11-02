@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { SipContact } from '../models/sip-contact';
-import { handleAsyncErrors } from '../helpers';
+import { handleAsyncErrors } from './helpers';
 import { NotFound } from 'http-errors';
 import Bookshelf from '../../db';
 const router = new Router();

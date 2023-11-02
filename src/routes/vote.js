@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import { Vote, VoteEntry, VoteOption } from '../models/vote';
 import { STATUS_PENDING } from '../models';
-import { handleAsyncErrors } from '../helpers';
+import { handleAsyncErrors } from './helpers';
 import { adminSendMessage } from '../messaging';
 import Bookshelf from '../../db';
 import { pick, get, isInteger } from 'lodash';

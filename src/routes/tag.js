@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { Tag } from '../models/tag';
-import { handleAsyncErrors } from '../helpers';
+import { handleAsyncErrors } from './helpers';
 import { NotFound } from 'http-errors';
 import { get } from 'lodash';
 import Bookshelf from '../../db';

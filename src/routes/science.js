@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { Artifact, ArtifactEntry } from '../models/artifact';
-import { handleAsyncErrors } from '../helpers';
+import { handleAsyncErrors } from './helpers';
 import { getData, setData } from '../routes/data';
 import { getEmptyEpsilonClient } from '../emptyepsilon';
 import { get, set, cloneDeep, pick } from 'lodash';

@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import { Post } from '../models/post';
 import { STATUS_PENDING, STATUS_APPROVED } from '../models';
-import { handleAsyncErrors } from '../helpers';
+import { handleAsyncErrors } from './helpers';
 import { adminSendMessage } from '../messaging';
 import { get, pick } from 'lodash';
 import { logger } from '../logger';
