@@ -1,6 +1,8 @@
 import { createReducer } from 'redux-starter-kit';
 
-const dataReducer = createReducer({}, {
+const initialState: Record<string, unknown> = {};
+
+const dataReducer = createReducer(initialState, {
 	SET_DATA: (state, action) => {
 		const id = action.dataId;
 		const type = action.dataType;
