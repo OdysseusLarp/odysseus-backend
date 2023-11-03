@@ -9,7 +9,7 @@ import { getEmptyEpsilonClient, setStateRouteHandler } from './emptyepsilon';
 import { loadEvents } from './eventhandler';
 import { loadMessaging, router as messaging } from './messaging';
 import { Store } from './models/store';
-import { handleAsyncErrors } from './helpers';
+import { handleAsyncErrors } from './routes/helpers';
 import { get, isEqual, omit, isEmpty } from 'lodash';
 import cors from 'cors';
 

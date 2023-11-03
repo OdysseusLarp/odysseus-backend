@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { Ship, setShipsVisible, moveShips } from '../models/ship';
-import { handleAsyncErrors } from '../helpers';
+import { handleAsyncErrors } from './helpers';
 import { validateJumpTarget } from '../eventhandler';
 import { get, set, clone, isPlainObject } from 'lodash';
 import { BadRequest, NotFound } from 'http-errors';

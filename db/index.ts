@@ -12,3 +12,5 @@ bookshelf.plugin('bookshelf-virtuals-plugin');
 bookshelf.Model.prototype.requireFetch = false;
 
 module.exports = bookshelf;
+
+export default bookshelf;

@@ -3,7 +3,7 @@ import { InfoEntry } from '../models/infoentry';
 import { InfoPriority } from '../models/infoentry';
 import { LogEntry } from '../models/log';
 import { Post } from '../models/post';
-import { handleAsyncErrors } from '../helpers';
+import { handleAsyncErrors } from './helpers';
 import Bookshelf from '../../db';
 import httpErrors from 'http-errors';
 

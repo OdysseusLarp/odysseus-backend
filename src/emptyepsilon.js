@@ -2,7 +2,7 @@ import { logger } from './logger';
 import axios from 'axios';
 import nock from 'nock';
 import { get, set, forIn, pick, isNumber } from 'lodash';
-import { handleAsyncErrors } from './helpers';
+import { handleAsyncErrors } from './routes/helpers';
 import { getData } from './routes/data';
 
 const { EMPTY_EPSILON_HOST, EMPTY_EPSILON_PORT } = process.env,

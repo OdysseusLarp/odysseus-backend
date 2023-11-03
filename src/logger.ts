@@ -1,6 +1,7 @@
+import { Request, Response, NextFunction } from 'express';
 import logger from 'signale';
 
-export const loggerMiddleware = (req, res, next) => {
+const loggerMiddleware = (req: Request, res: Response, next: NextFunction) => {
 	next();
 	res.on('finish', () => {
 		if (res.statusCode < 400) return;
@@ -8,5 +9,4 @@ export const loggerMiddleware = (req, res, next) => {
 	});
 };
 
-export { logger };
-
+export { logger, loggerMiddleware };
