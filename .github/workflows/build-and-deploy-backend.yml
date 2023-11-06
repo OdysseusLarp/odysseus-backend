@@ -40,4 +40,4 @@ jobs:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_KEY }}
-          script: cd ~/odysseus && ./docker-login.sh && docker-compose pull && docker-compose up -d
+          script: cd ~/odysseus && ./docker-login.sh && docker image prune -f && docker-compose pull && docker-compose up -d
