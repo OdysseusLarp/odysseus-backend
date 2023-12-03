@@ -148,7 +148,8 @@ export const Person = Bookshelf.Model.extend({
 				qb.where(key, value);
 			});
 			if (filters.is_character) {
-				qb.where('is_character', '=', true);
+				const isCharacter = filters.is_character === 'true';
+				qb.where('is_character', '=', isCharacter);
 			}
 		}).orderBy('first_name', 'last_name').fetchPage({
 			page,
