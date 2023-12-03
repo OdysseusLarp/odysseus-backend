@@ -174,7 +174,15 @@ export const Person = Bookshelf.Model.extend({
 		return this.fetch({
 			withRelated: [
 				...withRelated,
-				{ family: qb => qb.columns('id', 'first_name', 'last_name', 'ship_id', 'status', 'is_visible') },
+				{ family: qb => qb.columns(
+					'id',
+					'first_name',
+					'last_name',
+					'ship_id',
+					'status',
+					'is_visible',
+					'is_character')
+				},
 				{ 'entries.added_by': qb => qb.columns('id', 'first_name', 'last_name') }
 			]
 		});
