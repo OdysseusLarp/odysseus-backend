@@ -21,7 +21,7 @@ module.exports = {
 		'object-shorthand': 1,
 		'prefer-arrow-callback': 1,
 		'spaced-comment': 1,
-		'no-redeclare': 2,
+		'no-redeclare': [2, { ignoreDeclarationMerge: true }],
 		'no-throw-literal': 2,
 		'no-useless-concat': 2,
 		'no-void': 2,

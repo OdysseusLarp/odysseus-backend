@@ -1,10 +1,12 @@
 import { Router } from 'express';
-import { Person, Entry, Group, getFilterableValues, setPersonsVisible } from '../models/person';
-import { addShipLogEntry, AuditLogEntry } from '../models/log';
+import { Person, Entry, Group, getFilterableValues, setPersonsVisible } from '@/models/person';
+import { addShipLogEntry, AuditLogEntry } from '@/models/log';
 import { handleAsyncErrors } from './helpers';
 import { get, pick, mapKeys, snakeCase } from 'lodash';
 import { NotFound, BadRequest } from 'http-errors';
-import { logger } from '../logger';
+import { logger } from '@/logger';
+import { getHackingDetectionTime, getRandomHackingIntrustionDetectionMessage } from '@/utils/hacking';
+import { Duration, getRandomNumberBetween } from '@/utils/time';
 const router = new Router();
 
 const DEFAULT_PERSON_PAGE = 1;
@@ -81,20 +83,34 @@ router.get('/groups', handleAsyncErrors(async (req, res) => {
  */
 router.get('/:id', handleAsyncErrors(async (req, res) => {
 	const isLogin = req.query.login === 'true';
-	const person_id = req.params.id;
-	const person = await Person.forge({ id: person_id }).fetchWithRelated();
-	if (isLogin && person) {
-		const hacker_id = get(req.query, 'hacker_id', null);
-		if (!hacker_id) {
-			logger.warn(`Social Hub login to /person/${person_id} with no hacker_id in request`);
-		}
-		AuditLogEntry.forge().save({
-			person_id,
-			hacker_id,
-			type: 'HACKER_LOGIN'
-		});
-		addShipLogEntry('WARNING', 'Intrusion detection system has detected malicious activity');
+	const hackerId = req.query.hacker_id;
+	const personId = req.params.id;
+	const person = await Person.forge({ id: personId }).fetchWithRelated();
+
+	const isHackerLogin = isLogin && person && hackerId;
+	if (isHackerLogin) {
+		const hacker = await Person.forge({ id: hackerId }).fetchWithRelated();
+		// Get the hacking detection time based on the hacker's skill level
+		const [detectionTimeMs] = await Promise.all([
+			await getHackingDetectionTime(hacker),
+			AuditLogEntry.forge().save({
+				person_id: personId,
+				hacker_id: hackerId,
+				type: 'HACKER_LOGIN'
+			}),
+		]);
+
+		const intrusionDetectedMessage = getRandomHackingIntrustionDetectionMessage();
+
+		// TODO: If the hacker logs out, we should be able to match to this timeout, cancel it,
+		// and run the function immediately
+		setTimeout(() => {
+			addShipLogEntry('WARNING', intrusionDetectedMessage);
+		}, detectionTimeMs);
+
+		return res.json({ ...person, hacker: { detectionTimeMs, intrusionDetectedMessage } });
 	}
+
 	res.json(person);
 }));
 

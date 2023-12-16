@@ -1,6 +1,9 @@
 import { saveBlob } from '../helpers';
+import { Stores } from '../../../src/store/types';
+import { SkillLevels } from '../../../src/utils/groups';
+import { Duration } from '../../../src/utils/time';
 
-const blobs = [
+const blobs: unknown[] = [
 	// Used for the once-per-game Velian minigame thingy
 	{
 		type: 'misc',
@@ -54,6 +57,15 @@ sunt eaque dolor id nisi magni.`
 		id: 'medical',
 		show_20110_tumor: true,
 		show_20070_alien: false,
+	},
+	{
+		type: 'misc',
+		id: Stores.HackerDetectionTimes,
+		detection_times: {
+			[SkillLevels.Novice]: Duration.minutes(1),
+			[SkillLevels.Master]: Duration.minutes(2),
+			[SkillLevels.Expert]: Duration.minutes(5),
+		}
 	},
 ];
 
