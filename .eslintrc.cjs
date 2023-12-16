@@ -100,5 +100,9 @@ module.exports = {
 		],
 		'dot-location': [2, 'property'],
 		'@typescript-eslint/no-explicit-any': 'off',
+		'@typescript-eslint/no-unused-vars': [2, {
+			argsIgnorePattern: '^_',
+			varsIgnorePattern: '^_',
+		}],
 	},
 };
