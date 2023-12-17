@@ -1,6 +1,7 @@
 import 'dotenv/config';
 import { Server } from 'http';
-import express from 'express';
+import { HttpError } from 'http-errors';
+import express, { NextFunction, Request, Response } from 'express';
 import bodyParser from 'body-parser';
 import socketIo from 'socket.io';
 import { logger, loggerMiddleware } from './logger';
@@ -67,7 +68,7 @@ app.use((req, res, next) => {
 });
 
 // Setup routes
-app.get('/', (req, res) => res.redirect('/api-docs'));
+app.get('/', (req: Request, res: Response) => res.redirect('/api-docs'));
 app.use('/fleet', fleet);
 app.use('/starmap', starmap);
 app.use('/person', person);
@@ -116,9 +117,13 @@ app.post('/emit/:eventName', (req, res) => {
 });
 
 // Error handling middleware
-app.use(async (err, req, res, next) => {
+app.use(async (err: HttpError, req: Request, res: Response, _next: NextFunction) => {
+	let status = 500;
+	if ('statusCode' in err) {
+		status = err.statusCode;
+	}
 	logger.error(err.message);
-	return res.status(err.status || 500).json({ error: err.message });
+	return res.status(status).json({ error: err.message });
 });
 
 // Setup Socket.IO

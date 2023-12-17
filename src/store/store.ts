@@ -75,4 +75,3 @@ export function initState(state: Record<string, unknown>) {
 }
 
 export default store;
-
