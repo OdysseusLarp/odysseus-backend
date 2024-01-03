@@ -41,12 +41,15 @@ exports.seed = async knex => {
 		characterGroups
 	} = await parseData();
 
-	// Insert in chunks of 2000 persons as Knex seems to break otherwise
-	await Promise.all(
-		chunk(survivors, 2000)
-			.map(survivorsChunk => knex('person').insert(survivorsChunk)));
+	// Insert in chunks PostgreSQL has a max number of parameters per statement
+	for (const survivorsChunk of chunk(survivors, 500)) {
+		await knex('person').insert(survivorsChunk);
+	}
 
-	await knex('person').insert(characters);
+	for (const charactersChunk of chunk(characters, 100)) {
+		await knex('person').insert(charactersChunk);
+	}
+
 	await knex('group').insert(groups);
 	await knex('person_family').insert(characterRelations);
 	await knex('person_entry').insert(characterEntries);

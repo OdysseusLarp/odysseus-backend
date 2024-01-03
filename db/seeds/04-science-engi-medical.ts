@@ -1,22 +1,24 @@
-const csv = require('csvtojson');
-const path = require('path');
-const { isEmpty, get } = require('lodash');
+import csv from "csvtojson";
+import path from "path";
+import { isEmpty, get } from "lodash";
+import { Knex } from "knex";
 
 async function getArtifacts() {
 	const csvPath = path.join(__dirname, '../data/artifacts.csv');
 	const rawArtifacts = await csv().fromFile(csvPath);
 
-	const artifactEntries = [];
-	const artifacts = rawArtifacts.map((artifact, i) => {
+	const artifactEntries: unknown[] = [];
+	const artifactColumns = ['catalog_id', 'name', 'discovered_at', 'discovered_by', 'discovered_from', 'type', 'text', 'gm_notes', 'is_visible'];
+	const artifacts: unknown[] = rawArtifacts.map((artifact, i) => {
 		const id = i + 1;
 		artifact.id = id;
-		['catalog_id', 'name', 'discovered_at', 'discovered_by', 'discovered_from', 'type', 'text'].forEach(col => {
+		artifactColumns.forEach(col => {
 			if (!artifact[col]) delete artifact[col];
 		});
 		if ('entry' in artifact && !isEmpty(artifact.entry)) {
 			artifactEntries.push({
 				artifact_id: id,
-				entry: artifact.entry
+				entry: artifact.entry.trim(),
 			});
 		}
 		delete artifact.entry;
@@ -37,7 +39,7 @@ async function getTags() {
 	return tags;
 }
 
-exports.seed = async knex => {
+export const seed = async (knex: Knex) => {
 	const { artifacts, artifactEntries } = await getArtifacts();
 	await knex('artifact_entry').del();
 	await knex('artifact').del();

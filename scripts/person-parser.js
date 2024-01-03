@@ -2,6 +2,24 @@ const csv = require('csvtojson');
 const path = require('path');
 const { pick, pickBy, forIn, get, omit } = require('lodash');
 
+const trimmedStringOrNull = (value) => {
+	if (typeof value === 'string' && value.trim()) {
+		return value.trim();
+	}
+	return null;
+}
+
+const parsedIntOrNull = (value) => {
+	if (typeof value === 'string' && value.trim()) {
+		return parseInt(value.trim(), 10);
+	}
+	return null;
+};
+
+const parsedBoolean = (value) => {
+	return value === 'TRUE';
+}
+
 /* eslint-disable no-console */
 
 const dataPath = path.join(__dirname, '../db/data');
@@ -47,6 +65,15 @@ const characterFields = {
 	medical_current_medication: null,
 	created_year: null,
 	is_visible: null,
+	link_to_character: null,
+	summary: null,
+	gm_notes: null,
+	shift: null,
+	role: null,
+	role_additional: null,
+	special_group: null,
+	character_group: null,
+	medical_elder_gene: null,
 };
 
 const groups = new Set([
@@ -158,14 +185,23 @@ function parseCharacterData(c) {
 	return omit({
 		...characterFields,
 		...pickBy(c, (value, key) => !key.match(/^[0-9]*_/) && !!value && !groups.has(key)),
-		birth_year: parseInt(c.birth_year, 10) || null,
-		medical_last_fitness_check: parseInt(c.medical_last_fitness_check, 10) || null,
-		created_year: parseInt(c.created_year, 10) || null,
+		birth_year: parsedIntOrNull(c.birth_year),
+		medical_last_fitness_check: parsedIntOrNull(c.medical_last_fitness_check),
+		created_year: parsedIntOrNull(c.created_year),
 		ship_id,
-		is_character: c.is_character === 'TRUE',
-		is_visible: c.is_visible === 'TRUE',
+		is_character: parsedBoolean(c.is_character),
+		is_visible: parsedBoolean(c.is_visible),
 		military_remarks,
 		medical_active_conditions,
+		link_to_character: trimmedStringOrNull(c.link_to_character),
+		summary: trimmedStringOrNull(c.summary),
+		gm_notes: trimmedStringOrNull(c.gm_notes),
+		shift: trimmedStringOrNull(c.shift),
+		role: trimmedStringOrNull(c.role),
+		role_additional: trimmedStringOrNull(c.role_additional),
+		special_group: trimmedStringOrNull(c.special_group),
+		character_group: trimmedStringOrNull(c.character_group),
+		medical_elder_gene: parsedBoolean(c.medical_elder_gene),
 	},
 	// Omit the columns that will be saved in the person_entry table
 	['military_service_history', 'personal_file', 'medical_records']);
