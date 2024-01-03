@@ -1,0 +1,35 @@
+id,name,character_groups,character_ids,artifact_ids,size,importance,dmx_event_num,type,gm_actions,after_jump,locked,status,npc_required,npc_location,npc_count,description,gm_note_npc,gm_notes
+1,Jump 1,"Bridge Crew, Engineers",,,Medium,Mandatory,,Jump,Jump actions,0,TRUE,Not Done,FALSE,Fleet Comms & EE,2,Odysseus runs away from the Machines,Empty Epsilon NPC: Before jump - Minor attack,
+2,Jump 2,"Bridge Crew, Engineers",,,Medium,Mandatory,,Jump,Jump actions,1,TRUE,Not Done,FALSE,Fleet Comms & EE,2,Odysseus runs away from the Machines,Empty Epsilon NPC: Before jump - Minor attack,
+3,Jump 3,"Bridge Crew, Engineers",,,Medium,Mandatory,,Jump,Jump actions,2,TRUE,Not Done,FALSE,Fleet Comms & EE,2,Odysseus runs away from the Machines,Empty Epsilon NPC: Before jump - Normal stuff,
+4,Jump 4,"Bridge Crew, Engineers",,,Medium,Mandatory,,Jump,Jump actions,3,TRUE,Not Done,FALSE,Fleet Comms & EE,2,Odysseus runs away from the Machines,Empty Epsilon NPC: Before jump - Major attack,
+5,Jump 5,"Bridge Crew, Engineers",,,Medium,Mandatory,,Jump,Jump actions,4,TRUE,Not Done,FALSE,Fleet Comms & EE,2,Odysseus runs away from the Machines,Empty Epsilon NPC: Before jump - Normal stuff,
+6,Jump 6,"Bridge Crew, Engineers",,,Medium,Mandatory,,Jump,Jump actions,5,TRUE,Not Done,FALSE,Fleet Comms & EE,2,Odysseus runs away from the Machines,Empty Epsilon NPC: Before jump - Normal stuff,
+7,Jump 7,"Bridge Crew, Engineers",,,Medium,Mandatory,,Jump,Jump actions,6,TRUE,Not Done,FALSE,Fleet Comms & EE,2,Odysseus runs away from the Machines,Empty Epsilon NPC: Before jump - Normal stuff,
+8,Jump 8,"Bridge Crew, Engineers",,,Medium,Mandatory,,Jump,Jump actions,7,TRUE,Not Done,FALSE,Fleet Comms & EE,2,Odysseus runs away from the Machines,Empty Epsilon NPC: Before jump - Normal stuff,
+9,Jump 9,"Bridge Crew, Engineers",,,Medium,Mandatory,,Jump,Jump actions,8,TRUE,Not Done,FALSE,Fleet Comms & EE,2,Odysseus runs away from the Machines,Empty Epsilon NPC: Before jump - Normal stuff,
+10,Jump 10,"Bridge Crew, Engineers",,,Medium,Mandatory,,Jump,Jump actions,9,TRUE,Not Done,FALSE,Fleet Comms & EE,2,Odysseus runs away from the Machines,Empty Epsilon NPC: Before jump - Major attack,
+11,Jump 11,"Bridge Crew, Engineers",,,Medium,Mandatory,,Jump,Jump actions,10,TRUE,Not Done,FALSE,Fleet Comms & EE,2,Odysseus runs away from the Machines,Empty Epsilon NPC: Before jump - Normal stuff,
+12,Jump 12,"Bridge Crew, Engineers",,,Medium,Mandatory,,Jump,Jump actions,11,TRUE,Not Done,FALSE,Fleet Comms & EE,2,Odysseus runs away from the Machines,Empty Epsilon NPC: Before jump - Minor attack,
+13,Jump 13,"Bridge Crew, Engineers",,,Medium,Mandatory,,Jump,Jump actions,12,TRUE,Not Done,FALSE,Fleet Comms & EE,2,Odysseus runs away from the Machines,Empty Epsilon NPC: Before jump - Major attack,
+14,Jump 14,"Bridge Crew, Engineers",,,Medium,Mandatory,,Jump,Jump actions,13,TRUE,Not Done,FALSE,Fleet Comms & EE,2,Odysseus runs away from the Machines,Empty Epsilon NPC: Before jump - Minor attack,
+15,Jump 15,"Bridge Crew, Engineers",,,Medium,Mandatory,,Jump,Jump actions,14,TRUE,Not Done,FALSE,Fleet Comms & EE,2,Odysseus runs away from the Machines,Empty Epsilon NPC: Before jump - Normal stuff,
+16,Jump 16,"Bridge Crew, Engineers",,,Medium,Mandatory,,Jump,Jump actions,15,TRUE,Not Done,FALSE,Fleet Comms & EE,2,Odysseus runs away from the Machines,Empty Epsilon NPC: Before jump - Normal stuff,
+17,Jump 17,"Bridge Crew, Engineers",,,Medium,Mandatory,,Jump,Jump actions,16,TRUE,Not Done,FALSE,Fleet Comms & EE,2,Odysseus runs away from the Machines,Empty Epsilon NPC: Before jump - Normal stuff,
+18,Jump 18,"Bridge Crew, Engineers",,,Medium,Mandatory,,Jump,Jump actions,17,TRUE,Not Done,FALSE,Fleet Comms & EE,2,Odysseus runs away from the Machines,Empty Epsilon NPC: Before jump - Major attack,
+19,LM 1 - Research pick up,"Marines, Scientists","20014, 20015",,Large,Mandatory,,Land Mission,Briefing NPCs,1,TRUE,Not Done,TRUE,Mission,,Odysseus picks up 2 researchers from Solaris hopefully before they are out of air,,Possibility to send a message from Research station and then open text comms and later on voice comms to Odysseus
+20,LM 2 - Velian pick up,"Marines, Scientists, Velians","20128, 20130, 20028, 20025, 20022, 20113, 20131, 20024, 20026, 20132, 20133, 20129, 20134, 20386, 20023 ",BEACON-1,Large,Mandatory,,Land Mission,Briefing NPCs,3,TRUE,Not Done,TRUE,Mission,2,"Velians sends a distress signal.
+Odysseus picks up Velian survivors from Velian.",2 Velian NPCs die during the Velian resque event,Velians will send a distress signal and this also activates the beacon on the map and then opens text comms and later on voice comms to Odysseus
+21,LM 3 - Rebels,"Marines, Scientists",,BEACON-2,Large,Mandatory,,Land Mission,Briefing NPCs,6,TRUE,Not Done,TRUE,Mission,,,,
+22,LM 4 - Alien worm,"Marines, Scientists",,BEACON-3,Large,Mandatory,,Land Mission,Briefing NPCs,8,TRUE,Not Done,TRUE,Mission,,,,
+23,LM 5 - Natives,"Marines, Scientists",,BEACON-4,Large,Mandatory,,Land Mission,Briefing NPCs,10,TRUE,Not Done,TRUE,Mission,,,,
+24,LM 6 - Machines,"Marines, Scientists",,BEACON-5,Large,Mandatory,,Land Mission,Briefing NPCs,12,TRUE,Not Done,TRUE,Mission,,,,
+25,LM 7 - Radiation,"Marines, Scientists",,BEACON-6,Large,Mandatory,,Land Mission,Briefing NPCs,14,TRUE,Not Done,TRUE,Mission,,,,
+26,LM 8 - Earth outpost,"Marines, Scientists",,,Large,Mandatory,,Land Mission,Briefing NPCs,15,TRUE,Not Done,TRUE,Mission,,,,
+27,LM 9 - Shadow beasts,"Marines, Scientists",,,Large,Mandatory,,Land Mission,Briefing NPCs,17,TRUE,Not Done,TRUE,Mission,,,,
+28,ESS Harbinger - Mutiny,"Bridge Crew, Criminals, Engineers, Politics, Security","20077, 20000, 20044",,Large,Should have,,Political,NPC,,FALSE,Not Done,TRUE,Odysseus,6,ESS Harbinger is the first ship where the marshal law is overrun by a mutiny. All the commanders and some of the military personel are cast out from the ESS Harbinger to a small vessel which is uncapable to jump. Now the fleet needs to decide who would take them in before the next jump or will they be left behind. Here is a chance that Odysseus will take them in since there will be on board some of the people known in the Odysseus like the captain of the ESS Harbinger Mark Bolton is the father of Amir Bolton Chief Engineer. ,,Criminals should get a shipment with the resqued.
+29,Tristan Fukui - Suicide,,20062,,Large,Mandatory,,Plot related,Briefing Character,11,TRUE,Not Done,FALSE,,0,Tristan Fukui jumps out from the airlock,,Tristan Fukui makes a suicide but comes back
+30,Tristan Fukui - Comes back as Cherry,"Bridge Crew, Criminals, Engineers, Politics, Security",20062,,Large,Mandatory,,Plot related,Briefing Character,,TRUE,Not Done,FALSE,,0,"Tristan Fukui comes back with a enemy fighter and makes Cherry's Barrel Roll so they would be recognized as ""friend"".",,"Brief Character before comeback as follows: 
+Add instructions here"
+31,Gas leak/explosion,"Engineers, Medics",20026,,Medium,Should have,162,Hazard,DMX event,18,TRUE,Not Done,FALSE,,0,Random Gas leak / explosion because Odysseus is starting to break (engineers didn't fix the ship well enouhg),,"Needs DMX event fired.
+Character death: Naethan injured -> later die"
