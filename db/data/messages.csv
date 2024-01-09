@@ -1,6 +1,6 @@
-id,name,sender_character_id,reciever_character_ids,plot_ids,event_ids,type,after_jump,locked,repeatable,sent,message,gm_notes
-1,"""Good you are alive"" - Message from Mark Bolton to Amir",20000,20077,2,,Text NPC,4,FALSE,FALSE,Not yet,I see from the records that you are alive. Good. Stay safe.,"If Amir sends the first message, ignore this message and anwser how Mark Bolton would. See plot for more information."
-2,"""I'm sorry"" - Message from Mark Bolton to Amir",20000,20077,2,28,Text NPC,,FALSE,FALSE,Not yet,"My Dearest Amir,
+id,name,sender_character_id,reciever_character_ids,plot_ids,event_ids,type,after_jump,locked,sent,message,gm_notes
+1,"""Good you are alive"" - Message from Mark Bolton to Amir",20000,20077,2,,Text NPC,4,FALSE,Not yet,I see from the records that you are alive. Good. Stay safe.,"If Amir sends the first message, ignore this message and anwser how Mark Bolton would. See plot for more information."
+2,"""I'm sorry"" - Message from Mark Bolton to Amir",20000,20077,2,28,Text NPC,,FALSE,Not yet,"My Dearest Amir,
 As I pen down these words, I am burdened with the weight of regret and the realization that time slips through our fingers like sand. There are moments in life when we confront our failings, and this is one such moment for me.
 I must start by saying how sorry I am—sorry for not being there when you needed me, sorry for the silence that echoed in response to your messages during Delta's passing. The loss of your sister, a beacon of light in our lives, was a tragedy that reverberated through the very core of our family.
 Seeing you across the star system, grieving and isolated, stirred a pain I cannot easily express. Your choice to face that harsh reality alone while I remained distant is a regret I carry heavily. The burden of my responsibilities, the expectations that I unknowingly placed upon you, became a barrier when you needed a father's support the most.
@@ -12,7 +12,7 @@ I hope you can find it within yourself to forgive a flawed father, and I pray th
 With heartfelt apologies and enduring love,
 Mark Bolton
 PS. Jill Montoya is your sibling. Take good care of them.",Should be sent after the ESS Harbinger Mutiny starts
-3,"""I'm your father"" - Message from Mark Bolton to Jill Montoya",2000,20044,2,28,Text NPC,,FALSE,FALSE,Not yet,"Dear Jill,
+3,"""I'm your father"" - Message from Mark Bolton to Jill Montoya",2000,20044,2,28,Text NPC,,FALSE,Not yet,"Dear Jill,
 I hope this letter finds you well amidst the vastness of space and the challenges you face on the ESS Odysseus. There comes a time when secrets must be unveiled, and truths shared. It is with a mix of emotions—regret, longing, and immense pride—that I pen down these words.
 In the shadows of the past, where the threads of our lives were woven, you emerged as the beautiful consequence of a brief affair between Qwen Montoya and me. Jill, you are my daughter, and though circumstances forced me to keep this revelation concealed, the time has come for you to know the truth.
 I understand the complexity of emotions that may surge within you upon learning this, and I apologize for the pain my silence may have caused. Life has a way of steering us down unexpected paths, and in my misguided attempt to protect you and my own standing, I made choices that shaped our journey.
@@ -22,9 +22,9 @@ And also, with a bittersweet joy, I share that Amir Bolton is not just a colleag
 With sincere love and unwavering belief in your potential,
 Mark Bolton
 Star Captain",Should be sent right after the ESS Harbinger Mutiny starts
-4,Long range anomaly detected - ETA 15 min,,,,,Ship Log - Warning,,FALSE,TRUE,Used frequently,Long range anomaly detected. Possible incoming jump into current sector. ETA 15 min.,Should be posted before every jump
-5,Long range anomaly detected - ETA 10 min,,,,,Ship Log - Warning,,FALSE,TRUE,Used frequently,Long range anomaly detected. Possible incoming jump into current sector. ETA 15 min.,Should be posted before every jump
-6,Long range anomaly detected - ETA 5 min,,,,,Ship Log - Warning,,FALSE,TRUE,Used frequently,Long range anomaly detected. Possible incoming jump into current sector. ETA 15 min.,Should be posted before every jump
-7,Long range anomaly detected,,,,,Ship Log - Warning,,FALSE,TRUE,Used frequently,Long range anomaly detected. Possible incoming jump into current sector.,Should be posted before every jump
-8,Solaris distress message,,,,19,Ship Log - Warning,0,TRUE,FALSE,Not yet,,
-9,Velian distress message,,,,20,Ship Log - Warning,1,TRUE,FALSE,Not yet,Received a distress signal from area Alpha-5-D2-100: [Velians will write their own message],This also activates the beacon on the map
+4,Long range anomaly detected - ETA 15 min,,,,,Ship Log - Warning,,FALSE,Repeatable,Long range anomaly detected. Possible incoming jump into current sector. ETA 15 min.,Should be posted before every jump
+5,Long range anomaly detected - ETA 10 min,,,,,Ship Log - Warning,,FALSE,Repeatable,Long range anomaly detected. Possible incoming jump into current sector. ETA 15 min.,Should be posted before every jump
+6,Long range anomaly detected - ETA 5 min,,,,,Ship Log - Warning,,FALSE,Repeatable,Long range anomaly detected. Possible incoming jump into current sector. ETA 15 min.,Should be posted before every jump
+7,Long range anomaly detected,,,,,Ship Log - Warning,,FALSE,Repeatable,Long range anomaly detected. Possible incoming jump into current sector.,Should be posted before every jump
+8,Solaris distress message,,,,19,Ship Log - Warning,0,TRUE,Not yet,,
+9,Velian distress message,,,,20,Ship Log - Warning,1,TRUE,Not yet,Received a distress signal from area Alpha-5-D2-100: [Velians will write their own message],This also activates the beacon on the map
