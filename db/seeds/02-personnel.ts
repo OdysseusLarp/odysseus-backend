@@ -1,7 +1,7 @@
-const { chunk, pick } = require('lodash');
-const { parseData } = require('../../scripts/person-parser');
-const csv = require('csvtojson');
-const path = require('path');
+import { chunk, pick } from 'lodash';
+import { parseData } from '../../src/utils/person-parser';
+import csv from 'csvtojson';
+import path from 'path';
 
 async function getBloodTestResults() {
 	const csvPath = path.join(__dirname, '../data/blood-test-results.csv');

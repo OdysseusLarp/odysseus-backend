@@ -10,12 +10,6 @@ export async function up(knex: Knex): Promise<void> {
 			.references('id')
 			.inTable('person')
 			.onDelete('CASCADE');
-		table
-			.string('receiver_person_id')
-			.nullable()
-			.references('id')
-			.inTable('person')
-			.onDelete('CASCADE');
 		// Types:
 		// Datahub message types: Text NPC, EVA, Hints for scientist, Fleet Coms, Fleet Secretary, Fleet Admiral
 		// Ship log messages

@@ -1,28 +1,11 @@
-const csv = require('csvtojson');
-const path = require('path');
-const { pick, pickBy, forIn, get, omit } = require('lodash');
-
-const trimmedStringOrNull = (value) => {
-	if (typeof value === 'string' && value.trim()) {
-		return value.trim();
-	}
-	return null;
-}
-
-const parsedIntOrNull = (value) => {
-	if (typeof value === 'string' && value.trim()) {
-		return parseInt(value.trim(), 10);
-	}
-	return null;
-};
-
-const parsedBoolean = (value) => {
-	return value === 'TRUE';
-}
+import csv from 'csvtojson';
+import path from 'path';
+import { pick, pickBy, forIn, get, omit } from 'lodash';
+import { parsedBoolean, parsedIntOrNull, trimmedStringOrNull } from './parsing';
 
 /* eslint-disable no-console */
 
-const dataPath = path.join(__dirname, '../db/data');
+const dataPath = path.join(__dirname, '../../db/data');
 
 // Hold all character relations here with character ID as key
 const allCharacterRelationsMap = new Map();
@@ -213,7 +196,7 @@ async function parseCharacters() {
 	return characters;
 }
 
-async function parseData() {
+export async function parseData() {
 	await parseShipIds();
 	const survivors = await parseSurvivors();
 	const characters = await parseCharacters();

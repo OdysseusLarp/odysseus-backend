@@ -5,8 +5,6 @@ export async function up(knex: Knex): Promise<void> {
 		table.increments('id').primary();
 		table.text('name').notNullable();
 		table.text('character_groups').nullable();
-		// table.text('character_ids').nullable(); // Assuming this is a comma-separated list of IDs
-		// table.text('artifact_ids').nullable(); // Assuming this is a comma-separated list of IDs
 		table.string('size').nullable();
 		table.string('importance').nullable();
 		table.integer('dmx_event_num').nullable();
@@ -59,12 +57,9 @@ export async function up(knex: Knex): Promise<void> {
 	});
 
 	await knex.schema.createTable('story_plots', (table) => {
-		table.integer('id').primary(); // Assuming 'id' is the primary key
+		table.increments('id').primary();
 		table.text('name').notNullable();
-		table.text('character_groups').nullable(); // comma separated list of character group ids
-		// table.text('character_ids').nullable(); // use a joining table
-		// table.text('event_ids').nullable(); // use a joining table
-		// table.text('artifact_ids').nullable(); // use a joining table
+		table.text('character_groups').nullable(); // comma separated list of character groups
 		table.string('size').nullable();
 		table.text('themes').nullable();
 		table.string('importance').nullable();
