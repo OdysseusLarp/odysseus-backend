@@ -11,13 +11,15 @@ const router = new Router();
  * Get a list of all science artifacts
  * @route GET /science/artifact
  * @group Artifact - Science artifact related operations
+ * @param {boolean} is_visible.query - Filter by visibility. If undefined, returns all artifacts.
  * @returns {Array.<Artifact>} 200 - List of all science artifacts
  */
 router.get('/artifact', handleAsyncErrors(async (req, res) => {
 	// TODO: add pagination
 	// TODO: allow request parameters to define if results should only
 	// contain artifacts that have at least 1 research completed
-	res.json(await Artifact.forge().fetchAllWithRelated());
+	const showVisibleOnly = req.query.is_visible ? req.query.is_visible === 'true' : undefined;
+	res.json(await Artifact.forge().fetchAllWithRelated(showVisibleOnly));
 }));
 
 /**

@@ -38,6 +38,8 @@ const artifactWithRelated = [
  * @property {string} discovered_from - Discovered from
  * @property {string} type - Artifact type
  * @property {string} text - Text description of the artifact
+ * @property {string} gm_notes - GM notes
+ * @property {boolean} is_visible - Is the artifact visible to players
  * @property {string} created_at - ISO 8601 String Date-time when object was created
  * @property {string} updated_at - ISO 8601 String Date-time when object was last updated
  */
@@ -47,7 +49,10 @@ export const Artifact = Bookshelf.Model.extend({
 	entries: function () {
 		return this.hasMany(ArtifactEntry);
 	},
-	fetchAllWithRelated: function () {
+	fetchAllWithRelated: function (isVisible) {
+		if (typeof isVisible === 'boolean') {
+			return this.where({ is_visible: isVisible }).fetchAll({ withRelated: artifactWithRelated });
+		}
 		return this.orderBy('-created_at').fetchAll({ withRelated: artifactWithRelated });
 	},
 	fetchWithRelated: function () {
