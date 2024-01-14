@@ -1,68 +1,74 @@
-catalog_id,name,discovered_at,discovered_by,discovered_from,type,text,entry
-EL-QV57-1,Power source,295.541,Remy Hall,P-TE96-QV57,Elder,"Large sylinder-like object made from unknown metal with five half-spheres.
+catalog_id,name,discovered_at,discovered_by,discovered_from,type,text,entry,gm_notes,is_visible
+EL-QV57-1,Power source,541.295,Remy Hall,P-TE96-QV57,Elder,"Large sylinder-like object made from unknown metal with five half-spheres.
 
 ![](http://192.168.1.2/images/el-qv57-1.jpg)","542 Artifact EL-QV57-1 has suddenly started showing organic activity and seems to be rapidly growing. There are multiple theories that specific type of genetic mutation would be required to activate and operate Elder originated artifacts and the team has been working on confirming the theory and isolating the gene type.
 
-541 Team was able to strain the organic growth of the artifact EL-QV57-1 and have determined that the artifact is some form of organic powersource that grows around the generator and is able to produce immense amounts of energy for very long periods of time.      "
-EL-QV57-2,Unknown,303.541,Remy Hall,P-TE96-QV58,Elder,"Short, tube-like metal object with a loose connector at one end.
+541 Team was able to strain the organic growth of the artifact EL-QV57-1 and have determined that the artifact is some form of organic powersource that grows around the generator and is able to produce immense amounts of energy for very long periods of time.      ",,TRUE
+EL-QV57-2,Unknown,541.303,Remy Hall,P-TE96-QV57,Elder,"Short, tube-like metal object with a loose connector at one end. 
 
-![](http://192.168.1.2/images/el-qv57-2.jpg)",
-EL-QV57-3,Unknown,329.541,Remy Hall,P-TE96-QV59,Elder,"A metallic half-dome with four loose connectors.
+![](http://192.168.1.2/images/el-qv57-2.jpg)",,,TRUE
+EL-QV57-3,Unknown,541.329,Remy Hall,P-TE96-QV57,Elder,"A metallic half-dome with four loose connectors. 
 
-![](http://192.168.1.2/images/el-qv57-3.jpg)",
-EL-QV57-4,Recharger,346.541,Remy Hall,P-TE96-QV60,Elder,"Circular two-layered metal object with a loose connector. A push button on the outer edge of the disc.
+![](http://192.168.1.2/images/el-qv57-3.jpg)",,,TRUE
+EL-QV57-4,Recharger,541.346,Remy Hall,P-TE96-QV57,Elder,"Circular two-layered metal object with a loose connector. A push button on the outer edge of the disc. 
 
-![](http://192.168.1.2/images/el-qv57-4.jpg)",
-EL-QV57-5,Unknown,008.542,Remy Hall,P-TE96-QV61,Elder,"A short hammer-like object with symmertical protrusions. A loose connector on one side and a push button on the other.
+![](http://192.168.1.2/images/el-qv57-4.jpg)",,,TRUE
+EL-QV57-5,Unknown,542.008,Remy Hall,P-TE96-QV57,Elder,"A short hammer-like object with symmertical protrusions. A loose connector on one side and a push button on the other.
 
-![](http://192.168.1.2/images/el-qv57-5.jpg)",
-EL-QV57-6,Healing device,008.542,Remy Hall,P-TE96-QV62,Elder,"Strange device made of unknown metal, three-phronged protrusion with a push-button at one end. A loose connector at the other end. Terran Wells identified it to be a healing device.
+![](http://192.168.1.2/images/el-qv57-5.jpg)",,,TRUE
+EL-QV57-6,Healing device,542.008,Remy Hall,P-TE96-QV57,Elder,"Strange device made of unknown metal, three-phronged protrusion with a push-button at one end. A loose connector at the other end. Terran Wells identified it to be a healing device.
 
-![](http://192.168.1.2/images/el-qv57-6.jpg)",
-EL-QV57-7,Unknown,101.542,Remy Hall,P-TE96-QV63,Elder,"Strange material, pilar like shape with a stand. 2 cords coming out of the wider end of the object. There are three rectangle shapes on one side of the wider part.
+![](http://192.168.1.2/images/el-qv57-6.jpg)",,,TRUE
+EL-QV57-7,Unknown,542.101,Remy Hall,P-TE96-QV57,Elder,"Strange material, pilar like shape with a stand. 2 cords coming out of the wider end of the object. There are three rectangle shapes on one side of the wider part. 
 
-![](http://192.168.1.2/images/el-qv57-7.jpg)",
-S-PEF3536,Comet Class Fighter,136.496,Pat Montoya,Alpha-6-D3-118,EOC,"**Small Size EOC ship**
+![](http://192.168.1.2/images/el-qv57-7.jpg)",,,TRUE
+S-PEF3536,Comet Class Fighter,496.136,Pat Montoya,Alpha-6-D3-118,EOC,"**Small Size EOC ship**
 
-The Comet Class Fighter was designed to be a fast and versatile for out of orbit combat as well as transporting small groups of personnel to planet surface. For now the Comet has performed admirably. With capable pilots there are even proven cases of it being able to take down larger ships single handedly.
+The Comet class Fighter was designed to be a fast and versatile for out of orbit combat as well as transporting small groups of personnel to planet surface. For now the Comet has performed admirably. With capable pilots there are even proven cases of it being able to take down larger ships single handedly.
 
-![](http://192.168.1.2/images/fighter.png)",
-S-OEW8294,Helios Class Corvette,298.444,Tilly Fjord,Alpha-6-D3-118,EOC,"**Medium size EOC ship**
+![](http://192.168.1.2/images/fighter.png)",,,TRUE
+S-OEW8294,Helios Class Corvette,444.298,Tilly Fjord,Alpha-6-D3-118,EOC,"**Medium size EOC ship**
 
-The Helios Class Corvette was designed long ago as an reliable cargo ship to haul large shipments across the star system. Known as an old classic, the Helios Class has managed to retain its usefulness throughout the years. Due to its bulky and firm structure, in resent years many of the remaining Helios ships have been converted into military use.
+The Helios class corvette was designed long ago as an reliable cargo ship to haul large shipments across the star system. Known as an old classic, the Helios class has managed to retain its usefulness throughout the years. Due to its bulky and firm structure, in resent years many of the remaining Helios ships have been converted into military use.
 
-![](http://192.168.1.2/images/corvette.png)",
-S-BMO4298,Eclipse Class Frigate,009.501,Nana Ishimoto,Alpha-6-D3-118,EOC,"**Medium size EOC ship**
+![](http://192.168.1.2/images/corvette.png)",,,TRUE
+S-BMO4298,Eclipse Class Frigate,501.009,Nana Ishimoto,Alpha-6-D3-118,EOC,"**Medium size EOC ship**
 
-The Eclipse Class Frigate is the current peak in our military technology. The ship was designed as a fast reaction vessel that could easily jump to any conflict area and provide support to any friendly ships until a larger fleet could arrive to the area. For now the Eclipse Class has performed beyond expectations, but only time will tell if it has what it take to be a true classic.
+The Eclipse class frigate is the current peak in our military technology. The ship was designed as a fast reaction vessel that could easily jump to any conflict area and provide support to any friendly ships until a larger fleet could arrive to the area. For now the Eclipse class has performed beyond expectations, but only time will tell if it has what it take to be a true classic.
 
-![](http://192.168.1.2/images/frigate.png)",
-S-KE86261,Luna Class Cargo Carrier,010.501,Nana Ishimoto,Alpha-6-D3-118,EOC,"**Medium size EOC ship**
+![](http://192.168.1.2/images/frigate.png)",,,TRUE
+S-KE86261,Luna Class Cargo Carrier,503.010,Nana Ishimoto,Alpha-6-D3-118,EOC,"**Medium size EOC ship**
 
-The Luna Class Cargo Carrier represents the epitome of interstellar logistics. Crafted with a focus on efficiency and durability, this colossal vessel was originally designed to navigate the vast cosmic distances, transporting massive cargo shipments across Ellarion star system with unmatched reliability.",
-S-QP97680,Stellar Class Battlecruiser,136.267,Pat Montoya,Alpha-6-D3-118,EOC,"**Large size EOC ship**
+The Luna Class Cargo Carrier represents the epitome of interstellar logistics. Crafted with a focus on efficiency and durability, this colossal vessel was originally designed to navigate the vast cosmic distances, transporting massive cargo shipments across Ellarion star system with unmatched reliability.",,,TRUE
+S-QP97680,Stellar Class Battlecruiser,490.267,Pat Montoya,Alpha-6-D3-118,EOC,"**Large size EOC ship**
 
-The Stellar Class Battlecruiser stands as the pinnacle of military might in our Ellarion system, a behemoth designed for dominating the cosmos. Engineered with cutting-edge technology of the time, this formidable warship combines firepower and strategic prowess, capable of engaging enemies on multiple fronts. Its imposing presence instills fear in adversaries, and its advanced systems make it a force to be reckoned with in any interstellar conflict. As the vanguard of our space fleet, the Stellar Class Battlecruiser boasts versatility, with the ability to spearhead assaults, defend crucial positions, and command fleets with authoritative precision.",
-S-AR89302,Aurora Class Explorer,230.004,Tilly Fjord,Alpha-6-D3-118,EOC,"**Small size EOC ship**
+The Stellar Class Battlecruiser stands as the pinnacle of military might in our Ellarion system, a behemoth designed for dominating the cosmos. Engineered with cutting-edge technology of the time, this formidable warship combines firepower and strategic prowess, capable of engaging enemies on multiple fronts. Its imposing presence instills fear in adversaries, and its advanced systems make it a force to be reckoned with in any interstellar conflict. As the vanguard of our space fleet, the Stellar Class Battlecruiser boasts versatility, with the ability to spearhead assaults, defend crucial positions, and command fleets with authoritative precision.",,,TRUE
+S-AR89302,Aurora Class Explorer,438.004,Tilly Fjord,Alpha-6-D3-118,EOC,"**Small size EOC ship**
 
-The Aurora Class Explorer takes center stage as the epitome of scout ship ingenuity in our Ellarion system. Engineered for swift reconnaissance, this nimble spacecraft is the vanguard of discovery. With a sleek and aerodynamic design, the Aurora Class is built for speed, seamlessly navigating the cosmic terrain. Armed with advanced sensor arrays, it gathers crucial data for strategic decision-making.",
-ES-QKL0834,Predator Class Fighter,329.439,Bob Walker,Alpha-6-D4-119,Machine,"**Small size Machine ship**.
+The Aurora Class Explorer takes center stage as the epitome of scout ship ingenuity in our Ellarion system. Engineered for swift reconnaissance, this nimble spacecraft is the vanguard of discovery. With a sleek and aerodynamic design, the Aurora Class is built for speed, seamlessly navigating the cosmic terrain. Armed with advanced sensor arrays, it gathers crucial data for strategic decision-making.",,,TRUE
+ES-QKL0834,Predator Fighter,439.329,Bob Walker,Alpha-6-D4-119,Machine,"**Small size Machine ship**
 
-The Predator Class Fighter is a small fighter type ship mainly used for intercepting our fighters and transporting enemy troops for landing and boarding. Predator Class is the fastest of the enemy ships and usually the first one to arrive at shooting range. They are fortunately also quite weak and should go down with only a few torpedoes.
+The Predator class is a small fighter type ship mainly used for intercepting our fighters and transporting enemy troops for landing and boarding. Predator Class is the fastest of the enemy ships and usually the first one to arrive at shooting range. They are fortunately also quite weak and should go down with only a few torpedoes.
 
-![](http://192.168.1.2/images/enemy-fighter.png)",
-ES-OVJ3928,Stinger Class Frigate,297.440,Xian Xou,Alpha-10-F3-166,Machine,"**Medium size Machine ship**
+![](http://192.168.1.2/images/enemy-fighter.png)",,,TRUE
+ES-OVJ3928,Stinger Frigate,440.297,Xian Xou,Alpha-10-F3-166,Machine,"**Medium size Machine ship**
 
-The Stinger Class Frigate is a medium size frigate type ship mainly used to attack our starships. Each Stinger Class ships carries multiple Predator Class fighters in their hangar bays and they usually deploy them as soon as they detect our ships in the area. The Stinger Class matches well in strength with our frigates and will take some beating before going down.
+The Stinger class is a medium size frigate type ship mainly used to attack our starships. Each Stinger class ships carries multiple Predator class fighters in their hangar bays and they usually deploy them as soon as they detect our ships in the area. The Stinger class matches well in strength with our frigates and will take some beating before going down.
 
-![](http://192.168.1.2/images/enemy-frigate.png)",
-ES-MCF3029,Reaper Class Cruiser,134.442,Vic Ramirez,Alpha-6-D3-117,Machine,"**Large size Machine ship**
+![](http://192.168.1.2/images/enemy-frigate.png)",,,TRUE
+ES-MCF3029,Reaper Cruiser,442.134,Vic Ramirez,Alpha-6-D3-117,Machine,"**Large size Machine ship**
 
-The Reaper Class Cruiser is a large size cruiser type ship and the most dangerous weapon within the enemy fleet. They are armed with powerful weapons that can tear trough our fleet like paper and their shields and hull are very resistant to damage. When encountering a Reaper Class cruiser the best course of action is to not engage and instead to jump to a safer sector.
+The Reaper class is a large size cruiser type ship and the most dangerous weapon within the enemy fleet. They are armed with powerful weapons that can tear trough our fleet like paper and their shields and hull are very resistant to damage. When encountering a Reaper class cruiser the best course of action is to not engage and instead to jump to a safer sector.
 
-![](http://192.168.1.2/images/enemy-cruiser.png)",
-MACH-24,Machine Drone,134.442,Reloz Duran,P-OC65-OY50,Machine,"**Machine Drone**
+![](http://192.168.1.2/images/enemy-cruiser.png)",,,TRUE
+MACH-24,Machine Drone,442.134,Reloz Duran,P-OC65-OY50,Machine,"**Machine Drone**
 
-Machine Drones are human sized metallic constructs which are controlled by machine commander. The distinct feature is a red light in the forehead. They are extremely durable and resilient to gunfire and blunt force.
+Machine Drones are human sized metallic constructs which are controlled by machine commander. The distinct feature is a red light in the forehead. They are extremely durable and resilient to gunfire and blunt force.  
 
-![](http://192.168.1.2/images/machine-drone.jpg)",
+![](http://192.168.1.2/images/machine-drone.jpg)",,,TRUE
+BEACON-1,Beacon 1,542.,Velians,Alpha-5-D2-100-P-DE47-HC55 ,Earth,A box with a lock and covered with special symbols.,,,FALSE
+BEACON-2,Beacon 2,542.,ESS Odysseus Alpha Team,Alpha-5-C1-82-P-TE49-HE75,Earth,A box with a lock and covered with special symbols.,,,FALSE
+BEACON-3,Beacon 3,542.,ESS Odysseus Beta Team,Alpha-1-B1-49-P-CA95-LN71,Earth,A box with a lock and covered with special symbols.,,,FALSE
+BEACON-4,Beacon 4,542.,ESS Odysseus Alpha Team,Beta-4-B8-63-P-OC46-DA97,Earth,A box with a lock and covered with special symbols.,,,FALSE
+BEACON-5,Beacon 5,542.,ESS Odysseus Gamma Team,Beta-4-A8-31-M12-PI87,Earth,A box with a lock and covered with special symbols.,,,FALSE
+BEACON-6,Beacon 6,542.,ESS Odysseus Alpha Team,Alpha-1-A1-1-P-SI14-UX98,Earth,A box with a lock and covered with special symbols.,,,FALSE

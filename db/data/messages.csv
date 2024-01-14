@@ -1,0 +1,30 @@
+id,name,sender_character_id,reciever_character_ids,plot_ids,event_ids,type,after_jump,locked,sent,message,gm_notes
+1,"""Good you are alive"" - Message from Mark Bolton to Amir",20000,20077,2,,Text NPC,4,FALSE,Not yet,I see from the records that you are alive. Good. Stay safe.,"If Amir sends the first message, ignore this message and anwser how Mark Bolton would. See plot for more information."
+2,"""I'm sorry"" - Message from Mark Bolton to Amir",20000,20077,2,28,Text NPC,,FALSE,Not yet,"My Dearest Amir,
+As I pen down these words, I am burdened with the weight of regret and the realization that time slips through our fingers like sand. There are moments in life when we confront our failings, and this is one such moment for me.
+I must start by saying how sorry I am—sorry for not being there when you needed me, sorry for the silence that echoed in response to your messages during Delta's passing. The loss of your sister, a beacon of light in our lives, was a tragedy that reverberated through the very core of our family.
+Seeing you across the star system, grieving and isolated, stirred a pain I cannot easily express. Your choice to face that harsh reality alone while I remained distant is a regret I carry heavily. The burden of my responsibilities, the expectations that I unknowingly placed upon you, became a barrier when you needed a father's support the most.
+I stand before you with a confession, Amir. I wanted you to follow in my footsteps, to inherit the legacy of a Star Captain. When you chose a different path, I let disappointment cloud my judgment and failed to see the courage and strength it took to pursue your own dreams.
+I am sorry for the anger and frustration that manifested in our recent encounter. The passing years have etched lines on my face, a visible testament to the mistakes I've made. The realization that my time may be running out adds urgency to these words.
+Amir, you are my son, and regardless of the choices you make, my love for you remains unwavering. If I could turn back time, I would be there for you in the moments when you needed guidance and understanding. Life, however, does not offer such luxuries.
+As I face uncertainties and the fragility of my own existence, I want you to know that my greatest wish is for you to find fulfillment in your chosen path. Your identity is not defined by my expectations, and your journey is uniquely yours.
+I hope you can find it within yourself to forgive a flawed father, and I pray that the bond we share can withstand the tests of time. Whatever the future holds, my heart carries the weight of remorse, but also the enduring hope for reconciliation.
+With heartfelt apologies and enduring love,
+Mark Bolton
+PS. Jill Montoya is your sibling. Take good care of them.",Should be sent after the ESS Harbinger Mutiny starts
+3,"""I'm your father"" - Message from Mark Bolton to Jill Montoya",2000,20044,2,28,Text NPC,,FALSE,Not yet,"Dear Jill,
+I hope this letter finds you well amidst the vastness of space and the challenges you face on the ESS Odysseus. There comes a time when secrets must be unveiled, and truths shared. It is with a mix of emotions—regret, longing, and immense pride—that I pen down these words.
+In the shadows of the past, where the threads of our lives were woven, you emerged as the beautiful consequence of a brief affair between Qwen Montoya and me. Jill, you are my daughter, and though circumstances forced me to keep this revelation concealed, the time has come for you to know the truth.
+I understand the complexity of emotions that may surge within you upon learning this, and I apologize for the pain my silence may have caused. Life has a way of steering us down unexpected paths, and in my misguided attempt to protect you and my own standing, I made choices that shaped our journey.
+Your resilience and tenacity have not gone unnoticed. From the moment Lera Yang and I stepped in to help you survive the harsh realities of life, your strength shone through. Your journey from the military training to the promotions is a testament to your indomitable spirit. I couldn't be prouder of the person you've become. You even have potential to rise to the ranks of a Star Captain and that is a prospect that I see with great hope. With the right push and guidance, you could not only fulfill your dreams but also ascend to heights beyond what anyone could have imagined.
+Jill, I offer this truth as a foundation for understanding and growth. I am here to support you, guide you, and be a part of your journey, no matter where it leads if I just make it here alive. The bond of family is a powerful force, and I hope this revelation strengthens our connection.
+And also, with a bittersweet joy, I share that Amir Bolton is not just a colleague but a sibling, making the two of you intertwined in more ways than one.
+With sincere love and unwavering belief in your potential,
+Mark Bolton
+Star Captain",Should be sent right after the ESS Harbinger Mutiny starts
+4,Long range anomaly detected - ETA 15 min,,,,,Ship Log - Warning,,FALSE,Repeatable,Long range anomaly detected. Possible incoming jump into current sector. ETA 15 min.,Should be posted before every jump
+5,Long range anomaly detected - ETA 10 min,,,,,Ship Log - Warning,,FALSE,Repeatable,Long range anomaly detected. Possible incoming jump into current sector. ETA 15 min.,Should be posted before every jump
+6,Long range anomaly detected - ETA 5 min,,,,,Ship Log - Warning,,FALSE,Repeatable,Long range anomaly detected. Possible incoming jump into current sector. ETA 15 min.,Should be posted before every jump
+7,Long range anomaly detected,,,,,Ship Log - Warning,,FALSE,Repeatable,Long range anomaly detected. Possible incoming jump into current sector.,Should be posted before every jump
+8,Solaris distress message,,,,19,Ship Log - Warning,0,TRUE,Not yet,,
+9,Velian distress message,,,,20,Ship Log - Warning,1,TRUE,Not yet,Received a distress signal from area Alpha-5-D2-100: [Velians will write their own message],This also activates the beacon on the map

@@ -1,4 +1,4 @@
-require('dotenv').config({ silent: true });
+import { Express } from "express";
 import expressSwagger from 'express-swagger-generator';
 
 const options = {
@@ -16,11 +16,9 @@ const options = {
 		securityDefinitions: {}
 	},
 	basedir: __dirname,
-	files: ['./routes/**/*.js', './models/**/*.js', './index.js', './messaging.js', './emptyepsilon.js']
+	files: ['./routes/**/*.js', './models/**/*.js', './models/**/*.ts', './index.js', './messaging.js', './emptyepsilon.js']
 };
 
-
-
-export function loadSwagger(app) {
-	return expressSwagger(app)(options);
+export function loadSwagger(app: Express) {
+	expressSwagger(app)(options);
 }
