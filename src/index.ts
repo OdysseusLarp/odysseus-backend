@@ -1,7 +1,6 @@
 import 'dotenv/config';
 import { Server } from 'http';
-import { HttpError } from 'http-errors';
-import express, { NextFunction, Request, Response } from 'express';
+import express, { Request, Response } from 'express';
 import bodyParser from 'body-parser';
 import socketIo from 'socket.io';
 import { logger, loggerMiddleware } from './logger';
@@ -10,7 +9,7 @@ import { getEmptyEpsilonClient, setStateRouteHandler } from './emptyepsilon';
 import { loadEvents } from './eventhandler';
 import { loadMessaging, router as messaging } from './messaging';
 import { Store } from './models/store';
-import { handleAsyncErrors } from './routes/helpers';
+import { errorHandlingMiddleware, handleAsyncErrors } from './routes/helpers';
 import { get, isEqual, omit, isEmpty } from 'lodash';
 import cors from 'cors';
 
@@ -31,10 +30,10 @@ import science from './routes/science';
 import tag from './routes/tag';
 import operation from './routes/operation';
 import sip from './routes/sip';
+import storyAdminRoutes from './routes/story-admin';
 import { setData, getData, router as data } from './routes/data';
 import infoboard from './routes/infoboard';
 import dmxRoutes from './routes/dmx';
-
 import { loadRules } from './rules/rules';
 
 const app = express();
@@ -84,6 +83,7 @@ app.use('/messaging', messaging);
 app.use('/tag', tag);
 app.use('/operation', operation);
 app.use('/sip', sip);
+app.use('/story', storyAdminRoutes);
 
 // Empty Epsilon routes
 app.put('/state', setStateRouteHandler);
@@ -117,14 +117,7 @@ app.post('/emit/:eventName', (req, res) => {
 });
 
 // Error handling middleware
-app.use(async (err: HttpError, req: Request, res: Response, _next: NextFunction) => {
-	let status = 500;
-	if ('statusCode' in err) {
-		status = err.statusCode;
-	}
-	logger.error(err.message);
-	return res.status(status).json({ error: err.message });
-});
+app.use(errorHandlingMiddleware);
 
 // Setup Socket.IO
 io.on('connection', socket => {

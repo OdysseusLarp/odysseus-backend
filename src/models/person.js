@@ -114,6 +114,14 @@ const withRelated = [
  * @property {string} medical_current_medication - Any current medication
  * @property {string} created_year - When the person was inserted into the system
  * @property {string} is_visible - Is the person visible or not (have they been discovered)
+ * @property {string} link_to_character - Link to the character's Google doc
+ * @property {string} summary - Summary of the character
+ * @property {string} gm_notes - GM notes
+ * @property {string} shift - Character's shift (Lunar, Solar, Twilight)
+ * @property {string} role - Role (e.g. Chief Engineer)
+ * @property {string} role_additional - Additional role
+ * @property {string} special_group - Special group
+ * @property {string} character_group - Character group
  * @property {string} created_at - Date-time when object was created
  * @property {string} updated_at - Date-time when object was last updated
  */
@@ -163,7 +171,8 @@ export const Person = Bookshelf.Model.extend({
 				'status',
 				'home_planet',
 				'is_visible',
-				'card_id'
+				'character_group',
+				'is_character',
 			],
 			withRelated: [{
 				ship: qb => qb.column('id', 'name')

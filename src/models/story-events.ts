@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { knex } from "@db/index";
 
 /**
  * @typedef StoryEvent
@@ -56,3 +57,16 @@ export const StoryEventMessagesLink = z.object({
 	message_id: z.number(),
 });
 export type StoryEventMessagesLink = z.infer<typeof StoryEventMessagesLink>;
+
+export const listStoryEvents = async (): Promise<StoryEvent[]> => {
+	const events = await knex('story_events').select('*');
+	return StoryEvent.array().parse(events);
+}
+
+export const getStoryEvent = async (id: number): Promise<StoryEvent | null> => {
+	const event = await knex('story_events').select('*').where({ id }).first()
+	if (!event) {
+		return null;
+	}
+	return StoryEvent.parse(event);
+}
