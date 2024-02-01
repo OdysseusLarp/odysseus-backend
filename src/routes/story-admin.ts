@@ -4,7 +4,7 @@ import { getStoryPlot, listStoryPlots } from '@/models/story-plots';
 import httpErrors from 'http-errors';
 import { z } from 'zod';
 import { getStoryEvent, listStoryEvents } from '@/models/story-events';
-import { listStoryMessages } from '@/models/story-messages';
+import { getStoryMessage, listStoryMessages } from '@/models/story-messages';
 
 const router = Router();
 
@@ -58,7 +58,7 @@ router.get('/messages', handleAsyncErrors(async (req: Request, res: Response) =>
  */
 router.get('/messages/:id', handleAsyncErrors(async (req: Request, res: Response) => {
 	const { id } = ParamsSchema.parse(req.params);
-	const message = await getStoryEvent(id);
+	const message = await getStoryMessage(id);
 	if (!message) {
 		throw new httpErrors.NotFound(`Message with ID ${id} not found`);
 	}
