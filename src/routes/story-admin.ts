@@ -6,6 +6,7 @@ import { z } from 'zod';
 import { getStoryEvent, listStoryEvents } from '@/models/story-events';
 import { getStoryMessage, listStoryMessages } from '@/models/story-messages';
 import { getStoryPersonDetails } from '@/models/story-person';
+import { getArtifactRelations } from '@/models/story-artifact';
 
 const router = Router();
 
@@ -15,6 +16,21 @@ const NumericIdSchema = z.object({
 const StringIdSchema = z.object({
 	id: z.string(),
 });
+
+/**
+ * Get artifact relations by ID
+ * @route GET /story/artifact/{id}
+ * @group Story admin - Story admin related operations
+ * @param {integer} id.path.required - ID of the artifact to get
+ */
+router.get('/artifact/:id', handleAsyncErrors(async (req: Request, res: Response) => {
+	const { id } = NumericIdSchema.parse(req.params);
+	const artifactRelations = await getArtifactRelations(id);
+	if (!artifactRelations) {
+		throw new httpErrors.NotFound(`Artifact with ID ${id} not found`);
+	}
+	res.json(artifactRelations);
+}));
 
 /**
  * Get a list of all events
