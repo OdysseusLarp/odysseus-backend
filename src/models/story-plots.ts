@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { knex } from "@db/index";
 
 /**
  * @typedef StoryPlot
@@ -56,3 +57,62 @@ export const StoryPlotMessagesLink = z.object({
 	message_id: z.number(),
 });
 export type StoryPlotMessagesLink = z.infer<typeof StoryPlotMessagesLink>;
+
+export const StoryPlotWithRelations = StoryPlot.extend({
+	artifacts: z.array(z.object({
+		id: z.number(),
+		name: z.string(),
+	})),
+	events: z.array(z.object({
+		id: z.number(),
+		name: z.string(),
+	})),
+	messages: z.array(z.object({
+		id: z.number(),
+		name: z.string(),
+	})),
+	persons: z.array(z.object({
+		id: z.string(),
+		name: z.string(),
+	})),
+});
+export type StoryPlotWithRelations = z.infer<typeof StoryPlotWithRelations>;
+
+export async function listStoryPlots(): Promise<StoryPlot[]> {
+	const plots = await knex('story_plots').select('*');
+	return StoryPlot.array().parse(plots);
+}
+
+export async function getStoryPlot(id: number): Promise<StoryPlot | null> {
+	const plot = await knex('story_plots').select('*').where({ id }).first();
+	if (!plot) {
+		return null;
+	}
+
+	const [artifacts, events, messages, persons] = await Promise.all([
+		knex('story_artifact_plots')
+		.join('artifact', 'story_artifact_plots.artifact_id', 'artifact.id')
+		.select('artifact.name', 'artifact.id')
+		.where({ plot_id: id }),
+		knex('story_event_plots')
+		.join('story_events', 'story_event_plots.event_id', 'story_events.id')
+		.select('story_events.id', 'story_events.name')
+		.where({ plot_id: id }),
+		knex('story_plot_messages')
+		.join('story_messages', 'story_plot_messages.message_id', 'story_messages.id')
+		.select('story_messages.id', 'story_messages.name')
+		.where({ plot_id: id }),
+		knex('story_person_plots')
+		.join('person', 'story_person_plots.person_id', 'person.id')
+		.select('person.id', knex.raw('TRIM(CONCAT(person.first_name, \' \', person.last_name)) as name'))
+		.where({ plot_id: id }),
+	]);
+
+	return StoryPlotWithRelations.parse({
+		...plot,
+		artifacts,
+		events,
+		messages,
+		persons,
+	});
+}

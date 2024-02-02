@@ -121,8 +121,8 @@ router.get('/:id', handleAsyncErrors(async (req: Request, res: Response) => {
  * @route POST /operation
  * @consumes application/json
  * @group Operation - HANSCA Operation related operations
- * @param {OperationResult} operationresult.body.required - OperationResult model
- * @returns {OperationResult} 200 - Inserted OperationResult model
+ * @param {OperationResult.model} operationresult.body.required - OperationResult model
+ * @returns {OperationResult.model} 200 - Inserted OperationResult model
  */
 router.post('/', handleAsyncErrors(async (req: Request, res: Response) => {
 	const operationResult = await OperationResult.forge().save({

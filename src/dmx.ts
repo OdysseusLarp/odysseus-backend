@@ -2,9 +2,8 @@ import { logger } from './logger';
 import DMX from 'dmx';
 import { isNumber } from 'lodash';
 
-
 const UNIVERSE_NAME = 'backend';
-const EVENT_DURATION = 1000;  // ms
+const EVENT_DURATION = 1000; // ms
 
 export const CHANNELS = {
 	JumpFixed: 100,
@@ -88,38 +87,31 @@ export const CHANNELS = {
 	HangarBayDoorMalfunction: 197,
 	HangarBayPressurize: 198,
 	HangarBayDepressurize: 199,
+} as const;
+
+type Channel = typeof CHANNELS[keyof typeof CHANNELS];
+
+interface Dmx {
+	update: (universe: string, value: Record<number, number>) => void;
 };
 
 const dmx = init();
 
-function init() {
+function init(): Dmx {
 	if (process.env.DMX_DRIVER) {
 		const dmx = new DMX();
 		dmx.addUniverse(UNIVERSE_NAME, process.env.DMX_DRIVER, process.env.DMX_DEVICE_PATH);
 		return dmx;
 	} else {
 		return {
-			update() {}
+			update: (universe: string, value: Record<number, number>) => {
+				logger.debug(`DMX update on universe ${universe}: ${JSON.stringify(value)}`);
+			},
 		};
 	}
 }
 
-export function setValue(channel, value) {
-	logger.debug(`Setting DMX channel ${channel} (${findChannelName(channel)}) to ${value}`);
-	dmx.update(UNIVERSE_NAME, { [channel]: value });
-}
-
-export function fireEvent(channel, value = 255) {
-	if (!isNumber(channel) || !isNumber(value) || channel < 0 || channel > 255 || value < 0 || value > 255) {
-		logger.error(`Attempted DMX fireEvent with invalid channel=${channel} or value=${value}`);
-		return;
-	}
-	logger.debug(`Firing event on DMX channel ${channel} (${findChannelName(channel)}) value ${value}`);
-	dmx.update(UNIVERSE_NAME, { [channel]: value });
-	setTimeout(() => dmx.update(UNIVERSE_NAME, { [channel]: 0 }), EVENT_DURATION);
-}
-
-function findChannelName(channel) {
+function findChannelName(channel: Channel) {
 	for (const name of Object.keys(CHANNELS)) {
 		if (CHANNELS[name] === channel) {
 			return name;
@@ -127,4 +119,14 @@ function findChannelName(channel) {
 	}
 	logger.error(`Unknown DMX channel ${channel} used`);
 	return 'UNKNOWN';
+}
+
+export function fireEvent(channel: Channel, value = 255) {
+	if (!isNumber(channel) || !isNumber(value) || channel < 0 || channel > 255 || value < 0 || value > 255) {
+		logger.error(`Attempted DMX fireEvent with invalid channel=${channel} or value=${value}`);
+		return;
+	}
+	logger.debug(`Firing event on DMX channel ${channel} (${findChannelName(channel)}) value ${value}`);
+	dmx.update(UNIVERSE_NAME, { [channel]: value });
+	setTimeout(() => dmx.update(UNIVERSE_NAME, { [channel]: 0 }), EVENT_DURATION);
 }
