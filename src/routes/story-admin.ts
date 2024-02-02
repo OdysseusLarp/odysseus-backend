@@ -5,11 +5,15 @@ import httpErrors from 'http-errors';
 import { z } from 'zod';
 import { getStoryEvent, listStoryEvents } from '@/models/story-events';
 import { getStoryMessage, listStoryMessages } from '@/models/story-messages';
+import { getStoryPersonDetails } from '@/models/story-person';
 
 const router = Router();
 
-const ParamsSchema = z.object({
+const NumericIdSchema = z.object({
   id: z.string().transform((val) => parseInt(val, 10)).pipe(z.number().positive().int()),
+});
+const StringIdSchema = z.object({
+	id: z.string(),
 });
 
 /**
@@ -30,7 +34,7 @@ router.get('/events', handleAsyncErrors(async (req: Request, res: Response) => {
  * @param {integer} id.path.required - ID of the event to get
  */
 router.get('/events/:id', handleAsyncErrors(async (req: Request, res: Response) => {
-	const { id } = ParamsSchema.parse(req.params);
+	const { id } = NumericIdSchema.parse(req.params);
 	const event = await getStoryEvent(id);
 	if (!event) {
 		throw new httpErrors.NotFound(`Event with ID ${id} not found`);
@@ -57,12 +61,28 @@ router.get('/messages', handleAsyncErrors(async (req: Request, res: Response) =>
  * @returns {StoryMessage.model} 200 - StoryMessage model
  */
 router.get('/messages/:id', handleAsyncErrors(async (req: Request, res: Response) => {
-	const { id } = ParamsSchema.parse(req.params);
+	const { id } = NumericIdSchema.parse(req.params);
 	const message = await getStoryMessage(id);
 	if (!message) {
 		throw new httpErrors.NotFound(`Message with ID ${id} not found`);
 	}
 	res.json(message);
+}));
+
+/**
+ * Get a person by ID
+ * @route GET /story/person/{id}
+ * @group Story admin - Story admin related operations
+ * @param {string} id.path.required - ID of the person to get
+ * @returns {StoryAdminPersonDetailsWithRelations.model} 200 - StoryAdminPersonDetailsWithRelations model
+ */
+router.get('/person/:id', handleAsyncErrors(async (req: Request, res: Response) => {
+	const { id } = StringIdSchema.parse(req.params);
+	const person = await getStoryPersonDetails(id);
+	if (!person) {
+		throw new httpErrors.NotFound(`Person with ID ${id} not found`);
+	}
+	res.json(person);
 }));
 
 /**
@@ -84,7 +104,7 @@ router.get('/plots', async (req: Request, res: Response) => {
  * @returns {StoryPlot.model} 200 - StoryPlot model
  */
 router.get('/plots/:id', handleAsyncErrors(async (req: Request, res: Response) => {
-	const { id } = ParamsSchema.parse(req.params);
+	const { id } = NumericIdSchema.parse(req.params);
 	const plot = await getStoryPlot(id);
 	if (!plot) {
 		throw new httpErrors.NotFound(`Plot with ID ${id} not found`);

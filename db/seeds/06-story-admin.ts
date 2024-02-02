@@ -6,7 +6,7 @@ import { parsedBoolean, parseCommaSeparatedString, trimmedStringOrNull, parsedIn
 import { StoryPlot, StoryPlotEventLink, StoryPlotArtifactLink, StoryPlotPersonLink, StoryPlotMessagesLink } from "../../src/models/story-plots";
 import { StoryEvent, StoryEventArtifactLink, StoryEventMessagesLink, StoryEventPersonLink } from "../../src/models/story-events";
 import { StoryMessage, StoryMessagePersonLink } from "../../src/models/story-messages";
-import { StoryPersonRelation } from "../../src/models/story-person-relations";
+import { StoryPersonRelation } from "../../src/models/story-person";
 
 const OptionalString = z.preprocess(trimmedStringOrNull, z.string().nullable());
 const OptionalInt = z.preprocess(parsedIntOrNull, z.number().nullable());
