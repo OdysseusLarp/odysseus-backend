@@ -16,7 +16,7 @@ const options = {
 		securityDefinitions: {}
 	},
 	basedir: __dirname,
-	files: ['./routes/**/*.{js,ts}', './models/**/*.{js,ts}', './index.js', './messaging.js', './emptyepsilon.js']
+	files: ['./routes/**/*.{js,ts}', './models/**/*.{js,ts}', './index.ts', './messaging.ts', './emptyepsilon.js']
 };
 
 export function loadSwagger(app: Express) {

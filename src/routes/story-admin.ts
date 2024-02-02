@@ -74,7 +74,7 @@ router.get('/messages/:id', handleAsyncErrors(async (req: Request, res: Response
  * @route GET /story/person/{id}
  * @group Story admin - Story admin related operations
  * @param {string} id.path.required - ID of the person to get
- * @returns {StoryAdminPersonDetailsWithRelations.model} 200 - StoryAdminPersonDetailsWithRelations model
+ * @returns {object} 200 - StoryAdminPersonDetailsWithRelations model
  */
 router.get('/person/:id', handleAsyncErrors(async (req: Request, res: Response) => {
 	const { id } = StringIdSchema.parse(req.params);
