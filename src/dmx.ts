@@ -89,6 +89,8 @@ export const CHANNELS = {
 	HangarBayDepressurize: 199,
 } as const;
 
+type Channel = typeof CHANNELS[keyof typeof CHANNELS];
+
 interface Dmx {
 	update: (universe: string, value: Record<number, number>) => void;
 };
@@ -109,7 +111,7 @@ function init(): Dmx {
 	}
 }
 
-function findChannelName(channel) {
+function findChannelName(channel: Channel) {
 	for (const name of Object.keys(CHANNELS)) {
 		if (CHANNELS[name] === channel) {
 			return name;
@@ -119,7 +121,7 @@ function findChannelName(channel) {
 	return 'UNKNOWN';
 }
 
-export function fireEvent(channel: number, value = 255) {
+export function fireEvent(channel: Channel, value = 255) {
 	if (!isNumber(channel) || !isNumber(value) || channel < 0 || channel > 255 || value < 0 || value > 255) {
 		logger.error(`Attempted DMX fireEvent with invalid channel=${channel} or value=${value}`);
 		return;
