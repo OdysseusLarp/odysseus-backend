@@ -2,7 +2,6 @@ import 'dotenv/config';
 import { Server } from 'http';
 import express, { Request, Response } from 'express';
 import bodyParser from 'body-parser';
-import socketIo from 'socket.io';
 import { logger, loggerMiddleware } from './logger';
 import { loadSwagger } from './docs';
 import { getEmptyEpsilonClient, setStateRouteHandler } from './emptyepsilon';
@@ -12,7 +11,7 @@ import { Store } from './models/store';
 import { errorHandlingMiddleware, handleAsyncErrors } from './routes/helpers';
 import { get, isEqual, omit, isEmpty } from 'lodash';
 import cors from 'cors';
-
+import { initSocketIoClient } from './websocket';
 import prometheusIoMetrics from 'socket.io-prometheus';
 import prometheusMiddleware from 'express-prometheus-middleware';
 
@@ -38,7 +37,7 @@ import { loadRules } from './rules/rules';
 
 const app = express();
 const http = new Server(app);
-const io = socketIo(http);
+const io = initSocketIoClient(http);
 
 // Setup logging middleware and body parsing
 app.use(bodyParser.json());
@@ -119,13 +118,7 @@ app.post('/emit/:eventName', (req, res) => {
 // Error handling middleware
 app.use(errorHandlingMiddleware);
 
-// Setup Socket.IO
-io.on('connection', socket => {
-	logger.info('Socket.IO Client connected');
-	socket.on('disconnect', () => {
-		logger.info('Socket.IO Client disconnected');
-	});
-});
+// Setup EOS Datahub messaging
 loadMessaging(io);
 
 // Get latest Empty Epsilon game state and save it to store
@@ -186,8 +179,3 @@ function startServer() {
 app.get('/ping', (req, res) => {
 	res.send('pong');
 });
-
-// For emitting Socket.IO events from rule files
-export function getSocketIoClient() {
-	return io;
-}

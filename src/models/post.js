@@ -1,5 +1,5 @@
 import Bookshelf from '../../db';
-import { getSocketIoClient } from '../index';
+import { getSocketIoClient } from '../websocket';
 import { Person } from './person';
 import { logger } from '../logger';
 

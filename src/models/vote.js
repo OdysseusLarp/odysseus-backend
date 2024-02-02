@@ -1,6 +1,6 @@
 import Bookshelf from '../../db';
 import { Person } from './person';
-import { getSocketIoClient } from '../index';
+import { getSocketIoClient } from '../websocket';
 import { logger } from '../logger';
 
 /* eslint-disable object-shorthand */

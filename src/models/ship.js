@@ -2,7 +2,7 @@ import Bookshelf, { knex } from '../../db';
 import { addShipLogEntry } from './log';
 import { MapObject } from './map-object';
 import { get, pick } from 'lodash';
-import { getSocketIoClient } from '../index';
+import { getSocketIoClient } from '../websocket';
 import { logger } from '../logger';
 import { Person } from './person';
 
