@@ -62,6 +62,7 @@ const characterFields = {
 const groups = new Set([
 	'role:medic',
 	'role:security',
+	'role:secret',
 	'role:science',
 	'role:engineer',
 	'role:captain',

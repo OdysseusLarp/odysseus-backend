@@ -171,6 +171,7 @@ export const Person = Bookshelf.Model.extend({
 				'status',
 				'home_planet',
 				'is_visible',
+				'card_id',
 				'character_group',
 				'is_character',
 			],
