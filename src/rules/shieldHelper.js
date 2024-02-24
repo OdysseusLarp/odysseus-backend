@@ -1,11 +1,15 @@
 import { randomInt } from './helpers';
 
+/*
+ * Helpers for front / read shield button board tasks
+ */
+
 export const CODE_COUNT = 243;  // 3^5
 export const MEASURED_INDEX = 3;
 
 export function getSingleStates(code) {
 	const states = [];
-	for (let i=0; i<5; i++) {
+	for (let i = 0; i < 5; i++) {
 		states[i] = (code % 3) - 1;
 		code = Math.floor(code / 3);
 	}
@@ -16,7 +20,7 @@ export function getCombinedStates(...codes) {
 	const states = [0, 0, 0, 0, 0];
 	for (const code of codes) {
 		const state = getSingleStates(code);
-		for (let i=0; i<5; i++) {
+		for (let i = 0; i < 5; i++) {
 			states[i] += state[i];
 		}
 	}
@@ -38,7 +42,7 @@ function hex(n) {
 
 export function randomState() {
 	const state = {};
-	const codes = [0, 0, 0, 0].map(() => randomInt(0, CODE_COUNT-1));
+	const codes = [0, 0, 0, 0].map(() => randomInt(0, CODE_COUNT - 1));
 	state.code = getCode(...codes);
 	state.states = getCombinedStates(...codes);
 	state.measuredValue = state.states[MEASURED_INDEX];
