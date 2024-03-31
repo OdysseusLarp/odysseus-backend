@@ -30,32 +30,31 @@ const box = {
 		19: [],
 		20: [],
 		21: [],
-		
 	},
 	config: {
 		pins: [
-			4, // FS01
-			14, // FS02
-			15, // FS03
-			17,  // FS04
-			18, // FS05
-			27,  // RS01
-			22, // RS02
-			23, // RS03
-			24, // RS04
-			10,  // RS05
-			9, // Switch DOWN
-			25, // Switch UP
-			11, // M01
-			8, // M02
-			7, // M03
-			5, // M04
-			6, // ...
-			12, // ...
-			13, // ...
-			19, // ...
-			16, // ...
-			26, // ...
+			4, // FS01, index=0
+			14, // FS02, index=1
+			15, // FS03, index=2
+			17, // FS04, index=3
+			18, // FS05, index=4
+			27, // RS01, index=5
+			22, // RS02, index=6
+			23, // RS03, index=7
+			24, // RS04, index=8
+			10, // RS05, index=9
+			9, // Switch DOWN, index=10
+			25, // Switch UP, index=11
+			11, // M01, index=12
+			8, // M02, index=13
+			7, // M03, index=14
+			5, // M04, index=15
+			6, // BWMS-01, index=16
+			12, // BWMS-02, index=17
+			19, // B01, index=18
+			16, // B02, index=19
+			26, // B03, index=20
+			20, // B04, index=21
 		],
 	},
 };
@@ -178,6 +177,44 @@ for (let i = 0; i < 4; i++) {
 		title: `Missile system frequency modulator ${code}`,
 		description: '...',
 		description_template: `Missile system frequency modulator ${code} requires frequency modulation recalibration. Recalibrate to Initiation Point {{initiationPoint}} and Activation Interval {{activationInterval}}. Refer to Ship knowledge database code MSSS-19 or Operations manual page 2.10-5 for instructions.`,
+		location: 'Upper deck, corridor',
+		map: 'upper-6.png',
+		mapX: 420,
+		mapY: 60,
+	});
+}
+
+// BWMS tasks
+// 01 = missile, 02 = beam weapons
+
+for (let i = 0; i < 2; i++) {
+	const code = `BWMS-0${i + 1}`;
+	const id = i == 0 ? `missile_btn_${code}` : `beamweapons_btn_${code}`;
+
+	blobs.push({
+		type: 'box',
+		id,
+		task: id,
+		status: 'fixed',
+		boxType: 'bwms_button',
+		buttonIndex: 16 + i, // 16, 17
+		context: {
+			code: 1,
+			measuredValue: 0,
+		},
+	});
+	blobs.push({
+		type: 'task',
+		id,
+		box: id,
+		eeType: i == 0 ? 'missilesystem' : 'beamweapons',
+		eeHealth: 0.07, // fixes 7%
+		status: 'initial',
+		calibrationTime: 5 * 60,
+		calibrationCount: 1,
+		title: `Beam and missile guidance controls ${code}`,
+		description: '...',
+		description_template: `Beam Weapons Missile System guidance matrix ${code} requires synchronization to pattern {{code}}. Refer to Ship knowledge database code TRS-18 or Operations manual page 2.9-9 for instructions.`,
 		location: 'Upper deck, corridor',
 		map: 'upper-6.png',
 		mapX: 420,
