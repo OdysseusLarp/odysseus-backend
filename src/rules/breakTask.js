@@ -3,6 +3,7 @@ import * as shield from './shieldHelper';
 import * as wiring from './wiringHelper';
 import * as missile from './missileSystemHelper';
 import * as bwms from './bwmsHelper';
+import * as beamWeapons from './beamWeaponsHelper';
 import store from '../store/store';
 import { logger } from '../logger';
 
@@ -40,6 +41,7 @@ const BUTTON_BOARD_STATE_GENERATORS = {
 	shield_button: shield.randomState,
 	missile_button: missile.randomState,
 	bwms_button: bwms.randomState,
+	beamweapon_button: beamWeapons.randomState,
 };
 
 function getAdditionalContext(box, task) {

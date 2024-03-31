@@ -208,13 +208,51 @@ for (let i = 0; i < 2; i++) {
 		id,
 		box: id,
 		eeType: i == 0 ? 'missilesystem' : 'beamweapons',
+		eeHealth: 0.12, // fixes 12%
+		status: 'initial',
+		calibrationTime: 5 * 60,
+		calibrationCount: 1,
+		title: `Beam and missile guidance matrix ${code}`,
+		description: '...',
+		description_template: `Beam Weapons Missile System guidance matrix ${code} requires synchronization to pattern {{code}}. Refer to Ship knowledge database code TRS-18 or Operations manual page 2.9-9 for instructions.`,
+		location: 'Upper deck, corridor',
+		map: 'upper-6.png',
+		mapX: 420,
+		mapY: 60,
+	});
+}
+
+// Beam weapons tasks
+
+for (let i = 0; i < 3; i++) {
+	const code = `B0${i + 1}`;
+	const id = `beamweapons_btn_${code}`;
+
+	blobs.push({
+		type: 'box',
+		id,
+		task: id,
+		status: 'fixed',
+		boxType: 'beamweapon_button',
+		buttonIndex: 18 + i, // 18 - 21
+		context: {
+			charging_mode: 'Tarix',
+			discharging_mode: 'Tarix',
+			measuredValue: 0,
+		},
+	});
+	blobs.push({
+		type: 'task',
+		id,
+		box: id,
+		eeType: 'beamweapons',
 		eeHealth: 0.07, // fixes 7%
 		status: 'initial',
 		calibrationTime: 5 * 60,
 		calibrationCount: 1,
-		title: `Beam and missile guidance controls ${code}`,
+		title: `Beam Weapon charging and discharging ${code}`,
 		description: '...',
-		description_template: `Beam Weapons Missile System guidance matrix ${code} requires synchronization to pattern {{code}}. Refer to Ship knowledge database code TRS-18 or Operations manual page 2.9-9 for instructions.`,
+		description_template: `Beam Weapon charging and discharging section ${code} requires reconfiguration to Charging mode {{charging_mode}} and Discharging mode {{discharging_mode}}. Refer to Ship knowledge database code SMB-39 or Operations manual page 2.9-5 for instructions.`,
 		location: 'Upper deck, corridor',
 		map: 'upper-6.png',
 		mapX: 420,

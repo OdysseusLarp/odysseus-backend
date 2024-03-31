@@ -13,7 +13,12 @@ const DOWN_INDEX = 10;
  * is in the expected state `box.context.measuredValue`.  The context is added
  * when breaking the task in breakTask.js method getAdditionalContext.
  */
-const BUTTON_TASK_TYPES = ['shield_button', 'missile_button', 'bwms_button'];
+const BUTTON_TASK_TYPES = [
+	'shield_button',
+	'missile_button',
+	'bwms_button',
+	'beamweapon_button',
+];
 watch(['data', 'box', 'buttonboard'], (button, previousBox, state) => {
 	// Loop through box types and detect button board logical boxes based on box.boxType
 	for (const box of Object.values(store.getState().data.box)) {
