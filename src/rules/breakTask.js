@@ -2,6 +2,8 @@ import { saveBlob, randomInt } from './helpers';
 import * as shield from './shieldHelper';
 import * as wiring from './wiringHelper';
 import * as missile from './missileSystemHelper';
+import * as bwms from './bwmsHelper';
+import * as beamWeapons from './beamWeaponsHelper';
 import store from '../store/store';
 import { logger } from '../logger';
 
@@ -31,27 +33,27 @@ export function breakTask(task) {
 	saveBlob({
 		...toBeBroken,
 		...ctx,
-		status: 'broken'
+		status: 'broken',
 	});
 }
 
+const BUTTON_BOARD_STATE_GENERATORS = {
+	shield_button: shield.randomState,
+	missile_button: missile.randomState,
+	bwms_button: bwms.randomState,
+	beamweapon_button: beamWeapons.randomState,
+};
 
 function getAdditionalContext(box, task) {
 	let ctx = {};
-	if (box.boxType === 'shield_button') {
+	if (box.boxType in BUTTON_BOARD_STATE_GENERATORS) {
 		do {
 			ctx = {
-				context: shield.randomState()
-			};
-		} while (ctx.context.measuredValue === box.context.measuredValue);
-	} else if (box.boxType === 'missile_button'){
-		do {
-			ctx = {
-				context: missile.randomState()
+				context: BUTTON_BOARD_STATE_GENERATORS[box.boxType](),
 			};
 		} while (ctx.context.measuredValue === box.context.measuredValue);
 	} else if (box.boxType === 'reactor_wiring') {
-		const n = randomInt(0, wiring.CODE_COUNT-1);
+		const n = randomInt(0, wiring.CODE_COUNT - 1);
 		const code = wiring.getCode(n);
 		const expected = wiring.getConnections(n);
 		ctx = {

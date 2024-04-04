@@ -8,12 +8,17 @@ const DOWN_INDEX = 10;
 /*
  * Logic that changes "logical" task boxes from broken to fixed state based on
  * the physical "buttonboard" task box.
- * 
+ *
  * The logic checks whether the button state indicated by `box.buttonIndex`
  * is in the expected state `box.context.measuredValue`.  The context is added
  * when breaking the task in breakTask.js method getAdditionalContext.
  */
-const BUTTON_TASK_TYPES = ['shield_button', 'missile_button'];
+const BUTTON_TASK_TYPES = [
+	'shield_button',
+	'missile_button',
+	'bwms_button',
+	'beamweapon_button',
+];
 watch(['data', 'box', 'buttonboard'], (button, previousBox, state) => {
 	// Loop through box types and detect button board logical boxes based on box.boxType
 	for (const box of Object.values(store.getState().data.box)) {
@@ -21,7 +26,9 @@ watch(['data', 'box', 'buttonboard'], (button, previousBox, state) => {
 			// If button state is in expected value, fix the box
 			const buttonState = getButtonState(button, box.buttonIndex);
 			if (box.context.measuredValue === buttonState) {
-				logger.info(`Marking box ${box.id} as fixed due to button state ${buttonState}`);
+				logger.info(
+					`Marking box ${box.id} as fixed due to button state ${buttonState}`
+				);
 				saveBlob({
 					...box,
 					status: 'fixed',
@@ -31,10 +38,13 @@ watch(['data', 'box', 'buttonboard'], (button, previousBox, state) => {
 	}
 });
 
-
 function getButtonState(button, index) {
 	if (!button.config || !button.config.pins || !button.config.pins[index]) {
-		logger.error(`Could not find index ${index} from button.config.pins ${JSON.stringify(button.config)}`);
+		logger.error(
+			`Could not find index ${index} from button.config.pins ${JSON.stringify(
+				button.config
+			)}`
+		);
 		return 0;
 	}
 	// NOTE: Must check first for connection +1 because pins pulled HIGH are considered to be
