@@ -1,12 +1,13 @@
 import { Router, Request, Response } from 'express';
 import { handleAsyncErrors } from './helpers';
-import { getStoryPlot, listStoryPlots } from '@/models/story-plots';
+import { StoryPlotCreate, getStoryPlot, listStoryPlots, upsertStoryPlot } from '@/models/story-plots';
 import httpErrors from 'http-errors';
 import { z } from 'zod';
-import { getStoryEvent, listStoryEvents } from '@/models/story-events';
-import { getStoryMessage, listStoryMessages } from '@/models/story-messages';
+import { StoryEventCreate, getStoryEvent, listStoryEvents, upsertStoryEvent } from '@/models/story-events';
+import { StoryMessageCreate, getStoryMessage, listStoryMessages, upsertStoryMessage } from '@/models/story-messages';
 import { getStoryPersonDetails } from '@/models/story-person';
 import { getArtifactRelations } from '@/models/story-artifact';
+import { StatusCodes } from '@/utils/http';
 
 const router = Router();
 
@@ -16,6 +17,14 @@ const NumericIdSchema = z.object({
 const StringIdSchema = z.object({
 	id: z.string(),
 });
+const ObjectWithId = z.object({
+	id: z.number(),
+});
+
+/**
+ * @typedef ObjectWithId
+ * @property {integer} id - ID of the object
+ */
 
 /**
  * Get artifact relations by ID
@@ -59,6 +68,18 @@ router.get('/events/:id', handleAsyncErrors(async (req: Request, res: Response) 
 }));
 
 /**
+ * Upsert an event
+ * @route POST /story/events
+ * @group Story admin - Story admin related operations
+ * @returns {ObjectWithId} 200 - Object containing the ID of the upserted event
+ */
+router.post('/events', handleAsyncErrors(async (req: Request, res: Response) => {
+	const body = StoryEventCreate.parse(req.body);
+	const id = await upsertStoryEvent(body);
+	res.send(ObjectWithId.parse({ id }));
+}));
+
+/**
  * Get a list of all messages
  * @route GET /story/messages
  * @group Story admin - Story admin related operations
@@ -83,6 +104,18 @@ router.get('/messages/:id', handleAsyncErrors(async (req: Request, res: Response
 		throw new httpErrors.NotFound(`Message with ID ${id} not found`);
 	}
 	res.json(message);
+}));
+
+/**
+ * Upsert a message
+ * @route POST /story/messages
+ * @group Story admin - Story admin related operations
+ * @returns {ObjectWithId} 200 - Object containing the ID of the upserted message
+ */
+router.post('/messages', handleAsyncErrors(async (req: Request, res: Response) => {
+	const body = StoryMessageCreate.parse(req.body);
+	const id = await upsertStoryMessage(body);
+	res.send(ObjectWithId.parse({ id }));
 }));
 
 /**
@@ -116,7 +149,6 @@ router.get('/plots', async (req: Request, res: Response) => {
  * Get a plot by ID
  * @route GET /story/plots/{id}
  * @group Story admin - Story admin related operations
- * @param {integer} id.path.required - ID of the plot to get
  * @returns {StoryPlot.model} 200 - StoryPlot model
  */
 router.get('/plots/:id', handleAsyncErrors(async (req: Request, res: Response) => {
@@ -126,6 +158,18 @@ router.get('/plots/:id', handleAsyncErrors(async (req: Request, res: Response) =
 		throw new httpErrors.NotFound(`Plot with ID ${id} not found`);
 	}
 	res.json(plot);
+}));
+
+/**
+ * Upsert a plot
+ * @route POST /story/plots
+ * @group Story admin - Story admin related operations
+ * @returns {ObjectWithId} 200 - Object containing the ID of the upserted plot
+ */
+router.post('/plots', handleAsyncErrors(async (req: Request, res: Response) => {
+	const body = StoryPlotCreate.parse(req.body);
+	const id = await upsertStoryPlot(body);
+	res.send(ObjectWithId.parse({ id }));
 }));
 
 export default router;

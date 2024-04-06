@@ -20,6 +20,6 @@ export const errorHandlingMiddleware = async (err: HttpError, req: Request, res:
 		status = 400;
 		error = err.errors;
 	}
-	logger.error(err.message);
+	logger.error(err.stack);
 	return res.status(status).json({ error });
 }

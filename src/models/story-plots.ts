@@ -116,3 +116,35 @@ export async function getStoryPlot(id: number): Promise<StoryPlot | null> {
 		persons,
 	});
 }
+
+export const StoryPlotCreate = StoryPlot.extend({
+	id: z.number().int().positive().optional(),
+	artifacts: z.array(z.number()),
+	events: z.array(z.number()),
+	messages: z.array(z.number()),
+	persons: z.array(z.string()),
+});
+export type StoryPlotCreate = z.infer<typeof StoryPlotCreate>;
+
+export async function upsertStoryPlot(plot: StoryPlotCreate): Promise<number> {
+	const trx = await knex.transaction();
+	const [{ id }] = await trx('story_plots').insert(plot).onConflict('id').merge().returning('id');
+	await trx('story_artifact_plots').where({ plot_id: id }).delete();
+	await trx('story_event_plots').where({ plot_id: id }).delete();
+	await trx('story_plot_messages').where({ plot_id: id }).delete();
+	await trx('story_person_plots').where({ plot_id: id }).delete();
+	if (plot.artifacts) {
+		await trx('story_artifact_plots').insert(plot.artifacts.map((artifact_id) => ({ plot_id: id, artifact_id })));
+	}
+	if (plot.events) {
+		await trx('story_event_plots').insert(plot.events.map((event_id) => ({ plot_id: id, event_id })));
+	}
+	if (plot.messages) {
+		await trx('story_plot_messages').insert(plot.messages.map((message_id) => ({ plot_id: id, message_id })));
+	}
+	if (plot.persons) {
+		await trx('story_person_plots').insert(plot.persons.map((person_id) => ({ plot_id: id, person_id })));
+	}
+	await trx.commit();
+	return id;
+}

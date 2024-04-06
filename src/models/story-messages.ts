@@ -1,5 +1,6 @@
 import { z } from 'zod';
 import { knex } from "@db/index";
+import { omit } from 'lodash';
 
 /**
  * @typedef StoryMessage
@@ -116,4 +117,22 @@ export async function getStoryMessage(id: number): Promise<StoryMessageWithRelat
 			name: message.sender_name,
 		} : null,
 	});
+}
+
+export const StoryMessageCreate = StoryMessage.extend({
+	id: z.number().int().positive().optional(),
+	receivers: z.array(z.string()),
+});
+export type StoryMessageCreate = z.infer<typeof StoryMessageCreate>;
+
+export async function upsertStoryMessage(message: StoryMessageCreate): Promise<number> {
+	const trx = await knex.transaction();
+	const msg = omit(message, 'receivers');
+	const [{ id }] = await trx('story_messages').insert(msg).onConflict('id').merge().returning('id');
+	await trx('story_person_messages').where({ message_id: id }).delete();
+	if (message.receivers) {
+		await trx('story_person_messages').insert(message.receivers.map((person_id) => ({ message_id: id, person_id })));
+	}
+	await trx.commit();
+	return id;
 }
