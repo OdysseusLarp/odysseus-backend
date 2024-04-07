@@ -107,7 +107,7 @@ router.get('/:id', handleAsyncErrors(async (req, res) => {
 			addShipLogEntry('WARNING', intrusionDetectedMessage);
 		}, detectionTimeMs);
 
-		return res.json({ ...person, hacker: { detectionTimeMs, intrusionDetectedMessage } });
+		return res.json({ ...person.toJSON(), hacker: { detectionTimeMs, intrusionDetectedMessage } });
 	}
 
 	res.json(person);
