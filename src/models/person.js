@@ -100,7 +100,6 @@ const withRelated = [
  * @property {string} dynasty - Dynasty that the player belongs to
  * @property {integer} birth_year - Birth year of the person
  * @property {string} religion - Religion
- * @property {string} citizenship - Citizenship status
  * @property {string} social_class - Social class
  * @property {string} political_party - Political party
  * @property {string} military_rank - Military rank

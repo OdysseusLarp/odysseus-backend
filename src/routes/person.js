@@ -6,7 +6,6 @@ import { get, pick, mapKeys, snakeCase } from 'lodash';
 import { NotFound, BadRequest } from 'http-errors';
 import { logger } from '@/logger';
 import { getHackingDetectionTime, getRandomHackingIntrustionDetectionMessage } from '@/utils/hacking';
-import { Duration, getRandomNumberBetween } from '@/utils/time';
 const router = new Router();
 
 const DEFAULT_PERSON_PAGE = 1;
@@ -108,7 +107,7 @@ router.get('/:id', handleAsyncErrors(async (req, res) => {
 			addShipLogEntry('WARNING', intrusionDetectedMessage);
 		}, detectionTimeMs);
 
-		return res.json({ ...person, hacker: { detectionTimeMs, intrusionDetectedMessage } });
+		return res.json({ ...person.toJSON(), hacker: { detectionTimeMs, intrusionDetectedMessage } });
 	}
 
 	res.json(person);

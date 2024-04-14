@@ -44,7 +44,7 @@ const voteWithRelated = ['author', 'entries', 'options'];
  * @property {boolean} is_active.required - Boolean stating if the vote is active or not
  * @property {boolean} is_public - Defines if the vote should be seen by only those who can vote
  * @property {integer} duration_minutes - How many minutes the vote will be active for after approved
- * @property {string} allowed_voters - String stating who is allowed to vote, e.g. EVERYONE, FULL_CITIZENSHIP, HIGH_RANKING_OFFICERS, DYNASTY:DYNASTY_NAME
+ * @property {string} allowed_voters - String stating who is allowed to vote, e.g. HIGH_RANKING_OFFICERS, DYNASTY:DYNASTY_NAME, RELIGION:RELIGION_NAME, SHIP:SHIP_NAME
  * @property {string} active_until - ISO 8601 String Date-time stating when voting will end
  * @property {string} created_at - ISO 8601 String Date-time when object was created
  * @property {string} updated_at - ISO 8601 String Date-time when object was last updated
