@@ -7,6 +7,7 @@ import { logger } from '@/logger';
 import { NotFound } from 'http-errors';
 import { get } from 'lodash';
 import Bookshelf from 'bookshelf';
+import { getBloodTestResultText } from '@/utils/blood-test-results';
 
 const router = Router();
 
@@ -16,25 +17,7 @@ const EVA_ID = '20263';
 async function getBloodTestResult(person_id: string) {
 	const result = await new BloodTestResult().where({ person_id }).fetch();
 	if (!result) return 'Blood could not be analysed';
-	return `**Blood test results:**
-
-Blood type: ${result.get('blood_type')}
-
-Hemoglobin: ${result.get('hemoglobin')} g/l
-
-Leukocytes: ${result.get('leukocytes')} E9/l
-
-Kalium: ${result.get('kalium')} mmol/l
-
-Natrium: ${result.get('natrium')} mmol/l
-
-hCG: ${result.get('hcg')} IU/l
-
-ACN enzyme: ${result.get('acn_enzyme')} mmol/l
-
-Substance abuse: ${result.get('sub_abuse')}
-
-Details: ${result.get('details') || 'None'}`;
+	return getBloodTestResultText(result);
 }
 
 async function processXrayOperation(operationResult: Bookshelf.Model<unknown>) {
@@ -68,7 +51,6 @@ async function processXrayOperation(operationResult: Bookshelf.Model<unknown>) {
 }
 
 const addOperationResultToMedicalEntry = async (operationResult: Bookshelf.Model<unknown>) => {
-	// Add blood samples to medical file once analysed
 	const isBloodSample = operationResult.get('additional_type') === 'BLOOD_SAMPLE';
 	const isAnalysed = operationResult.get('is_analysed');
 	const isComplete = operationResult.get('is_complete');
