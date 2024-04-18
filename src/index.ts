@@ -17,7 +17,10 @@ import prometheusMiddleware from 'express-prometheus-middleware';
 
 import { initStoreSocket } from './store/storeSocket';
 import { initState } from './store/store';
-import { enableGracefulShutdown, enablePersistance } from './store/storePersistance';
+import {
+	enableGracefulShutdown,
+	enablePersistance,
+} from './store/storePersistance';
 import fleet from './routes/fleet';
 import starmap from './routes/starmap';
 import person from './routes/person';
@@ -34,6 +37,9 @@ import { setData, getData, router as data } from './routes/data';
 import infoboard from './routes/infoboard';
 import dmxRoutes from './routes/dmx';
 import { loadRules } from './rules/rules';
+import { breakTask } from './rules/breakTask';
+import { breakEE } from './rules/ship/jump';
+import { sleep } from './utils/sleep';
 
 const app = express();
 const http = new Server(app);
@@ -51,11 +57,13 @@ app.use(cors());
  * @produces text/plain
  * @returns {string} 200 - Prometheus metrics
  */
-app.use(prometheusMiddleware({
-	metricsPath: '/metrics',
-	collectDefaultMetrics: true,
-	requestDurationBuckets: [0.1, 0.5, 1, 1.5],
-}));
+app.use(
+	prometheusMiddleware({
+		metricsPath: '/metrics',
+		collectDefaultMetrics: true,
+		requestDurationBuckets: [0.1, 0.5, 1, 1.5],
+	})
+);
 // Also export prometheus metrics of Socket.IO, available via same /metrics route
 prometheusIoMetrics(io);
 
@@ -93,12 +101,42 @@ app.put('/state', setStateRouteHandler);
  * @group EmptyEpsilon - EmptyEpsilon integration
  * @returns {object} 200 - Object containing success: true/false
  */
-app.post('/state/full-push', handleAsyncErrors(async (req, res) => {
-	const state = getData('ship', 'ee');
-	if (isEmpty(state)) throw new Error('Empty Epsilon state is empty');
-	const response = await getEmptyEpsilonClient().pushFullGameState(state);
-	res.json(response);
-}));
+app.post(
+	'/state/full-push',
+	handleAsyncErrors(async (req, res) => {
+		const state = getData('ship', 'ee');
+		if (isEmpty(state)) throw new Error('Empty Epsilon state is empty');
+		const response = await getEmptyEpsilonClient().pushFullGameState(state);
+		res.json(response);
+	})
+);
+
+app.post(
+	'/state/break-task',
+	handleAsyncErrors(async (req, res) => {
+		const { taskId } = req.body;
+		const task = getData('task', taskId);
+		if (!task || !task.eeType || !task.eeHealth) {
+			res.sendStatus(404);
+			return;
+		}
+
+		// Hull health is not a floating point but instead discrete health / maxHealth.
+		// We reduce the hull damage a bit to avoid rounding causing the health to become
+		// lower than necessary and triggering breaking of even more hull tasks.
+		const healthAmount =
+			task.eeType === 'hull' ? task.eeHealth - 0.01 : task.eeHealth;
+		logger.info(
+			`Breaking task ${taskId} and reducing EE health type ${task.eeType} by ${healthAmount}`
+		);
+
+		breakTask(task);
+		// Allow time for rules to pick up breakage of box and as a result break the corresponding task
+		await sleep(500);
+		breakEE(task.eeType, task.eeHealth, healthAmount);
+		res.sendStatus(204);
+	})
+);
 
 /**
  * Emit any Socket.IO event manually
@@ -127,43 +165,65 @@ export function updateEmptyEpsilonState() {
 	// Exit straight away if EE connection is disabled. It needs to be disabled before
 	// the EE server is launched, because the EE HTTP server is buggy and will crash the
 	// game server if it gets a request before fully loading.
-	const isEeConnectionEnabled = !!get(getData('ship', 'metadata'), 'ee_connection_enabled');
+	const isEeConnectionEnabled = !!get(
+		getData('ship', 'metadata'),
+		'ee_connection_enabled'
+	);
 	if (!isEeConnectionEnabled) return;
 
-	return getEmptyEpsilonClient().getGameState().then(state => {
-		const metadataKeys = ['id', 'type', 'created_at', 'updated_at', 'version'];
-		// Save Empty Epsilon connection status to EE metadata blob
-		const connectionStatus = getEmptyEpsilonClient().getConnectionStatus();
-		const previousConnectionStatus = omit(getData('ship', 'ee_metadata'), metadataKeys);
-		if (!isEqual(connectionStatus, previousConnectionStatus)) setData('ship', 'ee_metadata', connectionStatus, true);
-		// Do not update state if request to EE failed
-		if (state.error) return;
-		// Do not update state if EE sync is disabled
-		if (!get(getData('ship', 'metadata'), 'ee_sync_enabled')) return;
-		const currentState = omit(getData('ship', 'ee'), metadataKeys);
-		// Do not update state if state has not changed
-		if (isEqual(state, currentState)) return;
-		setData('ship', 'ee', state, true);
-	});
+	return getEmptyEpsilonClient()
+		.getGameState()
+		.then((state) => {
+			const metadataKeys = [
+				'id',
+				'type',
+				'created_at',
+				'updated_at',
+				'version',
+			];
+			// Save Empty Epsilon connection status to EE metadata blob
+			const connectionStatus = getEmptyEpsilonClient().getConnectionStatus();
+			const previousConnectionStatus = omit(
+				getData('ship', 'ee_metadata'),
+				metadataKeys
+			);
+			if (!isEqual(connectionStatus, previousConnectionStatus))
+				setData('ship', 'ee_metadata', connectionStatus, true);
+			// Do not update state if request to EE failed
+			if (state.error) return;
+			// Do not update state if EE sync is disabled
+			if (!get(getData('ship', 'metadata'), 'ee_sync_enabled')) return;
+			const currentState = omit(getData('ship', 'ee'), metadataKeys);
+			// Do not update state if state has not changed
+			if (isEqual(state, currentState)) return;
+			setData('ship', 'ee', state, true);
+		});
 }
 
 // Load current events
 loadEvents(io);
 
 // Load initial state from database before starting the HTTP listener and loading rules
-Store.forge({ id: 'data' }).fetch().then(model => {
-	const data = model ? model.get('data') : {};
-	initState(data);
-	logger.info('Redux state initialized');
-	enablePersistance();
-	enableGracefulShutdown();
-	loadRules();
-	startServer();
+Store.forge({ id: 'data' })
+	.fetch()
+	.then((model) => {
+		const data = model ? model.get('data') : {};
+		initState(data);
+		logger.info('Redux state initialized');
+		enablePersistance();
+		enableGracefulShutdown();
+		loadRules();
+		startServer();
 
-	const EE_UPDATE_INTERVAL = parseInt(process.env.EMPTY_EPSILON_UPDATE_INTERVAL_MS || '1000', 10);
-	logger.watch(`Starting to poll Empty Epsilon game state every ${EE_UPDATE_INTERVAL}ms`);
-	setInterval(updateEmptyEpsilonState, EE_UPDATE_INTERVAL);
-});
+		const EE_UPDATE_INTERVAL = parseInt(
+			process.env.EMPTY_EPSILON_UPDATE_INTERVAL_MS || '1000',
+			10
+		);
+		logger.watch(
+			`Starting to poll Empty Epsilon game state every ${EE_UPDATE_INTERVAL}ms`
+		);
+		setInterval(updateEmptyEpsilonState, EE_UPDATE_INTERVAL);
+	});
 
 // Generate and serve API documentation using Swagger at /api-docs
 loadSwagger(app);
@@ -172,7 +232,9 @@ initStoreSocket(io);
 
 function startServer() {
 	const { APP_PORT } = process.env;
-	http.listen(APP_PORT, () => logger.start(`Odysseus backend listening on http://localhost:${APP_PORT}`));
+	http.listen(APP_PORT, () =>
+		logger.start(`Odysseus backend listening on http://localhost:${APP_PORT}`)
+	);
 }
 
 // Health check route
