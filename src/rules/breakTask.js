@@ -6,6 +6,7 @@ import * as bwms from './bwmsHelper';
 import * as beamWeapons from './beamWeaponsHelper';
 import store from '../store/store';
 import { logger } from '../logger';
+import { getButtonState } from './boxes/buttonboard';
 
 /**
  * Logic to break a specific task.
@@ -47,11 +48,14 @@ const BUTTON_BOARD_STATE_GENERATORS = {
 function getAdditionalContext(box, task) {
 	let ctx = {};
 	if (box.boxType in BUTTON_BOARD_STATE_GENERATORS) {
+		// Check current state of switch and ensure task requires switch to be flipped
+		const buttonboard = store.getState().data.box.buttonboard;
+		const currentButtonState = getButtonState(buttonboard, box.buttonIndex);
 		do {
 			ctx = {
 				context: BUTTON_BOARD_STATE_GENERATORS[box.boxType](),
 			};
-		} while (ctx.context.measuredValue === box.context.measuredValue);
+		} while (ctx.context.measuredValue === currentButtonState);
 	} else if (box.boxType === 'reactor_wiring') {
 		const n = randomInt(0, wiring.CODE_COUNT - 1);
 		const code = wiring.getCode(n);
