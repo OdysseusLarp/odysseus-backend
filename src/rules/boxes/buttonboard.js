@@ -38,7 +38,7 @@ watch(['data', 'box', 'buttonboard'], (button, previousBox, state) => {
 	}
 });
 
-function getButtonState(button, index) {
+export function getButtonState(button, index) {
 	if (!button.config || !button.config.pins || !button.config.pins[index]) {
 		logger.error(
 			`Could not find index ${index} from button.config.pins ${JSON.stringify(
