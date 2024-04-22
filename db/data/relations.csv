@@ -1,9 +1,7 @@
 character_or_npc_1,character_or_npc_2,relation
 Malak Kovalenko,Caleb Wong,Caleb Wong and Malak Kovalenko are roommates.
-Tyler Carrillo,Caleb Wong,Caleb Wong saved Tyler Carrillo's little sister Reese Carrillo.
-Zyra Lee,Caleb Wong,Caleb Wong and Zyra Lee has hooked up a few times.
-Alia Swanson,Caleb Wong,Zyra Lee convinced Alia Swanson to take Zyra on board instead of Caleb Wong.
-Caleb Wong,Reese Carrillo,Caleb Wong saved Reese Carrillo from Ellarion during the attacks.
+Zyra Lee,Caleb Wong,Caleb Wong and Zyra Lee has hooked up a few times. Zyra Lee convinced Alia Swanson to take Zyra on a mission instead of Caleb Wong.
+Alia Swanson,Caleb Wong,Zyra Lee convinced Alia Swanson to take Zyra on a mission instead of Caleb Wong.
 Cal Allen,Salma Taylor,Cal Allen's biggest regret in life is letting go of Salma Taylor.
 Beva Drugov,Szymon Kovalenko,Szymon Kovalenko was a local farmer who visited Beva Drugov often while Beva was in an orphonage since he and his wife Nadia Kovalenko didn't have any children of their own (Malak Kovalenko isn't Szymons biological child).
 Hedly Walker,Gira Hayakawa,Gira Hayakawa is Hedly Walker’s stepdaughter. Hedly loved Gira for years as their own child untill the relationship with Gira's mother Isha Hayakawa ended.
@@ -18,6 +16,376 @@ Glen Hollow,Marcio Augustos Cauruleos,Marcio Augustos Caurueleos is the Emperor 
 Eli Booth,Amy Arima,Eli Booth knew that Amy Arima was Ismy Arimas aunt. Ismy grew up with Amy.
 Pax Houghton,Evelyn Case,Pax Houghton had a relationship with Evelyn Case and they had a child Ballard Case (not registered in the system).
 Pax Houghton,Ballard Case,Pax Houghton and Evelyn Case had a child Ballard Case. Pax has never been officially declared as the father of Ballard Case.
-Mark Bolton,Qwen Montoya,Mark Bolton had a short affair with Qwen Montoya and result was Jill Montoya. Mark knew but didn't want to break his marrige for Qwen and Jill. Qwen found some scavanger man to be with (and they pretend to be the other parent for Jill). After few baby years Qwen and the scavanger man pretty much left Jill to survive alone. Life was too hard for them. From the shadows Mark (with the help of Lera Yang) helped Jill survive and got a spot from military for Jill. Later on Mark made sure that Jill was hired on ESS Odysseus under his child Amir Bolton.
-Jill Montoya,Mark Bolton,Mark Bolton is the real father of Jill Montoya. Mark Bolton had a short affair with Qwen Montoya and result was Jill Montoya. Mark knew but didn't want to break his marrige for Qwen and Jill. Qwen found some scavanger man to be with (and they pretend to be the other parent for Jill). After few baby years Qwen and the scavanger man pretty much left Jill to survive alone. Life was too hard for them. From the shadows Mark (with the help of Lera Yang) helped Jill survive and got a spot from military for Jill. Later on Mark made sure that Jill was hired on ESS Odysseus under his other child Amir Bolton.
+Mark Bolton,Qwen Montoya,Mark Bolton is the real father of Jill Montoya. Mark Bolton had a short affair with Qwen Montoya and result was Jill Montoya. Mark knew but didn't want to break his marrige for Qwen and Jill. Qwen found some scavanger man (Stig Larssen) to be with (and they pretend to be the other parent for Jill). After few baby years Qwen and the scavanger man pretty much left Jill to survive alone. Life was too hard for them. More on the plot The secret sibling of Amir Bolton - Jill Montoya
+Jill Montoya,Mark Bolton,Mark Bolton is the real father of Jill Montoya. Mark Bolton had a short affair with Qwen Montoya and result was Jill Montoya. Mark knew but didn't want to break his marrige for Qwen and Jill. Qwen found some scavanger man (Stig Larssen) to be with (and they pretend to be the other parent for Jill). After few baby years Qwen and the scavanger man pretty much left Jill to survive alone. Life was too hard for them. More on the plot The secret sibling of Amir Bolton - Jill Montoya
 Jill Montoya,Amir Bolton,Jill Montoya and Amir Bolton are unknowingly siblings (Mark Bolton the father of Amir never admitted Jill to be their child and therefore it doesn't show on official records).
+Vane Hodge,Kerrie Ray,"Adoptive Cousins, Vane's mother's sister adopted Kerrie."
+Koga Kyoshi,Kerrie Ray,"Adoptive Cousins, Koga's mother's sister adopted Kerrie."
+Keena Marsh,Kerrie Ray,"Keena is Kerries ""Aunt"", Keena's sister adopted Kerrie."
+Lane Thomas,Gira Hayakawa,"Relatives, Lane is Gira's aunt (Lane Thomas = Lane Hayakawa)"
+Lane Thomas,Isha Hayakawa,Siblings (Lane Thomas = Lane Hayakawa)
+Lane Thomas,Roi Hayakawa,Roi is Lane's Parent (Lane Thomas = Lane Hayakawa)
+Lane Thomas,Akun Hayakawa,Akun is Lane's Parent (Lane Thomas = Lane Hayakawa)
+Lane Hayakawa,Shae Thomas,Shae is Lane's Child (Lane Thomas = Lane Hayakawa)
+Isha Hayakawa,Shae Thomas,Isha is Shae's aunt since Shae's mother Lane is Isha's sibling (Lane Thomas = Lane Hayakawa)
+Shae Thomas,Gira Hayakawa,Cousins (Lane Thomas = Lane Hayakawa)
+Shae Thomas,Roi Hayakawa,Roi is Shae's Grandparent (Lane Thomas = Lane Hayakawa)
+Shae Thomas,Akun Hayakawa,Akun is Shae's Grandparent (Lane Thomas = Lane Hayakawa)
+Torrey Watson,Vane Hodge,Siblings (Torrey Watson = Koga Kyoshi)
+Torrey Watson,Eliza Ray,Eliza is Torrey's real aunt (Torrey Watson = Koga Kyoshi)
+Torrey Watson,Keena Marsh,Keena is Torrey's real parent (Torrey Watson = Koga Kyoshi)
+Torrey Watson,Takumi Kyoshi,Takumi is Torrey's real parent (Torrey Watson = Koga Kyoshi)
+Nikita Watson,Koga Kyoshi,Married (Torrey Watson = Koga Kyoshi)
+Nora Ellis,Flann Hollow,Ex-Lovers on Ellarion
+Viola McNaught,Sierra Lee,Friends/Old Faith
+Malak Fukui,Mark Bolton,Malak served with Bolton on the ESS Harbinger 20 years ago in his first post-marine posting. As commander/more senior officer Bolton helped the experienced marine transition to the naval officer role.
+Tristan Fukui,Don Sorrows,"Classmates at Saigo Academy in 540, something of a counterpoint to Tristan - irreverent. Has traded occasional messages with Tristan during their time on Atlantis (Don is on ESS Valkyrie)"
+Ayla Banner,Eugenie Russell,"Ex-lovers, but split up due to the childish feud with Hayden Carson"
+Ayla Banner,Hayden Carson,Former colleagues and lovers who fell out after Ayla started seeing Eurgenie
+Ayla Banner,Avery Higashi,"Follow Skyren basketball afficionados; have remained in touch (Avery knows Ayla had some messy relationship at while an instructor, but not with whom [Eugenie Russel and Hayden Carson])"
+Garen Knowles,Marcio Augustos Cauruleos,Bodyguard to Marcio Augustos Cauruleos
+Garen Knowles,Glen Hollow,Former superior (and later friend) in the Imperial Guard
+Garen Knowles,Farron Washington,Former superior (and later friend) in the Imperial Guard
+Marry van Ghett,Harley Carroll,Shooting buddy who helped Harley find their way again after Haileys death
+Marry van Ghett,Gene Hawkins,Chief Petty Office van Ghett heloped Gene after their release from arrest
+Taelor,Morgan Yates,Taelor and Morgan had a fling and a child Taren Yates was born from that
+Taelor,Molina,Molina was Taelor's advisor
+Quinn Willis,Oriel Cook,"First employer, fellow journalist (albeit now publisher) and sounding board"
+Steff Carson,Ziva Callahan,"Was Ziva's ""handler"" during the EOC trials before her assignment to the Odysseus"
+Jay Cambleton,Beva Drugov,Beva's Inspiration to join the EOC military
+Mari Lake,Jona Davis,Occasional hookup of Nico's (Jona is just a cover name)
+Mari Lake,Nico Lawrence,Occasional hookup of Nico's
+Clancy Milton,Hali Okuma,Clancy is a fellow member of the Yellow movement back in the 520s. Occasional contact in the years since
+Zeya Cook,Elya Andrews,Elya was Zeya's former commanding officer
+Nicol Wells,Sierra Lee,Nicol found out Sierra is a family member of Zyra Lee
+Valerian Fukui,Teressa Khan,Old friends from the academy
+Mel McBride,Teressa Khan,Old friends from the academy
+Hedly Walker,Teressa Khan,Old friends from the academy
+Arlyn Booth,Teressa Khan,Old friends from the academy
+Avery Higashi,Skye Duran,Siblings (Avery's father is Skye's father)
+Arthur Higashi,Skye Duran,Arthur is Skye's real father
+Harper Ellis,Caleb Wong,Harper’s close friend and once-lover.
+Harper Ellis,Arturo Watson,Harper knows that Jin Komatsu and Arturo Watson are very close and from the conservative end of the Yellows
+Yuri Mills,Richard Tremor,After Richard died in a shooting Yuri Mills became the Acting Senator instead of Richard Tremor
+Yuri Mills,Elan Nieze,Your knows Elan is the leader of the Purity Dynasty
+Yuri Mills,Roman Plichata,Roman has given Yuri instructions regarding their rise to the leadership of the party. Roman surely knows more about what happened to Richard Tremor.
+Yuri Mills,Jaden Hill,"Jaden is Yuri's supporter, Purple party senator (radical wing)"
+Yuri Mills,Okane Yakovna,"Yuri knows they were supporter of Richard Tremor, Purple party senator (moderate wing)"
+Nico Lawrence,Jona Davis,Nico is pretending to be Jona Davis
+Lynn Ryan,Ator Davis,Lynn is pretending to be Ator Davis
+Lynn Ryan,Lana Chan,Lana and Lynn are partners in crime to hack into Purity's accounts
+Noe Walker,Hedly Walker,"Half siblings, same parent Theosin Walker"
+Leone Mills,Aran Arima,Leone killed Aran by poisoning them (2 years). Leone was their childs Ismy's baby sitter)
+Leone Mills,Ismy Arima,Leone was Ismy's babysitter
+Leone Mills,Misha Kent,Leone stabbed Misha and was never convicted even though there was a witness
+Leone Mills,Gene Hawkins,Gene witnessed when Leone stabbed Misha Kent. They remember Leone's X shape scar.
+Leone Mills,Abe Arima,Was a babysitter of Ismy back in the day when Abe's spouse Aran died
+Leone Mills,Angel Buchanan,Angel is a Purity members who Leone most often reported and got assignments from when it wasn’t their father Corey Mills. They know all about Leone's assignments. Angel worked with Leone on the Arima hit.
+Leone Mills,Roman Plichata,Roman is a Purity members who Leone most often reported and got assignments from when it wasn’t their father Corey Mills. They know all about Leone's assignments. Roman worked with Leone on the Kent hit.
+Eva Ellis,Amie Bolton,Killed during the surgery Eva was performing (Amie is Amir Bolton's sister)
+Eva Ellis,Taylor Smith,Eva's child's Harper's spouse-to-be
+Eva Ellis,Alex Harris,Eva's child's Fenix's spouse-to-be
+Juno Aurelios Cauruleos,Glen Hollow,Glen is Juno's real father
+Juno Aurelios Cauruleos,Julia Aurelios Cauruleos,Half siblings
+Juno Aurelios Cauruleos,Jovian Aurelios Cauruleos,Half siblings
+Juno Aurelios Cauruleos,Marcio Augustos Cauruleos,Marcio is Juno's uncle
+Juno Aurelios Cauruleos,Aurelia Augustos Cauruleos,Aurelia is Juno's parent
+Juno Aurelios Cauruleos,Frederic Julios Cauruleos,"Frederic is Juno's ""official father"""
+Heath Steele,Jack Thomson,Jack is the father of Cal Allen. Cal looked after Heath when they were a kid.
+Heath Steele,Holt Shaw,"The fourth H who left before the other three got famous. Heath - Hale - Han, Holt was Heath's boss at the academy"
+Han Barnes,Holt Shaw,The fourth H who left before the other three got famous. Heath - Hale - Han
+Hale Green,Holt Shaw,The fourth H who left before the other three got famous. Heath - Hale - Han
+Glen Hollow,Julia Aurelios Cauruleos,Glen is Julia's bodyguard
+Jordan Washington,Julia Aurelios Cauruleos,Julia took identity of Jordan Washington
+Farron Washington,Glen Hollow,Glen took identity of Farron Washington. See more info from Glen.
+Shae Thomas,Jovian Aurelios Cauruleos,Shae = Jovian
+Shae Thomas,Julia Aurelios Cauruleos,Siblings
+Shae Thomas,Juno Aurelios Cauruleos,Siblings
+Shae Thomas,Marcio Augustos Cauruleos,Marcio is Shae's uncle
+Shae Thomas,Aurelia Augustos Cauruleos,Aurelia is Shae's mother
+Shae Thomas,Frederic Julios Cauruleos,Frederic is Shae's father
+Shae Thomas,Gira Hayakawa,"""Cousins"""
+Hedly Walker,Reiss Bennett,"Hedly and Reiss were wingmans and Hedly caused the flight accident where Reiss ""the Rat"" died"
+Hedly Walker,Yves Bennett,"Yves was doing a crime gig with Hedly and it went wrong, Spider shot Yves as a warning."
+Hedly Walker,Kara Bennett,Sister of Yves and Reiss whose death Hedly was part of
+Aedan,Asano Akoto,Met at the Blue Party meeting. Asano often agrees with Aedan's opinions.
+Aedan,Arturo Watson,Aedan has been introduced to Arturo Watson
+Fenix Ellis,Taylor Smith,Harper's (Fenix's sibling) spouse-to-be
+Harper Ellis,Alex Harris,Fenix's (Harper's sibling) spouse-to-be
+Tan Ellis,Taylor Smith,Tan's child's Harper's spouse-to-be
+Tan Ellis,Alex Harris,Tan's child's Fenix's spouse-to-be
+Tan Ellis,Richard Tremor,Eva's (spouse) parent
+Tan Ellis,Bren Richard,"Knew them back in the day, good fighter pilot"
+Pax Houghton,Lydia Sharp,Lydia accidentally got pregnant (child = Remi Sharp). Pax is the father. Lydia left Remi to Pax to take care of.
+Pax Houghton,Richard Tremor,ZW was hired to kill Tremor
+Pax Houghton,Tatia Vladimova,"Tatia is a high ranking ZW member, knows Pax is the Spider"
+Pax Houghton,Rayan Poole,"Rayan is a high ranking ZW member, knows Pax is the Spider"
+Pax Houghton,Brice Cole,Brice is a high-ranking ZW member
+Pax Houghton,Kita Ukon,Kita is a high-ranking ZW member
+Pax Houghton,Kaya Koma,"Kaya is a very important customer of Pax, right-hand person for leader of Purity Elan Nieze"
+Pax Houghton,Salva Denisovich,Salva is a very important customer from Defiance Dynasty
+Pax Houghton,Terry Marsh,Terry is a very important customer from Gray Scorpio movement
+Evin Reid,Alix Granville,Colleagues
+Evin Reid,Kiran Norris,Colleagues
+Evin Reid,Ryane Pearson,Devyn Pearson's wife (Devyn is project android by Evin Reid)
+Gallan Reid,Alix Granville,"Gallan killed Alix by carbon monoxide poisoning, ruled as an accident"
+Gallan Reid,Kiran Norris,"Gallan killed Kiran by radiation poisoning, ruled as an accident"
+Kerrie Ray,Eran Fox,"Childhood friends. Eran is Lee Savages ex who Lee left after 3 years of ""false hopes""."
+Kerrie Ray,Glen Hollow,Glen is Kerrie's real parent
+Kerrie Ray,Aurelia Augustos Cauruleos,Aurelia is Kerrie's real parent
+Kerrie Ray,Juno Aurelios Cauruleos,Kerrie = Juno
+Kerrie Ray,Frederic Julios Cauruleos,"Frederic is Kerrie's/Juno's ""official father"""
+Kerrie Ray,Julia Aurelios Cauruleos,Half siblings since Juno = Kerrie
+Kerrie Ray,Jovian Aurelios Cauruleos,Half siblings since Juno = Kerrie
+Kerrie Ray,Marcio Augustos Cauruleos,Marcio is Juno's uncle Juno = Kerrie
+Lonnie Gordon,Richard Tremor,ZW was hired to kill Tremor
+Lonnie Gordon,Tatia Vladimova,"Tatia is a high ranking ZW member, knows Pax is the Spider"
+Lonnie Gordon,Rayan Poole,"Rayan is a high ranking ZW member, knows Pax is the Spider"
+Lonnie Gordon,Brice Cole,"Brice is a high-ranking ZW member, was going to leave the ZW with Lonnie."
+Lonnie Gordon,Kita Ukon,Kita is a high-ranking ZW member
+Lonnie Gordon,Kaya Koma,"Kaya is a very important customer of Pax, right-hand person for leader of Purity Elan Nieze"
+Lonnie Gordon,Salva Denisovich,Salva is a very important customer from Defiance Dynasty
+Lonnie Gordon,Terry Marsh,Terry is a very important customer from Gray Scorpio movement
+Lonnie Gordon,Evelyn Case,Lonnie knows Evelyn is Ex spouse of Pax Houghton and parent of Ballard Case
+Lonnie Gordon,Hino Seiryo,"Hino is one of the leaders of Gray Scorpio. The organization works in cells, so very few people know everyone involved, but Hino might be high enough to be one of them. "
+Lonnie Gordon,Jude Gardner,Jude is a Gray Scorpio operative
+Lonnie Gordon,Vic Garrett,"Vic is the person behind the Gray radio, there are several informers and Vic is not the only one speaking but most often it is them."
+Lonnie Gordon,Homura Denbe,Homura is Gray radio informant
+Remi Sharp,Li Russell,Li Russel (formerly known as Lydia Sharp) is the real mother of Remi Sharp
+Li Russell,Lydia Sharp,Li Russell = Lydia Sharp
+Ator Davis,Gera Siegel,Gera is known to hackers; A person who has access to Classified Personal File
+Eli Booth,Gera Siegel,Gera is known to hackers; A person who has access to Classified Personal File
+Remi Sharp,Gera Siegel,Gera is known to hackers; A person who has access to Classified Personal File
+Shae Thomas,Gera Siegel,Gera is known to hackers; A person who has access to Classified Personal File
+Remi Sharp,Kira Steele,Heath Steele was Kira Barnes’s spouse and Han Barnes was their sibling (Kira was killed by Remi)
+Remi Sharp,Aydan Andrews,"Aydan is Alia Swanson’s twin sibling, spouse of Caden Andrews"
+Remi Sharp,Amira Andrews,Aydan’s (Alia Swanson's twin sibling) child
+Remi Sharp,Tatia Vladimova,"Tatia is a high ranking ZW member, knows Pax is the Spider"
+Remi Sharp,Brice Cole,Brice is a high-ranking ZW member
+Remi Sharp,Kaya Koma,"Kaya is a very important customer of Pax, right-hand person for leader of Purity Elan Nieze"
+Remi Sharp,Salva Denisovich,Salva is a very important customer from Defiance Dynasty
+Remi Sharp,Terry Marsh,Terry is a very important customer from Gray Scorpio movement
+Harley Carroll,Dani Hollow,Harley was accused of being part of Dani's death on the battlefield. It was declared to be Machines.
+Aeran Lester,River Galed,Aeran's Mentor and supervisor at Narayan Memorial Hospital
+Ashlin Hall,Brandon Okura,Suitor of Ashlin Hall in the past
+Ashlin Hall,Reiss Bennett,"Reiss ""The Rat"" Bennett was Hedly Walker's wingman Ashlin also knew. Died in a flight accident which was trialed to be Hedly's fault."
+Ator Davis,Lana Chan,Lana and Lynn are partners in crime to hack into Purity's accounts
+Lynn Ryan,Gera Siegel,Gera is known to hackers; A person who has access to Classified Personal File
+Abe Arima,Noah Booth,Noah and Ismy dated
+Abe Arima,Elan Nieze,Abe knows Elan is the leader of Purity
+Abe Arima,Corey Mills,"Abe knows Corey is an influential member of Purity, father of Yuri and Leone Mills."
+Abe Arima,Angel Buchanan,"A Purity member who Abe most often report things to, recently about Devyn Pearson, about their science discoveries, and whatever happens on the ship Abe thinks Purity should know about. "
+Alia Swanson,Elya Andrews,Alia worked for Elya few years
+Alia Swanson,Hailey Carroll,Hailey saved Alia's life in a fight on planet Arak by sending Alia to fetch help
+Arlyn Booth,Don Meadows,Arlyn was an assistant of Don when they were 19 years old
+Ballard Case,Remi Sharp,"Siblings, Pax is their common parent"
+Ballard Case,Jaden Hill,"Purple Party aquintances, Jaden tried to suggest Ballard should run for Senator"
+Beva Drugov,Rachel Cambleton,Jay Cambleton's adoptive grandchild (from the same orphanage where Beva were)
+Beva Drugov,Sam Cambleton,"Jay Cambleton's child, Lise Cambleton's spouse and adoptive parent of Rachel Cambleton"
+Beva Drugov,Lise Cambleton,Sam Cambleton's spouse and adoptive parent of Rachel Cambleton
+Blake Ishimoto,Ryane Pearson,Blake knows Devyn Pearson was convicted murdering their spouse Ryane.
+Cal Allen,Sheryl Steele,Parent's of Heath Steele. Cal's neighbor.
+Cal Allen,James Steele,Parent's of Heath Steele. Cal's neighbor. James was a good friend of Cal's father Jack Thomson.
+Cal Allen,Joe Carson,Joe is Salma's spouse.
+Cal Allen,Hayden Carson,Cal is the real father of Hayden Carson.
+Cal Allen,Mike Russell,Cal knows Mike worked under Gaylen Russell in army logistics. Mike is Gaylen's spouse.
+Dallan Jordan,Elan Nieze,Knows Dallans imprisonment by Machines as well as all the deals Dallan did with them.
+Dallan Jordan,Jaden Hill,Knows about the Machine attacks and Dallan's role in them.
+Dayle Rogers,Siri Fay,Contacted Dayle Rogers in 529 and asked Kai to apply for a job as a radar technician (Han Barnes' old job) on the ESS Odysseus. Siri used to work on ESS Odysseus and now has their own ship.
+Dayle Rogers,Ryane Pearson,The child of Dayle's friend Hali
+Dayle Rogers,Alia Okuma,The spouse of Dayle's friend Hali. Alia was on a ship which were destroyed in the battle after Dayle's parent's were executed.
+Dallan Jordan,Bren Richard,Bren was Dallan's teacher in the academy and their commanding officer (also for Tan and Hale) during the war.
+Hale Green,Bren Richard,Hale's commanding officer during the war
+Deron Richard,Noah Booth,Deron knows Noah died in a fighter accident during an air show (Noe told)
+Espen Nakahara,Kit Hobbs,Family disowned Espen after a fatal car accident where Kit Hobbs was killed
+Eugenie Russell,Kit Hobbs,Kit was a friend of Eugenie. Kit died on a car accident. Eugenie knows it was Espen Nakahara who was the other driver. 
+Eugenie Russell,Ayla Banner,Hayden Carson ruined the relationship between Eugenie and Ayla.
+Glen Hollow,Aurelia Augustos Cauruleos,Glen and Aurelia had an affair and so Juno (Kerrie Ray) was born
+Glen Hollow,Maron Richard,Glen accidentally killed Maron during the Emperor's speech
+Glen Hollow,Frederic Julios Cauruleos,Glen knows Frederic who was spouse of Aurelia
+Farron Washington,Aurelia Augustos Cauruleos,Glen and Aurelia had an affair and so Juno (Kerrie Ray) was born
+Farron Washington,Maron Richard,Glen accidentally killed Maron during the Emperor's speech
+Farron Washington,Frederic Julios Cauruleos,Glen knows Frederic who was spouse of Aurelia
+Kerrie Ray,Farron Washington,Glen is Kerrie's real parent
+Farron Washington,Marcio Augustos Cauruleos,Marcio Augustos Caurueleos is the Emperor and Glen Hollow is the bodyguard of the Marcios relative Julia Aurelios Cauruleos. Glen Hollow suspectes that Marcio might have something to do with the attacks.
+Garen Knowles,Farron Washington,Former superior (and later friend) in the Imperial Guard
+Juno Aurelios Cauruleos,Farron Washington,Glen is Juno's real father
+Farron Washington,Julia Aurelios Cauruleos,Glen is Julia's bodyguard
+Fenix Ellis,Susan Riviera,Fenix's drug dealer and a party pal. Died at the Ellarion Spaceport when Valerian shot them so that the Machines wouldn't find out where the rest of the survivors were.
+Flann Hollow,Aurelia Augustos Cauruleos,Flann knew about their siblings Glen's relationship and a child with Aurelia.
+Fran Abrankowich,Reid Komatsu,Fran knows Jin is married to Reid
+Fran Abrankowich,Richard Tremor,Fran read about the assassination an knows Richard was Jin´s best friend.
+Gale Chapman,Kian Savage,Lovers in a same marine team. Kian died saving Gale in a routine mission 522 which turned to ambush.
+Gale Chapman,Harrold Andersson,Harrold was a team leader who died in a routine mission 522 which turned to ambush. Harrold went to check up Kian and Gale and was shot.
+Gale Chapman,Simon Green,Team members. Saw when Kian Savage and Harrold Andersson were killed but didn't rat out Gale for it. Died of cancer 4 years ago.
+Gaylen Russell,Mark Bolton,Friends from the last war.
+Gene Hawkins,Misha Kent,Gene witnessed a murder of Misha Kent.
+Gene Hawkins,Theosin Walker,Gene's sibling's (Noe) father
+Hale Green,Cindi Jordan,Dallan's wife. After a night with shots Cindi and Hale slept together.
+Hale Green,Yahir Watts,Chain strangler (Yahir) killed Hale's sister Hannah
+Hale Green,Koga Kyoshi,Chain strangler (Yahir) killed Hale's sister Hannah
+Hale Green,Torrey Watson,Chain strangler (Yahir) killed Hale's sister Hannah
+Hale Green,Kira Steele,"Heath was married to Kira, Han's sister. Was murdered a year ago."
+Hali Okuma,Hino Seiryo,Hino is one of the leaders of Gray Scorpio who Hali knows.
+Hali Okuma,Jude Gardner,Gray Scorpio operative who Hali knows
+Hali Okuma,Vic Garrett,The person behind the Gray radio who Hali knows
+Hali Okuma,Homura Denbe,Gray radio informant who Hali knows
+Hali Okuma,Yin Laurence,Friends. Dayle Rogers' parent. Lila was found guilty of treason and executed.
+Hali Okuma,Lila Laurence,Friends. Dayle Rogers' parent. Yin was found guilty of treason and executed.
+Hali Okuma,Eddar Laurence,Friends. Dayle Rogers' uncle. Adopted Dayle after Dayle's parents were found guilty of treason and executed.
+Hali Okuma,Maron Richard,Fellow Gray Sccorpio operative who was shot during the emperor's speech. Maron gave Hali a letter to be given for Deron Richard before they died.
+Han Barnes,Fergus Dale,"Han Barnes tried to apply for a job when they were too young running away from home and Fergus, Quartermaster of Ashoka Military Base, called the cops. Later on Han got the job after their mother called Fergus to thank them for finding Han."
+Han Barnes,Dorothy Gill,Fought together in military academy
+Han Barnes,Siri Fay,Recommended Han additional studies so they could rise a rank.
+Hayden Carson,Walther Brest,Best friend from school
+Hayden Carson,Kira Tao,Best friend from school
+Hayden Carson,Leif Gothia,Hayden's first Star Captain on ESS Valkyrie
+Hayden Carson,Don Sorrows,Despiced Mel McBride and didn't grant mel promotion. Were at the same time on ESS Valkyrie.
+Heath Steele,Remi Sharp,Remi killed Heath's spouse
+Han Barnes,Remi Sharp,Remi killed Han's sister
+Idris Kalashnik,Sierra Lee,Idri's mother was a close friend with Sierra Lee
+Idris McBride,Sierra Lee,Idri's mother was a close friend with Sierra Lee
+Idris Kalashnik,Ryane Pearson,Idris had a stricly physical affair with Ryane
+Idris McBride,Ryane Pearson,Idris had a stricly physical affair with Ryane
+Idris Kalashnik,Hailey Carroll,Hayley saved Idris in a Battle of Arak
+Idris McBride,Hailey Carroll,Hayley saved Idris in a Battle of Arak
+Idris Kalashnik,Caleb Wong,Idris is Caleb's mentor
+Idris McBride,Caleb Wong,Idris is Caleb's mentor
+Idris Kalashnik,Mel McBride,"Spouse when Idris was still ""alive"" as McBride"
+Idris Kalashnik,Idris McBride,Kalashink = McBride
+Isha Hayakawa,Mero Rasmussen,Mero is the father of Gira (Isha's child) 
+Ismy Arima,Noah Booth,Dated before Noah died
+Ismy Arima,Elan Nieze,Ismy knows Elan since they are Lynn's (friend) grandparent.
+Jill Montoya,Stig Larssen,Jill's parent (not officially)
+Jill Montoya,Lera Yang,"Friends, Lera raised Jill and was their engineering mentor."
+Jill Montoya,Dorian Kent,Dorian got you the job Jill turned down on ESS Odysseus (arranged by Leigh Kent)
+Jin Komatsu,Richard Tremor,Jin's love of their life
+Jin Komatsu,Gabe Abrankowich,Jin saw when Gabe was being harrased by Skye Duran and Tyler Carrillo.
+Jin Komatsu,Samantha Richard,Richard's other daughter
+Jin Komatsu,David Richard,Samantha is married to David
+Jin Komatsu,Maron Richard,Maron is the child of Samantha and David and was shot a year ago during the emperor's speech
+Jin Komatsu,Aurelia Augustos Cauruleos,Dead Emperor. Jin knows that they had one child Julia Aurelios Cauruleos
+Jin Komatsu,Marcio Augustos Cauruleos,Aurelia's brother and the new Emperor. Jin thinks that Marcio has way too strong connections to Purity
+Jin Komatsu,Raisa Andreevna,Just elected head of Senate
+Jin Komatsu,Jaden Hill,"Conservative member of Purple Party, member of Purity"
+Jin Komatsu,Okane Yakovna,Moderate Purple Party member
+Jin Komatsu,Quinn Cole,"Old and reasonable Blue Party politician, 7th term in Senate"
+Jin Komatsu,Asano Akoto,New and young Blue Party member whom Jin doesn't know personally
+Jin Komatsu,Arturo Watson,Collagues in the Yellow Party. Jin and Arturo has a same view of things.
+Jodey Agaki,Ryane Pearson,Jodey was a good friend of Devyn Pearson (Ryane's spouse)
+Nico Lawrence,Mari Lake,Occasional hookup of Nico's
+Nico Lawrence,Lera Yang,Nico visited Lera's workshop many times when they were young
+Jona Davis,Lera Yang,Nico visited Lera's workshop many times when they were young
+Nico Lawrence,Richard Tremor,Nico killed Richard
+Jona Davis,Richard Tremor,Nico killed Richard
+Jonah Malone,Drew Holland,The love of Jonah Malone's life. Betrayed Jonah and then killed themself.
+Jonah Malone,Malak Kovalenko,Malak Kovalenko = Drew Holland
+Jonah Malone,Elya Andrews,Elya knows that Jonah Malone knows about Caden Andrews killed Leone Mill's mother while drunk driving.
+Jonah Malone,Quinn Cole,Helped Jonah Malone with their Senate campaign few years ago. Was disapointed when Jonah dropped out of the race but understood Faith was also a worthy pursuit.
+Jonah Malone,Asano Akoto,Fan of Jonah Malone.
+Jordan Washington,Aurelia Augustos Cauruleos,Aurelia is Julia's (Jordan's) parent
+Jordan Washington,Frederic Julios Cauruleos,Frederic is Julia's (Jordan's) parent
+Jordan Washington,Marcio Augustos Cauruleos,Marcio is Julia's (Jordan's) uncle
+Jordan Washington,Juno Aurelios Cauruleos,Julia's sibling which had been erased from records
+Jordan Washington,Jovian Aurelios Cauruleos,Jovian is Julia's sibling
+Jordan Washington,Kerrie Ray,Kerrie = Juno
+Jordan Washington,Shae Thomas,Shae = Jovian
+Kai Rogers,Reid Komatsu,"Kai knows about Jin's and Richard's ""love never got to blossom"" and Kai also knows Reid didn't appreciate their close relationship but didn't say anything to stop it."
+Kai Rogers,Richard Tremor,"Kai knows about Jin's and Richard's ""love never got to blossom"". Lonnie Gordon and Kai Rogers helped Richard to win a place as senator by tampering the votes."
+Kai Rogers,Jaden Hill,"Jaden is a very conservative member of Purple party, member of Purity. Same gang with Dallan Jordan and Yuri Mills. Too right-wing views, in Kai's opinion."
+Kai Rogers,Okane Yakovna,"Okane is one of the more moderate Purple party members, who Kai could count as their ally in politics"
+Karin Alexandrov,Delta Bolton,Karin introduced Delta to Amir
+Shae Thomas,Kerrie Ray,Siblings (Juno & Jovian)
+Vane Hodge,Juno Aurelios Cauruleos,"Adoptive cousins, Vane's mother's sister adopted Kerrie."
+Koga Kyoshi,Juno Aurelios Cauruleos,"Adoptive cousins, Koga's mother's sister adopted Kerrie. Kerrie = Juno"
+Keena Marsh,Juno Aurelios Cauruleos,"Keena is Kerries ""Aunt"", Keena's sister adopted Kerrie."
+Juno Aurelios Cauruleos,Eran Fox,"Childhood friends. Eran is Lee Savages ex who Lee left after 3 years of ""false hopes""."
+Lane Thomas,Garrett Hodge,"Neigbors, Garrett helped Lane and Vane to become friends"
+Lane Hayakawa,Garrett Hodge,"Neigbors, Garrett helped Lane and Vane to become friends"
+Lane Thomas,Lane Hayakawa,Thomas = Hayakawa
+Lee Savage,Eran Fox,"Eran is Lee Savages ex who Lee left after 3 years of ""false hopes""."
+Leigh Kent,Arturo Watson,Knows each other. Their views ofthen clash but they do get along well.
+Leigh Kent,Elya Andrews,Leigh Kent thinks that Elya had something to do with Caden Andrews to stop communicating with Leigh
+Caden Andrews,Sahara Novak,Caden Andrews killed Leone Mill's mother Sahara while drunk driving.
+Leone Mills,Eran Fox,"Lee's old fling, Kerrie blames Lee for breaking Eran's heart."
+Anyran Lester,River Galed,River Galed was assisting Aeran Lester in the surgery when Anyran died.
+Lex Peters,Anyran Lester,Lex was present when Aeran operated Anyran and Anyran died
+Lex Peters,Kian Savage,Beth (Gale's mother) knew about the relationship between Gale and Kian and told Lex Peters about it.
+Lex Peters,Beth Chapman,Close friend with Lex Peters. Beth was their marine instructor at the academy. Lex told Beth that their child Gale has a romantic relationship with Nolan Hunter which is against the rules. Lex asked if Beth could talk to Gale about it.
+Lex Peters,River Galed,Colleagues
+Lonnie Gordon,Ryane Pearson,Hali’s child (co-conspirator at ZW) who was killed by Devyn Pearson
+Lonnie Gordon,Roger Hammer,Leigh Kent's assistant who died in a explosion 10 months ago. Was ordered by Jude Gardner (Gray Scorpio operative) from Lonnie Gordon and Lonnie asked Nickie Ramirez to deliver a package.
+Lonnie Gordon,Raul Fant,Yuri Mill's assistant who died in a explosion 10 months ago. Was ordered by Jude Gardner (Gray Scorpio operative) from Lonnie Gordon and Lonnie asked Nickie Ramirez to deliver a package.
+Leigh Kent,Roger Hammer,Leigh Kent's assistant who died in a explosion 10 months ago. Was ordered by Jude Gardner (Gray Scorpio operative) from Lonnie Gordon and Lonnie asked Nickie Ramirez to deliver a package.
+Leigh Kent,Raul Fant,Yuri Mill's assistant who died in a explosion 10 months ago. Was ordered by Jude Gardner (Gray Scorpio operative) from Lonnie Gordon and Lonnie asked Nickie Ramirez to deliver a package.
+Yuri Mills,Roger Hammer,Leigh Kent's assistant who died in a explosion 10 months ago. Was ordered by Jude Gardner (Gray Scorpio operative) from Lonnie Gordon and Lonnie asked Nickie Ramirez to deliver a package.
+Yuri Mills,Raul Fant,Yuri Mill's assistant who died in a explosion 10 months ago. Was ordered by Jude Gardner (Gray Scorpio operative) from Lonnie Gordon and Lonnie asked Nickie Ramirez to deliver a package.
+Lowan Romero,Dani Hollow,Academy sweethearts. Dani died during the last year of the war. It was questionable if Nolan Hunter was the one to be blamed.
+Lowan Romero,Haven Reid,Haven is Yera's child who died of leukemia at the age of 2.
+Malak Kovalenko,Reese Carrillo,Malak knows Tyler takes good care of their sister Reese
+Malak Kovalenko,Drew Holland,Malak = Drew (or a copy of them)
+Mel McBride,Leif Gothia,Mel's Star Captain on ESS Valkyrie
+Mel McBride,Tem Benton,Tem is Saigo's Governor. Friends. Tem wrote a letter of recommendation for Mel when they applied for a job on ESS Valkyrie
+Nickie Ramirez,Roger Hammer,Leigh Kent's assistant who died in a explosion 10 months ago. Was ordered by Jude Gardner (Gray Scorpio operative) from Lonnie Gordon and Lonnie asked Nickie Ramirez to deliver a package.
+Nickie Ramirez,Raul Fant,Yuri Mill's assistant who died in a explosion 10 months ago. Was ordered by Jude Gardner (Gray Scorpio operative) from Lonnie Gordon and Lonnie asked Nickie Ramirez to deliver a package.
+Nickie Ramirez,Vic Garrett,Nickie Ramirez has listened a lot fo Vic Garrett and Gray Radio
+Nickie Ramirez,Casey White,Nickie Ramirez's childhood friend. Nickie visits them every time they go see their mother. Casey has a spouse and three children. They had a life Nickie would have had if they had stayed.
+Nicol Wells,Rian Hunter,"Friends, Godparent of Elena Wells (Nicol's child), Rian died in an accident 20 years ago"
+Nicol Wells,Sierra Lee,Nicol has figured out that Zyra Lee is same family with Sierra Lee
+Nikita Watson,Sierra Lee,Nikita knows Sierra is known as a great benefactor
+Nikita Watson,Tem Benton,Knows Mel has worked for Tem Benton (Governor of Saigo)
+Noe Walker,Maron Richard,"Friends, Maron was shot during the Emperor's speech"
+Nolan Hunter,Dani Hollow,"Nolan was Dani's team leader (marine), Dani was killed during a mission. Accident was investicated if Nolan had made a mistake but Nolan was found not guilty."
+Nolan Hunter,Elena Hall,Elena was Nolan's and Rian's godchild. Elena eas killed by the bombs in a terrorist attack at the Ellarion City University
+Rian Hunter,Elena Hall,Elena was Nolan's and Rian's godchild. Elena eas killed by the bombs in a terrorist attack at the Ellarion City University
+Nolan Hunter,Hailey Carroll,Hailey was Harley Carroll's sibling. Died in a war.
+Nolan Hunter,Sam Laurell,Marine who served with Nolan Hunter for years. Nolan suspects Sam might have had feelings towards Nolan. Sam was an exceptional marine and respected you both as a commander and as a friend too much to complicate things.
+Oriel Cook,Alia Okuma,Hali Okuma (Oriel's sibling) married Alia
+Oriel Cook,Maron Richard,Oriel is keen on finding out the truth what happened during the Emperor's speech when Maron died
+Oriel Cook,Lucas Wilson,Lucas is married to Briana Chambers (Oriel's the one that got away)
+Oriel Cook,Garen Knowles,"Commander in the Imperial Guard, who Oriel have interviewed a couple of times"
+Osha Green,Kira Steele,Osha knows Kira was Heath's wife who died
+Remy Hall,Rian Hunter,"Childhood friends, As children, Rian and Remy promised each other that if you didn’t find anyone else by the time you were 25, you would marry each other."
+Remy Hall,Ryane Pearson,Remy knows Devyn Pearson killed their wife Ryane Pearson
+Roan Rowen,Enitan Fox,Lifelong friend and roommate at the SAigo Academy of Defence of Roan Rowen
+Roan Rowen,Amy Ramirez,Roan had a lover in every space port. Amy Ramirez was one of them. Had a child together Nickie Ramirez.
+Roan Rowen,Nickie Ramirez,Roan is the father of Nickie Ramirez
+Roan Rowen,Mike Russell,Roan knew Gaylen and Mike Russell. Roan took care of Gaylen when the news of Mike's death came.
+Roan Rowen,Salma Taylor,Cal Allen's and Salma Taylor's relationship was similar to Roan Rowen's and Nikita Watson's.
+Skye Duran,Gabe Abrankowich,Jin saw when Gabe was being harrased by Skye Duran and Tyler Carrillo.
+Tyler Carrillo,Gabe Abrankowich,Jin saw when Gabe was being harrased by Skye Duran and Tyler Carrillo.
+Skye Duran,Elya Andrews,Gave Skye Duran and Tyler Carrillo a suicide mission to get the Machines from following the main fleet
+Tyler Carrillo,Elya Andrews,Gave Skye Duran and Tyler Carrillo a suicide mission to get the Machines from following the main fleet
+Skye Duran,Reese Carrillo,Tyler Carrillo's little sister. Have met few times.
+Koga Kyoshi,Hannah Green,Chain strangler (Yahir) killed Hale's sister Hannah
+Koga Kyoshi,Moren Yates,Chain strangler killed Moren Yates (uncle of Taren Yates)
+Yahir Watts,Hannah Green,Chain strangler (Yahir) killed Hale's sister Hannah
+Yahir Watts,Moren Yates,Chain strangler killed Moren Yates (uncle of Taren Yates)
+Taren Yates,Koga Kyoshi,Chain strangler killed Taren Yates' uncle Moren Yates
+Torrey Watson,Hannah Green,Chain strangler (Yahir) killed Hale's sister Hannah
+Torrey Watson,Moren Yates,Chain strangler killed Moren Yates (uncle of Taren Yates)
+Taren Yates,Yahir Watts,Chain strangler killed Taren Yates' uncle Moren Yates
+Taren Yates,Torrey Watson,Chain strangler killed Taren Yates' uncle Moren Yates
+Taren Yates,Ryane Pearson,Ryane is Taren's friend's Hali Okuma's sister. Ryane was killed by Devyn Pearson.
+Taren Yates,Noah Booth,Eli Booth's older sibling who stole most of the attention
+Terran Wells,Ryane Pearson,Terran knows Devyn Pearson killed their wife Ryane Pearson
+Terran Wells,Aedan,Aedan is Terran Wells's tender sibling
+Torrey Watson,Kerrie Ray,Torrey Watson's adpotive cousin
+Torrey Watson,Juno Aurelios Cauruleos,"Adoptive cousins, Koga's mother's sister adopted Kerrie. Kerrie = Juno"
+Valerian Fukui,Maron Richard,Valerian investicates the death of Maron Richard
+Valerian Fukui,Richard Tremor,Valerian investicates the death of Richard Tremor
+Valerian Fukui,Ryane Pearson,Valerian has to bring Devyn Pearson to justice for murdering their spouse Ryane Pearson
+Valerian Fukui,Yahir Watts,Valerian knows the true identity of the Chain Stranglers
+Valerian Fukui,Torrey Watson,Valerian knows the true identity of the Chain Stranglers (Torrey = Koga)
+Valerian Fukui,Koga Kyoshi,Valerian knows the true identity of the Chain Stranglers
+Valerian Fukui,Sasha Romero,Colleagues
+Xavier Blake,Mike Russell,Got Mike an engineer job from Gaylen Russel's unit
+Xavier Blake,Elya Andrews,Old family friend and wants Caden and Elya to set aside their differences
+Yera Romero,Quinn Cole,Quinn was the one who approached Yera on the main fleet and arranged my participation on the Starcaller mission due to my history in android research. They know about the Devyn project and the fact that the Machines can create human-looking androids.
+Yera Romero,Eddar Laurence,Dayle Roger's uncle who tooked Dayle in after their parent's were arrested
+Yuri Mills,Aran Arima,Purity sent Yuri to talk to Abe back to the dynasty after Aran died 17 years ago
+Ziva Callahan,Evin Reid,Evin is the creator of Ziva
+Zyra Lee,Idris Kalashnik,Idris is Zyra's godparent
+Zyra Lee,Idris McBride,Idris is Zyra's godparent
+Zyra Lee,Mel McBride,Mel is Zyra's godparent after Idris died
+Gene Hawkins,Ilgor Littlemountain,"Ilgor was Gene's foreman in the mines. Ilgor was an old Marine staff sergeant, he promised Gene a recommendation letter and patted Gene on the back"

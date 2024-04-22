@@ -10,7 +10,8 @@
 	"customizations": {
 		"vscode": {
 			"extensions": [
-				"dbaeumer.vscode-eslint"
+				"dbaeumer.vscode-eslint",
+				"janisdd.vscode-edit-csv"
 			],
 			"settings": {
 				"dev.containers.copyGitConfig": true,

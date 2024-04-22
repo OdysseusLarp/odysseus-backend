@@ -1,9 +1,8 @@
 catalog_id,name,discovered_at,discovered_by,discovered_from,type,text,entry,gm_notes,is_visible
 EL-QV57-1,Power source,541.295,Remy Hall,P-TE96-QV57,Elder,"Large sylinder-like object made from unknown metal with five half-spheres.
 
-![](http://192.168.1.2/images/el-qv57-1.jpg)","542 Artifact EL-QV57-1 has suddenly started showing organic activity and seems to be rapidly growing. There are multiple theories that specific type of genetic mutation would be required to activate and operate Elder originated artifacts and the team has been working on confirming the theory and isolating the gene type.
-
-541 Team was able to strain the organic growth of the artifact EL-QV57-1 and have determined that the artifact is some form of organic powersource that grows around the generator and is able to produce immense amounts of energy for very long periods of time.      ",,TRUE
+![](http://192.168.1.2/images/el-qv57-1.jpg)","541 Team was able to strain the organic growth of the artifact EL-QV57-1 and have determined that the artifact is some form of organic powersource that grows around the generator and is able to produce immense amounts of energy for very long periods of time.
+542 Artifact EL-QV57-1 has suddenly started showing organic activity and seems to be rapidly growing. There are multiple theories that specific type of genetic mutation would be required to activate and operate Elder originated artifacts and the team has been working on confirming the theory and isolating the gene type.",,TRUE
 EL-QV57-2,Unknown,541.303,Remy Hall,P-TE96-QV57,Elder,"Short, tube-like metal object with a loose connector at one end. 
 
 ![](http://192.168.1.2/images/el-qv57-2.jpg)",,,TRUE
@@ -66,7 +65,7 @@ MACH-24,Machine Drone,442.134,Reloz Duran,P-OC65-OY50,Machine,"**Machine Drone**
 Machine Drones are human sized metallic constructs which are controlled by machine commander. The distinct feature is a red light in the forehead. They are extremely durable and resilient to gunfire and blunt force.  
 
 ![](http://192.168.1.2/images/machine-drone.jpg)",,,TRUE
-BEACON-1,Beacon 1,542.,Velians,Alpha-5-D2-100-P-DE47-HC55 ,Earth,A box with a lock and covered with special symbols.,,,FALSE
+BEACON-1,Beacon 1,542.,Velians,Alpha-5-D2-100-P-DE47-HC55,Earth,A box with a lock and covered with special symbols.,,,FALSE
 BEACON-2,Beacon 2,542.,ESS Odysseus Alpha Team,Alpha-5-C1-82-P-TE49-HE75,Earth,A box with a lock and covered with special symbols.,,,FALSE
 BEACON-3,Beacon 3,542.,ESS Odysseus Beta Team,Alpha-1-B1-49-P-CA95-LN71,Earth,A box with a lock and covered with special symbols.,,,FALSE
 BEACON-4,Beacon 4,542.,ESS Odysseus Alpha Team,Beta-4-B8-63-P-OC46-DA97,Earth,A box with a lock and covered with special symbols.,,,FALSE
