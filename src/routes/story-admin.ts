@@ -149,6 +149,7 @@ router.get('/plots', async (req: Request, res: Response) => {
  * Get a plot by ID
  * @route GET /story/plots/{id}
  * @group Story admin - Story admin related operations
+ * @param {integer} id.path.required - ID of the plot to get
  * @returns {StoryPlot.model} 200 - StoryPlot model
  */
 router.get('/plots/:id', handleAsyncErrors(async (req: Request, res: Response) => {
