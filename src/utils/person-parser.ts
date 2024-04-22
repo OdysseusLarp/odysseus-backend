@@ -40,6 +40,7 @@ const characterFields = {
 	military_rank: null,
 	occupation: null,
 	military_remarks: null,
+	military_academies: null,
 	medical_fitness_level: null,
 	medical_last_fitness_check: null,
 	medical_blood_type: null,
