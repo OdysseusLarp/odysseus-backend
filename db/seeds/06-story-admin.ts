@@ -224,13 +224,20 @@ function getStoryMessagePersonLinks(messages: MessageCsvRow[]): StoryMessagePers
 }
 
 async function getPersonIdByFullName(fullName: string, knex: Knex): Promise<string> {
-  const person = await knex('person')
+  let person = await knex('person')
     .select('id')
     .whereRaw('?? || \' \' || ?? = ?', ['first_name', 'last_name', fullName])
     .first();
 
   if (!person?.id) {
-    throw new Error(`Person '${fullName}' not found`);
+    person = await knex('person')
+      .select('id')
+      .whereRaw('?? = ?', ['first_name', fullName])
+      .first();
+  }
+
+  if (!person?.id) {
+    throw new Error(`Person '${fullName},' not found`);
   }
 
   return person.id;
