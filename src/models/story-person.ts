@@ -46,6 +46,7 @@ export const StoryAdminPersonDetailsWithRelations = StoryAdminPersonDetails.exte
 		messages: z.array(z.object({
 			id: z.number(),
 			name: z.string(),
+			direction: z.enum(['sender', 'receiver']),
 		})),
 		plots: z.array(z.object({
 			id: z.number(),
@@ -95,7 +96,7 @@ export async function getStoryPersonDetails(id: string): Promise<StoryAdminPerso
 		return null;
 	}
 
-	const [events, messages, plots, relations] = await Promise.all([
+	const [events, receivableMessage, sendableMessages, plots, relations] = await Promise.all([
 		knex('story_person_events')
 		.join('story_events', 'story_person_events.event_id', 'story_events.id')
 		.select('story_events.id', 'story_events.name')
@@ -104,6 +105,7 @@ export async function getStoryPersonDetails(id: string): Promise<StoryAdminPerso
 		.join('story_messages', 'story_person_messages.message_id', 'story_messages.id')
 		.select('story_messages.id', 'story_messages.name')
 		.where({ person_id: id }),
+		knex('story_messages').select("id", "name").where({ sender_person_id: id }),
 		knex('story_person_plots')
 		.join('story_plots', 'story_person_plots.plot_id', 'story_plots.id')
 		.select('story_plots.id', 'story_plots.name')
@@ -124,6 +126,11 @@ export async function getStoryPersonDetails(id: string): Promise<StoryAdminPerso
 		)
 		.where({ first_person_id: id }).orWhere({ second_person_id: id }),
 	]);
+
+	const messages = [
+		...sendableMessages.map((row) => ({ ...row, direction: "sender" })),
+		...receivableMessage.map((row) => ({ ...row, direction: "receiver" }))
+	];
 
 	return StoryAdminPersonDetailsWithRelations.parse({
 		...person,
