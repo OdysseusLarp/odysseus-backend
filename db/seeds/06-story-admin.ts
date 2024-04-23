@@ -141,25 +141,28 @@ function eventCsvRowToStoryEvent(row: EventCsvRow): StoryEvent {
 	};
 }
 
-async function getPersonIdByFullName(fullName: string, knex: Knex): Promise<string> {
-	let person = await knex('person')
-		.select('id')
-		.whereRaw('?? || \' \' || ?? = ?', ['first_name', 'last_name', fullName])
-		.first();
-	if (!person?.id) {
-		person = await knex('person')
-			.select('id')
-			.whereRaw('?? = ?', ['first_name', fullName])
-			.first();
+let personMap = new Map<string, string>();
+async function loadAllPersons(knex: Knex): Promise<void> {
+	const rows = await knex('person').select('id', 'first_name', 'last_name');
+	for (const row of rows) {
+		let fullName: string = row.first_name;
+		if (row.last_name) {
+			fullName += ' ' + row.last_name;
+		}
+		personMap.set(fullName.trim(), row.id);
 	}
-	if (!person?.id) {
+};
+
+function getPersonIdByFullName(fullName: string): string {
+	const id = personMap.get(fullName);
+	if (!id) {
 		throw new Error(`Person '${fullName},' not found`);
 	}
-	return person.id;
+	return id;
 }
 
-async function messageCsvRowToStoryMessage(row: MessageCsvRow, knex: Knex): Promise<StoryMessage> {
-	const sender_id = row.sender_character_id === null ? null : await getPersonIdByFullName(row.sender_character_id, knex);
+function messageCsvRowToStoryMessage(row: MessageCsvRow): StoryMessage {
+	const sender_id = row.sender_character_id === null ? null : getPersonIdByFullName(row.sender_character_id);
 	return {
 		id: row.id,
 		name: row.name,
@@ -180,18 +183,18 @@ function getStoryPlotEventLinks(plots: PlotCsvRow[]): StoryPlotEventLink[] {
 	})));
 }
 
-async function getStoryPlotPersonLinks(plots: PlotCsvRow[], knex: Knex): Promise<StoryPlotPersonLink[]> {
-	return Promise.all(plots.flatMap(plot => plot.character_ids.map(async person_id => ({
+function getStoryPlotPersonLinks(plots: PlotCsvRow[]): StoryPlotPersonLink[] {
+	return plots.flatMap(plot => plot.character_ids.map(person_id => ({
 		plot_id: plot.id,
-		person_id: await getPersonIdByFullName(person_id, knex),
-	}))));
+		person_id: getPersonIdByFullName(person_id),
+	})));
 }
 
-async function getEventPersonLinks(events: EventCsvRow[], knex: Knex): Promise<StoryEventPersonLink[]> {
-	return Promise.all(events.flatMap(event => event.character_ids.map(async person_id => ({
+function getEventPersonLinks(events: EventCsvRow[]): StoryEventPersonLink[] {
+	return events.flatMap(event => event.character_ids.map(person_id => ({
 		event_id: event.id,
-		person_id: await getPersonIdByFullName(person_id, knex),
-	}))));
+		person_id: getPersonIdByFullName(person_id),
+	})));
 }
 
 async function getStoryPlotArtifactLinks(plots: PlotCsvRow[], knex: Knex): Promise<StoryPlotArtifactLink[]> {
@@ -234,24 +237,23 @@ function getStoryPlotMessageLinks(messages: MessageCsvRow[]): StoryPlotMessagesL
 	})));
 }
 
-type NullablePersonStoryMessagePersonLink = { message_id?: number, person_id?: string | null };
-
-async function getStoryMessagePersonLinks(messages: MessageCsvRow[], knex: Knex): Promise<StoryMessagePersonLink[]> {
-	const rows: NullablePersonStoryMessagePersonLink[] = await Promise.all(messages.flatMap(message => message.receiver_character_ids.map(async (person_id)=> ({
-		message_id: message.id,
-		person_id: person_id === null ? null : await getPersonIdByFullName(person_id, knex),
-	}))));
-	const filteredRows = rows.filter((row): row is StoryMessagePersonLink => row.person_id !== null);
-	return filteredRows;
+function getStoryMessagePersonLinks(messages: MessageCsvRow[]): StoryMessagePersonLink[] {
+	const links: StoryMessagePersonLink[] = [];
+	for (const message of messages) {
+		const receiverNames = message.receiver_character_ids.filter(Boolean);
+		const receiverIds = receiverNames.map(getPersonIdByFullName);
+		receiverIds.forEach(person_id => {
+			links.push({ message_id: message.id, person_id });
+		});
+	}
+	return links;
 }
 
 async function getStoryPersonRelationLinks(relations: RelationCsvRow[], knex: Knex): Promise<StoryPersonRelation[]> {
 	const storyPersonRelations: StoryPersonRelation[] = [];
 	for (const relation of relations) {
-		const [firstPersonId, secondPersonId] = await Promise.all([
-			getPersonIdByFullName(relation.character_or_npc_1, knex),
-			getPersonIdByFullName(relation.character_or_npc_2, knex),
-		]);
+		const firstPersonId = getPersonIdByFullName(relation.character_or_npc_1);
+		const secondPersonId = getPersonIdByFullName(relation.character_or_npc_2);
 
 		storyPersonRelations.push({
 			first_person_id: firstPersonId,
@@ -279,6 +281,8 @@ export const seed = async (knex: Knex) => {
 	await knex('story_plots').del();
 	await knex.raw('ALTER SEQUENCE story_person_relations_id_seq RESTART WITH 1');
 
+	await loadAllPersons(knex);
+
 	const [plots, events, messages, relations] = await Promise.all([
 		getPlots(),
 		getEvents(),
@@ -288,17 +292,17 @@ export const seed = async (knex: Knex) => {
 
 	await knex('story_plots').insert(plots.map(plotCsvRowToStoryPlot));
 	await knex('story_events').insert(events.map(eventCsvRowToStoryEvent));
-	await knex('story_messages').insert(await Promise.all(messages.map(row => messageCsvRowToStoryMessage(row, knex))));
+	await knex('story_messages').insert(messages.map(row => messageCsvRowToStoryMessage(row)));
 	await knex('story_person_relations').insert(await getStoryPersonRelationLinks(relations, knex));
 
 	await knex('story_event_plots').insert(getStoryPlotEventLinks(plots));
-	await knex('story_person_plots').insert(await getStoryPlotPersonLinks(plots, knex));
+	await knex('story_person_plots').insert(getStoryPlotPersonLinks(plots));
 	await knex('story_artifact_plots').insert(await getStoryPlotArtifactLinks(plots, knex));
 	await knex('story_artifact_events').insert(await getStoryEventArtifactLinks(events, knex));
-	await knex('story_person_events').insert(await getEventPersonLinks(events, knex));
+	await knex('story_person_events').insert(getEventPersonLinks(events));
 	await knex('story_event_messages').insert(getStoryEventMessageLinks(messages));
 	await knex('story_plot_messages').insert(getStoryPlotMessageLinks(messages));
-	await knex('story_person_messages').insert(await getStoryMessagePersonLinks(messages, knex));
+	await knex('story_person_messages').insert(getStoryMessagePersonLinks(messages));
 
 	// Fix primary key sequences so that new rows start from the correct ID
 	const plotsMaxId = Math.max(...plots.map(p => p.id));
