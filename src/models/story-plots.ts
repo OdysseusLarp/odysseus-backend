@@ -62,6 +62,7 @@ export const StoryPlotWithRelations = StoryPlot.extend({
 	artifacts: z.array(z.object({
 		id: z.number(),
 		name: z.string(),
+		catalog_id: z.string(),
 	})),
 	events: z.array(z.object({
 		id: z.number(),
@@ -92,7 +93,7 @@ export async function getStoryPlot(id: number): Promise<StoryPlot | null> {
 	const [artifacts, events, messages, persons] = await Promise.all([
 		knex('story_artifact_plots')
 		.join('artifact', 'story_artifact_plots.artifact_id', 'artifact.id')
-		.select('artifact.name', 'artifact.id')
+		.select('artifact.name', 'artifact.id', 'artifact.catalog_id')
 		.where({ plot_id: id }),
 		knex('story_event_plots')
 		.join('story_events', 'story_event_plots.event_id', 'story_events.id')
