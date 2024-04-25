@@ -46,6 +46,7 @@ export const StoryAdminPersonDetailsWithRelations = StoryAdminPersonDetails.exte
 		messages: z.array(z.object({
 			id: z.number(),
 			name: z.string(),
+			sent: z.string(),
 			direction: z.enum(['sender', 'receiver']),
 		})),
 		plots: z.array(z.object({
@@ -103,9 +104,9 @@ export async function getStoryPersonDetails(id: string): Promise<StoryAdminPerso
 		.where({ person_id: id }),
 		knex('story_person_messages')
 		.join('story_messages', 'story_person_messages.message_id', 'story_messages.id')
-		.select('story_messages.id', 'story_messages.name')
+		.select('story_messages.id', 'story_messages.name', 'story_messages.sent')
 		.where({ person_id: id }),
-		knex('story_messages').select("id", "name").where({ sender_person_id: id }),
+		knex('story_messages').select("id", "name", "sent").where({ sender_person_id: id }),
 		knex('story_person_plots')
 		.join('story_plots', 'story_person_plots.plot_id', 'story_plots.id')
 		.select('story_plots.id', 'story_plots.name')
