@@ -61,15 +61,18 @@ export type StoryEventMessagesLink = z.infer<typeof StoryEventMessagesLink>;
 export const StoryEventWithRelations = StoryEvent.extend({
 	artifacts: z.array(z.object({
 		id: z.number(),
+		catalog_id: z.string(),
 		name: z.string(),
 	})),
 	messages: z.array(z.object({
 		id: z.number(),
 		name: z.string(),
+		sent: z.string(),
 	})),
 	persons: z.array(z.object({
 		id: z.string(),
 		name: z.string(),
+		is_character: z.boolean(),
 	})),
 	plots: z.array(z.object({
 		id: z.number(),
@@ -92,15 +95,15 @@ export const getStoryEvent = async (id: number): Promise<StoryEventWithRelations
 	const [artifacts, persons, messages, plots] = await Promise.all([
 		knex('story_artifact_events')
 		.join('artifact', 'story_artifact_events.artifact_id', 'artifact.id')
-		.select('artifact.name', 'artifact.id')
+		.select('artifact.name', 'artifact.id', 'artifact.catalog_id')
 		.where({ event_id: id }),
 		knex('story_person_events')
 		.join('person', 'story_person_events.person_id', 'person.id')
-		.select('person.id', knex.raw('TRIM(CONCAT(person.first_name, \' \', person.last_name)) as name'))
+		.select('person.id', 'person.is_character', knex.raw('TRIM(CONCAT(person.first_name, \' \', person.last_name)) as name'))
 		.where({ event_id: id }),
 		knex('story_event_messages')
 		.join('story_messages', 'story_event_messages.message_id', 'story_messages.id')
-		.select('story_messages.id', 'story_messages.name')
+		.select('story_messages.id', 'story_messages.name', 'story_messages.sent')
 		.where({ event_id: id }),
 		knex('story_event_plots')
 		.join('story_plots', 'story_event_plots.plot_id', 'story_plots.id')
