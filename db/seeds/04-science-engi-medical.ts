@@ -8,10 +8,11 @@ async function getArtifacts() {
 	const rawArtifacts = await csv().fromFile(csvPath);
 
 	const artifactEntries: unknown[] = [];
-	const artifactColumns = ['catalog_id', 'name', 'discovered_at', 'discovered_by', 'discovered_from', 'type', 'text', 'gm_notes', 'is_visible'];
+	const artifactColumns = ['catalog_id', 'name', 'discovered_at', 'discovered_by', 'discovered_from', 'type', 'text', 'test_material','test_microscope', 'test_age', 'test_history', 'test_xrf', 'gm_notes', 'is_visible'];
 	const artifacts: unknown[] = rawArtifacts.map((artifact, i) => {
 		const id = i + 1;
 		artifact.id = id;
+		artifact.test_age = parseInt(artifact.test_age, 10);
 		artifactColumns.forEach(col => {
 			if (!artifact[col]) delete artifact[col];
 		});

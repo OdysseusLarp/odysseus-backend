@@ -40,6 +40,11 @@ const artifactWithRelated = [
  * @property {string} text - Text description of the artifact
  * @property {string} gm_notes - GM notes
  * @property {boolean} is_visible - Is the artifact visible to players
+ * @property {string} test_material - Test results from material test
+ * @property {string} test_microscope - Test results from microscope test
+ * @property {integer} test_age - Test results from age test
+ * @property {string} test_history - Test results from history test
+ * @property {string} test_xrf - Test results from xrf test
  * @property {string} created_at - ISO 8601 String Date-time when object was created
  * @property {string} updated_at - ISO 8601 String Date-time when object was last updated
  */

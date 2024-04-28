@@ -1,4 +1,4 @@
-catalog_id,name,discovered_at,discovered_by,discovered_from,type,text,entry,test_material,test_microscope,test_age,test_history,test_x_ray_fl,gm_notes,is_visible
+catalog_id,name,discovered_at,discovered_by,discovered_from,type,text,entry,test_material,test_microscope,test_age,test_history,test_xrf,gm_notes,is_visible
 EL-QV57-1,Power source,541.295,Remy Hall,P-TE96-QV57,Elder,"Large sylinder-like object made from unknown metal with five half-spheres.
 
 ![](http://192.168.1.2/images/el-qv57-1.jpg)","541 Team was able to strain the organic growth of the artifact EL-QV57-1 and have determined that the artifact is some form of organic powersource that grows around the generator and is able to produce immense amounts of energy for very long periods of time.
