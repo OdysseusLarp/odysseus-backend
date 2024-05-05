@@ -15,6 +15,22 @@ const posts = [
 		is_visible: true,
 		status: 'APPROVED'
 	},
+	{
+		person_id: '20263',
+		title: 'Survival count',
+		body: '<b text-align="center">03-social: {{survival_count}}</b>',
+		type: 'NEWS',
+		is_visible: true,
+		status: 'APPROVED'
+	},
+	{
+		person_id: '20263',
+		title: 'Survival count',
+		body: '<b text-align="center">Current survival count {{survival_count}}</b>',
+		type: 'CAPTAINS_LOG',
+		is_visible: true,
+		status: 'APPROVED'
+	},
 ];
 
 // TODO: Remove channels as they are no longer used, but removing them
