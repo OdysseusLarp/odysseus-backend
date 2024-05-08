@@ -470,7 +470,7 @@ Cate,Hope,Strength,taurus,Present and accounted for,Caelena,FALSE
 Isaiah,Barnet,Purity,warrior,Present and accounted for,Ellarion,FALSE
 Angela,Stafford,Ambition,immortal,Present and accounted for,Osiris,FALSE
 Doretta,Watkins,Purity,spectrum,Present and accounted for,Osiris,FALSE
-Collyn,Sumner,Hope,odysseus,Present and accounted for,Ellarion,FALSE
+Collyn,Sumner,Hope,odysseus,Present and accounted for,Ellarion,TRUE
 Ilean,Cokes,Purity,harbinger,Present and accounted for,Osiris,FALSE
 Shelby,Seward,Justice,spectrum,Present and accounted for,Ellarion,FALSE
 Kousuke,Babcock,Confidence,polaris,Present and accounted for,Ellarion,FALSE
@@ -691,7 +691,7 @@ Kenzie,Yamashita,Hope,polaris,Present and accounted for,Ellarion,FALSE
 Kandace,Moore,Compassion,immortal,Present and accounted for,Ellarion,FALSE
 Flower,Wembley,Intelligence,spectrum,Present and accounted for,Ellarion,FALSE
 Elfrieda,Christopher,Confidence,immortal,Present and accounted for,Osiris,FALSE
-Iona,Stroud,Generosity,odysseus,Present and accounted for,Osiris,FALSE
+Iona,Stroud,Generosity,odysseus,Present and accounted for,Osiris,TRUE
 Valary,Ayers,Excellence,centurion,Present and accounted for,Caelena,FALSE
 Andi,Babcock,Confidence,warrior,Present and accounted for,Ellarion,FALSE
 Dayton,Horsfall,Intelligence,polaris,Present and accounted for,Ellarion,FALSE
@@ -950,7 +950,7 @@ Jen,Neil,Strength,starfall,Present and accounted for,Osiris,FALSE
 Hollie,Power,Purity,polaris,Present and accounted for,Osiris,FALSE
 Chris,Williams,Strength,spectrum,Present and accounted for,Ellarion,FALSE
 Faron,Bryan,Purity,spectrum,Present and accounted for,Ellarion,FALSE
-Liddy,Bain,Strength,odysseus,Present and accounted for,Ellarion,FALSE
+Liddy,Bain,Strength,odysseus,Present and accounted for,Ellarion,TRUE
 Ina,Maksimov,Purity,spectrum,Present and accounted for,Ellarion,FALSE
 Wilbur,Randell,Generosity,envoy,Present and accounted for,Caelena,FALSE
 Ksyusha,Alger,Purity,immortal,Present and accounted for,Ellarion,FALSE
@@ -1474,7 +1474,7 @@ Keanna,Reynell,Purity,spectrum,Present and accounted for,Ellarion,FALSE
 Alexei,Kurosawa,Purity,immortal,Present and accounted for,Osiris,FALSE
 Jazmine,Shvets,Mercy,starfall,Present and accounted for,Osiris,FALSE
 Reina,Cockburn,Hope,immortal,Present and accounted for,Osiris,FALSE
-Everard,Brigham,Defiance,odysseus,Present and accounted for,Ellarion,FALSE
+Everard,Brigham,Defiance,odysseus,Present and accounted for,Ellarion,TRUE
 Nina,Koizumi,Excellence,spectrum,Present and accounted for,Osiris,FALSE
 Katelyn,Tinker,Purity,spectrum,Present and accounted for,Osiris,FALSE
 Delia,Pottinger,Hope,polaris,Present and accounted for,Ellarion,FALSE
@@ -1485,7 +1485,7 @@ Yoko,Durand,Confidence,polaris,Present and accounted for,Ellarion,FALSE
 Melba,Audley,Excellence,polaris,Present and accounted for,Osiris,FALSE
 Malone,Ledford,Excellence,polaris,Present and accounted for,Ellarion,FALSE
 Kyler,Trengove,Mercy,immortal,Present and accounted for,Caelena,FALSE
-Francine,Foster,Confidence,odysseus,Present and accounted for,Osiris,FALSE
+Francine,Foster,Confidence,odysseus,Present and accounted for,Osiris,TRUE
 Charlie,Seward,Ambition,whirlwind,Present and accounted for,Caelena,FALSE
 Pacey,Caldwell,Industry,immortal,Present and accounted for,Caelena,FALSE
 Ericka,Hopper,Purity,aurora,Present and accounted for,Ellarion,FALSE
@@ -1658,7 +1658,7 @@ Halle,Peacock,Excellence,spectrum,Present and accounted for,Caelena,FALSE
 Journey,Garnett,Confidence,polaris,Present and accounted for,Ellarion,FALSE
 Jude,Paris,Purity,polaris,Present and accounted for,Ellarion,FALSE
 Amery,Pope,Strength,spectrum,Present and accounted for,Ellarion,FALSE
-Jo,Everill,Confidence,odysseus,Present and accounted for,Ellarion,FALSE
+Jo,Everill,Confidence,odysseus,Present and accounted for,Ellarion,TRUE
 Wanda,Sampson,Purity,aurora,Present and accounted for,Ellarion,FALSE
 Evgeny,Jennings,Strength,polaris,Present and accounted for,Ellarion,FALSE
 Molly,Judd,Ambition,cyclone,Present and accounted for,Osiris,FALSE
@@ -2146,7 +2146,7 @@ Moriah,Tinker,Strength,polaris,Present and accounted for,Ellarion,FALSE
 Loraine,Pope,Floater,vulture,Present and accounted for,Osiris,FALSE
 Britton,Waller,Strength,immortal,Present and accounted for,Ellarion,FALSE
 Esm&eacute;e,Black,Purity,cyclone,Present and accounted for,Osiris,FALSE
-Lenora,Blakesley,Floater,odysseus,Present and accounted for,Ellarion,FALSE
+Lenora,Blakesley,Floater,odysseus,Present and accounted for,Ellarion,TRUE
 Carter,Castle,Strength,aurora,Present and accounted for,Ellarion,FALSE
 Helen,Martins,Purity,spectrum,Present and accounted for,Ellarion,FALSE
 Osmond,Simpson,Strength,taurus,Present and accounted for,Caelena,FALSE
@@ -2619,7 +2619,7 @@ Peyton,Jephson,Tranquility,spectrum,Present and accounted for,Ellarion,FALSE
 Rhiannon,Atterberry,Confidence,polaris,Present and accounted for,Ellarion,FALSE
 Mariya,Pemberton,Purity,immortal,Present and accounted for,Osiris,FALSE
 Phoebe,Hopper,Purity,polaris,Present and accounted for,Caelena,FALSE
-Meaghan,Andrewson,Defiance,odysseus,Present and accounted for,Ellarion,FALSE
+Meaghan,Andrewson,Defiance,odysseus,Present and accounted for,Ellarion,TRUE
 Jarred,Joseph,Tranquility,spectrum,Present and accounted for,Ellarion,FALSE
 Elmer,Burton,Confidence,polaris,Present and accounted for,Ellarion,FALSE
 Yevgeniy,Edgar,Floater,cyclone,Present and accounted for,Osiris,FALSE
@@ -3705,7 +3705,7 @@ Boris,Isaev,Purity,aurora,Present and accounted for,Osiris,FALSE
 Jenny,Brandon,Purity,spectrum,Present and accounted for,Ellarion,FALSE
 Upton,Tucker,Strength,aurora,Present and accounted for,Ellarion,FALSE
 Lauressa,Thwaite,Justice,immortal,Present and accounted for,Caelena,FALSE
-Harlan,Antonov,Loyalty,odysseus,Present and accounted for,Ellarion,FALSE
+Harlan,Antonov,Loyalty,odysseus,Present and accounted for,Ellarion,TRUE
 Madalyn,Stroud,Confidence,aurora,Present and accounted for,Ellarion,FALSE
 Arden,Garnett,Purity,spectrum,Present and accounted for,Ellarion,FALSE
 Max,Armistead,Confidence,polaris,Present and accounted for,Ellarion,FALSE
@@ -3987,7 +3987,7 @@ Yorick,Ryley,Confidence,polaris,Present and accounted for,Ellarion,FALSE
 Shiro,Verity,Intelligence,aurora,Present and accounted for,Ellarion,FALSE
 Warwick,Garry,Purity,discovery,Present and accounted for,Ellarion,FALSE
 Gillian,Eliot,Loyalty,polaris,Present and accounted for,Ellarion,FALSE
-Rozanne,Hawking,Ambition,odysseus,Present and accounted for,Ellarion,FALSE
+Rozanne,Hawking,Ambition,odysseus,Present and accounted for,Ellarion,TRUE
 Mikey,Huxtable,Purity,spectrum,Present and accounted for,Osiris,FALSE
 Humphry,Murgatroyd,Confidence,cyclone,Present and accounted for,Ellarion,FALSE
 Shaw,Morrison,Purity,starfall,Present and accounted for,Osiris,FALSE
@@ -4615,7 +4615,7 @@ Pankratiy,Hunnicutt,Purity,aurora,Present and accounted for,Ellarion,FALSE
 Dimitri,Bray,Excellence,aurora,Present and accounted for,Osiris,FALSE
 Delphia,Tsukuda,Mercy,spectrum,Present and accounted for,Ellarion,FALSE
 Moriah,Durand,Purity,spectrum,Present and accounted for,Ellarion,FALSE
-Luke,Tyler,Tranquility,odysseus,Present and accounted for,Ellarion,FALSE
+Luke,Tyler,Tranquility,odysseus,Present and accounted for,Ellarion,TRUE
 Hallam,Durand,Ambition,immortal,Present and accounted for,Osiris,FALSE
 Lorainne,Bryan,Confidence,discovery,Present and accounted for,Ellarion,FALSE
 Carol,Leyton,Strength,starfall,Present and accounted for,Ellarion,FALSE
@@ -5195,7 +5195,7 @@ Norah,English,Generosity,vulture,Present and accounted for,Osiris,FALSE
 Tricia,Horne,Confidence,spectrum,Present and accounted for,Ellarion,FALSE
 Bronislava,Myers,Ambition,spectrum,Present and accounted for,Ellarion,FALSE
 Chalice,Fabian,Floater,spectrum,Present and accounted for,Ellarion,FALSE
-Rosemary,Yamada,Confidence,odysseus,Present and accounted for,Ellarion,FALSE
+Rosemary,Yamada,Confidence,odysseus,Present and accounted for,Ellarion,TRUE
 Zola,Bass,Floater,spectrum,Present and accounted for,Ellarion,FALSE
 Malachi,Walters,Dedication,spectrum,Present and accounted for,Ellarion,FALSE
 Tammy,Gabrielson,Hope,immortal,Present and accounted for,Osiris,FALSE
@@ -5453,7 +5453,7 @@ Cordelia,Wheelock,Intelligence,spectrum,Present and accounted for,Caelena,FALSE
 Glenn,Frank,Confidence,polaris,Present and accounted for,Osiris,FALSE
 Silvester,Emmett,Confidence,spectrum,Present and accounted for,Ellarion,FALSE
 Stacia,Kimura,Hope,immortal,Present and accounted for,Osiris,FALSE
-Momoka,Thatcher,Purity,odysseus,Present and accounted for,Ellarion,FALSE
+Momoka,Thatcher,Purity,odysseus,Present and accounted for,Ellarion,TRUE
 Lucky,Chance,Excellence,valor,Present and accounted for,Ellarion,FALSE
 Minoru,Martel,Strength,warrior,Present and accounted for,Ellarion,FALSE
 Allan,Daniell,Hope,whirlwind,Present and accounted for,Ellarion,FALSE
@@ -6497,7 +6497,7 @@ Akari,Small,Hope,cyclone,Present and accounted for,Ellarion,FALSE
 Jake,Sydney,Confidence,ravager,Present and accounted for,Osiris,FALSE
 Danita,Kawaguchi,Generosity,cyclone,Present and accounted for,Ellarion,FALSE
 Robina,Haines,Tranquility,warrior,Present and accounted for,Ellarion,FALSE
-Theodora,Sergeant,Purity,odysseus,Present and accounted for,Ellarion,FALSE
+Theodora,Sergeant,Purity,odysseus,Present and accounted for,Ellarion,TRUE
 Jaime,Headley,Purity,spectrum,Present and accounted for,Ellarion,FALSE
 Orson,Garland,Purity,harbinger,Present and accounted for,Caelena,FALSE
 Darius,Arthurson,Mercy,spectrum,Present and accounted for,Osiris,FALSE
@@ -6861,7 +6861,7 @@ Yakov,Vance,Mercy,aurora,Present and accounted for,Ellarion,FALSE
 Loraine,Carpenter,Mercy,polaris,Present and accounted for,Caelena,FALSE
 Shanae,Tyler,Loyalty,spectrum,Present and accounted for,Ellarion,FALSE
 Rebeccah,Bone,Generosity,aurora,Present and accounted for,Ellarion,FALSE
-Nina,Jerome,Defiance,odysseus,Present and accounted for,Ellarion,FALSE
+Nina,Jerome,Defiance,odysseus,Present and accounted for,Ellarion,TRUE
 Klim,Walters,Confidence,polaris,Present and accounted for,Ellarion,FALSE
 Michele,Matthewson,Intelligence,spectrum,Present and accounted for,Osiris,FALSE
 Joseph,Selby,Hope,polaris,Present and accounted for,Ellarion,FALSE
@@ -7662,7 +7662,7 @@ Patya,Atteberry,Purity,warrior,Present and accounted for,Osiris,FALSE
 Eugenia,Wesley,Tranquility,spectrum,Present and accounted for,Ellarion,FALSE
 Nina,Page,Tranquility,spectrum,Present and accounted for,Ellarion,FALSE
 Washington,Anthonyson,Purity,halo,Present and accounted for,Osiris,FALSE
-Lena,Bailey,Confidence,odysseus,Present and accounted for,Ellarion,FALSE
+Lena,Bailey,Confidence,odysseus,Present and accounted for,Ellarion,TRUE
 Whitney,Dyer,Tenacity,polaris,Present and accounted for,Osiris,FALSE
 Rokurou,Markov,Intelligence,cyclone,Present and accounted for,Caelena,FALSE
 Emerson,Proudfoot,Mercy,valor,Present and accounted for,Ellarion,FALSE
@@ -10227,7 +10227,7 @@ Lyda,Cheshire,Loyalty,spectrum,Present and accounted for,Ellarion,FALSE
 Oralie,Clarkson,Generosity,immortal,Present and accounted for,Osiris,FALSE
 Melina,James,Defiance,aurora,Present and accounted for,Ellarion,FALSE
 Yermolai,Moto,Purity,polaris,Present and accounted for,Osiris,FALSE
-Kev,Benton,Mercy,odysseus,Present and accounted for,Ellarion,FALSE
+Kev,Benton,Mercy,odysseus,Present and accounted for,Ellarion,TRUE
 Chet,Reed,Purity,immortal,Present and accounted for,Ellarion,FALSE
 Iris,Frank,Purity,polaris,Present and accounted for,Ellarion,FALSE
 Wren,Derricks,Intelligence,polaris,Present and accounted for,Ellarion,FALSE
@@ -11014,7 +11014,7 @@ Carissa,Keyes,Logic,aurora,Present and accounted for,Ellarion,FALSE
 Kenji,Volkov,Confidence,cyclone,Present and accounted for,Ellarion,FALSE
 Mae,Linville,Confidence,spectrum,Present and accounted for,Ellarion,FALSE
 Konstantin,Brook,Floater,cyclone,Present and accounted for,Caelena,FALSE
-Bess,Wade,Hope,odysseus,Present and accounted for,Ellarion,FALSE
+Bess,Wade,Hope,odysseus,Present and accounted for,Ellarion,TRUE
 Ryoichi,Alan,Hope,starfall,Present and accounted for,Osiris,FALSE
 Shevon,Oshiro,Loyalty,ravager,Present and accounted for,Caelena,FALSE
 Delmar,Chaykovsky,Purity,starfall,Present and accounted for,Osiris,FALSE
@@ -11387,7 +11387,7 @@ Zinoviy,Dorsey,Confidence,aurora,Present and accounted for,Ellarion,FALSE
 Dorofey,Auteberry,Purity,spectrum,Present and accounted for,Osiris,FALSE
 Karen,Tennison,Kindness,centurion,Present and accounted for,Caelena,FALSE
 Haywood,Lincoln,Hope,aurora,Present and accounted for,Ellarion,FALSE
-Terell,Butler,Confidence,odysseus,Present and accounted for,Ellarion,FALSE
+Terell,Butler,Confidence,odysseus,Present and accounted for,Ellarion,TRUE
 Harding,Thurstan,Floater,aurora,Present and accounted for,Ellarion,FALSE
 Svetlana,Lee,Hope,polaris,Present and accounted for,Ellarion,FALSE
 Milburn,Matthews,Purity,spectrum,Present and accounted for,Ellarion,FALSE
@@ -11493,7 +11493,7 @@ Jerome,Pilgrim,Hope,spectrum,Present and accounted for,Ellarion,FALSE
 Fae,Leyton,Hope,spectrum,Present and accounted for,Ellarion,FALSE
 Arthur,Sawyer,Hope,cyclone,Present and accounted for,Caelena,FALSE
 Merideth,Dick,Strength,starfall,Present and accounted for,Osiris,FALSE
-Winter,White,Ambition,odysseus,Present and accounted for,Ellarion,FALSE
+Winter,White,Ambition,odysseus,Present and accounted for,Ellarion,TRUE
 Mia,Pearson,Floater,aurora,Present and accounted for,Ellarion,FALSE
 Percy,Pressley,Strength,polaris,Present and accounted for,Ellarion,FALSE
 Wallis,Shepard,Confidence,warrior,Present and accounted for,Caelena,FALSE
@@ -12940,7 +12940,7 @@ Chant&eacute;,Love,Dedication,halo,Present and accounted for,Ellarion,FALSE
 Terance,Bagley,Strength,polaris,Present and accounted for,Ellarion,FALSE
 Charity,Walsh,Excellence,spectrum,Present and accounted for,Ellarion,FALSE
 Suzi,Combs,Tenacity,starfall,Present and accounted for,Osiris,FALSE
-Gillian,Eaton,Purity,odysseus,Present and accounted for,Ellarion,FALSE
+Gillian,Eaton,Purity,odysseus,Present and accounted for,Ellarion,TRUE
 Orson,Hardwick,Purity,halo,Present and accounted for,Ellarion,FALSE
 Shae,Jeffers,Strength,cyclone,Present and accounted for,Ellarion,FALSE
 Sergej,Remington,Purity,cyclone,Present and accounted for,Caelena,FALSE
@@ -15388,7 +15388,7 @@ Savanna,Carlisle,Compassion,immortal,Present and accounted for,Osiris,FALSE
 Josceline,Nash,Hope,cyclone,Present and accounted for,Caelena,FALSE
 Matthew,Holme,Strength,spectrum,Present and accounted for,Ellarion,FALSE
 Kimberleigh,Thorley,Floater,polaris,Present and accounted for,Caelena,FALSE
-Alivia,Phelps,Tenacity,odysseus,Present and accounted for,Caelena,FALSE
+Alivia,Phelps,Tenacity,odysseus,Present and accounted for,Caelena,TRUE
 Hillary,Hartell,Purity,spectrum,Present and accounted for,Ellarion,FALSE
 Shirou,Shearer,Purity,cyclone,Present and accounted for,Caelena,FALSE
 Lyda,Honda,Floater,polaris,Present and accounted for,Osiris,FALSE
@@ -16897,7 +16897,7 @@ Maryana,Henry,Confidence,aries,Present and accounted for,Ellarion,FALSE
 Maxwell,Townsend,Generosity,spectrum,Present and accounted for,Ellarion,FALSE
 Aretha,Jeffries,Excellence,spectrum,Present and accounted for,Ellarion,FALSE
 Bradford,Paris,Purity,aurora,Present and accounted for,Ellarion,FALSE
-Camron,Chapman,Industry,odysseus,Present and accounted for,Ellarion,FALSE
+Camron,Chapman,Industry,odysseus,Present and accounted for,Ellarion,TRUE
 Krystine,Attwood,Unity,starfall,Present and accounted for,Ellarion,FALSE
 Claire,Walterson,Floater,polaris,Present and accounted for,Ellarion,FALSE
 Braelynn,Styles,Excellence,warrior,Present and accounted for,Ellarion,FALSE
@@ -17576,7 +17576,7 @@ Drew,Hardy,Tranquility,polaris,Present and accounted for,Ellarion,FALSE
 Rachel,Gage,Purity,centurion,Present and accounted for,Ellarion,FALSE
 Quincy,Atterberry,Intelligence,aurora,Present and accounted for,Ellarion,FALSE
 Charity,Willoughby,Excellence,halo,Present and accounted for,Ellarion,FALSE
-Suzi,Wilcox,Excellence,odysseus,Present and accounted for,Caelena,FALSE
+Suzi,Wilcox,Excellence,odysseus,Present and accounted for,Caelena,TRUE
 Trent,Thorpe,Floater,spectrum,Present and accounted for,Ellarion,FALSE
 Gracelynn,Roscoe,Confidence,centurion,Present and accounted for,Caelena,FALSE
 Haven,Winton,Intelligence,polaris,Present and accounted for,Caelena,FALSE
@@ -17901,7 +17901,7 @@ Myla,Thorley,Purity,cyclone,Present and accounted for,Caelena,FALSE
 Akulina,Yamashita,Strength,vulture,Present and accounted for,Ellarion,FALSE
 Babs,Royston,Intelligence,warrior,Present and accounted for,Ellarion,FALSE
 Sandie,Aiken,Purity,spectrum,Present and accounted for,Ellarion,FALSE
-Janene,Ness,Excellence,odysseus,Present and accounted for,Caelena,FALSE
+Janene,Ness,Excellence,odysseus,Present and accounted for,Caelena,TRUE
 Bishop,Jeffery,Industry,spectrum,Present and accounted for,Ellarion,FALSE
 Idonea,Maynard,Loyalty,polaris,Present and accounted for,Caelena,FALSE
 Shiori,May,Strength,immortal,Present and accounted for,Osiris,FALSE
