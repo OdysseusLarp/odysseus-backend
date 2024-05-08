@@ -15,22 +15,6 @@ const posts = [
 		is_visible: true,
 		status: 'APPROVED'
 	},
-	{
-		person_id: '20263',
-		title: 'Public announcement',
-		body: '<div style="width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 5vw;">Total souls alive <p style="font-size: 7vw; font-family: Orbitron;">%%survivor_count%%</p></div>',
-		type: 'NEWS',
-		is_visible: true,
-		status: 'APPROVED'
-	},
-	{
-		person_id: '20263',
-		title: 'Survival count',
-		body: '<b text-align="center">Current survival count {{survival_count}}</b>',
-		type: 'CAPTAINS_LOG',
-		is_visible: true,
-		status: 'APPROVED'
-	},
 ];
 
 // TODO: Remove channels as they are no longer used, but removing them
