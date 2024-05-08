@@ -17,8 +17,8 @@ const posts = [
 	},
 	{
 		person_id: '20263',
-		title: 'Survival count',
-		body: '<b text-align="center">03-social: {{survival_count}}</b>',
+		title: 'Public announcement',
+		body: '<div style="width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 5vw;">Total souls alive <p style="font-size: 7vw; font-family: Orbitron;">%%survivor_count%%</p></div>',
 		type: 'NEWS',
 		is_visible: true,
 		status: 'APPROVED'
