@@ -1,29 +1,29 @@
 id,name,status,grid_id,created_at,updated_at,metadata,the_geom,class,type,fighter_count,transporter_count,description,is_visible
-whirlwind,CSS Whirlwind,Present and accounted for,5236,,,,0101000020110F000009E118F1906341412C1293A78C064EC1,Helios Class Corvette,Civilian,0,3,"Corporate owned, Large cargo ship",FALSE
-discovery,ESS Discovery,Present and accounted for,5236,,,,0101000020110F000009E118F1906341412C1293A78C064EC1,Helios Class Corvette,Civilian,0,0,"Government owned, Science vessel",FALSE
-memory,ESS Memory,Present and accounted for,5236,,,,0101000020110F000009E118F1906341412C1293A78C064EC1,Helios Class Corvette,Civilian,0,2,Goverment owned,FALSE
-ravager,OSS Ravager,Present and accounted for,5236,,,,0101000020110F000009E118F1906341412C1293A78C064EC1,Helios Class Corvette,Civilian,0,1,Corporate owned,FALSE
-vulture,OSS Vulture,Present and accounted for,5236,,,,0101000020110F000009E118F1906341412C1293A78C064EC1,Helios Class Corvette,Civilian,0,2,"Corporate owned, Cargo ship",FALSE
-centurion,CSS Centurion,Present and accounted for,5236,,,,0101000020110F000009E118F1906341412C1293A78C064EC1,Eclipse Class Frigate,Civilian,0,0,Corporate owned,FALSE
-cyclone,CSS Cyclone,Present and accounted for,5236,,,,0101000020110F000009E118F1906341412C1293A78C064EC1,Eclipse Class Frigate,Civilian,0,4,"Corporate owned, Transport ship",FALSE
-polaris,ESS Polaris,Present and accounted for,5236,,,,0101000020110F000009E118F1906341412C1293A78C064EC1,Eclipse Class Frigate,Civilian,0,2,"Corporate owned, Large transport ship",FALSE
-spectrum,ESS Spectrum,Present and accounted for,5236,,,,0101000020110F000009E118F1906341412C1293A78C064EC1,Eclipse Class Frigate,Civilian,0,0,"Corporate owned, Large transport ship",FALSE
-immortal,OSS Immortal,Present and accounted for,5236,,,,0101000020110F000009E118F1906341412C1293A78C064EC1,Eclipse Class Frigate,Civilian,0,3,"Corporate owned, Worker transport ship",FALSE
-starfall,OSS Starfall,Present and accounted for,5236,,,,0101000020110F000009E118F1906341412C1293A78C064EC1,Eclipse Class Frigate,Civilian,0,2,"Corporate owned, Prison ship",FALSE
-aurora,ESS Aurora,Present and accounted for,5236,,,,0101000020110F000009E118F1906341412C1293A78C064EC1,Stellar Class Battlecruiser,Military,69,2,"EOC Starfleet, Flagship",FALSE
-halo,ESS Halo,Present and accounted for,5236,,,,0101000020110F000009E118F1906341412C1293A78C064EC1,Stellar Class Battlecruiser,Military,51,0,EOC Starfleet,FALSE
-burro,OSS Burro,Present and accounted for,5236,,,,0101000020110F000009E118F1906341412C1293A78C064EC1,Luna Class Cargo Carrier,Military,0,0,"EOC Starfleet, Luna Class Cargo Carrier",FALSE
+whirlwind,CSS Whirlwind,Present and accounted for,5236,,,,0101000020110F000009E11831105441412C1293971F014EC1,Helios Class Corvette,Civilian,0,3,"Corporate owned, Large cargo ship",FALSE
+discovery,ESS Discovery,Present and accounted for,5236,,,,0101000020110F000009E11831105441412C1293971F014EC1,Helios Class Corvette,Civilian,0,0,"Government owned, Science vessel",FALSE
+memory,ESS Memory,Present and accounted for,5236,,,,0101000020110F000009E11831105441412C1293971F014EC1,Helios Class Corvette,Civilian,0,2,Goverment owned,FALSE
+ravager,OSS Ravager,Present and accounted for,5236,,,,0101000020110F000009E11831105441412C1293971F014EC1,Helios Class Corvette,Civilian,0,1,Corporate owned,FALSE
+vulture,OSS Vulture,Present and accounted for,5236,,,,0101000020110F000009E11831105441412C1293971F014EC1,Helios Class Corvette,Civilian,0,2,"Corporate owned, Cargo ship",FALSE
+centurion,CSS Centurion,Present and accounted for,5236,,,,0101000020110F000009E11831105441412C1293971F014EC1,Eclipse Class Frigate,Civilian,0,0,Corporate owned,FALSE
+cyclone,CSS Cyclone,Present and accounted for,5236,,,,0101000020110F000009E11831105441412C1293971F014EC1,Eclipse Class Frigate,Civilian,0,4,"Corporate owned, Transport ship",FALSE
+polaris,ESS Polaris,Present and accounted for,5236,,,,0101000020110F000009E11831105441412C1293971F014EC1,Eclipse Class Frigate,Civilian,0,2,"Corporate owned, Large transport ship",FALSE
+spectrum,ESS Spectrum,Present and accounted for,5236,,,,0101000020110F000009E11831105441412C1293971F014EC1,Eclipse Class Frigate,Civilian,0,0,"Corporate owned, Large transport ship",FALSE
+immortal,OSS Immortal,Present and accounted for,5236,,,,0101000020110F000009E11831105441412C1293971F014EC1,Eclipse Class Frigate,Civilian,0,3,"Corporate owned, Worker transport ship",FALSE
+starfall,OSS Starfall,Present and accounted for,5236,,,,0101000020110F000009E11831105441412C1293971F014EC1,Eclipse Class Frigate,Civilian,0,2,"Corporate owned, Prison ship",FALSE
+aurora,ESS Aurora,Present and accounted for,5236,,,,0101000020110F000009E11831105441412C1293971F014EC1,Stellar Class Battlecruiser,Military,69,2,"EOC Starfleet, Flagship",FALSE
+halo,ESS Halo,Present and accounted for,5236,,,,0101000020110F000009E11831105441412C1293971F014EC1,Stellar Class Battlecruiser,Military,51,0,EOC Starfleet,FALSE
+burro,OSS Burro,Present and accounted for,5236,,,,0101000020110F000009E11831105441412C1293971F014EC1,Luna Class Cargo Carrier,Military,0,0,"EOC Starfleet, Luna Class Cargo Carrier",FALSE
 odysseus,ESS Odysseus,Present and accounted for,5254,,,,0101000020110F000071416E1D82344B4140FB654BF3CA51C1,Helios Class Corvette,Military,3,2,"EOC Starfleet, ESS Starcaller in hangarbay",TRUE
-taurus,CSS Taurus,Present and accounted for,5236,,,,0101000020110F000009E118F1906341412C1293A78C064EC1,Helios Class Corvette,Military,10,2,EOC Starfleet,FALSE
-bluecoat,ESS Bluecoat,Present and accounted for,5236,,,,0101000020110F000009E118F1906341412C1293A78C064EC1,Helios Class Corvette,Military,0,2,EOC Starfleet,FALSE
-envoy,ESS Envoy,Present and accounted for,5236,,,,0101000020110F000009E118F1906341412C1293A78C064EC1,Helios Class Corvette,Military,4,1,EOC Starfleet,FALSE
-valkyrie,ESS Valkyrie,Present and accounted for,5236,,,,0101000020110F000009E118F1906341412C1293A78C064EC1,Helios Class Corvette,Military,9,1,EOC Starfleet,FALSE
-harbinger,ESS Harbinger,Present and accounted for,5236,,,,0101000020110F000009E118F1906341412C1293A78C064EC1,Eclipse Class Frigate,Military,16,6,EOC Starfleet,FALSE
-inferno,ESS Inferno,Present and accounted for,5236,,,,0101000020110F000009E118F1906341412C1293A78C064EC1,Eclipse Class Frigate,Military,27,2,EOC Starfleet,FALSE
-valor,ESS Valor,Present and accounted for,5236,,,,0101000020110F000009E118F1906341412C1293A78C064EC1,Eclipse Class Frigate,Military,20,4,EOC Starfleet,FALSE
-warrior,ESS Warrior,Present and accounted for,5236,,,,0101000020110F000009E118F1906341412C1293A78C064EC1,Eclipse Class Frigate,Military,18,0,EOC Starfleet,FALSE
-aries,ESS Aries,Present and accounted for,5236,,,,0101000020110F000009E118F1906341412C1293A78C064EC1,Aurora Class Explorer,Military,0,1,EOC Starfleet,FALSE
-arthas,ESS Arthas,Present and accounted for,5236,,,,0101000020110F000009E118F1906341412C1293A78C064EC1,Aurora Class Explorer,Military,0,0,EOC Starfleet,FALSE
-prophet,CSS Prophet,Present and accounted for,5236,,,,0101000020110F000009E118F1906341412C1293A78C064EC1,Aurora Class Explorer,Civilian,0,0,Faith of the High Science,FALSE
-karma,OSS Karma,Present and accounted for,5236,,,,0101000020110F000009E118F1906341412C1293A78C064EC1,Aurora Class Explorer,Civilian,0,0,Unregistered,FALSE
-marauder,OSS Marauder,Present and accounted for,5236,,,,0101000020110F000009E118F1906341412C1293A78C064EC1,Aurora Class Explorer,Civilian,0,0,Corporate owned,FALSE
+taurus,CSS Taurus,Present and accounted for,5236,,,,0101000020110F000009E11831105441412C1293971F014EC1,Helios Class Corvette,Military,10,2,EOC Starfleet,FALSE
+bluecoat,ESS Bluecoat,Present and accounted for,5236,,,,0101000020110F000009E11831105441412C1293971F014EC1,Helios Class Corvette,Military,0,2,EOC Starfleet,FALSE
+envoy,ESS Envoy,Present and accounted for,5236,,,,0101000020110F000009E11831105441412C1293971F014EC1,Helios Class Corvette,Military,4,1,EOC Starfleet,FALSE
+valkyrie,ESS Valkyrie,Present and accounted for,5236,,,,0101000020110F000009E11831105441412C1293971F014EC1,Helios Class Corvette,Military,9,1,EOC Starfleet,FALSE
+harbinger,ESS Harbinger,Present and accounted for,5236,,,,0101000020110F000009E11831105441412C1293971F014EC1,Eclipse Class Frigate,Military,16,6,EOC Starfleet,FALSE
+inferno,ESS Inferno,Present and accounted for,5236,,,,0101000020110F000009E11831105441412C1293971F014EC1,Eclipse Class Frigate,Military,27,2,EOC Starfleet,FALSE
+valor,ESS Valor,Present and accounted for,5236,,,,0101000020110F000009E11831105441412C1293971F014EC1,Eclipse Class Frigate,Military,20,4,EOC Starfleet,FALSE
+warrior,ESS Warrior,Present and accounted for,5236,,,,0101000020110F000009E11831105441412C1293971F014EC1,Eclipse Class Frigate,Military,18,0,EOC Starfleet,FALSE
+aries,ESS Aries,Present and accounted for,5236,,,,0101000020110F000009E11831105441412C1293971F014EC1,Aurora Class Explorer,Military,0,1,EOC Starfleet,FALSE
+arthas,ESS Arthas,Present and accounted for,5236,,,,0101000020110F000009E11831105441412C1293971F014EC1,Aurora Class Explorer,Military,0,0,EOC Starfleet,FALSE
+prophet,CSS Prophet,Present and accounted for,5236,,,,0101000020110F000009E11831105441412C1293971F014EC1,Aurora Class Explorer,Civilian,0,0,Faith of the High Science,FALSE
+karma,OSS Karma,Present and accounted for,5236,,,,0101000020110F000009E11831105441412C1293971F014EC1,Aurora Class Explorer,Civilian,0,0,Unregistered,FALSE
+marauder,OSS Marauder,Present and accounted for,5236,,,,0101000020110F000009E11831105441412C1293971F014EC1,Aurora Class Explorer,Civilian,0,0,Corporate owned,FALSE
