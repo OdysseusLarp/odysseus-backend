@@ -218,8 +218,8 @@ export class EmptyEpsilonClient {
 	setGameState(command, target, value) {
 		const isEeConnectionEnabled = !!get(getData('ship', 'metadata'), 'ee_connection_enabled');
 		if (!isEeConnectionEnabled) {
-			logger.error('setGameState was called while Backend <-> EE connection is disabled', { command, target, value });
-			return Promise.reject('Backend connection to Empty Epsilon is currently disabled');
+			logger.warn('setGameState was called while Backend <-> EE connection is disabled', { command, target, value });
+			return;
 		}
 		// Only allow known commands to be used
 		if (!['setSystemHealth', 'setSystemHeat', 'setWeaponStorage'].includes(command))
