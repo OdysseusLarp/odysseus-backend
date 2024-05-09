@@ -172,6 +172,8 @@ export async function validateJumpTarget(shipId, metadata, shouldValidateRange =
 	if (targetPlanetName && !(await grid.containsObject(targetPlanetName))) {
 		if (shouldAddLogEntries) addShipLogEntry('ERROR',
 			`Jump initialization failed: Given orbit not found in target sub-sector.`, shipId);
+		if (targetPlanetName.startsWith("S"))
+			return { isValid: false, message: 'Orbit is too close to a star' }
 		return { isValid: false, message: 'Given orbit not found in target grid' };
 	}
 	const ship = await Ship.forge({ id: shipId }).fetchWithRelated();
