@@ -67,6 +67,14 @@ sunt eaque dolor id nisi magni.`
 			[SkillLevels.Expert]: Duration.minutes(5),
 		}
 	},
+	{
+		type: 'misc',
+		id: Stores.TagUidToArtifactCatalogId,
+		tagUidToArtifactCatalogId: {
+			// TODO: Fill this with actual data
+			"ABCDEF123456": "BEACON-1",
+		}
+	}
 ];
 
 blobs.forEach(saveBlob);

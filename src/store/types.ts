@@ -3,6 +3,7 @@ import { z } from 'zod';
 
 export const Stores = {
 	HackerDetectionTimes: 'hacker_detection_times',
+	TagUidToArtifactCatalogId: 'tag_uid_to_artifact_catalog_id',
 } as const;
 
 export const HackerDetectionTimes = z.object({
