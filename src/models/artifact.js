@@ -32,6 +32,7 @@ const artifactWithRelated = [
 /**
  * @typedef Artifact
  * @property {integer} id - ID
+ * @property {string} catalog_id - Catalog ID
  * @property {string} name.required - Name
  * @property {string} discovered_by - Name of the person who discovered this artifact
  * @property {string} discovered_at - Name of the location where this artifact was discovered
