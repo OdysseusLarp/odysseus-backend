@@ -2,7 +2,7 @@ const posts = [
 	{
 		person_id: '20263',
 		title: 'Systems restored',
-		body: `Database damage fixed. Systems back online. Could not restore all data. Missing: Captains log, Ship log, News, End-to-end encrypted private messaging system (EEP) Messages, Votes, Science database prior to 131.542, 70% of the Hand Scanner (Hansca) database. Still assessing data.`,
+		body: `Database damage fixed. Systems back online. Could not restore all data. Missing: Captains log, Ship log, News, Messages, Votes, Science database prior to 131.542, 70% of the Hand Scanner (Hansca) database. Still assessing data.`,
 		type: 'NEWS',
 		is_visible: true,
 		status: 'APPROVED'
