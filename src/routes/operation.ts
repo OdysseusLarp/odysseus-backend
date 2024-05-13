@@ -8,6 +8,7 @@ import { NotFound } from 'http-errors';
 import { get } from 'lodash';
 import Bookshelf from 'bookshelf';
 import { getBloodTestResultText } from '@/utils/blood-test-results';
+import { Artifact, ArtifactEntry } from '@/models/artifact';
 
 const router = Router();
 
@@ -66,6 +67,68 @@ const addOperationResultToMedicalEntry = async (operationResult: Bookshelf.Model
 	}
 };
 
+const SampleTypes = {
+	BLOOD_SAMPLE: 'Blood sample',
+	GENE_SAMPLE: 'Gene sample',
+	MATERIAL_SAMPLE: 'Material sample',
+	OTHER_SAMPLE: 'Other sample',
+	MICROSCOPE_SAMPLE: 'Microscopic analysis',
+	AGE: 'Radiocarbon dating',
+	HISTORY_SAMPLE: 'Historical analysis',
+	XRF_SAMPLE: 'X-Ray Fluorescence analysis',
+} as const;
+
+const addOperationResultsToArtifactEntry = async (operationResult: Bookshelf.Model<unknown>) => {
+	const operationType = operationResult.get('additional_type');
+	const catalogId = operationResult.get('catalog_id');
+	console.log("GOT DAT ATALOG ID", catalogId, operationType);
+	if (!catalogId) return;
+
+	const artifact = await Artifact.forge().where({ catalog_id: catalogId }).fetchWithRelated();
+	if (!artifact) return;
+
+	let entryText: string | null;
+	switch (operationType) {
+		case 'MATERIAL_SAMPLE':
+			entryText = artifact.get('test_material');
+			break;
+		case 'MICROSCOPE_SAMPLE':
+			entryText = artifact.get('test_microscope');
+			break;
+		case 'AGE':
+			entryText = artifact.get('test_age');
+			break;
+		case 'XRF_SAMPLE':
+			entryText = artifact.get('test_xrf');
+			break;
+		case 'HISTORY_SAMPLE':
+			entryText = artifact.get('test_history');
+			break;
+		default:
+			entryText = null;
+	}
+
+	console.log("FOUND ENTRY TESXT", entryText, operationType, artifact.get('name'));
+	// console log whole deserialized artifact
+	console.log("ARTIFACT", artifact.toJSON());
+
+	// TODO: Check from artifact.entries[].entry if the operation result is already added (contains entryText)
+	// if it does, throw a specific error, and give a specific response to the user
+
+	// Add an artifact entry with the result text
+	if (entryText) {
+		entryText = `542 **${SampleTypes[operationType] ?? operationType} results:** ${entryText}`;
+		const entry = new ArtifactEntry();
+		await entry.save({
+			artifact_id: artifact.get('id'),
+			entry: entryText,
+			person_id: EVA_ID
+		});
+		await operationResult.save({ is_complete: true }, { method: 'update', patch: true });
+		logger.success(`Added ${operationType} results to artifact ${artifact.get('name')} (${artifact.get('catalog_id')})`);
+	}
+};
+
 /**
  * Get a list of all operation results
  * @route GET /operation
@@ -112,8 +175,30 @@ router.post('/', handleAsyncErrors(async (req: Request, res: Response) => {
 		is_analysed: true, // All operations are now analysed by default and results get posted automatically
 	}, { method: 'insert' });
 
-	// Post blood test results to medical file immediately
-	await addOperationResultToMedicalEntry(operationResult);
+	// Example request
+	const _req = {
+		is_complete: false,
+		is_analysed: false,
+		author_id: '20011',
+		type: 'SCIENCE',
+		additional_type: 'MATERIAL_SAMPLE',
+		sample_id: 'ligmus',
+		catalog_id: 'EL-QV57-1',
+	};
+
+	const operationResultType = operationResult.get('type');
+	console.info("RECEIVED REQUEST", req.body);
+	console.log("OPERATION RESULT TYPE", operationResultType);
+
+	if (operationResultType === 'MEDIC') {
+		// Automatically post blood test results, in case this is a blood sample
+		await addOperationResultToMedicalEntry(operationResult);
+	}
+
+	if (operationResultType === 'SCIENCE') {
+		// Automatically post artifact test results if available
+		await addOperationResultsToArtifactEntry(operationResult);
+	}
 
 	await processXrayOperation(operationResult);
 	res.json(operationResult);
