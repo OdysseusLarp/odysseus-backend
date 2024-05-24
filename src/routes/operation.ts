@@ -8,6 +8,11 @@ import { NotFound } from 'http-errors';
 import { get } from 'lodash';
 import Bookshelf from 'bookshelf';
 import { getBloodTestResultText } from '@/utils/blood-test-results';
+import { getScienceAnalysisTime, addOperationResultsToArtifactEntry } from '@/utils/science';
+import { getPath } from "@/store/store";
+import moment from 'moment';
+import { Stores } from '@/store/types';
+import { saveBlob } from '@/rules/helpers';
 
 const router = Router();
 
@@ -66,6 +71,39 @@ const addOperationResultToMedicalEntry = async (operationResult: Bookshelf.Model
 	}
 };
 
+async function scheduleAddOperationResultToArtifactEntry(operationResult: Bookshelf.Model<unknown>) {
+	const authorId = operationResult.get('author_id');
+	const author = await new Person().where({ id: authorId }).fetchWithRelated();
+
+	const analysisTime = getScienceAnalysisTime(author);
+	const analysisCompletesAt = Date.now() + analysisTime;
+
+	const duration = moment.duration(analysisTime).humanize();
+	logger.info(`Scheduling operation result #${operationResult.get('id')} submission in ${duration}`);
+
+	const scheduledOperationsBlob = getPath(['data', 'misc', Stores.ScienceAnalysisInProgress]);
+	if (!scheduledOperationsBlob) {
+		logger.warn('Failed to get scheduled operations blob, submitting operation result immediately');
+		await addOperationResultsToArtifactEntry(operationResult);
+		return;
+	}
+
+	saveBlob({
+		...scheduledOperationsBlob,
+		analysis_in_progress: [
+			...scheduledOperationsBlob.analysis_in_progress,
+			{
+				artifact_catalog_id: operationResult.get('catalog_id'),
+				author_name: author.get('full_name'),
+				completes_at: analysisCompletesAt,
+				operation_additional_type: operationResult.get('additional_type'),
+				operation_result_id: operationResult.get('id'),
+				started_at: Date.now(),
+			},
+		]
+	});
+}
+
 /**
  * Get a list of all operation results
  * @route GET /operation
@@ -112,8 +150,17 @@ router.post('/', handleAsyncErrors(async (req: Request, res: Response) => {
 		is_analysed: true, // All operations are now analysed by default and results get posted automatically
 	}, { method: 'insert' });
 
-	// Post blood test results to medical file immediately
-	await addOperationResultToMedicalEntry(operationResult);
+	const operationResultType = operationResult.get('type');
+
+	if (operationResultType === 'MEDIC') {
+		// Automatically post blood test results, in case this is a blood sample
+		await addOperationResultToMedicalEntry(operationResult);
+	}
+
+	if (operationResultType === 'SCIENCE') {
+		// Automatically post artifact test results if available
+		await scheduleAddOperationResultToArtifactEntry(operationResult);
+	}
 
 	await processXrayOperation(operationResult);
 	res.json(operationResult);

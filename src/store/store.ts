@@ -23,7 +23,7 @@ export const store = configureStore({
  * @param {string[]} path 	array of strings defining the object path to watch, e.g. `['data','task','myid']`
  * @returns					object at the path, or `undefined`
  */
-export function getPath(path: string[]) {
+export function getPath(path: string[]): Record<string, any> | undefined {
 	let o = store.getState();
 	while (path && path.length > 0) {
 		if (o[path[0]]) {

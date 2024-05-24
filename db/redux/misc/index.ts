@@ -67,6 +67,30 @@ sunt eaque dolor id nisi magni.`
 			[SkillLevels.Expert]: Duration.minutes(5),
 		}
 	},
+	{
+		type: 'misc',
+		id: Stores.ScienceAnalysisTimes,
+		analysis_times: {
+			[SkillLevels.Novice]: Duration.minutes(5),
+			[SkillLevels.Master]: Duration.minutes(2),
+			[SkillLevels.Expert]: Duration.seconds(15),
+			// A550 power bank thingy that reduces science analysis time when in a plugged in state
+			a550_time_reduction: Duration.minutes(15)
+		}
+	},
+	{
+		type: 'misc',
+		id: Stores.ScienceAnalysisInProgress,
+		analysis_in_progress: []
+	},
+	{
+		type: 'misc',
+		id: Stores.TagUidToArtifactCatalogId,
+		tagUidToArtifactCatalogId: {
+			// TODO: Fill this with actual data
+			"ABCDEF123456": "BEACON-1",
+		}
+	}
 ];
 
 blobs.forEach(saveBlob);
