@@ -1,34 +1,27 @@
 id,name,sender_character_id,receiver_character_ids,plot_ids,event_ids,type,after_jump,locked,sent,message,gm_notes
-1,"""Good you are alive"" - Message from Mark Bolton to Amir",Mark Bolton,Amir Bolton,2,,Text NPC,4,FALSE,Not yet,I see from the records that you are alive. Good. Stay safe.,"If Amir sends the first message, ignore this message and anwser how Mark Bolton would. See plot for more information."
-2,"""I'm sorry"" - Message from Mark Bolton to Amir",Mark Bolton,Amir Bolton,"2, 3","1, 28",Text NPC,,FALSE,Not yet,"My Dearest Amir,
-As I pen down these words, I am burdened with the weight of regret and the realization that time slips through our fingers like sand. There are moments in life when we confront our failings, and this is one such moment for me.
-I must start by saying how sorry I am—sorry for not being there when you needed me, sorry for the silence that echoed in response to your messages during Delta's passing. The loss of your sister, a beacon of light in our lives, was a tragedy that reverberated through the very core of our family.
-Seeing you across the star system, grieving and isolated, stirred a pain I cannot easily express. Your choice to face that harsh reality alone while I remained distant is a regret I carry heavily. The burden of my responsibilities, the expectations that I unknowingly placed upon you, became a barrier when you needed a father's support the most.
-I stand before you with a confession, Amir. I wanted you to follow in my footsteps, to inherit the legacy of a Star Captain. When you chose a different path, I let disappointment cloud my judgment and failed to see the courage and strength it took to pursue your own dreams.
-I am sorry for the anger and frustration that manifested in our recent encounter. The passing years have etched lines on my face, a visible testament to the mistakes I've made. The realization that my time may be running out adds urgency to these words.
-Amir, you are my son, and regardless of the choices you make, my love for you remains unwavering. If I could turn back time, I would be there for you in the moments when you needed guidance and understanding. Life, however, does not offer such luxuries.
-As I face uncertainties and the fragility of my own existence, I want you to know that my greatest wish is for you to find fulfillment in your chosen path. Your identity is not defined by my expectations, and your journey is uniquely yours.
-I hope you can find it within yourself to forgive a flawed father, and I pray that the bond we share can withstand the tests of time. Whatever the future holds, my heart carries the weight of remorse, but also the enduring hope for reconciliation.
-With heartfelt apologies and enduring love,
+1,"""Good you are alive"" - Message from Mark Bolton to Amir",Mark Bolton,Amir Bolton,,,Text NPC,4,FALSE,Not yet,I see from the records that you are alive. Good. Stay safe.,"If Amir sends the first message, ignore this message and anwser how Mark Bolton would. Shortly and bluntly."
+2,"""I'm sorry"" - Message from Mark Bolton to Amir",Mark Bolton,Amir Bolton,2,55,Text NPC,14,FALSE,Not yet,"Amir,
+I messed up. Big time. Sorry for not being there when you needed me, especially during Delta's passing. I see now how I let you down, and I regret it deeply. My expectations got in the way, and I didn't give you the support you deserved.
+I'm sorry for being disappointed when you chose your own path instead of following mine. I realize now that was selfish of me. And I'm sorry for our recent argument. I've made mistakes, and I'm feeling the weight of them now.
+No matter what, you're my son, and I love you. I wish I could go back and be a better dad to you. But I can't. All I can do is hope you find happiness in your own way.
+I hope you can forgive me. I'm trying to make things right, even if it's late. Take care of yourself.
+Dad
+PS. Your sibling, Jill Montoya, needs you. Be there for them.",Should be sent when the ESS Harbinger Mutiny starts
+3,"""I'm your father"" - Message from Mark Bolton to Jill Montoya",Mark Bolton,Jill Montoya,2,55,Text NPC,14,FALSE,Not yet,"Jill,
+Time to spill some truth. You're my daughter, a beautiful result of a fleeting affair with Qwen Montoya. Sorry for keeping it under wraps for so long. Life's been complicated, and I made some misguided choices.
+You've grown into an amazing person, Jill. Your strength and determination are inspiring. From military training to promotions, you've shown what you're made of. I'm proud of you, and I see great potential for you to rise even higher, maybe even become a Star Captain.
+I'm here for you, Jill, ready to support you no matter what. Family is important, and I want to strengthen our bond.
+Oh, and here's a bombshell: Amir Bolton is your sibling. Crazy, right?
+Love,
 Mark Bolton
-PS. Jill Montoya is your sibling. Take good care of them.",Should be sent after the ESS Harbinger Mutiny starts
-3,"""I'm your father"" - Message from Mark Bolton to Jill Montoya",Mark Bolton,Jill Montoya,2,28,Text NPC,,FALSE,Not yet,"Dear Jill,
-I hope this letter finds you well amidst the vastness of space and the challenges you face on the ESS Odysseus. There comes a time when secrets must be unveiled, and truths shared. It is with a mix of emotions—regret, longing, and immense pride—that I pen down these words.
-In the shadows of the past, where the threads of our lives were woven, you emerged as the beautiful consequence of a brief affair between Qwen Montoya and me. Jill, you are my daughter, and though circumstances forced me to keep this revelation concealed, the time has come for you to know the truth.
-I understand the complexity of emotions that may surge within you upon learning this, and I apologize for the pain my silence may have caused. Life has a way of steering us down unexpected paths, and in my misguided attempt to protect you and my own standing, I made choices that shaped our journey.
-Your resilience and tenacity have not gone unnoticed. From the moment Lera Yang and I stepped in to help you survive the harsh realities of life, your strength shone through. Your journey from the military training to the promotions is a testament to your indomitable spirit. I couldn't be prouder of the person you've become. You even have potential to rise to the ranks of a Star Captain and that is a prospect that I see with great hope. With the right push and guidance, you could not only fulfill your dreams but also ascend to heights beyond what anyone could have imagined.
-Jill, I offer this truth as a foundation for understanding and growth. I am here to support you, guide you, and be a part of your journey, no matter where it leads if I just make it here alive. The bond of family is a powerful force, and I hope this revelation strengthens our connection.
-And also, with a bittersweet joy, I share that Amir Bolton is not just a colleague but a sibling, making the two of you intertwined in more ways than one.
-With sincere love and unwavering belief in your potential,
-Mark Bolton
-Star Captain",Should be sent right after the ESS Harbinger Mutiny starts
+Star Captain",Should be sent when the ESS Harbinger Mutiny starts
 4,Long range anomaly detected - ETA 15 min,,,,,Ship Log - Warning,,FALSE,Repeatable,Long range anomaly detected. Possible incoming jump into current sector. ETA 15 min.,Should be posted before every jump
 5,Long range anomaly detected - ETA 10 min,,,,,Ship Log - Warning,,FALSE,Repeatable,Long range anomaly detected. Possible incoming jump into current sector. ETA 15 min.,Should be posted before every jump
 6,Long range anomaly detected - ETA 5 min,,,,,Ship Log - Warning,,FALSE,Repeatable,Long range anomaly detected. Possible incoming jump into current sector. ETA 15 min.,Should be posted before every jump
 7,Long range anomaly detected,,,,,Ship Log - Warning,,FALSE,Repeatable,Long range anomaly detected. Possible incoming jump into current sector.,Should be posted before every jump
-8,Solaris distress message,,,,19,Ship Log - Warning,0,TRUE,Not yet,,
-9,Velian distress message,,,,20,Ship Log - Warning,1,TRUE,Not yet,Received a distress signal from area Alpha-5-D2-100: [Velians will write their own message],This also activates the beacon on the map
-10,Calculations about alien artifact,EVA (Easy Virtual Assistant),"Vane Hodge, Nikita Watson",5,,EVA,3,FALSE,Not yet,"Pre calculations done 
+8,Solaris distress message,,,,5,Ship Log - Warning,0,TRUE,Not yet,[Solaris 7will write their own message],
+9,Velian distress message,,,,8,Ship Log - Warning,1,TRUE,Not yet,Received a distress signal from area Alpha-5-D2-100: [Velians will write their own message],This also activates the beacon on the map
+10,Calculations about alien artifact,EVA (Easy Virtual Assistant),"Vane Hodge, Nikita Watson",5,,EVA,3,TRUE,Not yet,"Pre calculations done 
 
 Before safe integration to ship systems can be made the following information needs to be gathered from the scientists: 
 - Scientists should find out what was it in the blood that triggered the artifact 
@@ -43,3 +36,125 @@ Please send me a message after you have acquired the above information for furth
 [Offgame: You or the engineers should improvise the transformations listed above for the artifact using the spare parts given to engineers. The engineering transformation and science calculations should take at least one day before the artifact can be attached to Odysseus. Please send a verification message with the info what you have done to the artifact to EVA before trying to attach the artifact. For more info ask GM:s.]",Send the message after 3rd jump. The next message should let them insert the artifact into the ship systems and after calibration time add extra calibration slot.
 11,Security footage who were in the science lab when the alien artifract went missing,EVA (Easy Virtual Assistant),ESS Odysseus Security,5,,EVA,0,FALSE,Not yet,"Security footage shows that the persons who visited Science lab at the time the alien artifact went missing are:
 Ismy Arima, Eli Booth, Gene Hawkins, Vane Hodge, Nikita Watson, Dayle Rogers, and Leigh Kent",Send if security asks EVA who visited in the science lab when the alien artifact went missing
+12,Pressure to marriage,Samantha Richard,Deron Richard,74,,Text NPC,8,FALSE,Not yet,Placeholder for a message where Deron's parents Samantha and David pressures them into marrige,
+13,Samantha Richard died,David Richard,Deron Richard,6,60,Text NPC,12,FALSE,Not yet,Plaseholder for a message where Deron's father David tells that their mother has died when the ship took hit.,Send the message after you have changed Samantha's status to deceased.
+14,News about Taylor Smith,Nora Ellis,Harper Ellis,75,,Text NPC,6,FALSE,Not yet,Placeholder for a message where Nora sends a mesasge to Harper that their spouse-to-be Taylor Smith is in bad shape in Medbay. Nora has been taking care of Taylor.,
+15,Remi Sharp is your sibling,Li Russell,Eugenie Russell,8,,Text NPC,8,FALSE,Not yet,"My Dearest Eugenie,
+There's something I need to tell you, something I've kept hidden for far too long. You have a sibling named Remi Sharp, born before you, whom I left behind when I changed my name from Lydia Sharp to Li and ran from danger. I had to leave Remi behind, believing, perhaps naively, that they would be safer in Pax's care than with me. I was afraid of what Pax might do if I took Remi with me, afraid of the reprisals, the threats, the violence that might follow. This decision haunts me, but I thought it was for the best. Remi is on board the ESS Odysseus, and I hope you could be there for them.
+
+With love,
+Mom",Send the message before you destroy ESS Polaris
+16,Is marriage still on? Part 1,Rory Byrne,Jose Cain,9,,Text NPC,4,FALSE,Not yet,A placeholder for a message where Rory asks Jose if the marriage is still a go. Also add a part where they are happy that Jose is alive!,Send the first message if Jose hasn't sent it first
+17,Is marriage still on? Part 2,Idris Cain,Jose Cain,9,,Text NPC,4,FALSE,Not yet,"A placeholder where the father of Jose Cain says that Jose should honor the dead their mother made when the marriage between Jose and Rory was settled. It would mean anything at the moment especially if Jose will become the next leader of Hope.
+Also add a part where they are happy that Jose is alive!",Send the first message if Jose hasn't sent it first
+18,Is marriage still on? Part 3,Enisa Cain,Jose Cain,9,,Text NPC,4,FALSE,Not yet,"A placeholder for a message where Jose's sibling will try to convince Jose that the marriage was indeed what their mother wanted for Jose.
+Also add a part where they are happy that Jose is alive!",Send the first message if Jose hasn't sent it first
+19,My dear Remi Sharp,Li Russell,Remi Sharp,8,,Text NPC,8,FALSE,Not yet,"My dearest Remi,
+I'm so glad that you are alive. I had to run, run away from Pax. I couldn't take you with me so I left you behind, changed my name and fled. I knew you would be safer in Pax's care than with me. I was afraid of what Pax might do if I took you with me, afraid of the reprisals, the threats, the violence that might follow. It's a decision that weighs heavily on my heart, but I thought it was the best choice at the time. You have a sibling and they are on board the ESS Odysseus, Eugenie Russell. I hope you could be there for them in these horrible events and hopefully one day we can face our past together as a family.
+
+With love and regret,
+Your Mom, Lydia Sharp aka Li Russell",Send the message before you destroy ESS Polaris
+20,Amira is alive,Elya Andrews,Caden Andrews,55,,Text NPC,15,FALSE,Not yet,"Dear Caden,
+There's something important I need to share with you. Your daughter Amira is alive. Against all odds, she survived the attack on Ellarion, thanks to the bravery and quick thinking of Aydan.
+When the Machines descended upon Ellarion, chaos ensued. Aydan managed to shield Amira from harm and lead her to a refuge where Amira was picked up on a transporter. There weren't enough room so Aydan was left behind to take the next transporter which never came. It's a miracle, Caden. Despite the darkness Amira is safe now, and we owe it all to Aydan's heroism.
+Amira was injured during the attack and therefore I only got information about it just a while ago.  She is on board ESS Aries.
+I know this news may bring both relief and a flood of emotions. Please know that Amira is in good hands, and I will do everything in my power to ensure her well-being. Let us find solace in the knowledge that our beloved Amira is alive and safe.
+
+With love and hope,
+Elya Andrews",Send the message if Elya cannot visit ESS Odysseus
+21,Gale Chapman! Stop fooling around!,Beth Chapman, Gale Chapman,56,,Text NPC,7,FALSE,Not yet,A placeholder message where Beth Chapman (Gale's mother) tries make Gale Chapman to end a forbidden relationship to Nolan Hunter. Lex Peters told Beth about it.,
+22,Hayden is yours,Salma Taylor,Cal Allen,58,,Text NPC,,FALSE,Not yet,A placeholder message where Salma tells Cal Allen that Hayden is their child.,It might be possible for Cal to send Salma message first if Hayden has told Cal that they are their child.
+23,What happened to my sister?,Ji-Hu Norris,"Evin Reid, Gallan Reid","57, 83",,Text NPC,7,FALSE,Not yet,A placeholder for a message asking what happened to my sister Kiran and their collegue Alix Granville. Ji-Hu could suspect that the acciden weren't an accident.,Gallan killed their sister Kiran and Alix making it look like an accident.
+24,Why did you leave me behind?,Merissa Voight,Jodey Agaki,97,61,Text NPC,,TRUE,Not yet,A placeholder message to ask from Jodey Agaki why did they left them behind (see more from plot),Send the message before you have destroyed ESS Polaris
+25,Theosin Walker is dead,Tory Zarek (Fleet Secretary),"Hedly Walker, Noe Walker, Lonnie Gordon",,62,Text NPC,4,TRUE,Not yet,A placeholder message to inform Hedly Walker that their father Theosin Walker died when OSS Vulture took too much damage from premature jump,Send the message after you have destroyed OSS Vulture
+26,Andrej Alexandrov is dead,Tory Zarek (Fleet Secretary),"Karin Alexandrov, Briana Chambers",,61,Text NPC,,TRUE,Not yet,A placeholder message to inform that Andrej Alexandrov (sibling of Karin Alexandrov and parent of Briana Chambers) died when ESS Polaris was destroyed,Send the message after you have destroyed ESS Polaris
+27,Merissa Voight is dead,Amelia Wells,"Jodey Agaki, Blake Ishimoto",97,61,Text NPC,,TRUE,Not yet,A placeholder message to inform Jodey Agaki that Merissa Voight died when ESS Polaris was destroyed,Send the message after you have destroyed ESS Polaris
+28,Li Russell and Thomas Russell are dead,Tory Zarek (Fleet Secretary),"Eugenie Russell, Gaylen Russell",,61,Text NPC,,TRUE,Not yet,A placeholder message to inform that Li and Thomas Russell died when ESS Polaris was destroyed,Send the message after you have destroyed ESS Polaris
+29,Samira Watson is dead,Tory Zarek (Fleet Secretary),Nikita Watson,,61,Text NPC,,TRUE,Not yet,A placeholder message to inform that Samira Watson (Nikita's mother) died when ESS Polaris was destroyed,Send the message after you have destroyed ESS Polaris
+30,Steff Carson is dead,Tory Zarek (Fleet Secretary),Hayden Carson,,61,Text NPC,,TRUE,Not yet,A placeholder message to inform that Steff Carson (Hayden's aunt) died when ESS Polaris was destroyed,Send the message after you have destroyed ESS Polaris
+31,Suran Sewi is dead,Tory Zarek (Fleet Secretary),Aeran Lester,,61,Text NPC,,TRUE,Not yet,A placeholder message to inform that Suran Sewi (Aeran Lester's Ex) died when ESS Polaris was destroyed,Send the message after you have destroyed ESS Polaris
+32,Caleb Wong is dead,Vanja Wong,"Malak Kovalenko, Zyra Lee, Alia Swanson, Harper Ellis, Idris Kalashnik, Idris McBride",97,61,Text NPC,,TRUE,Not yet,A placeholder message to inform Caleb's friends of Caleb's death when ESS Polaris was destroyed,Send the message after you have destroyed ESS Polaris
+33,Alex Harris is dead,Tory Zarek (Fleet Secretary),Fenix Ellis,,61,Text NPC,,TRUE,Not yet,A placeholder message to inform that Alex Harris (Fenix Ellis' spouse-to-be) died when ESS Polaris was destroyed,Send the message after you have destroyed ESS Polaris
+34,Nakahara's are dead,Tory Zarek (Fleet Secretary),Espen Nakahara,79,61,Text NPC,7,TRUE,Not yet,"A placeholder message to inform that Ami, Eisen, Sevyn and Anri Nakahara died when ESS Polaris was destroyed. Now Espen Nakahara is the new heir of Wisdom dynasty.",Send the message after you have destroyed ESS Polaris
+35,Naomi Green is dead,Tory Zarek (Fleet Secretary),Hale Green,,63,Text NPC,,TRUE,Not yet,A placeholder message to inform that Naomi Green (Hale Green's parent) died when CSS Prophet was destroyed,Send the message after you have destroyed ESS Prophet
+36,Oren Carroll is dead,Tory Zarek (Fleet Secretary),Harley Carroll,,63,Text NPC,,TRUE,Not yet,A placeholder message to inform that Oren Carroll (Harley Carroll's parent) died when CSS Prophet was destroyed,Send the message after you have destroyed ESS Prophet
+37,Aaren Riggs is dead,Tory Zarek (Fleet Secretary),Espen Nakahara,,63,Text NPC,,TRUE,Not yet,A placeholder message to inform that Aaren Riggs (Leader of Wisdom Dynasty) died when CSS Prophet was destroyed. Espen Nakahara is the heir after others in Nakahara family. Check if they are still alive.,"Send the message after you have destroyed ESS Prophet
+Notice that Espen Nakahara will be the heir when Aaren Riggs and others in Nakahara family dies."
+38,Elan Nieze is dead,Tory Zarek (Fleet Secretary),Lynn Ryan,,64,Text NPC,,TRUE,Not yet,A placeholder message to inform that Elan Nieze (Lynn Ryan's grandparent) died when ESS Valkyrie was destroyed,"Send the message after you have destroyed ESS Valkyrie
+What else happens when Leader of Purity dies?"
+39,Eliza Ray is dead,Tory Zarek (Fleet Secretary),"Vane Hodge, Kerrie Ray",,64,Text NPC,,TRUE,Not yet,"A placeholder message to inform that Eliza Ray (Vane Hodge's aunt, Kerrie Ray's parent) died when ESS Valkyrie was destroyed",Send the message after you have destroyed ESS Valkyrie
+40,Gerda McBride is dead,Tory Zarek (Fleet Secretary),Mel McBride,,64,Text NPC,,TRUE,Not yet,A placeholder message to inform that Gerda McBride (Mel McBride's parent) died when ESS Valkyrie was destroyed,Send the message after you have destroyed ESS Valkyrie
+41,Holt Shaw is dead,Reyna Barnes,"Heath Steele, Han Barnes, Hale Green",,64,Text NPC,,TRUE,Not yet,"A placeholder message to inform that Holt Shaw (The fourth H with Han, Hale and Heath) died when ESS Valkyrie was destroyed",Send the message after you have destroyed ESS Valkyrie
+42,Nora Ellis and Taylor Smith are dead,Tory Zarek (Fleet Secretary),"Tan Ellis, Harper Ellis, Fenix Ellis",,64,Text NPC,,TRUE,Not yet,"A placeholder message to inform that Nora Ellis and Taylor Smith (Nora was Tan's nibbling, Harper's and Fenix's cousin, Taylor Smith was Harper's spouse-to-be) died when ESS Valkyrie was destroyed",Send the message after you have destroyed ESS Valkyrie
+43,Rayan Poole is dead,Tatia Vladimova,"Pax Houghton, Lonnie Gordon",,64,Text NPC,,TRUE,Not yet,"A placeholder message to inform that Rayan Poole (ZW member, knew Pax is Spider) died when ESS Valkyrie was destroyed",Send the message after you have destroyed ESS Valkyrie
+44,Theresa Khan is dead,Lupe Khan,"Valerian Fukui, Mel McBride, Hedly Walker, Arlyn Booth",,64,Text NPC,,TRUE,Not yet,A placeholder message to inform that Teresa Khan (friend to all) died when ESS Valkyrie was destroyed,Send the message after you have destroyed ESS Valkyrie
+45,Theodore Chapman is dead,Tory Zarek (Fleet Secretary),Gale Chapman,,64,Text NPC,,TRUE,Not yet,A placeholder message to inform that Theodore Chapman (Gale Chapman's sibling) died when ESS Valkyrie was destroyed,Send the message after you have destroyed ESS Valkyrie
+46,OSS Vulture destroyed,,,,62,News,4,TRUE,Not yet,"OSS Vulture Destroyed
+
+OSS Vulture was destroyed after sustaining severe damage from a premature jump. 
+
+Among the passengers killed were:
+- Lupe Khan (Star Captain)
+- Theosin Walker
+
+We are deeply sorry for the loss and extend our heartfelt condolences to the families and friends of the victims during this difficult time.","Send the message after you have destroyed OSS Vulture
+Check the passangers before sending!"
+47,ESS Polaris destroyed,,,,61,News,,TRUE,Not yet,"ESS Polaris Destroyed
+
+ESS Polaris was destroyed [insert here why]. 
+
+Among the passengers killed were:
+- Alex Harris
+- Ami Nakahara
+- Andrej Alexandrov
+- Anri Nakahara
+- Caleb Wong
+- Eisen Nakahara
+- Li Russell
+- Makena Kelly (Star Captain)
+- Merissa Voight
+- Samira Watson
+- Sevyn Nakahara
+- Steff Carson
+- Suran Sewi
+- Thomas Russell
+
+We are deeply sorry for the loss and extend our heartfelt condolences to the families and friends of the victims during this difficult time.","Send the message after you have destroyed OSS Vulture
+Check the passangers before sending!"
+48,CSS Prophet destroyed,,,,62,News,,TRUE,Not yet,"CSS Prophet Destroyed
+
+CSS Prophet was destroyed [insert here why]. 
+
+Among the passengers killed were:
+- Aaren Riggs
+- Innes Ukon (Star Captain)
+- Naomi Green
+- Oren Carroll
+
+We are deeply sorry for the loss and extend our heartfelt condolences to the families and friends of the victims during this difficult time.","Send the message after you have destroyed OSS Vulture
+Check the passangers before sending!"
+49,ESS Valkyrie destroyed,,,,62,News,,TRUE,Not yet,"OSS Vulture Destroyed
+
+OSS Vulture was destroyed [insert here why]. 
+
+Among the passengers killed were:
+- Don Sorrows
+- Elan Nieze
+- Eliza Ray
+- Fergus Dale
+- Gerda McBride
+- Holt Shaw
+- Leif Gothia (Star Captain)
+- Mari Lake
+- Nora Ellis
+- Rayan Poole
+- Taylor Smith
+- Teressa Khan
+- Theodore Chapman
+
+We are deeply sorry for the loss and extend our heartfelt condolences to the families and friends of the victims during this difficult time.","Send the message after you have destroyed OSS Vulture
+Check the passangers before sending!"
+50,Assignment,Corey Mills,Leone Mills,33,,Text NPC,,FALSE,Not yet,Placeholder text for an assignment from Corey Mills (Purity) to Leone.,Can be also an assignment from Angel Buchanan or Roman Plichata to Leone Mills and/or Abe Arima. Corey Mills would be then the orderer of it using middle mans.
+51,Assignment/Report,Angel Buchanan,Abe Arima,33,,Text NPC,,FALSE,Not yet,Placeholder text for an report or assignment from Angel Buchanan (Purity) to Abe Arima.,
+52,Letter to Nickie Ramirez,Amy Ramirez,Nickie Ramirez,,,Letter,,FALSE,No need,Placeholder for the letter,"Before Lonnie Gordon's sibling Amy Ramirez (NPC) died, she told Lonnie to deliver a letter to their child, Lonnie's nibbling, Nickie Ramirez."
+53,Letter to Deron Richard,Maron Richard,Deron Richard,63,,Letter,,FALSE,No need,Placeholder for the letter,During the Emperor assassination attempt Maron Richard handed a letter to Hali Okuma so that they can give it to Deron Richard.

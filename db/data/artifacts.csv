@@ -16,7 +16,7 @@ EL-QV57-3,Unknown,541.329,Remy Hall,P-TE96-QV57,Elder,"A metallic half-dome with
 EL-QV57-4,Recharger,541.346,Remy Hall,P-TE96-QV57,Elder,"Circular two-layered metal object with a loose connector. A push button on the outer edge of the disc. 
 
 ![](http://192.168.1.2/images/el-qv57-4.jpg)",,,,,,,,TRUE
-EL-QV57-5,Unknown,542.008,Remy Hall,P-TE96-QV57,Elder,"IS THE COOLING DEVICE ENGINEERS STOLE! REMOVE THIS INFO WHEN UPDATING THE ARTIFACT DB
+EL-QV57-5,Unknown,542.008,Remy Hall,P-TE96-QV57,Elder,"IS THE CALCULATOR DEVICE ENGINEERS STOLE! REMOVE THIS INFO WHEN UPDATING THE ARTIFACT DB
 A short hammer-like object with symmertical protrusions. A loose connector on one side and a push button on the other.
 
 ![](http://192.168.1.2/images/el-qv57-5.jpg)",,,,,,,,TRUE
@@ -68,9 +68,15 @@ MACH-24,Machine Drone,442.134,Reloz Duran,P-OC65-OY50,Machine,"**Machine Drone**
 Machine Drones are human sized metallic constructs which are controlled by machine commander. The distinct feature is a red light in the forehead. They are extremely durable and resilient to gunfire and blunt force.  
 
 ![](/social/assets/img/artifacts/machine_mothership.webp)",,,,,,,,TRUE
-BEACON-1,Beacon 1,542.,Velians,Alpha-5-D2-100-P-DE47-HC55 ,Earth,A box with a lock and covered with special symbols.,,,,,,,,FALSE
-BEACON-2,Beacon 2,542.,ESS Odysseus Alpha Team,Alpha-5-C1-82-P-TE49-HE75,Earth,A box with a lock and covered with special symbols.,,,,,,,,FALSE
-BEACON-3,Beacon 3,542.,ESS Odysseus Beta Team,Alpha-1-B1-49-P-CA95-LN71,Earth,A box with a lock and covered with special symbols.,,,,,,,,FALSE
-BEACON-4,Beacon 4,542.,ESS Odysseus Alpha Team,Beta-4-B8-63-P-OC46-DA97,Earth,A box with a lock and covered with special symbols.,,,,,,,,FALSE
-BEACON-5,Beacon 5,542.,ESS Odysseus Gamma Team,Beta-4-A8-31-M12-PI87,Earth,A box with a lock and covered with special symbols.,,,,,,,,FALSE
-BEACON-6,Beacon 6,542.,ESS Odysseus Alpha Team,Alpha-1-A1-1-P-SI14-UX98,Earth,A box with a lock and covered with special symbols.,,,,,,,,FALSE
+BEACON-1,Beacon 1,542,Velians,Alpha-5-D2-100-P-DE47-HC55 ,Earth,A box with a lock and covered with special symbols.,,,,,,,,FALSE
+BEACON-2,Beacon 2,542,ESS Odysseus Alpha Team,Alpha-5-C1-82-P-TE49-HE75,Earth,A box with a lock and covered with special symbols.,,,,,,,,FALSE
+BEACON-3,Beacon 3,542,ESS Odysseus Beta Team,Alpha-1-B1-49-P-CA95-LN71,Earth,A box with a lock and covered with special symbols.,,,,,,,,FALSE
+BEACON-4,Beacon 4,542,ESS Odysseus Alpha Team,Beta-4-B8-63-P-OC46-DA97,Earth,A box with a lock and covered with special symbols.,,,,,,,,FALSE
+BEACON-5,Beacon 5,542,ESS Odysseus Gamma Team,Beta-4-A8-31-M12-PI87,Earth,A box with a lock and covered with special symbols.,,,,,,,,FALSE
+BEACON-6,Beacon 6,542,ESS Odysseus Alpha Team,Alpha-1-A1-1-P-SI14-UX98,Earth,A box with a lock and covered with special symbols.,,,,,,,,FALSE
+VE-342,Velian Embryo Container,542,Velians,Alpha-5-D2-100-P-DE47-HC55 ,Velian,,,,,,,,,FALSE
+WORM-1,Alien worm,542,,Alpha-1-B1-49-P-TE95-LN71,,,,,,,,,,FALSE
+HERB-284,Plant with curative properties,542,,,,,,,,,,,,FALSE
+MACH-564,Communicator to Machines,,,,Machine,,,,,,,,,FALSE
+AVK-012,Araknium Bomb,542,,,EOC,,,,,,,,Jodey Agaki's bomb,
+JW2888,Silent Petal,,,,,,,,,,,,,

@@ -1,37 +1,188 @@
 id,name,character_groups,character_ids,artifact_ids,size,importance,dmx_event_num,type,gm_actions,after_jump,locked,status,npc_location,npc_count,description,gm_note_npc,gm_notes
-1,Jump 1,"Bridge Crew, Engineers",,,Medium,Mandatory,,Jump,Jump actions,0,TRUE,Not Done,Fleet Comms & EE,2,Odysseus runs away from the Machines,Empty Epsilon NPC: Before jump - Minor attack,
-2,Jump 2,"Bridge Crew, Engineers",,,Medium,Mandatory,,Jump,Jump actions,1,TRUE,Not Done,Fleet Comms & EE,2,Odysseus runs away from the Machines,Empty Epsilon NPC: Before jump - Minor attack,
-3,Jump 3,"Bridge Crew, Engineers",,,Medium,Mandatory,,Jump,Jump actions,2,TRUE,Not Done,Fleet Comms & EE,2,Odysseus runs away from the Machines,Empty Epsilon NPC: Before jump - Normal stuff,
-4,Jump 4,"Bridge Crew, Engineers",,,Medium,Mandatory,,Jump,Jump actions,3,TRUE,Not Done,Fleet Comms & EE,2,Odysseus runs away from the Machines,Empty Epsilon NPC: Before jump - Major attack,
-5,Jump 5,"Bridge Crew, Engineers",,,Medium,Mandatory,,Jump,Jump actions,4,TRUE,Not Done,Fleet Comms & EE,2,Odysseus runs away from the Machines,Empty Epsilon NPC: Before jump - Normal stuff,
-6,Jump 6,"Bridge Crew, Engineers",,,Medium,Mandatory,,Jump,Jump actions,5,TRUE,Not Done,Fleet Comms & EE,2,Odysseus runs away from the Machines,Empty Epsilon NPC: Before jump - Normal stuff,
-7,Jump 7,"Bridge Crew, Engineers",,,Medium,Mandatory,,Jump,Jump actions,6,TRUE,Not Done,Fleet Comms & EE,2,Odysseus runs away from the Machines,Empty Epsilon NPC: Before jump - Normal stuff,
-8,Jump 8,"Bridge Crew, Engineers",,,Medium,Mandatory,,Jump,Jump actions,7,TRUE,Not Done,Fleet Comms & EE,2,Odysseus runs away from the Machines,Empty Epsilon NPC: Before jump - Normal stuff,
-9,Jump 9,"Bridge Crew, Engineers",,,Medium,Mandatory,,Jump,Jump actions,8,TRUE,Not Done,Fleet Comms & EE,2,Odysseus runs away from the Machines,Empty Epsilon NPC: Before jump - Normal stuff,
-10,Jump 10,"Bridge Crew, Engineers",,,Medium,Mandatory,,Jump,Jump actions,9,TRUE,Not Done,Fleet Comms & EE,2,Odysseus runs away from the Machines,Empty Epsilon NPC: Before jump - Major attack,
-11,Jump 11,"Bridge Crew, Engineers",,,Medium,Mandatory,,Jump,Jump actions,10,TRUE,Not Done,Fleet Comms & EE,2,Odysseus runs away from the Machines,Empty Epsilon NPC: Before jump - Normal stuff,
-12,Jump 12,"Bridge Crew, Engineers",,,Medium,Mandatory,,Jump,Jump actions,11,TRUE,Not Done,Fleet Comms & EE,2,Odysseus runs away from the Machines,Empty Epsilon NPC: Before jump - Minor attack,
-13,Jump 13,"Bridge Crew, Engineers",,,Medium,Mandatory,,Jump,Jump actions,12,TRUE,Not Done,Fleet Comms & EE,2,Odysseus runs away from the Machines,Empty Epsilon NPC: Before jump - Major attack,
-14,Jump 14,"Bridge Crew, Engineers",,,Medium,Mandatory,,Jump,Jump actions,13,TRUE,Not Done,Fleet Comms & EE,2,Odysseus runs away from the Machines,Empty Epsilon NPC: Before jump - Minor attack,
-15,Jump 15,"Bridge Crew, Engineers",,,Medium,Mandatory,,Jump,Jump actions,14,TRUE,Not Done,Fleet Comms & EE,2,Odysseus runs away from the Machines,Empty Epsilon NPC: Before jump - Normal stuff,
-16,Jump 16,"Bridge Crew, Engineers",,,Medium,Mandatory,,Jump,Jump actions,15,TRUE,Not Done,Fleet Comms & EE,2,Odysseus runs away from the Machines,Empty Epsilon NPC: Before jump - Normal stuff,
-17,Jump 17,"Bridge Crew, Engineers",,,Medium,Mandatory,,Jump,Jump actions,16,TRUE,Not Done,Fleet Comms & EE,2,Odysseus runs away from the Machines,Empty Epsilon NPC: Before jump - Normal stuff,
-18,Jump 18,"Bridge Crew, Engineers",,,Medium,Mandatory,,Jump,Jump actions,17,TRUE,Not Done,Fleet Comms & EE,2,Odysseus runs away from the Machines,Empty Epsilon NPC: Before jump - Major attack,
-19,LM 1 - Research pick up,"Marines, Scientists","Evin Reid, Gallan Reid",,Large,Mandatory,,Land Mission,Briefing NPCs,1,TRUE,Not Done,Mission,,Odysseus picks up 2 researchers from Solaris hopefully before they are out of air,,Possibility to send a message from Research station and then open text comms and later on voice comms to Odysseus
-20,LM 2 - Velian pick up,"Marines, Scientists, Velians","Xavier Blake, Alia Swanson, Zyra Lee, Malak Kovalenko, Roan Rowen, Tristan Fukui, Flann Hollow, Lane Thomas, Nicol Wells, Ballard Case, Hali Okuma, Eugenie Russell, Karin Alexandrov, The Guardian, Jardan, Taelor, Aedan, Saria, Zaera,  Mael, Keana, Tarai, Anix, Nayel, Naethan, Jaeco, Briya",BEACON-1,Large,Mandatory,,Land Mission,Briefing NPCs,3,TRUE,Not Done,Mission,2,"Velians sends a distress signal.
-Odysseus picks up Velian survivors from Velian.",2 Velian NPCs die during the Velian resque event,Velians will send a distress signal and this also activates the beacon on the map and then opens text comms and later on voice comms to Odysseus
-21,LM 3 - Rebels,"Marines, Scientists",,BEACON-2,Large,Mandatory,,Land Mission,Briefing NPCs,6,TRUE,Not Done,Mission,,,,
-22,LM 4 - Alien worm,"Marines, Scientists",,BEACON-3,Large,Mandatory,,Land Mission,Briefing NPCs,8,TRUE,Not Done,Mission,,,,
-23,LM 5 - Natives,"Marines, Scientists",,BEACON-4,Large,Mandatory,,Land Mission,Briefing NPCs,10,TRUE,Not Done,Mission,,,,
-24,LM 6 - Machines,"Marines, Scientists",,BEACON-5,Large,Mandatory,,Land Mission,Briefing NPCs,12,TRUE,Not Done,Mission,,,,
-25,LM 7 - Radiation,"Marines, Scientists",,BEACON-6,Large,Mandatory,,Land Mission,Briefing NPCs,14,TRUE,Not Done,Mission,,,,
-26,LM 8 - Earth outpost,"Marines, Scientists",,,Large,Mandatory,,Land Mission,Briefing NPCs,15,TRUE,Not Done,Mission,,,,
-27,LM 9 - Shadow beasts,"Marines, Scientists",,,Large,Mandatory,,Land Mission,Briefing NPCs,17,TRUE,Not Done,Mission,,,,
-28,ESS Harbinger - Mutiny,"Bridge Crew, Criminals, Engineers, Politics, Security, Armory","Amir Bolton, Mark Bolton, Jill Montoya, Gira Hayakawa, Isha Hayakawa, Lane Hayakawa, Lane Thomas, Shae Thomas, Hedly Walker",,Large,Should have,,Political,NPC,,FALSE,Not Done,Odysseus,6,"ESS Harbinger is the first ship where the marshal law is overrun by a mutiny. All the commanders and some of the military personel are cast out from the ESS Harbinger to a small vessel which is uncapable to jump. Now the fleet needs to decide who would take them in before the next jump or will they be left behind. Here is a chance that Odysseus will take them in since there will be on board some of the people known in the Odysseus like the captain of the ESS Harbinger Mark Bolton is the father of Amir Bolton Chief Engineer. ",,"Criminals should get a shipment with the resqued.
+1,LARP STARTS,All,,,Large,Mandatory,,Character,No need,0,TRUE,In Progress,,0,Larp starts,,
+2,Solaris 7 start,Solaris,"Evin Reid, Gallan Reid",,Medium,Mandatory,,Character,Briefing Character,0,TRUE,In Progress,,0,Players who start their game from Solaris 7 starts their game,,
+3,Velian / Atlantis 3 start,"Velian, Atlantis 3","Xavier Blake, Alia Swanson, Zyra Lee, Malak Kovalenko, Roan Rowen, Tristan Fukui, Flann Hollow, Lane Thomas, Nicol Wells, Ballard Case, Hali Okuma, Eugenie Russell, Karin Alexandrov, The Guardian, Jardan, Taelor, Aedan, Saria, Zaera,  Mael, Keana, Tarai, Anix, Nayel, Naethan, Jaeco, Briya, Avery Higashi, Harley Carroll, Gene Hawkins, Lee Savage, Fenix Ellis",,Medium,Mandatory,,Character,Briefing Character,0,TRUE,In Progress,Other,2,Players who are from Velian or Atlantis 3 starts their game,There are two Velian NPCs. One of them dies before pick up and other on ESS Odysseus,
+4,ESS Starcaller onboard,Starcaller,"Jin Komatsu, Dallan Jordan, Yera Romero, Kai Rogers, Cal Allen, Tyler Carrillo, Idris Kalashnik, Skye Duran",,Medium,Mandatory,,Character,Briefing Character,0,TRUE,In Progress,,0,"To avoid further loss of life, the government (or what was left of it) decided to send out a delegation of diplomats that would go and meet the machines in order to surrender and to negotiate for peace.
+
+Starcaller departed the main fleet three and a half days ago, on star date 152 (of year 542). They had been traveling for two days when suddenly the ship engines broke down.
+
+The military had given the diplomats a tracking device that they could use to find their way back to the main fleet. The device did not work - it didn’t broadcast nor receive any signal. The only remaining option seemed to be to use the ship’s inbuilt emergency transmission. It took 24 hours before anyone responded. It was unexpectedly from the spaceship ESS Odysseus. It took a few further hours for Odysseus to reach Starcaller. Starcaller has just now landed on ESS Odysseus.
+
+There has been speculation about how it can be that a top of the line ship like this can suddenly malfunction, along with the device. Is this sabotage?",,
+5,Solaris 7 - Research station SOS,Bridge Crew,"Evin Reid, Gallan Reid",,Small,Mandatory,,Character,No need,0,TRUE,Not Done,,0,Solaris 7 sends out SOS mesasges,,Possibility to send a message from Research station and then open text comms and later on voice comms to Odysseus
+6,Jump 1,"Bridge Crew, Engineers",,,Medium,Mandatory,,Jump,Jump actions,0,TRUE,Not Done,Fleet Comms & EE,2,Odysseus runs away from the Machines and jumps to rescue people from Solaris 7,"Empty Epsilon NPC: Before jump - Minor attack
+Accepted location(s): Alpha-6-D3-118-CS39
+Normal JUMP
+Solar shift
+After jump: Solaris 7 pick up",
+7,LM 1 - Solaris 7 pick up,"Marines, Armory, Scientists, Security","Evin Reid, Gallan Reid, Nolan Hunter, Gale Chapman, Leone Mills, Kerrie Ray",,Medium,Mandatory,,Land Mission,Briefing Character,1,TRUE,Not Done,Mission,,"Day 1: 19.15-19.45
+Solar
+Finding and helping injured scientists
+Odysseus picks up 2 researchers from Solaris hopefully before they are out of air",,Only 4 members on mission - additional members not yet added to the team (also room for Evin and Gallan Reid to be picked up)
+8,Genesis ship SOS signal,"Bridge Crew, Velians","Xavier Blake, Alia Swanson, Zyra Lee, Malak Kovalenko, Roan Rowen, Tristan Fukui, Flann Hollow, Lane Thomas, Nicol Wells, Ballard Case, Hali Okuma, Eugenie Russell, Karin Alexandrov, The Guardian, Jardan, Taelor, Aedan, Saria, Zaera,  Mael, Keana, Tarai, Anix, Nayel, Naethan, Jaeco, Briya, Avery Higashi, Harley Carroll, Gene Hawkins, Lee Savage, Fenix Ellis",,Small,Mandatory,,Character,No need,1,TRUE,Not Done,Other,2,Genesis ship sends SOS message which ESS Odysseus and Fleet notices,Two Velians who are on Genesis ship with other Velians and Atlantis 3 people,
+9,Jump 2,"Bridge Crew, Engineers",,,Medium,Mandatory,,Jump,Jump actions,1,TRUE,Not Done,Fleet Comms & EE,2,Odysseus runs away from the Machines,"Empty Epsilon NPC: Before jump - Minor attack
+Accepted location(s): Alpha-6-D3-101/Alpha-6-D3-117
+Normal JUMP
+Lunar shift",
+10,Jump 3,"Bridge Crew, Engineers",,BEACON-1,Medium,Mandatory,,Jump,Jump actions,2,TRUE,Not Done,Fleet Comms & EE,2,Odysseus runs away from the Machines,"Empty Epsilon NPC: Before jump - Normal stuff
+Accepted location(s): Alpha-5-D2-100-P-DE47-HC55
+Double JUMP - breaking
+Lunar shift
+After jump: Velian pick up, Beacon puzzle 1, Meeting the fleet, death of Velian NPC",
+11,LM 2 - Velian pick up,"Marines, Armory, Scientists, Velians, Medics, Security","Xavier Blake, Alia Swanson, Zyra Lee, Malak Kovalenko, Roan Rowen, Tristan Fukui, Flann Hollow, Lane Thomas, Nicol Wells, Ballard Case, Hali Okuma, Eugenie Russell, Karin Alexandrov, The Guardian, Jardan, Taelor, Aedan, Saria, Zaera,  Mael, Keana, Tarai, Anix, Nayel, Naethan, Jaeco, Briya, Avery Higashi, Harley Carroll, Gene Hawkins, Lee Savage, Fenix Ellis",BEACON-1,Large,Mandatory,,Land Mission,Briefing NPCs,3,TRUE,Not Done,Mission,2,"Day 1: 22.30-23.30
+Lunar
+Finding and helping injured Velians
+Odysseus picks up Velian survivors from Velian.",2 Velian NPCs die during the Velian resque event,"Only 5 members on a mission, Zyra will be added later on, need to drive back and forth several times to carry all Velian/Atlantis characters to safety
+Velians will send a distress signal and this also activates the beacon on the map and then opens text comms and later on voice comms to Odysseus"
+12,Beacon puzzle 1,Scientists,"Blake Ishimoto, Devyn Pearson, Evin Reid, Gallan Reid, Jodey Agaki, Jonah Malone, Keana, Remy Hall, Saria, Terran Wells, Yera Romero",BEACON-1,Medium,Mandatory,,Puzzle,Briefing Character,3,TRUE,Not Done,,0,,,
+13,Meeting the fleet,Bridge Crew,,,Large,Mandatory,,Character,Briefing NPCs,3,TRUE,Not Done,Text NPC,1,Main fleet also jumps to Velian. They also heard the distress signal Velians sent. The machines must have heard it too...,Fleet Secretary Tory Zarek roast,"GM Actions:
+Set fleet visible from admin UI
+Publish News (from Datahub + admin UI)
+Set all passangers visible (admin UI)"
+14,Velian NPC dies,"Velian, Medics",,,Small,Mandatory,,Character,NPC,3,FALSE,Not Done,ESS Odysseus,,,,
+15,Jump 4,"Bridge Crew, Engineers",,,Medium,Mandatory,,Jump,Jump actions,3,TRUE,Not Done,Fleet Comms & EE,2,Odysseus runs away from the Machines,"Empty Epsilon NPC: Before jump - Major attack
+Accepted location(s): Alpha-5-C2-83/Alpha-5-D2-99/Alpha-5-D2-115
+Lunar shift
+Normal JUMP",
+62,OSS Vulture destroyed,All,"Theosin Walker, Hedly Walker, Noe Walker, Lonnie Gordon",,Medium,Mandatory,,Empty Epsilon,Database change,4,TRUE,Not Done,Empty Epsilon,1,Due to damage from premature jump,"Destroy OSS Vulture using Admin UI and from EE
+Send messages to next of kin who where on OSS Vulture
+Send ship warning that OSS Vulture was destroyed",
+16,Jump 5,"Bridge Crew, Engineers",,,Medium,Mandatory,,Jump,Jump actions,4,TRUE,Not Done,Fleet Comms & EE,2,Odysseus runs away from the Machines,"Empty Epsilon NPC: Before jump - Normal stuff
+Accepted location(s): Alpha-5-C1-82/Alpha-5D1-98
+Solar shift
+Normal JUMP
+After jump: Enemy scout ship",
+17,Enemy scout ship,"Bridge Crew, Pilots",,,Small,Should have,,Machine,Briefing NPCs,5,FALSE,Not Done,Empty Epsilon,1,Machine scout ship appears,,
+18,Jump 6,"Bridge Crew, Engineers",,BEACON-2,Medium,Mandatory,,Jump,Jump actions,5,TRUE,Not Done,Fleet Comms & EE,2,Odysseus runs away from the Machines,"Empty Epsilon NPC: Before jump - Normal stuff
+Accepted location(s): Alpha-5-C1-81-P-TE49-HE75
+Normal JUMP
+Solar/Twilight shift
+After jump: Land mission 3 - Rebels",
+19,LM 3 - Rebels,"Marines, Armory","Nolan Hunter, Gale Chapman, Leone Mills, Kerrie Ray, Zaera, Mael, Cal Allen, Idris Kalashnik, Tyler Carrillo, Skye Duran, Tarai, Malak Kovalenko",BEACON-2,Large,Mandatory,,Land Mission,Briefing NPCs,6,TRUE,Not Done,Mission,,"Day 2: 7.45-10.00
+Solar
+Finding beacon, combat with convict npc:s ",,
+20,Jump 7,"Bridge Crew, Engineers",,,Medium,Mandatory,,Jump,Jump actions,6,TRUE,Not Done,Fleet Comms & EE,2,Odysseus runs away from the Machines,"Empty Epsilon NPC: Before jump - Normal stuff
+Accepted location(s): Beta-8-C8-80/Alpha-5-C1-65/Alpha-5-C1-66
+Twilight shift
+Normal JUMP
+After jump: Beacon puzzle 2",
+21,Beacon puzzle 2,Scientists,"Blake Ishimoto, Devyn Pearson, Evin Reid, Gallan Reid, Jodey Agaki, Jonah Malone, Keana, Remy Hall, Saria, Terran Wells, Yera Romero",BEACON-2,Medium,Mandatory,,Puzzle,Briefing Character,7,TRUE,Not Done,,0,,,
+22,AMBUSH,"Bridge Crew, Pilots",,,Medium,Mandatory,,Machine,Briefing NPCs,7,TRUE,Not Done,Empty Epsilon,1,,,
+23,BOARDING 1,"Bridge Crew, Marines, Armory",,,Large,Mandatory,,Machine,Briefing NPCs,7,TRUE,Not Done,Empty Epsilon,,,,
+24,Jump 8,"Bridge Crew, Engineers",,BEACON-3,Medium,Mandatory,,Jump,Jump actions,7,TRUE,Not Done,Fleet Comms & EE,2,Odysseus runs away from the Machines,"Empty Epsilon NPC: Before jump - Minor attack - ambush
+BOARDING
+Accepted location(s): Alpha-1-B1-49-P-TE95-LN71
+Rushed JUMP - Breaking
+Lunar shift
+After jump: Land mission 4 - Alien worm",
+25,LM 4 - Alien worm,"Marines, Armory, Scientists","Jodey Agaki, Avery Higashi, Harley Carroll, Gene Hawkins, Lee Savage, Zyra Lee, Fenix Ellis",BEACON-3,Large,Mandatory,,Land Mission,Briefing NPCs,8,TRUE,Not Done,,0,"Day 2: 13.00-15.15
+Lunar
+Finding beacon, team member (scientist) getting injured",,
+26,Jump 9,"Bridge Crew, Engineers",,,Medium,Mandatory,,Jump,Jump actions,8,TRUE,Not Done,Fleet Comms & EE,2,Odysseus runs away from the Machines,"Empty Epsilon NPC: Before jump - Minor attack
+Accepted location(s): Beta-8-C8-80/Beta-4-B8-64/Beta-4-B8-48
+Normal JUMP
+Lunar shift
+After jump: Beacon puzzle 3",
+27,Alien worm in Jodey Agaki,"Marines, Medics",Jodey Agaki,WORM-1,Small,Should have,,Character,SFX,9,TRUE,Not Done,,0,,,
+28,Beacon puzzle 3,Scientists,"Blake Ishimoto, Devyn Pearson, Evin Reid, Gallan Reid, Jodey Agaki, Jonah Malone, Keana, Remy Hall, Saria, Terran Wells, Yera Romero",BEACON-3,Medium,Mandatory,,Puzzle,Briefing Character,9,TRUE,Not Done,,0,,,
+29,Jump 10,"Bridge Crew, Engineers",,BEACON-4,Medium,Mandatory,,Jump,Jump actions,9,TRUE,Not Done,Fleet Comms & EE,2,Odysseus runs away from the Machines,"Empty Epsilon NPC: Before jump - Major attack
+Accepted location(s): Beta-4-B8-63-P-OC46-DA97
+Rushed JUMP - Breaking
+Lunar shift
+After jump: Land mission 5 - Natives",
+30,LM 5 - Natives,"Marines, Armory, Scientists","Nicol Wells, Cal Allen, Idris Kalashnik, Tyler Carrillo, Skye Duran, Tarai, Malak Kovalenko, Nolan Hunter, Gale Chapman, Leone Mills, Kerrie Ray",BEACON-4,Large,Mandatory,,Land Mission,Briefing NPCs,10,TRUE,Not Done,Mission,,"Day 2: 18.15-20.30
+Twilight
+Finding beacon, encounter with natives",,Currently 7 people - if we don't get bigger/another vehicle - one need to sit on front seat - need to have all 7 on the mission. 
+31,Jump 11,"Bridge Crew, Engineers",,,Medium,Mandatory,,Jump,Jump actions,10,TRUE,Not Done,Fleet Comms & EE,2,Odysseus runs away from the Machines,"Empty Epsilon NPC: Before jump - Minor attack
+Accepted location(s): Beta-4-B7-46/Beta-4-B8-47/Beta-4-B8-48
+Normal JUMP
+Twilight shift
+After jump: Beacon puzzle 4, Tristan suicide",
+32,Beacon puzzle 4,Scientists,"Blake Ishimoto, Devyn Pearson, Evin Reid, Gallan Reid, Jodey Agaki, Jonah Malone, Keana, Remy Hall, Saria, Terran Wells, Yera Romero",BEACON-4,Medium,Mandatory,,Puzzle,Briefing Character,11,TRUE,Not Done,,0,,,
+33,Tristan Fukui - Suicide,,Tristan Fukui,,Small,Mandatory,,Plot related,Briefing Character,11,TRUE,Not Done,,0,Tristan Fukui jumps out from the airlock,,Tristan Fukui makes a suicide but comes back
+34,Jump 12,"Bridge Crew, Engineers",,BEACON-5,Medium,Mandatory,,Jump,Jump actions,11,TRUE,Not Done,Fleet Comms & EE,2,Odysseus runs away from the Machines,"Empty Epsilon NPC: Before jump - Minor attack
+Accepted location(s): Beta-4-A8-31-M12-PI87
+Normal JUMP
+Twilight shift
+After jump: Land mission 6 - Machines",
+35,LM 6 - Machines,"Marines, Armory","Avery Higashi, Harley Carroll, Gene Hawkins, Lee Savage, Zyra Lee, Fenix Ellis, Jaeco, Lonnie Gordon, Oriel Cook, Mael, Zaera",BEACON-5,Large,Mandatory,,Land Mission,Briefing NPCs,12,TRUE,Not Done,Mission,,"Day2: 23.45-01.45
+Lunar
+Finding beacon, combat with machine npc:s",,This mission clashes with sleeping schedule for both Solar and Twilight - but it might be a good mission to take a few trainees on board - as the scannings look safe... 
+36,Jump 13,"Bridge Crew, Engineers",,,Medium,Mandatory,,Jump,Jump actions,12,TRUE,Not Done,Fleet Comms & EE,2,Odysseus runs away from the Machines,"Empty Epsilon NPC: Before jump - Major attack
+Accepted location(s): Beta-4-A8-32/Beta-4-A8-16
+Rushed JUMP - Breaking
+Lunar shift
+AFter jump: Beacon puzzle 5",
+59,Black hole communication break,All,,,Large,Mandatory,,Hazard,NPC,13,TRUE,Not Done,Text NPC,1,The fleet is too near the black hole and it messes up communications,EVA sends a warning that says communications are down (fleet won't anwser) because of the Black hole,No messages goes through to other vessels
+37,Beacon puzzle 5,Scientists,"Blake Ishimoto, Devyn Pearson, Evin Reid, Gallan Reid, Jodey Agaki, Jonah Malone, Keana, Remy Hall, Saria, Terran Wells, Yera Romero",BEACON-5,Medium,Mandatory,,Puzzle,Briefing Character,12,TRUE,Not Done,,0,,,
+38,Jump 14,"Bridge Crew, Engineers",,BEACON-6,Medium,Mandatory,,Jump,Jump actions,13,TRUE,Not Done,Fleet Comms & EE,2,Odysseus runs away from the Machines,"Empty Epsilon NPC: Before jump - Minor attack
+Accepted location(s): Alpha-1-A1-1-P-SI14-UX98
+Rushed JUMP - Breaking
+Solar shift
+After jump: Land mission 7 - Radiation",
+39,LM 7 - Radiation,"Marines, Armory","Nolan Hunter, Gale Chapman, Leone Mills, Kerrie Ray, Zaera, Mael",BEACON-6,Large,Mandatory,,Land Mission,Briefing NPCs,14,TRUE,Not Done,,0,"Day 3: 05.00-07.15
+Solar
+Finding beacon, team getting injured with radiation",,
+40,Jump 15,"Bridge Crew, Engineers",,,Medium,Mandatory,,Jump,Jump actions,14,TRUE,Not Done,Fleet Comms & EE,2,Odysseus runs away from the Machines,"Empty Epsilon NPC: Before jump - Normal stuff
+Accepted location(s): Gamma-16-H8-256/Beta-4-A8-16
+Normal JUMP
+Solar shift
+After jump: Beacon puzzle 6, Land mission 8 - Earth outpost, ESS Harbinger mutiny",
+41,Beacon puzzle 6,Scientists,"Blake Ishimoto, Devyn Pearson, Evin Reid, Gallan Reid, Jodey Agaki, Jonah Malone, Keana, Remy Hall, Saria, Terran Wells, Yera Romero",BEACON-6,Medium,Mandatory,,Puzzle,Briefing Character,15,TRUE,Not Done,,0,,,
+42,LM 8 - Earth outpost,"Marines, Armory, Scientists","Cal Allen, Idris Kalashnik, Tyler Carrillo, Skye Duran, Tarai, Malak Kovalenko",,Large,Mandatory,,Land Mission,Briefing NPCs,15,TRUE,Not Done,,0,"Day 3: 8.45-10.30
+Twilight
+Explore abandoned outpost (injury?)",,
+43,Jump 16,"Bridge Crew, Engineers",,,Medium,Mandatory,,Jump,Jump actions,15,TRUE,Not Done,Fleet Comms & EE,2,Odysseus runs away from the Machines,"Empty Epsilon NPC: Before jump - Normal stuff
+Accepted location(s): Gamma-16-H8-255/Gamma-16-H8-239
+Normal JUMP
+Twilight shift
+After jump: BOARDING",
+44,BOARDING 2,"Bridge Crew, Pilots, Marines, Armory",,,Large,Should have,,Machine,Briefing NPCs,16,FALSE,Not Done,ESS Odysseus,,,,
+45,Jump 17,"Bridge Crew, Engineers",,,Medium,Mandatory,,Jump,Jump actions,16,TRUE,Not Done,Fleet Comms & EE,2,Odysseus runs away from the Machines,"Empty Epsilon NPC: Before jump - Major attack
+BOARDING
+Accepted location(s): Gamma-16-H7-238-P-LA05-WE50
+Double JUMP - break
+Lunar shift
+After jump: Land mission 9 - Shadow beasts, Lee injured --> later dies, Gas leak/explosion, Naethan injured --> later dies ",
+46,LM 9 - Shadow beasts,"Marines, Scientists","Nolan Hunter, Gale Chapman, Leone Mills, Kerrie Ray, Zaera, Mael, Avery Higashi, Gene Hawkins, Harley Carroll, Lee Savage, Zyra Lee, Fenix Ellis",,Large,Mandatory,,Land Mission,Briefing NPCs,17,TRUE,Not Done,Mission,,"Day 3: 12.45-15.00
+Solar
+Finding beacon, combat with shadow beast npc:s",,If only one car - Lee Savage replaces Mael
+47,Lee Savage injured,"Marines, Medics",Lee Savage,,Small,Nice to have,,Character,SFX,17,TRUE,Not Done,,0,,,
+48,Jump 18,"Bridge Crew, Engineers",,,Medium,Mandatory,,Jump,Jump actions,17,TRUE,Not Done,Fleet Comms & EE,2,Odysseus runs away from the Machines,"Empty Epsilon NPC: Before jump - Major attack
+Accepted location(s): Anywhere
+Normal/Rushed JUMP
+Lunar shift
+Empty Epsilon NPC: After jump - Major attack
+After jump: Hali suicide drama, NEST APPEARS (unless called earlier), Starcaller mission",
+49,Gas leak/explosion,"Engineers, Medics, Security",Naethan,,Medium,Should have,162,Hazard,DMX event,18,TRUE,Not Done,,0,Random Gas leak / explosion because Odysseus is starting to break (engineers didn't fix the ship well enouhg),,"Needs DMX event fired.
+Character death: Naethan injured -> later die"
+50,Naethan injured,"Medics, Velian",Naethan,,Small,Should have,,Character,Briefing Character,18,FALSE,Not Done,,0,,,
+51,Hali Okuma suicide demand,"Bridge Crew, Security, Medics",Hali Okuma,,Small,Should have,,Character,Briefing Character,18,FALSE,Not Done,,0,,,
+52,NEST APPEARS,All,,,Large,Mandatory,,Machine,Empty Epsilon,18,FALSE,Not Done,Empty Epsilon,1,,,
+53,Starcaller mission,All,,,Large,Nice to have,,Plot related,Empty Epsilon,18,FALSE,Not Done,Empty Epsilon,1,,,
+54,LARP ENDS,All,,,Large,Mandatory,,Character,Briefing Character,18,TRUE,Not Done,Other,1,Larp ends,,
+55,ESS Harbinger - Mutiny,"Bridge Crew, Criminals, Engineers, Politics, Security, Armory","Amir Bolton, Mark Bolton, Jill Montoya, Gira Hayakawa, Isha Hayakawa, Lane Hayakawa, Lane Thomas, Shae Thomas, Hedly Walker",,Large,Should have,,Political,Briefing NPCs,,TRUE,Not Done,ESS Odysseus,8,ESS Harbinger is the first ship where the marshal law is overrun by a mutiny. All the commanders and some of the military personel are cast out from the ESS Harbinger to a small vessel which is uncapable to jump. Now the fleet needs to decide who would take them in before the next jump or will they be left behind. Here is a chance that Odysseus will take them in since there will be on board some of the people known in the Odysseus like the captain of the ESS Harbinger Mark Bolton is the father of Amir Bolton Chief Engineer. ,Remember to change db after the visitors on ESS leaves to another ship,"Criminals should get a shipment with the resqued.
 Mutinees has give the people they are throwing out time to send letters to their loved ones
 The ones on the vessel: Mark Bolton, Gira Hayakawa"
-29,Tristan Fukui - Suicide,,Tristan Fukui,,Large,Mandatory,,Plot related,Briefing Character,11,TRUE,Not Done,,0,Tristan Fukui jumps out from the airlock,,Tristan Fukui makes a suicide but comes back
-30,Tristan Fukui - Comes back as Cherry,"Bridge Crew, Criminals, Engineers, Politics, Security","Tristan Fukui, Amir Bolton",,Large,Mandatory,,Plot related,Briefing Character,,TRUE,Not Done,,0,"Tristan Fukui comes back with a enemy fighter and makes Cherry's Barrel Roll so they would be recognized as ""friend"".",,"Brief Character before comeback as follows: 
+56,Tristan Fukui - Comes back as Cherry,"Bridge Crew, Criminals, Engineers, Politics, Security, Pilots","Tristan Fukui, Amir Bolton, Serafina Banner",,Small,Mandatory,,Plot related,Briefing Character,,TRUE,Not Done,,0,"Tristan Fukui comes back with a enemy fighter and makes Cherry's Barrel Roll so they would be recognized as ""friend"".",,"Brief Character before comeback as follows: 
 Add instructions here"
-31,Gas leak/explosion,"Engineers, Medics",,,Medium,Should have,162,Hazard,DMX event,18,TRUE,Not Done,,0,Random Gas leak / explosion because Odysseus is starting to break (engineers didn't fix the ship well enouhg),,"Needs DMX event fired.
-Character death: Naethan injured -> later die"
+57,Politics on board 1st time,Politicians,,,Medium,Should have,,Plot related,Briefing NPCs,,FALSE,Not Done,ESS Odysseus,,,,
+58,Politics on board 2nd time,Politicians,,,Medium,Should have,,Plot related,Briefing NPCs,,FALSE,Not Done,ESS Odysseus,,,,
+60,Samantha Richard dies,,"Deron Richard, David Richard, Samantha Richard",,Small,Mandatory,,Plot related,Database change,12,FALSE,Not Done,Text NPC,1,During a Machine attack Samantha Richard dies,Send a message from David Richard to Deron Richard to tell them that their mother died,
+61,ESS Polaris destroyed,All,"Alex Harris, Fenix Ellis, Ami Nakahara, Anri Nakahara, Eisen Nakahara, Sevyn Nakahara, Espen Nakahara, Andrej Alexandrov, Karin Alexandrov, Briana Chambers, Caleb Wong, Malak Kovalenko, Zyra Lee, Alia Swanson, Harper Ellis, Idris Kalashnik, Idris McBride, Li Russell, Thomas Russell, Eugenie Russell, Gaylen Russell, Remi Sharp, Merissa Voight, Jodey Agaki, Blake Ishimoto, Samira Watson, Nikita Watson, Steff Carson, Hayden Carson, Suran Sewi, Aeran Lester, Makena Kelly",,Medium,Mandatory,,Empty Epsilon,Database change,,TRUE,Not Done,Empty Epsilon,,,"Destroy ESS Polaris using Admin UI and from EE
+Send messages to next of kin who where on ESS Polaris
+Send ship warning that ESS Polaris was destroyed",
+63,CSS Prophet destroyed,All,"Aaren Riggs, Espen Nakahara, Innes Ukon, Naomi Green, Hale Green, Oren Carroll, Harley Carroll",,Medium,Mandatory,,Empty Epsilon,Database change,,TRUE,Not Done,Empty Epsilon,,,"Destroy CSS Prophet using Admin UI and from EE
+Send messages to next of kin who where on CSS Prophet
+Send ship warning that CSS Prophet was destroyed",
+64,ESS Valkyrie destroyed,All,"Don Sorrows, Tristan Fukui, Hayden Carson, Elan Nieze, Lynn Ryan, Yuri Mills, Abe Arima, Dallan Jordan, Ismy Arima, Eliza Ray, Vane Hodge, Koga Kyoshi, Torrey Watson, Kerrie Ray, Fergus Dale, Han Barnes, Gerda McBride, Mel McBride, Holt Shaw, Heath Steele, Hale Green, Leif Gothia, Mari Lake, Jona Davis, Nico Lawrence, Nora Ellis, Tan Ellis, Harper Ellis, Fenix Ellis, Flann Hollow, Taylor Smith, Eva Ellis, Teressa Khan, Arlyn Booth, Valerian Fukui, Hedly Walker, Theodore Chapman, Gale Chapman, Rayan Poole, Pax Houghton, Lonnie Gordon",,Medium,Mandatory,,Empty Epsilon,Database change,,TRUE,Not Done,Empty Epsilon,,,"Destroy ESS Valkyrie using Admin UI and from EE
+Send messages to next of kin who where on ESS Valkyrie
+Send ship warning that ESS Valkyrie was destroyed",
+65,Gray Radio transmission 1,,,,,,,,,,,Not Done,,,,,
+66,Gray Radio transmission 2,,,,,,,,,,,Not Done,,,,,
+67,Gray Radio transmission 3,,,,,,,,,,,Not Done,,,,,
+68,Gray Radio transmission 4,,,,,,,,,,,Not Done,,,,,
+69,Senator video call,,,,,,,,,,,Not Done,,,,,
+70,Feet Commander speach 1,,,,,,,,,,,Not Done,,,,,
+71,Feet Commander speach 2,,,,,,,,,,,Not Done,,,,,
+72,Feet Commander speach 3,,,,,,,,,,,Not Done,,,,,
