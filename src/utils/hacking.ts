@@ -28,9 +28,9 @@ export const getRandomHackingIntrustionDetectionMessage = () => {
 	return hackingIntrustionDetectionMessages[randomIndex];
 };
 
-export const getHackingDetectionTime = async (hackerPerson: unknown): Promise<number> => {
+export const getHackingDetectionTime = (hackerPerson: unknown): number => {
 	const skillLevel = getHighestSkillLevel(hackerPerson);
-	const detectionTimesBlob = await getPath(['data', 'misc', Stores.HackerDetectionTimes]);
+	const detectionTimesBlob = getPath(['data', 'misc', Stores.HackerDetectionTimes]);
 	const detectionTimes = HackerDetectionTimes.safeParse(detectionTimesBlob);
 	if (!detectionTimes.success) {
 		logger.error('Failed to parse detection times blob, returning 1min', detectionTimesBlob);

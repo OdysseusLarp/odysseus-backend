@@ -6,7 +6,7 @@ export const SkillLevels = {
 export type SkillLevel = typeof SkillLevels[keyof typeof SkillLevels];
 
 export function getHighestSkillLevel(person: unknown): SkillLevel {
-	if (typeof person !== 'object' || person === null || !('groups' in person)) {
+	if (typeof person !== 'object' || person === null) {
 		return SkillLevels.Novice;
 	}
 

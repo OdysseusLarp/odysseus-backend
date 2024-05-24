@@ -90,14 +90,12 @@ router.get('/:id', handleAsyncErrors(async (req, res) => {
 	if (isHackerLogin) {
 		const hacker = await Person.forge({ id: hackerId }).fetchWithRelated();
 		// Get the hacking detection time based on the hacker's skill level
-		const [detectionTimeMs] = await Promise.all([
-			await getHackingDetectionTime(hacker),
-			AuditLogEntry.forge().save({
-				person_id: personId,
-				hacker_id: hackerId,
-				type: 'HACKER_LOGIN'
-			}),
-		]);
+		const detectionTimeMs = getHackingDetectionTime(hacker);
+		await AuditLogEntry.forge().save({
+			person_id: personId,
+			hacker_id: hackerId,
+			type: 'HACKER_LOGIN'
+		});
 
 		const intrusionDetectedMessage = getRandomHackingIntrustionDetectionMessage();
 
