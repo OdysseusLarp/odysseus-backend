@@ -56,6 +56,7 @@
 		"signale": "^1.4.0",
 		"socket.io": "^2.1.1",
 		"socket.io-prometheus": "^0.2.1",
+		"tplink-smarthome-api": "^5.0.0",
 		"zod": "^3.22.4"
 	},
 	"devDependencies": {

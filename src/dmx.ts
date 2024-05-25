@@ -1,6 +1,7 @@
 import { logger } from './logger';
 import DMX from 'dmx';
 import { isNumber } from 'lodash';
+import { processDmxSignal } from './tplink/tplink-control';
 
 const UNIVERSE_NAME = 'backend';
 const EVENT_DURATION = 1000; // ms
@@ -89,11 +90,11 @@ export const CHANNELS = {
 	HangarBayDepressurize: 199,
 } as const;
 
-type Channel = typeof CHANNELS[keyof typeof CHANNELS];
+type Channel = (typeof CHANNELS)[keyof typeof CHANNELS];
 
 interface Dmx {
 	update: (universe: string, value: Record<number, number>) => void;
-};
+}
 
 const dmx = init();
 
@@ -129,4 +130,7 @@ export function fireEvent(channel: Channel, value = 255) {
 	logger.debug(`Firing event on DMX channel ${channel} (${findChannelName(channel)}) value ${value}`);
 	dmx.update(UNIVERSE_NAME, { [channel]: value });
 	setTimeout(() => dmx.update(UNIVERSE_NAME, { [channel]: 0 }), EVENT_DURATION);
+
+	// Send TP-link power socker on/off. Intentionally not awaited.
+	processDmxSignal(findChannelName(channel));
 }
