@@ -17,10 +17,7 @@ import prometheusMiddleware from 'express-prometheus-middleware';
 
 import { initStoreSocket } from './store/storeSocket';
 import { initState } from './store/store';
-import {
-	enableGracefulShutdown,
-	enablePersistance,
-} from './store/storePersistance';
+import { enableGracefulShutdown, enablePersistance } from './store/storePersistance';
 import fleet from './routes/fleet';
 import starmap from './routes/starmap';
 import person from './routes/person';
@@ -40,6 +37,7 @@ import { loadRules } from './rules/rules';
 import { breakTask } from './rules/breakTask';
 import { breakEE } from './rules/ship/jump';
 import { sleep } from './utils/sleep';
+import { initializeTplinkScanning } from './tplink/tplink-control';
 
 const app = express();
 const http = new Server(app);
@@ -124,11 +122,8 @@ app.post(
 		// Hull health is not a floating point but instead discrete health / maxHealth.
 		// We reduce the hull damage a bit to avoid rounding causing the health to become
 		// lower than necessary and triggering breaking of even more hull tasks.
-		const healthAmount =
-			task.eeType === 'hull' ? task.eeHealth - 0.01 : task.eeHealth;
-		logger.info(
-			`Breaking task ${taskId} and reducing EE health type ${task.eeType} by ${healthAmount}`
-		);
+		const healthAmount = task.eeType === 'hull' ? task.eeHealth - 0.01 : task.eeHealth;
+		logger.info(`Breaking task ${taskId} and reducing EE health type ${task.eeType} by ${healthAmount}`);
 
 		breakTask(task);
 		// Allow time for rules to pick up breakage of box and as a result break the corresponding task
@@ -165,30 +160,17 @@ export function updateEmptyEpsilonState() {
 	// Exit straight away if EE connection is disabled. It needs to be disabled before
 	// the EE server is launched, because the EE HTTP server is buggy and will crash the
 	// game server if it gets a request before fully loading.
-	const isEeConnectionEnabled = !!get(
-		getData('ship', 'metadata'),
-		'ee_connection_enabled'
-	);
+	const isEeConnectionEnabled = !!get(getData('ship', 'metadata'), 'ee_connection_enabled');
 	if (!isEeConnectionEnabled) return;
 
 	return getEmptyEpsilonClient()
 		.getGameState()
-		.then((state) => {
-			const metadataKeys = [
-				'id',
-				'type',
-				'created_at',
-				'updated_at',
-				'version',
-			];
+		.then(state => {
+			const metadataKeys = ['id', 'type', 'created_at', 'updated_at', 'version'];
 			// Save Empty Epsilon connection status to EE metadata blob
 			const connectionStatus = getEmptyEpsilonClient().getConnectionStatus();
-			const previousConnectionStatus = omit(
-				getData('ship', 'ee_metadata'),
-				metadataKeys
-			);
-			if (!isEqual(connectionStatus, previousConnectionStatus))
-				setData('ship', 'ee_metadata', connectionStatus, true);
+			const previousConnectionStatus = omit(getData('ship', 'ee_metadata'), metadataKeys);
+			if (!isEqual(connectionStatus, previousConnectionStatus)) setData('ship', 'ee_metadata', connectionStatus, true);
 			// Do not update state if request to EE failed
 			if (state.error) return;
 			// Do not update state if EE sync is disabled
@@ -206,22 +188,18 @@ loadEvents(io);
 // Load initial state from database before starting the HTTP listener and loading rules
 Store.forge({ id: 'data' })
 	.fetch()
-	.then((model) => {
+	.then(model => {
 		const data = model ? model.get('data') : {};
 		initState(data);
 		logger.info('Redux state initialized');
 		enablePersistance();
 		enableGracefulShutdown();
 		loadRules();
+		initializeTplinkScanning();
 		startServer();
 
-		const EE_UPDATE_INTERVAL = parseInt(
-			process.env.EMPTY_EPSILON_UPDATE_INTERVAL_MS || '1000',
-			10
-		);
-		logger.watch(
-			`Starting to poll Empty Epsilon game state every ${EE_UPDATE_INTERVAL}ms`
-		);
+		const EE_UPDATE_INTERVAL = parseInt(process.env.EMPTY_EPSILON_UPDATE_INTERVAL_MS || '1000', 10);
+		logger.watch(`Starting to poll Empty Epsilon game state every ${EE_UPDATE_INTERVAL}ms`);
 		setInterval(updateEmptyEpsilonState, EE_UPDATE_INTERVAL);
 	});
 
@@ -232,9 +210,7 @@ initStoreSocket(io);
 
 function startServer() {
 	const { APP_PORT } = process.env;
-	http.listen(APP_PORT, () =>
-		logger.start(`Odysseus backend listening on http://localhost:${APP_PORT}`)
-	);
+	http.listen(APP_PORT, () => logger.start(`Odysseus backend listening on http://localhost:${APP_PORT}`));
 }
 
 // Health check route

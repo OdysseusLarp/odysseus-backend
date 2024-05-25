@@ -12,13 +12,15 @@ async function seed() {
 	require('./ship');
 	require('./game');
 	require('./misc');
+	require('./tplink');
 
 	logger.info('Saving the Redux state to database');
 	saveState(store.getState().data, 'data')
 		.then(() => {
 			logger.success('Redux state saved');
 			process.exit(0);
-		}).catch(err => {
+		})
+		.catch(err => {
 			logger.error(err);
 			process.exit(1);
 		});

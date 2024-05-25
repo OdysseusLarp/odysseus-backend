@@ -1,4 +1,5 @@
-import { configureStore } from 'redux-starter-kit';
+import { configureStore, AnyAction } from 'redux-starter-kit';
+import { EnhancedStore } from 'redux-starter-kit/src/configureStore';
 import dataReducer from './reducers/dataReducer';
 
 let resolver: (value?: unknown) => void;
@@ -9,13 +10,21 @@ export let initialized = false;
 /**
  * Promise that will be resolved when the Redux store is initialized with the initial values.
  */
-export const initPromise = new Promise((resolve) => { resolver = resolve; });
+export const initPromise = new Promise(resolve => {
+	resolver = resolve;
+});
 
 export const store = configureStore({
 	reducer: {
 		data: dataReducer,
-	}
-});
+	},
+	// By default 'data' has type Record<string, unknown>. To make usage simpler, type it to Record<string, any>.
+}) as EnhancedStore<
+	{
+		data: Record<string, any>;
+	},
+	AnyAction
+>;
 
 /**
  * Return an object at a specific path in the Redux store.
@@ -64,11 +73,10 @@ export function watch(path: string[], callback: CallbackFn) {
 	});
 }
 
-
 export function initState(state: Record<string, unknown>) {
 	store.dispatch({
 		type: 'OVERWRITE_STATE',
-		state
+		state,
 	});
 	initialized = true;
 	resolver();
