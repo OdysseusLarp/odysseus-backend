@@ -81,9 +81,39 @@ export const StoryEventWithRelations = StoryEvent.extend({
 });
 export type StoryEventWithRelations = z.infer<typeof StoryEventWithRelations>;
 
-export const listStoryEvents = async (): Promise<StoryEvent[]> => {
+export const listStoryEvents = async (): Promise<StoryEventWithRelations[]> => {
 	const events = await knex('story_events').select('*');
-	return StoryEvent.array().parse(events);
+
+	const events_with_persons = await Promise.all(events.map(async event => {
+		const [artifacts, persons, messages, plots] = await Promise.all([
+			knex('story_artifact_events')
+			.join('artifact', 'story_artifact_events.artifact_id', 'artifact.id')
+			.select('artifact.name', 'artifact.id', 'artifact.catalog_id')
+			.where({ event_id: event.id }),
+			knex('story_person_events')
+			.join('person', 'story_person_events.person_id', 'person.id')
+			.select('person.id', 'person.is_character', knex.raw('TRIM(CONCAT(person.first_name, \' \', person.last_name)) as name'))
+			.where({ event_id: event.id }),
+			knex('story_event_messages')
+			.join('story_messages', 'story_event_messages.message_id', 'story_messages.id')
+			.select('story_messages.id', 'story_messages.name', 'story_messages.sent')
+			.where({ event_id: event.id }),
+			knex('story_event_plots')
+			.join('story_plots', 'story_event_plots.plot_id', 'story_plots.id')
+			.select('story_plots.id', 'story_plots.name')
+			.where({ event_id: event.id }),
+		]);
+
+		return StoryEventWithRelations.parse({
+			...event,
+			artifacts,
+			persons,
+			messages,
+			plots,
+		});
+	}));
+
+		return events_with_persons;
 }
 
 export const getStoryEvent = async (id: number): Promise<StoryEventWithRelations | null> => {

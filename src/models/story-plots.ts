@@ -79,10 +79,40 @@ export const StoryPlotWithRelations = StoryPlot.extend({
 });
 export type StoryPlotWithRelations = z.infer<typeof StoryPlotWithRelations>;
 
-export async function listStoryPlots(): Promise<StoryPlot[]> {
+export async function listStoryPlots(): Promise<StoryPlotWithRelations[] | []> {
 	const plots = await knex('story_plots').select('*');
-	return StoryPlot.array().parse(plots);
-}
+
+	const plots_with_persons = await Promise.all(plots.map(async plot => {
+		const [artifacts, events, messages, persons] = await Promise.all([
+			knex('story_artifact_plots')
+			.join('artifact', 'story_artifact_plots.artifact_id', 'artifact.id')
+			.select('artifact.name', 'artifact.id', 'artifact.catalog_id')
+			.where({ plot_id: plot.id }),
+			knex('story_event_plots')
+			.join('story_events', 'story_event_plots.event_id', 'story_events.id')
+			.select('story_events.id', 'story_events.name')
+			.where({ plot_id: plot.id }),
+			knex('story_plot_messages')
+			.join('story_messages', 'story_plot_messages.message_id', 'story_messages.id')
+			.select('story_messages.id', 'story_messages.name')
+			.where({ plot_id: plot.id }),
+			knex('story_person_plots')
+			.join('person', 'story_person_plots.person_id', 'person.id')
+			.select('person.id', knex.raw('TRIM(CONCAT(person.first_name, \' \', person.last_name)) as name'))
+			.where({ plot_id: plot.id }),
+		]);
+
+		return StoryPlotWithRelations.parse({
+			...plot,
+			persons,
+			artifacts,
+			messages,
+			events
+		});
+	}));
+
+	return plots_with_persons;
+};
 
 export async function getStoryPlot(id: number): Promise<StoryPlot | null> {
 	const plot = await knex('story_plots').select('*').where({ id }).first();
