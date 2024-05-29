@@ -1,14 +1,14 @@
 import { saveBlob, interval, clamp } from '../helpers';
 import store, { watch } from '../../store/store';
-import { CHANNELS, fireEvent } from '../../dmx';
+import { CHANNELS, fireEvent, mapDmxValue, setDmxValue } from '../../dmx';
 import { logger } from '../../logger';
 import { shipLogger } from '../../models/log';
 import { getEmptyEpsilonClient } from '../../emptyepsilon';
 
-const LEVEL_NOTIFICATION_DELAY = 4.5*60*1000;
+// Delay DMX signal + ship log by 4.5 minutes for CO2 / Oxygen levels to change resulting from breakage
+const LEVEL_NOTIFICATION_DELAY = 4.5 * 60 * 1000;
 
 // Life support is hard-coded to correspond to fuse boxes fuses + life support tasks
-
 
 function updateLifeSupport() {
 	const fuseHealth = countFuseHealth();
@@ -24,10 +24,12 @@ function updateLifeSupport() {
 			fuseHealth,
 			tasksBroken,
 		});
+		setDmxValue(CHANNELS.LifeSupportValue, mapDmxValue(health, -1, 1));
 		setTimeout(checkLevel, LEVEL_NOTIFICATION_DELAY);
 	}
 }
 
+/** Return fuse health 0 .. 1 */
 function countFuseHealth() {
 	const boxes = store.getState().data.box;
 	let total = 0;
@@ -42,6 +44,7 @@ function countFuseHealth() {
 	return health;
 }
 
+/** Return percentage of lifesupportHealth that is broken in tasks, 0 .. 1 */
 function countTaskHealthReduction() {
 	const tasks = store.getState().data.task;
 	let reduction = 0;
@@ -57,9 +60,8 @@ function isBroken(task) {
 	return task.status === 'broken' || task.status === 'calibrating';
 }
 
-
 const NORMAL = 1;
-const LOW = 2;
+const DAMAGED = 2;
 const CRITICAL = 3;
 
 let oldLevel = NORMAL;
@@ -71,8 +73,8 @@ function checkLevel() {
 				fireEvent(CHANNELS.LifeSupportNormal);
 				shipLogger.info(`Life support back to normal.`, { showPopup: true });
 				break;
-			case LOW:
-				fireEvent(CHANNELS.LifeSupportLow);
+			case DAMAGED:
+				fireEvent(CHANNELS.LifeSupportDamaged);
 				shipLogger.warning(`Life support level degraded. CO2 levels elevated.`, { showPopup: true });
 				break;
 			case CRITICAL:
@@ -80,21 +82,28 @@ function checkLevel() {
 				shipLogger.warning(`Life support level critical. Oxygen level low.`, { showPopup: true });
 				getEmptyEpsilonClient().setAlertLevel('red');
 				break;
+			// DISABLED state is not used for life support
 		}
 		oldLevel = currentLevel;
 	}
 }
 
 function getLevel(health) {
-	if (health >= 0.7) {
+	const limits = store.getState().data.ship.dmx_limits;
+	if (!limits || !limits.lifesupport) {
+		logger.error(`dmx_limits blob not found or no entry for health type lifesupport`);
 		return NORMAL;
-	} else if (health >= 0.2) {
-		return LOW;
-	} else {
+	}
+	const criticalLimit = limits.lifesupport[0];
+	const damagedLimit = limits.lifesupport[1];
+	if (health <= criticalLimit) {
 		return CRITICAL;
+	} else if (health <= damagedLimit) {
+		return DAMAGED;
+	} else {
+		return NORMAL;
 	}
 }
-
 
 watch(['data', 'box'], updateLifeSupport);
 watch(['data', 'task'], updateLifeSupport);

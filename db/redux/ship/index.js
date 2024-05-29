@@ -5,10 +5,10 @@ saveBlob({
 	type: 'ship',
 	id: 'jump',
 	status: 'ready_to_prep',
-	jump_at: 0,		// millisecond timestamp
-	last_jump: 0,	// millisecond timestamp
+	jump_at: 0, // millisecond timestamp
+	last_jump: 0, // millisecond timestamp
 	breaking_jump: true,
-	minor_breaking_jump: true,  // first jump is always minor-breaking
+	minor_breaking_jump: true, // first jump is always minor-breaking
 	presets: {
 		cooldown: {
 			status: 'cooldown',
@@ -22,8 +22,9 @@ saveBlob({
 		},
 		preparation: {
 			status: 'preparation',
-			note: 'Switch to \'preparation\' state ONLY from \'calculating\' state! ' +
-                'Otherwise engineering tasks are not properly initialized.',
+			note:
+				"Switch to 'preparation' state ONLY from 'calculating' state! " +
+				'Otherwise engineering tasks are not properly initialized.',
 		},
 		prep_complete: {
 			status: 'prep_complete',
@@ -90,7 +91,7 @@ saveBlob({
 			frontshieldHeat: 0,
 			impulseHeat: 0,
 			jumpdriveHeat: 0,
-			warpHeat: 0
+			warpHeat: 0,
 		},
 		health: {
 			frontshieldHealth: 1,
@@ -101,15 +102,15 @@ saveBlob({
 			reactorHealth: 1,
 			maneuverHealth: 1,
 			warpHealth: 1,
-			beamweaponsHealth: 1
-		}
+			beamweaponsHealth: 1,
+		},
 	},
 	weapons: {
 		homingCount: 12,
 		nukeCount: 4,
 		hvliCount: 20,
 		mineCount: 8,
-		empCount: 6
+		empCount: 6,
 	},
 	general: {
 		alertLevel: 'Normal',
@@ -129,4 +130,21 @@ saveBlob({
 	isEmulated: true,
 	id: 'ee_metadata',
 	type: 'ship',
+});
+
+// Limits on which normal/damaged/critical DMX health signals will be sent
+saveBlob({
+	help: 'Limits on which normal/damaged/critical/disabled DMX health signals will be sent. Values are for critical-damaged and damaged-normal limits. Disabled is always <= 0.',
+	type: 'ship',
+	id: 'dmx_limits',
+	reactor: [0.25, 0.7],
+	rearshield: [0.25, 0.7],
+	missilesystem: [0.25, 0.7],
+	maneuver: [0.25, 0.7],
+	beamweapons: [0.25, 0.7],
+	frontshield: [0.25, 0.7],
+	impulse: [0.25, 0.7],
+	hull: [0.25, 0.7],
+	lifesupport: [0.25, 0.7],
+	general: [0.25, 0.7],
 });
