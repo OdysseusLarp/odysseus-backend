@@ -3,6 +3,7 @@ import { LogEntry, AuditLogEntry } from '../models/log';
 import { handleAsyncErrors } from './helpers';
 import { get } from 'lodash';
 import httpErrors from 'http-errors';
+import * as dmx from '../dmx';
 const router = new Router();
 
 const DEFAULT_LOG_PAGE = 1;
@@ -32,11 +33,20 @@ router.get('/', handleAsyncErrors(async (req, res) => {
  */
 router.put('/', handleAsyncErrors(async (req, res) => {
 	const { id } = req.body;
-	// TODO: Validate input
 	let logEntry;
-	if (id) logEntry = await LogEntry.forge({ id }).fetch();
-	if (!logEntry) logEntry = await LogEntry.forge().save(req.body, { method: 'insert' });
-	else await logEntry.save(req.body, { method: 'update', patch: true });
+	if (id) {
+		logEntry = await LogEntry.forge({ id }).fetch();
+	}
+
+	if (!logEntry) {
+		logEntry = await LogEntry.forge().save(req.body, { method: 'insert' });
+		const message = logEntry.get('message');
+		if (typeof message === 'string' && message.toLowerCase().contains('incoming jump into current sector')) {
+			dmx.fireEvent(dmx.CHANNELS.IncomingJumpWarning);
+		}
+	} else {
+		await logEntry.save(req.body, { method: 'update', patch: true });
+	}
 	res.json(logEntry);
 }));
 

@@ -5,6 +5,7 @@ import { Ship, Grid, GridAction } from './models/ship';
 import { addShipLogEntry } from './models/log';
 import { MapObject } from './models/map-object';
 import { logger } from './logger';
+import * as dmx from './dmx';
 
 const currentEvents = new Map();
 const eventTimers = new Map();
@@ -125,6 +126,9 @@ async function addScanGridEvent(event) {
 	if (occursIn < 0) throw new Error(`Event ${id} occurs in the past`);
 	if (!isInteger(gridId)) throw new Error(`Event ${id} target object ID ${gridId} is invalid`);
 
+
+	dmx.fireEvent(dmx.CHANNELS.LoraGridScanInitiated);
+
 	// Remove 1 probe from Odysseus if that has not been done for this scan yet
 	const shipMetadata = ship.get('metadata');
 	const newProbeCount = probeCount - 1;
@@ -234,6 +238,7 @@ async function performObjectScan(objectId) {
 async function performGridScan(gridId) {
 	await GridAction.forge().save({ grid_id: gridId, ship_id: 'odysseus', type: 'SCAN' });
 	const grid = await Grid.forge({ id: gridId }).fetch();
+	dmx.fireEvent(dmx.CHANNELS.LoraGridScanCompleted);
 	logger.success(`Grid ${gridId} was succesfully scanned`);
 	const gridName = grid.get('name');
 	addShipLogEntry(

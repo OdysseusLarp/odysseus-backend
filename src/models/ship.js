@@ -1,10 +1,11 @@
 import Bookshelf, { knex } from '../../db';
-import { addShipLogEntry } from './log';
+import { shipLogger } from './log';
 import { MapObject } from './map-object';
 import { get, pick } from 'lodash';
 import { getSocketIoClient } from '../websocket';
 import { logger } from '../logger';
 import { Person } from './person';
+import * as dmx from '../dmx';
 
 /* eslint-disable object-shorthand */
 
@@ -92,14 +93,14 @@ export const Beacon = Bookshelf.Model.extend({
 					.update({ is_active: true, is_decrypted: true })
 					.where('id', this.get('id'))
 			]).then(() => trx.commit())
-				.then(() => addShipLogEntry(
-					velianMessage ? 'WARNING' : 'SUCCESS',
-					velianMessage ?
-						`Received a distress signal from area Alpha-5-D2-100: ${velianMessage}`:
-						`Decryption key '${this.get('id')}' successfully decrypted an unknown signal originating from area ${this.related('grid').get('name')}`,
-					'odysseus',
-					{ showPopup: true }
-				))
+				.then(() => {
+					dmx.fireEvent(dmx.CHANNELS.LoraBeaconSignalDecrypted);
+					if (velianMessage) {
+						shipLogger.warning(`Received a distress signal from area Alpha-5-D2-100: ${velianMessage}`, { showPopup: true });
+						return;
+					}
+					shipLogger.success(`Decryption key '${this.get('id')}' successfully decrypted an unknown signal originating from area ${this.related('grid').get('name')}`, { showPopup: true });
+				})
 				.then(() => getSocketIoClient().emit('refreshMap'))
 				.catch(() => trx.rollback()));
 	}

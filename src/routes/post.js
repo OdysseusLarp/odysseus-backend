@@ -5,6 +5,7 @@ import { handleAsyncErrors } from './helpers';
 import { adminSendMessage } from '../messaging';
 import { get, pick } from 'lodash';
 import { logger } from '../logger';
+import * as dmx from '../dmx';
 const router = new Router();
 
 /**
@@ -64,6 +65,9 @@ router.put('/', handleAsyncErrors(async (req, res) => {
 			// If fleet secretary messages themself, stuff breaks in very unexpected ways
 			if (String(post.get('person_id')) === process.env.FLEET_SECRETARY_ID) {
 				return logger.debug('Denying fleet secretary from messaging themself');
+			}
+			if (isApproved) {
+				dmx.fireEvent(dmx.CHANNELS.DataHubNewsApproved);
 			}
 			adminSendMessage(process.env.FLEET_SECRETARY_ID, {
 				target: post.get('person_id'),

@@ -229,10 +229,12 @@ function handleTransition(jump, currentStatus, previousStatus) {
 					const jump_crystal_count = jumpCrystalCount - 1;
 					if (jump_crystal_count === 0) {
 						shipLogger.warning(`Out of jump crystals`);
+						dmx.fireEvent(dmx.CHANNELS.LoraJumpCrystalsDepleted);
 					} else if (jump_crystal_count < 6) {
 						shipLogger.warning(
 							`Jump crystal count is low (${jump_crystal_count} pcs)`
 						);
+						dmx.fireEvent(dmx.CHANNELS.LoraJumpCrystalsLow);
 					}
 					model.save(
 						{ metadata: { ...metadata, jump_crystal_count } },

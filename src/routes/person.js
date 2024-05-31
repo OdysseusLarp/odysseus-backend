@@ -6,6 +6,7 @@ import { get, pick, mapKeys, snakeCase } from 'lodash';
 import { NotFound, BadRequest } from 'http-errors';
 import { logger } from '@/logger';
 import { getHackingDetectionTime, getRandomHackingIntrustionDetectionMessage } from '@/utils/hacking';
+import * as dmx from '@/dmx';
 const router = new Router();
 
 const DEFAULT_PERSON_PAGE = 1;
@@ -103,6 +104,7 @@ router.get('/:id', handleAsyncErrors(async (req, res) => {
 		// and run the function immediately
 		setTimeout(() => {
 			addShipLogEntry('WARNING', intrusionDetectedMessage);
+			dmx.fireEvent(dmx.CHANNELS.DataHubHackingDetected);
 		}, detectionTimeMs);
 
 		return res.json({ ...person.toJSON(), hacker: { detectionTimeMs, intrusionDetectedMessage } });
