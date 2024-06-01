@@ -1,5 +1,6 @@
 import { z } from 'zod';
 import { knex } from "@db/index";
+import { omit } from 'lodash';
 
 /**
  * @typedef StoryEvent
@@ -161,21 +162,22 @@ export type StoryEventCreate = z.infer<typeof StoryEventCreate>;
 
 export async function upsertStoryEvent(event: StoryEventCreate): Promise<number> {
 	const trx = await knex.transaction();
-	const [{ id }] = await trx('story_events').insert(event).onConflict('id').merge().returning('id');
+	const evt = omit(event, ['artifacts', 'persons', 'plots', 'messages']);
+	const [{ id }] = await trx('story_events').insert(evt).onConflict('id').merge().returning('id');
 	await trx('story_artifact_events').where({ event_id: id }).delete();
 	await trx('story_person_events').where({ event_id: id }).delete();
 	await trx('story_event_messages').where({ event_id: id }).delete();
 	await trx('story_event_plots').where({ event_id: id }).delete();
-	if (event.artifacts) {
+	if (event.artifacts && event.artifacts.length > 0) {
 		await trx('story_artifact_events').insert(event.artifacts.map((artifact_id) => ({ event_id: id, artifact_id })));
 	}
-	if (event.persons) {
+	if (event.persons && event.persons.length > 0) {
 		await trx('story_person_events').insert(event.persons.map((person_id) => ({ event_id: id, person_id })));
 	}
-	if (event.messages) {
+	if (event.messages && event.messages.length > 0) {
 		await trx('story_event_messages').insert(event.messages.map((message_id) => ({ event_id: id, message_id })));
 	}
-	if (event.plots) {
+	if (event.plots && event.plots.length > 0) {
 		await trx('story_event_plots').insert(event.plots.map((plot_id) => ({ event_id: id, plot_id })));
 	}
 	await trx.commit();
