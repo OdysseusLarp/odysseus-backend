@@ -16,13 +16,13 @@ import { omit } from 'lodash';
  */
 export const StoryMessage = z.object({
 	id: z.number(),
-	name: z.string(),
+	name: z.string().trim(),
 	sender_person_id: z.string().nullable(),
 	type: z.string(),
 	after_jump: z.number().nullable(),
 	locked: z.boolean(),
 	sent: z.string(),
-	message: z.string(),
+	message: z.string().trim(),
 	gm_notes: z.string().nullable(),
 });
 export type StoryMessage = z.infer<typeof StoryMessage>;
@@ -135,12 +135,12 @@ export async function upsertStoryMessage(message: StoryMessageCreate): Promise<n
 	if (message.receivers && message.receivers.length > 0) {
 		await trx('story_person_messages').insert(message.receivers.map((person_id) => ({ message_id: id, person_id })));
 	}
+	await trx('story_event_messages').where({ message_id: id }).delete();
 	if (message.events && message.events.length > 0) {
-		await trx('story_event_messages').where({ message_id: id }).delete();
 		await trx('story_event_messages').insert(message.events.map((event_id) => ({ message_id: id, event_id })));
 	}
+	await trx('story_plot_messages').where({ message_id: id }).delete();
 	if (message.plots && message.plots.length > 0) {
-		await trx('story_plot_messages').where({ message_id: id }).delete();
 		await trx('story_plot_messages').insert(message.plots.map((plot_id) => ({ message_id: id, plot_id })));
 	}
 	await trx.commit();
