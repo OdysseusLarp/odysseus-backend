@@ -21,10 +21,6 @@ export const CHANNELS = {
 	JumpEndBreaking: 111,
 	JumpAbort: 112,
 
-	LifeSupportNormal: 115,
-	LifeSupportLow: 116,
-	LifeSupportCritical: 117,
-
 	ShipAnnouncement: 119,
 
 	// Used in fuse box configuration
@@ -39,11 +35,61 @@ export const CHANNELS = {
 	LoungeFuseBroken: 128,
 	LoungeFuseFixed: 129,
 
-	ReactorNormal: 140,
-	ReactorCritical: 141,
-	ReactorOff: 142,
-	GeneralStatusNormal: 143,
-	GeneralStatusBroken: 144,
+	// Health statuses
+	FrontShieldNormal: 200,
+	FrontShieldDamaged: 201,
+	FrontShieldCritical: 202,
+	FrontShieldDisabled: 203,
+	FrontShieldValue: 204,
+	RearShieldNormal: 205,
+	RearShieldDamaged: 206,
+	RearShieldCritical: 207,
+	RearShieldDisabled: 208,
+	RearShieldValue: 209,
+	ImpulseNormal: 210,
+	ImpulseDamaged: 211,
+	ImpulseCritical: 212,
+	ImpulseDisabled: 213,
+	ImpulseValue: 214,
+	MissileSystemNormal: 215,
+	MissileSystemDamaged: 216,
+	MissileSystemCritical: 217,
+	MissileSystemDisabled: 218,
+	MissileSystemValue: 219,
+	ReactorNormal: 220,
+	ReactorDamaged: 221,
+	ReactorCritical: 222,
+	ReactorDisabled: 223,
+	ReactorValue: 224,
+	ManeuverNormal: 225,
+	ManeuverDamaged: 226,
+	ManeuverCritical: 227,
+	ManeuverDisabled: 228,
+	ManeuverValue: 229,
+	BeamWeaponsNormal: 230,
+	BeamWeaponsDamaged: 231,
+	BeamWeaponsCritical: 232,
+	BeamWeaponsDisabled: 233,
+	BeamWeaponsValue: 234,
+	HullNormal: 235,
+	HullDamaged: 236,
+	HullCritical: 237,
+	HullDisabled: 238,
+	HullValue: 239,
+
+	LifeSupportNormal: 240,
+	LifeSupportDamaged: 241,
+	LifeSupportCritical: 242,
+	// Life support does not use 'disabled' signal
+	// LifeSupportDisabled: 243,
+	LifeSupportValue: 244,
+
+	GeneralStatusNormal: 245,
+	GeneralStatusDamaged: 246,
+	GeneralStatusCritical: 247,
+	GeneralStatusDisabled: 248,
+	GeneralStatusValue: 249,
+
 	DriftingValueOutOfRange: 145,
 	DriftingValueInRange: 146,
 
@@ -106,7 +152,7 @@ function init(): Dmx {
 	} else {
 		return {
 			update: (universe: string, value: Record<number, number>) => {
-				logger.debug(`DMX update on universe ${universe}: ${JSON.stringify(value)}`);
+				logger.debug(`Mock DMX update on universe ${universe}: ${JSON.stringify(value)}`);
 			},
 		};
 	}
@@ -133,4 +179,20 @@ export function fireEvent(channel: Channel, value = 255) {
 
 	// Send TP-link power socker on/off. Intentionally not awaited.
 	processDmxSignal(findChannelName(channel));
+}
+
+export function mapDmxValue(value: number, inMin: number, inMax: number): number {
+	const outMin = 0;
+	const outMax = 255;
+	const outValue = Math.round(outMin + ((outMax - outMin) * (value - inMin)) / (inMax - inMin));
+	return Math.min(Math.max(outValue, outMin), outMax);
+}
+
+export function setDmxValue(channel: Channel, value: number) {
+	if (!isNumber(channel) || !isNumber(value) || channel < 0 || channel > 255 || value < 0 || value > 255) {
+		logger.error(`Attempted DMX setDmxValue with invalid channel=${channel} or value=${value}`);
+		return;
+	}
+	logger.debug(`Setting DMX channel ${channel} (${findChannelName(channel)}) value ${value}`);
+	dmx.update(UNIVERSE_NAME, { [channel]: value });
 }
