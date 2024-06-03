@@ -1,20 +1,37 @@
 const blobs = [];
 
 blobs.push({
-	id: 'jump_drive_spectral_calibration',
-	type: 'box',
+	id: 'jump_drive_insert_jump_crystal',
+	type: 'game',
+	task: 'jump_drive_insert_jump_crystal',
+	game_config: 'manual',
 	status: 'initial',
-	task: 'jump_drive_spectral_calibration',
+	config: {
+		title: 'Insert Jump Drive Jump Crystals',
+		pages: [
+			"<p>Perform the manual task according to instructions.</p><p>Insert the jump crystals into the designated ports to enable the ship's jump drive. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions.</p>",
+			"<p>Insert Crystal into Port. Ensure each crystal is securely locked into place.</p>",
+			"<p>Proceed to the calibration phase once the crystals are inserted.</p>"
+		],
+		buttons: [
+			'Instructions',
+			'Next',
+			'Calibrate'
+		]
+	}
 });
 
 blobs.push({
-	id: 'jump_drive_spectral_calibration',
+	id: 'jump_drive_insert_jump_crystal',
 	type: 'task',
+	game: 'jump_drive_insert_jump_crystal',
+	singleUse: false,
+	used: false,
 	status: 'initial',
-	title: 'Jump drive spectral calibration',
-	description: 'Perform jump drive spectral calibration (separate instructions).',
-	calibrationTime: 2.5*60,
 	calibrationCount: 1,
+	calibrationTime: 2.5*60,
+	title: 'Insert jump crystal to Jump drive',
+	description: 'Insert jump crystal to Jump drive (separate instructions on ESS Odysseus Operations Handbook page 2.6-56).',
 	location: 'Upper deck, engineering',
 	map: 'upper-5.png',
 	mapX: 400,

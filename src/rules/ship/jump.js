@@ -125,9 +125,9 @@ function getReadableJumpTarget(coordinates) {
 		: gridName;
 }
 
-function isJumpSpectralCalibrationDone() {
+function isJumpCrystalDone() {
 	const tasks = store.getState().data.task;
-	return tasks.jump_drive_spectral_calibration.status === 'fixed';
+	return tasks.jump_drive_insert_jump_crystal.status === 'fixed';
 }
 
 function isJumpReactorDone() {
@@ -136,19 +136,19 @@ function isJumpReactorDone() {
 }
 
 function setupJumpDriveTasks() {
-	breakSpectralCalibration();
+	breakJumpCrystalGame();
 	breakJumpReactor();
 }
 
-function breakSpectralCalibration() {
-	const boxes = store.getState().data.box;
-	if (boxes.jump_drive_spectral_calibration) {
+function breakJumpCrystalGame() {
+	const games = store.getState().data.game;
+	if (games.jump_drive_insert_jump_crystal) {
 		saveBlob({
-			...boxes.jump_drive_spectral_calibration,
+			...games.jump_drive_insert_jump_crystal,
 			status: 'broken',
 		});
 	} else {
-		logger.error("No box with id 'jump_drive_spectral_calibration'");
+		logger.error("No box with id 'jump_drive_insert_jump_crystal'");
 	}
 }
 
@@ -402,7 +402,7 @@ function handleStatic(jump) {
 		case 'preparation':
 			// Avoid race condition when transitioning to 'preparation' and tasks are not yet set up
 			if (Date.now() > jump.updated_at + 500) {
-				if (isJumpSpectralCalibrationDone() && isJumpReactorDone()) {
+				if (isJumpCrystalDone() && isJumpReactorDone()) {
 					saveBlob({
 						...jump,
 						status: 'prep_complete',
