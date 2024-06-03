@@ -209,7 +209,7 @@ export const Ship = Bookshelf.Model.extend({
 		logger.info('Destroying ship', this.get('id'));
 		const personsOnBoard = await Bookshelf.knex('person').select('id').where('ship_id', '=', this.get('id'));
 		const personIds = (personsOnBoard || []).map(({ id }) => id);
-		knex.transaction(async trx => {
+		await knex.transaction(async trx => {
 			await knex('ship').transacting(trx).update({ status: 'Destroyed' }).where('id', '=', this.get('id'));
 			await knex('person').transacting(trx).update({ status: 'Killed in action' }).where('id', 'IN', personIds);
 			// Killed in action entries to personal log must be done individually for each person
@@ -224,6 +224,7 @@ export const Ship = Bookshelf.Model.extend({
 					})
 			));
 		});
+		dmx.fireEvent(dmx.CHANNELS.FleetShipDestroyed);
 		getSocketIoClient().emit('refreshMap');
 		logger.success(`${shipName} was destroyed and all ${personIds.length} on board killed succesfully`);
 	},

@@ -4,7 +4,6 @@ import { handleAsyncErrors } from './helpers';
 import { validateJumpTarget } from '../eventhandler';
 import { get, set, clone, isPlainObject } from 'lodash';
 import { BadRequest, NotFound } from 'http-errors';
-import * as dmx from '../dmx';
 const router = new Router();
 
 /**
@@ -130,7 +129,6 @@ router.post('/:id/destroy', handleAsyncErrors(async (req, res) => {
 	if (!ship) throw new NotFound('Ship not found');
 	if (ship.get('status') === 'Destroyed') throw new BadRequest(`Ship ${id} is already destroyed`);
 	await ship.destroyShip();
-	dmx.fireEvent(dmx.CHANNELS.FleetShipDestroyed);
 	res.sendStatus(204);
 }));
 
