@@ -99,6 +99,7 @@ router.put('/:id', handleAsyncErrors(async (req, res) => {
 			moment().add(activeMinutes, 'minutes').toDate() :
 			null;
 	}
+	const wasChangedToApproved = vote.get('status') !== 'APPROVED' && isApproved;
 	await vote.save(data, { method: 'update', patch: true });
 	if (sendMessage && (isApproved || isRejected)) {
 		const message = isApproved ?
@@ -108,7 +109,7 @@ router.put('/:id', handleAsyncErrors(async (req, res) => {
 		if (String(vote.get('person_id')) === process.env.FLEET_SECRETARY_ID) {
 			return logger.debug('Denying fleet secretary from messaging themself');
 		}
-		if (isApproved) {
+		if (wasChangedToApproved) {
 			dmx.fireEvent(dmx.CHANNELS.DataHubVoteApproved);
 		}
 		adminSendMessage(process.env.FLEET_SECRETARY_ID, {

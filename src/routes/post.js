@@ -55,6 +55,7 @@ router.put('/', handleAsyncErrors(async (req, res) => {
 		post = await Post.forge().save(data, { method: 'insert' });
 		req.io.emit('postAdded', post);
 	} else {
+		const wasChangedToApproved = post.get('status') !== 'APPROVED' && isApproved;
 		await post.save(data, { method: 'update', patch: true });
 		req.io.emit('postUpdated', post);
 		if (sendMessage && (isApproved || isRejected)) {
@@ -66,7 +67,7 @@ router.put('/', handleAsyncErrors(async (req, res) => {
 			if (String(post.get('person_id')) === process.env.FLEET_SECRETARY_ID) {
 				return logger.debug('Denying fleet secretary from messaging themself');
 			}
-			if (isApproved) {
+			if (wasChangedToApproved) {
 				dmx.fireEvent(dmx.CHANNELS.DataHubNewsApproved);
 			}
 			adminSendMessage(process.env.FLEET_SECRETARY_ID, {
