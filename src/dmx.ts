@@ -134,6 +134,17 @@ export const CHANNELS = {
 	HangarBayDoorMalfunction: 197,
 	HangarBayPressurize: 198,
 	HangarBayDepressurize: 199,
+
+	LoraBeaconSignalDecrypted: 250,
+	LoraJumpCrystalsLow: 251,
+	LoraJumpCrystalsDepleted: 252,
+	LoraGridScanInitiated: 253,
+	LoraGridScanCompleted: 254,
+	IncomingJumpWarning: 255,
+	FleetShipDestroyed: 256,
+	DataHubHackingDetected: 257,
+	DataHubNewsApproved: 258,
+	DataHubVoteApproved: 259,
 } as const;
 
 type Channel = (typeof CHANNELS)[keyof typeof CHANNELS];

@@ -30,6 +30,8 @@ export const SAFE_JUMP_LIMIT = 2 * HOUR + 47 * MIN;
 export const BREAKING_JUMP_TIME = 5 * MIN;
 const COUNTDOWN = 1 * MIN;
 
+const JUMP_CRYSTAL_LOW_THRESHOLD = 5;
+
 const EE_TYPES = [
 	'reactor',
 	'impulse',
@@ -229,10 +231,15 @@ function handleTransition(jump, currentStatus, previousStatus) {
 					const jump_crystal_count = jumpCrystalCount - 1;
 					if (jump_crystal_count === 0) {
 						shipLogger.warning(`Out of jump crystals`);
-					} else if (jump_crystal_count < 6) {
+						dmx.fireEvent(dmx.CHANNELS.LoraJumpCrystalsDepleted);
+					} else if (jump_crystal_count <= JUMP_CRYSTAL_LOW_THRESHOLD) {
 						shipLogger.warning(
 							`Jump crystal count is low (${jump_crystal_count} pcs)`
 						);
+						// Fire the DMX event only once when count drops below threshold
+						if (jump_crystal_count === JUMP_CRYSTAL_LOW_THRESHOLD) {
+							dmx.fireEvent(dmx.CHANNELS.LoraJumpCrystalsLow);
+						}
 					}
 					model.save(
 						{ metadata: { ...metadata, jump_crystal_count } },

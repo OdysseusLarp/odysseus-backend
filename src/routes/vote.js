@@ -8,6 +8,7 @@ import { pick, get, isInteger } from 'lodash';
 import moment from 'moment';
 import { NotFound } from 'http-errors';
 import { logger } from '../logger';
+import * as dmx from '../dmx';
 const router = new Router();
 
 const VOTE_FIELDS = [
@@ -98,6 +99,7 @@ router.put('/:id', handleAsyncErrors(async (req, res) => {
 			moment().add(activeMinutes, 'minutes').toDate() :
 			null;
 	}
+	const wasChangedToApproved = vote.get('status') !== 'APPROVED' && isApproved;
 	await vote.save(data, { method: 'update', patch: true });
 	if (sendMessage && (isApproved || isRejected)) {
 		const message = isApproved ?
@@ -106,6 +108,9 @@ router.put('/:id', handleAsyncErrors(async (req, res) => {
 		// If fleet secretary messages themself, stuff breaks in very unexpected ways
 		if (String(vote.get('person_id')) === process.env.FLEET_SECRETARY_ID) {
 			return logger.debug('Denying fleet secretary from messaging themself');
+		}
+		if (wasChangedToApproved) {
+			dmx.fireEvent(dmx.CHANNELS.DataHubVoteApproved);
 		}
 		adminSendMessage(process.env.FLEET_SECRETARY_ID, {
 			target: vote.get('person_id'),

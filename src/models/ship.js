@@ -1,10 +1,11 @@
 import Bookshelf, { knex } from '../../db';
-import { addShipLogEntry } from './log';
+import { shipLogger } from './log';
 import { MapObject } from './map-object';
 import { get, pick } from 'lodash';
 import { getSocketIoClient } from '../websocket';
 import { logger } from '../logger';
 import { Person } from './person';
+import * as dmx from '../dmx';
 
 /* eslint-disable object-shorthand */
 
@@ -92,14 +93,14 @@ export const Beacon = Bookshelf.Model.extend({
 					.update({ is_active: true, is_decrypted: true })
 					.where('id', this.get('id'))
 			]).then(() => trx.commit())
-				.then(() => addShipLogEntry(
-					velianMessage ? 'WARNING' : 'SUCCESS',
-					velianMessage ?
-						`Received a distress signal from area Alpha-5-D2-100: ${velianMessage}`:
-						`Decryption key '${this.get('id')}' successfully decrypted an unknown signal originating from area ${this.related('grid').get('name')}`,
-					'odysseus',
-					{ showPopup: true }
-				))
+				.then(() => {
+					dmx.fireEvent(dmx.CHANNELS.LoraBeaconSignalDecrypted);
+					if (velianMessage) {
+						shipLogger.warning(`Received a distress signal from area Alpha-5-D2-100: ${velianMessage}`, { showPopup: true });
+						return;
+					}
+					shipLogger.success(`Decryption key '${this.get('id')}' successfully decrypted an unknown signal originating from area ${this.related('grid').get('name')}`, { showPopup: true });
+				})
 				.then(() => getSocketIoClient().emit('refreshMap'))
 				.catch(() => trx.rollback()));
 	}
@@ -208,7 +209,7 @@ export const Ship = Bookshelf.Model.extend({
 		logger.info('Destroying ship', this.get('id'));
 		const personsOnBoard = await Bookshelf.knex('person').select('id').where('ship_id', '=', this.get('id'));
 		const personIds = (personsOnBoard || []).map(({ id }) => id);
-		knex.transaction(async trx => {
+		await knex.transaction(async trx => {
 			await knex('ship').transacting(trx).update({ status: 'Destroyed' }).where('id', '=', this.get('id'));
 			await knex('person').transacting(trx).update({ status: 'Killed in action' }).where('id', 'IN', personIds);
 			// Killed in action entries to personal log must be done individually for each person
@@ -223,6 +224,7 @@ export const Ship = Bookshelf.Model.extend({
 					})
 			));
 		});
+		dmx.fireEvent(dmx.CHANNELS.FleetShipDestroyed);
 		getSocketIoClient().emit('refreshMap');
 		logger.success(`${shipName} was destroyed and all ${personIds.length} on board killed succesfully`);
 	},
