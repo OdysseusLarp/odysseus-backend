@@ -17,6 +17,7 @@ import { MapObject } from '../../models/map-object';
 import { getEmptyEpsilonClient } from '../../emptyepsilon';
 import { getData } from '../../routes/data';
 import * as reactor from '../reactorHelper';
+import { BigBatteryLocation, isBatteryConnected } from '@/utils/bigbattery-helpers';
 
 // Jump drive state spec:
 // https://docs.google.com/presentation/d/1nbXQE9N10Zm7uS45eW4R1VvYU4zZQ0PZbRovUq7bA5o/edit#slide=id.g4d32841109_0_0
@@ -171,6 +172,16 @@ function breakJumpReactor() {
 	}
 }
 
+function chargeBigBatteryIfConnected() {
+	const box = store.getState().data.box.bigbattery;
+	if (isBatteryConnected(box, BigBatteryLocation.ENGINEERING)) {
+		saveBlob({
+			...box,
+			capacity_percent: 100,
+		});
+	}
+}
+
 function handleTransition(jump, currentStatus, previousStatus) {
 	logger.info(`Jump drive transition ${previousStatus} -> ${currentStatus}`);
 	const lastJump = jump.last_jump || Date.now();
@@ -191,6 +202,7 @@ function handleTransition(jump, currentStatus, previousStatus) {
 			} else {
 				dmx.fireEvent(dmx.CHANNELS.JumpEnd);
 			}
+			chargeBigBatteryIfConnected();
 			logger.info(`Updating jump drive times`);
 			saveBlob({
 				...jump,

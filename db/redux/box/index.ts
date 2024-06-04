@@ -5,6 +5,7 @@ import jumpdriveBlobs from './jumpdrive';
 import driftingValueBlobs from './driftingValue';
 import buttonboard from './buttonboard';
 import reactorWiring from './reactorWiring';
+import bigbattery from './bigbattery';
 
 const blobs = [
 	...airlock,
@@ -13,5 +14,6 @@ const blobs = [
 	...driftingValueBlobs,
 	...buttonboard,
 	...reactorWiring,
+	...bigbattery,
 ];
 blobs.forEach(saveBlob);
