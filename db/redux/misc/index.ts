@@ -19,7 +19,7 @@ const blobs: unknown[] = [
 		captainsLogText: `Vel et veniam corporis cupiditate in ullam.
 Delectus culpa magnam blanditiis. Ipsa aut ipsum nostrum nihil debitis illo aut.
 Placeat nobis amet ipsa. Suscipit vero tenetur non et. Ratione magni quam
-sunt eaque dolor id nisi magni.`
+sunt eaque dolor id nisi magni.`,
 	},
 	// Used for artifacts that trigger some actions
 	{
@@ -30,27 +30,28 @@ sunt eaque dolor id nisi magni.`
 				is_usable: false,
 				is_used: false,
 				used_at: null,
-				log_message: 'Jump crystal generator artifact has been activated. Jump crystals are now regenerated during jumps.'
+				log_message:
+					'Jump crystal generator artifact has been activated. Jump crystals are now regenerated during jumps.',
 			},
 			HEALTH_BOOST: {
 				is_usable: false,
 				is_used: false,
 				used_at: null,
-				log_message: 'An artifact increased ship hull health to 100%'
-			}
-		}
+				log_message: 'An artifact increased ship hull health to 100%',
+			},
+		},
 	},
 	// Dynamic HANSCA configs
 	{
 		type: 'misc',
 		id: 'hansca',
-		analyseBaseTime: 90
+		analyseBaseTime: 90,
 	},
 	// Drone count for Flappy drone
 	{
 		type: 'misc',
 		id: 'flappy_drone',
-		amount: 10
+		amount: 10,
 	},
 	{
 		type: 'misc',
@@ -65,7 +66,7 @@ sunt eaque dolor id nisi magni.`
 			[SkillLevels.Novice]: Duration.minutes(1),
 			[SkillLevels.Master]: Duration.minutes(2),
 			[SkillLevels.Expert]: Duration.minutes(5),
-		}
+		},
 	},
 	{
 		type: 'misc',
@@ -74,23 +75,23 @@ sunt eaque dolor id nisi magni.`
 			[SkillLevels.Novice]: Duration.minutes(5),
 			[SkillLevels.Master]: Duration.minutes(2),
 			[SkillLevels.Expert]: Duration.seconds(15),
-			// A550 power bank thingy that reduces science analysis time when in a plugged in state
-			a550_time_reduction: Duration.minutes(15)
-		}
+			// Big battery reduces science analysis time when plugged in to the science lab
+			batteryless_operation_penalty: Duration.minutes(15),
+		},
 	},
 	{
 		type: 'misc',
 		id: Stores.ScienceAnalysisInProgress,
-		analysis_in_progress: []
+		analysis_in_progress: [],
 	},
 	{
 		type: 'misc',
 		id: Stores.TagUidToArtifactCatalogId,
 		tagUidToArtifactCatalogId: {
 			// TODO: Fill this with actual data
-			"ABCDEF123456": "BEACON-1",
-		}
-	}
+			ABCDEF123456: 'BEACON-1',
+		},
+	},
 ];
 
 blobs.forEach(saveBlob);

@@ -26,13 +26,13 @@ export const ScienceAnalysisTimes = z.object({
 		[SkillLevels.Novice]: z.number().min(0).int(),
 		[SkillLevels.Master]: z.number().min(0).int(),
 		[SkillLevels.Expert]: z.number().min(0).int(),
-		"a550_time_reduction": z.number().min(0).int(),
+		batteryless_operation_penalty: z.number().int(),
 	}),
 });
 export type ScienceAnalysisTimes = z.infer<typeof ScienceAnalysisTimes>;
 
 const AnalysisInProgress = z.object({
-	artifact_catalog_id : z.string(),
+	artifact_catalog_id: z.string(),
 	author_name: z.string(),
 	completes_at: z.number().int(),
 	operation_additional_type: z.string(),
