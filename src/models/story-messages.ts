@@ -16,13 +16,13 @@ import { omit } from 'lodash';
  */
 export const StoryMessage = z.object({
 	id: z.number(),
-	name: z.string(),
+	name: z.string().trim(),
 	sender_person_id: z.string().nullable(),
 	type: z.string(),
 	after_jump: z.number().nullable(),
 	locked: z.boolean(),
 	sent: z.string(),
-	message: z.string(),
+	message: z.string().trim(),
 	gm_notes: z.string().nullable(),
 });
 export type StoryMessage = z.infer<typeof StoryMessage>;
@@ -46,11 +46,13 @@ export const StoryMessageWithRelations = StoryMessage.extend({
 		card_id: z.string().optional(),
 		id: z.string(),
 		name: z.string(),
+		is_character: z.boolean(),
 	})),
 	sender: z.object({
 		card_id: z.string().optional(),
 		id: z.string(),
 		name: z.string(),
+		is_character: z.boolean(),
 	}).or(z.null()),
 });
 export type StoryMessageWithRelations = z.infer<typeof StoryMessageWithRelations>;
@@ -86,7 +88,7 @@ export async function listStoryMessages(): Promise<StoryMessageWithPersons[]> {
 }
 
 export async function getStoryMessage(id: number): Promise<StoryMessageWithRelations | null> {
-	const message = await knex('story_messages').select('story_messages.*', 'person.card_id', knex.raw('TRIM(CONCAT(person.first_name, \' \', person.last_name)) as sender_name')).leftJoin('person', 'story_messages.sender_person_id', 'person.id').where('story_messages.id', "=", id).first();
+	const message = await knex('story_messages').select('story_messages.*', 'person.card_id', 'person.is_character', knex.raw('TRIM(CONCAT(person.first_name, \' \', person.last_name)) as sender_name')).leftJoin('person', 'story_messages.sender_person_id', 'person.id').where('story_messages.id', "=", id).first();
 	if (!message) {
 		return null;
 	}
@@ -98,7 +100,7 @@ export async function getStoryMessage(id: number): Promise<StoryMessageWithRelat
 		.where({ message_id: id }),
 		knex('story_person_messages')
 		.join('person', 'story_person_messages.person_id', 'person.id')
-		.select('person.id', 'person.card_id', knex.raw('TRIM(CONCAT(person.first_name, \' \', person.last_name)) as name'))
+		.select('person.id', 'person.card_id', 'person.is_character', knex.raw('TRIM(CONCAT(person.first_name, \' \', person.last_name)) as name'))
 		.where({ message_id: id }),
 		knex('story_plot_messages')
 		.join('story_plots', 'story_plot_messages.plot_id', 'story_plots.id')
@@ -115,6 +117,7 @@ export async function getStoryMessage(id: number): Promise<StoryMessageWithRelat
 			card_id: message.card_id,
 			id: message.sender_person_id,
 			name: message.sender_name,
+			is_character: message.is_character,
 		} : null,
 	});
 }
@@ -135,12 +138,12 @@ export async function upsertStoryMessage(message: StoryMessageCreate): Promise<n
 	if (message.receivers && message.receivers.length > 0) {
 		await trx('story_person_messages').insert(message.receivers.map((person_id) => ({ message_id: id, person_id })));
 	}
+	await trx('story_event_messages').where({ message_id: id }).delete();
 	if (message.events && message.events.length > 0) {
-		await trx('story_event_messages').where({ message_id: id }).delete();
 		await trx('story_event_messages').insert(message.events.map((event_id) => ({ message_id: id, event_id })));
 	}
+	await trx('story_plot_messages').where({ message_id: id }).delete();
 	if (message.plots && message.plots.length > 0) {
-		await trx('story_plot_messages').where({ message_id: id }).delete();
 		await trx('story_plot_messages').insert(message.plots.map((plot_id) => ({ message_id: id, plot_id })));
 	}
 	await trx.commit();

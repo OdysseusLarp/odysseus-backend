@@ -1,5 +1,6 @@
 import { z } from 'zod';
 import { knex } from "@db/index";
+import { omit } from 'lodash';
 
 /**
  * @typedef StoryPlot
@@ -71,10 +72,12 @@ export const StoryPlotWithRelations = StoryPlot.extend({
 	messages: z.array(z.object({
 		id: z.number(),
 		name: z.string(),
+		sent: z.string(),
 	})),
 	persons: z.array(z.object({
 		id: z.string(),
 		name: z.string(),
+		is_character: z.boolean(),
 	})),
 });
 export type StoryPlotWithRelations = z.infer<typeof StoryPlotWithRelations>;
@@ -94,11 +97,11 @@ export async function listStoryPlots(): Promise<StoryPlotWithRelations[] | []> {
 			.where({ plot_id: plot.id }),
 			knex('story_plot_messages')
 			.join('story_messages', 'story_plot_messages.message_id', 'story_messages.id')
-			.select('story_messages.id', 'story_messages.name')
+			.select('story_messages.id', 'story_messages.sent', 'story_messages.name')
 			.where({ plot_id: plot.id }),
 			knex('story_person_plots')
 			.join('person', 'story_person_plots.person_id', 'person.id')
-			.select('person.id', knex.raw('TRIM(CONCAT(person.first_name, \' \', person.last_name)) as name'))
+			.select('person.id', 'person.is_character', knex.raw('TRIM(CONCAT(person.first_name, \' \', person.last_name)) as name'))
 			.where({ plot_id: plot.id }),
 		]);
 
@@ -107,7 +110,7 @@ export async function listStoryPlots(): Promise<StoryPlotWithRelations[] | []> {
 			persons,
 			artifacts,
 			messages,
-			events
+			events,
 		});
 	}));
 
@@ -131,11 +134,11 @@ export async function getStoryPlot(id: number): Promise<StoryPlot | null> {
 		.where({ plot_id: id }),
 		knex('story_plot_messages')
 		.join('story_messages', 'story_plot_messages.message_id', 'story_messages.id')
-		.select('story_messages.id', 'story_messages.name')
+		.select('story_messages.id', 'story_messages.sent', 'story_messages.name')
 		.where({ plot_id: id }),
 		knex('story_person_plots')
 		.join('person', 'story_person_plots.person_id', 'person.id')
-		.select('person.id', knex.raw('TRIM(CONCAT(person.first_name, \' \', person.last_name)) as name'))
+		.select('person.id', 'person.is_character', knex.raw('TRIM(CONCAT(person.first_name, \' \', person.last_name)) as name'))
 		.where({ plot_id: id }),
 	]);
 
@@ -159,21 +162,22 @@ export type StoryPlotCreate = z.infer<typeof StoryPlotCreate>;
 
 export async function upsertStoryPlot(plot: StoryPlotCreate): Promise<number> {
 	const trx = await knex.transaction();
-	const [{ id }] = await trx('story_plots').insert(plot).onConflict('id').merge().returning('id');
+	const plainPlot = omit(plot, ['artifacts', 'persons', 'events', 'messages']);
+	const [{ id }] = await trx('story_plots').insert(plainPlot).onConflict('id').merge().returning('id');
 	await trx('story_artifact_plots').where({ plot_id: id }).delete();
 	await trx('story_event_plots').where({ plot_id: id }).delete();
 	await trx('story_plot_messages').where({ plot_id: id }).delete();
 	await trx('story_person_plots').where({ plot_id: id }).delete();
-	if (plot.artifacts) {
+	if (plot.artifacts && plot.artifacts.length > 0) {
 		await trx('story_artifact_plots').insert(plot.artifacts.map((artifact_id) => ({ plot_id: id, artifact_id })));
 	}
-	if (plot.events) {
+	if (plot.events && plot.events.length > 0) {
 		await trx('story_event_plots').insert(plot.events.map((event_id) => ({ plot_id: id, event_id })));
 	}
-	if (plot.messages) {
+	if (plot.messages && plot.messages.length > 0) {
 		await trx('story_plot_messages').insert(plot.messages.map((message_id) => ({ plot_id: id, message_id })));
 	}
-	if (plot.persons) {
+	if (plot.persons && plot.persons.length > 0) {
 		await trx('story_person_plots').insert(plot.persons.map((person_id) => ({ plot_id: id, person_id })));
 	}
 	await trx.commit();
