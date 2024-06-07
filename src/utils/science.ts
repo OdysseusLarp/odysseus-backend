@@ -1,10 +1,11 @@
-import { getPath } from "@/store/store";
-import { SkillLevels, getHighestSkillLevel } from "./groups";
-import { ScienceAnalysisTimes, Stores } from "@/store/types";
-import { logger } from "@/logger";
-import { Duration } from "./time";
-import { ArtifactEntry, Artifact } from "@/models/artifact";
+import { getPath, store } from '@/store/store';
+import { SkillLevels, getHighestSkillLevel } from './groups';
+import { ScienceAnalysisTimes, Stores } from '@/store/types';
+import { logger } from '@/logger';
+import { Duration } from './time';
+import { ArtifactEntry, Artifact } from '@/models/artifact';
 import Bookshelf from 'bookshelf';
+import { BigBatteryLocation, isBatteryConnectedAndCharged } from './bigbattery-helpers';
 
 const EVA_ID = '20263';
 
@@ -61,10 +62,12 @@ export const addOperationResultsToArtifactEntry = async (operationResult: Booksh
 	await entry.save({
 		artifact_id: artifact.get('id'),
 		entry: entryText,
-		person_id: EVA_ID
+		person_id: EVA_ID,
 	});
 	await operationResult.save({ is_complete: true }, { method: 'update', patch: true });
-	logger.success(`Added #${operationResult.get("id")} ${operationType} results to artifact ${artifact.get('name')} (${artifact.get('catalog_id')})`);
+	logger.success(
+		`Added #${operationResult.get('id')} ${operationType} results to artifact ${artifact.get('name')} (${artifact.get('catalog_id')})`
+	);
 };
 
 export const getScienceAnalysisTime = (analysisAuthor: unknown): number => {
@@ -76,18 +79,20 @@ export const getScienceAnalysisTime = (analysisAuthor: unknown): number => {
 		return Duration.minutes(20);
 	}
 
-	// TODO: Get data from blob once it's available
-	const isA550PluggedIn = true;
+	const analysisTimes = detectionTimes.data.analysis_times;
 
-	const addedTime = isA550PluggedIn ? 0 : detectionTimes.data.analysis_times.a550_time_reduction;
+	// Check if the big battery is connected to the science lab, add penalty if not
+	const bigBatteryBox = store.getState().data.box.bigbattery;
+	const hasBigBattery = isBatteryConnectedAndCharged(bigBatteryBox, BigBatteryLocation.SCIENCE);
+	const penalty = hasBigBattery ? 0 : analysisTimes.batteryless_operation_penalty;
 
 	switch (skillLevel) {
 		case SkillLevels.Expert:
-			return detectionTimes.data.analysis_times[SkillLevels.Expert] + addedTime;
+			return analysisTimes[SkillLevels.Expert] + penalty;
 		case SkillLevels.Master:
-			return detectionTimes.data.analysis_times[SkillLevels.Master] + addedTime;
+			return analysisTimes[SkillLevels.Master] + penalty;
 		case SkillLevels.Novice:
-			return detectionTimes.data.analysis_times[SkillLevels.Novice]+ addedTime;
+			return analysisTimes[SkillLevels.Novice] + penalty;
 		default:
 			return Duration.minutes(20);
 	}
