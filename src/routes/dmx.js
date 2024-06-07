@@ -1,4 +1,4 @@
-import { CHANNELS, fireEvent } from '../dmx';
+import { CHANNELS, fireEvent, DMX_MAX_CHANNEL, DMX_MAX_VALUE } from '../dmx';
 import httpErrors from 'http-errors';
 import { isFinite } from 'lodash';
 import { Router } from 'express';
@@ -14,7 +14,6 @@ export const router = new Router();
 router.get('/channels', (req, res) => {
 	res.json(CHANNELS);
 });
-
 
 /**
  * Fires an event (value for one second, then back to zero) on a DMX channel.
@@ -34,13 +33,13 @@ router.post('/event/:channel', (req, res) => {
 	if (!channelInt) {
 		channelInt = parseInt(channel, 10);
 	}
-	if (!channel || !channelInt || channelInt < 0 || channelInt > 255) {
+	if (!channel || !channelInt || !isFinite(channelInt) || channelInt < 0 || channelInt > DMX_MAX_CHANNEL) {
 		throw new httpErrors.BadRequest(`Invalid channel number`);
 	}
 
 	if (typeof value !== 'undefined') {
 		value = parseInt(value, 10);
-		if (!isFinite(value) || value <= 0 || value > 255) {
+		if (!isFinite(value) || value <= 0 || value > DMX_MAX_VALUE) {
 			throw new httpErrors.BadRequest(`Invalid value`);
 		}
 	}

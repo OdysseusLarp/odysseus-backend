@@ -6,6 +6,9 @@ import { processDmxSignal } from './tplink/tplink-control';
 const UNIVERSE_NAME = 'backend';
 const EVENT_DURATION = 1000; // ms
 
+export const DMX_MAX_CHANNEL = 511;
+export const DMX_MAX_VALUE = 255;
+
 export const CHANNELS = {
 	JumpFixed: 100,
 	JumpPrepReady: 101,
@@ -20,6 +23,7 @@ export const CHANNELS = {
 	JumpEnd: 110,
 	JumpEndBreaking: 111,
 	JumpAbort: 112,
+	JumpEndingSoon: 113,
 
 	ShipAnnouncement: 119,
 
@@ -179,8 +183,15 @@ function findChannelName(channel: Channel) {
 	return 'UNKNOWN';
 }
 
-export function fireEvent(channel: Channel, value = 255) {
-	if (!isNumber(channel) || !isNumber(value) || channel < 0 || channel > 255 || value < 0 || value > 255) {
+export function fireEvent(channel: Channel, value = DMX_MAX_VALUE) {
+	if (
+		!isNumber(channel) ||
+		!isNumber(value) ||
+		channel < 0 ||
+		channel > DMX_MAX_CHANNEL ||
+		value < 0 ||
+		value > DMX_MAX_VALUE
+	) {
 		logger.error(`Attempted DMX fireEvent with invalid channel=${channel} or value=${value}`);
 		return;
 	}
@@ -194,13 +205,20 @@ export function fireEvent(channel: Channel, value = 255) {
 
 export function mapDmxValue(value: number, inMin: number, inMax: number): number {
 	const outMin = 0;
-	const outMax = 255;
+	const outMax = DMX_MAX_VALUE;
 	const outValue = Math.round(outMin + ((outMax - outMin) * (value - inMin)) / (inMax - inMin));
 	return Math.min(Math.max(outValue, outMin), outMax);
 }
 
 export function setDmxValue(channel: Channel, value: number) {
-	if (!isNumber(channel) || !isNumber(value) || channel < 0 || channel > 255 || value < 0 || value > 255) {
+	if (
+		!isNumber(channel) ||
+		!isNumber(value) ||
+		channel < 0 ||
+		channel > DMX_MAX_CHANNEL ||
+		value < 0 ||
+		value > DMX_MAX_VALUE
+	) {
 		logger.error(`Attempted DMX setDmxValue with invalid channel=${channel} or value=${value}`);
 		return;
 	}
