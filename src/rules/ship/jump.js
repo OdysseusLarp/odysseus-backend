@@ -1,12 +1,4 @@
-import {
-	saveBlob,
-	interval,
-	schedule,
-	random,
-	chooseRandom,
-	randomInt,
-	clamp,
-} from '../helpers';
+import { saveBlob, interval, schedule, random, chooseRandom, randomInt, clamp } from '../helpers';
 import store, { watch } from '../../store/store';
 import * as dmx from '../../dmx';
 import { logger } from '../../logger';
@@ -33,15 +25,7 @@ const COUNTDOWN = 1 * MIN;
 
 const JUMP_CRYSTAL_LOW_THRESHOLD = 5;
 
-const EE_TYPES = [
-	'reactor',
-	'impulse',
-	'maneuver',
-	'frontshield',
-	'rearshield',
-	'missilesystem',
-	'beamweapons',
-];
+const EE_TYPES = ['reactor', 'impulse', 'maneuver', 'frontshield', 'rearshield', 'missilesystem', 'beamweapons'];
 
 /**
  * Enable or disable Jump UI and EOC Datahub
@@ -67,10 +51,7 @@ export function setEeSyncEnabled(value = true) {
 		...shipMetadata,
 		ee_sync_enabled: value,
 	});
-	logger.info(
-		'Empty Epsilon state synchronization set to',
-		value ? 'ENABLED' : 'DISABLED'
-	);
+	logger.info('Empty Epsilon state synchronization set to', value ? 'ENABLED' : 'DISABLED');
 }
 
 /**
@@ -80,30 +61,20 @@ export function setEeSyncEnabled(value = true) {
 async function performShipJump(coordinates) {
 	// Hard coded ship ID at this point, we are not going to jump other ships than Odysseus
 	const shipId = 'odysseus';
-	const jumpTargetParameters = pick(coordinates, [
-		'sub_quadrant',
-		'sector',
-		'sub_sector',
-	]);
+	const jumpTargetParameters = pick(coordinates, ['sub_quadrant', 'sector', 'sub_sector']);
 	const targetPlanetName = get(coordinates, 'planet_orbit');
-	const promises = [
-		Ship.forge({ id: shipId }).fetch(),
-		Grid.forge().where(jumpTargetParameters).fetch(),
-	];
-	if (targetPlanetName)
-		promises.push(
-			MapObject.forge().where({ name_generated: targetPlanetName }).fetch()
-		);
+	const promises = [Ship.forge({ id: shipId }).fetch(), Grid.forge().where(jumpTargetParameters).fetch()];
+	if (targetPlanetName) {
+		promises.push(MapObject.forge().where({ name_generated: targetPlanetName }).fetch());
+	}
 	const [ship, grid, targetPlanet] = await Promise.all(promises);
 	let targetGeometry;
 	if (targetPlanet) targetGeometry = targetPlanet.get('the_geom');
 	else targetGeometry = await grid.getRandomJumpTarget();
 	const gridId = grid ? grid.get('id') : null;
-	if (!targetGeometry)
-		logger.error(
-			'Could not calculate new geometry for ship when jumping to grid',
-			gridId
-		);
+	if (!targetGeometry) {
+		logger.error('Could not calculate new geometry for ship when jumping to grid', gridId);
+	}
 	// Reset jump range back to 1
 	const metadata = { ...ship.get('metadata', {}), jump_range: 1 };
 	await Promise.all([
@@ -114,16 +85,10 @@ async function performShipJump(coordinates) {
 }
 
 function getReadableJumpTarget(coordinates) {
-	const { sub_quadrant, sub_sector, sector } = pick(coordinates, [
-		'sub_quadrant',
-		'sector',
-		'sub_sector',
-	]);
+	const { sub_quadrant, sub_sector, sector } = pick(coordinates, ['sub_quadrant', 'sector', 'sub_sector']);
 	const targetPlanetName = get(coordinates, 'planet_orbit');
 	const gridName = `${sub_quadrant}-${sector}-${sub_sector}`;
-	return targetPlanetName
-		? `${gridName} (orbit ${targetPlanetName})`
-		: gridName;
+	return targetPlanetName ? `${gridName} (orbit ${targetPlanetName})` : gridName;
 }
 
 function isJumpCrystalDone() {
@@ -224,20 +189,15 @@ function handleTransition(jump, currentStatus, previousStatus) {
 			if (getEmptyEpsilonClient().getConnectionStatus().isConnectionHealthy) {
 				setTimeout(() => setEeSyncEnabled(true), 3000);
 			} else {
-				logger.error(
-					'Could not enable Empty Epsilon state synchronization, connection is not healthy'
-				);
+				logger.error('Could not enable Empty Epsilon state synchronization, connection is not healthy');
 			}
 
 			// Remove a jump crystal and send a warning if they drop below 5, unless CRYSTAL_GENERATOR artifact has been used
-			const hasCrystalGenerator = get(
-				getData('misc', 'artifact_actions'),
-				'actions.CRYSTAL_GENERATOR.is_used'
-			);
+			const hasCrystalGenerator = get(getData('misc', 'artifact_actions'), 'actions.CRYSTAL_GENERATOR.is_used');
 			if (hasCrystalGenerator) break;
 			Ship.forge({ id: 'odysseus' })
 				.fetch()
-				.then((model) => {
+				.then(model => {
 					const metadata = model.get('metadata');
 					const jumpCrystalCount = get(metadata, 'jump_crystal_count', 1);
 					const jump_crystal_count = jumpCrystalCount - 1;
@@ -245,18 +205,13 @@ function handleTransition(jump, currentStatus, previousStatus) {
 						shipLogger.warning(`Out of jump crystals`);
 						dmx.fireEvent(dmx.CHANNELS.LoraJumpCrystalsDepleted);
 					} else if (jump_crystal_count <= JUMP_CRYSTAL_LOW_THRESHOLD) {
-						shipLogger.warning(
-							`Jump crystal count is low (${jump_crystal_count} pcs)`
-						);
+						shipLogger.warning(`Jump crystal count is low (${jump_crystal_count} pcs)`);
 						// Fire the DMX event only once when count drops below threshold
 						if (jump_crystal_count === JUMP_CRYSTAL_LOW_THRESHOLD) {
 							dmx.fireEvent(dmx.CHANNELS.LoraJumpCrystalsLow);
 						}
 					}
-					model.save(
-						{ metadata: { ...metadata, jump_crystal_count } },
-						{ method: 'update', patch: true }
-					);
+					model.save({ metadata: { ...metadata, jump_crystal_count } }, { method: 'update', patch: true });
 				});
 			break;
 		}
@@ -343,6 +298,15 @@ function handleTransition(jump, currentStatus, previousStatus) {
 			shipLogger.info(`Jumping to coordinates ${jumpTarget}.`);
 			dmx.fireEvent(dmx.CHANNELS.JumpStart);
 
+			// Fire DMX jump mood signal
+			const mood = jump.next_jump_mood;
+			const moodChannel = dmx.CHANNELS[`JumpStartMood${mood}`];
+			if (moodChannel) {
+				dmx.fireEvent(moodChannel);
+			} else {
+				logger.error(`Invalid jump mood ${mood}`);
+			}
+
 			// Update the ship geometry to target coordinates already so that
 			// they can be fixed by GMs during the jump if needed
 			performShipJump(jump.coordinates);
@@ -350,9 +314,7 @@ function handleTransition(jump, currentStatus, previousStatus) {
 		}
 
 		default:
-			logger.error(
-				`Invalid jump drive transition from '${previousStatus}' to '${currentStatus}'`
-			);
+			logger.error(`Invalid jump drive transition from '${previousStatus}' to '${currentStatus}'`);
 			break;
 	}
 
@@ -360,9 +322,7 @@ function handleTransition(jump, currentStatus, previousStatus) {
 
 	if (currentStatus === 'jump_initiated') {
 		const jumpAt = Date.now() + COUNTDOWN;
-		logger.info(
-			`Setting jump drive jump_at to ${jumpAt} (${new Date(jumpAt)})`
-		);
+		logger.info(`Setting jump drive jump_at to ${jumpAt} (${new Date(jumpAt)})`);
 		saveBlob({
 			...jump,
 			jump_at: jumpAt,
@@ -385,9 +345,7 @@ function handleStatic(jump) {
 					});
 				}
 			} else {
-				logger.info(
-					"Skipping 'broken' check due to updated_at being too recent"
-				);
+				logger.info("Skipping 'broken' check due to updated_at being too recent");
 			}
 			break;
 
@@ -421,9 +379,7 @@ function handleStatic(jump) {
 					});
 				}
 			} else {
-				logger.info(
-					"Skipping 'preparation' check due to updated_at being too recent"
-				);
+				logger.info("Skipping 'preparation' check due to updated_at being too recent");
 			}
 			break;
 
@@ -442,9 +398,7 @@ function handleStatic(jump) {
 
 		case 'ready':
 			if (jump.breaking_jump) {
-				logger.error(
-					"Jump drive in 'ready' state with breaking_jump flag, fixing"
-				);
+				logger.error("Jump drive in 'ready' state with breaking_jump flag, fixing");
 				saveBlob({
 					...jump,
 					status: 'ready',
@@ -493,7 +447,7 @@ function handleStatic(jump) {
 }
 
 /*
- * Jump breakage spec: https://docs.google.com/presentation/d/1nbXQE9N10Zm7uS45eW4R1VvYU4zZQ0PZbRovUq7bA5o/edit#slide=id.g5bd843658b_0_0
+ * Jump breakage spec: https://docs.google.com/presentation/d/1T3lxvrgauPcpKyM31RYYDEfTDfUCgJVXkqpqUQIjVRU/edit#slide=id.g5bd843658b_0_0
  */
 function breakTasksMajor() {
 	breakFuses(5, 10);
@@ -532,8 +486,7 @@ export function breakEE(type, min, max) {
 			logger.error('Could not break EE', err);
 		}
 	} else {
-		const current =
-			store.getState().data.ship.ee.systems.health[`${type}Health`];
+		const current = store.getState().data.ship.ee.systems.health[`${type}Health`];
 		const health = clamp(current - damage, -1, 1);
 		logger.info(`Breaking EE '${type}' by ${damage} to ${health}`);
 		// async, fire and forget
@@ -549,7 +502,7 @@ export function breakEE(type, min, max) {
  * Break (min - max) fuses from all fuse boxes.
  */
 function breakFuses(min, max) {
-	Object.values(store.getState().data.box).forEach((box) => {
+	Object.values(store.getState().data.box).forEach(box => {
 		if (box.fuses) {
 			const count = randomInt(min, Math.min(max, box.config.blowing.length));
 			logger.info(`Blowing ${count} fuses from fuse box ${box.id}`);
