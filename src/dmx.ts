@@ -25,6 +25,10 @@ export const CHANNELS = {
 	JumpAbort: 112,
 	JumpEndingSoon: 113,
 
+	JumpStartMood1: 115,
+	JumpStartMood2: 116,
+	JumpStartMood3: 117,
+
 	// Used in fuse box configuration
 	BridgeFuseBroken: 120,
 	BridgeFuseFixed: 121,

@@ -10,6 +10,7 @@ saveBlob({
 	breaking_jump: true,
 	minor_breaking_jump: true, // first jump is always minor-breaking
 	jump_end_warning_secs: 10, // Time between DMX signal and ending jump
+	next_jump_mood: 1,
 	presets: {
 		cooldown: {
 			status: 'cooldown',
