@@ -93,7 +93,7 @@ router.get('/:type/:id', (req, res) => {
  * @group Data - Generic data store operations
  * @param {string} id.path.required - Data id
  * @param {string} type.path.required - Data type
- * @param {object} any.body.required - New data value
+ * @param {object} body.required - New data value
  * @param {boolean} force.query - Force value to be set regardless of version
  * @returns {object} 200 - Updated data value
  * @returns {Error}  409 - Error if submitted version is different that current version
@@ -117,7 +117,7 @@ router.post('/:type/:id', (req, res) => {
  * @group Data - Generic data store operations
  * @param {string} id.path.required - Data id
  * @param {string} type.path.required - Data type
- * @param {object} any.body.required - Fields to update
+ * @param {object} body.required - Fields to update
  * @param {boolean} force.query - Force value to be set regardless of version
  * @returns {object} 200 - Updated data value
  * @returns {Error}  409 - Error if submitted version is different that current version
