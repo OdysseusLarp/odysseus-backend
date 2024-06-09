@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { knex } from "@db/index";
+import { knex } from '@db/index';
 import { omit } from 'lodash';
 
 /**
@@ -60,86 +60,104 @@ export const StoryEventMessagesLink = z.object({
 export type StoryEventMessagesLink = z.infer<typeof StoryEventMessagesLink>;
 
 export const StoryEventWithRelations = StoryEvent.extend({
-	artifacts: z.array(z.object({
-		id: z.number(),
-		catalog_id: z.string(),
-		name: z.string(),
-	})),
-	messages: z.array(z.object({
-		id: z.number(),
-		name: z.string(),
-		sent: z.string(),
-	})),
-	persons: z.array(z.object({
-		id: z.string(),
-		name: z.string(),
-		is_character: z.boolean(),
-	})),
-	plots: z.array(z.object({
-		id: z.number(),
-		name: z.string(),
-	})),
+	artifacts: z.array(
+		z.object({
+			id: z.number(),
+			catalog_id: z.string(),
+			name: z.string(),
+		})
+	),
+	messages: z.array(
+		z.object({
+			id: z.number(),
+			name: z.string(),
+			sent: z.string(),
+		})
+	),
+	persons: z.array(
+		z.object({
+			id: z.string(),
+			name: z.string(),
+			is_character: z.boolean(),
+		})
+	),
+	plots: z.array(
+		z.object({
+			id: z.number(),
+			name: z.string(),
+		})
+	),
 });
 export type StoryEventWithRelations = z.infer<typeof StoryEventWithRelations>;
 
 export const listStoryEvents = async (): Promise<StoryEventWithRelations[]> => {
 	const events = await knex('story_events').select('*');
 
-	const events_with_persons = await Promise.all(events.map(async event => {
-		const [artifacts, persons, messages, plots] = await Promise.all([
-			knex('story_artifact_events')
-			.join('artifact', 'story_artifact_events.artifact_id', 'artifact.id')
-			.select('artifact.name', 'artifact.id', 'artifact.catalog_id')
-			.where({ event_id: event.id }),
-			knex('story_person_events')
-			.join('person', 'story_person_events.person_id', 'person.id')
-			.select('person.id', 'person.is_character', knex.raw('TRIM(CONCAT(person.first_name, \' \', person.last_name)) as name'))
-			.where({ event_id: event.id }),
-			knex('story_event_messages')
-			.join('story_messages', 'story_event_messages.message_id', 'story_messages.id')
-			.select('story_messages.id', 'story_messages.name', 'story_messages.sent')
-			.where({ event_id: event.id }),
-			knex('story_event_plots')
-			.join('story_plots', 'story_event_plots.plot_id', 'story_plots.id')
-			.select('story_plots.id', 'story_plots.name')
-			.where({ event_id: event.id }),
-		]);
+	const events_with_persons = await Promise.all(
+		events.map(async event => {
+			const [artifacts, persons, messages, plots] = await Promise.all([
+				knex('story_artifact_events')
+					.join('artifact', 'story_artifact_events.artifact_id', 'artifact.id')
+					.select('artifact.name', 'artifact.id', 'artifact.catalog_id')
+					.where({ event_id: event.id }),
+				knex('story_person_events')
+					.join('person', 'story_person_events.person_id', 'person.id')
+					.select(
+						'person.id',
+						'person.is_character',
+						knex.raw("TRIM(CONCAT(person.first_name, ' ', person.last_name)) as name")
+					)
+					.where({ event_id: event.id }),
+				knex('story_event_messages')
+					.join('story_messages', 'story_event_messages.message_id', 'story_messages.id')
+					.select('story_messages.id', 'story_messages.name', 'story_messages.sent')
+					.where({ event_id: event.id }),
+				knex('story_event_plots')
+					.join('story_plots', 'story_event_plots.plot_id', 'story_plots.id')
+					.select('story_plots.id', 'story_plots.name')
+					.where({ event_id: event.id }),
+			]);
 
-		return StoryEventWithRelations.parse({
-			...event,
-			artifacts,
-			persons,
-			messages,
-			plots,
-		});
-	}));
+			return StoryEventWithRelations.parse({
+				...event,
+				artifacts,
+				persons,
+				messages,
+				plots,
+			});
+		})
+	);
 
-		return events_with_persons;
-}
+	return events_with_persons;
+};
 
 export const getStoryEvent = async (id: number): Promise<StoryEventWithRelations | null> => {
-	const event = await knex('story_events').select('*').where({ id }).first()
+	const event = await knex('story_events').select('*').where({ id }).first();
 	if (!event) {
 		return null;
 	}
 
 	const [artifacts, persons, messages, plots] = await Promise.all([
 		knex('story_artifact_events')
-		.join('artifact', 'story_artifact_events.artifact_id', 'artifact.id')
-		.select('artifact.name', 'artifact.id', 'artifact.catalog_id')
-		.where({ event_id: id }),
+			.join('artifact', 'story_artifact_events.artifact_id', 'artifact.id')
+			.select('artifact.name', 'artifact.id', 'artifact.catalog_id')
+			.where({ event_id: id }),
 		knex('story_person_events')
-		.join('person', 'story_person_events.person_id', 'person.id')
-		.select('person.id', 'person.is_character', knex.raw('TRIM(CONCAT(person.first_name, \' \', person.last_name)) as name'))
-		.where({ event_id: id }),
+			.join('person', 'story_person_events.person_id', 'person.id')
+			.select(
+				'person.id',
+				'person.is_character',
+				knex.raw("TRIM(CONCAT(person.first_name, ' ', person.last_name)) as name")
+			)
+			.where({ event_id: id }),
 		knex('story_event_messages')
-		.join('story_messages', 'story_event_messages.message_id', 'story_messages.id')
-		.select('story_messages.id', 'story_messages.name', 'story_messages.sent')
-		.where({ event_id: id }),
+			.join('story_messages', 'story_event_messages.message_id', 'story_messages.id')
+			.select('story_messages.id', 'story_messages.name', 'story_messages.sent')
+			.where({ event_id: id }),
 		knex('story_event_plots')
-		.join('story_plots', 'story_event_plots.plot_id', 'story_plots.id')
-		.select('story_plots.id', 'story_plots.name')
-		.where({ event_id: id }),
+			.join('story_plots', 'story_event_plots.plot_id', 'story_plots.id')
+			.select('story_plots.id', 'story_plots.name')
+			.where({ event_id: id }),
 	]);
 
 	return StoryEventWithRelations.parse({
@@ -149,7 +167,7 @@ export const getStoryEvent = async (id: number): Promise<StoryEventWithRelations
 		messages,
 		plots,
 	});
-}
+};
 
 export const StoryEventCreate = StoryEvent.extend({
 	id: z.number().int().positive().optional(),
@@ -161,25 +179,25 @@ export const StoryEventCreate = StoryEvent.extend({
 export type StoryEventCreate = z.infer<typeof StoryEventCreate>;
 
 export async function upsertStoryEvent(event: StoryEventCreate): Promise<number> {
-	const trx = await knex.transaction();
-	const evt = omit(event, ['artifacts', 'persons', 'plots', 'messages']);
-	const [{ id }] = await trx('story_events').insert(evt).onConflict('id').merge().returning('id');
-	await trx('story_artifact_events').where({ event_id: id }).delete();
-	await trx('story_person_events').where({ event_id: id }).delete();
-	await trx('story_event_messages').where({ event_id: id }).delete();
-	await trx('story_event_plots').where({ event_id: id }).delete();
-	if (event.artifacts && event.artifacts.length > 0) {
-		await trx('story_artifact_events').insert(event.artifacts.map((artifact_id) => ({ event_id: id, artifact_id })));
-	}
-	if (event.persons && event.persons.length > 0) {
-		await trx('story_person_events').insert(event.persons.map((person_id) => ({ event_id: id, person_id })));
-	}
-	if (event.messages && event.messages.length > 0) {
-		await trx('story_event_messages').insert(event.messages.map((message_id) => ({ event_id: id, message_id })));
-	}
-	if (event.plots && event.plots.length > 0) {
-		await trx('story_event_plots').insert(event.plots.map((plot_id) => ({ event_id: id, plot_id })));
-	}
-	await trx.commit();
-	return id;
+	return await knex.transaction(async trx => {
+		const evt = omit(event, ['artifacts', 'persons', 'plots', 'messages']);
+		const [{ id }] = await trx('story_events').insert(evt).onConflict('id').merge().returning('id');
+		await trx('story_artifact_events').where({ event_id: id }).delete();
+		await trx('story_person_events').where({ event_id: id }).delete();
+		await trx('story_event_messages').where({ event_id: id }).delete();
+		await trx('story_event_plots').where({ event_id: id }).delete();
+		if (event.artifacts && event.artifacts.length > 0) {
+			await trx('story_artifact_events').insert(event.artifacts.map(artifact_id => ({ event_id: id, artifact_id })));
+		}
+		if (event.persons && event.persons.length > 0) {
+			await trx('story_person_events').insert(event.persons.map(person_id => ({ event_id: id, person_id })));
+		}
+		if (event.messages && event.messages.length > 0) {
+			await trx('story_event_messages').insert(event.messages.map(message_id => ({ event_id: id, message_id })));
+		}
+		if (event.plots && event.plots.length > 0) {
+			await trx('story_event_plots').insert(event.plots.map(plot_id => ({ event_id: id, plot_id })));
+		}
+		return id;
+	});
 }
