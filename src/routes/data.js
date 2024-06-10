@@ -39,11 +39,17 @@ function deleteData(dataType, dataId) {
 }
 
 /**
+ * @typedef DataBlob
+ * @property {string} id - ID
+ * @property {string} type - Data type
+ */
+
+/**
  * Get all data blobs of all types.
  *
  * @route GET /data
  * @group Data - Generic data store operations
- * @returns {object} 200 - Array of all data blobs
+ * @returns {Array.<DataBlob>} 200 - Array of all data blobs
  */
 router.get('/', (req, res) => {
 	const state = store.getState().data;
@@ -58,7 +64,7 @@ router.get('/', (req, res) => {
  * @route GET /data/{type}
  * @group Data - Generic data store operations
  * @param {string} type.path.required - Data type
- * @returns {object} 200 - Array of data blobs
+ * @returns {Array.<DataBlob>} 200 - Array of data blobs
  */
 router.get('/:type', (req, res) => {
 	const { type } = req.params;
@@ -67,7 +73,6 @@ router.get('/:type', (req, res) => {
 	res.json(Object.values(datas));
 });
 
-
 /**
  * Get a specific data blob by type and id.
  *
@@ -75,13 +80,12 @@ router.get('/:type', (req, res) => {
  * @group Data - Generic data store operations
  * @param {string} id.path.required - Data id
  * @param {string} type.path.required - Data type
- * @returns {object} 200 - Data value
+ * @returns {DataBlob.model} 200 - Data value
  */
 router.get('/:type/:id', (req, res) => {
 	const { type, id } = req.params;
 	return res.json(getData(type, id));
 });
-
 
 /**
  * Set a specific data blob by type and id. Overwrites entire data.
@@ -93,7 +97,7 @@ router.get('/:type/:id', (req, res) => {
  * @group Data - Generic data store operations
  * @param {string} id.path.required - Data id
  * @param {string} type.path.required - Data type
- * @param {object} body.required - New data value
+ * @param {DataBlob.model} data.body.required - New data value
  * @param {boolean} force.query - Force value to be set regardless of version
  * @returns {object} 200 - Updated data value
  * @returns {Error}  409 - Error if submitted version is different that current version
@@ -106,7 +110,6 @@ router.post('/:type/:id', (req, res) => {
 	res.json(getData(type, id));
 });
 
-
 /**
  * Update a specific data blob by type and id. Keeps those fields which are not present in payload.
  *
@@ -117,7 +120,7 @@ router.post('/:type/:id', (req, res) => {
  * @group Data - Generic data store operations
  * @param {string} id.path.required - Data id
  * @param {string} type.path.required - Data type
- * @param {object} body.required - Fields to update
+ * @param {DataBlob.model} data.body.required - Fields to update
  * @param {boolean} force.query - Force value to be set regardless of version
  * @returns {object} 200 - Updated data value
  * @returns {Error}  409 - Error if submitted version is different that current version
