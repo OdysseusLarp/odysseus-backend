@@ -12,7 +12,7 @@ function closeInfoentry(infoentry) {
 }
 
 async function updateInfoentryScheduledToClose() {
-	const activeInfoentry = await new InfoEntry().where('enabled', true).where('active_until', "!=", "").fetchAll();
+	const activeInfoentry = await new InfoEntry().where('enabled', true).where('active_until', "is not", null).fetchAll();
 	closeInfoentryTimers.forEach(timeout => clearTimeout(timeout));
 	closeInfoentryTimers.clear();
 	activeInfoentry.forEach(infoentry => {
