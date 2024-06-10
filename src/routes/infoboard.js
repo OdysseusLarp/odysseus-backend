@@ -94,7 +94,6 @@ router.get('/', handleAsyncErrors(async (req, res) => {
  * @returns {InfoEntry.model} 200 - Inserted InfoEntry values
  */
 router.put('/', handleAsyncErrors(async (req, res) => {
-	console.log(req.body + " " + res)
 	const infoEntry = await InfoEntry.forge().save(req.body, { method: 'insert' });
 	res.json(infoEntry);
 }));

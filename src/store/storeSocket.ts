@@ -8,6 +8,7 @@ let previousData;
 function sendDataChanges(io: SocketIoServer | SocketIoNamespace) {
 	const currentData = store.getState().data;
 
+	//Updates shipdata on blob to show survivor count on infoboard
 	io.to(`/fleet`).emit('fleetUpdate');
 
 	for (const type of Object.keys(currentData)) {

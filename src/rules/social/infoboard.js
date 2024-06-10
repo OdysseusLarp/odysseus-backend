@@ -12,8 +12,7 @@ function closeInfoentry(infoentry) {
 }
 
 async function updateInfoentryScheduledToClose() {
-	const activeInfoentry = await new InfoEntry().where('enabled', true).where('active_until', '!=', '').fetchAll();
-	console.log("### Löytyi tuloksia")
+	const activeInfoentry = await new InfoEntry().where('enabled', true).where('active_until', "!=", "").fetchAll();
 	closeInfoentryTimers.forEach(timeout => clearTimeout(timeout));
 	closeInfoentryTimers.clear();
 	activeInfoentry.forEach(infoentry => {
@@ -31,4 +30,4 @@ async function updateInfoentryScheduledToClose() {
 }
 
 // Update infoentrys that are scheduled to close
-interval(updateInfoentryScheduledToClose, 10000);
+interval(updateInfoentryScheduledToClose, POLL_FREQUENCY_MS);

@@ -12,17 +12,17 @@ const infos = [
 		body: '<b text-align="center">The ship is now ready to jump at a short notice.</b>',
 	},
 	{
-		priority: 3,
-		enabled: true,
-		title: 'Public announcement',
-		body: '<div style="width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 5vw;">Total souls alive <p style="font-size: 7vw; font-family: Orbitron;">%%survivor_count%%</p></div>',
-	},
-	{
 		priority: 9,
 		enabled: true,
 		title: 'Jump sequence initiated',
 		body: '<b text-align="center">Jump in %%JUMP%% seconds.</b>',
-	}
+	},
+	{
+		priority: 1,
+		enabled: true,
+		title: 'Public announcement',
+		body: '<div style="width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 5vw;">Total souls alive <p style="font-size: 7vw; font-family: Orbitron;">%%survivor_count%%</p></div>',
+	},
 ];
 
 exports.seed = async knex => {
