@@ -22,18 +22,36 @@ export interface BigBattery {
 	brightness: number;
 	// In what time is the battery depleted from 100% to 0%, minutes (configuration)
 	depletion_time_mins: number;
+	// Emergency assumed at positions (configuration)
+	emergency_assumed_at_positions: BigBatteryLocation[];
 }
 
 /**
  * Check whether big battery is connected to the specified location and has charge remaining.
  */
-export function isBatteryConnectedAndCharged(battery: BigBattery | undefined, location: BigBatteryLocation) {
+export function isBatteryConnectedAndCharged(
+	battery: BigBattery | undefined,
+	location: BigBatteryLocation,
+	allow_emergency_override = true
+) {
+	if (allow_emergency_override && (battery?.emergency_assumed_at_positions ?? []).includes(location)) {
+		// Emergency override allows to assume battery is always connected here
+		return true;
+	}
 	return battery?.connected_position === location && battery?.capacity_percent > 0;
 }
 
 /**
  * Check whether big battery is connected to the specified location (regardless whether charged).
  */
-export function isBatteryConnected(battery: BigBattery | undefined, location: BigBatteryLocation) {
+export function isBatteryConnected(
+	battery: BigBattery | undefined,
+	location: BigBatteryLocation,
+	allow_emergency_override = true
+) {
+	if (allow_emergency_override && (battery?.emergency_assumed_at_positions ?? []).includes(location)) {
+		// Emergency override allows to assume battery is always connected here
+		return true;
+	}
 	return battery?.connected_position === location;
 }
