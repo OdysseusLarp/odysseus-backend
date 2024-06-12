@@ -29,6 +29,7 @@ function updateActiveStatus() {
 		return;
 	}
 
+	// NOTE: This intentionally does not use isBatteryConnected since emergency overrides are undesired here
 	let active = false;
 	switch (box.connected_position) {
 		case BigBatteryLocation.ENGINEERING:
