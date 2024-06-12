@@ -24,6 +24,8 @@ export interface BigBattery {
 	depletion_time_mins: number;
 	// Emergency assumed at positions (configuration)
 	emergency_assumed_at_positions: BigBatteryLocation[];
+	// Integer amount of rotation for the display LEDs
+	led_rotation: number;
 }
 
 /**

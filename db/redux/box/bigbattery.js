@@ -18,6 +18,8 @@ blobs.push({
 	// Set to integer values of locations where device is always assumed to be connected + charged.
 	// For disaster situations where the real device no longer works.
 	emergency_assumed_at_positions: [],
+	// Integer amount of rotation for the display LEDs
+	led_rotation: 12, // TODO: Update with proper amount once known
 
 	presets: {
 		set_full_capacity: {
