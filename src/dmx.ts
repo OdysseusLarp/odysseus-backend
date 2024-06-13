@@ -10,6 +10,28 @@ export const DMX_MAX_CHANNEL = 511;
 export const DMX_MAX_VALUE = 255;
 
 export const CHANNELS = {
+	// Fired manually from admin ui
+	__MANUALLY_TRIGGERED__: 0,
+	StartAllBasicAmbience: 290,
+	StopAllAmbience: 291,
+	BreachEvent1Starting: 150,
+	BreachEvent1Breach: 151,
+	BreachEvent2Starting: 152,
+	BreachEvent2Breach: 153,
+	BreachEventEnd: 154,
+	EventGasLeak: 168,
+	EventGasLeakRepaired: 169,
+	EventMissileExplosion: 170,
+	RadiationLeakEventOn: 171,
+	RadiationLeakEventOff: 172,
+
+	CaptainDisplayOn: 160,
+	CaptainDisplayOff: 161,
+	StartStandingScanner: 163,
+	StartTableScanner: 164,
+
+	// Jump drive states
+	__JUMP_DRIVE_SIGNALS__: 0,
 	JumpFixed: 100,
 	JumpPrepReady: 101,
 	JumpPrepStart: 102,
@@ -30,6 +52,7 @@ export const CHANNELS = {
 	JumpStartMood3: 117,
 
 	// Used in fuse box configuration
+	__FUSE_BOX_SIGNALS__: 0,
 	BridgeFuseBroken: 120,
 	BridgeFuseFixed: 121,
 	EngineeringFuseBroken: 122,
@@ -42,6 +65,7 @@ export const CHANNELS = {
 	LoungeFuseFixed: 129,
 
 	// Health statuses
+	__HEALTH_STATUSES__: 0,
 	FrontShieldNormal: 200,
 	FrontShieldDamaged: 201,
 	FrontShieldCritical: 202,
@@ -99,37 +123,8 @@ export const CHANNELS = {
 	DriftingValueOutOfRange: 145,
 	DriftingValueInRange: 146,
 
-	// Fired manually from admin ui
-	BreachEventStarting: 150,
-	BreachEventBreach: 151,
-	CaptainDisplayOn: 160,
-	CaptainDisplayOff: 161,
-	GasLeakEvent: 162,
-	StartStandingScanner: 163,
-	StartTableScanner: 164,
-	SmallBreachEventStarting: 165,
-	SmallBreachEventBreach: 166,
-	BreachEventEnd: 167,
-
-	// Announcements
-	AnnouncementDisregardPrevious: 174,
-	AnnouncementAutomatedEmergency: 175,
-	AnnouncementBraceForShip2ShipCombat: 176,
-	AnnouncementUnknownShip: 177,
-	AnnouncementEnemyDetected: 178,
-	AnnouncementMissilesDetected: 179,
-	AnnouncementAnomalyJumpIncoming: 180,
-	AnnouncementCommsSignalDetected: 181,
-	AnnouncementBridgeSysMalfunction: 182,
-	AnnouncementCommandAuthNotRecog: 183,
-	AnnouncementWelcomeCapt: 184,
-	AnnouncementStartingUp: 185,
-	AnnouncementAuthorizationRequired: 186,
-	AnnouncementIdentifyyourself: 187,
-	AnnouncementScancompl: 188,
-	AnnouncementAnalysiscompl: 189,
-
 	// Airlock events
+	__AIRLOCK_EVENTS__: 0,
 	MainAirlockDoorClose: 190,
 	MainAirlockDoorOpen: 191,
 	MainAirlockDoorMalfunction: 192,
@@ -141,6 +136,7 @@ export const CHANNELS = {
 	HangarBayPressurize: 198,
 	HangarBayDepressurize: 199,
 
+	__SHIP_NOTIFICATIONS__: 0,
 	LoraBeaconSignalDecrypted: 250,
 	LoraJumpCrystalsLow: 251,
 	LoraJumpCrystalsDepleted: 252,
