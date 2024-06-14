@@ -2,14 +2,10 @@ import { throttle } from 'lodash';
 import store from './store';
 import { logger } from '../logger';
 import { Server as SocketIoServer, Namespace as SocketIoNamespace } from 'socket.io';
-import { info } from 'console';
 
 let previousData;
 function sendDataChanges(io: SocketIoServer | SocketIoNamespace) {
 	const currentData = store.getState().data;
-
-	//Updates shipdata on blob to show survivor count on infoboard
-	io.to(`/fleet`).emit('fleetUpdate');
 
 	for (const type of Object.keys(currentData)) {
 		for (const id of Object.keys(currentData[type])) {

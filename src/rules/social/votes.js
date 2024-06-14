@@ -3,73 +3,72 @@ import { logger } from '../../logger';
 import { Vote, VoteEntry, VoteOption } from '../../models/vote';
 import { InfoEntry } from '../../models/infoentry';
 import moment from 'moment';
-import { isInteger } from 'lodash';
 
 const POLL_FREQUENCY_MS = 10000;
 
 const closeVoteTimers = new Map();
 
-function closeVote(vote) {
+async function closeVote(vote) {
 	logger.info('Closing vote', vote.get('id'));
-	const closeVote = vote.save({ is_active: false }, { method: 'update', patch: true });
-	resultsInfoEntry(vote);
-	return closeVote;
+	await vote.save({ is_active: false }, { method: 'update', patch: true });
+	await createVoteResultsInfoEntry(vote);
 }
 
-
-async function resultsInfoEntry(vote) {
-	const infoentry = new InfoEntry();
+async function createVoteResultsInfoEntry(vote) {
+	const infoEntry = new InfoEntry();
 	const activeMinutes = 60;
-	const active_until = isInteger(activeMinutes) ? moment().add(activeMinutes, 'minutes').toDate() : null;
+	const activeUntil = moment().add(activeMinutes, 'minutes').toDate();
 	const voteEntries = await new VoteEntry().where('vote_id', vote.get('id')).fetchAll();
 	const voteOptions = await new VoteOption().where('vote_id', vote.get('id')).fetchAll();
-	const infoTitle = "Vote results: " + vote.get('title');
-	let voteResults;
-if (voteEntries.length > 0){
-	voteResults = "Votes in total: " + voteEntries.length + "</br>Winning vote option(s):";
-	const resultArray =  [];
-	let winnerVotes = 0;
-	voteOptions.forEach(option => {
-		let votes = voteEntries.filter(single => single.get('vote_option_id') === option.get('id')).length;
-		let text = option.get('text');
-		if (votes > winnerVotes){
-			winnerVotes = votes;
-		}
-		let optionResult = {result:votes, option:text}
-		resultArray.push(optionResult);	
-	});
-	let sortedArray = resultArray.sort((a, b) => b.result - a.result);
 
-	sortedArray.forEach(result => {
-		if (result.result == winnerVotes){
-			voteResults += "</br>" + result.option + " : " + result.result;
-		}
-	});
-} else {
-	voteResults = "No votes casted."
-}
-	const postData = { "priority": 1, "enabled": true, "title": infoTitle, "body": voteResults, "active_until": active_until };
-	const postInfo = infoentry.save(postData, { method: 'insert' });
-	return;
+	const title = 'Vote results: ' + vote.get('title');
+	let body = 'No votes were cast.';
+	if (voteEntries.length > 0) {
+		body = 'Votes in total: ' + voteEntries.length + '</br>Winning vote option(s):';
+		const resultArray = [];
+		let winnerVotes = 0;
+		voteOptions.forEach(option => {
+			const votes = voteEntries.filter(single => single.get('vote_option_id') === option.get('id')).length;
+			if (votes > winnerVotes) {
+				winnerVotes = votes;
+			}
+			resultArray.push({ result: votes, option: option.get('text') });
+		});
+
+		const winningVote = resultArray.find(({ result }) => result === winnerVotes);
+		body += '</br>' + winningVote.option + ' : ' + winningVote.result;
+	}
+
+	const postData = {
+		priority: 1,
+		enabled: true,
+		title: title,
+		body: body,
+		active_until: activeUntil,
+	};
+	await infoEntry.save(postData, { method: 'insert' });
 }
 
-async function updateVotesScheduledToClose() {
+async function processVotesScheduledToClose() {
 	const activeVotes = await new Vote().where('is_active', true).fetchAll();
-	closeVoteTimers.forEach(timeout => clearTimeout(timeout));
+	closeVoteTimers.forEach(clearTimeout);
 	closeVoteTimers.clear();
-	activeVotes.forEach(vote => {
+	for (const vote of activeVotes.models) {
 		const closesIn = new Date(vote.get('active_until')) - Date.now();
 
 		// Close right away if already expired
-		if (closesIn < 1) return closeVote(vote);
+		if (closesIn < 1) return await closeVote(vote);
 
 		// If there's more than 2x poll frequency remaining, don't bother with the interval
 		if (closesIn > POLL_FREQUENCY_MS * 2) return;
 
 		// Set an interval that closes the vote right when it's supposed to
-		closeVoteTimers.set(vote.get('id'), setTimeout(() => closeVote(vote), closesIn));
-	});
+		closeVoteTimers.set(
+			vote.get('id'),
+			setTimeout(() => closeVote(vote), closesIn)
+		);
+	}
 }
 
 // Update votes that are scheduled to close
-interval(updateVotesScheduledToClose, 10000);
+interval(processVotesScheduledToClose, 10000);
