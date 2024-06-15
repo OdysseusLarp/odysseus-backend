@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import { Vote, VoteEntry, VoteOption } from '../models/vote';
+import { InfoEntry } from '../models/infoentry';
 import { STATUS_PENDING } from '../models';
 import { handleAsyncErrors } from './helpers';
 import { adminSendMessage } from '../messaging';
@@ -22,6 +23,64 @@ const VOTE_FIELDS = [
 	'allowed_voters',
 	'status'
 ];
+
+const voteFilterToTextMap = {
+  'PARTY:BLUE_PARTY': 'Members of the Blue Party',
+  'PARTY:PURPLE_PARTY': 'Members of the Purple Party',
+  'PARTY:YELLOW_PARTY': 'Members of the Yellow Party',
+
+  'RELIGION:OLD_WAYS': 'Followers of the Old Ways',
+  'RELIGION:OTHER': 'Followers of the Other',
+  'RELIGION:FAITH_OF_THE_HIGH_SCIENCE': 'Followers of the Faith of the High Science',
+
+  'DYNASTY:TENACITY': 'Members of the Tenacity dynasty',
+  'DYNASTY:LOGIC': 'Members of the Logic dynasty',
+  'DYNASTY:GENEROSITY': 'Members of the Generosity dynasty',
+  'DYNASTY:CONFIDENCE': 'Members of the Confidence dynasty',
+  'DYNASTY:LOYALTY': 'Members of the Loyalty dynasty',
+  'DYNASTY:UNITY': 'Members of the Unity dynasty',
+  'DYNASTY:PURITY': 'Members of the Purity dynasty',
+  'DYNASTY:TRANQUILITY': 'Members of the Tranquility dynasty',
+  'DYNASTY:DEFIANCE': 'Members of the Defiance dynasty',
+  'DYNASTY:KINDNESS': 'Members of the Kindness dynasty',
+  'DYNASTY:DEDICATION': 'Members of the Dedication dynasty',
+  'DYNASTY:INTELLIGENCE': 'Members of the Intelligence dynasty',
+  'DYNASTY:COMPASSION': 'Members of the Compassion dynasty',
+  'DYNASTY:STRENGTH': 'Members of the Strength dynasty',
+  'DYNASTY:JUSTICE': 'Members of the Justice dynasty',
+  'DYNASTY:EXCELLENCE': 'Members of the Excellence dynasty',
+  'DYNASTY:MERCY': 'Members of the Mercy dynasty',
+  'DYNASTY:FLOATER': 'Members of the Floater dynasty',
+  'DYNASTY:FAIRNESS': 'Members of the Fairness dynasty',
+  'DYNASTY:HOPE': 'Members of the Hope dynasty',
+  'DYNASTY:INDUSTRY': 'Members of the Industry dynasty',
+  'DYNASTY:AMBITION': 'Members of the Ambition dynasty',
+
+	'HIGH_RANKING_OFFICER': 'High ranking military officers',
+
+	'EVERYONE': 'Everyone',
+};
+
+const ONE_HOUR = 1000 * 60 * 60;
+
+async function createVoteCreatedInfoboardEntry(vote) {
+	const voteActiveUntilFormatted = moment(vote.get('active_until')).format('HH:mm');
+
+	const voteActiveUntilMs = new Date(vote.get('active_until')).getTime();
+	const oneHourMs = new Date(Date.now() + ONE_HOUR).getTime();
+	const activeUntil = new Date(Math.min(voteActiveUntilMs, oneHourMs));
+
+	const title = `Vote: ${vote.get('title')}`;
+	const votingAllowedFor = voteFilterToTextMap[vote.get('allowed_voters')] || vote.get('allowed_voters');
+	const body = `${votingAllowedFor} can now cast their vote in EOC Datahub.<br><br>Voting ends at ${voteActiveUntilFormatted}.`;
+	await InfoEntry.forge().save({
+		priority: 1,
+		enabled: true,
+		title,
+		body,
+		active_until: activeUntil,
+	}, { method: 'insert' });
+}
 
 /**
  * Get a list of all votes
@@ -111,6 +170,7 @@ router.put('/:id', handleAsyncErrors(async (req, res) => {
 		}
 		if (wasChangedToApproved) {
 			dmx.fireEvent(dmx.CHANNELS.DataHubVoteApproved);
+			await createVoteCreatedInfoboardEntry(vote);
 		}
 		adminSendMessage(process.env.FLEET_SECRETARY_ID, {
 			target: vote.get('person_id'),

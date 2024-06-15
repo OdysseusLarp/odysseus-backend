@@ -240,6 +240,18 @@ export function setShipsVisible() {
 	});
 }
 
+export async function getTotalSoulsAlive() {
+	const fleet = await Ship.forge().where({ is_visible: true }).fetchAll();
+	let totalSouls = 0;
+	for (const ship of fleet.models) {
+		const personCount = parseInt(ship.get("person_count"), 10);
+		if (Number.isFinite(personCount)) {
+			totalSouls += personCount;
+		}
+	}
+	return totalSouls
+}
+
 /**
  * @typedef MoveShipsInput
  * @property {Array.<string>} shipIds.required - IDs of the ships that should be moved

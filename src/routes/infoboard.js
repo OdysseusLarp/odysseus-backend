@@ -34,7 +34,7 @@ router.get('/display', handleAsyncErrors(async (req, res) => {
 	minuteAgo.setMinutes(minuteAgo.getMinutes()-1);
 	const selector = parseInt((now.getMinutes() * 6 + now.getSeconds() / 10), 10);
 	const priority = await InfoPriority.forge().fetch();
-	const entries = await InfoEntry.forge().where({ priority: priority.attributes.priority }).fetchAll();
+	const entries = await InfoEntry.forge().where({ priority: priority.attributes.priority, enabled: true }).fetchAll();
 	let news = await Post.forge()
 		.where({ type: 'NEWS', status: 'APPROVED' })
 		.orderBy('created_at', 'DESC')
@@ -111,7 +111,7 @@ router.put('/:id', handleAsyncErrors(async (req, res) => {
 	const { id } = req.params;
 	// TODO: Validate input
 	const info = await InfoEntry.forge({ id }).fetch();
-	if (!info) throw new Error('Infoboard entry not found');
+	if (!info) throw new httpErrors.NotFound('Infoboard entry not found');
 	await info.save(req.body, { method: 'update', patch: true });
 	res.json(info);
 }));
@@ -131,7 +131,5 @@ router.delete('/:id', handleAsyncErrors(async (req, res) => {
 	req.io.emit('infoEntryDeleted', { id });
 	res.sendStatus(204);
 }));
-
-
 
 export default router;

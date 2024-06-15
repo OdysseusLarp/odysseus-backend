@@ -31,9 +31,7 @@ function sendDataChanges(io: SocketIoServer | SocketIoNamespace) {
 }
 const throttledSendDataChanges = throttle(sendDataChanges, 100, { leading: false, trailing: true });
 
-
 export function initStoreSocket(io: SocketIoServer) {
-
 	// Use /data namespace and 'room' query parameter to subscribe
 	const nsp = io.of('/data');
 	nsp.on('connection', socket => {
