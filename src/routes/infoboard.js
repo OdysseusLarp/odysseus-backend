@@ -34,7 +34,7 @@ router.get('/display', handleAsyncErrors(async (req, res) => {
 	minuteAgo.setMinutes(minuteAgo.getMinutes()-1);
 	const selector = parseInt((now.getMinutes() * 6 + now.getSeconds() / 10), 10);
 	const priority = await InfoPriority.forge().fetch();
-	const entries = await InfoEntry.forge().where({ priority: priority.attributes.priority }).fetchAll();
+	const entries = await InfoEntry.forge().where({ priority: priority.attributes.priority, enabled: true }).fetchAll();
 	let news = await Post.forge()
 		.where({ type: 'NEWS', status: 'APPROVED' })
 		.orderBy('created_at', 'DESC')
