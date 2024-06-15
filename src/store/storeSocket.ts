@@ -9,8 +9,6 @@ function sendDataChanges(io: SocketIoServer | SocketIoNamespace) {
 
 	for (const type of Object.keys(currentData)) {
 		for (const id of Object.keys(currentData[type])) {
-
-
 			if (!previousData[type] || previousData[type][id] !== currentData[type][id]) {
 				io.to(`/data/${type}/${id}`).emit('dataUpdate', type, id, currentData[type][id]);
 				io.to(`/data/${type}`).emit('dataUpdate', type, id, currentData[type][id]);
@@ -33,9 +31,7 @@ function sendDataChanges(io: SocketIoServer | SocketIoNamespace) {
 }
 const throttledSendDataChanges = throttle(sendDataChanges, 100, { leading: false, trailing: true });
 
-
 export function initStoreSocket(io: SocketIoServer) {
-
 	// Use /data namespace and 'room' query parameter to subscribe
 	const nsp = io.of('/data');
 	nsp.on('connection', socket => {

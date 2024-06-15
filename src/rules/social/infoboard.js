@@ -1,6 +1,7 @@
 import { interval } from '../helpers';
 import { logger } from '../../logger';
 import { InfoEntry } from '../../models/infoentry';
+import { getTotalSoulsAlive } from '../../models/ship';
 
 const POLL_FREQUENCY_MS = 10000;
 
@@ -35,5 +36,24 @@ async function processScheduledInfoEntries() {
 	}
 }
 
-// Update infoentrys that are scheduled to close
+async function updateSurvivorsCount() {
+	const [entry, totalSoulsAlive] = await Promise.all([
+		InfoEntry.forge({ identifier: 'survivors-count' }).fetch(),
+		getTotalSoulsAlive(),
+	]);
+	if (!entry) {
+		logger.warn("Survivors count info entry not found, can't update survivors count");
+		return;
+	}
+	const body = entry.get('body');
+	const replacement = `<span class="survivors">${totalSoulsAlive}</span>`;
+	const pattern = /<span class="survivors">.*?<\/span>/;
+	const updatedBody = body.replace(pattern, replacement);
+	await entry.save({ body: updatedBody }, { method: 'update', patch: true });
+}
+
+// Process info entries that are scheduled to close
 interval(processScheduledInfoEntries, POLL_FREQUENCY_MS);
+
+// Update survivors count periodically
+interval(updateSurvivorsCount, POLL_FREQUENCY_MS);

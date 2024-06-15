@@ -9,6 +9,8 @@ import Bookshelf from '../../db';
  * @property {boolean} enabled.required - Enable the entry in display sequence
  * @property {string} title.required - Title of the entry
  * @property {string} body.required - Body of the entry, may contain HTML
+ * @property {string} type - Type of the entry (e.g. survivors-count)
+ * @property {object} meta - JSON formatted metadata
  * @property {string} created_at - ISO 8601 String Date-time when object was created
  * @property {string} updated_at - ISO 8601 String Date-time when object was last updated
  * @property {string} active_until - ISO 8601 String Date-time when infoentry will expire
