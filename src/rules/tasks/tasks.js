@@ -6,6 +6,7 @@ import { logger } from '../../logger';
 import { interval, timeout } from '../helpers';
 import { get } from 'lodash';
 import Handlebars from 'handlebars';
+import { fireEvent } from '@/dmx';
 
 /**
  * Mark a task as broken and commit to store.
@@ -17,16 +18,19 @@ export function setTaskBroken(task, ctx) {
 	task.status = 'broken';
 	task.sort = Date.now();
 	if (task.description_template && ctx) {
-		task.description =  Handlebars.compile(task.description_template)(ctx);
+		task.description = Handlebars.compile(task.description_template)(ctx);
 	}
 	timeout(() => {
 		store.dispatch({
 			type: 'SET_DATA',
 			dataType: task.type,
 			dataId: task.id,
-			data: task
+			data: task,
 		});
 	});
+	if (task.dmxBroken) {
+		fireEvent(task.dmxBroken);
+	}
 }
 
 /**
@@ -48,16 +52,19 @@ export function setTaskCalibrating(task, ctx) {
 		task.calibrationSpeed = task.calibrationRemaining.map(e => Math.random() * 0.5 + 0.8);
 		task.sort = Date.now();
 		if (task.description_template && ctx) {
-			task.description =  Handlebars.compile(task.description_template)(ctx);
+			task.description = Handlebars.compile(task.description_template)(ctx);
 		}
 		timeout(() => {
 			store.dispatch({
 				type: 'SET_DATA',
 				dataType: task.type,
 				dataId: task.id,
-				data: task
+				data: task,
 			});
 		});
+		if (task.dmxCalibrating) {
+			fireEvent(task.dmxCalibrating);
+		}
 	}
 }
 
@@ -72,7 +79,7 @@ export function setTaskFixed(task, ctx) {
 	task.fixed_at = Date.now();
 	task.sort = -task.fixed_at;
 	if (task.description_template && ctx) {
-		task.description =  Handlebars.compile(task.description_template)(ctx);
+		task.description = Handlebars.compile(task.description_template)(ctx);
 	}
 	if (task.singleUse) {
 		task.used = true;
@@ -82,9 +89,12 @@ export function setTaskFixed(task, ctx) {
 			type: 'SET_DATA',
 			dataType: task.type,
 			dataId: task.id,
-			data: task
+			data: task,
 		});
 	});
+	if (task.dmxFixed) {
+		fireEvent(task.dmxFixed);
+	}
 }
 
 /**
@@ -129,7 +139,7 @@ interval(() => {
 					type: 'SET_DATA',
 					dataType: task.type,
 					dataId: task.id,
-					data: task
+					data: task,
 				});
 			});
 		}

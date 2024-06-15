@@ -181,8 +181,12 @@ function findChannelName(channel: Channel) {
 	return 'UNKNOWN';
 }
 
-export function fireEvent(channel: Channel, value = DMX_MAX_VALUE) {
+export function fireEvent(channel: Channel | string, value = DMX_MAX_VALUE) {
+	if (typeof channel === 'string') {
+		channel = CHANNELS[channel];
+	}
 	if (
+		!channel ||
 		!isNumber(channel) ||
 		!isNumber(value) ||
 		channel < 0 ||
