@@ -33,7 +33,7 @@ export const Grid = Bookshelf.Model.extend({
 	getCoordinates: function () {
 		return { x: this.get('x'), y: this.get('y') };
 	},
-	// Returns a random point around the grid centroid
+	// Returns a random point around the grid (sub-sector) centroid
 	getRandomJumpTarget: function () {
 		return knex.raw('SELECT ST_Translate(ST_Centroid(grid.the_geom), (SELECT FLOOR(RANDOM() * 300000 - 150000)), (SELECT FLOOR(RANDOM() * 300000 - 150000))) AS jump_target FROM grid WHERE grid.id = ?', this.get('id'))
 			.then(res => get(res, 'rows[0].jump_target'));

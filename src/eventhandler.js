@@ -114,9 +114,9 @@ async function addScanGridEvent(event) {
 	const occursIn = getTimeUntilEvent(event);
 	const shipId = event.get('ship_id');
 
-	// Get target grid and ship from database to validate if scan can be made
+	// Get target grid (sub-sector) and ship from database to validate if scan can be made
 	const grid = await Grid.forge({ id: gridId }).fetch();
-	if (!grid) throw new Error('Given grid does not exist');
+	if (!grid) throw new Error('Given sub-sector does not exist');
 	const ship = await Ship.forge({ id: shipId }).fetchWithRelated();
 	if (!ship) throw new Error('Invalid ship id');
 	const probeCount = get(ship.get('metadata'), 'probe_count');
@@ -136,7 +136,7 @@ async function addScanGridEvent(event) {
 		{ metadata: { ...shipMetadata, probe_count: newProbeCount } },
 		{ type: 'update', patch: true })
 		.then(() => {
-			logger.info(`Decreased probe count by 1 because of grid scan`);
+			logger.info(`Decreased probe count by 1 because of sub-sector scan`);
 			let probeWarningMessage;
 			if (newProbeCount === 0) {
 				probeWarningMessage = `No probes left.`;
@@ -161,17 +161,17 @@ async function addScanGridEvent(event) {
 /** Validate jump target coordinates
  * @param  {string} shipId Ship id
  * @param  {object} metadata Jump coordinates and settings
- * @param  {boolean} shouldValidateRange Should distance to grid be validated or not
+ * @param  {boolean} shouldValidateRange Should distance to grid (sub-sector) be validated or not
  */
 export async function validateJumpTarget(shipId, metadata, shouldValidateRange = true) {
-	// Get target grid and ship from database to validate if jump can be made
+	// Get target grid (sub-sector) and ship from database to validate if jump can be made
 	const jumpTargetParameters = pick(metadata, ['sub_quadrant', 'sector', 'sub_sector']);
 	const targetPlanetName = get(metadata, 'planet_orbit');
 	const grid = await Grid.forge().where(jumpTargetParameters).fetch();
 	const shouldAddLogEntries = get(metadata, 'should_add_log_entries', false);
 	if (!grid) {
 		if (shouldAddLogEntries) addShipLogEntry('ERROR', `Jump initialization failed: Unknown jump target.`, shipId);
-		return { isValid: false, message: 'Given grid does not exist' };
+		return { isValid: false, message: 'Given sub-sector does not exist' };
 	}
 	if (targetPlanetName && !(await grid.containsObject(targetPlanetName))) {
 		if (shouldAddLogEntries) addShipLogEntry('ERROR',
@@ -193,7 +193,7 @@ export async function validateJumpTarget(shipId, metadata, shouldValidateRange =
 }
 
 /**
- * Validate if ship can scan or jump to a target grid
+ * Validate if ship can scan or jump to a target grid (sub-sector)
  * @param {Ship.model} ship Ship model
  * @param {Grid.model} targetGrid Grid model
  * @param {string} rangeField either jump_range or scan_range
@@ -239,10 +239,10 @@ async function performGridScan(gridId) {
 	await GridAction.forge().save({ grid_id: gridId, ship_id: 'odysseus', type: 'SCAN' });
 	const grid = await Grid.forge({ id: gridId }).fetch();
 	dmx.fireEvent(dmx.CHANNELS.LoraGridScanCompleted);
-	logger.success(`Grid ${gridId} was succesfully scanned`);
+	logger.success(`Sub-sector ${gridId} was succesfully scanned`);
 	const gridName = grid.get('name');
 	addShipLogEntry(
 		'SUCCESS',
-		`Probe finished scanning grid ${gridName}.`
+		`Probe finished scanning sub-sector ${gridName}.`
 	);
 }
