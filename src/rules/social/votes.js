@@ -15,38 +15,43 @@ async function closeVote(vote) {
 }
 
 async function createVoteResultsInfoEntry(vote) {
-	const infoEntry = new InfoEntry();
-	const activeMinutes = 60;
-	const activeUntil = moment().add(activeMinutes, 'minutes').toDate();
 	const voteEntries = await new VoteEntry().where('vote_id', vote.get('id')).fetchAll();
 	const voteOptions = await new VoteOption().where('vote_id', vote.get('id')).fetchAll();
 
-	const title = 'Vote results: ' + vote.get('title');
-	let body = 'No votes were cast.';
-	if (voteEntries.length > 0) {
-		body = 'Votes in total: ' + voteEntries.length + '</br>Winning vote option(s):';
-		const resultArray = [];
-		let winnerVotes = 0;
-		voteOptions.forEach(option => {
-			const votes = voteEntries.filter(single => single.get('vote_option_id') === option.get('id')).length;
-			if (votes > winnerVotes) {
-				winnerVotes = votes;
-			}
-			resultArray.push({ result: votes, option: option.get('text') });
-		});
-
-		const winningVote = resultArray.find(({ result }) => result === winnerVotes);
-		body += '</br>' + winningVote.option + ' : ' + winningVote.result;
-	}
-
+	const infoEntry = new InfoEntry();
+	const activeMinutes = 60;
+	const activeUntil = moment().add(activeMinutes, 'minutes').toDate();
 	const postData = {
 		priority: 1,
 		enabled: true,
-		title: title,
-		body: body,
+		title: 'Vote: ' + vote.get('title'),
 		active_until: activeUntil,
 	};
-	await infoEntry.save(postData, { method: 'insert' });
+
+	const totalVotes = voteEntries.length;
+
+	if (totalVotes === 0) {
+		const body = 'No votes were cast.';
+		const metadata = { vote_results: [] };
+		await infoEntry.save({ ...postData, body, metadata }, { method: 'insert' });
+		return;
+	}
+
+	const results = [];
+	for (const option of voteOptions.models) {
+		const votes = voteEntries.filter(single => single.get('vote_option_id') === option.get('id')).length;
+		results.push({ option: option.get('text'), votes });
+	}
+	results.sort((a, b) => b.votes - a.votes);
+	results.forEach(result => result.votesPercentage = Math.round((result.votes / results[0].votes) * 100));
+	const votesWord = voteEntries.length === 1 ? 'vote' : 'votes';
+	const body = `Vote results are in! ${totalVotes} ${votesWord} were cast. The winning option is <strong>${results[0].option}</strong> with ${results[0].votes} ${votesWord}.`;
+
+	await infoEntry.save({
+		...postData,
+		body,
+		metadata: { vote_results: results },
+	}, { method: 'insert' });
 }
 
 async function processVotesScheduledToClose() {
