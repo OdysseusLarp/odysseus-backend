@@ -4,7 +4,6 @@ import { saveBlob, interval, brownianGenerator, clamp } from '../helpers';
 import { SAFE_JUMP_LIMIT, COOLDOWN_LIMIT } from './jump';
 import store from '../../store/store';
 
-
 const STATUS_NUMBERS = {
 	broken: 0,
 	cooldown: 1,
@@ -39,26 +38,14 @@ const STATUS_NUMBERS = {
 const jumpDriveBrownian = brownianGenerator(100);
 const INCREASE_TEMP = 17;
 const DECREASE_TEMP = 0.6;
-const COOL_TEMP = 800;
-const REGULAR_JUMP_TEMP = 4100;
-const BREAKING_JUMP_TEMP = 5600;
 
 // Fitted so that at COOLDOWN_LIMIT / SAFE_JUMP_LIMIT results in 20%
 const COHERENCE_EXPONENT = 7.566;
 // Reduce 1% with this probabilyty every second (100% -> 0% in ~16min)
 const COHERENCE_DECREASE_PROB = 0.1;
 
-function updateTemperature(jumpstate) {
-	let target_temp;
-	if (jumpstate.status === 'jumping') {
-		if (jumpstate.breaking_jump) {
-			target_temp = BREAKING_JUMP_TEMP;
-		} else {
-			target_temp = REGULAR_JUMP_TEMP;
-		}
-	} else {
-		target_temp = COOL_TEMP;
-	}
+function updateTemperature(jumpstate, jump) {
+	const target_temp = jump.jump_drive_target_temp;
 
 	let delta = (target_temp - jumpstate.jump_drive_temp_exact) * 0.02;
 	delta = clamp(delta, -DECREASE_TEMP, INCREASE_TEMP);
@@ -124,7 +111,6 @@ function updateTValues(jumpstate, jump) {
 		case 'calculating':
 		case 'preparation':
 		case 'prep_complete':
-
 			dt = Math.ceil((jump.last_jump + SAFE_JUMP_LIMIT - Date.now()) / 1000);
 			dt = Math.max(dt, 0);
 			jumpstate.readyRemaining = dt;
@@ -132,15 +118,14 @@ function updateTValues(jumpstate, jump) {
 			break;
 
 		case 'ready':
-		// This is separately in case state is manually changed to 'ready'
+			// This is separately in case state is manually changed to 'ready'
 			jumpstate.readyRemaining = 0;
 			jumpstate.readyT = formatT(0);
 			break;
 
-
 		case 'jump_initiated':
 		case 'jumping':
-		// Do not update
+			// Do not update
 			break;
 	}
 
@@ -175,11 +160,10 @@ function updateData() {
 		statusno: STATUS_NUMBERS[jump.status],
 		breaking_jump: jump.breaking_jump,
 	};
-	updateTemperature(jumpstate);
+	updateTemperature(jumpstate, jump);
 	updateCoherence(jumpstate, jump);
 	updateTValues(jumpstate, jump);
 	saveBlob(jumpstate);
 }
 
 interval(updateData, 1000);
-

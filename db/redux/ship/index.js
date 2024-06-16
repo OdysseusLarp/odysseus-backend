@@ -11,6 +11,15 @@ saveBlob({
 	minor_breaking_jump: true, // first jump is always minor-breaking
 	jump_end_warning_secs: 10, // Time between DMX signal and ending jump
 	next_jump_mood: 1,
+
+	// Current target temperature for jump drive (actual temperature is in `jumpstate`)
+	jump_drive_target_temp: 800,
+
+	// Default target temperatures:
+	cooldown_target_temp: 800,
+	regular_jump_target_temp: 4100,
+	breaking_jump_target_temp: 5600,
+
 	presets: {
 		cooldown: {
 			status: 'cooldown',
@@ -52,6 +61,7 @@ saveBlob({
 	statusno: 2, // corresponds to above state
 	cooldown_time: 'T-0:00',
 	jump_time: 'T-0:00',
+	coherence: 100,
 	jump_drive_temp_exact: 800,
 	jump_drive_temp: 800,
 });

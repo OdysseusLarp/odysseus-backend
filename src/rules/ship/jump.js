@@ -27,6 +27,9 @@ const JUMP_CRYSTAL_LOW_THRESHOLD = 5;
 
 const EE_TYPES = ['reactor', 'impulse', 'maneuver', 'frontshield', 'rearshield', 'missilesystem', 'beamweapons'];
 
+// Time from sending JumpEnd to climax in sound, milliseconds
+const JUMP_END_TO_CLIMAX = 3600;
+
 /**
  * Enable or disable Jump UI and EOC Datahub
  * @param {boolean} value=true
@@ -162,6 +165,9 @@ function handleTransition(jump, currentStatus, previousStatus) {
 			breakJumpReactor(); // task for broken>cooldown transition
 		// fall through
 		case 'jumping>cooldown': {
+			// Set jump drive target temperature when ending jump
+			updateTargetTemperature(jump);
+
 			if (jump.breaking_jump) {
 				dmx.fireEvent(dmx.CHANNELS.JumpEndBreaking);
 			} else {
@@ -182,8 +188,8 @@ function handleTransition(jump, currentStatus, previousStatus) {
 				showPopup: true,
 			});
 
-			// Enable systems after 3600ms, which is around the time when the JumpEnd audio reaches climax
-			setTimeout(() => setSystemsEnabled(true), 3600);
+			// Enable systems around the time when the JumpEnd audio reaches climax
+			setTimeout(() => setSystemsEnabled(true), JUMP_END_TO_CLIMAX);
 
 			// Enable Empty Epsilon state synchronization if connection status is healthy
 			if (getEmptyEpsilonClient().getConnectionStatus().isConnectionHealthy) {
@@ -297,6 +303,9 @@ function handleTransition(jump, currentStatus, previousStatus) {
 			const jumpTarget = getReadableJumpTarget(jump.coordinates);
 			shipLogger.info(`Jumping to coordinates ${jumpTarget}.`);
 			dmx.fireEvent(dmx.CHANNELS.JumpStart);
+
+			// Set jump drive target temperature when starting jump
+			updateTargetTemperature(jump);
 
 			// Fire DMX jump mood signal
 			const mood = jump.next_jump_mood;
@@ -444,6 +453,26 @@ function handleStatic(jump) {
 			logger.error(`Jump drive in unknown state '${jump.status}'`);
 			break;
 	}
+}
+
+function updateTargetTemperature(jump) {
+	let target_temp;
+	if (jump.status === 'jumping') {
+		if (jump.breaking_jump) {
+			target_temp = jump.breaking_jump_target_temp;
+		} else {
+			target_temp = jump.regular_jump_target_temp;
+		}
+	} else {
+		target_temp = jump.cooldown_target_temp;
+	}
+	logger.info(`Setting jump drive target temperature to ${target_temp}`);
+	setTimeout(() =>
+		saveBlob({
+			...jump,
+			jump_drive_target_temp: target_temp,
+		})
+	);
 }
 
 /*
