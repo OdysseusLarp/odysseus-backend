@@ -72,7 +72,7 @@ async function createVoteCreatedInfoboardEntry(vote) {
 
 	const title = `Vote: ${vote.get('title')}`;
 	const votingAllowedFor = voteFilterToTextMap[vote.get('allowed_voters')] || vote.get('allowed_voters');
-	const body = `${votingAllowedFor} can now cast their vote in EOC Datahub.<br><br>Voting ends at ${voteActiveUntilFormatted}.`;
+	const body = `${votingAllowedFor} can now cast their vote in EOC Datahub.<br><br>Voting ends at ${voteActiveUntilFormatted}`;
 	await InfoEntry.forge().save({
 		priority: 1,
 		enabled: true,

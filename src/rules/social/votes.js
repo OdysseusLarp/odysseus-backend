@@ -19,8 +19,7 @@ async function createVoteResultsInfoEntry(vote) {
 	const voteOptions = await new VoteOption().where('vote_id', vote.get('id')).fetchAll();
 
 	const infoEntry = new InfoEntry();
-	const activeMinutes = 60;
-	const activeUntil = moment().add(activeMinutes, 'minutes').toDate();
+	const activeUntil = moment().add(60, 'minutes').toDate();
 	const postData = {
 		priority: 1,
 		enabled: true,
@@ -33,7 +32,11 @@ async function createVoteResultsInfoEntry(vote) {
 	if (totalVotes === 0) {
 		const body = 'No votes were cast.';
 		const metadata = { vote_results: [] };
-		await infoEntry.save({ ...postData, body, metadata }, { method: 'insert' });
+
+		// No one cared about the vote so no one will care about the results, only show for 10min
+		const shortActiveTime = moment().add(10, 'minutes').toDate();
+
+		await infoEntry.save({ ...postData, body, metadata, active_until: shortActiveTime }, { method: 'insert' });
 		return;
 	}
 
@@ -44,8 +47,17 @@ async function createVoteResultsInfoEntry(vote) {
 	}
 	results.sort((a, b) => b.votes - a.votes);
 	results.forEach(result => result.votesPercentage = Math.round((result.votes / results[0].votes) * 100));
+
+	const tiedResults = results.filter(result => result.votes === results[0].votes);
 	const votesWord = voteEntries.length === 1 ? 'vote' : 'votes';
-	const body = `Vote results are in! ${totalVotes} ${votesWord} were cast. The winning option is <strong>${results[0].option}</strong> with ${results[0].votes} ${votesWord}.`;
+	let body = "";
+	if (tiedResults.length === 2) {
+		body = `Vote results are in! ${totalVotes} ${votesWord} were cast. There was a tie between <strong>${tiedResults[0].option}</strong> and <strong>${tiedResults[1].option}</strong> with ${tiedResults[0].votes} ${tiedResults[0].votes === 1 ? "vote" : "votes"} each.`;
+	} else if (tiedResults.length > 2) {
+		body = `Vote results are in! ${totalVotes} ${votesWord} were cast. There was a tie between multiple options with ${tiedResults[0].votes} ${tiedResults[0].votes === 1 ? "vote" : "votes"} each.`;
+	} else {
+		body = `Vote results are in! ${totalVotes} ${votesWord} ${totalVotes === 1 ? "was" : "were"} cast. The winning option is <strong>${results[0].option}</strong> with ${results[0].votes} ${votesWord}.`;
+	}
 
 	await infoEntry.save({
 		...postData,
