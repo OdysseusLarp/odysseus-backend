@@ -57,7 +57,7 @@ blobs.push({
 	title: 'Jump reactor realignment',
 	description: '...',
 	description_template: `Jump drive reactor cores need to be realigned to state {{code}}.
-	
+
 	States can be found in Ship knowledge database code JD-33 or operation manual page 2.6-23`,
 	calibrationTime: 10,
 	calibrationCount: 33,
@@ -65,6 +65,14 @@ blobs.push({
 	map: 'upper-5.png',
 	mapX: 230,
 	mapY: 130,
+});
+
+blobs.push({
+	id: 'jump_cooling_system',
+	type: 'box',
+	status: 'fixed',
+	description: "Unity game that needs to be completed after every jump.",
+	// task: 'jump_reactor',
 });
 
 export default blobs;
