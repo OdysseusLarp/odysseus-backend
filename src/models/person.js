@@ -113,6 +113,7 @@ const withRelated = [
  * @property {string} medical_current_medication - Any current medication
  * @property {string} created_year - When the person was inserted into the system
  * @property {string} is_visible - Is the person visible or not (have they been discovered)
+ * @property {boolean} is_character - Is the person a character or not (false for NPCs)
  * @property {string} link_to_character - Link to the character's Google doc
  * @property {string} summary - Summary of the character
  * @property {string} gm_notes - GM notes
