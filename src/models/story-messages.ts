@@ -60,6 +60,7 @@ export const StoryMessageWithRelations = StoryMessage.extend({
 			id: z.string(),
 			name: z.string(),
 			is_character: z.boolean(),
+			status: z.string(),
 		})
 		.or(z.null()),
 });
@@ -111,6 +112,7 @@ export async function getStoryMessage(id: number): Promise<StoryMessageWithRelat
 			'story_messages.*',
 			'person.card_id',
 			'person.is_character',
+			'person.status',
 			knex.raw("TRIM(CONCAT(person.first_name, ' ', person.last_name)) as sender_name")
 		)
 		.leftJoin('person', 'story_messages.sender_person_id', 'person.id')
@@ -151,6 +153,7 @@ export async function getStoryMessage(id: number): Promise<StoryMessageWithRelat
 					id: message.sender_person_id,
 					name: message.sender_name,
 					is_character: message.is_character,
+					status: message.status,
 				}
 			: null,
 	});
