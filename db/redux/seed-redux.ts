@@ -13,6 +13,7 @@ async function seed() {
 	require('./game');
 	require('./misc');
 	require('./tplink');
+	require('./artifact');
 
 	logger.info('Saving the Redux state to database');
 	saveState(store.getState().data, 'data')
