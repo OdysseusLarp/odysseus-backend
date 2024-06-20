@@ -7,9 +7,9 @@ import { logger } from '@/logger';
 import { NotFound } from 'http-errors';
 import { get } from 'lodash';
 import Bookshelf from 'bookshelf';
-import { getBloodTestResultText } from '@/utils/blood-test-results';
+import { getBloodTestResultText, getGeneSampleResultText } from '@/utils/medical-test-results';
 import { getScienceAnalysisTime, addOperationResultsToArtifactEntry } from '@/utils/science';
-import { getPath } from "@/store/store";
+import { getPath } from '@/store/store';
 import moment from 'moment';
 import { Stores } from '@/store/types';
 import { saveBlob } from '@/rules/helpers';
@@ -57,6 +57,7 @@ async function processXrayOperation(operationResult: Bookshelf.Model<unknown>) {
 
 const addOperationResultToMedicalEntry = async (operationResult: Bookshelf.Model<unknown>) => {
 	const isBloodSample = operationResult.get('additional_type') === 'BLOOD_SAMPLE';
+	const isGeneSample = operationResult.get('additional_type') === 'GENE_SAMPLE';
 	const isAnalysed = operationResult.get('is_analysed');
 	const isComplete = operationResult.get('is_complete');
 	if (isBloodSample && isAnalysed && !isComplete) {
@@ -66,6 +67,15 @@ const addOperationResultToMedicalEntry = async (operationResult: Bookshelf.Model
 		await entry.save({ added_by: EVA_ID, entry: bloodTestResult, person_id: person.get('id'), type: 'MEDICAL' });
 		logger.success(
 			`Added blood test results to ${person.get('full_name')} (${person.get('id')}), marking the operation as complete`
+		);
+		await operationResult.save({ is_complete: true }, { method: 'update', patch: true });
+	} else if (isGeneSample && isAnalysed && !isComplete) {
+		const person = await new Person().where({ bio_id: operationResult.get('bio_id') }).fetch();
+		const geneTestResult = getGeneSampleResultText(person.get('id'));
+		const entry = new Entry();
+		await entry.save({ added_by: EVA_ID, entry: geneTestResult, person_id: person.get('id'), type: 'MEDICAL' });
+		logger.success(
+			`Added gene test results to ${person.get('full_name')} (${person.get('id')}), marking the operation as complete`
 		);
 		await operationResult.save({ is_complete: true }, { method: 'update', patch: true });
 	}
@@ -100,7 +110,7 @@ async function scheduleAddOperationResultToArtifactEntry(operationResult: Booksh
 				operation_result_id: operationResult.get('id'),
 				started_at: Date.now(),
 			},
-		]
+		],
 	});
 }
 
@@ -112,12 +122,15 @@ async function scheduleAddOperationResultToArtifactEntry(operationResult: Booksh
  * @param {boolean} include_complete.query - True if completed results should be included, defaults to false
  * @returns {Array.<OperationResult>} 200 - List of all OperationResult models
  */
-router.get('/', handleAsyncErrors(async (req: Request, res: Response) => {
-	const shouldContainRelations = get(req, 'query.relations') === 'true';
-	const include_complete = get(req, 'query.include_complete') === 'true';
-	const where = include_complete ? {} : { is_complete: false };
-	res.json(await OperationResult.forge().where(where)[shouldContainRelations ? 'fetchAllWithRelated' : 'fetchAll']());
-}));
+router.get(
+	'/',
+	handleAsyncErrors(async (req: Request, res: Response) => {
+		const shouldContainRelations = get(req, 'query.relations') === 'true';
+		const include_complete = get(req, 'query.include_complete') === 'true';
+		const where = include_complete ? {} : { is_complete: false };
+		res.json(await OperationResult.forge().where(where)[shouldContainRelations ? 'fetchAllWithRelated' : 'fetchAll']());
+	})
+);
 
 /**
  * Get a single operation by operation id
@@ -128,13 +141,17 @@ router.get('/', handleAsyncErrors(async (req: Request, res: Response) => {
  * @returns {Error} 404 - OperationResult not found
  * @returns {OperationResult.model} 200 - OperationResult model
  */
-router.get('/:id', handleAsyncErrors(async (req: Request, res: Response) => {
-	const shouldContainRelations = get(req, 'query.relations') === 'true';
-	const operationResult = await OperationResult
-		.forge({ id: req.params.id })[shouldContainRelations ? 'fetchWithRelated' : 'fetch']();
-	if (!operationResult) throw new NotFound('OperationResult not found');
-	res.json(operationResult);
-}));
+router.get(
+	'/:id',
+	handleAsyncErrors(async (req: Request, res: Response) => {
+		const shouldContainRelations = get(req, 'query.relations') === 'true';
+		const operationResult = await OperationResult.forge({ id: req.params.id })[
+			shouldContainRelations ? 'fetchWithRelated' : 'fetch'
+		]();
+		if (!operationResult) throw new NotFound('OperationResult not found');
+		res.json(operationResult);
+	})
+);
 
 /**
  * Insert a new operation result
@@ -144,27 +161,33 @@ router.get('/:id', handleAsyncErrors(async (req: Request, res: Response) => {
  * @param {OperationResult.model} operationresult.body.required - OperationResult model
  * @returns {OperationResult.model} 200 - Inserted OperationResult model
  */
-router.post('/', handleAsyncErrors(async (req: Request, res: Response) => {
-	const operationResult = await OperationResult.forge().save({
-		...req.body,
-		is_analysed: true, // All operations are now analysed by default and results get posted automatically
-	}, { method: 'insert' });
+router.post(
+	'/',
+	handleAsyncErrors(async (req: Request, res: Response) => {
+		const operationResult = await OperationResult.forge().save(
+			{
+				...req.body,
+				is_analysed: true, // All operations are now analysed by default and results get posted automatically
+			},
+			{ method: 'insert' }
+		);
 
-	const operationResultType = operationResult.get('type');
+		const operationResultType = operationResult.get('type');
 
-	if (operationResultType === 'MEDIC') {
-		// Automatically post blood test results, in case this is a blood sample
-		await addOperationResultToMedicalEntry(operationResult);
-	}
+		if (operationResultType === 'MEDIC') {
+			// Automatically post blood test results, in case this is a blood sample
+			await addOperationResultToMedicalEntry(operationResult);
+		}
 
-	if (operationResultType === 'SCIENCE') {
-		// Automatically post artifact test results if available
-		await scheduleAddOperationResultToArtifactEntry(operationResult);
-	}
+		if (operationResultType === 'SCIENCE') {
+			// Automatically post artifact test results if available
+			await scheduleAddOperationResultToArtifactEntry(operationResult);
+		}
 
-	await processXrayOperation(operationResult);
-	res.json(operationResult);
-}));
+		await processXrayOperation(operationResult);
+		res.json(operationResult);
+	})
+);
 
 /**
  * Update an operation result by id
@@ -175,13 +198,16 @@ router.post('/', handleAsyncErrors(async (req: Request, res: Response) => {
  * @param {OperationResult.model} operationresult.body.required - OperationResult model new values
  * @returns {OperationResult.model} 200 - Updated OperationResult model
  */
-router.put('/:id', handleAsyncErrors(async (req: Request, res: Response) => {
-	const operationResult = await OperationResult.forge({ id: req.params.id }).fetch();
-	if (!operationResult) throw new NotFound('OperationResult not found');
-	await operationResult.save(req.body, { method: 'update', patch: true });
-	await addOperationResultToMedicalEntry(operationResult);
-	await processXrayOperation(operationResult);
-	res.json(operationResult);
-}));
+router.put(
+	'/:id',
+	handleAsyncErrors(async (req: Request, res: Response) => {
+		const operationResult = await OperationResult.forge({ id: req.params.id }).fetch();
+		if (!operationResult) throw new NotFound('OperationResult not found');
+		await operationResult.save(req.body, { method: 'update', patch: true });
+		await addOperationResultToMedicalEntry(operationResult);
+		await processXrayOperation(operationResult);
+		res.json(operationResult);
+	})
+);
 
 export default router;
