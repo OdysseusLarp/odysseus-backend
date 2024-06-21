@@ -7,7 +7,7 @@ ARTIFACT STATE MACHINE:
 Startup           --> Initial state          (solved: false)
 Puzzle solved     --> Initial solved state   (solved: true, gm_approved: false, activated: false)
 EVA integrated / GM approval --> Ready state (solved: true, gm_approved: true, activated: false)
-Device activated  --> Activated              (solved: true, gm_approved: true, activated: false)
+Device activated  --> Activated              (solved: true, gm_approved: true, activated: true)
     ("Activated" is transient state, backend reacts immediately and sets gm_approved = false)
 Backend reacts    --> Used state             (solved: true, gm_approved: false, activated: true)
 GM re-approval    --> Ready state            (solved: true, gm_approved: true, activated: false)
@@ -61,4 +61,6 @@ saveBlob({
 	solved: false,
 	gm_approved: false,
 	activated: false,
+	speedup_multiplier: 100,
+	speedup_duration_secs: 60,
 });

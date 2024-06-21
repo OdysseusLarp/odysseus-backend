@@ -147,6 +147,13 @@ export const CHANNELS = {
 	DataHubHackingDetected: 257,
 	DataHubNewsApproved: 258,
 	DataHubVoteApproved: 259,
+
+	// Alien artifact activation
+	// 301-303 reserved for artifacts 1-3
+	JumpDriveCoolingArtifactActivated: 304,
+	CalibrationSlotArtifactActivated: 305,
+	ScanRangeExtenderArtifactActivated: 306,
+	CalibrationSpeedupArtifactActivated: 307,
 } as const;
 
 type Channel = (typeof CHANNELS)[keyof typeof CHANNELS];
