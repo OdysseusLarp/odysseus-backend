@@ -6,7 +6,7 @@ import { pick, get } from 'lodash';
 import { Ship, Grid, GridAction } from '../../models/ship';
 import { shipLogger } from '../../models/log';
 import { MapObject } from '../../models/map-object';
-import { getEmptyEpsilonClient } from '../../emptyepsilon';
+import { getEmptyEpsilonClient } from '../../integrations/emptyepsilon/client';
 import { getData } from '../../routes/data';
 import * as reactor from '../reactorHelper';
 import { BigBatteryLocation, isBatteryConnected } from '@/utils/bigbattery-helpers';

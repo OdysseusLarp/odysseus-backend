@@ -1,7 +1,7 @@
 import { clamp, interval, chooseRandom } from '../helpers';
 import { breakTask } from '../breakTask';
 import store, { watch } from '../../store/store';
-import { getEmptyEpsilonClient } from '../../emptyepsilon';
+import { getEmptyEpsilonClient } from '../../integrations/emptyepsilon/client';
 import { updateEmptyEpsilonState } from '../../index';
 import { logger } from '../../logger';
 import { isFinite, isEqual } from 'lodash';
@@ -75,7 +75,7 @@ function breakTasks(type, targetHealth) {
 		const priorityTasks = getPriorityTasks(unbrokenTasks);
 		const toBeBroken = chooseRandom(priorityTasks)[0];
 		if (!toBeBroken) {
-			logger.error(`toBeBroken is undefined even though unbrokenTasks.length=${unbrokenTasks.length}, 
+			logger.error(`toBeBroken is undefined even though unbrokenTasks.length=${unbrokenTasks.length},
 			unbrokenTasks=${JSON.stringify(unbrokenTasks)}`);
 			break;
 		}

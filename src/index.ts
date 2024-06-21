@@ -4,12 +4,14 @@ import express, { Request, Response } from 'express';
 import bodyParser from 'body-parser';
 import { logger, loggerMiddleware } from './logger';
 import { loadSwagger } from './docs';
-import { getEmptyEpsilonClient, setStateRouteHandler } from './emptyepsilon';
+import { getEmptyEpsilonClient } from './integrations/emptyepsilon/client';
+import { updateEmptyEpsilonState } from './integrations/emptyepsilon/state';
+import { setStateRouteHandler } from './routes/emptyepsilon';
 import { loadEvents } from './eventhandler';
 import { loadMessaging, router as messaging } from './messaging';
 import { Store } from './models/store';
 import { errorHandlingMiddleware, handleAsyncErrors } from './routes/helpers';
-import { get, isEqual, omit, isEmpty } from 'lodash';
+import { isEmpty } from 'lodash';
 import cors from 'cors';
 import { initSocketIoClient } from './websocket';
 import prometheusIoMetrics from 'socket.io-prometheus';
@@ -30,7 +32,7 @@ import tag from './routes/tag';
 import operation from './routes/operation';
 import sip from './routes/sip';
 import storyAdminRoutes from './routes/story-admin';
-import { setData, getData, router as data } from './routes/data';
+import { getData, router as data } from './routes/data';
 import infoboard from './routes/infoboard';
 import dmxRoutes from './routes/dmx';
 import { loadRules } from './rules/rules';
@@ -38,6 +40,7 @@ import { breakTask } from './rules/breakTask';
 import { breakEE } from './rules/ship/jump';
 import { sleep } from './utils/sleep';
 import { initializeTplinkScanning } from './tplink/tplink-control';
+import { interval } from './rules/helpers';
 
 const app = express();
 const http = new Server(app);
@@ -154,34 +157,6 @@ app.use(errorHandlingMiddleware);
 // Setup EOS Datahub messaging
 loadMessaging(io);
 
-// Get latest Empty Epsilon game state and save it to store
-// TODO: This is a stupid location for this method
-export function updateEmptyEpsilonState() {
-	// Exit straight away if EE connection is disabled. It needs to be disabled before
-	// the EE server is launched, because the EE HTTP server is buggy and will crash the
-	// game server if it gets a request before fully loading.
-	const isEeConnectionEnabled = !!get(getData('ship', 'metadata'), 'ee_connection_enabled');
-	if (!isEeConnectionEnabled) return;
-
-	return getEmptyEpsilonClient()
-		.getGameState()
-		.then(state => {
-			const metadataKeys = ['id', 'type', 'created_at', 'updated_at', 'version'];
-			// Save Empty Epsilon connection status to EE metadata blob
-			const connectionStatus = getEmptyEpsilonClient().getConnectionStatus();
-			const previousConnectionStatus = omit(getData('ship', 'ee_metadata'), metadataKeys);
-			if (!isEqual(connectionStatus, previousConnectionStatus)) setData('ship', 'ee_metadata', connectionStatus, true);
-			// Do not update state if request to EE failed
-			if (state.error) return;
-			// Do not update state if EE sync is disabled
-			if (!get(getData('ship', 'metadata'), 'ee_sync_enabled')) return;
-			const currentState = omit(getData('ship', 'ee'), metadataKeys);
-			// Do not update state if state has not changed
-			if (isEqual(state, currentState)) return;
-			setData('ship', 'ee', state, true);
-		});
-}
-
 // Load current events
 loadEvents(io);
 
@@ -200,7 +175,7 @@ Store.forge({ id: 'data' })
 
 		const EE_UPDATE_INTERVAL = parseInt(process.env.EMPTY_EPSILON_UPDATE_INTERVAL_MS || '1000', 10);
 		logger.watch(`Starting to poll Empty Epsilon game state every ${EE_UPDATE_INTERVAL}ms`);
-		setInterval(updateEmptyEpsilonState, EE_UPDATE_INTERVAL);
+		interval(updateEmptyEpsilonState, EE_UPDATE_INTERVAL);
 	});
 
 // Generate and serve API documentation using Swagger at /api-docs

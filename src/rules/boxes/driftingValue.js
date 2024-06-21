@@ -1,5 +1,5 @@
 import store from '../../store/store';
-import { getEmptyEpsilonClient } from '../../emptyepsilon';
+import { getEmptyEpsilonClient } from '../../integrations/emptyepsilon/client';
 import { updateEmptyEpsilonState } from '../../index';
 import { CHANNELS, fireEvent } from '../../dmx';
 import { logger } from '../../logger';
