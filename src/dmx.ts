@@ -147,6 +147,7 @@ export const CHANNELS = {
 	DataHubHackingDetected: 257,
 	DataHubNewsApproved: 258,
 	DataHubVoteApproved: 259,
+	BlackHoleProximityAlert: 260,
 } as const;
 
 type Channel = (typeof CHANNELS)[keyof typeof CHANNELS];
