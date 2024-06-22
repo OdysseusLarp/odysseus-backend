@@ -51,7 +51,7 @@ export class EmptyEpsilonClient {
 		}
 	}
 
-	getConnectionStatus() {
+	public getConnectionStatus() {
 		return {
 			isConnectionHealthy: this.isConnectionHealthy,
 			lastErrorMessage: this.lastErrorMessage || null,
@@ -59,7 +59,7 @@ export class EmptyEpsilonClient {
 		};
 	}
 
-	setIsConnectionHealthy(value: boolean, error?: Error) {
+	private setIsConnectionHealthy(value: boolean, error?: Error) {
 		const errorMessage = get(error, 'message');
 		const { isConnectionHealthy, lastErrorMessage } = this;
 		if (value === isConnectionHealthy && errorMessage === lastErrorMessage) return;
@@ -72,40 +72,66 @@ export class EmptyEpsilonClient {
 		this.isConnectionHealthy = value;
 	}
 
-	getGameState(): Promise<EmptyEpsilonState> {
-		return axios
-			.get(this.getUrl, { params: this.getGameStateRequestParameters() })
-			.then(res => {
-				// Handle Empty Epsilon response errors that use inconsistent keys
-				const emptyEpsilonError = get(res, 'data.ERROR') || get(res, 'data.error');
-				if (emptyEpsilonError) throw new Error(emptyEpsilonError);
-				// Otherwise assume valid connection
-				this.setIsConnectionHealthy(true);
-				return Object.keys(res.data).reduce((data, key) => {
-					let keyPrefix;
-					if (key.includes('Health')) keyPrefix = 'systems.health';
-					else if (key.includes('Heat')) keyPrefix = 'systems.heat';
-					else if (key.includes('Count')) keyPrefix = 'weapons';
-					else if (key.startsWith('landingPadStatus')) keyPrefix = 'landingPads';
-					else keyPrefix = 'general';
-					return set(data, `${keyPrefix}.${key}`, res.data[key]);
-				}, {});
-			})
-			.then(state => {
-				const { shipHull, shipHullMax } = pick(get(state, 'general', {} as any), ['shipHull', 'shipHullMax']);
-				if (isNumber(shipHull) && isNumber(shipHullMax)) {
-					set(state, 'general.shipHullPercent', shipHull / shipHullMax);
+	// This is split into a separate request because when a single request gets too large,
+	// the HTTP request will fail with 'socket closed connection' for some reason
+	private async fetchLandingPadStatuses() {
+		const { data } = await axios.get(this.getUrl, { params: this.getLandingPadStateRequestParameters() });
+		this.checkForErrors(data);
+		return data;
+	}
+
+	private async fetchGameState() {
+		const { data } = await axios.get(this.getUrl, { params: this.getGameStateRequestParameters() });
+		this.checkForErrors(data);
+		return data;
+	}
+
+	private checkForErrors(data) {
+		// Handle Empty Epsilon response errors that use inconsistent keys
+		const emptyEpsilonError = get(data, 'data.ERROR') || get(data, 'data.error');
+		if (emptyEpsilonError) {
+			throw new Error(emptyEpsilonError);
+		}
+		// Otherwise assume a healthy connection
+		this.setIsConnectionHealthy(true);
+	}
+
+	async getGameState(): Promise<EmptyEpsilonState> {
+		try {
+			const [gameState, landingPadStatuses] = await Promise.all([
+				this.fetchGameState(),
+				this.fetchLandingPadStatuses(),
+			]);
+
+			const combinedState = { ...gameState, ...landingPadStatuses };
+
+			// Change the flat state object into a nested object with categories
+			const formattedState: Record<string, any> = Object.keys(combinedState).reduce((data, key) => {
+				let category = 'general';
+				if (key.includes('Health')) {
+					category = 'systems.health';
+				} else if (key.includes('Heat')) {
+					category = 'systems.heat';
+				} else if (key.includes('Count')) {
+					category = 'weapons';
+				} else if (key.startsWith('landingPadStatus')) {
+					category = 'landingPads';
 				}
-				return state;
-			})
-			.then(state => {
-				this.previousState = state;
-				return state;
-			})
-			.catch(error => {
-				this.setIsConnectionHealthy(false, error);
-				return { error };
-			});
+				return set(data, `${category}.${key}`, combinedState[key]);
+			}, {});
+
+			// Calculate the ship hull health percentage
+			const { shipHull, shipHullMax } = pick(get(formattedState, 'general', {} as any), ['shipHull', 'shipHullMax']);
+			if (isNumber(shipHull) && isNumber(shipHullMax)) {
+				set(formattedState, 'general.shipHullPercent', shipHull / shipHullMax);
+			}
+
+			this.previousState = formattedState;
+			return formattedState;
+		} catch (error) {
+			this.setIsConnectionHealthy(false, error);
+			return { error };
+		}
 	}
 
 	getAlertLevel() {
@@ -237,6 +263,11 @@ export class EmptyEpsilonClient {
 			shipFrontShield: 'getFrontShield()',
 			shipRearShield: 'getRearShield()',
 			alertLevel: 'getAlertLevel()',
+		};
+	}
+
+	private getLandingPadStateRequestParameters() {
+		return {
 			landingPadStatus1: 'getLandingPadState(1)', // Fighter 1
 			landingPadStatus2: 'getLandingPadState(2)', // Fighter 2
 			landingPadStatus3: 'getLandingPadState(3)', // Fighter 3
