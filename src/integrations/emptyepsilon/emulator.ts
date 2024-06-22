@@ -1,4 +1,6 @@
 import nock from 'nock';
+import { mockEmptyEpsilonGameState, mockEmptyEpsilonLaunchPadStatuses } from '@fixtures/emptyepsilon';
+import { cloneDeep, pick, isEmpty } from 'lodash';
 
 const systems = [
 	'reactor',
@@ -17,16 +19,40 @@ const weapons = ['homing', 'nuke', 'mine', 'emp', 'hvli'];
  * This aims to emulate a Empty Epsilon server when connection details to a real
  * one have not been provided
  */
-let mockState;
+let mockState = cloneDeep(mockEmptyEpsilonGameState);
 export function initEmptyEpsilonEmulator() {
-	mockState = require('../../../fixtures/emptyepsilon');
+	// Mock the basic game state query
 	nock('http://ee-emulation.local', { encodedQueryParams: true })
 		.persist()
 		.get(/\/get\.lua.*/)
-		.query(true)
+		.query(queryObject => {
+			const queryString = new URLSearchParams(queryObject).toString();
+			return !queryString.includes('landingPadStatus1');
+		})
 		.reply((uri, requestBody, cb) => {
 			cb(null, [200, mockState, []]);
 		});
+
+	// Mock the landing pad status query
+	nock('http://ee-emulation.local', { encodedQueryParams: true })
+		.persist()
+		.get(/\/get\.lua.*/)
+		.query(queryObject => {
+			const queryString = new URLSearchParams(queryObject).toString();
+			return queryString.includes('landingPadStatus1');
+		})
+		.reply((uri, requestBody, cb) => {
+			const landingPadStatuses = pick(mockState, [
+				'landingPadStatus1',
+				'landingPadStatus2',
+				'landingPadStatus3',
+				'landingPadStatus4',
+			]);
+			const statuses = isEmpty(landingPadStatuses) ? cloneDeep(mockEmptyEpsilonLaunchPadStatuses) : landingPadStatuses;
+			cb(null, [200, statuses, []]);
+		});
+
+	// Mock the set commands
 	nock('http://ee-emulation.local', { encodedQueryParams: true })
 		.persist()
 		.get(/\/set\.lua.*/)
@@ -50,6 +76,12 @@ export function initEmptyEpsilonEmulator() {
 			if (req.includes('setHull')) {
 				const val = Number(req.replace(/.*setHull\("([0-9]*)"\).*/, '$1'));
 				mockState.shipHull = val;
+				return cb(null, [200, mockState, []]);
+			}
+			if (req.includes('setLandingPadStatus')) {
+				const pad = Number(req.replace(/.*setLandingPadStatus\("([0-9]*)",.*/, '$1'));
+				const status = Number(req.replace(/.*setLandingPadStatus\("[0-9]*",([0-9]*)\).*/, '$1'));
+				mockState[`landingPadStatus${pad}`] = status;
 				return cb(null, [200, mockState, []]);
 			}
 			if (req.includes('commandSetAlertLevel')) {
