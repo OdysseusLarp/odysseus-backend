@@ -6,26 +6,27 @@ import { initEmptyEpsilonEmulator } from './emulator';
 
 const { EMPTY_EPSILON_HOST, EMPTY_EPSILON_PORT } = process.env;
 
-const alertStates: Record<string, AlertLevel> = {
+const alertStates = {
 	Normal: 'normal',
 	'YELLOW ALERT': 'yellow',
 	'RED ALERT': 'red',
-};
+} as const;
 
-const LandingPadStates = {
+export const LandingPadStates = {
 	Destroyed: 0, // Destroyed or not allowed by GMs
 	Docked: 1,
 	Launched: 2,
+} as const;
+
+const LandingPadStateToText = {
+	[LandingPadStates.Destroyed]: 'Destroyed',
+	[LandingPadStates.Docked]: 'Docked',
+	[LandingPadStates.Launched]: 'Launched',
 };
 
-const LandingPadStatusToState = {
-	0: 'Destroyed',
-	1: 'Docked',
-	2: 'Launched',
-};
-
-export type AlertLevel = 'normal' | 'yellow' | 'red';
+export type AlertLevel = (typeof alertStates)[keyof typeof alertStates];
 export type EmptyEpsilonState = Record<string, any>;
+export type LandingPadState = (typeof LandingPadStates)[keyof typeof LandingPadStates];
 
 export class EmptyEpsilonClient {
 	private isEmulated: boolean;
@@ -85,7 +86,6 @@ export class EmptyEpsilonClient {
 					if (key.includes('Health')) keyPrefix = 'systems.health';
 					else if (key.includes('Heat')) keyPrefix = 'systems.heat';
 					else if (key.includes('Count')) keyPrefix = 'weapons';
-					// TODO: Sort keys
 					else if (key.startsWith('landingPadStatus')) keyPrefix = 'landingPads';
 					else keyPrefix = 'general';
 					return set(data, `${keyPrefix}.${key}`, res.data[key]);
@@ -133,14 +133,23 @@ export class EmptyEpsilonClient {
 		});
 	}
 
-	public setGameState(command, target, value) {
+	public setLandingPadState(landingPadNumber: number, state: LandingPadState) {
+		if (![0, 1, 2].includes(state)) throw new Error('Invalid landing pad state');
+		const url = `${this.setUrl}?setLandingPadState(${landingPadNumber},${state})`;
+		return axios.get(url).then(res => {
+			if (get(res, 'data.ERROR')) throw new Error(res.data.ERROR);
+			logger.success(`Landing pad ${landingPadNumber} state set to ${state} (${LandingPadStateToText[state]})`);
+		});
+	}
+
+	public setGameState(command: string, target: string, value: any) {
 		const isEeConnectionEnabled = !!get(getData('ship', 'metadata'), 'ee_connection_enabled');
 		if (!isEeConnectionEnabled) {
 			logger.warn('setGameState was called while Backend <-> EE connection is disabled', { command, target, value });
 			return;
 		}
 		// Only allow known commands to be used
-		if (!['setSystemHealth', 'setSystemHeat', 'setWeaponStorage'].includes(command))
+		if (!['setSystemHealth', 'setSystemHeat', 'setWeaponStorage', 'setLandingPadState'].includes(command))
 			return Promise.reject(`Rejecting unknown command '${command}'`);
 		return axios.get(`${this.setUrl}?${command}("${target}",${value})`).then(res => {
 			if (get(res, 'data.ERROR')) throw new Error(res.data.ERROR);
@@ -185,6 +194,14 @@ export class EmptyEpsilonClient {
 				value,
 			})
 		);
+		forIn(state.landingPads, (value, key) => {
+			const landingPadNumber = key.replace('landingPadStatus', '');
+			commands.push({
+				command: 'setLandingPadState',
+				target: landingPadNumber,
+				value,
+			});
+		});
 		return commands;
 	}
 
