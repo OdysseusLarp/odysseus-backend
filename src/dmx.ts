@@ -147,6 +147,7 @@ export const CHANNELS = {
 	DataHubHackingDetected: 257,
 	DataHubNewsApproved: 258,
 	DataHubVoteApproved: 259,
+	BlackHoleProximityAlert: 260,
 
 	// Alien artifact activation
 	// 301-303 reserved for artifacts 1-3

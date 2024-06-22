@@ -2,7 +2,7 @@ import { Router } from 'express';
 import { Artifact, ArtifactEntry } from '../models/artifact';
 import { handleAsyncErrors } from './helpers';
 import { getData, setData } from '../routes/data';
-import { getEmptyEpsilonClient } from '../emptyepsilon';
+import { getEmptyEpsilonClient } from '../integrations/emptyepsilon/client';
 import { get, set, cloneDeep, pick } from 'lodash';
 import { shipLogger } from '../models/log';
 const router = new Router();

@@ -133,6 +133,12 @@ saveBlob({
 		shipFrontShield: 200,
 		shipRearShield: 200,
 	},
+	landingPads: {
+		landingPadStatus1: 1,
+		landingPadStatus2: 1,
+		landingPadStatus3: 1,
+		landingPadStatus4: 1,
+	}
 });
 
 // EE Metadata blob, admin EE view won't work without this

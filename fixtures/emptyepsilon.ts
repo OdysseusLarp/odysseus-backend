@@ -1,4 +1,4 @@
-const emptyEpsilonState = {
+export const mockEmptyEpsilonGameState = {
 	reactorHeat: 0,
 	homingCount: 12,
 	nukeCount: 4,
@@ -30,4 +30,9 @@ const emptyEpsilonState = {
 	shipRearShield: 200,
 };
 
-module.exports = emptyEpsilonState;
+export const mockEmptyEpsilonLaunchPadStatuses = {
+	landingPadStatus1: 1,
+	landingPadStatus2: 1,
+	landingPadStatus3: 1,
+	landingPadStatus4: 1,
+};

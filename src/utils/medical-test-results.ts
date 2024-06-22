@@ -1,3 +1,13 @@
+import crypto from 'crypto';
+
+const GENE_SAMPLE_BASE_PATH = '/gene-samples';
+
+export function getGeneSampleFilename(personId: string) {
+	const hash = crypto.createHash('sha1').update(personId.toString()).digest('hex');
+	const shortHash = hash.substring(0, 8);
+	return `${GENE_SAMPLE_BASE_PATH}/${shortHash}.pdf`;
+}
+
 function getHemoglobinStatus(hemoglobinStr: string) {
 	const hemoglobin = parseFloat(hemoglobinStr);
 	if (isNaN(hemoglobin)) return null;
@@ -28,7 +38,8 @@ function getKaliumStatus(kaliumStr: string) {
 	const kalium = parseFloat(kaliumStr);
 	if (isNaN(kalium)) return null;
 
-	if (kalium < 3.5) return 'Hypokalemia (too little kalium in the system), feeling tired, leg cramps, weakness, and constipation. Risk of an abnormal heart rhythm. Can cause cardiac arrest.';
+	if (kalium < 3.5)
+		return 'Hypokalemia (too little kalium in the system), feeling tired, leg cramps, weakness, and constipation. Risk of an abnormal heart rhythm. Can cause cardiac arrest.';
 	if (kalium > 5.1) return 'Dehydrated';
 	return null;
 }
@@ -87,4 +98,9 @@ export function getBloodTestResultText(resultsModel: any) {
 	Substance abuse: ${subAbuse}
 
 	Details: ${resultsModel.get('details') || 'None'}`;
+}
+
+export function getGeneSampleResultText(personId: string) {
+	const filename = getGeneSampleFilename(personId);
+	return `**Gene sample results:** <a href="${filename}" target="_blank">Click here to view the results</a>`;
 }
