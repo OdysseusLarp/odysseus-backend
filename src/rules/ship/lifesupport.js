@@ -3,7 +3,7 @@ import store, { watch } from '../../store/store';
 import { CHANNELS, fireEvent, mapDmxValue, setDmxValue } from '../../dmx';
 import { logger } from '../../logger';
 import { shipLogger } from '../../models/log';
-import { getEmptyEpsilonClient } from '../../emptyepsilon';
+import { getEmptyEpsilonClient } from '../../integrations/emptyepsilon/client';
 
 // Delay DMX signal + ship log by 4.5 minutes for CO2 / Oxygen levels to change resulting from breakage
 const LEVEL_NOTIFICATION_DELAY = 4.5 * 60 * 1000;

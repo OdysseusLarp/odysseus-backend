@@ -21,9 +21,10 @@ export function saveBlob(data) {
  *
  * @param {function} fn         Function to run
  * @param {number} millisecs    Run function every this many milliseconds
+ * @returns {number} Interval ID that can be used to clear the interval
  */
 export function interval(fn, millisecs) {
-	setInterval(() => {
+	return setInterval(() => {
 		try {
 			fn();
 		} catch (e) {
