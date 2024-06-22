@@ -1,31 +1,32 @@
 catalog_id,name,discovered_at,discovered_by,discovered_from,type,text,entry,test_material,test_microscope,test_age,test_history,test_xrf,gm_notes,is_visible
-EL-QV57-1,Power source,541.295,Remy Hall,P-TE96-QV57,Elder,"Large sylinder-like object made from unknown metal with five half-spheres.
-
-![](http://192.168.1.2/images/el-qv57-1.jpg)","541 Team was able to strain the organic growth of the artifact EL-QV57-1 and have determined that the artifact is some form of organic powersource that grows around the generator and is able to produce immense amounts of energy for very long periods of time.
+EL-QV57-1,Power source,541.295,Remy Hall,P-TE96-QV57,Elder,Large sylinder-like object made from unknown metal with five half-spheres.,"541 Team was able to strain the organic growth of the artifact EL-QV57-1 and have determined that the artifact is some form of organic powersource that grows around the generator and is able to produce immense amounts of energy for very long periods of time.
 
 542 Artifact EL-QV57-1 has suddenly started showing organic activity and seems to be rapidly growing. There are multiple theories that specific type of genetic mutation would be required to activate and operate Elder originated artifacts and the team has been working on confirming the theory and isolating the gene type.","Artifact is primarily composed of organic matter or a combination of organic and inorganic materials. It consists of a highly specialized organic matrix, resembling a symbiotic amalgamation of biological tissues and synthetic components. This matrix serves as the foundation for the artifact's functionality, integrating living matter with advanced technological elements.","Fine tendrils of living tissue intertwine with synthetic fibers, forming a complex network that permeates the artifact's core. The organic matrix exhibits a vibrant array of colors, pulsating with life and energy.",1685,"Given the unique and enigmatic nature of the artifact EL-QV57-1, comparisons to known artifacts found are challenging. However, certain parallels may be drawn based on general characteristics or functions. Here are some hypothetical similarities:
 - The Baghdad Battery is a set of artifacts found in Iraq consisting of clay jars containing copper cylinders and iron rods. While their purpose is debated, some theories suggest they may have been used as primitive batteries for electroplating, a form of energy generation. This could draw a loose comparison to EL-QV57-1's ability to produce energy, although the mechanisms are vastly different.
-- The Voynich Manuscript is an ancient illustrated codex written in an unknown script and language. Despite extensive study, its meaning and origin remain a mystery. This artifact could loosely parallel EL-QV57-1's enigmatic nature and the presence of Elder symbols, as both defy easy interpretation and are the subject of much speculation and intrigue.","XRF scans indicate the presence of carbon, oxygen, nitrogen, and trace elements consistent with organic matter. This confirms the organic nature of the artifact's matrix, supporting previous observations of living tissue and bioluminescent veins.","Power source goes to Starcaller and needs 4 with elder gene to use it
-Something more",TRUE
-EL-QV57-2,Unknown,541.303,Remy Hall,P-TE96-QV57,Elder,"Short, tube-like metal object with a loose connector at one end. 
-
-![](http://192.168.1.2/images/el-qv57-2.jpg)",,,,,,,,TRUE
-EL-QV57-3,Unknown,541.329,Remy Hall,P-TE96-QV57,Elder,"A metallic half-dome with four loose connectors. 
-
-![](http://192.168.1.2/images/el-qv57-3.jpg)",,,,,,,,TRUE
-EL-QV57-4,Recharger,541.346,Remy Hall,P-TE96-QV57,Elder,"Circular two-layered metal object with a loose connector. A push button on the outer edge of the disc. 
-
-![](http://192.168.1.2/images/el-qv57-4.jpg)",,,,,,,,TRUE
-EL-QV57-5,Unknown,542.008,Remy Hall,P-TE96-QV57,Elder,"IS THE CALCULATOR DEVICE ENGINEERS STOLE! REMOVE THIS INFO WHEN UPDATING THE ARTIFACT DB
-A short hammer-like object with symmertical protrusions. A loose connector on one side and a push button on the other.
-
-![](http://192.168.1.2/images/el-qv57-5.jpg)",,,,,,,,TRUE
-EL-QV57-6,Healing device,542.008,Remy Hall,P-TE96-QV57,Elder,"Strange device made of unknown metal, three-phronged protrusion with a push-button at one end. A loose connector at the other end. Terran Wells identified it to be a healing device.
-
-![](http://192.168.1.2/images/el-qv57-6.jpg)",,,,,,,,TRUE
-EL-QV57-7,Unknown,542.101,Remy Hall,P-TE96-QV57,Elder,"Strange material, pilar like shape with a stand. 2 cords coming out of the wider end of the object. There are three rectangle shapes on one side of the wider part. 
-
-![](http://192.168.1.2/images/el-qv57-7.jpg)",,,,,,,,TRUE
+- The Voynich Manuscript is an ancient illustrated codex written in an unknown script and language. Despite extensive study, its meaning and origin remain a mystery. This artifact could loosely parallel EL-QV57-1's enigmatic nature and the presence of Elder symbols, as both defy easy interpretation and are the subject of much speculation and intrigue.","XRF scans indicate the presence of carbon, oxygen, nitrogen, and trace elements consistent with organic matter. This confirms the organic nature of the artifact's matrix, supporting previous observations of living tissue and bioluminescent veins.","Power source
+Power source goes to Starcaller and needs 4 with elder gene to use it
+Needs GM approval before it can be used.",TRUE
+EL-QV57-2,Unknown,541.303,Remy Hall,P-TE96-QV57,Elder,"Short, tube-like metal object with a loose connector at one end.",,,,,,,"Cloaking device
+The Guardian has this at the beginning of the larp and they are the only one able to use it. 
+Needed for Starcaller mission.",TRUE
+EL-QV57-3,Unknown,541.329,Remy Hall,P-TE96-QV57,Elder,A metallic half-dome with four loose connectors. ,,,,,,,"Healing device
+Velian healing machine which only people who has the Elder gene can use.
+It is limited by the users ability to guide it - so with cases of rare diseases the operator might not have enough knowledge to guide the device with required healing. Using the device is highly draining for the user and it can only be used by those who have received training in using one and posses a certain gene needed to operate alien technology - there are three characters in game who can use it (Nayel, Naethan and Guardian).",TRUE
+EL-QV57-4,Recharger,541.346,Remy Hall,P-TE96-QV57,Elder,Circular two-layered metal object with a loose connector. A push button on the outer edge of the disc.,,,,,,,"Cooling device
+Can be used to bypass cooling time of the jump engine. Usable twise per game. Both times are predetermined cases.
+After players has used it first time GMs need to approve when the device can be used again",TRUE
+EL-QV57-5,Unknown,542.008,Remy Hall,P-TE96-QV57,Elder,A short hammer-like object with symmertical protrusions. A loose connector on one side and a push button on the other.,,,,,,,"Calculator
+This is the artifact the engineers Vane Hodge and Nikita Watson stole.
+EVA needs to message them for more info what to do with it.
+GMs need to approve when the artifact is sufficiently integrated to ship systems
+Adds one extra calibration slot.",TRUE
+EL-QV57-6,Healing device,542.008,Remy Hall,P-TE96-QV57,Elder,"Strange device made of unknown metal, three-phronged protrusion with a push-button at one end. A loose connector at the other end. Terran Wells identified it to be a healing device.",,,,,,,"Scan range extender
+Adds extra scan range to LORA Science Voyager. 
+GMs need to approve when the artifact is sufficiently integrated to ship systems",TRUE
+EL-QV57-7,Unknown,542.101,Remy Hall,P-TE96-QV57,Elder,"Strange material, pilar like shape with a stand. 2 cords coming out of the wider end of the object. There are three rectangle shapes on one side of the wider part.",,,,,,,"Calculation booster
+Can be used to speed up the calibrations by 100 for 1 minute. Is useable twice per game.
+Notice that it cannot be used to few story related calibrations (double jump)
+GMs need to approve when the artifact is usable",TRUE
 S-PEF3536,Comet Class Fighter,496.136,Pat Montoya,Alpha-6-D3-118,EOC,"**Small Size EOC ship**
 
 The Comet class Fighter was designed to be a fast and versatile for out of orbit combat as well as transporting small groups of personnel to planet surface. For now the Comet has performed admirably. With capable pilots there are even proven cases of it being able to take down larger ships single handedly.
@@ -74,9 +75,23 @@ BEACON-3,Beacon 3,542,ESS Odysseus Beta Team,Alpha-1-B1-49-P-CA95-LN71,Earth,A b
 BEACON-4,Beacon 4,542,ESS Odysseus Alpha Team,Beta-4-B8-63-P-OC46-DA97,Earth,A box with a lock and covered with special symbols.,,,,,,,,FALSE
 BEACON-5,Beacon 5,542,ESS Odysseus Gamma Team,Beta-4-A8-31-M12-PI87,Earth,A box with a lock and covered with special symbols.,,,,,,,,FALSE
 BEACON-6,Beacon 6,542,ESS Odysseus Alpha Team,Alpha-1-A1-1-P-SI14-UX98,Earth,A box with a lock and covered with special symbols.,,,,,,,,FALSE
-VE-342,Velian Embryo Container,542,Velians,Alpha-5-D2-100-P-DE47-HC55 ,Velian,,,,,,,,,FALSE
-WORM-1,Alien worm,542,,Alpha-1-B1-49-P-TE95-LN71,,,,,,,,,,FALSE
-HERB-284,Plant with curative properties,542,,,,,,,,,,,,FALSE
-MACH-564,Communicator to Machines,,,,Machine,,,,,,,,,FALSE
-AVK-012,Araknium Bomb,542,,,EOC,,,,,,,,Jodey Agaki's bomb,
-JW2888,Silent Petal,,,,,,,,,,,,,
+VE-342,Velian Embryo Container,542,Velians,Alpha-5-D2-100-P-DE47-HC55 ,Velian,,,,,,,,"Velian Embryo container with embryos
+One embryo has Zaera’s and Briya’s cells",FALSE
+WORM-1,Alien worm,542,ESS Odysseus Alpha Team,Alpha-1-B1-49-P-TE95-LN71,Unknown,,,,,,,,"Alien worm 
+Gets stuck in Jodey Agaki during Worm landmission. Medics need to operate it. If scientists study it more it will reveal to have healing properties.",FALSE
+HERB-284,Plant with curative properties,542,ESS Odysseus Alpha Team,,Unknown,,,,,,,,"Healing herb from Worm Land mission
+Lee Savage has dreamed about this plant
+GMs need to say to Lee that this is the place where you find the plant just before the land mission starts (the Worm land mission)
+Then scientist/medics can study it and come into conclusion that the plant realy has healing powers and can cure Gene Hawkins",FALSE
+MACH-564,Communicator to Machines,500,Dallan Jordan,,Machine,,,,,,,,"Communicator device for Machines. 
+Dallan Jordan got it from the Machines when they were kidnapped by them.",FALSE
+AVK-012,Araknium Bomb,542,Jodey Agaki,,EOC,,,,,,,,"Jodey Agaki's bomb
+Contains puzzles",FALSE
+JW2888,Silent Petal,531,,,EOC,,,,,,,,"Silent Petal
+Rhodium necklace. Rhodium inside can be used in Jodey Agaki's research.",FALSE
+BETTY,Betty the bomb,542,,,EOC,,,,,,,,"Betty on Starcaller
+A bomb which special ops team had with them on starcaller so that they could blow it up with the machine. It needs to be kept alive by changing derivated aranknium ampul every 6 hours.",FALSE
+BV-2347,Bomb vest,542,,,EOC,,,,,,,,"Hali Okuma's bomb vest. 
+Hali will get it from Jude Gardner during ESS Harbinger mutiny event or it has been stashed by someone and Hali needs to find it from the ship",FALSE
+E-227y7,Map of Earth,542,ESS Odysseus Alpha Team,,Earth,,,,,,,,Map of earth found from Land mission to Earth outpost,FALSE
+EXH-285,Lonnie Gordon's papers,542,Lonnie Gordon,,EOC,,,,,,,,Lonnie Gordon's missing papers. They were going to use them to ditch Zodiac Web to make their own crime syndicate.,FALSE

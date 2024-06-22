@@ -58,7 +58,7 @@ export function setEeSyncEnabled(value = true) {
 }
 
 /**
- * Jumps the ship to a new grid by setting grid_id of the ship
+ * Jumps the ship to a new grid (sub-sector) by setting grid_id of the ship
  * @param {object} coordinates Target coordinates from jump state
  */
 async function performShipJump(coordinates) {
@@ -76,7 +76,7 @@ async function performShipJump(coordinates) {
 	else targetGeometry = await grid.getRandomJumpTarget();
 	const gridId = grid ? grid.get('id') : null;
 	if (!targetGeometry) {
-		logger.error('Could not calculate new geometry for ship when jumping to grid', gridId);
+		logger.error('Could not calculate new geometry for ship when jumping to sub-sector', gridId);
 	}
 	// Reset jump range back to 1
 	const metadata = { ...ship.get('metadata', {}), jump_range: 1 };
@@ -84,7 +84,7 @@ async function performShipJump(coordinates) {
 		ship.jumpFleet({ grid_id: gridId, metadata, the_geom: targetGeometry }),
 		GridAction.forge().save({ grid_id: gridId, ship_id: shipId, type: 'JUMP' }),
 	]);
-	logger.success(`${shipId} performed jumped to grid ${gridId}`);
+	logger.success(`${shipId} performed jumped to sub-sector ${gridId}`);
 }
 
 function getReadableJumpTarget(coordinates) {
@@ -184,7 +184,7 @@ function handleTransition(jump, currentStatus, previousStatus) {
 				minor_breaking_jump: Math.random() < 0.33, // randomize after jump, so first jump is always value from seed
 			});
 			const jumpTarget = getReadableJumpTarget(jump.coordinates);
-			shipLogger.success(`Odysseus completed the jump to grid ${jumpTarget}`, {
+			shipLogger.success(`Odysseus completed the jump to sub-sector ${jumpTarget}`, {
 				showPopup: true,
 			});
 
