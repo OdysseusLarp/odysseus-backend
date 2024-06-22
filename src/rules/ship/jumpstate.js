@@ -4,7 +4,7 @@ import { saveBlob, interval, brownianGenerator, clamp } from '../helpers';
 import { SAFE_JUMP_LIMIT, COOLDOWN_LIMIT } from './jump';
 import store from '../../store/store';
 
-const STATUS_NUMBERS = {
+export const STATUS_NUMBERS = {
 	broken: 0,
 	cooldown: 1,
 	ready_to_prep: 2,
