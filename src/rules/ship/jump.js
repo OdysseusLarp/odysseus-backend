@@ -104,7 +104,7 @@ function isJumpReactorDone() {
 	return tasks.jump_reactor.status === 'fixed';
 }
 
-function setupJumpDriveTasks() {
+function setupJumpDrivePreparationTasks() {
 	breakJumpCrystalGame();
 	breakJumpReactor();
 }
@@ -140,6 +140,19 @@ function breakJumpReactor() {
 	}
 }
 
+function breakJumpCoolingSystem() {
+	const box = store.getState().data.box.jump_cooling_system;
+	if (!box) {
+		logger.error("No box with id 'jump_cooling_system', can't break it");
+		return;
+	}
+
+	saveBlob({
+		...box,
+		status: 'broken',
+	});
+}
+
 function chargeBigBatteryIfConnected() {
 	const box = store.getState().data.box.bigbattery;
 	if (isBatteryConnected(box, BigBatteryLocation.ENGINEERING)) {
@@ -163,6 +176,7 @@ function handleTransition(jump, currentStatus, previousStatus) {
 				breakTasksNormal();
 			}
 			breakJumpReactor(); // task for broken>cooldown transition
+			breakJumpCoolingSystem(); // task for broken>cooldown transition
 		// fall through
 		case 'jumping>cooldown': {
 			// Set jump drive target temperature when ending jump
@@ -260,7 +274,7 @@ function handleTransition(jump, currentStatus, previousStatus) {
 				`Jump vectors have been calculated and jump drive preparation configuration sent to engineering`,
 				{ showPopup: true }
 			);
-			setupJumpDriveTasks();
+			setupJumpDrivePreparationTasks();
 			break;
 
 		case 'preparation>prep_complete':
