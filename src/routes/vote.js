@@ -58,6 +58,7 @@ const voteFilterToTextMap = {
 
 	'HIGH_RANKING_OFFICER': 'High ranking military officers',
 
+	"SHIP:ODYSSEUS": "Those aboard ESS Odysseus",
 	'EVERYONE': 'Everyone',
 };
 
