@@ -69,10 +69,26 @@ blobs.push({
 
 blobs.push({
 	id: 'jump_cooling_system',
+	type: 'task',
+	status: 'initial',
+	title: 'Cooling system cleanup',
+	description: 'The recent dimensional shift contaminated the hyperflux cooling fluid pipes, necessitating immediate cleaning.',
+	calibrationTime: 60 * 4,
+	calibrationCount: 1,
+	// In practice this task has two locations, but this location points to the computer that's used to complete the task
+	// TODO: Update these values
+	location: 'Upper deck, engineering',
+	map: 'upper-5.png',
+	mapX: 230,
+	mapY: 130,
+});
+
+blobs.push({
+	id: 'jump_cooling_system',
 	type: 'box',
 	status: 'fixed',
 	description: "Unity game that needs to be completed after every jump.",
-	// task: 'jump_reactor',
+	task: 'jump_cooling_system',
 });
 
 export default blobs;
