@@ -2,10 +2,26 @@ import { logger } from '@/logger';
 import store, { watch } from '@/store/store';
 import { BigBattery, BigBatteryLocation, isBatteryConnectedAndCharged } from '@/utils/bigbattery-helpers';
 import { LandingPadStates, getEmptyEpsilonClient } from '@/integrations/emptyepsilon/client';
+import { shipLogger } from '@/models/log';
+
+const fighterNames = ['ESSODY18', 'ESSODY23', 'ESSODY36'];
+const fighterRepairedLogEntryTemplates = [
+	'{fighterName} has been repaired',
+	'{fighterName} is fully restored',
+	'{fighterName} is back in working order',
+	'{fighterName} is back to operational status',
+	'{fighterName} is in top condition',
+];
+
+const getRandomLogEntry = (fighterName: string) => {
+	const randomIndex = Math.floor(Math.random() * fighterRepairedLogEntryTemplates.length);
+	return fighterRepairedLogEntryTemplates[randomIndex].replace('{fighterName}', fighterName);
+};
 
 async function repairFighter(landingPad: number) {
 	logger.info(`Battery connected, repairing fighter ${landingPad}`);
 	await getEmptyEpsilonClient().setLandingPadState(landingPad, LandingPadStates.Docked);
+	await shipLogger.info(getRandomLogEntry(fighterNames[landingPad - 1]));
 }
 
 async function checkIfFighterFixed() {
