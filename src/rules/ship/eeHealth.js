@@ -93,12 +93,16 @@ function breakTasks(type, targetHealth) {
 // Rules for breaking tasks when EE health decreases
 watch(['data', 'ship', 'ee'], (ee, previous, state) => {
 	for (const type of TYPES) {
-		const previousHealth = getEEHealth(previous, type);
-		const nowHealth = getEEHealth(ee, type);
-		if (nowHealth < previousHealth) {
-			logger.info(`Detected EE ${type} health drop from ${previousHealth} `+
-			  `to ${nowHealth}`);
-			breakTasks(type, nowHealth);
+		try {
+			const previousHealth = getEEHealth(previous, type);
+			const nowHealth = getEEHealth(ee, type);
+			if (nowHealth < previousHealth) {
+				logger.info(`Detected EE ${type} health drop from ${previousHealth} `+
+					`to ${nowHealth}`);
+				breakTasks(type, nowHealth);
+			}
+		} catch (err) {
+			logger.warn(`Could not break tasks for EE ${type} health:`, err, previous);
 		}
 	}
 });
