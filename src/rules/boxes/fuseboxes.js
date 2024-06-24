@@ -11,22 +11,21 @@ watch(['data', 'box'], (boxes, previousBoxes, state) => {
 		const previous = previousBoxes[id];
 		if (previous && box.fuses && isNumber(box.dmxFuse) && box.fuses[box.dmxFuse] !== previous.fuses[box.dmxFuse]) {
 			if (box.fuses[box.dmxFuse]) {
-				if (CHANNELS[box.dmxFixed]) {
-					fireEvent(CHANNELS[box.dmxFixed]);
+				if (CHANNELS[box.dmxFuseFixed]) {
+					fireEvent(CHANNELS[box.dmxFuseFixed]);
 				} else {
-					logger.error(`Fuse box ${id} contained invalid DMX channel dmxFixed=${box.dmxFixed}`);
+					logger.error(`Fuse box ${id} contained invalid DMX channel dmxFuseFixed=${box.dmxFuseFixed}`);
 				}
 			} else {
-				if (CHANNELS[box.dmxBroken]) {
-					fireEvent(CHANNELS[box.dmxBroken]);
+				if (CHANNELS[box.dmxFuseBroken]) {
+					fireEvent(CHANNELS[box.dmxFuseBroken]);
 				} else {
-					logger.error(`Fuse box ${id} contained invalid DMX channel dmxBroken=${box.dmxBroken}`);
+					logger.error(`Fuse box ${id} contained invalid DMX channel dmxFuseBroken=${box.dmxFuseBroken}`);
 				}
 			}
 		}
 	}
 });
-
 
 // Cause life support tasks to fail if fuse blowing has failed
 watch(['data', 'box'], (boxes, previousBoxes, state) => {
@@ -35,9 +34,9 @@ watch(['data', 'box'], (boxes, previousBoxes, state) => {
 		const previous = previousBoxes[id];
 		if (previous && box.fuses && box.failed && !isEqual(box.failed, previous.failed)) {
 			const count = box.failed.length;
-			const breakCount = Math.ceil(count/3);
+			const breakCount = Math.ceil(count / 3);
 			logger.info(`${count} fuses failed to blow in ${box.id}, breaking ${breakCount} life support tasks`);
-			for (let i=0; i<breakCount; i++) {
+			for (let i = 0; i < breakCount; i++) {
 				breakTask();
 			}
 		}
@@ -62,4 +61,3 @@ function breakTask() {
 		status: 'broken',
 	});
 }
-
