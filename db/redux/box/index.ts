@@ -6,6 +6,7 @@ import driftingValueBlobs from './driftingValue';
 import buttonboard from './buttonboard';
 import reactorWiring from './reactorWiring';
 import bigbattery from './bigbattery';
+import kick from './kick';
 
 const blobs = [
 	...airlock,
@@ -15,5 +16,6 @@ const blobs = [
 	...buttonboard,
 	...reactorWiring,
 	...bigbattery,
+	...kick,
 ];
 blobs.forEach(saveBlob);

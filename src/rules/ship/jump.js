@@ -155,10 +155,12 @@ function breakJumpCoolingSystem() {
 
 function chargeBigBatteryIfConnected() {
 	const box = store.getState().data.box.bigbattery;
+	const regulator_task = store.getState().data.task.thermic_fusion_regulator;
+	const charge_level = regulator_task.status === 'broken' ? regulator_task.battery_charge_level_when_broken : 100;
 	if (isBatteryConnected(box, BigBatteryLocation.ENGINEERING)) {
 		saveBlob({
 			...box,
-			capacity_percent: 100,
+			capacity_percent: charge_level,
 		});
 	}
 }
