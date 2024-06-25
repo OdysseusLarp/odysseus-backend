@@ -1,7 +1,6 @@
 import { logger } from '@/logger';
 import { saveBlob } from '@/rules/helpers';
 import store, { watch } from '@/store/store';
-import e from 'express';
 
 import { Client } from 'tplink-smarthome-api';
 
@@ -51,6 +50,11 @@ export async function processDmxSignal(signal: string): Promise<void> {
 }
 
 export function initializeTplinkScanning() {
+	if (process.env.DISABLE_TPLINK_SCANNING) {
+		logger.info('TP-link scanning is disabled');
+		return;
+	}
+
 	// Scan initially after 10 secs, then once every 10 mins, or whenever config changes
 	setTimeout(scanTplinkDevices, 1000 * 10);
 	setInterval(scanTplinkDevices, 1000 * 60 * 10);
