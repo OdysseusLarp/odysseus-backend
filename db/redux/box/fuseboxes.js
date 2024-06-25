@@ -64,9 +64,11 @@ const tasks = [
 		description:
 			'Life support fuses have blown in medbay.\n\nReplace broken fuses as instructed in Ship knowledge database code SQ-3 or operation manual page 2.2-38.',
 		location: 'Upper deck, medbay',
-		map: 'upper-6.png',
-		mapX: 80,
-		mapY: 40,
+		map: 'deck2',
+		mapX: 135,
+		mapY: 1350,
+		mapPosX: 100,
+		mapPosY: 1280,
 	},
 	{
 		type: 'task',
@@ -74,10 +76,10 @@ const tasks = [
 		title: 'Life support fuse failure (engineering)',
 		description:
 			'Life support fuses have blown in engineering.\n\nReplace broken fuses as instructed in Ship knowledge database code SQ-3 or operation manual page 2.2-38.',
-		location: 'Upper deck, engineering storage',
-		map: 'upper-4.png',
-		mapX: 230,
-		mapY: 50,
+		location: 'Upper deck, engineering room',
+		map: 'deck2',
+		mapX: 730,
+		mapY: 1890,
 	},
 	{
 		type: 'task',
@@ -86,9 +88,9 @@ const tasks = [
 		description:
 			'Life support fuses have blown in bridge.\n\nReplace broken fuses as instructed in Ship knowledge database code SQ-3 or operation manual page 2.2-38.',
 		location: 'Upper deck, bridge',
-		map: 'upper-2.png',
-		mapX: 140,
-		mapY: 100,
+		map: 'deck2',
+		mapX: 200,
+		mapY: 1090,
 	},
 	{
 		type: 'task',
@@ -96,21 +98,21 @@ const tasks = [
 		title: 'Life support fuse failure (science lab)',
 		description:
 			'Life support fuses have blown in science lab.\n\nReplace broken fuses as instructed in Ship knowledge database code SQ-3 or operation manual page 2.2-38.',
-		location: 'Lower deck, science lab',
-		map: 'lower-13.png',
-		mapX: 350,
-		mapY: 200,
+		location: 'Upper deck, science lab',
+		map: 'deck2',
+		mapX: 1160,
+		mapY: 770,
 	},
 	{
 		type: 'task',
 		id: 'fusebox_lounge',
-		title: 'Life support fuse failure (celestial lounge)',
+		title: 'Life support fuse failure (armory)',
 		description:
-			'Life support fuses have blown in celestial lounge.\n\nReplace broken fuses as instructed in Ship knowledge database code SQ-3 or operation manual page 2.2-38.',
-		location: "Upper deck, officer's lounge",
-		map: 'upper-9.png',
-		mapX: 250,
-		mapY: 220,
+			'Life support fuses have blown in armory.\n\nReplace broken fuses as instructed in Ship knowledge database code SQ-3 or operation manual page 2.2-38.',
+		location: 'Lower deck, armory',
+		map: 'deck1',
+		mapX: 500,
+		mapY: 1600,
 	},
 ];
 
