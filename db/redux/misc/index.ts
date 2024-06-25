@@ -84,6 +84,14 @@ const blobs: unknown[] = [
 			ABCDEF123456: 'BEACON-1',
 		},
 	},
+	{
+		type: 'misc',
+		id: 'starcaller_game',
+		description: 'Starcaller Unity game state',
+		first_task_started: false,
+		second_task_finished: false,
+		third_task_finished: false,
+	},
 ];
 
 blobs.forEach(saveBlob);
