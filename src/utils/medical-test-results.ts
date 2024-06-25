@@ -79,7 +79,7 @@ export function getBloodTestResultText(resultsModel: any) {
 	const hcgStatus = getHCGStatus(hcg);
 	const acnEnzymeStatus = getACNEnzymeStatus(acnEnzyme);
 
-	return `**Blood test results:**
+	return `542 **Blood test results:**
 
 	Blood type: ${bloodType}
 
@@ -102,5 +102,5 @@ export function getBloodTestResultText(resultsModel: any) {
 
 export function getGeneSampleResultText(personId: string) {
 	const filename = getGeneSampleFilename(personId);
-	return `**Gene sample results:** <a href="${filename}" target="_blank">Click here to view the results</a>`;
+	return `542 **Gene sample results:** <a href="${filename}" target="_blank">Click here to view the results</a> _[Close the result window by pressing CTRL + W]_*`;
 }
