@@ -98,10 +98,12 @@ for (let i = 0; i < 5; i++) {
 		title: `Front shield recalibration ${code}`,
 		description: '...',
 		description_template: `Front shield generator ${code} needs to be recalibrated for optimal performance. New optimal state is {{code}}. Refer to Ship knowledge database code FSB-38 or Operations manual page 2.2-4 for instructions.`,
-		location: 'Upper deck, corridor',
-		map: 'upper-6.png',
-		mapX: 420,
-		mapY: 60,
+		location: 'Upper deck, corridor next to bridge',
+		map: 'deck2',
+		mapX: 480,
+		mapY: 1030,
+		mapPosX: 180,
+		mapPosY: 955,
 	});
 }
 
@@ -137,10 +139,12 @@ for (let i = 0; i < 5; i++) {
 		title: `Rear shield recalibration ${code}`,
 		description: '...',
 		description_template: `Rear shield generator ${code} needs to be recalibrated for optimal performance. New optimal state is {{code}}. Refer to Ship knowledge database code FSB-38 or Operations manual page 2.2-4 for instructions.`,
-		location: 'Upper deck, corridor',
-		map: 'upper-6.png',
-		mapX: 420,
-		mapY: 60,
+		location: 'Upper deck, corridor next to bridge',
+		map: 'deck2',
+		mapX: 480,
+		mapY: 1030,
+		mapPosX: 180,
+		mapPosY: 955,
 	});
 }
 
@@ -177,10 +181,12 @@ for (let i = 0; i < 4; i++) {
 		title: `Missile system frequency modulator ${code}`,
 		description: '...',
 		description_template: `Missile system frequency modulator ${code} requires frequency modulation recalibration. Recalibrate to Initiation Point {{initiationPoint}} and Activation Interval {{activationInterval}}. Refer to Ship knowledge database code MSSS-19 or Operations manual page 2.10-5 for instructions.`,
-		location: 'Upper deck, corridor',
-		map: 'upper-6.png',
-		mapX: 420,
-		mapY: 60,
+		location: 'Upper deck, corridor next to bridge',
+		map: 'deck2',
+		mapX: 480,
+		mapY: 1030,
+		mapPosX: 180,
+		mapPosY: 955,
 	});
 }
 
@@ -215,16 +221,18 @@ for (let i = 0; i < 2; i++) {
 		title: `Beam and missile guidance matrix ${code}`,
 		description: '...',
 		description_template: `Beam Weapons Missile System guidance matrix ${code} requires synchronization to pattern {{code}}. Refer to Ship knowledge database code TRS-18 or Operations manual page 2.9-9 for instructions.`,
-		location: 'Upper deck, corridor',
-		map: 'upper-6.png',
-		mapX: 420,
-		mapY: 60,
+		location: 'Upper deck, corridor next to bridge',
+		map: 'deck2',
+		mapX: 480,
+		mapY: 1030,
+		mapPosX: 180,
+		mapPosY: 955,
 	});
 }
 
 // Beam weapons tasks
 
-for (let i = 0; i < 3; i++) {
+for (let i = 0; i < 4; i++) {
 	const code = `B0${i + 1}`;
 	const id = `beamweapons_btn_${code}`;
 
@@ -253,10 +261,12 @@ for (let i = 0; i < 3; i++) {
 		title: `Beam Weapon charging and discharging ${code}`,
 		description: '...',
 		description_template: `Beam Weapon charging and discharging section ${code} requires reconfiguration to Charging mode {{charging_mode}} and Discharging mode {{discharging_mode}}. Refer to Ship knowledge database code SMB-39 or Operations manual page 2.9-5 for instructions.`,
-		location: 'Upper deck, corridor',
-		map: 'upper-6.png',
-		mapX: 420,
-		mapY: 60,
+		location: 'Upper deck, corridor next to bridge',
+		map: 'deck2',
+		mapX: 480,
+		mapY: 1030,
+		mapPosX: 180,
+		mapPosY: 955,
 	});
 }
 
