@@ -162,9 +162,12 @@ export const CHANNELS = {
 	ThermicFusionRegulatorFixed: 321,
 
 	// Manually triggered events
+	__MANUAL_EVENTS__: 0,
 	AnomalyJumpIncoming: 330,
 	DeepspaceSignalDetected: 331,
 	Solaris7Transmission: 332,
+	EndingMusic: 333,
+	ThermicFusionRegulatorAnnouncement: 334,
 } as const;
 
 type Channel = (typeof CHANNELS)[keyof typeof CHANNELS];
