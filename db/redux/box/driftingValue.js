@@ -33,6 +33,7 @@ blobs.push({
 		adjustUpAmount: 0.3,       // amount to adjust up per call (pressure rise)
 		adjustDownAmount: 1,       // amount to adjust down per call (pressure release)
 		probDriftDown: 0.66,       // probability drift will go downwards (otherwise upward)
+		pressureLimit: 110,        // pressure limit to adjust down
 	},
 
 	presets: {
