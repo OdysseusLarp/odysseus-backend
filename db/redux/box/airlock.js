@@ -14,49 +14,18 @@ blobs.push({
 	last_command_at: 0, // last command timestamp
 
 	config: {
-		linked_task_type: 'box', // type of task that controls whether door can open
-		linked_task_id: null,    // ID of task that controls whether door can open
-		auto_close_delay: 15000,   // milliseconds before door closes automatically (0 = never)
-		pressure_curve: 'sigmoid', // adjustment applied to player-visible pressure value
-		title_bar_text: null,      // shown in an extra bar at the top of the UI, if set
-		confirm_close_message: null,  // confirm close action in admin UI (set for main airlock!)
-		// transition durations (milliseconds)
-		transition_times: {
-			open: 5000,
-			close: 5000,
-			malfunction: 15000,
-			pressurize: 33000,
-			depressurize: 32000,
-		},
+		title_bar_text: 'Hangar Bay', // shown in an extra bar at the top of the UI, if set
+		allow_depressurize: false,    // should the depressurize button be shown in the player UI?
+		auto_close_delay: 15000,      // milliseconds before door closes automatically (0 = never)
 		// DMX events to fire on transition start
 		dmx_events: {
 			open: 'HangarBayDoorUnlock',
 			close: 'HangarBayDoorLock',
-			malfunction: 'HangarBayDoorMalfunction',
-			pressurize: 'HangarBayPressurize',
-			depressurize: 'HangarBayDepressurize',
 		},
+		// custom transition durations (milliseconds)
+		transition_times: {},
 		// custom UI strings
-		messages: {
-			// main status box messages
-		  status_open: 'Door unlocked',
-		  status_opening: 'Unlocking door',
-		  status_closing: 'Locking door',
-		  status_malfunction: 'Door malfunction',
-			status_closed: 'Door locked',
-			status_vacuum: 'Open to space',
-		  // door status messages
-		  door_open: 'Unlocked',
-		  door_opening: 'Unlocking',
-		  door_closing: 'Locking',
-		  door_closed: 'Locked',
-		  // button actions
-		  button_open: '<< Unlock door >>',
-		  button_close: '>> Lock door <<',
-		  // countdown titles
-		  countdown_opening: 'Unlocking door in',
-		  countdown_closing: 'Locking door in',
-		},
+		messages: {},
 	},
 });
 
@@ -74,32 +43,23 @@ blobs.push({
 	last_command_at: 0, // last command timestamp
 
 	config: {
-		linked_task_type: 'box', // type of task that controls whether door can open
-		linked_task_id: null,    // ID of task that controls whether door can open
-		auto_close_delay: 0,     // milliseconds before door closes automatically (0 = never)
-		pressure_curve: 'sqrt',  // adjustment applied to player-visible pressure value
-		title_bar_text: null,  // shown in an extra bar at the top of the UI, if set
-		confirm_close_message: 'Warning: Closing will physically lower door! Make sure nobody stands below!',  // confirm close action in admin UI (set for main airlock!)
-		// transition durations (milliseconds)
-		transition_times: {
-			open: 8000,
-			close: 32000,
-			malfunction: 2000,
-			pressurize: 52000,
-			depressurize: 601500,
-		},
+		title_bar_text: 'Airlock 01', // shown in an extra bar at the top of the UI, if set
+		allow_depressurize: true,     // should the depressurize button be shown in the player UI?
+		auto_close_delay: 0,          // milliseconds before door closes automatically (0 = never)
+		auto_pressurize_delay: 30000, // milliseconds before airlock re-pressurizes automatically (0 = never)
+		pressure_curve: 'sqrt',       // adjustment applied to player-visible pressure value
 		// DMX events to fire on transition start
 		dmx_events: {
-			open: 'MainAirlockDoorOpen',
-			close: 'MainAirlockDoorClose',
-			malfunction: 'MainAirlockDoorMalfunction',
+			open: 'MainAirlockDoorUnlock',
+			close: 'MainAirlockDoorLock',
 			pressurize: 'MainAirlockPressurize',
-			depressurize: 'MainAirlockDepressurize',
+			depressurize: 'MainAirlockDepressurizeSlow',
+			evacuate: 'MainAirlockDepressurizeFast',
 		},
+		// custom transition durations (milliseconds)
+		transition_times: {},
 		// custom UI strings
-		messages: {
-			status_vacuum: 'Open to space',
-		},
+		messages: {},
 	},
 });
 
