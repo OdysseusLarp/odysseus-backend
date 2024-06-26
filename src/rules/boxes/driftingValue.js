@@ -1,6 +1,6 @@
 import store from '../../store/store';
 import { getEmptyEpsilonClient } from '../../integrations/emptyepsilon/client';
-import { updateEmptyEpsilonState } from '../../index';
+import { updateEmptyEpsilonState } from '../../integrations/emptyepsilon/state';
 import { CHANNELS, fireEvent } from '../../dmx';
 import { logger } from '../../logger';
 import { interval } from '../helpers';

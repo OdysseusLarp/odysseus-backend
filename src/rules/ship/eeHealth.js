@@ -2,7 +2,7 @@ import { clamp, interval, chooseRandom } from '../helpers';
 import { breakTask } from '../breakTask';
 import store, { watch } from '../../store/store';
 import { getEmptyEpsilonClient } from '../../integrations/emptyepsilon/client';
-import { updateEmptyEpsilonState } from '../../index';
+import { updateEmptyEpsilonState } from '../../integrations/emptyepsilon/state';
 import { logger } from '../../logger';
 import { isFinite, isEqual } from 'lodash';
 
