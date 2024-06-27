@@ -1,13 +1,20 @@
-import { store, watch, getPath } from '../../store/store';
-import { CHANNELS, fireEvent } from '../../dmx';
+import { store, watch } from '@/store/store';
+import { CHANNELS, fireEvent } from '@/dmx';
 import { logger } from '../../logger';
 import { saveBlob, clamp, timeout } from '../helpers';
 
 const airlockNames = ['airlock_main', 'airlock_hangarbay'];
 
 const DEFAULT_CONFIG = {
-	transition_times: {},
 	dmx_events: {},
+};
+
+const DEFAULT_TRANSITION_TIMES = {
+	open: 6000,
+	close: 5000,
+	pressurize: 60000,
+	depressurize: 600000,
+	evacuate: 30000,
 };
 
 function now() {
@@ -21,11 +28,11 @@ function Airlock(airlockName) {
 
 	watch(['data', 'box', this.name], (data) => {
 		this.data = data;
-		if (data.command) this.command(data.command);
+		if (data?.command) this.command(data.command);
 	});
 
 	if (this.data.status === 'initial') {
-		this.patchData({ status: 'closed', pressure: 1.0, countdown_to: 0, command: null });
+		this.patchData({ status: 'closed', pressure: 1.0, countdown_to: 0, command: null, access_denied: false });
 	} else if (this.data.command) {
 		this.command(this.data.command);
 	}
@@ -56,10 +63,11 @@ Airlock.prototype = {
 		const commands = {
 			pressurize: ['pressurize'],
 			open: ['pressurize', 'openDoor', 'autoClose'],
-			depressurize: ['closeDoor', 'depressurize'],
+			depressurize: ['closeDoor', 'depressurize', 'autoPressurize'],
+			forceDepressurize: ['denyAccess', 'closeDoor', 'depressurize', 'autoPressurize', 'allowAccess'],
+			evacuate: ['closeDoor', 'evacuate', 'autoPressurize'], // faster depressurize for jettisoning objects
 			close: ['closeDoor'],
 			stop: ['stopTransition'],  // also used to force status
-			malfunction: ['malfunction'],  // mostly for testing
 		};
 		const sequence = commands[command] || ['unknownCommand'];
 
@@ -87,6 +95,10 @@ Airlock.prototype = {
 			else reject('cancel');
 		}, Math.max(0, time - start)));
 	},
+	transitionTime(transition) {
+		const transition_times = this.data?.config?.transition_times || {};
+		return transition_times[transition] || DEFAULT_TRANSITION_TIMES[transition] || 0;
+	},
 
 	async unknownCommand() {
 		logger.warn(`Airlock ${this.name} ignored unknown command "${this.data.command}"`);
@@ -94,12 +106,11 @@ Airlock.prototype = {
 
 	// transition animations
 	async pressurize() {
-		const config = this.data.config || DEFAULT_CONFIG;
 		const pressure = clamp(this.getPressure() || 0.0, 0, 1);
 		if (pressure >= 1) return;  // already pressurized
 
 		const startTime = now();
-		const endTime = startTime + config.transition_times.pressurize;
+		const endTime = startTime + this.transitionTime('pressurize');
 		logger.debug(`Airlock ${this.name} pressurizing from ${startTime} to ${endTime}`);
 
 		this.dmx('pressurize');
@@ -112,15 +123,20 @@ Airlock.prototype = {
 		this.patchData({ status: 'closed', countdown_to: 0, pressure: 1.0 });
 	},
 	async depressurize() {
-		const config = this.data.config || DEFAULT_CONFIG;
+		return await this.depressurizeImpl('depressurize');
+	},
+	async evacuate() {
+		return await this.depressurizeImpl('evacuate');
+	},
+	async depressurizeImpl(mode) {
 		const pressure = clamp(this.getPressure() || 0.0, 0, 1);
 		if (pressure <= 0) return;  // already depressurized
 
 		const startTime = now();
-		const endTime = startTime + config.transition_times.depressurize;
-		logger.debug(`Airlock ${this.name} depressurizing from ${startTime} to ${endTime}`);
+		const endTime = startTime + this.transitionTime(mode);
+		logger.debug(`Airlock ${this.name} depressurizing from ${startTime} to ${endTime} (mode: ${mode})`);
 
-		this.dmx('depressurize');
+		this.dmx(mode);
 		this.patchData({
 			status: 'depressurizing',
 			countdown_to: endTime,
@@ -130,12 +146,12 @@ Airlock.prototype = {
 		this.patchData({ status: 'vacuum', countdown_to: 0, pressure: 0.0 });
 	},
 	async openDoor() {
-		const config = this.data.config || DEFAULT_CONFIG, status = this.data.status;
+		const status = this.data.status;
 		if (status === 'open') return;  // already open
-		if (this.isBroken()) return await this.malfunction();
+		// if (this.isBroken()) return await this.malfunction();
 
 		const startTime = now();
-		const endTime = startTime + config.transition_times.open;
+		const endTime = startTime + this.transitionTime('open');
 		logger.debug(`Airlock ${this.name} opening from ${startTime} to ${endTime}`);
 
 		this.dmx('open');
@@ -143,24 +159,12 @@ Airlock.prototype = {
 		await this.waitUntil(endTime);
 		this.patchData({ status: 'open', countdown_to: 0, pressure: 1.0 });
 	},
-	async autoClose() {
-		const config = this.data.config || DEFAULT_CONFIG, status = this.data.status;
-		if (status !== 'open' || !(config.auto_close_delay > 0)) return;
-
-		const autoCloseTime = now() + config.auto_close_delay;
-		const endTime = autoCloseTime + config.transition_times.close;  // for UI countdown
-		logger.debug(`Airlock ${this.name} automatically closing at ${autoCloseTime}`);
-
-		this.patchData({ status: 'open', countdown_to: endTime, pressure: 1.0 });
-		await this.waitUntil(autoCloseTime);
-		return await this.closeDoor();
-	},
 	async closeDoor() {
-		const config = this.data.config || DEFAULT_CONFIG, status = this.data.status;
+		const status = this.data.status;
 		if (status !== 'open') return;  // not open?!
 
 		const startTime = now();
-		const endTime = startTime + config.transition_times.close;
+		const endTime = startTime + this.transitionTime('close');
 		logger.debug(`Airlock ${this.name} closing from ${startTime} to ${endTime}`);
 
 		this.dmx('close');
@@ -168,17 +172,29 @@ Airlock.prototype = {
 		await this.waitUntil(endTime);
 		this.patchData({ status: 'closed', countdown_to: 0, pressure: 1.0 });
 	},
-	async malfunction() {
-		const config = this.data.config || DEFAULT_CONFIG;
+	async autoClose() {
+		const config = this.data.config || DEFAULT_CONFIG, status = this.data.status;
+		if (status !== 'open' || !(config.auto_close_delay > 0)) return;
 
-		const startTime = now();
-		const endTime = startTime + config.transition_times.malfunction;
-		logger.debug(`Airlock ${this.name} malfunction from ${startTime} to ${endTime}`);
+		const autoCloseTime = now() + config.auto_close_delay;
+		const endTime = autoCloseTime + this.transitionTime('close');  // for UI countdown
+		logger.debug(`Airlock ${this.name} automatically closing at ${autoCloseTime}`);
 
-		this.dmx('malfunction');
-		this.patchData({ status: 'malfunction', countdown_to: 0, pressure: 1.0 });
-		await this.waitUntil(endTime);
-		this.patchData({ status: 'closed', countdown_to: 0, pressure: 1.0 });
+		this.patchData({ status: 'open', countdown_to: endTime, pressure: 1.0 });
+		await this.waitUntil(autoCloseTime);
+		return await this.closeDoor();
+	},
+	async autoPressurize() {
+		const config = this.data.config || DEFAULT_CONFIG, status = this.data.status;
+		if (status !== 'vacuum' || !(config.auto_pressurize_delay > 0)) return;
+
+		const autoPressurizeTime = now() + config.auto_pressurize_delay;
+		const endTime = autoPressurizeTime + this.transitionTime('pressurize');  // for UI countdown
+		logger.debug(`Airlock ${this.name} automatically pressurizing at ${autoPressurizeTime}`);
+
+		this.patchData({ status: 'vacuum', countdown_to: endTime, pressure: 0.0 });
+		await this.waitUntil(autoPressurizeTime);
+		return await this.pressurize();
 	},
 	async stopTransition() {
 		const status = this.data.status;
@@ -192,6 +208,12 @@ Airlock.prototype = {
 			this.patchData({ status, countdown_to: 0, pressure: 1.0 });
 		}
 	},
+	async denyAccess() {
+		this.patchData({ access_denied: true });
+	},
+	async allowAccess() {
+		this.patchData({ access_denied: false });
+	},
 
 	// convert linear pressure ramp back to a numeric pressure value
 	getPressure() {
@@ -204,14 +226,6 @@ Airlock.prototype = {
 
 		const x = (t - pressure.t0) / (pressure.t1 - pressure.t0);
 		return pressure.p0 + x * (pressure.p1 - pressure.p0);
-	},
-
-	// is the linked task box broken?
-	isBroken() {
-		const config = this.data.config || DEFAULT_CONFIG;
-		const type = config.linked_task_type || 'box', id = config.linked_task_id;
-		if (!id) return false;
-		return getPath(['data', type, id, 'status']) === 'broken';
 	},
 };
 
