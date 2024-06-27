@@ -30,10 +30,10 @@ blobs.push({
 		sineMagnitude: 1,          // magnitude of sine wave
 		sineSpeed: 60,             // sine cycle time in seconds
 		driftDelayAfterAdjust: 60, // number of secs to pause drift after adjustment is done
-		adjustUpAmount: 0.3,       // amount to adjust up per call (pressure rise)
+		adjustUpAmount: 1.5,       // amount to adjust up per call (pressure rise)
 		adjustDownAmount: 1,       // amount to adjust down per call (pressure release)
 		probDriftDown: 0.66,       // probability drift will go downwards (otherwise upward)
-		pressureLimit: 110,        // pressure limit to adjust down
+		pressureLimit: 106,        // pressure limit to adjust down
 	},
 
 	presets: {
