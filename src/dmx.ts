@@ -168,6 +168,8 @@ export const CHANNELS = {
 	Solaris7Transmission: 332,
 	EndingMusic: 333,
 	ThermicFusionRegulatorAnnouncement: 334,
+	StarcallerLaunched: 335,
+	StarcallerEmp: 336,
 } as const;
 
 type Channel = (typeof CHANNELS)[keyof typeof CHANNELS];

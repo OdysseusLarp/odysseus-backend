@@ -70,13 +70,18 @@ blobs.push({
 [
 	{
 		id: 'hull_5fv6s_a',
+		id: 'hull_5fv6s_a',
 		type: 'game',
+		task: 'hull_5fv6s_a',
 		task: 'hull_5fv6s_a',
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
 			title: 'Fault in Argon quantum shift booster switchboard 5Fv6S A',
+			title: 'Fault in Argon quantum shift booster switchboard 5Fv6S A',
 			pages: [
+				'<p>Perform the manual task according to instructions.</p><p>In order to reroute the power with argon quantum shift booster switchboard 5Fv6S, change the wires into different slots to re-code the system.</p><p>The Argon quantum shift booster switchboard 5Fv6S is located in Engineering Technical Space. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions.</p>',
+				'<p>Set up the wires as follows:</p><ul><li>Wire A --> Slot 3</li><li>Wire B --> Slot C</li></ul>',
 				'<p>Perform the manual task according to instructions.</p><p>In order to reroute the power with argon quantum shift booster switchboard 5Fv6S, change the wires into different slots to re-code the system.</p><p>The Argon quantum shift booster switchboard 5Fv6S is located in Engineering Technical Space. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions.</p>',
 				'<p>Set up the wires as follows:</p><ul><li>Wire A --> Slot 3</li><li>Wire B --> Slot C</li></ul>',
 				'<p>Move to calibrating when complete.</p>'
@@ -90,13 +95,18 @@ blobs.push({
 	},
 	{
 		id: 'hull_5fv6s_b',
+		id: 'hull_5fv6s_b',
 		type: 'game',
+		task: 'hull_5fv6s_b',
 		task: 'hull_5fv6s_b',
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
 			title: 'Fault in Argon quantum shift booster switchboard 5Fv6S B',
+			title: 'Fault in Argon quantum shift booster switchboard 5Fv6S B',
 			pages: [
+				'<p>Perform the manual task according to instructions.</p><p>In order to reroute the power with argon quantum shift booster switchboard 5Fv6S, change the wires into different slots to re-code the system.</p><p>The Argon quantum shift booster switchboard 5Fv6S is located in Engineering Technical Space. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions.</p>',
+				'<p>Set up the wires as follows:</p><ul><li>Wire A --> Slot 1</li><li>Wire B --> Slot B</li></ul>',
 				'<p>Perform the manual task according to instructions.</p><p>In order to reroute the power with argon quantum shift booster switchboard 5Fv6S, change the wires into different slots to re-code the system.</p><p>The Argon quantum shift booster switchboard 5Fv6S is located in Engineering Technical Space. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions.</p>',
 				'<p>Set up the wires as follows:</p><ul><li>Wire A --> Slot 1</li><li>Wire B --> Slot B</li></ul>',
 				'<p>Move to calibrating when complete.</p>'
@@ -110,13 +120,18 @@ blobs.push({
 	},
 	{
 		id: 'hull_5fv6s_c',
+		id: 'hull_5fv6s_c',
 		type: 'game',
+		task: 'hull_5fv6s_c',
 		task: 'hull_5fv6s_c',
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
 			title: 'Fault in Argon quantum shift booster switchboard 5Fv6S C',
+			title: 'Fault in Argon quantum shift booster switchboard 5Fv6S C',
 			pages: [
+				'<p>Perform the manual task according to instructions.</p><p>In order to reroute the power with argon quantum shift booster switchboard 5Fv6S, change the wires into different slots to re-code the system.</p><p>The Argon quantum shift booster switchboard 5Fv6S is located in Engineering Technical Space. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions.</p>',
+				'<p>Set up the wires as follows:</p><ul><li>Wire A --> Slot 5</li></ul>',
 				'<p>Perform the manual task according to instructions.</p><p>In order to reroute the power with argon quantum shift booster switchboard 5Fv6S, change the wires into different slots to re-code the system.</p><p>The Argon quantum shift booster switchboard 5Fv6S is located in Engineering Technical Space. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions.</p>',
 				'<p>Set up the wires as follows:</p><ul><li>Wire A --> Slot 5</li></ul>',
 				'<p>Move to calibrating when complete.</p>'
@@ -130,18 +145,25 @@ blobs.push({
 	},
 	{
 		id: 'hull_5fv6s_d',
+		id: 'hull_5fv6s_d',
 		type: 'game',
+		task: 'hull_5fv6s_d',
 		task: 'hull_5fv6s_d',
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
 			title: 'Fault in Argon quantum shift booster switchboard 5Fv6S D',
+			title: 'Fault in Argon quantum shift booster switchboard 5Fv6S D',
 			pages: [
+				'<p>Perform the manual task according to instructions.</p><p>In order to reroute the power with argon quantum shift booster switchboard 5Fv6S, change the wires into different slots to re-code the system.</p><p>The Argon quantum shift booster switchboard 5Fv6S is located in Engineering Technical Space. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions.</p>',
+				'<p>Set up the wires as follows:</p><ul><li>Wire A --> Slot 6</li><li>Wire B --> Slot A</li></ul>',
+				'<p>Move to calibrating when complete.</p>'
 				'<p>Perform the manual task according to instructions.</p><p>In order to reroute the power with argon quantum shift booster switchboard 5Fv6S, change the wires into different slots to re-code the system.</p><p>The Argon quantum shift booster switchboard 5Fv6S is located in Engineering Technical Space. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions.</p>',
 				'<p>Set up the wires as follows:</p><ul><li>Wire A --> Slot 6</li><li>Wire B --> Slot A</li></ul>',
 				'<p>Move to calibrating when complete.</p>'
 			],
 			buttons: [
+				'Wiring instructions',
 				'Wiring instructions',
 				'Next',
 				'Calibrate'
@@ -150,18 +172,25 @@ blobs.push({
 	},
 	{
 		id: 'hull_5fv6s_e',
+		id: 'hull_5fv6s_e',
 		type: 'game',
+		task: 'hull_5fv6s_e',
 		task: 'hull_5fv6s_e',
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
 			title: 'Fault in Argon quantum shift booster switchboard 5Fv6S E',
+			title: 'Fault in Argon quantum shift booster switchboard 5Fv6S E',
 			pages: [
+				'<p>Perform the manual task according to instructions.</p><p>In order to reroute the power with argon quantum shift booster switchboard 5Fv6S, change the wires into different slots to re-code the system.</p><p>The Argon quantum shift booster switchboard 5Fv6S is located in Engineering Technical Space. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions.</p>',
+				'<p>Set up the wires as follows:</p><ul><li>Wire B --> Slot D</li></ul>',
+				'<p>Move to calibrating when complete.</p>'
 				'<p>Perform the manual task according to instructions.</p><p>In order to reroute the power with argon quantum shift booster switchboard 5Fv6S, change the wires into different slots to re-code the system.</p><p>The Argon quantum shift booster switchboard 5Fv6S is located in Engineering Technical Space. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions.</p>',
 				'<p>Set up the wires as follows:</p><ul><li>Wire B --> Slot D</li></ul>',
 				'<p>Move to calibrating when complete.</p>'
 			],
 			buttons: [
+				'Wiring instructions',
 				'Wiring instructions',
 				'Next',
 				'Calibrate'
@@ -170,13 +199,18 @@ blobs.push({
 	},
 	{
 		id: 'maneuvering_369_a',
+		id: 'maneuvering_369_a',
 		type: 'game',
+		task: 'maneuvering_369_a',
 		task: 'maneuvering_369_a',
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
 			title: 'Coordinate calibration unit 369GKY-a A',
+			title: 'Coordinate calibration unit 369GKY-a A',
 			pages: [
+				'<p>Perform the manual task according to instructions.</p><p>The wires need to be changed into different slots to re-code the system.</p><p>The Coordinate calibration unit 369GKY-a is located in the Armory. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions.</p>',
+				'<p>Set up the wires as follows:</p><ul><li>Wire HY --> Slot I8</li><li>Wire 63 --> Slot Q3-2</li></ul>',
 				'<p>Perform the manual task according to instructions.</p><p>The wires need to be changed into different slots to re-code the system.</p><p>The Coordinate calibration unit 369GKY-a is located in the Armory. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions.</p>',
 				'<p>Set up the wires as follows:</p><ul><li>Wire HY --> Slot I8</li><li>Wire 63 --> Slot Q3-2</li></ul>',
 				'<p>Move to calibrating when complete.</p>'
@@ -190,13 +224,20 @@ blobs.push({
 	},
 	{
 		id: 'maneuvering_369_b',
+	},
+	{
+		id: 'maneuvering_369_b',
 		type: 'game',
+		task: 'maneuvering_369_b',
 		task: 'maneuvering_369_b',
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
 			title: 'Coordinate calibration unit 369GKY-a B',
+			title: 'Coordinate calibration unit 369GKY-a B',
 			pages: [
+				'<p>Perform the manual task according to instructions.</p><p>The wires need to be changed into different slots to re-code the system.</p><p>The Coordinate calibration unit 369GKY-a is located in the Armory. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions.</p>',
+				'<p>Set up the wires as follows:</p><ul><li>Wire HY --> Slot I5</li><li>Wire 54 --> Slot Q4-1</li></ul>',
 				'<p>Perform the manual task according to instructions.</p><p>The wires need to be changed into different slots to re-code the system.</p><p>The Coordinate calibration unit 369GKY-a is located in the Armory. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions.</p>',
 				'<p>Set up the wires as follows:</p><ul><li>Wire HY --> Slot I5</li><li>Wire 54 --> Slot Q4-1</li></ul>',
 				'<p>Move to calibrating when complete.</p>'
@@ -210,13 +251,18 @@ blobs.push({
 	},
 	{
 		id: 'maneuvering_369_c',
+		id: 'maneuvering_369_c',
 		type: 'game',
+		task: 'maneuvering_369_c',
 		task: 'maneuvering_369_c',
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
 			title: 'Coordinate calibration unit 369GKY-a C',
+			title: 'Coordinate calibration unit 369GKY-a C',
 			pages: [
+				'<p>Perform the manual task according to instructions.</p><p>The wires need to be changed into different slots to re-code the system.</p><p>The Coordinate calibration unit 369GKY-a is located in the Armory. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions.</p>',
+				'<p>Set up the wires as follows:</p><ul><li>Wire 54 --> Slot Q3-1</li></ul>',
 				'<p>Perform the manual task according to instructions.</p><p>The wires need to be changed into different slots to re-code the system.</p><p>The Coordinate calibration unit 369GKY-a is located in the Armory. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions.</p>',
 				'<p>Set up the wires as follows:</p><ul><li>Wire 54 --> Slot Q3-1</li></ul>',
 				'<p>Move to calibrating when complete.</p>'
@@ -230,18 +276,24 @@ blobs.push({
 	},
 	{
 		id: 'maneuvering_369_d',
+		id: 'maneuvering_369_d',
 		type: 'game',
+		task: 'maneuvering_369_d',
 		task: 'maneuvering_369_d',
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
 			title: 'Coordinate calibration unit 369GKY-a D',
+			title: 'Coordinate calibration unit 369GKY-a D',
 			pages: [
+				'<p>Perform the manual task according to instructions.</p><p>The wires need to be changed into different slots to re-code the system.</p><p>The Coordinate calibration unit 369GKY-a is located in the Armory. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions.</p>',
+				'<p>Set up the wires as follows:</p><ul><li>Wire HY --> Slot I4</li></ul>',
 				'<p>Perform the manual task according to instructions.</p><p>The wires need to be changed into different slots to re-code the system.</p><p>The Coordinate calibration unit 369GKY-a is located in the Armory. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions.</p>',
 				'<p>Set up the wires as follows:</p><ul><li>Wire HY --> Slot I4</li></ul>',
 				'<p>Move to calibrating when complete.</p>'
 			],
 			buttons: [
+				'Wiring instructions',
 				'Wiring instructions',
 				'Next',
 				'Calibrate'
@@ -250,7 +302,9 @@ blobs.push({
 	},
 	{
 		id: 'maneuvering_369_e',
+		id: 'maneuvering_369_e',
 		type: 'game',
+		task: 'maneuvering_369_e',
 		task: 'maneuvering_369_e',
 		game_config: 'manual',
 		status: 'fixed',
@@ -259,9 +313,12 @@ blobs.push({
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>The wires need to be changed into different slots to re-code the system.</p><p>The Coordinate calibration unit 369GKY-a is located in the Armory. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions.</p>',
 				'<p>Set up the wires as follows:</p><ul><li>HARD RESET: pull all of the wires out of their slots</li></ul>',
+				'<p>Perform the manual task according to instructions.</p><p>The wires need to be changed into different slots to re-code the system.</p><p>The Coordinate calibration unit 369GKY-a is located in the Armory. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions.</p>',
+				'<p>Set up the wires as follows:</p><ul><li>HARD RESET: pull all of the wires out of their slots</li></ul>',
 				'<p>Move to calibrating when complete.</p>'
 			],
 			buttons: [
+				'Wiring instructions',
 				'Wiring instructions',
 				'Next',
 				'Calibrate'
@@ -270,18 +327,24 @@ blobs.push({
 	},
 	{
 		id: 'hull_biofilter_a',
+		id: 'hull_biofilter_a',
 		type: 'game',
+		task: 'hull_biofilter_a',
 		task: 'hull_biofilter_a',
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
 			title: 'Dorsal ion bio-filter G5He A',
+			title: 'Dorsal ion bio-filter G5He A',
 			pages: [
+				'<p>Perform the manual task according to instructions.</p><p>Manually enter a code to re-attenuate the crystal core according to the following configuration.</p><p>The Dorsal ion bio-filter G5He is located in the corridoor. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions.</p>',
+				'<p>Set up the wires as follows:</p><ul><li>Wire 1 --> Slot B</li><li>Wire 3 --> Slot A</li></ul>',
 				'<p>Perform the manual task according to instructions.</p><p>Manually enter a code to re-attenuate the crystal core according to the following configuration.</p><p>The Dorsal ion bio-filter G5He is located in the corridoor. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions.</p>',
 				'<p>Set up the wires as follows:</p><ul><li>Wire 1 --> Slot B</li><li>Wire 3 --> Slot A</li></ul>',
 				'<p>Move to calibrating when complete.</p>'
 			],
 			buttons: [
+				'Wiring instructions',
 				'Wiring instructions',
 				'Next',
 				'Calibrate'
@@ -290,18 +353,24 @@ blobs.push({
 	},
 	{
 		id: 'hull_biofilter_b',
+		id: 'hull_biofilter_b',
 		type: 'game',
+		task: 'hull_biofilter_b',
 		task: 'hull_biofilter_b',
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
 			title: 'Dorsal ion bio-filter G5He B',
+			title: 'Dorsal ion bio-filter G5He B',
 			pages: [
+				'<p>Perform the manual task according to instructions.</p><p>Manually enter a code to re-attenuate the crystal core according to the following configuration.</p><p>The Dorsal ion bio-filter G5He is located in the corridoor. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions.</p>',
+				'<p>Set up the wires as follows:</p><ul><li>Wire 2 --> Slot A</li><li>Wire 3 --> Slot B</li></ul>',
 				'<p>Perform the manual task according to instructions.</p><p>Manually enter a code to re-attenuate the crystal core according to the following configuration.</p><p>The Dorsal ion bio-filter G5He is located in the corridoor. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions.</p>',
 				'<p>Set up the wires as follows:</p><ul><li>Wire 2 --> Slot A</li><li>Wire 3 --> Slot B</li></ul>',
 				'<p>Move to calibrating when complete.</p>'
 			],
 			buttons: [
+				'Wiring instructions',
 				'Wiring instructions',
 				'Next',
 				'Calibrate'
@@ -310,18 +379,24 @@ blobs.push({
 	},
 	{
 		id: 'hull_biofilter_c',
+		id: 'hull_biofilter_c',
 		type: 'game',
+		task: 'hull_biofilter_c',
 		task: 'hull_biofilter_c',
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
 			title: 'Dorsal ion bio-filter G5He C',
+			title: 'Dorsal ion bio-filter G5He C',
 			pages: [
+				'<p>Perform the manual task according to instructions.</p><p>Manually enter a code to re-attenuate the crystal core according to the following configuration.</p><p>The Dorsal ion bio-filter G5He is located in the corridoor. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions.</p>',
+				'<p>Set up the wires as follows:</p><ul><li>Wire 1 --> Slot A</li></ul>',
 				'<p>Perform the manual task according to instructions.</p><p>Manually enter a code to re-attenuate the crystal core according to the following configuration.</p><p>The Dorsal ion bio-filter G5He is located in the corridoor. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions.</p>',
 				'<p>Set up the wires as follows:</p><ul><li>Wire 1 --> Slot A</li></ul>',
 				'<p>Move to calibrating when complete.</p>'
 			],
 			buttons: [
+				'Wiring instructions',
 				'Wiring instructions',
 				'Next',
 				'Calibrate'
@@ -330,18 +405,24 @@ blobs.push({
 	},
 	{
 		id: 'hull_biofilter_d',
+		id: 'hull_biofilter_d',
 		type: 'game',
+		task: 'hull_biofilter_d',
 		task: 'hull_biofilter_d',
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
 			title: 'Dorsal ion bio-filter G5He D',
+			title: 'Dorsal ion bio-filter G5He D',
 			pages: [
+				'<p>Perform the manual task according to instructions.</p><p>Manually enter a code to re-attenuate the crystal core according to the following configuration.</p><p>The Dorsal ion bio-filter G5He is located in the corridoor. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions.</p>',
+				'<p>Set up the wires as follows:</p><ul><li>Wire 2 --> Slot A</li></ul>',
 				'<p>Perform the manual task according to instructions.</p><p>Manually enter a code to re-attenuate the crystal core according to the following configuration.</p><p>The Dorsal ion bio-filter G5He is located in the corridoor. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions.</p>',
 				'<p>Set up the wires as follows:</p><ul><li>Wire 2 --> Slot A</li></ul>',
 				'<p>Move to calibrating when complete.</p>'
 			],
 			buttons: [
+				'Wiring instructions',
 				'Wiring instructions',
 				'Next',
 				'Calibrate'
@@ -350,18 +431,24 @@ blobs.push({
 	},
 	{
 		id: 'hull_biofilter_e',
+		id: 'hull_biofilter_e',
 		type: 'game',
+		task: 'hull_biofilter_e',
 		task: 'hull_biofilter_e',
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
 			title: 'Dorsal ion bio-filter G5He E',
+			title: 'Dorsal ion bio-filter G5He E',
 			pages: [
+				'<p>Perform the manual task according to instructions.</p><p>Manually enter a code to re-attenuate the crystal core according to the following configuration.</p><p>The Dorsal ion bio-filter G5He is located in the corridoor. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions.</p>',
+				'<p>Set up the wires as follows:</p><ul><li>Wire 2 --> Slot B</li><li>Wire 3 --> Slot A</li></ul>',
 				'<p>Perform the manual task according to instructions.</p><p>Manually enter a code to re-attenuate the crystal core according to the following configuration.</p><p>The Dorsal ion bio-filter G5He is located in the corridoor. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions.</p>',
 				'<p>Set up the wires as follows:</p><ul><li>Wire 2 --> Slot B</li><li>Wire 3 --> Slot A</li></ul>',
 				'<p>Move to calibrating when complete.</p>'
 			],
 			buttons: [
+				'Wiring instructions',
 				'Wiring instructions',
 				'Next',
 				'Calibrate'
@@ -370,18 +457,24 @@ blobs.push({
 	},
 	{
 		id: 'frontshield_antilepton_a',
+		id: 'frontshield_antilepton_a',
 		type: 'game',
+		task: 'frontshield_antilepton_a',
 		task: 'frontshield_antilepton_a',
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
 			title: 'Front shield antilepton control switchboard 473f A',
+			title: 'Front shield antilepton control switchboard 473f A',
 			pages: [
+				'<p>Perform the manual task according to instructions.</p><p>The front shield antilepton commands need to be entered manually, in order to override the corrupted automated commands. It’s vital that all requested buttons on both switchboards are switched simultaneously.</p><p>The Front shield antilepton control switchboard 473f is located in the crew bar. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions.</p>',
+				'<p>Simultaneously switch the buttons as follows:</p><ul><li>Buttons AMP --> OFF</li><li>Buttons DRIVE --> ON</li></ul>',
 				'<p>Perform the manual task according to instructions.</p><p>The front shield antilepton commands need to be entered manually, in order to override the corrupted automated commands. It’s vital that all requested buttons on both switchboards are switched simultaneously.</p><p>The Front shield antilepton control switchboard 473f is located in the crew bar. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions.</p>',
 				'<p>Simultaneously switch the buttons as follows:</p><ul><li>Buttons AMP --> OFF</li><li>Buttons DRIVE --> ON</li></ul>',
 				'<p>Move to calibrating when complete.</p>'
 			],
 			buttons: [
+				'Wiring instructions',
 				'Wiring instructions',
 				'Next',
 				'Calibrate'
@@ -390,18 +483,24 @@ blobs.push({
 	},
 	{
 		id: 'frontshield_antilepton_b',
+		id: 'frontshield_antilepton_b',
 		type: 'game',
+		task: 'frontshield_antilepton_b',
 		task: 'frontshield_antilepton_b',
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
 			title: 'Front shield antilepton control switchboard 473f B',
+			title: 'Front shield antilepton control switchboard 473f B',
 			pages: [
+				'<p>Perform the manual task according to instructions.</p><p>The front shield antilepton commands need to be entered manually, in order to override the corrupted automated commands. It’s vital that all requested buttons on both switchboards are switched simultaneously.</p><p>The Front shield antilepton control switchboard 473f is located in the crew bar. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions.</p>',
+				'<p>Simultaneously switch the buttons as follows:</p><ul><li>Buttons EJCT --> ON</li></ul>',
 				'<p>Perform the manual task according to instructions.</p><p>The front shield antilepton commands need to be entered manually, in order to override the corrupted automated commands. It’s vital that all requested buttons on both switchboards are switched simultaneously.</p><p>The Front shield antilepton control switchboard 473f is located in the crew bar. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions.</p>',
 				'<p>Simultaneously switch the buttons as follows:</p><ul><li>Buttons EJCT --> ON</li></ul>',
 				'<p>Move to calibrating when complete.</p>'
 			],
 			buttons: [
+				'Wiring instructions',
 				'Wiring instructions',
 				'Next',
 				'Calibrate'
@@ -410,18 +509,24 @@ blobs.push({
 	},
 	{
 		id: 'frontshield_antilepton_c',
+		id: 'frontshield_antilepton_c',
 		type: 'game',
+		task: 'frontshield_antilepton_c',
 		task: 'frontshield_antilepton_c',
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
 			title: 'Front shield antilepton control switchboard 473f C',
+			title: 'Front shield antilepton control switchboard 473f C',
 			pages: [
+				'<p>Perform the manual task according to instructions.</p><p>The front shield antilepton commands need to be entered manually, in order to override the corrupted automated commands. It’s vital that all requested buttons on both switchboards are switched simultaneously.</p><p>The Front shield antilepton control switchboard 473f is located in the crew bar. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions.</p>',
+				'<p>Simultaneously switch the buttons as follows:</p><ul><li>Buttons THRUST --> OFF</li><li>Buttons EJCT --> OFF</li></ul>',
 				'<p>Perform the manual task according to instructions.</p><p>The front shield antilepton commands need to be entered manually, in order to override the corrupted automated commands. It’s vital that all requested buttons on both switchboards are switched simultaneously.</p><p>The Front shield antilepton control switchboard 473f is located in the crew bar. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions.</p>',
 				'<p>Simultaneously switch the buttons as follows:</p><ul><li>Buttons THRUST --> OFF</li><li>Buttons EJCT --> OFF</li></ul>',
 				'<p>Move to calibrating when complete.</p>'
 			],
 			buttons: [
+				'Wiring instructions',
 				'Wiring instructions',
 				'Next',
 				'Calibrate'
@@ -430,18 +535,24 @@ blobs.push({
 	},
 	{
 		id: 'frontshield_antilepton_d',
+		id: 'frontshield_antilepton_d',
 		type: 'game',
+		task: 'frontshield_antilepton_d',
 		task: 'frontshield_antilepton_d',
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
 			title: 'Front shield antilepton control switchboard 473f D',
+			title: 'Front shield antilepton control switchboard 473f D',
 			pages: [
+				'<p>Perform the manual task according to instructions.</p><p>The front shield antilepton commands need to be entered manually, in order to override the corrupted automated commands. It’s vital that all requested buttons on both switchboards are switched simultaneously.</p><p>The Front shield antilepton control switchboard 473f is located in the crew bar. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions.</p>',
+				'<p>Simultaneously switch the buttons as follows:</p><ul><li>Buttons AMP --> ON</li><li>Buttons THRUST --> ON</li></ul>',
 				'<p>Perform the manual task according to instructions.</p><p>The front shield antilepton commands need to be entered manually, in order to override the corrupted automated commands. It’s vital that all requested buttons on both switchboards are switched simultaneously.</p><p>The Front shield antilepton control switchboard 473f is located in the crew bar. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions.</p>',
 				'<p>Simultaneously switch the buttons as follows:</p><ul><li>Buttons AMP --> ON</li><li>Buttons THRUST --> ON</li></ul>',
 				'<p>Move to calibrating when complete.</p>'
 			],
 			buttons: [
+				'Wiring instructions',
 				'Wiring instructions',
 				'Next',
 				'Calibrate'
@@ -450,18 +561,24 @@ blobs.push({
 	},
 	{
 		id: 'frontshield_antilepton_e',
+		id: 'frontshield_antilepton_e',
 		type: 'game',
+		task: 'frontshield_antilepton_e',
 		task: 'frontshield_antilepton_e',
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
 			title: 'Front shield antilepton control switchboard 473f E',
+			title: 'Front shield antilepton control switchboard 473f E',
 			pages: [
+				'<p>Perform the manual task according to instructions.</p><p>The front shield antilepton commands need to be entered manually, in order to override the corrupted automated commands. It’s vital that all requested buttons on both switchboards are switched simultaneously.</p><p>The Front shield antilepton control switchboard 473f is located in the crew bar. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions.</p>',
+				'<p>Simultaneously switch the buttons as follows:</p><ul><li>Buttons DRIVE --> OFF</li></ul>',
 				'<p>Perform the manual task according to instructions.</p><p>The front shield antilepton commands need to be entered manually, in order to override the corrupted automated commands. It’s vital that all requested buttons on both switchboards are switched simultaneously.</p><p>The Front shield antilepton control switchboard 473f is located in the crew bar. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions.</p>',
 				'<p>Simultaneously switch the buttons as follows:</p><ul><li>Buttons DRIVE --> OFF</li></ul>',
 				'<p>Move to calibrating when complete.</p>'
 			],
 			buttons: [
+				'Wiring instructions',
 				'Wiring instructions',
 				'Next',
 				'Calibrate'
@@ -470,18 +587,24 @@ blobs.push({
 	},
 	{
 		id: 'missile_gammawave_a',
+		id: 'missile_gammawave_a',
 		type: 'game',
+		task: 'missile_gammawave_a',
 		task: 'missile_gammawave_a',
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
 			title: 'Gamma-wave missile driver control unit Rr34c A',
+			title: 'Gamma-wave missile driver control unit Rr34c A',
 			pages: [
+				'<p>Perform the manual task according to instructions.</p><p>A new command needs to be programmed according to the following configuration.</p><p>The Gamma-wave missile driver control unit Rr34c is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions.</p>',
+				'<p>Set up the wire as follows:</p><ul><li>Wire --> Slot +Vcc</li></ul>',
 				'<p>Perform the manual task according to instructions.</p><p>A new command needs to be programmed according to the following configuration.</p><p>The Gamma-wave missile driver control unit Rr34c is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions.</p>',
 				'<p>Set up the wire as follows:</p><ul><li>Wire --> Slot +Vcc</li></ul>',
 				'<p>Move to calibrating when complete.</p>'
 			],
 			buttons: [
+				'Wiring instructions',
 				'Wiring instructions',
 				'Next',
 				'Calibrate'
@@ -490,18 +613,24 @@ blobs.push({
 	},
 	{
 		id: 'missile_gammawave_b',
+		id: 'missile_gammawave_b',
 		type: 'game',
+		task: 'missile_gammawave_b',
 		task: 'missile_gammawave_b',
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
 			title: 'Gamma-wave missile driver control unit Rr34c B',
+			title: 'Gamma-wave missile driver control unit Rr34c B',
 			pages: [
+				'<p>Perform the manual task according to instructions.</p><p>A new command needs to be programmed according to the following configuration.</p><p>The Gamma-wave missile driver control unit Rr34c is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions.</p>',
+				'<p>Set up the wire as follows:</p><ul><li>Wire --> Slot W3</li></ul>',
 				'<p>Perform the manual task according to instructions.</p><p>A new command needs to be programmed according to the following configuration.</p><p>The Gamma-wave missile driver control unit Rr34c is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions.</p>',
 				'<p>Set up the wire as follows:</p><ul><li>Wire --> Slot W3</li></ul>',
 				'<p>Move to calibrating when complete.</p>'
 			],
 			buttons: [
+				'Wiring instructions',
 				'Wiring instructions',
 				'Next',
 				'Calibrate'
@@ -510,18 +639,24 @@ blobs.push({
 	},
 	{
 		id: 'missile_gammawave_c',
+		id: 'missile_gammawave_c',
 		type: 'game',
+		task: 'missile_gammawave_c',
 		task: 'missile_gammawave_c',
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
 			title: 'Gamma-wave missile driver control unit Rr34c C',
+			title: 'Gamma-wave missile driver control unit Rr34c C',
 			pages: [
+				'<p>Perform the manual task according to instructions.</p><p>A new command needs to be programmed according to the following configuration.</p><p>The Gamma-wave missile driver control unit Rr34c is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions.</p>',
+				'<p>Set up the wire as follows:</p><ul><li>Wire --> Slot Shield</li></ul>',
 				'<p>Perform the manual task according to instructions.</p><p>A new command needs to be programmed according to the following configuration.</p><p>The Gamma-wave missile driver control unit Rr34c is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions.</p>',
 				'<p>Set up the wire as follows:</p><ul><li>Wire --> Slot Shield</li></ul>',
 				'<p>Move to calibrating when complete.</p>'
 			],
 			buttons: [
+				'Wiring instructions',
 				'Wiring instructions',
 				'Next',
 				'Calibrate'
@@ -530,18 +665,24 @@ blobs.push({
 	},
 	{
 		id: 'missile_gammawave_d',
+		id: 'missile_gammawave_d',
 		type: 'game',
+		task: 'missile_gammawave_d',
 		task: 'missile_gammawave_d',
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
 			title: 'Gamma-wave missile driver control unit Rr34c D',
+			title: 'Gamma-wave missile driver control unit Rr34c D',
 			pages: [
+				'<p>Perform the manual task according to instructions.</p><p>A new command needs to be programmed according to the following configuration.</p><p>The Gamma-wave missile driver control unit Rr34c is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions.</p>',
+				'<p>Set up the wire as follows:</p><ul><li>Wire --> Slot W1</li></ul>',
 				'<p>Perform the manual task according to instructions.</p><p>A new command needs to be programmed according to the following configuration.</p><p>The Gamma-wave missile driver control unit Rr34c is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions.</p>',
 				'<p>Set up the wire as follows:</p><ul><li>Wire --> Slot W1</li></ul>',
 				'<p>Move to calibrating when complete.</p>'
 			],
 			buttons: [
+				'Wiring instructions',
 				'Wiring instructions',
 				'Next',
 				'Calibrate'
@@ -550,18 +691,24 @@ blobs.push({
 	},
 	{
 		id: 'missile_gammawave_e',
+		id: 'missile_gammawave_e',
 		type: 'game',
+		task: 'missile_gammawave_e',
 		task: 'missile_gammawave_e',
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
 			title: 'Gamma-wave missile driver control unit Rr34c E',
+			title: 'Gamma-wave missile driver control unit Rr34c E',
 			pages: [
+				'<p>Perform the manual task according to instructions.</p><p>A new command needs to be programmed according to the following configuration.</p><p>The Gamma-wave missile driver control unit Rr34c is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions.</p>',
+				'<p>Set up the wire as follows:</p><ul><li>Wire --> Slot P_GND</li></ul>',
 				'<p>Perform the manual task according to instructions.</p><p>A new command needs to be programmed according to the following configuration.</p><p>The Gamma-wave missile driver control unit Rr34c is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions.</p>',
 				'<p>Set up the wire as follows:</p><ul><li>Wire --> Slot P_GND</li></ul>',
 				'<p>Move to calibrating when complete.</p>'
 			],
 			buttons: [
+				'Wiring instructions',
 				'Wiring instructions',
 				'Next',
 				'Calibrate'
@@ -570,18 +717,24 @@ blobs.push({
 	},
 	{
 		id: 'missile_gluon_a',
+		id: 'missile_gluon_a',
 		type: 'game',
+		task: 'missile_gluon_a',
 		task: 'missile_gluon_a',
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
 			title: 'Gluon impulse control circuit switchboard 2f345G A',
+			title: 'Gluon impulse control circuit switchboard 2f345G A',
 			pages: [
+				'<p>Perform the manual task according to instructions.</p><p>The code for the switchboard needs to be changed so that the nitronium flow of the missile system can be re-routed, before it critically overloads the missile system’s power supply.</p><p>The Gluon impulse control circuit switchboard 2f345G is located in the armory. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions.</p>',
+				'<p>Switch to cable 3 and set up the wires as follows:</p><ul><li>Wire 1 --> Slot R</li><li>Wire 2 --> Slot X</li><li>Wire 3 --> Slot Y</li><li>Wire 4 --> Slot P</li><li>Wire 5 --> Slot Z</li><li>Wire 6 --> Slot Q</li><li>Wire 7 --> Slot U</li><li>Wire 8 --> Slot W</li></ul>',
 				'<p>Perform the manual task according to instructions.</p><p>The code for the switchboard needs to be changed so that the nitronium flow of the missile system can be re-routed, before it critically overloads the missile system’s power supply.</p><p>The Gluon impulse control circuit switchboard 2f345G is located in the armory. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions.</p>',
 				'<p>Switch to cable 3 and set up the wires as follows:</p><ul><li>Wire 1 --> Slot R</li><li>Wire 2 --> Slot X</li><li>Wire 3 --> Slot Y</li><li>Wire 4 --> Slot P</li><li>Wire 5 --> Slot Z</li><li>Wire 6 --> Slot Q</li><li>Wire 7 --> Slot U</li><li>Wire 8 --> Slot W</li></ul>',
 				'<p>Move to calibrating when complete.</p>'
 			],
 			buttons: [
+				'Wiring instructions',
 				'Wiring instructions',
 				'Next',
 				'Calibrate'
@@ -590,18 +743,24 @@ blobs.push({
 	},
 	{
 		id: 'missile_gluon_b',
+		id: 'missile_gluon_b',
 		type: 'game',
+		task: 'missile_gluon_b',
 		task: 'missile_gluon_b',
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
 			title: 'Gluon impulse control circuit switchboard 2f345G B',
+			title: 'Gluon impulse control circuit switchboard 2f345G B',
 			pages: [
+				'<p>Perform the manual task according to instructions.</p><p>The code for the switchboard needs to be changed so that the nitronium flow of the missile system can be re-routed, before it critically overloads the missile system’s power supply.</p><p>The Gluon impulse control circuit switchboard 2f345G is located in the armory. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions.</p>',
+				'<p>Switch to cable 5 and set up the wires as follows:</p><ul><li>Wire 1 --> Slot Q</li><li>Wire 2 --> Slot Z</li><li>Wire 3 --> Slot P</li><li>Wire 4 --> Slot W</li><li>Wire 5 --> Slot U</li><li>Wire 6 --> Slot R</li><li>Wire 7 --> Slot X</li><li>Wire 8 --> Slot Y</li></ul>',
 				'<p>Perform the manual task according to instructions.</p><p>The code for the switchboard needs to be changed so that the nitronium flow of the missile system can be re-routed, before it critically overloads the missile system’s power supply.</p><p>The Gluon impulse control circuit switchboard 2f345G is located in the armory. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions.</p>',
 				'<p>Switch to cable 5 and set up the wires as follows:</p><ul><li>Wire 1 --> Slot Q</li><li>Wire 2 --> Slot Z</li><li>Wire 3 --> Slot P</li><li>Wire 4 --> Slot W</li><li>Wire 5 --> Slot U</li><li>Wire 6 --> Slot R</li><li>Wire 7 --> Slot X</li><li>Wire 8 --> Slot Y</li></ul>',
 				'<p>Move to calibrating when complete.</p>'
 			],
 			buttons: [
+				'Wiring instructions',
 				'Wiring instructions',
 				'Next',
 				'Calibrate'
@@ -610,18 +769,24 @@ blobs.push({
 	},
 	{
 		id: 'missile_gluon_c',
+		id: 'missile_gluon_c',
 		type: 'game',
+		task: 'missile_gluon_c',
 		task: 'missile_gluon_c',
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
 			title: 'Gluon impulse control circuit switchboard 2f345G C',
+			title: 'Gluon impulse control circuit switchboard 2f345G C',
 			pages: [
+				'<p>Perform the manual task according to instructions.</p><p>The code for the switchboard needs to be changed so that the nitronium flow of the missile system can be re-routed, before it critically overloads the missile system’s power supply.</p><p>The Gluon impulse control circuit switchboard 2f345G is located in the armory. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions.</p>',
+				'<p>Switch to cable 1 and set up the wires as follows:</p><ul><li>Wire 1 --> Slot Z</li><li>Wire 2 --> Slot U</li><li>Wire 3 --> Slot R</li><li>Wire 4 --> Slot W</li><li>Wire 5 --> Slot Y</li><li>Wire 6 --> Slot P</li><li>Wire 7 --> Slot Q</li><li>Wire 8 --> Slot X</li></ul>',
 				'<p>Perform the manual task according to instructions.</p><p>The code for the switchboard needs to be changed so that the nitronium flow of the missile system can be re-routed, before it critically overloads the missile system’s power supply.</p><p>The Gluon impulse control circuit switchboard 2f345G is located in the armory. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions.</p>',
 				'<p>Switch to cable 1 and set up the wires as follows:</p><ul><li>Wire 1 --> Slot Z</li><li>Wire 2 --> Slot U</li><li>Wire 3 --> Slot R</li><li>Wire 4 --> Slot W</li><li>Wire 5 --> Slot Y</li><li>Wire 6 --> Slot P</li><li>Wire 7 --> Slot Q</li><li>Wire 8 --> Slot X</li></ul>',
 				'<p>Move to calibrating when complete.</p>'
 			],
 			buttons: [
+				'Wiring instructions',
 				'Wiring instructions',
 				'Next',
 				'Calibrate'
@@ -630,18 +795,24 @@ blobs.push({
 	},
 	{
 		id: 'missile_gluon_d',
+		id: 'missile_gluon_d',
 		type: 'game',
+		task: 'missile_gluon_d',
 		task: 'missile_gluon_d',
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
 			title: 'Gluon impulse control circuit switchboard 2f345G D',
+			title: 'Gluon impulse control circuit switchboard 2f345G D',
 			pages: [
+				'<p>Perform the manual task according to instructions.</p><p>The code for the switchboard needs to be changed so that the nitronium flow of the missile system can be re-routed, before it critically overloads the missile system’s power supply.</p><p>The Gluon impulse control circuit switchboard 2f345G is located in the armory. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions.</p>',
+				'<p>Switch to cable 2 and set up the wires as follows:</p><ul><li>Wire 1 --> Slot P</li><li>Wire 2 --> Slot Q</li><li>Wire 3 --> Slot R</li><li>Wire 4 --> Slot U</li><li>Wire 5 --> Slot W</li><li>Wire 6 --> Slot X</li><li>Wire 7 --> Slot Y</li><li>Wire 8 --> Slot Z</li></ul>',
 				'<p>Perform the manual task according to instructions.</p><p>The code for the switchboard needs to be changed so that the nitronium flow of the missile system can be re-routed, before it critically overloads the missile system’s power supply.</p><p>The Gluon impulse control circuit switchboard 2f345G is located in the armory. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions.</p>',
 				'<p>Switch to cable 2 and set up the wires as follows:</p><ul><li>Wire 1 --> Slot P</li><li>Wire 2 --> Slot Q</li><li>Wire 3 --> Slot R</li><li>Wire 4 --> Slot U</li><li>Wire 5 --> Slot W</li><li>Wire 6 --> Slot X</li><li>Wire 7 --> Slot Y</li><li>Wire 8 --> Slot Z</li></ul>',
 				'<p>Move to calibrating when complete.</p>'
 			],
 			buttons: [
+				'Wiring instructions',
 				'Wiring instructions',
 				'Next',
 				'Calibrate'
@@ -650,18 +821,24 @@ blobs.push({
 	},
 	{
 		id: 'missile_gluon_e',
+		id: 'missile_gluon_e',
 		type: 'game',
+		task: 'missile_gluon_e',
 		task: 'missile_gluon_e',
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
 			title: 'Gluon impulse control circuit switchboard 2f345G E',
+			title: 'Gluon impulse control circuit switchboard 2f345G E',
 			pages: [
+				'<p>Perform the manual task according to instructions.</p><p>The code for the switchboard needs to be changed so that the nitronium flow of the missile system can be re-routed, before it critically overloads the missile system’s power supply.</p><p>The Gluon impulse control circuit switchboard 2f345G is located in the armory. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions.</p>',
+				'<p>Switch to cable 4 and set up the wires as follows:</p><ul><li>Wire 1 --> Slot X</li><li>Wire 2 --> Slot Q</li><li>Wire 3 --> Slot Z</li><li>Wire 4 --> Slot Y</li><li>Wire 5 --> Slot U</li><li>Wire 6 --> Slot P</li><li>Wire 7 --> Slot W</li><li>Wire 8 --> Slot R</li></ul>',
 				'<p>Perform the manual task according to instructions.</p><p>The code for the switchboard needs to be changed so that the nitronium flow of the missile system can be re-routed, before it critically overloads the missile system’s power supply.</p><p>The Gluon impulse control circuit switchboard 2f345G is located in the armory. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions.</p>',
 				'<p>Switch to cable 4 and set up the wires as follows:</p><ul><li>Wire 1 --> Slot X</li><li>Wire 2 --> Slot Q</li><li>Wire 3 --> Slot Z</li><li>Wire 4 --> Slot Y</li><li>Wire 5 --> Slot U</li><li>Wire 6 --> Slot P</li><li>Wire 7 --> Slot W</li><li>Wire 8 --> Slot R</li></ul>',
 				'<p>Move to calibrating when complete.</p>'
 			],
 			buttons: [
+				'Wiring instructions',
 				'Wiring instructions',
 				'Next',
 				'Calibrate'
@@ -670,18 +847,24 @@ blobs.push({
 	},
 	{
 		id: 'impulse_power_charge_a',
+		id: 'impulse_power_charge_a',
 		type: 'game',
+		task: 'impulse_power_charge_a',
 		task: 'impulse_power_charge_a',
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
 			title: 'Impulse engine backup power regulation unit B33e - controlling the power charge A',
+			title: 'Impulse engine backup power regulation unit B33e - controlling the power charge A',
 			pages: [
+				'<p>Perform the manual task according to instructions.</p><p>Readjust the backup power charge to fix the anomaly.</p><p>The Impulse engine backup power regulation unit B33e is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions.</p>',
+				'<p>Twist the button to value:</p><ul><li>300 mA</li></ul>',
 				'<p>Perform the manual task according to instructions.</p><p>Readjust the backup power charge to fix the anomaly.</p><p>The Impulse engine backup power regulation unit B33e is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions.</p>',
 				'<p>Twist the button to value:</p><ul><li>300 mA</li></ul>',
 				'<p>Move to calibrating when complete.</p>'
 			],
 			buttons: [
+				'Wiring instructions',
 				'Wiring instructions',
 				'Next',
 				'Calibrate'
@@ -690,18 +873,24 @@ blobs.push({
 	},
 	{
 		id: 'impulse_power_charge_b',
+		id: 'impulse_power_charge_b',
 		type: 'game',
+		task: 'impulse_power_charge_b',
 		task: 'impulse_power_charge_b',
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
 			title: 'Impulse engine backup power regulation unit B33e - controlling the power charge B',
+			title: 'Impulse engine backup power regulation unit B33e - controlling the power charge B',
 			pages: [
+				'<p>Perform the manual task according to instructions.</p><p>Readjust the backup power charge to fix the anomaly.</p><p>The Impulse engine backup power regulation unit B33e is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions.</p>',
+				'<p>Twist the button to value:</p><ul><li>60 V</li></ul>',
 				'<p>Perform the manual task according to instructions.</p><p>Readjust the backup power charge to fix the anomaly.</p><p>The Impulse engine backup power regulation unit B33e is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions.</p>',
 				'<p>Twist the button to value:</p><ul><li>60 V</li></ul>',
 				'<p>Move to calibrating when complete.</p>'
 			],
 			buttons: [
+				'Wiring instructions',
 				'Wiring instructions',
 				'Next',
 				'Calibrate'
@@ -710,18 +899,24 @@ blobs.push({
 	},
 	{
 		id: 'impulse_power_charge_c',
+		id: 'impulse_power_charge_c',
 		type: 'game',
+		task: 'impulse_power_charge_c',
 		task: 'impulse_power_charge_c',
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
 			title: 'Impulse engine backup power regulation unit B33e - controlling the power charge C',
+			title: 'Impulse engine backup power regulation unit B33e - controlling the power charge C',
 			pages: [
+				'<p>Perform the manual task according to instructions.</p><p>Readjust the backup power charge to fix the anomaly.</p><p>The Impulse engine backup power regulation unit B33e is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions.</p>',
+				'<p>Twist the button to value:</p><ul><li>1500 mA</li></ul>',
 				'<p>Perform the manual task according to instructions.</p><p>Readjust the backup power charge to fix the anomaly.</p><p>The Impulse engine backup power regulation unit B33e is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions.</p>',
 				'<p>Twist the button to value:</p><ul><li>1500 mA</li></ul>',
 				'<p>Move to calibrating when complete.</p>'
 			],
 			buttons: [
+				'Wiring instructions',
 				'Wiring instructions',
 				'Next',
 				'Calibrate'
@@ -730,18 +925,24 @@ blobs.push({
 	},
 	{
 		id: 'impulse_power_charge_d',
+		id: 'impulse_power_charge_d',
 		type: 'game',
+		task: 'impulse_power_charge_d',
 		task: 'impulse_power_charge_d',
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
 			title: 'Impulse engine backup power regulation unit B33e - controlling the power charge D',
+			title: 'Impulse engine backup power regulation unit B33e - controlling the power charge D',
 			pages: [
+				'<p>Perform the manual task according to instructions.</p><p>Readjust the backup power charge to fix the anomaly.</p><p>The Impulse engine backup power regulation unit B33e is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions.</p>',
+				'<p>Twist the button to value:</p><ul><li>600 V</li></ul>',
 				'<p>Perform the manual task according to instructions.</p><p>Readjust the backup power charge to fix the anomaly.</p><p>The Impulse engine backup power regulation unit B33e is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions.</p>',
 				'<p>Twist the button to value:</p><ul><li>600 V</li></ul>',
 				'<p>Move to calibrating when complete.</p>'
 			],
 			buttons: [
+				'Wiring instructions',
 				'Wiring instructions',
 				'Next',
 				'Calibrate'
@@ -750,18 +951,24 @@ blobs.push({
 	},
 	{
 		id: 'impulse_power_charge_e',
+		id: 'impulse_power_charge_e',
 		type: 'game',
+		task: 'impulse_power_charge_e',
 		task: 'impulse_power_charge_e',
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
 			title: 'Impulse engine backup power regulation unit B33e - controlling the power charge E',
+			title: 'Impulse engine backup power regulation unit B33e - controlling the power charge E',
 			pages: [
+				'<p>Perform the manual task according to instructions.</p><p>Readjust the backup power charge to fix the anomaly.</p><p>The Impulse engine backup power regulation unit B33e is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions.</p>',
+				'<p>Twist the button to value:</p><ul><li>15 V</li></ul>',
 				'<p>Perform the manual task according to instructions.</p><p>Readjust the backup power charge to fix the anomaly.</p><p>The Impulse engine backup power regulation unit B33e is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions.</p>',
 				'<p>Twist the button to value:</p><ul><li>15 V</li></ul>',
 				'<p>Move to calibrating when complete.</p>'
 			],
 			buttons: [
+				'Wiring instructions',
 				'Wiring instructions',
 				'Next',
 				'Calibrate'
@@ -770,13 +977,18 @@ blobs.push({
 	},
 	{
 		id: 'impulse_backup_supply_a',
+		id: 'impulse_backup_supply_a',
 		type: 'game',
+		task: 'impulse_backup_supply_a',
 		task: 'impulse_backup_supply_a',
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
 			title: 'Impulse engine backup power regulation unit B33e - controlling power supply A',
+			title: 'Impulse engine backup power regulation unit B33e - controlling power supply A',
 			pages: [
+				'<p>Perform the manual task according to instructions.</p><p>Change the power supply to another setting to fix the anomaly.</p><p>The Impulse engine backup power regulation unit B33e is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions.</p>',
+				'<p>Push the button as follows:</p><ul><li>Kj</li></ul>',
 				'<p>Perform the manual task according to instructions.</p><p>Change the power supply to another setting to fix the anomaly.</p><p>The Impulse engine backup power regulation unit B33e is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions.</p>',
 				'<p>Push the button as follows:</p><ul><li>Kj</li></ul>',
 				'<p>Move to calibrating when complete.</p>'
@@ -2040,10 +2252,33 @@ blobs.push({
 	 },
 	 {
 		id: 'hull_5fv6s_b',
+	 {
+	 	id: 'hull_5fv6s_a',
+	 	type: 'task',
+	 	game: 'hull_5fv6s_a',
+	 	singleUse: false,
+	 	used: false,
+	 	eeType: 'hull',
+	 	eeHealth: 0.13,
+	 	status: 'initial',
+	 	calibrationCount: 2,
+	 	calibrationTime: 150,
+	 	title: 'Fault in Argon quantum shift booster switchboard 5Fv6S A',
+	 	description: 'A loss of energy of the hull systems has been observed. Power will need to be rerouted towards the hull’s argon quantum shift booster. Manual labor is needed. Perform the manual task according to instructions.The Argon quantum shift booster switchboard 5Fv6S is located in Engineering Technical Space. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions. Use HANSCA repair for calibration.',
+	 	location: 'Upper deck, Engine room',
+	 	map: 'deck2',
+	 	mapX: 780, // X coordinate in image
+	 	mapY: 1700 // Y coordinate in image
+	 },
+	 {
+		id: 'hull_5fv6s_b',
 		type: 'task',
+		game: 'hull_5fv6s_b',
 		game: 'hull_5fv6s_b',
 		singleUse: false,
 		used: false,
+		eeType: 'hull',
+		eeHealth: 0.12,
 		eeType: 'hull',
 		eeHealth: 0.12,
 		status: 'initial',
@@ -2055,13 +2290,23 @@ blobs.push({
 		map: 'deck2',
 		mapX: 780, // X coordinate in image
 	 	mapY: 1700 // Y coordinate in image
+		calibrationTime: 140,
+		title: 'Fault in Argon quantum shift booster switchboard 5Fv6S B',
+		description: 'A loss of energy of the hull systems has been observed. Power will need to be rerouted towards the hull’s argon quantum shift booster. Manual labor is needed. Perform the manual task according to instructions. The Argon quantum shift booster switchboard 5Fv6S is located in Engineering Technical Space. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions. Use HANSCA repair for calibration.',
+		location: 'Upper deck, engineering room',
+		map: 'deck2',
+		mapX: 780, // X coordinate in image
+	 	mapY: 1700 // Y coordinate in image
 	},
 	{
 		id: 'hull_5fv6s_c',
+		id: 'hull_5fv6s_c',
 		type: 'task',
+		game: 'hull_5fv6s_c',
 		game: 'hull_5fv6s_c',
 		singleUse: false,
 		used: false,
+		eeType: 'hull',
 		eeType: 'hull',
 		eeHealth: 0.15,
 		status: 'initial',
@@ -2073,13 +2318,25 @@ blobs.push({
 		map: 'deck2',
 		mapX: 780, // X coordinate in image
 	 	mapY: 1700 // Y coordinate in image
+		calibrationTime: 160,
+		title: 'Fault in Argon quantum shift booster switchboard 5Fv6S C',
+		description: 'A loss of energy of the hull systems has been observed. Power will need to be rerouted towards the hull’s argon quantum shift booster. Manual labor is needed. Perform the manual task according to instructions.The Argon quantum shift booster switchboard 5Fv6S is located in Engineering Technical Space. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions. Use HANSCA repair for calibration.',
+		location: 'Upper deck, engineering room',
+		map: 'deck2',
+		mapX: 780, // X coordinate in image
+	 	mapY: 1700 // Y coordinate in image
 	},
 	{
+		id: 'hull_5fv6s_d',
 		id: 'hull_5fv6s_d',
 		type: 'task',
 		game: 'hull_5fv6s_d',
 		singleUse: false,
+		game: 'hull_5fv6s_d',
+		singleUse: false,
 		used: false,
+		eeType: 'hull',
+		eeHealth: 0.12,
 		eeType: 'hull',
 		eeHealth: 0.12,
 		status: 'initial',
@@ -2091,10 +2348,21 @@ blobs.push({
 		map: 'deck2',
 		mapX: 780, // X coordinate in image
 	 	mapY: 1700 // Y coordinate in image
+		calibrationCount: 2,
+		calibrationTime: 150,
+		title: 'Fault in Argon quantum shift booster switchboard 5Fv6S D',
+		description: 'A loss of energy of the hull systems has been observed. Power will need to be rerouted towards the hull’s argon quantum shift booster. Manual labor is needed. Perform the manual task according to instructions.The Argon quantum shift booster switchboard 5Fv6S is located in Engineering Technical Space. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions. Use HANSCA repair for calibration.',
+		location: 'Upper deck, engineering room',
+		map: 'deck2',
+		mapX: 780, // X coordinate in image
+	 	mapY: 1700 // Y coordinate in image
 	},
 	{
 		id: 'hull_5fv6s_e',
+		id: 'hull_5fv6s_e',
 		type: 'task',
+		game: 'hull_5fv6s_e',
+		singleUse: false,
 		game: 'hull_5fv6s_e',
 		singleUse: false,
 		used: false,
@@ -2244,6 +2512,8 @@ blobs.push({
 		used: false,
 		eeType: 'hull',
 		eeHealth: 0.19,
+		eeType: 'hull',
+		eeHealth: 0.19,
 		status: 'initial',
 		calibrationCount: 2,
 		calibrationTime: 280,
@@ -2278,6 +2548,8 @@ blobs.push({
 		game: 'hull_biofilter_e',
 		singleUse: false,
 		used: false,
+		eeType: 'hull',
+		eeHealth: 0.2,
 		eeType: 'hull',
 		eeHealth: 0.2,
 		status: 'initial',
