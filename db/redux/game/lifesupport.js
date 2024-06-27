@@ -1,8 +1,8 @@
 const blobs = [];
 
-for (let i=0; i < 20; i++) {
-	const letter = String.fromCharCode('A'.charCodeAt(0) + Math.floor(i/4));
-	const number = i % 4 + 1;
+for (let i = 0; i < 20; i++) {
+	const letter = String.fromCharCode('A'.charCodeAt(0) + Math.floor(i / 4));
+	const number = (i % 4) + 1;
 	const code = letter + number;
 	const id = `lifesupport_${code}`;
 
@@ -19,26 +19,26 @@ for (let i=0; i < 20; i++) {
 	blobs.push({
 		type: 'task',
 		id,
-		lifesupportHealth: 0.0425,  // fixes 4.25%, total 85%
+		lifesupportHealth: 0.0425, // fixes 4.25%, total 85%
 		game: id,
 		status: 'fixed',
 		calibrationTime: 0,
 		calibrationCount: 0,
 		title: `Life support power line ${code}`,
 		description: `Life support power line ${code} maximum current has been overloaded. The power line currents must be redistributed using HANSCA.`,
-		location: 'Upper deck, maintenance tunnel',
-		map: 'upper-5.png',
-		mapX: 345,
-		mapY: 70,
+		location:
+			number < 2.5 ? 'Upper deck, Engineering room maintenance tunnel' : 'Upper deck, War room maintenance tunnel',
+		map: 'deck2',
+		mapX: number < 2.5 ? 860 : 600,
+		mapY: number < 2.5 ? 1890 : 1870,
 	});
 }
 
-
 blobs.push({
-	'type': 'game_config',
-	'id': 'lifesupport',
+	type: 'game_config',
+	id: 'lifesupport',
 
-	'default': {
+	default: {
 		initDescription: `<p>Life support power line maximum current has been overloaded. The power line currents must be redistributed.</p>
 		<p>Switch the enabled power lines on and off until the total current is zero. Each power line increases or decreases the total current with a specific amount.</p>`,
 		endDescription: 'Power line current redistribution successful!',
