@@ -167,6 +167,7 @@ export const CHANNELS = {
 	ThermicFusionRegulatorAnnouncement: 334,
 	StarcallerLaunched: 335,
 	StarcallerEmp: 336,
+	Anthem: 337,
 } as const;
 
 type Channel = (typeof CHANNELS)[keyof typeof CHANNELS];
