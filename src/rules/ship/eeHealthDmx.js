@@ -131,19 +131,24 @@ const previousHealthValue = {};
 function updateHealthValues() {
 	const ee = store.getState().data.ship.ee;
 	for (const [type, settings] of Object.entries(ALL_REPORTED_HEALTH_TYPES)) {
-		const value = getEEHealth(ee, type);
-		const status = getHealthStatus(type, value);
-		const dmxValue = mapDmxValue(value, settings.min ?? -1, settings.max ?? 1);
-		if (status !== previousHealthStatus[type]) {
-			const channel = settings[status];
-			if (channel) {
-				fireEvent(channel);
+		try {
+			const value = getEEHealth(ee, type);
+			const status = getHealthStatus(type, value);
+			const dmxValue = mapDmxValue(value, settings.min ?? -1, settings.max ?? 1);
+			if (status !== previousHealthStatus[type]) {
+				const channel = settings[status];
+				if (channel) {
+					fireEvent(channel);
+				}
+				previousHealthStatus[type] = status;
 			}
-			previousHealthStatus[type] = status;
-		}
-		if (value !== previousHealthValue[type]) {
-			setDmxValue(settings.value, dmxValue);
-			previousHealthValue[type] = value;
+			if (value !== previousHealthValue[type]) {
+				setDmxValue(settings.value, dmxValue);
+				previousHealthValue[type] = value;
+			}
+		} catch (err) {
+			logger.error(`Error updating health values for ${type}`, err);
+			continue;
 		}
 	}
 }
