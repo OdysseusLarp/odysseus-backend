@@ -75,7 +75,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Argon quantum shift booster switchboard 5Fv6S A',
+			title: 'Fault in Argon quantum shift booster switchboard 5Fv6S A',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>In order to reroute the power with argon quantum shift booster switchboard 5Fv6S, change the wires into different slots to re-code the system.</p><p>The Argon quantum shift booster switchboard 5Fv6S is located in Engineering Technical Space. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions.</p>',
 				'<p>Set up the wires as follows:</p><ul><li>Wire A --> Slot 3</li><li>Wire B --> Slot C</li></ul>',
@@ -95,7 +95,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Argon quantum shift booster switchboard 5Fv6S B',
+			title: 'Fault in Argon quantum shift booster switchboard 5Fv6S B',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>In order to reroute the power with argon quantum shift booster switchboard 5Fv6S, change the wires into different slots to re-code the system.</p><p>The Argon quantum shift booster switchboard 5Fv6S is located in Engineering Technical Space. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions.</p>',
 				'<p>Set up the wires as follows:</p><ul><li>Wire A --> Slot 1</li><li>Wire B --> Slot B</li></ul>',
@@ -115,7 +115,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Argon quantum shift booster switchboard 5Fv6S C',
+			title: 'Fault in Argon quantum shift booster switchboard 5Fv6S C',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>In order to reroute the power with argon quantum shift booster switchboard 5Fv6S, change the wires into different slots to re-code the system.</p><p>The Argon quantum shift booster switchboard 5Fv6S is located in Engineering Technical Space. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions.</p>',
 				'<p>Set up the wires as follows:</p><ul><li>Wire A --> Slot 5</li></ul>',
@@ -135,7 +135,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Argon quantum shift booster switchboard 5Fv6S D',
+			title: 'Fault in Argon quantum shift booster switchboard 5Fv6S D',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>In order to reroute the power with argon quantum shift booster switchboard 5Fv6S, change the wires into different slots to re-code the system.</p><p>The Argon quantum shift booster switchboard 5Fv6S is located in Engineering Technical Space. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions.</p>',
 				'<p>Set up the wires as follows:</p><ul><li>Wire A --> Slot 6</li><li>Wire B --> Slot A</li></ul>',
@@ -155,7 +155,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Argon quantum shift booster switchboard 5Fv6S E',
+			title: 'Fault in Argon quantum shift booster switchboard 5Fv6S E',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>In order to reroute the power with argon quantum shift booster switchboard 5Fv6S, change the wires into different slots to re-code the system.</p><p>The Argon quantum shift booster switchboard 5Fv6S is located in Engineering Technical Space. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions.</p>',
 				'<p>Set up the wires as follows:</p><ul><li>Wire B --> Slot D</li></ul>',
@@ -868,6 +868,107 @@ blobs.push({
 			]
 		}
 	},
+	{
+		id: 'frontshield_x41_a',
+		type: 'game',
+		task: 'frontshield_x41_a',
+		game_config: 'manual',
+		status: 'fixed',
+		config: {
+			title: 'Microfilament generator (model X41) anomalities A',
+			pages: [
+				'<p>Perform the manual task according to instructions.</p><p>The front shield’s gluon fetcher is showing anomalous power signatures and the power supply needs to be changed. Change the code for the generator in order to do so.</p><p>The Microfilament generator (model X41) is located in the engine room. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions.</p>',
+				'<p>Set up the wires as follows:</p><ul><li>Wire A --> Slot NC</li><li>Wire 2 --> Slot +V</li><li>Wire 3 --> Slot GR</li></ul>',
+				'<p>Move to calibrating when complete.</p>'
+			],
+			buttons: [
+				'Wiring instructions',
+				'Next',
+				'Calibrate'
+			]
+		}
+	},
+	{
+		id: 'frontshield_x41_b',
+		type: 'game',
+		task: 'frontshield_x41_b',
+		game_config: 'manual',
+		status: 'fixed',
+		config: {
+			title: 'Microfilament generator (model X41) anomalities B',
+			pages: [
+				'<p>Perform the manual task according to instructions.</p><p>The front shield’s gluon fetcher is showing anomalous power signatures and the power supply needs to be changed. Change the code for the generator in order to do so.</p><p>The Microfilament generator (model X41) is located in the engine room. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions.</p>',
+				'<p>Set up the wires as follows:</p><ul><li>Wire B --> Slot +V</li><li>Wire 1 --> Slot -V</li></ul>',
+				'<p>Move to calibrating when complete.</p>'
+			],
+			buttons: [
+				'Wiring instructions',
+				'Next',
+				'Calibrate'
+			]
+		}
+	},
+	{
+		id: 'frontshield_x41_c',
+		type: 'game',
+		task: 'frontshield_x41_c',
+		game_config: 'manual',
+		status: 'fixed',
+		config: {
+			title: 'Microfilament generator (model X41) anomalities C',
+			pages: [
+				'<p>Perform the manual task according to instructions.</p><p>The front shield’s gluon fetcher is showing anomalous power signatures and the power supply needs to be changed. Change the code for the generator in order to do so.</p><p>The Microfilament generator (model X41) is located in the engine room. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions.</p>',
+				'<p>Set up the wires as follows:</p><ul><li>Wire A --> Slot -V</li><li>Wire B --> Slot NC</li><li>Wire 3 --> Slot +V</li></ul>',
+				'<p>Move to calibrating when complete.</p>'
+			],
+			buttons: [
+				'Wiring instructions',
+				'Next',
+				'Calibrate'
+			]
+		}
+	},
+	{
+		id: 'frontshield_x41_d',
+		type: 'game',
+		task: 'frontshield_x41_d',
+		game_config: 'manual',
+		status: 'fixed',
+		config: {
+			title: 'Microfilament generator (model X41) anomalities D',
+			pages: [
+				'<p>Perform the manual task according to instructions.</p><p>The front shield’s gluon fetcher is showing anomalous power signatures and the power supply needs to be changed. Change the code for the generator in order to do so.</p><p>The Microfilament generator (model X41) is located in the engine room. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions.</p>',
+				'<p>Set up the wires as follows:</p><ul><li>Wire B --> Slot -V</li><li>Wire 1 --> Slot +V</li><li>Wire 2 --> Slot GR</li></ul>',
+				'<p>Move to calibrating when complete.</p>'
+			],
+			buttons: [
+				'Wiring instructions',
+				'Next',
+				'Calibrate'
+			]
+		}
+	},
+	{
+		id: 'frontshield_x41_e',
+		type: 'game',
+		task: 'frontshield_x41_e',
+		game_config: 'manual',
+		status: 'fixed',
+		config: {
+			title: 'Microfilament generator (model X41) anomalities E',
+			pages: [
+				'<p>Perform the manual task according to instructions.</p><p>The front shield’s gluon fetcher is showing anomalous power signatures and the power supply needs to be changed. Change the code for the generator in order to do so.</p><p>The Microfilament generator (model X41) is located in the engine room. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions.</p>',
+				'<p>Set up the wires as follows:</p><ul><li>Wire A --> Slot -V</li><li>Wire 2 --> Slot -V</li></ul>',
+				'<p>Move to calibrating when complete.</p>'
+			],
+			buttons: [
+				'Wiring instructions',
+				'Next',
+				'Calibrate'
+			]
+		}
+	},
+	
 	
 
 
@@ -875,24 +976,6 @@ blobs.push({
 
 // Manual tasks
 [
-	// {
-	// 	id: 'frontshield_55f_a',
-	// 	type: 'task',
-	// 	game: 'frontshield_55f_a',
-	// 	singleUse: false,
-	// 	used: false,
-	// 	eeType: 'frontshield',
-	// 	eeHealth: 0.15,
-	// 	status: 'initial',
-	// 	calibrationCount: 2,
-	// 	calibrationTime: 240,
-	// 	title: 'Re-coding Frontshield Unit Model 55f A, 55f A (F)',
-	// 	description: 'Manual labor is needed. The code unit model 55f is located in Engineering Technical Space. Refer to ESS Odysseus Operations Handbook page 2.1-1 for instructions. Use HANSCA repair to get new codes and calibration.',
-	// 	location: 'Upper deck, Engineering Technical Space',
-	// 	map: 'upper-10.png',
-	// 	mapX: 325,
-	// 	mapY: 400
-	// },
 	 {
 	 	id: 'hull_5fv6s_a',
 	 	type: 'task',
@@ -904,12 +987,12 @@ blobs.push({
 	 	status: 'initial',
 	 	calibrationCount: 2,
 	 	calibrationTime: 150,
-	 	title: 'Argon quantum shift booster switchboard 5Fv6S A',
-	 	description: 'A loss of energy of the hull systems has been observed. Power will need to be rerouted towards the hull’s argon quantum shift booster. Manual labor is needed. Perform the manual task according to instructions.</p><p>The Argon quantum shift booster switchboard 5Fv6S is located in Engineering Technical Space. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions. Use HANSCA repair for calibration.',
+	 	title: 'Fault in Argon quantum shift booster switchboard 5Fv6S A',
+	 	description: 'A loss of energy of the hull systems has been observed. Power will need to be rerouted towards the hull’s argon quantum shift booster. Manual labor is needed. Perform the manual task according to instructions.The Argon quantum shift booster switchboard 5Fv6S is located in Engineering Technical Space. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions. Use HANSCA repair for calibration.',
 	 	location: 'Upper deck, Engine room',
 	 	map: 'deck2',
-	 	mapX: 30, // X coordinate in image
-	 	mapY: 200 // Y coordinate in image
+	 	mapX: 780, // X coordinate in image
+	 	mapY: 1700 // Y coordinate in image
 	 },
 	 {
 		id: 'hull_5fv6s_b',
@@ -922,12 +1005,12 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 2,
 		calibrationTime: 140,
-		title: 'Argon quantum shift booster switchboard 5Fv6S B',
-		description: 'A loss of energy of the hull systems has been observed. Power will need to be rerouted towards the hull’s argon quantum shift booster. Manual labor is needed. Perform the manual task according to instructions.</p><p>The Argon quantum shift booster switchboard 5Fv6S is located in Engineering Technical Space. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions. Use HANSCA repair for calibration.',
+		title: 'Fault in Argon quantum shift booster switchboard 5Fv6S B',
+		description: 'A loss of energy of the hull systems has been observed. Power will need to be rerouted towards the hull’s argon quantum shift booster. Manual labor is needed. Perform the manual task according to instructions. The Argon quantum shift booster switchboard 5Fv6S is located in Engineering Technical Space. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions. Use HANSCA repair for calibration.',
 		location: 'Upper deck, engineering room',
 		map: 'deck2',
-		mapX: 30, // X coordinate in image
-		mapY: 200 // Y coordinate in image
+		mapX: 780, // X coordinate in image
+	 	mapY: 1700 // Y coordinate in image
 	},
 	{
 		id: 'hull_5fv6s_c',
@@ -940,12 +1023,12 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 2,
 		calibrationTime: 160,
-		title: 'Argon quantum shift booster switchboard 5Fv6S C',
-		description: 'A loss of energy of the hull systems has been observed. Power will need to be rerouted towards the hull’s argon quantum shift booster. Manual labor is needed. Perform the manual task according to instructions.</p><p>The Argon quantum shift booster switchboard 5Fv6S is located in Engineering Technical Space. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions. Use HANSCA repair for calibration.',
+		title: 'Fault in Argon quantum shift booster switchboard 5Fv6S C',
+		description: 'A loss of energy of the hull systems has been observed. Power will need to be rerouted towards the hull’s argon quantum shift booster. Manual labor is needed. Perform the manual task according to instructions.The Argon quantum shift booster switchboard 5Fv6S is located in Engineering Technical Space. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions. Use HANSCA repair for calibration.',
 		location: 'Upper deck, engineering room',
 		map: 'deck2',
-		mapX: 30, // X coordinate in image
-		mapY: 200 // Y coordinate in image
+		mapX: 780, // X coordinate in image
+	 	mapY: 1700 // Y coordinate in image
 	},
 	{
 		id: 'hull_5fv6s_d',
@@ -958,12 +1041,12 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 2,
 		calibrationTime: 150,
-		title: 'Argon quantum shift booster switchboard 5Fv6S D',
-		description: 'A loss of energy of the hull systems has been observed. Power will need to be rerouted towards the hull’s argon quantum shift booster. Manual labor is needed. Perform the manual task according to instructions.</p><p>The Argon quantum shift booster switchboard 5Fv6S is located in Engineering Technical Space. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions. Use HANSCA repair for calibration.',
+		title: 'Fault in Argon quantum shift booster switchboard 5Fv6S D',
+		description: 'A loss of energy of the hull systems has been observed. Power will need to be rerouted towards the hull’s argon quantum shift booster. Manual labor is needed. Perform the manual task according to instructions.The Argon quantum shift booster switchboard 5Fv6S is located in Engineering Technical Space. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions. Use HANSCA repair for calibration.',
 		location: 'Upper deck, engineering room',
 		map: 'deck2',
-		mapX: 30, // X coordinate in image
-		mapY: 200 // Y coordinate in image
+		mapX: 780, // X coordinate in image
+	 	mapY: 1700 // Y coordinate in image
 	},
 	{
 		id: 'hull_5fv6s_e',
@@ -976,12 +1059,12 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 2,
 		calibrationTime: 160,
-		title: 'Argon quantum shift booster switchboard 5Fv6S E',
-		description: 'A loss of energy of the hull systems has been observed. Power will need to be rerouted towards the hull’s argon quantum shift booster. Manual labor is needed. Perform the manual task according to instructions.</p><p>The Argon quantum shift booster switchboard 5Fv6S is located in Engineering Technical Space. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions. Use HANSCA repair for calibration.',
+		title: 'Fault in Argon quantum shift booster switchboard 5Fv6S E',
+		description: 'A loss of energy of the hull systems has been observed. Power will need to be rerouted towards the hull’s argon quantum shift booster. Manual labor is needed. Perform the manual task according to instructions.The Argon quantum shift booster switchboard 5Fv6S is located in Engineering Technical Space. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions. Use HANSCA repair for calibration.',
 		location: 'Upper deck, engineering room',
 		map: 'deck2',
-		mapX: 30, // X coordinate in image
-		mapY: 200 // Y coordinate in image
+		mapX: 780, // X coordinate in image
+	 	mapY: 1700 // Y coordinate in image
 	},
 	{
 		id: 'maneuvering_369_a',
@@ -995,11 +1078,11 @@ blobs.push({
 		calibrationCount: 1,
 		calibrationTime: 280,
 		title: 'Coordinate calibration unit 369GKY-a A',
-		description: 'This unit translates the calculations of recalibrations of the ship’s maneuvering system into code for small corrective adjustment actions. The system needs to be re-coded as there is an internal miscommunication within the maneuvering system. Manual labor is needed. Perform the manual task according to instructions.</p><p>The Coordinate calibration unit 369GKY-a is located in the Armory. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions. Use HANSCA repair for calibration.',
+		description: 'This unit translates the calculations of recalibrations of the ship’s maneuvering system into code for small corrective adjustment actions. The system needs to be re-coded as there is an internal miscommunication within the maneuvering system. Manual labor is needed. Perform the manual task according to instructions.The Coordinate calibration unit 369GKY-a is located in the Armory. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions. Use HANSCA repair for calibration.',
 		location: 'Lower deck, armory',
 		map: 'deck1',
-		mapX: 30, // X coordinate in image
-		mapY: 200 // Y coordinate in image
+		mapX: 520, // X coordinate in image
+		mapY: 1650 // Y coordinate in image
 	},
 	{
 		id: 'maneuvering_369_b',
@@ -1013,11 +1096,11 @@ blobs.push({
 		calibrationCount: 2,
 		calibrationTime: 145,
 		title: 'Coordinate calibration unit 369GKY-a B',
-		description: 'This unit translates the calculations of recalibrations of the ship’s maneuvering system into code for small corrective adjustment actions. The system needs to be re-coded as there is an internal miscommunication within the maneuvering system. Manual labor is needed. Perform the manual task according to instructions.</p><p>The Coordinate calibration unit 369GKY-a is located in the Armory. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions. Use HANSCA repair for calibration.',
+		description: 'This unit translates the calculations of recalibrations of the ship’s maneuvering system into code for small corrective adjustment actions. The system needs to be re-coded as there is an internal miscommunication within the maneuvering system. Manual labor is needed. Perform the manual task according to instructions.The Coordinate calibration unit 369GKY-a is located in the Armory. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions. Use HANSCA repair for calibration.',
 		location: 'Lower deck, armory',
 		map: 'deck1',
-		mapX: 30, // X coordinate in image
-		mapY: 200 // Y coordinate in image
+		mapX: 520, // X coordinate in image
+		mapY: 1650 // Y coordinate in image
 	},
 	{
 		id: 'maneuvering_369_c',
@@ -1031,11 +1114,11 @@ blobs.push({
 		calibrationCount: 2,
 		calibrationTime: 130,
 		title: 'Coordinate calibration unit 369GKY-a C',
-		description: 'This unit translates the calculations of recalibrations of the ship’s maneuvering system into code for small corrective adjustment actions. The system needs to be re-coded as there is an internal miscommunication within the maneuvering system. Manual labor is needed. Perform the manual task according to instructions.</p><p>The Coordinate calibration unit 369GKY-a is located in the Armory. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions. Use HANSCA repair for calibration.',
+		description: 'This unit translates the calculations of recalibrations of the ship’s maneuvering system into code for small corrective adjustment actions. The system needs to be re-coded as there is an internal miscommunication within the maneuvering system. Manual labor is needed. Perform the manual task according to instructions.The Coordinate calibration unit 369GKY-a is located in the Armory. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions. Use HANSCA repair for calibration.',
 		location: 'Lower deck, armory',
 		map: 'deck1',
-		mapX: 30, // X coordinate in image
-		mapY: 200 // Y coordinate in image
+		mapX: 520, // X coordinate in image
+		mapY: 1650 // Y coordinate in image
 	},
 	{
 		id: 'maneuvering_369_d',
@@ -1049,11 +1132,11 @@ blobs.push({
 		calibrationCount: 2,
 		calibrationTime: 110,
 		title: 'Coordinate calibration unit 369GKY-a D',
-		description: 'This unit translates the calculations of recalibrations of the ship’s maneuvering system into code for small corrective adjustment actions. The system needs to be re-coded as there is an internal miscommunication within the maneuvering system. Manual labor is needed. Perform the manual task according to instructions.</p><p>The Coordinate calibration unit 369GKY-a is located in the Armory. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions. Use HANSCA repair for calibration.',
+		description: 'This unit translates the calculations of recalibrations of the ship’s maneuvering system into code for small corrective adjustment actions. The system needs to be re-coded as there is an internal miscommunication within the maneuvering system. Manual labor is needed. Perform the manual task according to instructions.The Coordinate calibration unit 369GKY-a is located in the Armory. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions. Use HANSCA repair for calibration.',
 		location: 'Lower deck, armory',
 		map: 'deck1',
-		mapX: 30, // X coordinate in image
-		mapY: 200 // Y coordinate in image
+		mapX: 520, // X coordinate in image
+		mapY: 1650 // Y coordinate in image
 	},
 	{
 		id: 'maneuvering_369_e',
@@ -1067,11 +1150,11 @@ blobs.push({
 		calibrationCount: 1,
 		calibrationTime: 300,
 		title: 'Coordinate calibration unit 369GKY-a E',
-		description: 'This unit translates the calculations of recalibrations of the ship’s maneuvering system into code for small corrective adjustment actions. The system needs to be re-coded as there is an internal miscommunication within the maneuvering system. Manual labor is needed. Perform the manual task according to instructions.</p><p>The Coordinate calibration unit 369GKY-a is located in the Armory. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions. Use HANSCA repair for calibration.',
+		description: 'This unit translates the calculations of recalibrations of the ship’s maneuvering system into code for small corrective adjustment actions. The system needs to be re-coded as there is an internal miscommunication within the maneuvering system. Manual labor is needed. Perform the manual task according to instructions. The Coordinate calibration unit 369GKY-a is located in the Armory. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions. Use HANSCA repair for calibration.',
 		location: 'Lower deck, armory',
 		map: 'deck1',
-		mapX: 30, // X coordinate in image
-		mapY: 200 // Y coordinate in image
+		mapX: 520, // X coordinate in image
+		mapY: 1650 // Y coordinate in image
 	},
 	{
 		id: 'hull_biofilter_a',
@@ -1085,11 +1168,11 @@ blobs.push({
 		calibrationCount: 3,
 		calibrationTime: 200,
 		title: 'Dorsal ion bio-filter G5He A',
-		description: 'The filter is causing quantum surges that will overload the general hull system if not fixed. The filter’s crystal core needs to be re-attenuated. Manual labor is needed. Perform the manual task according to instructions.</p><p>The Dorsal ion bio-filter G5He is located in the corridoor. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions. Use HANSCA repair for calibration.',
+		description: 'The filter is causing quantum surges that will overload the general hull system if not fixed. The filter’s crystal core needs to be re-attenuated. Manual labor is needed. Perform the manual task according to instructions.The Dorsal ion bio-filter G5He is located in the corridoor. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions. Use HANSCA repair for calibration.',
 		location: 'Lower deck, corridoor',
 		map: 'deck1',
-		mapX: 30, // X coordinate in image
-		mapY: 200 // Y coordinate in image
+		mapX: 560, // X coordinate in image
+		mapY: 890 // Y coordinate in image
 	},
 	{
 		id: 'hull_biofilter_b',
@@ -1103,11 +1186,11 @@ blobs.push({
 		calibrationCount: 5,
 		calibrationTime: 110,
 		title: 'Dorsal ion bio-filter G5He B',
-		description: 'The filter is causing quantum surges that will overload the general hull system if not fixed. The filter’s crystal core needs to be re-attenuated. Manual labor is needed. Perform the manual task according to instructions.</p><p>The Dorsal ion bio-filter G5He is located in the corridoor. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions. Use HANSCA repair for calibration.',
+		description: 'The filter is causing quantum surges that will overload the general hull system if not fixed. The filter’s crystal core needs to be re-attenuated. Manual labor is needed. Perform the manual task according to instructions.The Dorsal ion bio-filter G5He is located in the corridoor. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions. Use HANSCA repair for calibration.',
 		location: 'Lower deck, corridoor',
 		map: 'deck1',
-		mapX: 30, // X coordinate in image
-		mapY: 200 // Y coordinate in image
+		mapX: 560, // X coordinate in image
+		mapY: 890 // Y coordinate in image
 	},
 	{
 		id: 'hull_biofilter_c',
@@ -1121,11 +1204,11 @@ blobs.push({
 		calibrationCount: 2,
 		calibrationTime: 280,
 		title: 'Dorsal ion bio-filter G5He C',
-		description: 'The filter is causing quantum surges that will overload the general hull system if not fixed. The filter’s crystal core needs to be re-attenuated. Manual labor is needed. Perform the manual task according to instructions.</p><p>The Dorsal ion bio-filter G5He is located in the corridoor. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions. Use HANSCA repair for calibration.',
+		description: 'The filter is causing quantum surges that will overload the general hull system if not fixed. The filter’s crystal core needs to be re-attenuated. Manual labor is needed. Perform the manual task according to instructions.The Dorsal ion bio-filter G5He is located in the corridoor. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions. Use HANSCA repair for calibration.',
 		location: 'Lower deck, corridoor',
 		map: 'deck1',
-		mapX: 30, // X coordinate in image
-		mapY: 200 // Y coordinate in image
+		mapX: 560, // X coordinate in image
+		mapY: 890 // Y coordinate in image
 	},
 	{
 		id: 'hull_biofilter_d',
@@ -1139,11 +1222,11 @@ blobs.push({
 		calibrationCount: 1,
 		calibrationTime: 598,
 		title: 'Dorsal ion bio-filter G5He D',
-		description: 'The filter is causing quantum surges that will overload the general hull system if not fixed. The filter’s crystal core needs to be re-attenuated. Manual labor is needed. Perform the manual task according to instructions.</p><p>The Dorsal ion bio-filter G5He is located in the corridoor. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions. Use HANSCA repair for calibration.',
+		description: 'The filter is causing quantum surges that will overload the general hull system if not fixed. The filter’s crystal core needs to be re-attenuated. Manual labor is needed. Perform the manual task according to instructions.The Dorsal ion bio-filter G5He is located in the corridoor. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions. Use HANSCA repair for calibration.',
 		location: 'Lower deck, corridoor',
 		map: 'deck1',
-		mapX: 30, // X coordinate in image
-		mapY: 200 // Y coordinate in image
+		mapX: 560, // X coordinate in image
+		mapY: 890 // Y coordinate in image
 	},
 	{
 		id: 'hull_biofilter_e',
@@ -1157,11 +1240,11 @@ blobs.push({
 		calibrationCount: 4,
 		calibrationTime: 140,
 		title: 'Dorsal ion bio-filter G5He E',
-		description: 'The filter is causing quantum surges that will overload the general hull system if not fixed. The filter’s crystal core needs to be re-attenuated. Manual labor is needed. Perform the manual task according to instructions.</p><p>The Dorsal ion bio-filter G5He is located in the corridoor. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions. Use HANSCA repair for calibration.',
+		description: 'The filter is causing quantum surges that will overload the general hull system if not fixed. The filter’s crystal core needs to be re-attenuated. Manual labor is needed. Perform the manual task according to instructions. The Dorsal ion bio-filter G5He is located in the corridoor. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions. Use HANSCA repair for calibration.',
 		location: 'Lower deck, corridoor',
 		map: 'deck1',
-		mapX: 30, // X coordinate in image
-		mapY: 200 // Y coordinate in image
+		mapX: 560, // X coordinate in image
+		mapY: 890 // Y coordinate in image
 	},
 	{
 		id: 'frontshield_antilepton_a',
@@ -1175,11 +1258,11 @@ blobs.push({
 		calibrationCount: 2,
 		calibrationTime: 240,
 		title: 'Front shield antilepton control switchboard 473f A',
-		description: 'This combination of switchboards manually controls the front shield antilepton commands. Manual labor is needed. Perform the manual task according to instructions.</p><p>The Front shield antilepton control switchboard 473f is located in the crew bar. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions. Use HANSCA repair for calibration.',
+		description: 'This combination of switchboards manually controls the front shield antilepton commands. Manual labor is needed. Perform the manual task according to instructions. The Front shield antilepton control switchboard 473f is located in the crew bar. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions. Use HANSCA repair for calibration.',
 		location: 'Lower deck, crew bar',
 		map: 'deck1',
-		mapX: 30, // X coordinate in image
-		mapY: 200 // Y coordinate in image
+		mapX: 750, // X coordinate in image
+		mapY: 1170 // Y coordinate in image
 	},
 	{
 		id: 'frontshield_antilepton_b',
@@ -1193,11 +1276,11 @@ blobs.push({
 		calibrationCount: 3,
 		calibrationTime: 160,
 		title: 'Front shield antilepton control switchboard 473f B',
-		description: 'This combination of switchboards manually controls the front shield antilepton commands. Manual labor is needed. Perform the manual task according to instructions.</p><p>The Front shield antilepton control switchboard 473f is located in the crew bar. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions. Use HANSCA repair for calibration.',
+		description: 'This combination of switchboards manually controls the front shield antilepton commands. Manual labor is needed. Perform the manual task according to instructions. The Front shield antilepton control switchboard 473f is located in the crew bar. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions. Use HANSCA repair for calibration.',
 		location: 'Lower deck, crew bar',
 		map: 'deck1',
-		mapX: 30, // X coordinate in image
-		mapY: 200 // Y coordinate in image
+		mapX: 750, // X coordinate in image
+		mapY: 1170 // Y coordinate in image
 	},
 	{
 		id: 'frontshield_antilepton_c',
@@ -1211,11 +1294,11 @@ blobs.push({
 		calibrationCount: 1,
 		calibrationTime: 420,
 		title: 'Front shield antilepton control switchboard 473f C',
-		description: 'This combination of switchboards manually controls the front shield antilepton commands. Manual labor is needed. Perform the manual task according to instructions.</p><p>The Front shield antilepton control switchboard 473f is located in the crew bar. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions. Use HANSCA repair for calibration.',
+		description: 'This combination of switchboards manually controls the front shield antilepton commands. Manual labor is needed. Perform the manual task according to instructions. The Front shield antilepton control switchboard 473f is located in the crew bar. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions. Use HANSCA repair for calibration.',
 		location: 'Lower deck, crew bar',
 		map: 'deck1',
-		mapX: 30, // X coordinate in image
-		mapY: 200 // Y coordinate in image
+		mapX: 750, // X coordinate in image
+		mapY: 1170 // Y coordinate in image
 	},
 	{
 		id: 'frontshield_antilepton_d',
@@ -1229,11 +1312,11 @@ blobs.push({
 		calibrationCount: 4,
 		calibrationTime: 120,
 		title: 'Front shield antilepton control switchboard 473f D',
-		description: 'This combination of switchboards manually controls the front shield antilepton commands. Manual labor is needed. Perform the manual task according to instructions.</p><p>The Front shield antilepton control switchboard 473f is located in the crew bar. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions. Use HANSCA repair for calibration.',
+		description: 'This combination of switchboards manually controls the front shield antilepton commands. Manual labor is needed. Perform the manual task according to instructions. The Front shield antilepton control switchboard 473f is located in the crew bar. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions. Use HANSCA repair for calibration.',
 		location: 'Lower deck, crew bar',
 		map: 'deck1',
-		mapX: 30, // X coordinate in image
-		mapY: 200 // Y coordinate in image
+		mapX: 750, // X coordinate in image
+		mapY: 1170 // Y coordinate in image
 	},
 	{
 		id: 'frontshield_antilepton_e',
@@ -1247,11 +1330,11 @@ blobs.push({
 		calibrationCount: 2,
 		calibrationTime: 220,
 		title: 'Front shield antilepton control switchboard 473f E',
-		description: 'This combination of switchboards manually controls the front shield antilepton commands. Manual labor is needed. Perform the manual task according to instructions.</p><p>The Front shield antilepton control switchboard 473f is located in the crew bar. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions. Use HANSCA repair for calibration.',
+		description: 'This combination of switchboards manually controls the front shield antilepton commands. Manual labor is needed. Perform the manual task according to instructions. The Front shield antilepton control switchboard 473f is located in the crew bar. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions. Use HANSCA repair for calibration.',
 		location: 'Lower deck, crew bar',
 		map: 'deck1',
-		mapX: 30, // X coordinate in image
-		mapY: 200 // Y coordinate in image
+		mapX: 750, // X coordinate in image
+		mapY: 1170 // Y coordinate in image
 	},
 	{
 		id: 'missile_gammawave_a',
@@ -1265,11 +1348,11 @@ blobs.push({
 		calibrationCount: 2,
 		calibrationTime: 205,
 		title: 'Gamma-wave missile driver control unit Rr34c A',
-		description: 'This unit functions as a secondary motherboard for programming some key commands for the gamma-wave missile system. Manual labor is needed. Perform the manual task according to instructions.</p><p>The Gamma-wave missile driver control unit Rr34c is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions. Use HANSCA repair for calibration.',
+		description: 'This unit functions as a secondary motherboard for programming some key commands for the gamma-wave missile system. Manual labor is needed. Perform the manual task according to instructions. The Gamma-wave missile driver control unit Rr34c is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions. Use HANSCA repair for calibration.',
 		location: 'Upper deck, bridge',
 		map: 'deck2',
-		mapX: 30, // X coordinate in image
-		mapY: 200 // Y coordinate in image
+		mapX: 280, // X coordinate in image
+		mapY: 990 // Y coordinate in image
 	},
 	{
 		id: 'missile_gammawave_b',
@@ -1283,11 +1366,11 @@ blobs.push({
 		calibrationCount: 1,
 		calibrationTime: 420,
 		title: 'Gamma-wave missile driver control unit Rr34c B',
-		description: 'This unit functions as a secondary motherboard for programming some key commands for the gamma-wave missile system. Manual labor is needed. Perform the manual task according to instructions.</p><p>The Gamma-wave missile driver control unit Rr34c is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions. Use HANSCA repair for calibration.',
+		description: 'This unit functions as a secondary motherboard for programming some key commands for the gamma-wave missile system. Manual labor is needed. Perform the manual task according to instructions. The Gamma-wave missile driver control unit Rr34c is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions. Use HANSCA repair for calibration.',
 		location: 'Upper deck, bridge',
 		map: 'deck2',
-		mapX: 30, // X coordinate in image
-		mapY: 200 // Y coordinate in image
+		mapX: 280, // X coordinate in image
+		mapY: 990 // Y coordinate in image
 	},
 	{
 		id: 'missile_gammawave_c',
@@ -1301,11 +1384,11 @@ blobs.push({
 		calibrationCount: 8,
 		calibrationTime: 52,
 		title: 'Gamma-wave missile driver control unit Rr34c C',
-		description: 'This unit functions as a secondary motherboard for programming some key commands for the gamma-wave missile system. Manual labor is needed. Perform the manual task according to instructions.</p><p>The Gamma-wave missile driver control unit Rr34c is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions. Use HANSCA repair for calibration.',
+		description: 'This unit functions as a secondary motherboard for programming some key commands for the gamma-wave missile system. Manual labor is needed. Perform the manual task according to instructions. The Gamma-wave missile driver control unit Rr34c is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions. Use HANSCA repair for calibration.',
 		location: 'Upper deck, bridge',
 		map: 'deck2',
-		mapX: 30, // X coordinate in image
-		mapY: 200 // Y coordinate in image
+		mapX: 280, // X coordinate in image
+		mapY: 990 // Y coordinate in image
 	},
 	{
 		id: 'missile_gammawave_d',
@@ -1319,11 +1402,11 @@ blobs.push({
 		calibrationCount: 3,
 		calibrationTime: 120,
 		title: 'Gamma-wave missile driver control unit Rr34c D',
-		description: 'This unit functions as a secondary motherboard for programming some key commands for the gamma-wave missile system. Manual labor is needed. Perform the manual task according to instructions.</p><p>The Gamma-wave missile driver control unit Rr34c is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions. Use HANSCA repair for calibration.',
+		description: 'This unit functions as a secondary motherboard for programming some key commands for the gamma-wave missile system. Manual labor is needed. Perform the manual task according to instructions. The Gamma-wave missile driver control unit Rr34c is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions. Use HANSCA repair for calibration.',
 		location: 'Upper deck, bridge',
 		map: 'deck2',
-		mapX: 30, // X coordinate in image
-		mapY: 200 // Y coordinate in image
+		mapX: 280, // X coordinate in image
+		mapY: 990 // Y coordinate in image
 	},
 	{
 		id: 'missile_gammawave_e',
@@ -1337,11 +1420,11 @@ blobs.push({
 		calibrationCount: 3,
 		calibrationTime: 135,
 		title: 'Gamma-wave missile driver control unit Rr34c E',
-		description: 'This unit functions as a secondary motherboard for programming some key commands for the gamma-wave missile system. Manual labor is needed. Perform the manual task according to instructions.</p><p>The Gamma-wave missile driver control unit Rr34c is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions. Use HANSCA repair for calibration.',
+		description: 'This unit functions as a secondary motherboard for programming some key commands for the gamma-wave missile system. Manual labor is needed. Perform the manual task according to instructions. The Gamma-wave missile driver control unit Rr34c is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions. Use HANSCA repair for calibration.',
 		location: 'Upper deck, bridge',
 		map: 'deck2',
-		mapX: 30, // X coordinate in image
-		mapY: 200 // Y coordinate in image
+		mapX: 280, // X coordinate in image
+		mapY: 990 // Y coordinate in image
 	},
 	{
 		id: 'missile_gluon_a',
@@ -1355,11 +1438,11 @@ blobs.push({
 		calibrationCount: 10,
 		calibrationTime: 50,
 		title: 'Gluon impulse control circuit switchboard 2f345G A',
-		description: 'This switchboard re-routes the nitronium flow from the gluon core to the missile propeller systems. In order to ensure the safety of the ship, the nitronium flow needs to be frequently re-routed. Manual labor is needed. Perform the manual task according to instructions.</p><p>The Gluon impulse control circuit switchboard 2f345G is located in the armory. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions. Use HANSCA repair for calibration.',
+		description: 'This switchboard re-routes the nitronium flow from the gluon core to the missile propeller systems. In order to ensure the safety of the ship, the nitronium flow needs to be frequently re-routed. Manual labor is needed. Perform the manual task according to instructions. The Gluon impulse control circuit switchboard 2f345G is located in the armory. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions. Use HANSCA repair for calibration.',
 		location: 'Lower deck, armory',
 		map: 'deck1',
-		mapX: 30, // X coordinate in image
-		mapY: 200 // Y coordinate in image
+		mapX: 560, // X coordinate in image
+		mapY: 1615 // Y coordinate in image
 	},
 	{
 		id: 'missile_gluon_b',
@@ -1373,11 +1456,11 @@ blobs.push({
 		calibrationCount: 2,
 		calibrationTime: 280,
 		title: 'Gluon impulse control circuit switchboard 2f345G B',
-		description: 'This switchboard re-routes the nitronium flow from the gluon core to the missile propeller systems. In order to ensure the safety of the ship, the nitronium flow needs to be frequently re-routed. Manual labor is needed. Perform the manual task according to instructions.</p><p>The Gluon impulse control circuit switchboard 2f345G is located in the armory. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions. Use HANSCA repair for calibration.',
+		description: 'This switchboard re-routes the nitronium flow from the gluon core to the missile propeller systems. In order to ensure the safety of the ship, the nitronium flow needs to be frequently re-routed. Manual labor is needed. Perform the manual task according to instructions. The Gluon impulse control circuit switchboard 2f345G is located in the armory. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions. Use HANSCA repair for calibration.',
 		location: 'Lower deck, armory',
 		map: 'deck1',
-		mapX: 30, // X coordinate in image
-		mapY: 200 // Y coordinate in image
+		mapX: 560, // X coordinate in image
+		mapY: 1615 // Y coordinate in image
 	},
 	{
 		id: 'missile_gluon_c',
@@ -1391,11 +1474,11 @@ blobs.push({
 		calibrationCount: 3,
 		calibrationTime: 190,
 		title: 'Gluon impulse control circuit switchboard 2f345G C',
-		description: 'This switchboard re-routes the nitronium flow from the gluon core to the missile propeller systems. In order to ensure the safety of the ship, the nitronium flow needs to be frequently re-routed. Manual labor is needed. Perform the manual task according to instructions.</p><p>The Gluon impulse control circuit switchboard 2f345G is located in the armory. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions. Use HANSCA repair for calibration.',
+		description: 'This switchboard re-routes the nitronium flow from the gluon core to the missile propeller systems. In order to ensure the safety of the ship, the nitronium flow needs to be frequently re-routed. Manual labor is needed. Perform the manual task according to instructions. The Gluon impulse control circuit switchboard 2f345G is located in the armory. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions. Use HANSCA repair for calibration.',
 		location: 'Lower deck, armory',
 		map: 'deck1',
-		mapX: 30, // X coordinate in image
-		mapY: 200 // Y coordinate in image
+		mapX: 560, // X coordinate in image
+		mapY: 1615 // Y coordinate in image
 	},
 	{
 		id: 'missile_gluon_d',
@@ -1409,11 +1492,11 @@ blobs.push({
 		calibrationCount: 5,
 		calibrationTime: 120,
 		title: 'Gluon impulse control circuit switchboard 2f345G D',
-		description: 'This switchboard re-routes the nitronium flow from the gluon core to the missile propeller systems. In order to ensure the safety of the ship, the nitronium flow needs to be frequently re-routed. Manual labor is needed. Perform the manual task according to instructions.</p><p>The Gluon impulse control circuit switchboard 2f345G is located in the armory. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions. Use HANSCA repair for calibration.',
+		description: 'This switchboard re-routes the nitronium flow from the gluon core to the missile propeller systems. In order to ensure the safety of the ship, the nitronium flow needs to be frequently re-routed. Manual labor is needed. Perform the manual task according to instructions. The Gluon impulse control circuit switchboard 2f345G is located in the armory. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions. Use HANSCA repair for calibration.',
 		location: 'Lower deck, armory',
 		map: 'deck1',
-		mapX: 30, // X coordinate in image
-		mapY: 200 // Y coordinate in image
+		mapX: 560, // X coordinate in image
+		mapY: 1615 // Y coordinate in image
 	},
 	{
 		id: 'missile_gluon_e',
@@ -1427,11 +1510,11 @@ blobs.push({
 		calibrationCount: 8,
 		calibrationTime: 70,
 		title: 'Gluon impulse control circuit switchboard 2f345G E',
-		description: 'This switchboard re-routes the nitronium flow from the gluon core to the missile propeller systems. In order to ensure the safety of the ship, the nitronium flow needs to be frequently re-routed. Manual labor is needed. Perform the manual task according to instructions.</p><p>The Gluon impulse control circuit switchboard 2f345G is located in the armory. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions. Use HANSCA repair for calibration.',
+		description: 'This switchboard re-routes the nitronium flow from the gluon core to the missile propeller systems. In order to ensure the safety of the ship, the nitronium flow needs to be frequently re-routed. Manual labor is needed. Perform the manual task according to instructions. The Gluon impulse control circuit switchboard 2f345G is located in the armory. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions. Use HANSCA repair for calibration.',
 		location: 'Lower deck, armory',
 		map: 'deck1',
-		mapX: 30, // X coordinate in image
-		mapY: 200 // Y coordinate in image
+		mapX: 560, // X coordinate in image
+		mapY: 1615 // Y coordinate in image
 	},
 	{
 		id: 'impulse_power_charge_a',
@@ -1444,12 +1527,12 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 2,
 		calibrationTime: 130,
-		title: 'Impulse engine backup power regulation unit B33e - controlling the power charge A',
-		description: 'This unit controls the backup power for the impulse engine. If any anomalies outside of the normal range occur, it may have a critical effect on the energy supply of the impulse engine. Manual labor is needed. Perform the manual task according to instructions.</p><p>The Impulse engine backup power regulation unit B33e is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions. Use HANSCA repair for calibration.',
+		title: 'IEPBR-unit B33e - controlling the power charge A',
+		description: 'This unit controls the backup power for the impulse engine. If any anomalies outside of the normal range occur, it may have a critical effect on the energy supply of the impulse engine. Manual labor is needed. Perform the manual task according to instructions. The Impulse engine backup power regulation unit B33e is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions. Use HANSCA repair for calibration.',
 		location: 'Upper deck, bridge',
 		map: 'deck2',
-		mapX: 30, // X coordinate in image
-		mapY: 200 // Y coordinate in image
+		mapX: 305, // X coordinate in image
+		mapY: 1200 // Y coordinate in image
 	},
 	{
 		id: 'impulse_power_charge_b',
@@ -1462,12 +1545,12 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 3,
 		calibrationTime: 90,
-		title: 'Impulse engine backup power regulation unit B33e - controlling the power charge B',
-		description: 'This unit controls the backup power for the impulse engine. If any anomalies outside of the normal range occur, it may have a critical effect on the energy supply of the impulse engine. Manual labor is needed. Perform the manual task according to instructions.</p><p>The Impulse engine backup power regulation unit B33e is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions. Use HANSCA repair for calibration.',
+		title: 'IEPBR-unit B33e - power charge B',
+		description: 'This unit controls the backup power for the impulse engine. If any anomalies outside of the normal range occur, it may have a critical effect on the energy supply of the impulse engine. Manual labor is needed. Perform the manual task according to instructions. The Impulse engine backup power regulation unit B33e is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions. Use HANSCA repair for calibration.',
 		location: 'Upper deck, bridge',
 		map: 'deck2',
-		mapX: 30, // X coordinate in image
-		mapY: 200 // Y coordinate in image
+		mapX: 305, // X coordinate in image
+		mapY: 1200 // Y coordinate in image
 	},
 	{
 		id: 'impulse_power_charge_c',
@@ -1480,12 +1563,12 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 1,
 		calibrationTime: 270,
-		title: 'Impulse engine backup power regulation unit B33e - controlling the power charge C',
-		description: 'This unit controls the backup power for the impulse engine. If any anomalies outside of the normal range occur, it may have a critical effect on the energy supply of the impulse engine. Manual labor is needed. Perform the manual task according to instructions.</p><p>The Impulse engine backup power regulation unit B33e is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions. Use HANSCA repair for calibration.',
+		title: 'IEPBR-unit B33e - power charge C',
+		description: 'This unit controls the backup power for the impulse engine. If any anomalies outside of the normal range occur, it may have a critical effect on the energy supply of the impulse engine. Manual labor is needed. Perform the manual task according to instructions. The Impulse engine backup power regulation unit B33e is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions. Use HANSCA repair for calibration.',
 		location: 'Upper deck, bridge',
 		map: 'deck2',
-		mapX: 30, // X coordinate in image
-		mapY: 200 // Y coordinate in image
+		mapX: 305, // X coordinate in image
+		mapY: 1200 // Y coordinate in image
 	},
 	{
 		id: 'impulse_power_charge_d',
@@ -1498,12 +1581,12 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 5,
 		calibrationTime: 50,
-		title: 'Impulse engine backup power regulation unit B33e - controlling the power charge D',
-		description: 'This unit controls the backup power for the impulse engine. If any anomalies outside of the normal range occur, it may have a critical effect on the energy supply of the impulse engine. Manual labor is needed. Perform the manual task according to instructions.</p><p>The Impulse engine backup power regulation unit B33e is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions. Use HANSCA repair for calibration.',
+		title: 'IEPBR-unit B33e - power charge D',
+		description: 'This unit controls the backup power for the impulse engine. If any anomalies outside of the normal range occur, it may have a critical effect on the energy supply of the impulse engine. Manual labor is needed. Perform the manual task according to instructions. The Impulse engine backup power regulation unit B33e is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions. Use HANSCA repair for calibration.',
 		location: 'Upper deck, bridge',
 		map: 'deck2',
-		mapX: 30, // X coordinate in image
-		mapY: 200 // Y coordinate in image
+		mapX: 305, // X coordinate in image
+		mapY: 1200 // Y coordinate in image
 	},
 	{
 		id: 'impulse_power_charge_e',
@@ -1516,12 +1599,12 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 10,
 		calibrationTime: 27,
-		title: 'Impulse engine backup power regulation unit B33e - controlling the power charge E',
-		description: 'This unit controls the backup power for the impulse engine. If any anomalies outside of the normal range occur, it may have a critical effect on the energy supply of the impulse engine. Manual labor is needed. Perform the manual task according to instructions.</p><p>The Impulse engine backup power regulation unit B33e is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions. Use HANSCA repair for calibration.',
+		title: 'IEPBR-unit B33e - power charge E',
+		description: 'This unit controls the backup power for the impulse engine. If any anomalies outside of the normal range occur, it may have a critical effect on the energy supply of the impulse engine. Manual labor is needed. Perform the manual task according to instructions. The Impulse engine backup power regulation unit B33e is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions. Use HANSCA repair for calibration.',
 		location: 'Upper deck, bridge',
 		map: 'deck2',
-		mapX: 30, // X coordinate in image
-		mapY: 200 // Y coordinate in image
+		mapX: 305, // X coordinate in image
+		mapY: 1200 // Y coordinate in imagee
 	},
 	{
 		id: 'impulse_backup_supply_a',
@@ -1534,12 +1617,12 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 2,
 		calibrationTime: 150,
-		title: 'Impulse engine backup power regulation unit B33e - controlling power supply A',
-		description: 'This unit controls the backup power for the impulse engine. If any anomalies outside of the normal range occur, it may have a critical effect on the energy supply of the impulse engine. Manual labor is needed. Perform the manual task according to instructions.</p><p>The Impulse engine backup power regulation unit B33e is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions. Use HANSCA repair for calibration.',
+		title: 'IEPBR-unit B33e - controlling power supply A',
+		description: 'This unit controls the backup power for the impulse engine. If any anomalies outside of the normal range occur, it may have a critical effect on the energy supply of the impulse engine. Manual labor is needed. Perform the manual task according to instructions. The Impulse engine backup power regulation unit B33e is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions. Use HANSCA repair for calibration.',
 		location: 'Upper deck, bridge',
 		map: 'deck2',
-		mapX: 30, // X coordinate in image
-		mapY: 200 // Y coordinate in image
+		mapX: 305, // X coordinate in image
+		mapY: 1200 // Y coordinate in image
 	},
 	{
 		id: 'impulse_backup_supply_b',
@@ -1552,12 +1635,12 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 8,
 		calibrationTime: 35,
-		title: 'Impulse engine backup power regulation unit B33e - controlling power supply B',
-		description: 'This unit controls the backup power for the impulse engine. If any anomalies outside of the normal range occur, it may have a critical effect on the energy supply of the impulse engine. Manual labor is needed. Perform the manual task according to instructions.</p><p>The Impulse engine backup power regulation unit B33e is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions. Use HANSCA repair for calibration.',
+		title: 'IEPBR-unit B33e - controlling power supply B',
+		description: 'This unit controls the backup power for the impulse engine. If any anomalies outside of the normal range occur, it may have a critical effect on the energy supply of the impulse engine. Manual labor is needed. Perform the manual task according to instructions. The Impulse engine backup power regulation unit B33e is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions. Use HANSCA repair for calibration.',
 		location: 'Upper deck, bridge',
 		map: 'deck2',
-		mapX: 30, // X coordinate in image
-		mapY: 200 // Y coordinate in image
+		mapX: 305, // X coordinate in image
+		mapY: 1200 // Y coordinate in image
 	},
 	{
 		id: 'impulse_backup_supply_c',
@@ -1570,12 +1653,12 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 5,
 		calibrationTime: 60,
-		title: 'Impulse engine backup power regulation unit B33e - controlling power supply C',
-		description: 'This unit controls the backup power for the impulse engine. If any anomalies outside of the normal range occur, it may have a critical effect on the energy supply of the impulse engine. Manual labor is needed. Perform the manual task according to instructions.</p><p>The Impulse engine backup power regulation unit B33e is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions. Use HANSCA repair for calibration.',
+		title: 'IEPBR-unit B33e - controlling power supply C',
+		description: 'This unit controls the backup power for the impulse engine. If any anomalies outside of the normal range occur, it may have a critical effect on the energy supply of the impulse engine. Manual labor is needed. Perform the manual task according to instructions. The Impulse engine backup power regulation unit B33e is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions. Use HANSCA repair for calibration.',
 		location: 'Upper deck, bridge',
 		map: 'deck2',
-		mapX: 30, // X coordinate in image
-		mapY: 200 // Y coordinate in image
+		mapX: 305, // X coordinate in image
+		mapY: 1200 // Y coordinate in image
 	},
 	{
 		id: 'impulse_backup_supply_d',
@@ -1588,12 +1671,12 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 1,
 		calibrationTime: 280,
-		title: 'Impulse engine backup power regulation unit B33e - controlling power supply D',
-		description: 'This unit controls the backup power for the impulse engine. If any anomalies outside of the normal range occur, it may have a critical effect on the energy supply of the impulse engine. Manual labor is needed. Perform the manual task according to instructions.</p><p>The Impulse engine backup power regulation unit B33e is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions. Use HANSCA repair for calibration.',
+		title: 'IEPBR-unit B33e - controlling power supply D',
+		description: 'This unit controls the backup power for the impulse engine. If any anomalies outside of the normal range occur, it may have a critical effect on the energy supply of the impulse engine. Manual labor is needed. Perform the manual task according to instructions. The Impulse engine backup power regulation unit B33e is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions. Use HANSCA repair for calibration.',
 		location: 'Upper deck, bridge',
 		map: 'deck2',
-		mapX: 30, // X coordinate in image
-		mapY: 200 // Y coordinate in image
+		mapX: 305, // X coordinate in image
+		mapY: 1200 // Y coordinate in image
 	},
 	{
 		id: 'beam_microfilament_ventilation',
@@ -1607,11 +1690,101 @@ blobs.push({
 		calibrationCount: 1,
 		calibrationTime: 60,
 		title: 'Isotopic microfilament ventilation unit Nu8-6',
-		description: 'This ventilation unit supports the regulation of the ventilation of the beam weapons system whenever the realignment of the delta-wave drive pedals bears a risk of overheating. Manual labor is needed. Perform the manual task according to instructions.</p><p>The Isotopic microfilament ventilation unit Nu8-6 is located in the Hive. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions. Use HANSCA repair for calibration.',
+		description: 'This ventilation unit supports the regulation of the ventilation of the beam weapons system whenever the realignment of the delta-wave drive pedals bears a risk of overheating. Manual labor is needed. Perform the manual task according to instructions. The Isotopic microfilament ventilation unit Nu8-6 is located in the Hive. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions. Use HANSCA repair for calibration.',
 		location: 'Upper deck, hive',
 		map: 'deck2',
-		mapX: 30, // X coordinate in image
-		mapY: 200 // Y coordinate in image
+		mapX: 950, // X coordinate in image
+		mapY: 600 // Y coordinate in image
+	},
+	{
+		id: 'frontshield_x41_a',
+		type: 'task',
+		game: 'frontshield_x41_a',
+		singleUse: false,
+		used: false,
+		eeType: 'frontshield',
+		eeHealth: 0.18,
+		status: 'initial',
+		calibrationCount: 3,
+		calibrationTime: 160,
+		title: 'Microfilament generator (model X41) anomalities A',
+		description: 'This generator is used for coding the command to increase or decrease the power supply to the front shield’s gluon fetcher when it is showing any kind of anomalous power signature. Manual labor is needed. Perform the manual task according to instructions. The Microfilament generator (model X41) is located in the engine room. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions. Use HANSCA repair for calibration.',
+		location: 'Upper deck, engineering room',
+		map: 'deck2',
+		mapX: 930, // X coordinate in image
+		mapY: 1840 // Y coordinate in image
+	},
+	{
+		id: 'frontshield_x41_b',
+		type: 'task',
+		game: 'frontshield_x41_a',
+		singleUse: false,
+		used: false,
+		eeType: 'frontshield',
+		eeHealth: 0.17,
+		status: 'initial',
+		calibrationCount: 2,
+		calibrationTime: 240,
+		title: 'Microfilament generator (model X41) anomalities B',
+		description: 'This generator is used for coding the command to increase or decrease the power supply to the front shield’s gluon fetcher when it is showing any kind of anomalous power signature. Manual labor is needed. Perform the manual task according to instructions. The Microfilament generator (model X41) is located in the engine room. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions. Use HANSCA repair for calibration.',
+		location: 'Upper deck, engineering room',
+		map: 'deck2',
+		mapX: 930, // X coordinate in image
+		mapY: 1840 // Y coordinate in image
+	},
+	{
+		id: 'frontshield_x41_c',
+		type: 'task',
+		game: 'frontshield_x41_c',
+		singleUse: false,
+		used: false,
+		eeType: 'frontshield',
+		eeHealth: 0.18,
+		status: 'initial',
+		calibrationCount: 4,
+		calibrationTime: 120,
+		title: 'Microfilament generator (model X41) anomalities C',
+		description: 'This generator is used for coding the command to increase or decrease the power supply to the front shield’s gluon fetcher when it is showing any kind of anomalous power signature. Manual labor is needed. Perform the manual task according to instructions. The Microfilament generator (model X41) is located in the engine room. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions. Use HANSCA repair for calibration.',
+		location: 'Upper deck, engineering room',
+		map: 'deck2',
+		mapX: 930, // X coordinate in image
+		mapY: 1840 // Y coordinate in image
+	},
+	{
+		id: 'frontshield_x41_d',
+		type: 'task',
+		game: 'frontshield_x41_d',
+		singleUse: false,
+		used: false,
+		eeType: 'frontshield',
+		eeHealth: 0.19,
+		status: 'initial',
+		calibrationCount: 2,
+		calibrationTime: 240,
+		title: 'Microfilament generator (model X41) anomalities D',
+		description: 'This generator is used for coding the command to increase or decrease the power supply to the front shield’s gluon fetcher when it is showing any kind of anomalous power signature. Manual labor is needed. Perform the manual task according to instructions. The Microfilament generator (model X41) is located in the engine room. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions. Use HANSCA repair for calibration.',
+		location: 'Upper deck, engineering room',
+		map: 'deck2',
+		mapX: 930, // X coordinate in image
+		mapY: 1840 // Y coordinate in image
+	},
+	{
+		id: 'frontshield_x41_e',
+		type: 'task',
+		game: 'frontshield_x41_e',
+		singleUse: false,
+		used: false,
+		eeType: 'frontshield',
+		eeHealth: 0.18,
+		status: 'initial',
+		calibrationCount: 6,
+		calibrationTime: 80,
+		title: 'Microfilament generator (model X41) anomalities E',
+		description: 'This generator is used for coding the command to increase or decrease the power supply to the front shield’s gluon fetcher when it is showing any kind of anomalous power signature. Manual labor is needed. Perform the manual task according to instructions. The Microfilament generator (model X41) is located in the engine room. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions. Use HANSCA repair for calibration.',
+		location: 'Upper deck, engineering room',
+		map: 'deck2',
+		mapX: 930, // X coordinate in image
+		mapY: 1840 // Y coordinate in image
 	},
 
 
