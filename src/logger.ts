@@ -1,5 +1,16 @@
 import { Request, Response, NextFunction } from 'express';
-import logger from 'signale';
+import { Signale } from 'signale';
+
+const logger = new Signale({
+	types: {
+		// Override the default debug logger to not be so intimidating
+		debug: {
+			badge: 'i',
+			color: 'cyan',
+			label: 'debug',
+		},
+	},
+});
 
 const loggerMiddleware = (req: Request, res: Response, next: NextFunction) => {
 	next();
