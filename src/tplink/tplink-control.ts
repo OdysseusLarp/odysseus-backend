@@ -31,21 +31,23 @@ export async function scanTplinkDevices() {
 }
 
 export async function processDmxSignal(signal: string): Promise<void> {
-	try {
-		// List of objects { dmx: "LoungeFuseFixed", ip: "1.2.3.4", powerstate: true }
-		const dmxSignals = store.getState().data.tplink.dmxconfig.signals;
-		for (let dmxSignal of dmxSignals) {
-			if (dmxSignal.dmx === signal) {
-				const ip = dmxSignal.ip;
-				const device = await client.getDevice({ host: ip });
-				logger.debug(
-					`Based on DMX signal ${signal} setting TP-link device ${dmxSignal.ip} ${dmxSignal.powerstate ? 'ON' : 'OFF'}`
-				);
-				await device.setPowerState(dmxSignal.powerstate);
-			}
+	// List of objects { dmx: "LoungeFuseFixed", ip: "1.2.3.4", powerstate: true }
+	const dmxSignals = store.getState().data.tplink.dmxconfig.signals;
+	for (let dmxSignal of dmxSignals) {
+		if (dmxSignal.dmx === signal) {
+			setTimeout(async () => {
+				try {
+					logger.info(
+						`Based on DMX signal ${signal} setting TP-link device ${dmxSignal.ip} ${dmxSignal.powerstate ? 'ON' : 'OFF'}`
+					);
+					const ip = dmxSignal.ip;
+					const device = await client.getDevice({ host: ip });
+					await device.setPowerState(dmxSignal.powerstate);
+				} catch (error) {
+					logger.error(`Error sending DMX signal ${signal} to TP-link devices: ${error}`);
+				}
+			});
 		}
-	} catch (error) {
-		logger.error(`Error sending DMX signal ${signal} to TP-link devices: ${error}`);
 	}
 }
 
