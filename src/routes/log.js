@@ -41,7 +41,7 @@ router.put('/', handleAsyncErrors(async (req, res) => {
 	if (!logEntry) {
 		logEntry = await LogEntry.forge().save(req.body, { method: 'insert' });
 		const message = logEntry.get('message');
-		if (typeof message === 'string' && message.toLowerCase().contains('incoming jump into current sector')) {
+		if (typeof message === 'string' && message.toLowerCase().includes('incoming jump into current sector')) {
 			dmx.fireEvent(dmx.CHANNELS.IncomingJumpWarning);
 		}
 	} else {
