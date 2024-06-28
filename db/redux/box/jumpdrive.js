@@ -29,10 +29,10 @@ blobs.push({
 	title: 'Insert jump crystal to Jump drive',
 	description:
 		'Insert jump crystal to Jump drive (separate instructions on ESS Odysseus Operations Handbook page 2.6-56).',
-	location: 'Upper deck, engineering',
-	map: 'upper-5.png',
-	mapX: 400,
-	mapY: 180,
+	location: 'Upper deck, Jump drive outside Engineering room',
+	map: 'deck2',
+	mapX: 765,
+	mapY: 1650,
 });
 
 blobs.push({
