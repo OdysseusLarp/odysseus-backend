@@ -125,16 +125,13 @@ export const CHANNELS = {
 
 	// Airlock events
 	__AIRLOCK_EVENTS__: 0,
-	MainAirlockDoorClose: 190,
-	MainAirlockDoorOpen: 191,
-	MainAirlockDoorMalfunction: 192,
+	MainAirlockDoorLock: 190,
+	MainAirlockDoorUnlock: 191,
 	MainAirlockPressurize: 193,
-	MainAirlockDepressurize: 194,
+	MainAirlockDepressurizeSlow: 194,
+	MainAirlockDepressurizeFast: 289,
 	HangarBayDoorLock: 195,
 	HangarBayDoorUnlock: 196,
-	HangarBayDoorMalfunction: 197,
-	HangarBayPressurize: 198,
-	HangarBayDepressurize: 199,
 
 	__SHIP_NOTIFICATIONS__: 0,
 	LoraBeaconSignalDecrypted: 250,
@@ -170,6 +167,7 @@ export const CHANNELS = {
 	ThermicFusionRegulatorAnnouncement: 334,
 	StarcallerLaunched: 335,
 	StarcallerEmp: 336,
+	Anthem: 337,
 } as const;
 
 type Channel = (typeof CHANNELS)[keyof typeof CHANNELS];
