@@ -1265,9 +1265,9 @@ blobs.push({
 		config: {
 			title: 'Radiation containment switch 464-900 A',
 			pages: [
-				'<p>Perform the manual task according to instructions.</p><p> A buildup of alpha and beta particles has been observed, and the switch needs to be flicked to reroute energy to alternative charge splitters.</p><p>The Radiation containment switch 464-900 is located above the mess hall. Refer to ESS Odysseus Operations Handbook page 3-186 for instructions.</p>',
-				'<p>Flick switch as follows:</p><ul><li>Up/li></ul>',
-				'<p>Move to calibrating when complete.</p>',
+				'<p>Perform the manual task according to instructions.</p><p>A buildup of alpha and beta particles has been observed, and the switch needs to be flicked to reroute energy to alternative charge splitters. The Radiation containment switch 464-900 is located above the mess hall.</p><p><strong>Please scan the corresponding Hansca tag on the stairs before climbing up and leave the Hansca phone to keep it away from radiation during the task. Mark the task to be calibrated only after you return to deck.</strong></p><p>Refer to ESS Odysseus Operations Handbook page 3-186 for instructions.</p>',
+				'<p>Flick switch as follows:</p><ul><li>Up</li></ul>',
+				'<p>Move to calibrating when complete.</p>'
 			],
 			buttons: ['Wiring instructions', 'Next', 'Calibrate'],
 		},
@@ -1281,9 +1281,9 @@ blobs.push({
 		config: {
 			title: 'Radiation containment switch 464-900 B',
 			pages: [
-				'<p>Perform the manual task according to instructions.</p><p> A buildup of alpha and beta particles has been observed, and the switch needs to be flicked to reroute energy to alternative charge splitters.</p><p>The Radiation containment switch 464-900 is located above the mess hall. Refer to ESS Odysseus Operations Handbook page 3-186 for instructions.</p>',
-				'<p>Flick switch as follows:</p><ul><li>Down/li></ul>',
-				'<p>Move to calibrating when complete.</p>',
+				'<p>Perform the manual task according to instructions.</p><p>A buildup of alpha and beta particles has been observed, and the switch needs to be flicked to reroute energy to alternative charge splitters. The Radiation containment switch 464-900 is located above the mess hall.</p><p><strong>Please scan the corresponding Hansca tag on the stairs before climbing up and leave the Hansca phone to keep it away from radiation during the task. Mark the task to be calibrated only after you return to deck.</strong></p><p>Refer to ESS Odysseus Operations Handbook page 3-186 for instructions.</p>',
+				'<p>Flick switch as follows:</p><ul><li>Down</li></ul>',
+				'<p>Move to calibrating when complete.</p>'
 			],
 			buttons: ['Wiring instructions', 'Next', 'Calibrate'],
 		},
@@ -1297,12 +1297,16 @@ blobs.push({
 		config: {
 			title: 'Radiation containment switch 464-900 C',
 			pages: [
-				'<p>Perform the manual task according to instructions.</p><p> A buildup of alpha and beta particles has been observed, and the switch needs to be flicked to reroute energy to alternative charge splitters.</p><p>The Radiation containment switch 464-900 is located above the mess hall. Refer to ESS Odysseus Operations Handbook page 3-186 for instructions.</p>',
-				'<p>Flick switch as follows:</p><ul><li>Middle/li></ul>',
-				'<p>Move to calibrating when complete.</p>',
+				'<p>Perform the manual task according to instructions.</p><p>A buildup of alpha and beta particles has been observed, and the switch needs to be flicked to reroute energy to alternative charge splitters. The Radiation containment switch 464-900 is located above the mess hall.</p><p><strong>Please scan the corresponding Hansca tag on the stairs before climbing up and leave the Hansca phone to keep it away from radiation during the task. Mark the task to be calibrated only after you return to deck.</strong></p><p>Refer to ESS Odysseus Operations Handbook page 3-186 for instructions.</p>',
+				'<p>Flick switch as follows:</p><ul><li>Middle</li></ul>',
+				'<p>Move to calibrating when complete.</p>'
 			],
-			buttons: ['Wiring instructions', 'Next', 'Calibrate'],
-		},
+			buttons: [
+				'Wiring instructions',
+				'Next',
+				'Calibrate'
+			]
+		}
 	},
 	{
 		id: 'rearshield_lubricator_a',
