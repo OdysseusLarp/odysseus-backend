@@ -256,6 +256,7 @@ blobs.push({
 		status: 'fixed',
 		config: {
 			title: 'Coordinate calibration unit 369GKY-a E',
+			title: 'Coordinate calibration unit 369GKY-a E',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>The wires need to be changed into different slots to re-code the system.</p><p>The Coordinate calibration unit 369GKY-a is located in the Armory. Refer to ESS Odysseus Operations Handbook page 2.19-93 for instructions.</p>',
 				'<p>Set up the wires as follows:</p><ul><li>HARD RESET: pull all of the wires out of their slots</li></ul>',

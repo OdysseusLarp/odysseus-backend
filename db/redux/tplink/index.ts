@@ -9,15 +9,28 @@ saveBlob({
 		// Medbay examination light broken by Medbay fuse
 		{ dmx: 'MedbayFuseBroken', ip: '172.30.4.70', powerstate: false },
 		{ dmx: 'MedbayFuseFixed', ip: '172.30.4.70', powerstate: true },
-		// Science lab research lights broken by Science fuse
+
+		// Science lab research lights broken by Science fuse and jump
 		{ dmx: 'ScienceFuseBroken', ip: '172.30.4.71', powerstate: false },
 		{ dmx: 'ScienceFuseFixed', ip: '172.30.4.71', powerstate: true },
-		// Security room security camera displays broken by Lounge fuse
+		{ dmx: 'JumpStart', ip: '172.30.4.71', powerstate: false },
+		{ dmx: 'JumpEnd', ip: '172.30.4.71', powerstate: true },
+		{ dmx: 'JumpEndBreaking', ip: '172.30.4.71', powerstate: true },
+
+		// Security room security camera displays broken by Lounge fuse and jump
 		{ dmx: 'LoungeFuseBroken', ip: '172.30.4.72', powerstate: false },
 		{ dmx: 'LoungeFuseFixed', ip: '172.30.4.72', powerstate: true },
-		// Engine room (right) displays broken by Engineering fuse
+		{ dmx: 'JumpStart', ip: '172.30.4.72', powerstate: false },
+		{ dmx: 'JumpEnd', ip: '172.30.4.72', powerstate: true },
+		{ dmx: 'JumpEndBreaking', ip: '172.30.4.72', powerstate: true },
+
+		// Engine room (right) displays broken by Engineering fuse and jump
 		{ dmx: 'EngineeringFuseBroken', ip: '172.30.4.73', powerstate: false },
 		{ dmx: 'EngineeringFuseFixed', ip: '172.30.4.73', powerstate: true },
+		{ dmx: 'JumpStart', ip: '172.30.4.73', powerstate: false },
+		{ dmx: 'JumpEnd', ip: '172.30.4.73', powerstate: true },
+		{ dmx: 'JumpEndBreaking', ip: '172.30.4.73', powerstate: true },
+
 		// Engine room (right) plasma ball broken by Thermic Fusion Regulator / kick box task
 		{ dmx: 'ThermicFusionRegulatorBroken', ip: '172.30.4.74', powerstate: false },
 		{ dmx: 'ThermicFusionRegulatorFixed', ip: '172.30.4.74', powerstate: true },
