@@ -70,15 +70,14 @@ blobs.push({
 	status: 'initial',
 	title: 'Cooling system cleanup',
 	description:
-		'The recent dimensional shift contaminated the hyperflux cooling fluid pipes, necessitating immediate cleaning.',
+		'The recent dimensional shift contaminated the hyperflux cooling fluid pipes, necessitating immediate cleaning.\n\nTwo engineers are required for the task, one checking status in engineering room and the other inside the jump drive maintenance hatch on lower deck.',
 	calibrationTime: 60 * 4,
 	calibrationCount: 1,
-	// In practice this task has two locations, but this location points to the computer that's used to complete the task
-	// TODO: Update these values
-	location: 'Upper deck, engineering',
-	map: 'upper-5.png',
-	mapX: 230,
-	mapY: 130,
+	// In practice this task has two locations, this one points to the one more difficult to find
+	location: 'Lower deck, Jump drive maintenance hatch',
+	map: 'deck1',
+	mapX: 750,
+	mapY: 1610,
 });
 
 blobs.push({
