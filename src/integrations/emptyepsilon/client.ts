@@ -150,7 +150,7 @@ export class EmptyEpsilonClient {
 
 	public setHullHealthPercent(hullHealthPercent: number) {
 		const hullMaxHealth = get(this.previousState, 'general.shipHullMax');
-		if (!hullMaxHealth) throw new Error('No hull max health available');
+		if (hullMaxHealth === undefined) throw new Error('No hull max health available');
 		const healthPointValue = Math.floor(hullHealthPercent * hullMaxHealth);
 		const url = `${this.setUrl}?setHull("${healthPointValue}")`;
 		return axios.get(url).then(res => {
