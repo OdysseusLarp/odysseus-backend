@@ -1613,86 +1613,86 @@ blobs.push({
 			]
 		}
 	},
-	// {
-	// 	id: 'rearshield_lubricator_a',
-	// 	type: 'game',
-	// 	task: 'rearshield_lubricator_a',
-	// 	game_config: 'manual',
-	// 	status: 'fixed',
-	// 	config: {
-	// 		title: 'Revolving pulse turbine lubricator switch 53r A',
-	// 		pages: [
-	// 			'<p>Perform the manual task according to instructions.</p><p>The rear shield has suffered damage, and the revolving pulse signals need to be re-attenuated to ensure the shield remains up.</p><p>The Revolving pulse turbine lubricator switch 53r is located in the war room. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions.</p>',
-	// 			'<p>Turn the switches as follows:</p><ul><li>Switch AA --> SUP.</li><li>Switch AB --> SUP.</li></ul>',
-	// 			'<p>Move to calibrating when complete.</p>'
-	// 		],
-	// 		buttons: [
-	// 			'Wiring instructions',
-	// 			'Next',
-	// 			'Calibrate'
-	// 		]
-	// 	}
-	// },
-	// {
-	// 	id: 'rearshield_lubricator_b',
-	// 	type: 'game',
-	// 	task: 'rearshield_lubricator_b',
-	// 	game_config: 'manual',
-	// 	status: 'fixed',
-	// 	config: {
-	// 		title: 'Revolving pulse turbine lubricator switch 53r B',
-	// 		pages: [
-	// 			'<p>Perform the manual task according to instructions.</p><p>The rear shield has suffered damage, and the revolving pulse signals need to be re-attenuated to ensure the shield remains up.</p><p>The Revolving pulse turbine lubricator switch 53r is located in the war room. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions.</p>',
-	// 			'<p>Turn the switches as follows:</p><ul><li>Switch AA --> EXH.</li><li>Switch AB --> SUP.</li></ul>',
-	// 			'<p>Move to calibrating when complete.</p>'
-	// 		],
-	// 		buttons: [
-	// 			'Wiring instructions',
-	// 			'Next',
-	// 			'Calibrate'
-	// 		]
-	// 	}
-	// },
-	// {
-	// 	id: 'rearshield_lubricator_c',
-	// 	type: 'game',
-	// 	task: 'rearshield_lubricator_c',
-	// 	game_config: 'manual',
-	// 	status: 'fixed',
-	// 	config: {
-	// 		title: 'Revolving pulse turbine lubricator switch 53r C',
-	// 		pages: [
-	// 			'<p>Perform the manual task according to instructions.</p><p>The rear shield has suffered damage, and the revolving pulse signals need to be re-attenuated to ensure the shield remains up.</p><p>The Revolving pulse turbine lubricator switch 53r is located in the war room. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions.</p>',
-	// 			'<p>Turn the switches as follows:</p><ul><li>Switch AA --> SUP.</li><li>Switch AB --> EXH.</li></ul>',
-	// 			'<p>Move to calibrating when complete.</p>'
-	// 		],
-	// 		buttons: [
-	// 			'Wiring instructions',
-	// 			'Next',
-	// 			'Calibrate'
-	// 		]
-	// 	}
-	// },
-	// {
-	// 	id: 'rearshield_lubricator_d',
-	// 	type: 'game',
-	// 	task: 'rearshield_lubricator_d',
-	// 	game_config: 'manual',
-	// 	status: 'fixed',
-	// 	config: {
-	// 		title: 'Revolving pulse turbine lubricator switch 53r D',
-	// 		pages: [
-	// 			'<p>Perform the manual task according to instructions.</p><p>The rear shield has suffered damage, and the revolving pulse signals need to be re-attenuated to ensure the shield remains up.</p><p>The Revolving pulse turbine lubricator switch 53r is located in the war room. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions.</p>',
-	// 			'<p>Turn the switches as follows:</p><ul><li>Switch AA --> EXH.</li><li>Switch AB --> EXH.</li></ul>',
-	// 			'<p>Move to calibrating when complete.</p>'
-	// 		],
-	// 		buttons: [
-	// 			'Wiring instructions',
-	// 			'Next',
-	// 			'Calibrate'
-	// 		]
-	// 	}
-	// },
+	{
+		id: 'rearshield_lubricator_a',
+		type: 'game',
+		task: 'rearshield_lubricator_a',
+		game_config: 'manual',
+		status: 'fixed',
+		config: {
+			title: 'Revolving pulse turbine lubricator switch 53r A',
+			pages: [
+				'<p>Perform the manual task according to instructions.</p><p>The rear shield has suffered damage, and the revolving pulse signals need to be re-attenuated to ensure the shield remains up.</p><p>The Revolving pulse turbine lubricator switch 53r is located in the war room. Refer to ESS Odysseus Operations Handbook page  2.5-34 for instructions.</p>',
+				'<p>Turn the switches as follows:</p><ul><li>Switch AA --> SUP.</li><li>Switch AB --> SUP.</li></ul>',
+				'<p>Move to calibrating when complete.</p>'
+			],
+			buttons: [
+				'Wiring instructions',
+				'Next',
+				'Calibrate'
+			]
+		}
+	},
+	{
+		id: 'rearshield_lubricator_b',
+		type: 'game',
+		task: 'rearshield_lubricator_b',
+		game_config: 'manual',
+		status: 'fixed',
+		config: {
+			title: 'Revolving pulse turbine lubricator switch 53r B',
+			pages: [
+				'<p>Perform the manual task according to instructions.</p><p>The rear shield has suffered damage, and the revolving pulse signals need to be re-attenuated to ensure the shield remains up.</p><p>The Revolving pulse turbine lubricator switch 53r is located in the war room. Refer to ESS Odysseus Operations Handbook page  2.5-34 for instructions.</p>',
+				'<p>Turn the switches as follows:</p><ul><li>Switch AA --> EXH.</li><li>Switch AB --> SUP.</li></ul>',
+				'<p>Move to calibrating when complete.</p>'
+			],
+			buttons: [
+				'Wiring instructions',
+				'Next',
+				'Calibrate'
+			]
+		}
+	},
+	{
+		id: 'rearshield_lubricator_c',
+		type: 'game',
+		task: 'rearshield_lubricator_c',
+		game_config: 'manual',
+		status: 'fixed',
+		config: {
+			title: 'Revolving pulse turbine lubricator switch 53r C',
+			pages: [
+				'<p>Perform the manual task according to instructions.</p><p>The rear shield has suffered damage, and the revolving pulse signals need to be re-attenuated to ensure the shield remains up.</p><p>The Revolving pulse turbine lubricator switch 53r is located in the war room. Refer to ESS Odysseus Operations Handbook page  2.5-34 for instructions.</p>',
+				'<p>Turn the switches as follows:</p><ul><li>Switch AA --> SUP.</li><li>Switch AB --> EXH.</li></ul>',
+				'<p>Move to calibrating when complete.</p>'
+			],
+			buttons: [
+				'Wiring instructions',
+				'Next',
+				'Calibrate'
+			]
+		}
+	},
+	{
+		id: 'rearshield_lubricator_d',
+		type: 'game',
+		task: 'rearshield_lubricator_d',
+		game_config: 'manual',
+		status: 'fixed',
+		config: {
+			title: 'Revolving pulse turbine lubricator switch 53r D',
+			pages: [
+				'<p>Perform the manual task according to instructions.</p><p>The rear shield has suffered damage, and the revolving pulse signals need to be re-attenuated to ensure the shield remains up.</p><p>The Revolving pulse turbine lubricator switch 53r is located in the war room. Refer to ESS Odysseus Operations Handbook page  2.5-34 for instructions.</p>',
+				'<p>Turn the switches as follows:</p><ul><li>Switch AA --> EXH.</li><li>Switch AB --> EXH.</li></ul>',
+				'<p>Move to calibrating when complete.</p>'
+			],
+			buttons: [
+				'Wiring instructions',
+				'Next',
+				'Calibrate'
+			]
+		}
+	},
 	{
 		id: 'doomba',
 		type: 'game',
@@ -3409,79 +3409,80 @@ blobs.push({
 		mapX: 135, // X coordinate in image
 		mapY: 130 // Y coordinate in image
 	},
-	// {
-	// 	id: 'rearshield_lubricator_a',
-	// 	type: 'task',
-	// 	game: 'rearshield_lubricator_a',
-	// 	singleUse: false,
-	// 	used: false,
-	// 	eeType: 'rearshield',
-	// 	eeHealth: 0.09,
-	// 	status: 'initial',
-	// 	calibrationCount: 5,
-	// 	calibrationTime: 60,
-	// 	title: 'Revolving pulse turbine lubricator switch 53r A',
-	// 	description: 'This switch re-attenuates the revolving pulse signals that drive the rear shield’s quantum portal bracket. If the rear shield suffers any kind of damage, this switch helps to ensure the shield remains up. Manual labor is needed. Perform the manual task according to instructions. The Revolving pulse turbine lubricator switch 53r is located in the war room. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions. Use HANSCA repair for calibration.',
-	// 	location: '2rd deck, war room',
-	// 	map: 'deck2',
-	// 	mapX: 615, // X coordinate in image
-	// 	mapY: 1895 // Y coordinate in image
-	// },
-	// {
-	// 	id: 'rearshield_lubricator_b',
-	// 	type: 'task',
-	// 	game: 'rearshield_lubricator_b',
-	// 	singleUse: false,
-	// 	used: false,
-	// 	eeType: 'rearshield',
-	// 	eeHealth: 0.09,
-	// 	status: 'initial',
-	// 	calibrationCount: 3,
-	// 	calibrationTime: 100,
-	// 	title: 'Revolving pulse turbine lubricator switch 53r B',
-	// 	description: 'This switch re-attenuates the revolving pulse signals that drive the rear shield’s quantum portal bracket. If the rear shield suffers any kind of damage, this switch helps to ensure the shield remains up. Manual labor is needed. Perform the manual task according to instructions. The Revolving pulse turbine lubricator switch 53r is located in the war room. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions. Use HANSCA repair for calibration.',
-	// 	location: '2rd deck, war room',
-	// 	map: 'deck2',
-	// 	mapX: 615, // X coordinate in image
-	// 	mapY: 1895 // Y coordinate in image
-	// },
+	{
+		id: 'rearshield_lubricator_a',
+		type: 'task',
+		game: 'rearshield_lubricator_a',
+	 	singleUse: false,
+	 	used: false,
+	 	eeType: 'rearshield',
+	 	eeHealth: 0.09,
+	 	status: 'initial',
+	 	calibrationCount: 5,
+	 	calibrationTime: 60,
+	 	title: 'Revolving pulse turbine lubricator switch 53r A',
+	 	description: 'This switch re-attenuates the revolving pulse signals that drive the rear shield’s quantum portal bracket. If the rear shield suffers any kind of damage, this switch helps to ensure the shield remains up. Manual labor is needed. Perform the manual task according to instructions. The Revolving pulse turbine lubricator switch 53r is located in the war room. Refer to ESS Odysseus Operations Handbook page  2.5-34 for instructions. Use HANSCA repair for calibration.',
+	 	location: '2rd deck, war room',
+	 	map: 'deck2',
+	 	mapX: 615,  
+	 	mapY: 1895
+	 },
+	 {
+	 	id: 'rearshield_lubricator_b',
+	 	type: 'task',
+	 	game: 'rearshield_lubricator_b',
+	 	singleUse: false,
+	 	used: false,
+	 	eeType: 'rearshield',
+	 	eeHealth: 0.09,
+	 	status: 'initial',
+	 	calibrationCount: 3,
+	 	calibrationTime: 100,
+	 	title: 'Revolving pulse turbine lubricator switch 53r B',
+	 	description: 'This switch re-attenuates the revolving pulse signals that drive the rear shield’s quantum portal bracket. If the rear shield suffers any kind of damage, this switch helps to ensure the shield remains up. Manual labor is needed. Perform the manual task according to instructions. The Revolving pulse turbine lubricator switch 53r is located in the war room. Refer to ESS Odysseus Operations Handbook page  2.5-34 for instructions. Use HANSCA repair for calibration.',
+	 	location: '2rd deck, war room',
+	 	map: 'deck2',
+	 	mapX: 615, 
+	 	mapY: 1895 
+	 },
 
-	// {
-	// 	id: 'rearshield_lubricator_c',
-	// 	type: 'task',
-	// 	game: 'rearshield_lubricator_c',
-	// 	singleUse: false,
-	// 	used: false,
-	// 	eeType: 'rearshield',
-	// 	eeHealth: 0.09,
-	// 	status: 'initial',
-	// 	calibrationCount: 3,
-	// 	calibrationTime: 100,
-	// 	title: 'Revolving pulse turbine lubricator switch 53r C',
-	// 	description: 'This switch re-attenuates the revolving pulse signals that drive the rear shield’s quantum portal bracket. If the rear shield suffers any kind of damage, this switch helps to ensure the shield remains up. Manual labor is needed. Perform the manual task according to instructions. The Revolving pulse turbine lubricator switch 53r is located in the war room. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions. Use HANSCA repair for calibration.',
-	// 	location: '2rd deck, war room',
-	// 	map: 'deck2',
-	// 	mapX: 615, // X coordinate in image
-	// 	mapY: 1895 // Y coordinate in image
-	// },
-	// {
-	// 	id: 'rearshield_lubricator_d',
-	// 	type: 'task',
-	// 	game: 'rearshield_lubricator_d',
-	// 	singleUse: false,
-	// 	used: false,
-	// 	eeType: 'rearshield',
-	// 	eeHealth: 0.1,
-	// 	status: 'initial',
-	// 	calibrationCount: 2,
-	// 	calibrationTime: 150,
-	// 	title: 'Revolving pulse turbine lubricator switch 53r D',
-	// 	description: 'This switch re-attenuates the revolving pulse signals that drive the rear shield’s quantum portal bracket. If the rear shield suffers any kind of damage, this switch helps to ensure the shield remains up. Manual labor is needed. Perform the manual task according to instructions. The Revolving pulse turbine lubricator switch 53r is located in the war room. Refer to ESS Odysseus Operations Handbook page 2.6-56 for instructions. Use HANSCA repair for calibration.',
-	// 	location: '2rd deck, war room',
-	// 	map: 'deck2',
-	// 	mapX: 615, // X coordinate in image
-	// 	mapY: 1895 // Y coordinate in image
-	// },
+	 {
+	 	id: 'rearshield_lubricator_c',
+	 	type: 'task',
+	 	game: 'rearshield_lubricator_c',
+	 	singleUse: false,
+	 	used: false,
+	 	eeType: 'rearshield',
+	 	eeHealth: 0.09,
+	 	status: 'initial',
+	 	calibrationCount: 3,
+	 	calibrationTime: 100,
+	 	title: 'Revolving pulse turbine lubricator switch 53r C',
+	 	description: 'This switch re-attenuates the revolving pulse signals that drive the rear shield’s quantum portal bracket. If the rear shield suffers any kind of damage, this switch helps to ensure the shield remains up. Manual labor is needed. Perform the manual task according to instructions. The Revolving pulse turbine lubricator switch 53r is located in the war room. Refer to ESS Odysseus Operations Handbook page  2.5-34 for instructions. Use HANSCA repair for calibration.',
+	 	location: '2rd deck, war room',
+	 	map: 'deck2',
+	 	mapX: 615, 
+	 	mapY: 1895 
+	 },
+	 {
+	 	id: 'rearshield_lubricator_d',
+	 	type: 'task',
+	 	game: 'rearshield_lubricator_d',
+	 	singleUse: false,
+	 	used: false,
+	 	eeType: 'rearshield',
+	 	eeHealth: 0.1,
+	 	status: 'initial',
+	 	calibrationCount: 2,
+	 	calibrationTime: 150,
+	 	title: 'Revolving pulse turbine lubricator switch 53r D',
+	 	description: 'This switch re-attenuates the revolving pulse signals that drive the rear shield’s quantum portal bracket. If the rear shield suffers any kind of damage, this switch helps to ensure the shield remains up. Manual labor is needed. Perform the manual task according to instructions. The Revolving pulse turbine lubricator switch 53r is located in the war room. Refer to ESS Odysseus Operations Handbook page  2.5-34 for instructions. Use HANSCA repair for calibration.',
+	 	location: '2rd deck, war room',
+	 	map: 'deck2',
+	 	mapX: 615, 
+	 	mapY: 1895  
+	 },
+	
 	{
 		id: 'doomba',
 		type: 'task',
