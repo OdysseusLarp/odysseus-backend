@@ -1836,9 +1836,9 @@ blobs.push({
 		title: 'Dorsal ion bio-filter G5He A',
 		description:
 			'The filter is causing quantum surges that will overload the general hull system if not fixed. The filter’s crystal core needs to be re-attenuated. Manual labor is needed. Perform the manual task according to instructions.The Dorsal ion bio-filter G5He is located in the corridoor. Refer to ESS Odysseus Operations Handbook page 2.12-63 for instructions. Use HANSCA repair for calibration.',
-		location: 'Lower deck, corridoor',
-		map: 'deck1',
-		mapX: 560, // X coordinate in image
+		location: 'Upper deck, corridor outside Bridge',
+		map: 'deck2',
+		mapX: 550, // X coordinate in image
 		mapY: 890, // Y coordinate in image
 	},
 	{
@@ -1855,9 +1855,9 @@ blobs.push({
 		title: 'Dorsal ion bio-filter G5He B',
 		description:
 			'The filter is causing quantum surges that will overload the general hull system if not fixed. The filter’s crystal core needs to be re-attenuated. Manual labor is needed. Perform the manual task according to instructions.The Dorsal ion bio-filter G5He is located in the corridoor. Refer to ESS Odysseus Operations Handbook page 2.12-63 for instructions. Use HANSCA repair for calibration.',
-		location: 'Lower deck, corridoor',
-		map: 'deck1',
-		mapX: 560, // X coordinate in image
+		location: 'Upper deck, corridor outside Bridge',
+		map: 'deck2',
+		mapX: 550, // X coordinate in image
 		mapY: 890, // Y coordinate in image
 	},
 	{
@@ -1874,9 +1874,9 @@ blobs.push({
 		title: 'Dorsal ion bio-filter G5He C',
 		description:
 			'The filter is causing quantum surges that will overload the general hull system if not fixed. The filter’s crystal core needs to be re-attenuated. Manual labor is needed. Perform the manual task according to instructions.The Dorsal ion bio-filter G5He is located in the corridoor. Refer to ESS Odysseus Operations Handbook page 2.12-63 for instructions. Use HANSCA repair for calibration.',
-		location: 'Lower deck, corridoor',
-		map: 'deck1',
-		mapX: 560, // X coordinate in image
+		location: 'Upper deck, corridor outside Bridge',
+		map: 'deck2',
+		mapX: 550, // X coordinate in image
 		mapY: 890, // Y coordinate in image
 	},
 	{
@@ -1893,9 +1893,9 @@ blobs.push({
 		title: 'Dorsal ion bio-filter G5He D',
 		description:
 			'The filter is causing quantum surges that will overload the general hull system if not fixed. The filter’s crystal core needs to be re-attenuated. Manual labor is needed. Perform the manual task according to instructions.The Dorsal ion bio-filter G5He is located in the corridoor. Refer to ESS Odysseus Operations Handbook page 2.12-63 for instructions. Use HANSCA repair for calibration.',
-		location: 'Lower deck, corridoor',
-		map: 'deck1',
-		mapX: 560, // X coordinate in image
+		location: 'Upper deck, corridor outside Bridge',
+		map: 'deck2',
+		mapX: 550, // X coordinate in image
 		mapY: 890, // Y coordinate in image
 	},
 	{
@@ -1912,9 +1912,9 @@ blobs.push({
 		title: 'Dorsal ion bio-filter G5He E',
 		description:
 			'The filter is causing quantum surges that will overload the general hull system if not fixed. The filter’s crystal core needs to be re-attenuated. Manual labor is needed. Perform the manual task according to instructions. The Dorsal ion bio-filter G5He is located in the corridoor. Refer to ESS Odysseus Operations Handbook page 2.12-63 for instructions. Use HANSCA repair for calibration.',
-		location: 'Lower deck, corridoor',
-		map: 'deck1',
-		mapX: 560, // X coordinate in image
+		location: 'Upper deck, corridor outside Bridge',
+		map: 'deck2',
+		mapX: 550, // X coordinate in image
 		mapY: 890, // Y coordinate in image
 	},
 	{
