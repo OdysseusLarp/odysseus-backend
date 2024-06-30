@@ -164,6 +164,7 @@ router.get(
 router.post(
 	'/',
 	handleAsyncErrors(async (req: Request, res: Response) => {
+		logger.info('Inserting new operation result:', req.body)
 		const operationResult = await OperationResult.forge().save(
 			{
 				...req.body,
@@ -172,6 +173,7 @@ router.post(
 			{ method: 'insert' }
 		);
 
+		logger.info('Inserted new operation result:', operationResult);
 		const operationResultType = operationResult.get('type');
 
 		if (operationResultType === 'MEDIC') {
