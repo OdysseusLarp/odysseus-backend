@@ -22,11 +22,17 @@ function depleteBattery() {
 	});
 }
 
+let previousLocation: BigBatteryLocation| undefined = undefined;
 function updateActiveStatus() {
 	const box: BigBattery = store.getState().data.box.bigbattery;
 	if (!box) {
 		logger.error('Big battery box not found');
 		return;
+	}
+
+	if (box.connected_position !== previousLocation) {
+		logger.info(`Big battery connected position changed to ${box.connected_position}`);
+		previousLocation = box.connected_position;
 	}
 
 	// NOTE: This intentionally does not use isBatteryConnected since emergency overrides are undesired here
