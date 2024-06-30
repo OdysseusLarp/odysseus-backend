@@ -18,7 +18,7 @@ export function setData(dataType, dataId, data, force = false) {
 	if (!force) {
 		const oldData = getData(dataType, dataId);
 		if (oldData.version && oldData.version !== data.version) {
-			throw new httpErrors.Conflict(`Wrong version number, provided '${data.version}', expected '${oldData.version}'`);
+			throw new httpErrors.Conflict(`Wrong version number for ${dataType}/${dataId}, provided '${data.version}', expected '${oldData.version}'`);
 		}
 	}
 
