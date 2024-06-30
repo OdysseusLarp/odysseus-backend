@@ -14,7 +14,7 @@ blobs.push({
 	driftPause: 0,        // drift pause secs remaining (internal)
 	sinePosition: 0,      // sine wave position (internal)
 
-	engineBreakProb: 0.1, // probability of 1% engine health dropping PER SECOND
+	engineBreakProb: 0.055, // probability of 1% engine health dropping PER SECOND
 
 	minDriftPerMinute: 1.11, // minimum drift per MINUTE when randomizing drift  1.11 = 3h
 	maxDriftPerMinute: 2.22, // maximum drift per MINUTE when randomizing drift  2.22 = 1.5h
@@ -41,6 +41,22 @@ blobs.push({
 			value: 535,
 		},
 
+		/*
+		 * 6.66 = 0.5h
+		 * 3.33 = 1.0h
+		 * 2.22 = 1.5h
+		 * 1.66 = 2h
+		 * 1.11 = 3h
+		 * 0.55 = 6h
+		 */
+		drift_duration_05_1h: {
+			minDriftPerMinute: 3.33,
+			maxDriftPerMinute: 6.66,
+		},
+		drift_duration_05_2h: {
+			minDriftPerMinute: 1.66,
+			maxDriftPerMinute: 6.66,
+		},
 		drift_duration_1_2h: {
 			minDriftPerMinute: 1.66,
 			maxDriftPerMinute: 3.33,
@@ -58,6 +74,9 @@ blobs.push({
 			maxDriftPerMinute: 0.83,
 		},
 
+		/*
+		 * Time for 100% = 100 / 60 / <prob> minutes
+		 */
 		breaking_disable: {
 			engineBreakProb: 0,
 		},
@@ -72,6 +91,12 @@ blobs.push({
 		},
 		break_duration_30min: {
 			engineBreakProb: 0.055,
+		},
+		break_duration_45min: {
+			engineBreakProb: 0.037,
+		},
+		break_duration_60min: {
+			engineBreakProb: 0.027,
 		},
 	}
 });
