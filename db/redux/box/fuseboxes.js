@@ -2,6 +2,9 @@ const boxes = [
 	{
 		type: 'box',
 		id: 'fusebox_medbay',
+		// name and description are shown in Admin UI
+		name: 'Medbay',
+		description: 'DMX fuse controls standing scanner (?)',
 		config: {
 			blowing: [4, 15, 18, 22, 24, 9, 11, 7],
 			measure: [14, 17, 27, 23, 10, 25, 8, 5],
@@ -13,6 +16,8 @@ const boxes = [
 	{
 		type: 'box',
 		id: 'fusebox_engineering',
+		name: 'Engineering',
+		description: 'DMX fuse controls Engineering displays',
 		config: {
 			blowing: [4, 15, 18, 22, 24, 9, 11, 7],
 			measure: [14, 17, 27, 23, 10, 25, 8, 5],
@@ -24,6 +29,8 @@ const boxes = [
 	{
 		type: 'box',
 		id: 'fusebox_bridge',
+		name: 'Bridge',
+		description: 'DMX fuse controls Bridge displays',
 		config: {
 			blowing: [4, 15, 18, 22, 24, 9, 11, 7, 6, 13, 16, 20],
 			measure: [14, 17, 27, 23, 10, 25, 8, 5, 12, 19, 26, 21],
@@ -35,6 +42,8 @@ const boxes = [
 	{
 		type: 'box',
 		id: 'fusebox_science',
+		name: 'Science lab',
+		description: 'DMX fuse controls Science lab lights + projector',
 		config: {
 			blowing: [4, 15, 18, 22, 24, 9, 11, 7],
 			measure: [14, 17, 27, 23, 10, 25, 8, 5],
@@ -46,6 +55,8 @@ const boxes = [
 	{
 		type: 'box',
 		id: 'fusebox_lounge',
+		name: 'Armory',
+		description: 'DMX fuse controls Security room monitors',
 		config: {
 			blowing: [4, 15, 18, 22, 24, 9, 11, 7],
 			measure: [14, 17, 27, 23, 10, 25, 8, 5],
