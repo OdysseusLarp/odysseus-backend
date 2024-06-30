@@ -142,7 +142,7 @@ interval(() => {
 		//  eeHealth - maxHealthTask - epsilon <= taskHealth <= eeHealth + epsilon
 		if (!(eeHealth - maxHealthTask - EPSILON <= taskHealth && taskHealth <= eeHealth + EPSILON)) {
 			logger.error(`EE ${type} health has significant mismatch between EE and task-based status: `+
-			  `EE shows ${eeHealth} and tasks show ${taskHealth}`);
+			  `EE shows ${eeHealth} and tasks show ${taskHealth.toFixed(2)}`);
 		}
 	}
 }, 60000);
