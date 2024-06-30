@@ -8,9 +8,10 @@ const client = new Client();
 
 export async function scanTplinkDevices() {
 	const dmxConfig = store.getState().data.tplink.dmxconfig;
-	const ipaddresses = dmxConfig.signals.map(signal => signal.ip);
+	const ipaddresses: string[] = dmxConfig.signals.map(signal => signal.ip);
+	const uniqueIpAddresses = [...new Set(ipaddresses)];
 	const devices = {};
-	for (let ip of ipaddresses) {
+	for (let ip of uniqueIpAddresses) {
 		try {
 			logger.debug(`Scanning TP-link device: ${ip}`);
 			const device = await client.getDevice({ host: ip });
