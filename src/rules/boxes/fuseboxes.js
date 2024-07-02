@@ -43,10 +43,16 @@ watch(['data', 'box'], (boxes, previousBoxes, state) => {
 	}
 });
 
+function getPriorityTasks(tasks) {
+	const maxPriority = tasks.reduce((max, task) => Math.max(max, task.priority ? task.priority : 0), -1000000);
+	return tasks.filter(task => (task.priority ? task.priority : 0) === maxPriority);
+}
+
 function breakTask() {
 	const allTasks = Object.values(store.getState().data.task);
 	const tasks = allTasks.filter(task => task.lifesupportHealth && task.status === 'fixed');
-	const task = chooseRandom(tasks)[0];
+	const priorityTasks = getPriorityTasks(tasks);
+	const task = chooseRandom(priorityTasks)[0];
 	if (!task) {
 		logger.warn(`Cound not find life support task to break`);
 		return;
