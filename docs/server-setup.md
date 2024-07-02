@@ -17,8 +17,8 @@ Nginx configuration can be found in `/etc/nginx/sites-available/default`.
 Backend and database run in Docker containers. Both can be started in the same network using Docker Compose. Health checks are enabled for both and containers should restart if they become unhealthy.
 
 * Make sure that you have pulled the latest changes to `/home/odysseus/git/odysseus-backend`
-* Build the docker containers with `docker-compose build` (if you change something like the `.env` file you might have to delete the old image first with `docker image rm odysseus-backend`)
-* Run the compose file with `docker-compose up -d` which will only update the containers that have changed (e.g. if changes have been made to the backend, only backend will be restarted, not the database)
+* Build the docker containers with `docker compose build` (if you change something like the `.env` file you might have to delete the old image first with `docker image rm odysseus-backend`)
+* Run the compose file with `docker compose up -d` which will only update the containers that have changed (e.g. if changes have been made to the backend, only backend will be restarted, not the database)
 
 ## Geoserver
 Geoserver runs in a Docker container. There should be no need to touch it during the game. The container has health check enabled and should restart if it becomes unhealthy.
@@ -60,6 +60,6 @@ After deployment, the files should be located in these paths:
 ```
 
 ## Monitoring and logging
-* Run `docker-compose up -d` in `/home/odysseus/git/dockprom` to start the grafana/prometheus stack.
+* Run `docker compose up -d` in `/home/odysseus/git/dockprom` to start the grafana/prometheus stack.
 * Dozzle (provides UI for docker logs) can be started with `docker start log-dozzle` or created with `docker run --name log-dozzle -d -v /var/run/docker.sock:/var/run/docker.sock -p 1337:8080 amir20/dozzle`
 

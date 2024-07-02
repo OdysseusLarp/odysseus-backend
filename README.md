@@ -33,7 +33,7 @@ You can also run the backend in Docker if you do not want to. Update your .env f
 DB_HOST=odysseus-database
 ```
 
-And then run `docker-compose -f docker-compose-dev.yml up`. The initial startup will fail because the database is empty. Run `docker exec -it odysseus-backend sh -c "npm run db:migrate && npm run db:seed"` to apply database migrations and seeds. Then restart the backend container `docker restart odysseus-backend`.
+And then run `docker compose -f docker compose-dev.yml up`. The initial startup will fail because the database is empty. Run `docker exec -it odysseus-backend sh -c "npm run db:migrate && npm run db:seed"` to apply database migrations and seeds. Then restart the backend container `docker restart odysseus-backend`.
 
 ### Backend in VSCode dev containers
 You can also run the backend using [VSCode dev containers](https://code.visualstudio.com/docs/devcontainers/containers). Create/update your .env file like in the local setup instructions.
@@ -95,8 +95,8 @@ The backend sends DMX signals to trigger lights and sound during certain events.
 
 ## Production setup
 * Copy `.env.dist` to `.backend.env.prod` and set the correct settings
-* Check that `docker-compose.yml` has the correct `POSTGRES_PASSWORD` env
-* Check that `docker-compose.yml` has the correct volume mount path for the host computer, since PostgreSQL data will be persisted there
-* Check that `docker-compose.yml` has the correct DMX device path
-* Run `docker-compose build` to build the database and backend images
-* Run `docker-compose up -d` to start the database and bakend containers
+* Check that `docker compose.yml` has the correct `POSTGRES_PASSWORD` env
+* Check that `docker compose.yml` has the correct volume mount path for the host computer, since PostgreSQL data will be persisted there
+* Check that `docker compose.yml` has the correct DMX device path
+* Run `docker compose build` to build the database and backend images
+* Run `docker compose up -d` to start the database and bakend containers
