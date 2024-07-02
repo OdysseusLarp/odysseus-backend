@@ -7,7 +7,12 @@ import { Client } from 'tplink-smarthome-api';
 const client = new Client();
 
 export async function scanTplinkDevices() {
-	const dmxConfig = store.getState().data.tplink.dmxconfig;
+	const dmxConfig = store.getState().data.tplink?.dmxconfig;
+	if (!dmxConfig) {
+		logger.debug('No TP-link DMX config found');
+		return;
+	}
+
 	const ipaddresses: string[] = dmxConfig.signals.map(signal => signal.ip);
 	const uniqueIpAddresses = [...new Set(ipaddresses)];
 	const devices = {};
@@ -32,8 +37,18 @@ export async function scanTplinkDevices() {
 }
 
 export async function processDmxSignal(signal: string): Promise<void> {
+	if (process.env.DISABLE_TPLINK_SCANNING) {
+		logger.info('TP-link scanning is disabled');
+		return;
+	}
+
 	// List of objects { dmx: "LoungeFuseFixed", ip: "1.2.3.4", powerstate: true }
-	const dmxSignals = store.getState().data.tplink.dmxconfig.signals;
+	const dmxSignals = store.getState().data.tplink?.dmxconfig?.signals;
+	if (!dmxSignals) {
+		logger.debug('No TP-link DMX signals configured');
+		return;
+	}
+
 	for (let dmxSignal of dmxSignals) {
 		if (dmxSignal.dmx === signal) {
 			setTimeout(async () => {
