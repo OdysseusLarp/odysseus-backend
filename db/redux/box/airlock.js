@@ -16,7 +16,8 @@ blobs.push({
 	config: {
 		title_bar_text: 'Hangar Bay', // shown in an extra bar at the top of the UI, if set
 		allow_depressurize: false,    // should the depressurize button be shown in the player UI?
-		auto_close_delay: 15000,      // milliseconds before door closes automatically (0 = never)
+		jump_close_delay: 42000,      // milliseconds before door closes after jump initiation
+		auto_close_delay: 15000,      // milliseconds before door closes automatically after opening (0 = never)
 		// DMX events to fire on transition start
 		dmx_events: {
 			open: 'HangarBayDoorUnlock',
@@ -45,7 +46,8 @@ blobs.push({
 	config: {
 		title_bar_text: 'Airlock 01', // shown in an extra bar at the top of the UI, if set
 		allow_depressurize: true,     // should the depressurize button be shown in the player UI?
-		auto_close_delay: 0,          // milliseconds before door closes automatically (0 = never)
+		jump_close_delay: 10000,      // milliseconds before door closes after jump initiation
+		auto_close_delay: 0,          // milliseconds before door closes automatically after opening (0 = never)
 		auto_pressurize_delay: 30000, // milliseconds before airlock re-pressurizes automatically (0 = never)
 		pressure_curve: 'sqrt',       // adjustment applied to player-visible pressure value
 		// DMX events to fire on transition start
