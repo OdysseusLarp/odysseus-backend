@@ -10,11 +10,11 @@ const DEFAULT_CONFIG = {
 };
 
 const DEFAULT_TRANSITION_TIMES = {
-	open: 6000,
+	open: 6500,
 	close: 5000,
-	pressurize: 60000,
-	depressurize: 600000,
-	evacuate: 30000,
+	pressurize: 73000,
+	depressurize: 601000,
+	evacuate: 42000,
 };
 
 function now() {
