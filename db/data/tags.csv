@@ -163,7 +163,9 @@ If any bits of the worm are left in the wound the worm will regenerate from the 
 ((For extra drama you could make a mistake in the removal process, the worm will regenerate and you need to start over.))"
 medic:poison_blood_coagulation,medic,"Poisoning
 
-Poisoning from an unknown life form. Blood does not coagulate. "
+Poisoning from an unknown life form. Blood does not coagulate due to some unknown venom in the wound. 
+
+(OFFGAME: This character will die in the medbay from this injury, the player is aware of this. Please let the player and other marines play this out a little and say their goodbyes.)"
 medic:wound,medic,"Wound
 
 Level 1: Clean wound - Skin is torn, cut, or punctured (an open wound), needs to be cleaned and bandaged.
