@@ -3178,10 +3178,9 @@ blobs.push({
 		id: 'doomba',
 		type: 'task',
 		game: 'doomba',
-		singleUse: false,
+		singleUse: true,
 		used: false,
-		eeType: 'lifesupport',
-		eeHealth: 0.2,
+		lifesupportHealth: 0.20, // fixes 20%
 		status: 'initial',
 		calibrationCount: 1,
 		calibrationTime: 870,
