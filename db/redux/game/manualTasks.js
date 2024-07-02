@@ -802,7 +802,23 @@ blobs.push({
 				'<p>Clean isotopic gamma-spore reader</p',
 				'<p>Move to calibrating when complete.</p>',
 			],
-			buttons: ['Wiring instructions', 'Next', 'Calibrate'],
+			buttons: ['Task instructions', 'Next', 'Calibrate'],
+		},
+	},
+	{
+		id: 'maneuvering_42X-PQ',
+		type: 'game',
+		task: 'maneuvering_42X-PQ',
+		game_config: 'manual',
+		status: 'fixed',
+		config: {
+			title: 'PIPELINE UNIT 42X-PQ',
+			pages: [
+				'<p>Perform the manual task according to instructions.</p><p>Pipeline unit 42X-PQ needs to be cleaned.</p><p>Pipeline unit 42X-PQ is located in the airlock. Refer to ESS Odysseus Operations Handbook page 2.9-1 for instructions.</p>',
+				'<p>Clean pipeline unit 42X-PQ from obstructions</p',
+				'<p>Move to calibrating when complete.</p>',
+			],
+			buttons: ['Task instructions', 'Next', 'Calibrate'],
 		},
 	},
 	{
@@ -2493,7 +2509,7 @@ blobs.push({
 		game: 'maneuvering_decetor',
 		singleUse: false,
 		used: false,
-		eeType: 'frontshield',
+		eeType: 'maneuvering',
 		eeHealth: 0.12,
 		status: 'initial',
 		calibrationCount: 9,
@@ -2505,6 +2521,25 @@ blobs.push({
 		map: 'deck2',
 		mapX: 615, // X coordinate in image
 		mapY: 1895, // Y coordinate in image
+	},
+	{
+		id: 'maneuvering_42X-PQ',
+		type: 'task',
+		game: 'maneuvering_42X-PQ',
+		singleUse: true,
+		used: false,
+		eeType: 'maneuvering',
+		eeHealth: 0.15,
+		status: 'initial',
+		calibrationCount: 1,
+		calibrationTime: 500,
+		title: 'PIPELINE UNIT 42X-PQ',
+		description:
+			'Pipeline unit 42X-PQ is essential for maintaining optimal fluid dynamics within the ship\'s hydro-system. This system is important for maneuvering to work. Obstructions can occur due to various particulate build-ups, which must be cleared to ensure seamless fluid transfer. Manual labor is needed. Perform the manual task according to instructions. Pipeline unit 42X-PQ is located near the airlock. Refer to ESS Odysseus Operations Handbook page 2.9-1 for instructions. Use HANSCA repair for calibration.',
+		location: 'Lower deck, airlock',
+		map: 'deck1',
+		mapX: 650, // X coordinate in image
+		mapY: 970, // Y coordinate in image
 	},
 	{
 		id: 'rearshield_x41_a',
