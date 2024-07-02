@@ -1,6 +1,6 @@
 import { store, watch } from '@/store/store';
 import { CHANNELS, fireEvent } from '@/dmx';
-import { logger } from '../../logger';
+import { logger } from '@/logger';
 import { saveBlob, clamp, timeout } from '../helpers';
 
 const airlockNames = ['airlock_main', 'airlock_hangarbay'];
@@ -21,14 +21,36 @@ function now() {
 	return new Date().getTime();
 }
 
+const JUMP_INITIATED = 'jump_initiated';
+const JUMPING = 'jumping';
+
 function Airlock(airlockName) {
 	this.name = airlockName;
 	this.data = store.getState().data.box[airlockName] || {};
 	this.commandCounter = 0;
+	this.closeBeforeJumpTimeout = null;
 
 	watch(['data', 'box', this.name], (data) => {
 		this.data = data;
 		if (data?.command) this.command(data.command);
+	});
+
+	watch(['data', 'ship', 'jump'], (current, previous) => {
+		// Issue an automatic command to close the airlocks a configurable amount of time after a jump is initiated:
+		if (current.status !== JUMP_INITIATED) {
+			if (this.closeBeforeJumpTimeout) clearTimeout(this.closeBeforeJumpTimeout);
+			this.closeBeforeJumpTimeout = null;
+		} else if (previous.status !== JUMP_INITIATED) {
+			const delay = this.data.config.jump_close_delay || 0;
+			this.closeBeforeJumpTimeout ||= setTimeout(() => this.closeForJump(), delay);
+		}
+	});
+
+	watch(['data', 'ship', 'jumpstate'], (current, previous) => {
+		// Stop transitions and reset the airlock to a known (closed and pressurized) state on jump:
+		if (current.status === JUMPING && previous.status !== JUMPING) {
+			this.patchData({ status: 'closed', pressure: 1.0, command: 'stop' })
+		}
 	});
 
 	if (this.data.status === 'initial') {
@@ -104,6 +126,14 @@ Airlock.prototype = {
 		logger.warn(`Airlock ${this.name} ignored unknown command "${this.data.command}"`);
 	},
 
+	// Trigger an automatic close command before jumping, unless the door is already closed or closing:
+	closeForJump() {
+		const status = this.data.status;
+		if (status !== 'closed' && status !== 'closing') {
+			this.command('close');
+		}
+	},
+
 	// transition animations
 	async pressurize() {
 		const pressure = clamp(this.getPressure() || 0.0, 0, 1);
@@ -148,7 +178,6 @@ Airlock.prototype = {
 	async openDoor() {
 		const status = this.data.status;
 		if (status === 'open') return;  // already open
-		// if (this.isBroken()) return await this.malfunction();
 
 		const startTime = now();
 		const endTime = startTime + this.transitionTime('open');
@@ -161,16 +190,21 @@ Airlock.prototype = {
 	},
 	async closeDoor() {
 		const status = this.data.status;
-		if (status !== 'open') return;  // not open?!
+		if (status === 'closed') return;  // already closed
 
 		const startTime = now();
 		const endTime = startTime + this.transitionTime('close');
 		logger.debug(`Airlock ${this.name} closing from ${startTime} to ${endTime}`);
 
+		// This method may be called when jumping even if the airlock is fully or partially depressurized.
+		// In that case we stop any pressure change in progress but leave the pressure at its current value.
+		// A "stop" command will be automatically issued on successful jump, resetting the pressure to 1.0.
+		const pressure = clamp(this.getPressure() || 0.0, 0, 1);
+
 		this.dmx('close');
-		this.patchData({ status: 'closing', countdown_to: endTime, pressure: 1.0 });
+		this.patchData({ status: 'closing', countdown_to: endTime, pressure: pressure });
 		await this.waitUntil(endTime);
-		this.patchData({ status: 'closed', countdown_to: 0, pressure: 1.0 });
+		this.patchData({ status: 'closed', countdown_to: 0, pressure: pressure });
 	},
 	async autoClose() {
 		const config = this.data.config || DEFAULT_CONFIG, status = this.data.status;
