@@ -53,11 +53,13 @@ function Airlock(airlockName) {
 		}
 	});
 
-	if (this.data.status === 'initial') {
-		this.patchData({ status: 'closed', pressure: 1.0, countdown_to: 0, command: null, access_denied: false });
-	} else if (this.data.command) {
-		this.command(this.data.command);
-	}
+	// If the backend was stopped in the middle of an uninterruptible airlock transition (e.g. pressurize), the airlock
+	// might get stuck in the transition state with no way for players to reset it. Sending a stop command fixes this.
+	this.command('stop');
+
+	// Also, apparently restarting the backend can cause the UI to miss some state updates. We work around this by pushing
+	// dummy updates at regular intervals.
+	setInterval(() => this.patchData({ heartbeat: now() }), 60000);
 }
 Airlock.prototype = {
 	patchData(changes) {
@@ -237,7 +239,9 @@ Airlock.prototype = {
 		} else if (status === 'closing') {
 			this.patchData({ status: 'open', countdown_to: 0, pressure: 1.0 });
 		} else if (status === 'vacuum') {
-			this.patchData({ status: 'vacuum', countdown_to: 0, pressure: 0.0 });
+			this.patchData({status: 'vacuum', countdown_to: 0, pressure: 0.0});
+		} else if (status === 'initial') {
+			this.patchData({ status: 'closed', countdown_to: 0, pressure: 1.0, access_denied: false });
 		} else {
 			this.patchData({ status, countdown_to: 0, pressure: 1.0 });
 		}
