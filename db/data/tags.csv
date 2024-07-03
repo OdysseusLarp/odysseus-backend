@@ -224,7 +224,9 @@ engi:communicator1,engineer,"Communicator's signal reveals a complex frequency-h
 engi:communicator2,engineer,"Energy signature analysis indicates a hybrid power system utilizing tri-phase ion capacitors coupled with quantum-dynamic resonance coils. Consumption metrics show efficient energy utilization during active transmission cycles, with standby modes optimizing power conservation through sub-quantum phase oscillation."
 engi:communicator3,engineer,"Optimizing circuitry and power management algorithms to reduce the device's power consumption without compromising performance, extending battery life or reducing energy requirements for external power sources."
 engi:communicator4,engineer,"Deep packet inspection reveals a multi-layered quantum entanglement encryption schema, employing pseudo-random quantum bit generators synchronized with celestial reference points for key exchange. Vulnerability assessment identifies residual phase modulation artifacts susceptible to temporal decoherence exploits."
-engi:communicator5,engineer,Enhance the device's antenna design or signal processing capabilities to improve signal strength and extend communication range. Metainfo: Message EVA when installation is ready.
+engi:communicator5,engineer,Enhance the device's antenna design or signal processing capabilities to improve signal strength and extend communication range. 
+
+Metainfo: Repairs and enhancements are purely improvisational. Please do not use tape or anyway harm the device when attaching it. Message EVA when installation is ready."
 engi:communicator6,engineer,"Metainfo: This info at the bottom of the bage is only for VANE HODGE OR LANE THOMAS!
 
 
@@ -298,23 +300,39 @@ engi:calculator1,engineer,"Initial analysis of the device's computational core r
 engi:calculator2,engineer,"Energy signature spectroscopy indicates a tri-phasic graviton capacitor array, interfaced with subatomic resonators optimized for flux redistribution. Efficiency metrics highlight gravimetric phase modulation achieving near-zero-point energy extraction, minimizing entropy loss during computational tasks."
 engi:calculator3,engineer,"Algorithmic profiling uncovers a heuristic synergy matrix integrating predictive neural networks with Bayesian inference engines. Real-time data fusion protocols synchronize multi-modal sensor inputs, dynamically adjusting computational resource allocation based on probabilistic models of task complexity."
 engi:calculator4,engineer,"Performance benchmarking reveals a quantum supersymmetry processor array, leveraging temporal coherence states to achieve femtosecond-level clock cycles. Multi-vector parallelization strategies exhibit scalable throughput up to teraops, surpassing classical computing paradigms."
-engi:calculator5,engineer,"Incorporate the device into the ship's data integration pathways, configuring optical or quantum data links to ensure seamless communication with the ship's mainframe and minimize latency in data processing. Metainfo: Please do not use tape or anyway harm the device when attaching it."
-engi:calculator6,engineer,"Conduct a comprehensive assessment to ensure compatibility between the calculation capacity extender and the existing computing architecture. Verify that the extender integrates seamlessly with the onboard processors, memory modules, and data buses. Metainfo: Please do not use tape or anyway harm the device when attaching it. Message EVA when installation is ready."
-engi:cooling1,engineer,Ensure the device is structurally integrated with the engine assembly to minimize vibration and maintain alignment during spacecraft maneuvers. Use secure mounting points and consider structural reinforcements if needed. Metainfo: Please do not use tape or anyway harm the device when attaching it. Message EVA when installation is ready.
-engi:cooling2,engineer,Implement sensor system to regulate coolant flow and temperature levels effectively. Automated controls should adjust coolant flow rates based on engine operation conditions. Metainfo: Please do not use tape or anyway harm the device when attaching it.
+engi:calculator5,engineer,"Incorporate the device into the ship's data integration pathways, configuring optical or quantum data links to ensure seamless communication with the ship's mainframe and minimize latency in data processing.
+
+Metainfo: Attaching the device is purely improvisational. Please do not use tape or anyway harm the device when attaching it. Message EVA when installation is ready."
+engi:calculator6,engineer,"Conduct a comprehensive assessment to ensure compatibility between the calculation capacity extender and the existing computing architecture. Verify that the extender integrates seamlessly with the onboard processors, memory modules, and data buses. 
+
+Metainfo: Attaching the device is purely improvisational. Please do not use tape or anyway harm the device when attaching it. Message EVA when installation is ready."
+engi:cooling1,engineer,"Ensure the device is structurally integrated with the engine assembly to minimize vibration and maintain alignment during spacecraft maneuvers. Use secure mounting points and consider structural reinforcements if needed. 
+
+Metainfo: Attaching the device is purely improvisational. Please do not use tape or anyway harm the device when attaching it. Message EVA when installation is ready."
+engi:cooling2,engineer,"Implement sensor system to regulate coolant flow and temperature levels effectively. Automated controls should adjust coolant flow rates based on engine operation conditions. 
+
+Metainfo: Attaching the device is purely improvisational. Please do not use tape or anyway harm the device when attaching it. Message EVA when installation is ready."
 engi:cooling3,engineer,Initial diagnostics indicate the presence of a highly efficient energy redistribution matrix.
 engi:cooling4,engineer,Analysis reveals an intricate energy flux management framework designed to facilitate the rapid transfer and neutralization of excess thermal energy. The mechanism likely integrates a combination of passive and active energy modulation components.
 engi:cooling5,engineer,"The device operates on a dynamic power allocation system, optimizing energy use to ensure minimal wastage during peak and idle states. Energy efficiency metrics reveal a sophisticated feedback loop system that continuously adjusts energy throughput based on real-time demands. "
 engi:scanrange1,engineer,"Initial diagnostics reveal a sophisticated frequency modulation algorithm that dynamically adjusts to ambient electromagnetic conditions, optimizing signal clarity and coherence. The synchronization protocols appear to leverage quantum entanglement principles for real-time adjustment."
 engi:scanrange2,engineer,"Material analysis shows the use of exotic alloys and metamaterials with exceptional resonance properties, facilitating the efficient propagation of high-frequency waves. These materials exhibit unique dielectric and conductive characteristics that enhance signal fidelity."
 engi:scanrange3,engineer,Embedded within the device is an array of adaptive sensors and processors that continuously analyze environmental conditions and adjust operational parameters accordingly. This adaptive mechanism ensures optimal signal reception and transmission across varying spatial and temporal contexts.
-engi:scanrange4,engineer,"If integrated to ships systems ensure proper alignment with the ship's existing electromagnetic field array. This involves calibrating the interface nodes to synchronize with the vessel's frequency modulation systems, thereby enhancing spatial detection capabilities. Metainfo: Please do not use tape or anyway harm the device when attaching it. Message EVA when installation is ready."
-engi:scanrange5,engineer,"The extender device requires seamless integration into the ship's power grid. Configure the power coupling to optimize energy flow, utilizing phase modulation techniques to prevent overloading and ensure efficient energy utilization. Metainfo: Please do not use tape or anyway harm the device when attaching it."
+engi:scanrange4,engineer,"If integrated to ships systems ensure proper alignment with the ship's existing electromagnetic field array. This involves calibrating the interface nodes to synchronize with the vessel's frequency modulation systems, thereby enhancing spatial detection capabilities. 
+
+Metainfo: Attaching the device is purely improvisational. Please do not use tape or anyway harm the device when attaching it. Message EVA when installation is ready."
+engi:scanrange5,engineer,"The extender device requires seamless integration into the ship's power grid. Configure the power coupling to optimize energy flow, utilizing phase modulation techniques to prevent overloading and ensure efficient energy utilization. 
+
+Metainfo: Attaching the device is purely improvisational. Please do not use tape or anyway harm the device when attaching it. Message EVA when installation is ready."
 engi:calcboost1,engineer,"Advanced multi-dimensional processing matrix within the device, utilizing hyper-threaded quantum cores that enable parallel execution of complex algorithms with minimal latency."
 engi:calcboost2,engineer,"Initial diagnostics shows a highly efficient data bus architecture, leveraging photonic interconnects to facilitate ultra-fast data transfer rates and reduce signal attenuation across the processing network."
 engi:calcboost3,engineer,"An intelligent resource management system within the device, utilizing machine learning algorithms to predict computational demands and allocate processing power accordingly."
-engi:calcboost4,engineer,"Integrate the device through the ship's main data conduits, ensuring synchronization with the existing computational framework by calibrating the interface protocols to match system bus speeds and data formats. Metainfo: Please do not use tape or anyway harm the device when attaching it."
-engi:calcboost5,engineer,"Attach the device to the ship’s power grid using adaptive power converters, which regulate and harmonize the energy influx to prevent surges and ensure consistent power supply during peak operational phases. Metainfo: Please do not use tape or anyway harm the device when attaching it. Message EVA when installation is ready."
+engi:calcboost4,engineer,"Integrate the device through the ship's main data conduits, ensuring synchronization with the existing computational framework by calibrating the interface protocols to match system bus speeds and data formats. 
+
+Metainfo: Attaching the device is purely improvisational. Please do not use tape or anyway harm the device when attaching it. Message EVA when installation is ready."
+engi:calcboost5,engineer,"Attach the device to the ship’s power grid using adaptive power converters, which regulate and harmonize the energy influx to prevent surges and ensure consistent power supply during peak operational phases. 
+
+Metainfo: Attaching the device is purely improvisational. Please do not use tape or anyway harm the device when attaching it. Message EVA when installation is ready."
 medic:blunt,medic,"Blunt force trauma
 
 Level 1: Surface injury. Some swelling and moderate pain to be expected, Should be monitored for changes in surrounding skin. May end up being a pretty nasty bruise at worst.
@@ -322,3 +340,8 @@ Level 1: Surface injury. Some swelling and moderate pain to be expected, Should 
 Level 2: Moderate injury mainly to soft tissue structure. No bone fractures. Cold compression is adviced to prevent further internal bruising/minor bleeding. Will result in a nasty and sore bruise. Pain management adviced.
 
 Level 3: Severe blunt force trauma. No cut or penetration wounds but suspect fractured or broken bone structure that needs rest and monitoring. Severe swelling and nausea may occur. Monitor for iternal bleeding."
+medic:poison_blood_coagulation,medic,"Poisoning
+
+Poisoning from an unknown life form. Blood does not coagulate due to some unknown venom in the wound. 
+
+(OFFGAME: This character will die on the operating table from this injury, the player is aware of this. Please let the player and other marines play this out a little and say their goodbyes.)"
