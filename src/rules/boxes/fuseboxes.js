@@ -45,7 +45,12 @@ watch(['data', 'box'], (boxes, previousBoxes, state) => {
 
 function breakTask() {
 	const allTasks = Object.values(store.getState().data.task);
-	const tasks = allTasks.filter(task => task.lifesupportHealth && task.status === 'fixed');
+	const tasks = allTasks.filter((task) => {
+		const isLifeSupportTask = Number.isFinite(task.lifesupportHealth);
+		const isBreakable = ['fixed', 'initial'].includes(task.status);
+		const isNotUsed = !task.singleUse || !task.used;
+		return isLifeSupportTask && isBreakable && isNotUsed;
+	});
 	const priorityTasks = getPriorityTasks(tasks);
 	const task = chooseRandom(priorityTasks)[0];
 	if (!task) {
