@@ -255,7 +255,7 @@ export const Person = Bookshelf.Model.extend({
 
 export async function getFilterableValues() {
 	const { knex } = Bookshelf;
-	const [titleItems, statusItems, dynastyItems, shipItems, homePlanetItems] = await Promise.all([
+	const [titleItems, statusItems, dynastyItems, shipItems, homePlanetItems, politicalPartyItems] = await Promise.all([
 		knex('person').distinct('title').where('is_visible', true).whereRaw('title IS NOT NULL').orderBy('title'),
 		knex('person').distinct('status').where('is_visible', true).whereRaw('status IS NOT NULL').orderBy('status'),
 		knex('person').distinct('dynasty').where('is_visible', true).whereRaw('status IS NOT NULL').orderBy('dynasty'),
@@ -264,6 +264,7 @@ export async function getFilterableValues() {
 			.where('person.is_visible', true).where('ship.is_visible', true).whereRaw('ship_id IS NOT NULL'),
 		knex('person').distinct('home_planet').where('is_visible', true).whereRaw('home_planet IS NOT NULL')
 			.orderBy('home_planet'),
+		knex('person').distinct('political_party').where('is_visible', true).whereRaw('political_party IS NOT NULL')
 	]);
 	return {
 		filters: [
@@ -284,6 +285,14 @@ export async function getFilterableValues() {
 				}))
 			},
 			{
+				name: 'Party',
+				key: 'political_party',
+				items: (politicalPartyItems || []).filter(s => s && s.political_party).map(({ political_party }) => ({
+					name: political_party,
+					value: political_party
+				}))
+			},
+			{
 				name: 'Home planet',
 				key: 'home_planet',
 				items: (homePlanetItems || []).filter(s => s && s.home_planet).map(({ home_planet }) => ({
@@ -292,7 +301,7 @@ export async function getFilterableValues() {
 				}))
 			},
 			{
-				name: 'Current location',
+				name: 'Ship',
 				key: 'ship_id',
 				items: (shipItems || []).filter(s => s && s.ship_id).map(({ name, ship_id }) => ({
 					name,
