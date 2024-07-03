@@ -224,7 +224,7 @@ blobs.push({
 	id: 'maneuver',
 
 	default: {
-		initDescription: '<p>Maneuver power segment needs cleaning.</p>\n\t\t<p>Clean up faulty segment by collecting dirt (red square) with the remote-controlled snake cleaner. After enough dirt has been cleaned the system will become operational.</p>',
+		initDescription: '<p>Maneuver power segment needs cleaning.</p>\n\t\t<p>Clean up faulty segment by collecting dirt (red squares) with the remote-controlled snake cleaner. After enough dirt has been cleaned the system will become operational.</p>',
 		endDescription: 'All dirt cleaned successfully!',
 		game: 'snake',
 
@@ -233,7 +233,7 @@ blobs.push({
 	},
 
 	'skill:master': {
-		initDescription: '<p>Maneuver power segment needs cleaning.</p>\n\t\t<p>Clean up faulty segment by collecting dirt (red square) with the remote-controlled snake cleaner. After enough dirt has been cleaned the system will become operational.</p>',
+		initDescription: '<p>Maneuver power segment needs cleaning.</p>\n\t\t<p>Clean up faulty segment by collecting dirt (red squares) with the remote-controlled snake cleaner. After enough dirt has been cleaned the system will become operational.</p>',
 		endDescription: 'All dirt cleaned successfully!',
 		game: 'snake',
 
@@ -242,7 +242,7 @@ blobs.push({
 	},
 
 	'skill:expert': {
-		initDescription: '<p>Maneuver power segment needs cleaning.</p>\n\t\t<p>Clean up faulty segment by collecting dirt (red square) with the remote-controlled snake cleaner. After enough dirt has been cleaned the system will become operational.</p>',
+		initDescription: '<p>Maneuver power segment needs cleaning.</p>\n\t\t<p>Clean up faulty segment by collecting dirt (red squares) with the remote-controlled snake cleaner. After enough dirt has been cleaned the system will become operational.</p>',
 		endDescription: 'All dirt cleaned successfully!',
 		game: 'snake',
 
