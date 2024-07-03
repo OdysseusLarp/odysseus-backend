@@ -340,8 +340,3 @@ Level 1: Surface injury. Some swelling and moderate pain to be expected, Should 
 Level 2: Moderate injury mainly to soft tissue structure. No bone fractures. Cold compression is adviced to prevent further internal bruising/minor bleeding. Will result in a nasty and sore bruise. Pain management adviced.
 
 Level 3: Severe blunt force trauma. No cut or penetration wounds but suspect fractured or broken bone structure that needs rest and monitoring. Severe swelling and nausea may occur. Monitor for iternal bleeding."
-medic:poison_blood_coagulation,medic,"Poisoning
-
-Poisoning from an unknown life form. Blood does not coagulate due to some unknown venom in the wound. 
-
-(OFFGAME: This character will die on the operating table from this injury, the player is aware of this. Please let the player and other marines play this out a little and say their goodbyes.)"
