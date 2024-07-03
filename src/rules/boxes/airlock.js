@@ -242,11 +242,16 @@ Airlock.prototype = {
 			this.patchData({ status, countdown_to: 0, pressure: 1.0 });
 		}
 	},
+	// Helper methods to disable and enable all airlocks for Tristan Fukui's scene:
 	async denyAccess() {
-		this.patchData({ access_denied: true });
+		for (const name of airlockNames) {
+			airlocks[name].patchData({ access_denied: true });
+		}
 	},
 	async allowAccess() {
-		this.patchData({ access_denied: false });
+		for (const name of airlockNames) {
+			airlocks[name].patchData({ access_denied: false });
+		}
 	},
 
 	// convert linear pressure ramp back to a numeric pressure value
