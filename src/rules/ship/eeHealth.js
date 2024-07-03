@@ -1,4 +1,4 @@
-import { clamp, interval, chooseRandom } from '../helpers';
+import { clamp, interval, chooseRandom, getPriorityTasks } from '../helpers';
 import { breakTask } from '../breakTask';
 import store, { watch } from '../../store/store';
 import { getEmptyEpsilonClient } from '../../integrations/emptyepsilon/client';
@@ -57,11 +57,6 @@ const notBroken = task => !isBroken(task);
 
 function computeHealth(brokenTasks) {
 	return brokenTasks.reduce((health, task) => health - task.eeHealth, 1);
-}
-
-function getPriorityTasks(tasks) {
-	const maxPriority = tasks.reduce((max, task) => Math.max(max, task.priority ? task.priority : 0), -1000000);
-	return tasks.filter(task => (task.priority ? task.priority : 0) === maxPriority);
 }
 
 function breakTasks(type, targetHealth) {

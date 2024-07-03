@@ -2,7 +2,7 @@ import store, { watch } from '../../store/store';
 import { CHANNELS, fireEvent } from '../../dmx';
 import { logger } from '../../logger';
 import { isNumber, isEqual } from 'lodash';
-import { chooseRandom, saveBlob } from '../helpers';
+import { chooseRandom, getPriorityTasks, saveBlob } from '../helpers';
 
 // Fire DMX signals based on dmxFuse configuration
 watch(['data', 'box'], (boxes, previousBoxes, state) => {
@@ -45,8 +45,14 @@ watch(['data', 'box'], (boxes, previousBoxes, state) => {
 
 function breakTask() {
 	const allTasks = Object.values(store.getState().data.task);
-	const tasks = allTasks.filter(task => task.lifesupportHealth && task.status === 'fixed');
-	const task = chooseRandom(tasks)[0];
+	const tasks = allTasks.filter((task) => {
+		const isLifeSupportTask = Number.isFinite(task.lifesupportHealth);
+		const isBreakable = ['fixed', 'initial'].includes(task.status);
+		const isNotUsed = !task.singleUse || !task.used;
+		return isLifeSupportTask && isBreakable && isNotUsed;
+	});
+	const priorityTasks = getPriorityTasks(tasks);
+	const task = chooseRandom(priorityTasks)[0];
 	if (!task) {
 		logger.warn(`Cound not find life support task to break`);
 		return;
