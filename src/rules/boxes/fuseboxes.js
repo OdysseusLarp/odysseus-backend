@@ -2,7 +2,7 @@ import store, { watch } from '../../store/store';
 import { CHANNELS, fireEvent } from '../../dmx';
 import { logger } from '../../logger';
 import { isNumber, isEqual } from 'lodash';
-import { chooseRandom, saveBlob } from '../helpers';
+import { chooseRandom, getPriorityTasks, saveBlob } from '../helpers';
 
 // Fire DMX signals based on dmxFuse configuration
 watch(['data', 'box'], (boxes, previousBoxes, state) => {
@@ -42,11 +42,6 @@ watch(['data', 'box'], (boxes, previousBoxes, state) => {
 		}
 	}
 });
-
-function getPriorityTasks(tasks) {
-	const maxPriority = tasks.reduce((max, task) => Math.max(max, task.priority ? task.priority : 0), -1000000);
-	return tasks.filter(task => (task.priority ? task.priority : 0) === maxPriority);
-}
 
 function breakTask() {
 	const allTasks = Object.values(store.getState().data.task);

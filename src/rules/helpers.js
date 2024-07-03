@@ -158,3 +158,11 @@ export function* rng(seed = 1) {
 	}
 }
 
+/**
+ * Return the tasks with the highest priority
+ * @param {array} tasks
+ */
+export function getPriorityTasks(tasks) {
+	const maxPriority = tasks.reduce((max, task) => Math.max(max, task.priority ? task.priority : 0), -Infinity);
+	return tasks.filter(task => (task.priority ? task.priority : 0) === maxPriority);
+}
