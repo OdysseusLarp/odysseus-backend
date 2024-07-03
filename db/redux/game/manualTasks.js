@@ -2536,10 +2536,10 @@ blobs.push({
 		title: 'PIPELINE UNIT 42X-PQ',
 		description:
 			'Pipeline unit 42X-PQ is essential for maintaining optimal fluid dynamics within the ship\'s hydro-system. This system is important for maneuvering to work. Obstructions can occur due to various particulate build-ups, which must be cleared to ensure seamless fluid transfer. Manual labor is needed. Perform the manual task according to instructions. Pipeline unit 42X-PQ is located near the airlock. Refer to ESS Odysseus Operations Handbook page 2.9-1 for instructions. Use HANSCA repair for calibration.',
-		location: 'Lower deck, airlock',
+		location: 'Lower deck, fighter 36',
 		map: 'deck1',
-		mapX: 650, // X coordinate in image
-		mapY: 970, // Y coordinate in image
+		mapX: 600, // X coordinate in image
+		mapY: 550, // Y coordinate in image
 	},
 	{
 		id: 'rearshield_x41_a',
