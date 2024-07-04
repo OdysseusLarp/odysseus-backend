@@ -133,7 +133,7 @@ for (let i = 0; i < 20; i++) {
 		calibrationTime: 5 * 60,
 		calibrationCount: 1,
 		title: `Impulse engine power segment ${code}`,
-		description: `Impulse engine power segment ${code} has failed. Phase shift needs to be recalibrated using HANSCA.`,
+		description: `Impulse engine power segment ${code} has failed. Faulty segment needs to be reconfigured using HANSCA. `,
 		location: 'Upper deck, Security room',
 		map: 'deck2',
 		mapX: 380,
@@ -146,36 +146,33 @@ blobs.push({
 	id: 'impulse',
 
 	default: {
-		initDescription: 'Impulse engine power segment needs phase calibration.',
-		endDescription: 'Phase calibration successful!',
-		game: 'phasesync',
+		initDescription: '<p>Impulse engine power segment needs reconfiguration.</p>\n\t\t<p>Each number on the lines outside the grid represents a block of squares to be blacked out in that row or column</p>\n\t\t<p>You may reset the shield segments to a random state.</p>',
+		endDescription: 'Segment reconfiguration successful!',
+		game: 'nonogram',
 
-		dimensions: 1,
-		difficulty: 0,
-		duration: 40,
-		drift: 0.3,
+		gridWidth: 6,
+		gridHeight: 8,
+		maxStrikes: 1,
 	},
 
 	'skill:master': {
-		initDescription: 'Impulse engine power segment needs phase calibration.',
-		endDescription: 'Phase calibration successful!',
-		game: 'phasesync',
+		initDescription: '<p>Impulse engine power segment needs reconfiguration.</p>\n\t\t<p>Each number on the lines outside the grid represents a block of squares to be blacked out in that row or column</p>\n\t\t<p>You may reset the shield segments to a random state.</p>',
+		endDescription: 'Segment reconfiguration successful!',
+		game: 'nonogram',
 
-		dimensions: 1,
-		difficulty: 0,
-		duration: 30,
-		drift: 0.15,
+		gridWidth: 6,
+		gridHeight: 6,
+		maxStrikes: 2,
 	},
 
 	'skill:expert': {
-		initDescription: 'Impulse engine power segment needs phase calibration.',
-		endDescription: 'Phase calibration successful!',
-		game: 'phasesync',
+		initDescription: '<p>Impulse engine power segment needs reconfiguration.</p>\n\t\t<p>Each number on the lines outside the grid represents a block of squares to be blacked out in that row or column</p>\n\t\t<p>You may reset the shield segments to a random state.</p>',
+		endDescription: 'Segment reconfiguration successful!',
+		game: 'nonogram',
 
-		dimensions: 1,
-		difficulty: 0,
-		duration: 20,
-		drift: 0.1,
+		gridWidth: 5,
+		gridHeight: 5,
+		maxStrikes: 3,
 	},
 });
 
@@ -214,7 +211,7 @@ for (let i = 0; i < 20; i++) {
 		calibrationTime: 7 * 60,
 		calibrationCount: 1,
 		title: `Maneuver power segment ${code}`,
-		description: `Maneuver power segment ${code} has failed. Phase shift needs to be recalibrated using HANSCA.`,
+		description: `Maneuver power segment ${code} has failed. Power segment needs to be cleaned using HANSCA.`,
 		location: letter === 'L' ? 'Upper deck, corridor outside Security room' : 'Upper deck, corridor outside Bridge',
 		map: 'deck2',
 		mapX: letter === 'L' ? 450 : 600,
@@ -227,36 +224,30 @@ blobs.push({
 	id: 'maneuver',
 
 	default: {
-		initDescription: 'Maneuver power segment needs phase calibration.',
-		endDescription: 'Phase calibration successful!',
-		game: 'phasesync',
+		initDescription: '<p>Maneuver power segment needs cleaning.</p>\n\t\t<p>Clean up faulty segment by collecting dirt (red squares) with the remote-controlled snake cleaner. After enough dirt has been cleaned the system will become operational.</p>',
+		endDescription: 'All dirt cleaned successfully!',
+		game: 'snake',
 
-		dimensions: 4,
-		difficulty: 0.2,
-		duration: 1,
-		drift: 0,
+		speed: 3,
+		targetSnakeLength: 24,
 	},
 
 	'skill:master': {
-		initDescription: 'Maneuver power segment needs phase calibration.',
-		endDescription: 'Phase calibration successful!',
-		game: 'phasesync',
+		initDescription: '<p>Maneuver power segment needs cleaning.</p>\n\t\t<p>Clean up faulty segment by collecting dirt (red squares) with the remote-controlled snake cleaner. After enough dirt has been cleaned the system will become operational.</p>',
+		endDescription: 'All dirt cleaned successfully!',
+		game: 'snake',
 
-		dimensions: 4,
-		difficulty: 0.1,
-		duration: 1,
-		drift: 0,
+		speed: 4,
+		targetSnakeLength: 20,
 	},
 
 	'skill:expert': {
-		initDescription: 'Maneuver power segment needs phase calibration.',
-		endDescription: 'Phase calibration successful!',
-		game: 'phasesync',
+		initDescription: '<p>Maneuver power segment needs cleaning.</p>\n\t\t<p>Clean up faulty segment by collecting dirt (red squares) with the remote-controlled snake cleaner. After enough dirt has been cleaned the system will become operational.</p>',
+		endDescription: 'All dirt cleaned successfully!',
+		game: 'snake',
 
-		dimensions: 4,
-		difficulty: 0.075,
-		duration: 1,
-		drift: 0,
+		speed: 6,
+		targetSnakeLength: 16,
 	},
 });
 

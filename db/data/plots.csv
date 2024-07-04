@@ -351,17 +351,22 @@ I did my best to help Rowen out of the mess. I pulled all the strings I could. O
 Developing the weapon enhancer that will make the starcaller mission possible. See plot Starcaller mission.","https://drive.google.com/drive/folders/1v_dj7wlKrlbRibRBeapbLG-CTMOTB2s4
 Phase 1: Grow crystals
 Phase 2A: Jodey needs to find 2 similar number series from the list and send the line numbers to EVA.
-Correct line numbers: 72, 366
+Correct line numbers: 72, 166
 Correct number series: 9056840164155290738979862580173557957969
+→ Use reagents 1, 2, 6 (x2) and 7 in a base solution
 Phase 2B: Jodey needs to transform the found number series (from phase 2A) to a 5 character sequence
 Correct catalyst seeds in correct order: HFLND
+→ Use reagents H, F, L N, D also as catalysts
 Phase 2C: Jodey needs to find all occurrences of HFLND from the character grid and report the amount
 Correct amount is: 25
+→ Use reagents 2 and 5 as catalysts 
 Phase 2D: Jodey needs to find stability seeds by using the found number series from 2A, catalyst seeds from 2B and catalyst reagent amount from 2C.
 Correct stability seeds in any order: A, B, D, E, F, G, H, J, L, N, O, R, U, V, Y, Z
 Phase 2E: Jodey needs to eliminate the catalyst seed characters from the character grid and report EVA the 4 characters which are left.
 The correct character combination in any order is: C,K,P,Q
+→ Use reagents C, K, P and Q to optimize solution stability.
 Phase 3: Find Araknium stones from Land mission 6 (the machines) and Rhodium (Silent Petal necklace) to enrich the Araknium
+All Reagents 1, 2 (x2), 5, 6 (x2), 7, C, D, F, H, L, N,  K, P and Q
 Phase 4: Insert the Araknium into Betty bomb on ESS Starcaller",
 50,Murder of Ryane Pearson (NPC),"Scientists, Security","Ryane Pearson, Devyn Pearson, Remy Hall, Briana Chambers, Hali Okuma, Idris Kalashnik, Idris McBride, Jodey Agaki, Oriel Cook, Yera Romero, Zeya Cook",,,Small,"Murder, Death of NPC",Mandatory,No need,FALSE,,FALSE,"Nine months ago several people witnessed how Ryane Pearson (NPC) fell from the balcony of their apartment building and many claimed that there was another person with them at the time. Regardless of the first aid, Ryane died on site. Later on the police were able to use video surveillance feed to determine that the other person in the balcony was Ryane’s spouse, scientist Devyn Pearson and they appeared to push their spouse down from the balcony. Devyn had embarked on the day of the incident to a nine month long science mission and was charged and found guilty as absentee to be imprisoned as soon as they would return to Ellarion.  
 Devyn Pearson murdered their wife Ryane Pearson. Devyn was Briana Chambers' (psychiatrist) patient and they didn't see it coming. Devyn doesn't remember anything about killing Ryane.
