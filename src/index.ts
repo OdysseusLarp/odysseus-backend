@@ -41,6 +41,7 @@ import { breakEE } from './rules/ship/jump';
 import { sleep } from './utils/sleep';
 import { initializeTplinkScanning } from './tplink/tplink-control';
 import { interval } from './rules/helpers';
+import { validateGameAndTaskMappings } from './rules/validation';
 
 const app = express();
 const http = new Server(app);
@@ -169,6 +170,7 @@ Store.forge({ id: 'data' })
 		logger.info('Redux state initialized');
 		enablePersistance();
 		enableGracefulShutdown();
+		validateGameAndTaskMappings();
 		loadRules();
 		initializeTplinkScanning();
 		startServer();
