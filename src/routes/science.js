@@ -5,6 +5,8 @@ import { getData, setData } from '../routes/data';
 import { getEmptyEpsilonClient } from '../integrations/emptyepsilon/client';
 import { get, set, cloneDeep, pick } from 'lodash';
 import { shipLogger } from '../models/log';
+import { StatusCodes } from '@/utils/http';
+import { logger } from '@/logger';
 const router = new Router();
 
 /**
@@ -58,7 +60,14 @@ router.put('/artifact', handleAsyncErrors(async (req, res) => {
 	let artifact;
 	if (id) artifact = await Artifact.forge({ id }).fetch();
 	if (!artifact) {
-		artifact = await Artifact.forge().save(req.body, { method: 'insert' });
+		try {
+			artifact = await Artifact.forge().save(req.body, { method: 'insert' });
+		} catch (err) {
+			if (err.message.includes('duplicate key value violates unique constraint "artifact_catalog_id_unique"')) {
+				logger.warn(`Attempted to insert artifact with duplicate catalog ID '${req.body.catalog_id}'`);
+				return res.status(StatusCodes.CONFLICT).json({ message: 'Catalog ID must be unique' });
+			}
+		}
 	} else {
 		await artifact.save(req.body, { method: 'update', patch: true });
 	}
