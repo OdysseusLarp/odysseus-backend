@@ -1571,7 +1571,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Zirconium gluon gel core control panel - System reset and reprogramming A',
+			title: 'Zirconium gluon gel core control panel - System reset A',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>Plasma surges have been observed in the core. The system needs to be reset and reprogrammed to avoid a potentially critical plasma surge.</p><p>Zirconium gluon gel core control panel is located in the med bay. Refer to ESS Odysseus Operations Handbook page 2.4-35 for instructions.</p>',
 				'<p>Press the buttons and reset as follows:</p><ul><li>Buttons Y Y</li><li>Button START</li><li>Button ACK</li></ul>',
@@ -1587,7 +1587,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Zirconium gluon gel core control panel - System reset and reprogramming B',
+			title: 'Zirconium gluon gel core control panel - System reset B',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>Plasma surges have been observed in the core. The system needs to be reset and reprogrammed to avoid a potentially critical plasma surge.</p><p>Zirconium gluon gel core control panel is located in the med bay. Refer to ESS Odysseus Operations Handbook page 2.4-35 for instructions.</p>',
 				'<p>Press the buttons and reset as follows:</p><ul><li>Buttons X X</li><li>Buttons Z Z</li></ul>',
@@ -1603,7 +1603,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Zirconium gluon gel core control panel - System reset and reprogramming C',
+			title: 'Zirconium gluon gel core control panel - System resetC',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>Plasma surges have been observed in the core. The system needs to be reset and reprogrammed to avoid a potentially critical plasma surge.</p><p>Zirconium gluon gel core control panel is located in the med bay. Refer to ESS Odysseus Operations Handbook page 2.4-35 for instructions.</p>',
 				'<p>Press the buttons and reset as follows:</p><ul><li>Buttons W W</li><li>Button ACK</li><li>Button START</li><li>Button STOP</li></ul>',
@@ -1619,7 +1619,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Zirconium gluon gel core control panel - System reset and reprogramming D',
+			title: 'Zirconium gluon gel core control panel - System reset D',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>Plasma surges have been observed in the core. The system needs to be reset and reprogrammed to avoid a potentially critical plasma surge.</p><p>Zirconium gluon gel core control panel is located in the med bay. Refer to ESS Odysseus Operations Handbook page 2.4-35 for instructions.</p>',
 				'<p>Press the buttons and reset as follows:</p><ul><li>Buttons Y Y</li><li>Buttons Z Z</li><li>Button STOP</li></ul>',
@@ -1635,7 +1635,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Zirconium gluon gel core control panel - System reset and reprogramming E',
+			title: 'Zirconium gluon gel core control panel - System reset E',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>Plasma surges have been observed in the core. The system needs to be reset and reprogrammed to avoid a potentially critical plasma surge.</p><p>Zirconium gluon gel core control panel is located in the med bay. Refer to ESS Odysseus Operations Handbook page 2.4-35 for instructions.</p>',
 				'<p>Press the buttons and reset as follows:</p><ul><li>Buttons X X</li><li>Buttons Z Z</li><li>Buttons W W</li><li>Button ACK</li></ul>',
@@ -3428,7 +3428,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 3,
 		calibrationTime: 120,
-		title: 'Zirconium gluon gel core control panel - System reprogramming A',
+		title: 'Zirconium gluon gel core control panel - System reset A',
 		description:
 			'This control panel is used to manually control the zirconium gluon core that propels the impulse engine. It can be used for resetting and reprogramming the system whenever a potentially critical plasma surge occurs. Manual labor is needed. Perform the manual task according to instructions. The Zirconium gluon gel core control panel is located in the med bay. Refer to ESS Odysseus Operations Handbook page 2.4-35 for instructions. Use HANSCA repair for calibration.',
 		location: '2rd deck, med bay',
@@ -3447,7 +3447,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 3,
 		calibrationTime: 120,
-		title: 'Zirconium gluon gel core control panel - System reprogramming B',
+		title: 'Zirconium gluon gel core control panel - System reset B',
 		description:
 			'This control panel is used to manually control the zirconium gluon core that propels the impulse engine. It can be used for resetting and reprogramming the system whenever a potentially critical plasma surge occurs. Manual labor is needed. Perform the manual task according to instructions. The Zirconium gluon gel core control panel is located in the med bay. Refer to ESS Odysseus Operations Handbook page 2.4-35 for instructions. Use HANSCA repair for calibration.',
 		location: '2rd deck, med bay',
@@ -3466,7 +3466,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 3,
 		calibrationTime: 120,
-		title: 'Zirconium gluon gel core control panel - System reprogramming C',
+		title: 'Zirconium gluon gel core control panel - System reset C',
 		description:
 			'This control panel is used to manually control the zirconium gluon core that propels the impulse engine. It can be used for resetting and reprogramming the system whenever a potentially critical plasma surge occurs. Manual labor is needed. Perform the manual task according to instructions. The Zirconium gluon gel core control panel is located in the med bay. Refer to ESS Odysseus Operations Handbook page 2.4-35 for instructions. Use HANSCA repair for calibration.',
 		location: '2rd deck, med bay',
@@ -3485,7 +3485,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 3,
 		calibrationTime: 120,
-		title: 'Zirconium gluon gel core control panel - System reprogramming D',
+		title: 'Zirconium gluon gel core control panel - System reset D',
 		description:
 			'This control panel is used to manually control the zirconium gluon core that propels the impulse engine. It can be used for resetting and reprogramming the system whenever a potentially critical plasma surge occurs. Manual labor is needed. Perform the manual task according to instructions. The Zirconium gluon gel core control panel is located in the med bay. Refer to ESS Odysseus Operations Handbook page 2.4-35 for instructions. Use HANSCA repair for calibration.',
 		location: '2rd deck, med bay',
@@ -3504,7 +3504,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 3,
 		calibrationTime: 120,
-		title: 'Zirconium gluon gel core control panel - System reprogramming E',
+		title: 'Zirconium gluon gel core control panel - System reset E',
 		description:
 			'This control panel is used to manually control the zirconium gluon core that propels the impulse engine. It can be used for resetting and reprogramming the system whenever a potentially critical plasma surge occurs. Manual labor is needed. Perform the manual task according to instructions. The Zirconium gluon gel core control panel is located in the med bay. Refer to ESS Odysseus Operations Handbook page 2.4-35 for instructions. Use HANSCA repair for calibration.',
 		location: '2rd deck, med bay',
