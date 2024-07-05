@@ -1603,7 +1603,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Zirconium gluon gel core control panel - System resetC',
+			title: 'Zirconium gluon gel core control panel - System reset C',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>Plasma surges have been observed in the core. The system needs to be reset and reprogrammed to avoid a potentially critical plasma surge.</p><p>Zirconium gluon gel core control panel is located in the med bay. Refer to ESS Odysseus Operations Handbook page 2.4-35 for instructions.</p>',
 				'<p>Press the buttons and reset as follows:</p><ul><li>Buttons W W</li><li>Button ACK</li><li>Button START</li><li>Button STOP</li></ul>',
