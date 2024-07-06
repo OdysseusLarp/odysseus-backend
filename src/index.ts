@@ -6,7 +6,7 @@ import { logger, loggerMiddleware } from './logger';
 import { loadSwagger } from './docs';
 import { getEmptyEpsilonClient } from './integrations/emptyepsilon/client';
 import { updateEmptyEpsilonState } from './integrations/emptyepsilon/state';
-import { setStateRouteHandler } from './routes/emptyepsilon';
+import { setStateRouteHandler, emptyEpsilonRouter } from './routes/emptyepsilon';
 import { loadEvents } from './eventhandler';
 import { loadMessaging, router as messaging } from './messaging';
 import { Store } from './models/store';
@@ -95,6 +95,7 @@ app.use('/story', storyAdminRoutes);
 
 // Empty Epsilon routes
 app.put('/state', setStateRouteHandler);
+app.use(emptyEpsilonRouter);
 
 /**
  * Push the full state from ship/ee data store to EmptyEpsilon. This will completely overwrite the current EmptyEpsilon state.
