@@ -10,15 +10,18 @@ async function repairHull(health: number) {
 	await client.setHullHealthPoints(health);
 }
 
-const repairHullThrottled = throttle(repairHull, THROTTLE_INTERVAL_MS);
+const repairHullThrottled = throttle(repairHull, THROTTLE_INTERVAL_MS, {
+	leading: false,
+	trailing: true,
+});
 
 // Keep hull at above 0 health so that the next hit will cause the hull damage DMX to be triggered
 async function autoRepairHull(current: Record<string, any>, previous: Record<string, any>) {
 	const hullHealth = current?.general?.shipHull;
 	if (typeof hullHealth !== 'number') return;
-	if (hullHealth < 1) {
-		logger.info(`Hull health is ${hullHealth}, repairing to 1 health...`);
-		await repairHullThrottled(1);
+	if (hullHealth < 2) {
+		logger.info(`Hull health is ${hullHealth}, repairing to 2 health...`);
+		await repairHullThrottled(2);
 	} else {
 		repairHullThrottled.cancel();
 	}
