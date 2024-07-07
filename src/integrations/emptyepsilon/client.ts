@@ -218,6 +218,7 @@ export class EmptyEpsilonClient {
 		}
 		try {
 			await axios.post(this.dmxExecUrl, 'HardwareController():enableDamageDmx()');
+			logger.success('Damage DMX enabled');
 		} catch (err) {
 			logger.error('Failed to enable damage DMX', err?.message);
 		}
@@ -229,6 +230,7 @@ export class EmptyEpsilonClient {
 		}
 		try {
 			await axios.post(this.dmxExecUrl, 'HardwareController():disableDamageDmx()');
+			logger.success('Damage DMX disabled');
 		} catch (err) {
 			logger.error('Failed to disable damage DMX', err?.message);
 		}
