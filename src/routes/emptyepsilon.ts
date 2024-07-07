@@ -1,6 +1,8 @@
+import { Router } from 'express';
 import { getEmptyEpsilonClient } from '@/integrations/emptyepsilon/client';
 import { handleAsyncErrors } from './helpers';
 import { logger } from '@/logger';
+import httpErrors from 'http-errors';
 
 /**
  * @typedef EmptyEpsilonCommand
@@ -47,3 +49,51 @@ export const setStateRouteHandler = handleAsyncErrors((req, res) => {
 			});
 	}
 });
+
+/**
+ * Get damage DMX status
+ * @route GET /emptyepsilon/damage-dmx
+ * @group EmptyEpsilon - EmptyEpsilon integration
+ * @produces application/json
+ * @returns {object} 200 - Success response
+ */
+export const getDamageDmxRouteHandler = handleAsyncErrors(async (req, res) => {
+	const client = getEmptyEpsilonClient();
+	const damageDmxEnabled = await client.isDamageDmxEnabled();
+	res.json({ damageDmxEnabled });
+});
+
+/**
+ * @typedef DamageDmxCommand
+ * @property {boolean} enableDamageDmx.required - Enable or disable damage DMX - eg: true
+ */
+
+/**
+ * Enable or disable damage DMX
+ * @route POST /emptyepsilon/damage-dmx
+ * @group EmptyEpsilon - EmptyEpsilon integration
+ * @consumes application/json
+ * @produces application/json
+ * @param {DamageDmxCommand.model} enableDamageDmx.body
+ * @returns {object} 200 - Success response
+ */
+export const damageDmxRouteHandler = handleAsyncErrors(async (req, res) => {
+	const { enableDamageDmx } = req.body;
+	if (typeof enableDamageDmx !== 'boolean') {
+		throw new httpErrors.BadRequest('enableDamageDmx must be a boolean');
+	}
+
+	const client = getEmptyEpsilonClient();
+	if (enableDamageDmx) {
+		await client.enableDamageDmx();
+	} else {
+		await client.disableDamageDmx();
+	}
+	res.json({ enableDamageDmx });
+});
+
+const emptyEpsilonRouter = Router();
+emptyEpsilonRouter.post('/emptyepsilon/damage-dmx', damageDmxRouteHandler);
+emptyEpsilonRouter.get('/emptyepsilon/damage-dmx', getDamageDmxRouteHandler);
+
+export { emptyEpsilonRouter };

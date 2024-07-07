@@ -32,11 +32,17 @@ export class EmptyEpsilonClient {
 	private isEmulated: boolean;
 	private getUrl: string;
 	private setUrl: string;
+	private dmxExecUrl: string | undefined;
 	private isConnectionHealthy: boolean;
 	private lastErrorMessage: string | null | undefined;
 	private previousState: EmptyEpsilonState | undefined;
 
-	constructor({ host = EMPTY_EPSILON_HOST, port = EMPTY_EPSILON_PORT } = {}) {
+	constructor({
+		host = EMPTY_EPSILON_HOST,
+		port = EMPTY_EPSILON_PORT,
+		dmxHost = process.env.EMPTY_EPSILON_DMX_HOST,
+		dmxPort = process.env.EMPTY_EPSILON_DMX_PORT,
+	} = {}) {
 		if (host && port) {
 			this.isEmulated = false;
 			const url = `http://${host}:${port}`;
@@ -47,7 +53,13 @@ export class EmptyEpsilonClient {
 			logger.info('Empty Epsilon configuration not provided, initializing emulator');
 			this.getUrl = 'http://ee-emulation.local/get.lua';
 			this.setUrl = 'http://ee-emulation.local/set.lua';
+			this.dmxExecUrl = 'http://ee-emulation.local/exec.lua';
 			initEmptyEpsilonEmulator();
+		}
+
+		if (dmxHost && dmxPort) {
+			logger.info('EmptyEpsilon remote DMX configuration provided');
+			this.dmxExecUrl = `http://${dmxHost}:${dmxPort}/exec.lua`;
 		}
 	}
 
@@ -193,6 +205,42 @@ export class EmptyEpsilonClient {
 			this.setHullHealthPercent(get(state, 'general.shipHullPercent', 1)),
 		]);
 		return { success: true };
+	}
+
+	public async enableDamageDmx() {
+		if (!this.dmxExecUrl) {
+			logger.info('EE DMX remote control not configured, skipping enableDamageDmx');
+		}
+		try {
+			await axios.post(this.dmxExecUrl, 'HardwareController():enableDamageDmx()');
+		} catch (err) {
+			logger.error('Failed to enable damage DMX', err?.message);
+		}
+	}
+
+	public async disableDamageDmx() {
+		if (!this.dmxExecUrl) {
+			logger.info('EE DMX remote control not configured, skipping disableDamageDmx');
+		}
+		try {
+			await axios.post(this.dmxExecUrl, 'HardwareController():disableDamageDmx()');
+		} catch (err) {
+			logger.error('Failed to disable damage DMX', err?.message);
+		}
+	}
+
+	public async isDamageDmxEnabled() {
+		if (!this.dmxExecUrl) {
+			logger.info('EE DMX remote control not configured, skipping isDamageDmxEnabled');
+			return true;
+		}
+		try {
+			const { data } = await axios.post(this.dmxExecUrl, 'return HardwareController():isDamageDmxEnabled()');
+			return data === true;
+		} catch (err) {
+			logger.error('Failed to check if damage DMX is enabled', err?.message);
+			return true;
+		}
 	}
 
 	private fullStateToApiCommands(state: EmptyEpsilonState) {

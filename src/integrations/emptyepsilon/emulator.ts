@@ -95,4 +95,30 @@ export function initEmptyEpsilonEmulator() {
 			}
 			return cb(null, [200, { ERROR: 'Something went wrong' }]);
 		});
+
+	let isDamageDmxEnabled = true;
+
+	nock('http://ee-emulation.local', { encodedQueryParams: true })
+		.persist()
+		.post(/\/exec\.lua.*/)
+		.reply((uri, requestBody, cb) => {
+			const req = requestBody.toString();
+			if (req.includes('enableDamageDmx')) {
+				isDamageDmxEnabled = true;
+				cb(null, [200, '', []]);
+				return;
+			}
+
+			if (req.includes('disableDamageDmx')) {
+				isDamageDmxEnabled = false;
+				cb(null, [200, '', []]);
+				return;
+			}
+
+			if (req.includes('isDamageDmxEnabled')) {
+				cb(null, [200, isDamageDmxEnabled ? 'true' : 'false', []]);
+				return;
+			}
+			cb(null, [200, 'Unknown command', []]);
+		});
 }
