@@ -27,6 +27,7 @@ const LandingPadStateToText = {
 export type AlertLevel = (typeof alertStates)[keyof typeof alertStates];
 export type EmptyEpsilonState = Record<string, any>;
 export type LandingPadState = (typeof LandingPadStates)[keyof typeof LandingPadStates];
+type EmptyEpsilonCommand = 'setSystemHealth' | 'setSystemHeat' | 'setWeaponStorage' | 'setLandingPadState';
 
 export class EmptyEpsilonClient {
 	private isEmulated: boolean;
@@ -152,10 +153,14 @@ export class EmptyEpsilonClient {
 		const hullMaxHealth = get(this.previousState, 'general.shipHullMax');
 		if (hullMaxHealth === undefined) throw new Error('No hull max health available');
 		const healthPointValue = Math.floor(hullHealthPercent * hullMaxHealth);
-		const url = `${this.setUrl}?setHull("${healthPointValue}")`;
+		return this.setHullHealthPoints(healthPointValue);
+	}
+
+	public setHullHealthPoints(hullHealthPoints: number) {
+		const url = `${this.setUrl}?setHull("${hullHealthPoints}")`;
 		return axios.get(url).then(res => {
 			if (get(res, 'data.ERROR')) throw new Error(res.data.ERROR);
-			logger.success(`Ship hull health set to ${healthPointValue}`);
+			logger.success(`Ship hull health set to ${hullHealthPoints}`);
 		});
 	}
 
@@ -168,7 +173,7 @@ export class EmptyEpsilonClient {
 		});
 	}
 
-	public setGameState(command: string, target: string, value: any) {
+	public setGameState(command: EmptyEpsilonCommand, target: string, value: any) {
 		const isEeConnectionEnabled = !!get(getData('ship', 'metadata'), 'ee_connection_enabled');
 		if (!isEeConnectionEnabled) {
 			logger.warn('setGameState was called while Backend <-> EE connection is disabled', { command, target, value });
