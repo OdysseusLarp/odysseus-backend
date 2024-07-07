@@ -22,7 +22,7 @@ const TYPES = [
 ];
 
 const EPSILON = 0.0001;
-
+const MIN_DESIRED_HULL_HEALTH = 2;
 
 function getEEHealth(ee, type) {
 	if (type === 'hull') {
@@ -89,7 +89,7 @@ function isHullCompletelyBroken(ee) {
 	if (typeof ee?.general?.shipHull !== 'number') {
 		return true;
 	}
-	return ee.general.shipHull <= 1;
+	return ee.general.shipHull <= MIN_DESIRED_HULL_HEALTH;
 }
 
 // Rules for breaking tasks when EE health decreases
@@ -100,10 +100,13 @@ watch(['data', 'ship', 'ee'], (ee, previous, state) => {
 			const nowHealth = getEEHealth(ee, type);
 
 			// We should not break any hull tasks when its health fluctuates between 0 and 1,
-			// as we automatically always patch it to 1 when it drops to 0 in order to get
-			// DMMX from EE for all hits
-			if (type === 'hull' && isHullCompletelyBroken(ee)) {
-				logger.info('Hull is not breakable, skipping breaking tasks');
+			// as we automatically always patch it to 2 when it drops below it in order to get
+			// DMX from EE for all hits
+			const isHullBroken = isHullCompletelyBroken(ee);
+			const wasHullBroken = isHullCompletelyBroken(previous);
+			const shouldIgnoreHullDamage = isHullBroken && wasHullBroken;
+			if (type === 'hull' && shouldIgnoreHullDamage) {
+				logger.info('Hull is completely broken, not breaking any more tasks');
 				return;
 			}
 
