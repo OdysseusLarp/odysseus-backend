@@ -165,4 +165,5 @@ saveBlob({
 	hull: [0.25, 0.7],
 	lifesupport: [0.25, 0.7],
 	general: [0.25, 0.7],
+	cooldown_seconds: 60,
 });

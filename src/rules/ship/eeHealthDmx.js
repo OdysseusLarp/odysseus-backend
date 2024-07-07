@@ -127,6 +127,24 @@ function getHealthStatus(type, value) {
 
 const previousHealthStatus = {};
 const previousHealthValue = {};
+const lastEventTime = {};
+
+function canFireEvent(channel) {
+	if (!channel) {
+		return true;
+	}
+
+	const now = Date.now();
+	const lastTime = lastEventTime[channel] || 0;
+	const timeElapsed = now - lastTime;
+	const cooldown = (store.getState().data.ship.dmx_limits?.cooldown_seconds ?? 60) * 1000;
+
+	if (timeElapsed >= cooldown) {
+		lastEventTime[channel] = now;
+		return true;
+	}
+	return false;
+}
 
 function updateHealthValues() {
 	const ee = store.getState().data.ship.ee;
@@ -135,7 +153,7 @@ function updateHealthValues() {
 			const value = getEEHealth(ee, type);
 			const status = getHealthStatus(type, value);
 			const dmxValue = mapDmxValue(value, settings.min ?? -1, settings.max ?? 1);
-			if (status !== previousHealthStatus[type]) {
+			if (status !== previousHealthStatus[type] && canFireEvent(settings[status])) {
 				const channel = settings[status];
 				if (channel) {
 					fireEvent(channel);
