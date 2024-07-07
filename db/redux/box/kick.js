@@ -5,7 +5,7 @@ blobs.push({
 	id: 'thermic_fusion_regulator',
 	task: 'thermic_fusion_regulator',
 	status: 'initial',
-	kick_success_probability: 0.6,
+	kick_success_probability: 1,
 	config: {
 		pin: 14,
 	},
