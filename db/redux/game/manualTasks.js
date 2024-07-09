@@ -1658,7 +1658,7 @@ blobs.push({
 		eeHealth: 0.09,
 		status: 'initial',
 		calibrationCount: 2,
-		calibrationTime: 120,
+		calibrationTime: 220,
 		title: 'Fault in Argon quantum shift booster switchboard 5Fv6S A',
 		description:
 			'A loss of energy of the hull systems has been observed. Power will need to be rerouted towards the hull’s argon quantum shift booster. Manual labor is needed. Perform the manual task according to instructions.The Argon quantum shift booster switchboard 5Fv6S is located in Engineering Technical Space. Refer to ESS Odysseus Operations Handbook page 2.5-19 for instructions. Use HANSCA repair for calibration.',
@@ -1677,7 +1677,7 @@ blobs.push({
 		eeHealth: 0.09,
 		status: 'initial',
 		calibrationCount: 2,
-		calibrationTime: 120,
+		calibrationTime: 220,
 		title: 'Fault in Argon quantum shift booster switchboard 5Fv6S B',
 		description:
 			'A loss of energy of the hull systems has been observed. Power will need to be rerouted towards the hull’s argon quantum shift booster. Manual labor is needed. Perform the manual task according to instructions. The Argon quantum shift booster switchboard 5Fv6S is located in Engineering Technical Space. Refer to ESS Odysseus Operations Handbook page 2.5-19 for instructions. Use HANSCA repair for calibration.',
@@ -1696,7 +1696,7 @@ blobs.push({
 		eeHealth: 0.09,
 		status: 'initial',
 		calibrationCount: 2,
-		calibrationTime: 120,
+		calibrationTime: 220,
 		title: 'Fault in Argon quantum shift booster switchboard 5Fv6S C',
 		description:
 			'A loss of energy of the hull systems has been observed. Power will need to be rerouted towards the hull’s argon quantum shift booster. Manual labor is needed. Perform the manual task according to instructions.The Argon quantum shift booster switchboard 5Fv6S is located in Engineering Technical Space. Refer to ESS Odysseus Operations Handbook page 2.5-19 for instructions. Use HANSCA repair for calibration.',
@@ -1715,7 +1715,7 @@ blobs.push({
 		eeHealth: 0.09,
 		status: 'initial',
 		calibrationCount: 2,
-		calibrationTime: 120,
+		calibrationTime: 220,
 		title: 'Fault in Argon quantum shift booster switchboard 5Fv6S D',
 		description:
 			'A loss of energy of the hull systems has been observed. Power will need to be rerouted towards the hull’s argon quantum shift booster. Manual labor is needed. Perform the manual task according to instructions.The Argon quantum shift booster switchboard 5Fv6S is located in Engineering Technical Space. Refer to ESS Odysseus Operations Handbook page 2.5-19 for instructions. Use HANSCA repair for calibration.',
@@ -1734,7 +1734,7 @@ blobs.push({
 		eeHealth: 0.09,
 		status: 'initial',
 		calibrationCount: 2,
-		calibrationTime: 120,
+		calibrationTime: 220,
 		title: 'Fault in Argon quantum shift booster switchboard 5Fv6S E',
 		description:
 			'A loss of energy of the hull systems has been observed. Power will need to be rerouted towards the hull’s argon quantum shift booster. Manual labor is needed. Perform the manual task according to instructions.The Argon quantum shift booster switchboard 5Fv6S is located in Engineering Technical Space. Refer to ESS Odysseus Operations Handbook page 2.5-19 for instructions. Use HANSCA repair for calibration.',
@@ -1753,7 +1753,7 @@ blobs.push({
 		eeHealth: 0.11,
 		status: 'initial',
 		calibrationCount: 1,
-		calibrationTime: 280,
+		calibrationTime: 380,
 		title: 'Coordinate calibration unit 369GKY-a A',
 		description:
 			'This unit translates the calculations of recalibrations of the ship’s maneuvering system into code for small corrective adjustment actions. The system needs to be re-coded as there is an internal miscommunication within the maneuvering system. Manual labor is needed. Perform the manual task according to instructions.The Coordinate calibration unit 369GKY-a is located in the Armory. Refer to ESS Odysseus Operations Handbook page 2.19-93 for instructions. Use HANSCA repair for calibration.',
@@ -1772,7 +1772,7 @@ blobs.push({
 		eeHealth: 0.11,
 		status: 'initial',
 		calibrationCount: 1,
-		calibrationTime: 280,
+		calibrationTime: 380,
 		title: 'Coordinate calibration unit 369GKY-a B',
 		description:
 			'This unit translates the calculations of recalibrations of the ship’s maneuvering system into code for small corrective adjustment actions. The system needs to be re-coded as there is an internal miscommunication within the maneuvering system. Manual labor is needed. Perform the manual task according to instructions.The Coordinate calibration unit 369GKY-a is located in the Armory. Refer to ESS Odysseus Operations Handbook page 2.19-93 for instructions. Use HANSCA repair for calibration.',
@@ -1791,7 +1791,7 @@ blobs.push({
 		eeHealth: 0.11,
 		status: 'initial',
 		calibrationCount: 1,
-		calibrationTime: 280,
+		calibrationTime: 380,
 		title: 'Coordinate calibration unit 369GKY-a C',
 		description:
 			'This unit translates the calculations of recalibrations of the ship’s maneuvering system into code for small corrective adjustment actions. The system needs to be re-coded as there is an internal miscommunication within the maneuvering system. Manual labor is needed. Perform the manual task according to instructions.The Coordinate calibration unit 369GKY-a is located in the Armory. Refer to ESS Odysseus Operations Handbook page 2.19-93 for instructions. Use HANSCA repair for calibration.',
@@ -1810,7 +1810,7 @@ blobs.push({
 		eeHealth: 0.11,
 		status: 'initial',
 		calibrationCount: 1,
-		calibrationTime: 280,
+		calibrationTime: 380,
 		title: 'Coordinate calibration unit 369GKY-a D',
 		description:
 			'This unit translates the calculations of recalibrations of the ship’s maneuvering system into code for small corrective adjustment actions. The system needs to be re-coded as there is an internal miscommunication within the maneuvering system. Manual labor is needed. Perform the manual task according to instructions.The Coordinate calibration unit 369GKY-a is located in the Armory. Refer to ESS Odysseus Operations Handbook page 2.19-93 for instructions. Use HANSCA repair for calibration.',
@@ -1829,7 +1829,7 @@ blobs.push({
 		eeHealth: 0.11,
 		status: 'initial',
 		calibrationCount: 1,
-		calibrationTime: 280,
+		calibrationTime: 380,
 		title: 'Coordinate calibration unit 369GKY-a E',
 		description:
 			'This unit translates the calculations of recalibrations of the ship’s maneuvering system into code for small corrective adjustment actions. The system needs to be re-coded as there is an internal miscommunication within the maneuvering system. Manual labor is needed. Perform the manual task according to instructions. The Coordinate calibration unit 369GKY-a is located in the Armory. Refer to ESS Odysseus Operations Handbook page 2.19-93 for instructions. Use HANSCA repair for calibration.',
@@ -1847,7 +1847,7 @@ blobs.push({
 		eeType: 'hull',
 		eeHealth: 0.12,
 		status: 'initial',
-		calibrationCount: 7,
+		calibrationCount: 13,
 		calibrationTime: 40,
 		title: 'Dorsal ion bio-filter G5He A',
 		description:
@@ -1866,7 +1866,7 @@ blobs.push({
 		eeType: 'hull',
 		eeHealth: 0.12,
 		status: 'initial',
-		calibrationCount: 7,
+		calibrationCount: 13,
 		calibrationTime: 40,
 		title: 'Dorsal ion bio-filter G5He B',
 		description:
@@ -1885,7 +1885,7 @@ blobs.push({
 		eeType: 'hull',
 		eeHealth: 0.12,
 		status: 'initial',
-		calibrationCount: 7,
+		calibrationCount: 13,
 		calibrationTime: 40,
 		title: 'Dorsal ion bio-filter G5He C',
 		description:
@@ -1904,7 +1904,7 @@ blobs.push({
 		eeType: 'hull',
 		eeHealth: 0.12,
 		status: 'initial',
-		calibrationCount: 7,
+		calibrationCount: 13,
 		calibrationTime: 40,
 		title: 'Dorsal ion bio-filter G5He D',
 		description:
@@ -1923,7 +1923,7 @@ blobs.push({
 		eeType: 'hull',
 		eeHealth: 0.12,
 		status: 'initial',
-		calibrationCount: 7,
+		calibrationCount: 13,
 		calibrationTime: 40,
 		title: 'Dorsal ion bio-filter G5He E',
 		description:
@@ -1943,7 +1943,7 @@ blobs.push({
 		eeHealth: 0.07,
 		status: 'initial',
 		calibrationCount: 1,
-		calibrationTime: 150,
+		calibrationTime: 280,
 		title: 'Front shield antilepton control switchboard 473f A',
 		description:
 			'This combination of switchboards manually controls the front shield antilepton commands. Manual labor is needed. Perform the manual task according to instructions. The Front shield antilepton control switchboard 473f is located in the crew bar. Refer to ESS Odysseus Operations Handbook page 2.13-30 for instructions. Use HANSCA repair for calibration.',
@@ -1962,7 +1962,7 @@ blobs.push({
 		eeHealth: 0.07,
 		status: 'initial',
 		calibrationCount: 1,
-		calibrationTime: 150,
+		calibrationTime: 280,
 		title: 'Front shield antilepton control switchboard 473f B',
 		description:
 			'This combination of switchboards manually controls the front shield antilepton commands. Manual labor is needed. Perform the manual task according to instructions. The Front shield antilepton control switchboard 473f is located in the crew bar. Refer to ESS Odysseus Operations Handbook page 2.13-30 for instructions. Use HANSCA repair for calibration.',
@@ -1981,7 +1981,7 @@ blobs.push({
 		eeHealth: 0.07,
 		status: 'initial',
 		calibrationCount: 1,
-		calibrationTime: 150,
+		calibrationTime: 280,
 		title: 'Front shield antilepton control switchboard 473f C',
 		description:
 			'This combination of switchboards manually controls the front shield antilepton commands. Manual labor is needed. Perform the manual task according to instructions. The Front shield antilepton control switchboard 473f is located in the crew bar. Refer to ESS Odysseus Operations Handbook page 2.13-30 for instructions. Use HANSCA repair for calibration.',
@@ -2000,7 +2000,7 @@ blobs.push({
 		eeHealth: 0.07,
 		status: 'initial',
 		calibrationCount: 1,
-		calibrationTime: 150,
+		calibrationTime: 280,
 		title: 'Front shield antilepton control switchboard 473f D',
 		description:
 			'This combination of switchboards manually controls the front shield antilepton commands. Manual labor is needed. Perform the manual task according to instructions. The Front shield antilepton control switchboard 473f is located in the crew bar. Refer to ESS Odysseus Operations Handbook page 2.13-30 for instructions. Use HANSCA repair for calibration.',
@@ -2019,7 +2019,7 @@ blobs.push({
 		eeHealth: 0.07,
 		status: 'initial',
 		calibrationCount: 1,
-		calibrationTime: 150,
+		calibrationTime: 280,
 		title: 'Front shield antilepton control switchboard 473f E',
 		description:
 			'This combination of switchboards manually controls the front shield antilepton commands. Manual labor is needed. Perform the manual task according to instructions. The Front shield antilepton control switchboard 473f is located in the crew bar. Refer to ESS Odysseus Operations Handbook page 2.13-30 for instructions. Use HANSCA repair for calibration.',
@@ -2038,7 +2038,7 @@ blobs.push({
 		eeHealth: 0.15,
 		status: 'initial',
 		calibrationCount: 2,
-		calibrationTime: 205,
+		calibrationTime: 255,
 		title: 'Gamma-wave missile driver control unit Rr34c A',
 		description:
 			'This unit functions as a secondary motherboard for programming some key commands for the gamma-wave missile system. Manual labor is needed. Perform the manual task according to instructions. The Gamma-wave missile driver control unit Rr34c is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.3-65 for instructions. Use HANSCA repair for calibration.',
@@ -2057,7 +2057,7 @@ blobs.push({
 		eeHealth: 0.15,
 		status: 'initial',
 		calibrationCount: 2,
-		calibrationTime: 205,
+		calibrationTime: 255,
 		title: 'Gamma-wave missile driver control unit Rr34c B',
 		description:
 			'This unit functions as a secondary motherboard for programming some key commands for the gamma-wave missile system. Manual labor is needed. Perform the manual task according to instructions. The Gamma-wave missile driver control unit Rr34c is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.3-65 for instructions. Use HANSCA repair for calibration.',
@@ -2076,7 +2076,7 @@ blobs.push({
 		eeHealth: 0.15,
 		status: 'initial',
 		calibrationCount: 2,
-		calibrationTime: 205,
+		calibrationTime: 255,
 		title: 'Gamma-wave missile driver control unit Rr34c C',
 		description:
 			'This unit functions as a secondary motherboard for programming some key commands for the gamma-wave missile system. Manual labor is needed. Perform the manual task according to instructions. The Gamma-wave missile driver control unit Rr34c is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.3-65 for instructions. Use HANSCA repair for calibration.',
@@ -2095,7 +2095,7 @@ blobs.push({
 		eeHealth: 0.15,
 		status: 'initial',
 		calibrationCount: 2,
-		calibrationTime: 205,
+		calibrationTime: 255,
 		title: 'Gamma-wave missile driver control unit Rr34c D',
 		description:
 			'This unit functions as a secondary motherboard for programming some key commands for the gamma-wave missile system. Manual labor is needed. Perform the manual task according to instructions. The Gamma-wave missile driver control unit Rr34c is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.3-65 for instructions. Use HANSCA repair for calibration.',
@@ -2114,7 +2114,7 @@ blobs.push({
 		eeHealth: 0.15,
 		status: 'initial',
 		calibrationCount: 2,
-		calibrationTime: 205,
+		calibrationTime: 255,
 		title: 'Gamma-wave missile driver control unit Rr34c E',
 		description:
 			'This unit functions as a secondary motherboard for programming some key commands for the gamma-wave missile system. Manual labor is needed. Perform the manual task according to instructions. The Gamma-wave missile driver control unit Rr34c is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.3-65 for instructions. Use HANSCA repair for calibration.',
@@ -2228,7 +2228,7 @@ blobs.push({
 		eeHealth: 0.11,
 		status: 'initial',
 		calibrationCount: 2,
-		calibrationTime: 130,
+		calibrationTime: 230,
 		title: 'IEPBR-unit B33e - controlling the power charge A',
 		description:
 			'This unit controls the backup power for the impulse engine. If any anomalies outside of the normal range occur, it may have a critical effect on the energy supply of the impulse engine. Manual labor is needed. Perform the manual task according to instructions. The Impulse engine backup power regulation unit B33e is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.6-3 for instructions. Use HANSCA repair for calibration.',
@@ -2247,7 +2247,7 @@ blobs.push({
 		eeHealth: 0.11,
 		status: 'initial',
 		calibrationCount: 2,
-		calibrationTime: 130,
+		calibrationTime: 230,
 		title: 'IEPBR-unit B33e - power charge B',
 		description:
 			'This unit controls the backup power for the impulse engine. If any anomalies outside of the normal range occur, it may have a critical effect on the energy supply of the impulse engine. Manual labor is needed. Perform the manual task according to instructions. The Impulse engine backup power regulation unit B33e is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.6-3 for instructions. Use HANSCA repair for calibration.',
@@ -2266,7 +2266,7 @@ blobs.push({
 		eeHealth: 0.11,
 		status: 'initial',
 		calibrationCount: 2,
-		calibrationTime: 130,
+		calibrationTime: 230,
 		title: 'IEPBR-unit B33e - power charge C',
 		description:
 			'This unit controls the backup power for the impulse engine. If any anomalies outside of the normal range occur, it may have a critical effect on the energy supply of the impulse engine. Manual labor is needed. Perform the manual task according to instructions. The Impulse engine backup power regulation unit B33e is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.6-3 for instructions. Use HANSCA repair for calibration.',
@@ -2285,7 +2285,7 @@ blobs.push({
 		eeHealth: 0.11,
 		status: 'initial',
 		calibrationCount: 2,
-		calibrationTime: 130,
+		calibrationTime: 230,
 		title: 'IEPBR-unit B33e - power charge D',
 		description:
 			'This unit controls the backup power for the impulse engine. If any anomalies outside of the normal range occur, it may have a critical effect on the energy supply of the impulse engine. Manual labor is needed. Perform the manual task according to instructions. The Impulse engine backup power regulation unit B33e is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.6-3 for instructions. Use HANSCA repair for calibration.',
@@ -2304,7 +2304,7 @@ blobs.push({
 		eeHealth: 0.11,
 		status: 'initial',
 		calibrationCount: 2,
-		calibrationTime: 130,
+		calibrationTime: 230,
 		title: 'IEPBR-unit B33e - power charge E',
 		description:
 			'This unit controls the backup power for the impulse engine. If any anomalies outside of the normal range occur, it may have a critical effect on the energy supply of the impulse engine. Manual labor is needed. Perform the manual task according to instructions. The Impulse engine backup power regulation unit B33e is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.6-3 for instructions. Use HANSCA repair for calibration.',
@@ -2323,7 +2323,7 @@ blobs.push({
 		eeHealth: 0.10,
 		status: 'initial',
 		calibrationCount: 4,
-		calibrationTime: 80,
+		calibrationTime: 110,
 		title: 'IEPBR-unit B33e - controlling power supply A',
 		description:
 			'This unit controls the backup power for the impulse engine. If any anomalies outside of the normal range occur, it may have a critical effect on the energy supply of the impulse engine. Manual labor is needed. Perform the manual task according to instructions. The Impulse engine backup power regulation unit B33e is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.6-2 for instructions. Use HANSCA repair for calibration.',
@@ -2342,7 +2342,7 @@ blobs.push({
 		eeHealth: 0.10,
 		status: 'initial',
 		calibrationCount: 4,
-		calibrationTime: 80,
+		calibrationTime: 110,
 		title: 'IEPBR-unit B33e - controlling power supply B',
 		description:
 			'This unit controls the backup power for the impulse engine. If any anomalies outside of the normal range occur, it may have a critical effect on the energy supply of the impulse engine. Manual labor is needed. Perform the manual task according to instructions. The Impulse engine backup power regulation unit B33e is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.6-2 for instructions. Use HANSCA repair for calibration.',
@@ -2361,7 +2361,7 @@ blobs.push({
 		eeHealth: 0.10,
 		status: 'initial',
 		calibrationCount: 4,
-		calibrationTime: 80,
+		calibrationTime: 110,
 		title: 'IEPBR-unit B33e - controlling power supply C',
 		description:
 			'This unit controls the backup power for the impulse engine. If any anomalies outside of the normal range occur, it may have a critical effect on the energy supply of the impulse engine. Manual labor is needed. Perform the manual task according to instructions. The Impulse engine backup power regulation unit B33e is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.6-2 for instructions. Use HANSCA repair for calibration.',
@@ -2380,7 +2380,7 @@ blobs.push({
 		eeHealth: 0.10,
 		status: 'initial',
 		calibrationCount: 4,
-		calibrationTime: 80,
+		calibrationTime: 110,
 		title: 'IEPBR-unit B33e - controlling power supply D',
 		description:
 			'This unit controls the backup power for the impulse engine. If any anomalies outside of the normal range occur, it may have a critical effect on the energy supply of the impulse engine. Manual labor is needed. Perform the manual task according to instructions. The Impulse engine backup power regulation unit B33e is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.6-2 for instructions. Use HANSCA repair for calibration.',
@@ -2399,7 +2399,7 @@ blobs.push({
 		eeHealth: 0.06,
 		status: 'initial',
 		calibrationCount: 1,
-		calibrationTime: 60,
+		calibrationTime: 160,
 		title: 'Isotopic microfilament ventilation unit Nu8-6',
 		description:
 			'This ventilation unit supports the regulation of the ventilation of the beam weapons system whenever the realignment of the delta-wave drive pedals bears a risk of overheating. Manual labor is needed. Perform the manual task according to instructions. The Isotopic microfilament ventilation unit Nu8-6 is located in the Hive. Refer to ESS Odysseus Operations Handbook page 2.4-45 for instructions. Use HANSCA repair for calibration.',
@@ -2529,10 +2529,10 @@ blobs.push({
 		singleUse: true,
 		used: false,
 		eeType: 'maneuver',
-		eeHealth: 0.15,
+		eeHealth: 0.20,
 		status: 'initial',
 		calibrationCount: 1,
-		calibrationTime: 500,
+		calibrationTime: 800,
 		title: 'PIPELINE UNIT 42X-PQ',
 		description:
 			'Pipeline unit 42X-PQ is essential for maintaining optimal fluid dynamics within the ship\'s hydro-system. This system is important for maneuvering to work. Obstructions can occur due to various particulate build-ups, which must be cleared to ensure seamless fluid transfer. Manual labor is needed. Perform the manual task according to instructions. Pipeline unit 42X-PQ is located near the airlock. Refer to ESS Odysseus Operations Handbook page 2.9-1 for instructions. Use HANSCA repair for calibration.',
@@ -2778,7 +2778,7 @@ blobs.push({
 		eeType: 'hull',
 		eeHealth: 0.11,
 		status: 'initial',
-		calibrationCount: 2,
+		calibrationCount: 3,
 		calibrationTime: 130,
 		title: 'Neogenic capacitator GR3914D dilithium ccc signals A',
 		description:
@@ -2797,7 +2797,7 @@ blobs.push({
 		eeType: 'hull',
 		eeHealth: 0.11,
 		status: 'initial',
-		calibrationCount: 2,
+		calibrationCount: 3,
 		calibrationTime: 130,
 		title: 'Neogenic capacitator GR3914D dilithium ccc signals B',
 		description:
@@ -2816,7 +2816,7 @@ blobs.push({
 		eeType: 'hull',
 		eeHealth: 0.11,
 		status: 'initial',
-		calibrationCount: 2,
+		calibrationCount: 3,
 		calibrationTime: 130,
 		title: 'Neogenic capacitator GR3914D dilithium ccc signals C',
 		description:
@@ -2835,7 +2835,7 @@ blobs.push({
 		eeType: 'hull',
 		eeHealth: 0.11,
 		status: 'initial',
-		calibrationCount: 2,
+		calibrationCount: 3,
 		calibrationTime: 130,
 		title: 'Neogenic capacitator GR3914D dilithium ccc signals D',
 		description:
@@ -2854,7 +2854,7 @@ blobs.push({
 		eeType: 'hull',
 		eeHealth: 0.11,
 		status: 'initial',
-		calibrationCount: 2,
+		calibrationCount: 3,
 		calibrationTime: 130,
 		title: 'Neogenic capacitator GR3914D dilithium ccc signals E',
 		description:
@@ -3083,7 +3083,7 @@ blobs.push({
 		eeType: 'reactor',
 		eeHealth: 0.25,
 		status: 'initial',
-		calibrationCount: 5,
+		calibrationCount: 6,
 		calibrationTime: 150,
 		title: 'Radiation containment switch 464-900 A',
 		description:
@@ -3102,7 +3102,7 @@ blobs.push({
 		eeType: 'reactor',
 		eeHealth: 0.25,
 		status: 'initial',
-		calibrationCount: 5,
+		calibrationCount: 6,
 		calibrationTime: 150,
 		title: 'Radiation containment switch 464-900 B',
 		description:
@@ -3121,7 +3121,7 @@ blobs.push({
 		eeType: 'reactor',
 		eeHealth: 0.25,
 		status: 'initial',
-		calibrationCount: 5,
+		calibrationCount: 6,
 		calibrationTime: 150,
 		title: 'Radiation containment switch 464-900 C',
 		description:
@@ -3141,7 +3141,7 @@ blobs.push({
 		eeHealth: 0.1,
 		status: 'initial',
 		calibrationCount: 5,
-		calibrationTime: 60,
+		calibrationTime: 65,
 		title: 'Revolving pulse turbine lubricator switch 53r A',
 		description:
 			'This switch re-attenuates the revolving pulse signals that drive the rear shield’s quantum portal bracket. If the rear shield suffers any kind of damage, this switch helps to ensure the shield remains up. Manual labor is needed. Perform the manual task according to instructions. The Revolving pulse turbine lubricator switch 53r is located in the war room. Refer to ESS Odysseus Operations Handbook page  2.5-34 for instructions. Use HANSCA repair for calibration.',
@@ -3160,7 +3160,7 @@ blobs.push({
 		eeHealth: 0.1,
 		status: 'initial',
 		calibrationCount: 5,
-		calibrationTime: 60,
+		calibrationTime: 65,
 		title: 'Revolving pulse turbine lubricator switch 53r B',
 		description:
 			'This switch re-attenuates the revolving pulse signals that drive the rear shield’s quantum portal bracket. If the rear shield suffers any kind of damage, this switch helps to ensure the shield remains up. Manual labor is needed. Perform the manual task according to instructions. The Revolving pulse turbine lubricator switch 53r is located in the war room. Refer to ESS Odysseus Operations Handbook page  2.5-34 for instructions. Use HANSCA repair for calibration.',
@@ -3180,7 +3180,7 @@ blobs.push({
 		eeHealth: 0.1,
 		status: 'initial',
 		calibrationCount: 5,
-		calibrationTime: 60,
+		calibrationTime: 65,
 		title: 'Revolving pulse turbine lubricator switch 53r C',
 		description:
 			'This switch re-attenuates the revolving pulse signals that drive the rear shield’s quantum portal bracket. If the rear shield suffers any kind of damage, this switch helps to ensure the shield remains up. Manual labor is needed. Perform the manual task according to instructions. The Revolving pulse turbine lubricator switch 53r is located in the war room. Refer to ESS Odysseus Operations Handbook page  2.5-34 for instructions. Use HANSCA repair for calibration.',
@@ -3199,7 +3199,7 @@ blobs.push({
 		eeHealth: 0.1,
 		status: 'initial',
 		calibrationCount: 5,
-		calibrationTime: 60,
+		calibrationTime: 65,
 		title: 'Revolving pulse turbine lubricator switch 53r D',
 		description:
 			'This switch re-attenuates the revolving pulse signals that drive the rear shield’s quantum portal bracket. If the rear shield suffers any kind of damage, this switch helps to ensure the shield remains up. Manual labor is needed. Perform the manual task according to instructions. The Revolving pulse turbine lubricator switch 53r is located in the war room. Refer to ESS Odysseus Operations Handbook page  2.5-34 for instructions. Use HANSCA repair for calibration.',
@@ -3427,7 +3427,7 @@ blobs.push({
 		eeHealth: 0.12,
 		status: 'initial',
 		calibrationCount: 3,
-		calibrationTime: 120,
+		calibrationTime: 140,
 		title: 'Zirconium gluon gel core control panel - System reset A',
 		description:
 			'This control panel is used to manually control the zirconium gluon core that propels the impulse engine. It can be used for resetting and reprogramming the system whenever a potentially critical plasma surge occurs. Manual labor is needed. Perform the manual task according to instructions. The Zirconium gluon gel core control panel is located in the med bay. Refer to ESS Odysseus Operations Handbook page 2.4-35 for instructions. Use HANSCA repair for calibration.',
@@ -3446,7 +3446,7 @@ blobs.push({
 		eeHealth: 0.12,
 		status: 'initial',
 		calibrationCount: 3,
-		calibrationTime: 120,
+		calibrationTime: 140,
 		title: 'Zirconium gluon gel core control panel - System reset B',
 		description:
 			'This control panel is used to manually control the zirconium gluon core that propels the impulse engine. It can be used for resetting and reprogramming the system whenever a potentially critical plasma surge occurs. Manual labor is needed. Perform the manual task according to instructions. The Zirconium gluon gel core control panel is located in the med bay. Refer to ESS Odysseus Operations Handbook page 2.4-35 for instructions. Use HANSCA repair for calibration.',
@@ -3465,7 +3465,7 @@ blobs.push({
 		eeHealth: 0.12,
 		status: 'initial',
 		calibrationCount: 3,
-		calibrationTime: 120,
+		calibrationTime: 140,
 		title: 'Zirconium gluon gel core control panel - System reset C',
 		description:
 			'This control panel is used to manually control the zirconium gluon core that propels the impulse engine. It can be used for resetting and reprogramming the system whenever a potentially critical plasma surge occurs. Manual labor is needed. Perform the manual task according to instructions. The Zirconium gluon gel core control panel is located in the med bay. Refer to ESS Odysseus Operations Handbook page 2.4-35 for instructions. Use HANSCA repair for calibration.',
@@ -3484,7 +3484,7 @@ blobs.push({
 		eeHealth: 0.12,
 		status: 'initial',
 		calibrationCount: 3,
-		calibrationTime: 120,
+		calibrationTime: 140,
 		title: 'Zirconium gluon gel core control panel - System reset D',
 		description:
 			'This control panel is used to manually control the zirconium gluon core that propels the impulse engine. It can be used for resetting and reprogramming the system whenever a potentially critical plasma surge occurs. Manual labor is needed. Perform the manual task according to instructions. The Zirconium gluon gel core control panel is located in the med bay. Refer to ESS Odysseus Operations Handbook page 2.4-35 for instructions. Use HANSCA repair for calibration.',
@@ -3503,7 +3503,7 @@ blobs.push({
 		eeHealth: 0.12,
 		status: 'initial',
 		calibrationCount: 3,
-		calibrationTime: 120,
+		calibrationTime: 140,
 		title: 'Zirconium gluon gel core control panel - System reset E',
 		description:
 			'This control panel is used to manually control the zirconium gluon core that propels the impulse engine. It can be used for resetting and reprogramming the system whenever a potentially critical plasma surge occurs. Manual labor is needed. Perform the manual task according to instructions. The Zirconium gluon gel core control panel is located in the med bay. Refer to ESS Odysseus Operations Handbook page 2.4-35 for instructions. Use HANSCA repair for calibration.',
