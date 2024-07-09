@@ -2,6 +2,7 @@ import { store, watch } from '@/store/store';
 import { CHANNELS, fireEvent } from '@/dmx';
 import { logger } from '@/logger';
 import { saveBlob, clamp, timeout } from '../helpers';
+import { LandingPadStates } from "@/integrations/emptyepsilon/client";
 
 const airlockNames = ['airlock_main', 'airlock_hangarbay'];
 
@@ -29,10 +30,13 @@ function Airlock(airlockName) {
 	this.data = store.getState().data.box[airlockName] || {};
 	this.commandCounter = 0;
 	this.closeBeforeJumpTimeout = null;
+	this.fighterLaunchTimeout = null;
+	this.eeLandingPadStatus = {};
 
 	watch(['data', 'box', this.name], (data) => {
 		this.data = data;
 		if (data?.command) this.command(data.command);
+		this.depressurizeIfFightersLaunched();
 	});
 
 	watch(['data', 'ship', 'jump'], (current, previous) => {
@@ -51,6 +55,11 @@ function Airlock(airlockName) {
 		if (current.status === JUMPING && previous.status !== JUMPING) {
 			this.patchData({ status: 'closed', pressure: 1.0, command: 'stop' })
 		}
+	});
+
+	watch(['data', 'ship', 'ee', 'landingPads'], (landingPads) => {
+		this.eeLandingPadStatus = landingPads || {};
+		this.depressurizeIfFightersLaunched();
 	});
 
 	// If the backend was stopped in the middle of an uninterruptible airlock transition (e.g. pressurize), the airlock
@@ -88,7 +97,8 @@ Airlock.prototype = {
 			pressurize: ['pressurize'],
 			open: ['pressurize', 'openDoor', 'autoClose'],
 			depressurize: ['closeDoor', 'depressurize', 'autoPressurize'],
-			forceDepressurize: ['denyAccess', 'closeDoor', 'depressurize', 'autoPressurize', 'allowAccess'],
+			fighterLaunch: ['denyAccess', 'closeDoor', 'depressurize', 'allowAccess'],  // for hangar bay
+			forceDepressurize: ['denyAccess', 'closeDoor', 'depressurize', 'autoPressurize', 'allowAccess'], // access override for special scene
 			evacuate: ['closeDoor', 'evacuate', 'autoPressurize'], // faster depressurize for jettisoning objects
 			close: ['closeDoor'],
 			stop: ['stopTransition'],  // also used to force status
@@ -134,6 +144,33 @@ Airlock.prototype = {
 		if (status !== 'closed' && status !== 'closing') {
 			this.command('close');
 		}
+	},
+
+	// Trigger automatic depressurization when fighters are launched:
+	depressurizeIfFightersLaunched() {
+		const fightersLaunched = this.fightersLaunched();
+		const status = this.data.status;
+		if (fightersLaunched) {
+			if (status !== 'vacuum' && status !== 'depressurizing' && !this.fighterLaunchTimeout) {
+				const delay = this.data.config?.fighter_launch_delay || 20000; // Give players time to leave the hangar bay
+				logger.info(`Airlock ${this.name} detected fighter launch, depressurizing in ${delay} ms`);
+				this.dmx('fighter_launch');  // Play warning sound
+				this.fighterLaunchTimeout = setTimeout(() => this.command('fighterLaunch'), delay);
+			}
+		} else {
+			if (this.fighterLaunchTimeout) clearTimeout(this.fighterLaunchTimeout);
+			this.fighterLaunchTimeout = null;
+			if (status === 'vacuum' || status === 'depressurizing') {
+				logger.info(`Airlock ${this.name} detected all fighters returned, pressurizing`);
+				// KLUGE: Just doing this.command('pressurize') apparently triggers an infinite loop!
+				this.patchData({ status: 'pressurizing', command: 'pressurize' });
+			}
+		}
+	},
+	fightersLaunched() {
+		const fighterPads = this.data.config?.fighter_pads || [];
+		const padStatus = this.eeLandingPadStatus || {};
+		return fighterPads.some(padName => padStatus[padName] === LandingPadStates.Launched);
 	},
 
 	// transition animations
@@ -194,19 +231,26 @@ Airlock.prototype = {
 		const status = this.data.status;
 		if (status === 'closed') return;  // already closed
 
-		const startTime = now();
-		const endTime = startTime + this.transitionTime('close');
-		logger.debug(`Airlock ${this.name} closing from ${startTime} to ${endTime}`);
-
 		// This method may be called when jumping even if the airlock is fully or partially depressurized.
 		// In that case we stop any pressure change in progress but leave the pressure at its current value.
 		// A "stop" command will be automatically issued on successful jump, resetting the pressure to 1.0.
-		const pressure = clamp(this.getPressure() || 0.0, 0, 1);
+		const currentPressure = clamp(this.getPressure() || 0.0, 0, 1);
 
-		this.dmx('close');
-		this.patchData({ status: 'closing', countdown_to: endTime, pressure: pressure });
-		await this.waitUntil(endTime);
-		this.patchData({ status: 'closed', countdown_to: 0, pressure: pressure });
+		if (status === 'closing') {
+			// We might get here e.g. if an automatic close due to fighter launch interrupts a manual close.
+			// In that case we just wait out the remaining countdown.
+			await this.waitUntil(this.data.countdown_to || 0);
+		} else {
+			const startTime = now();
+			const endTime = startTime + this.transitionTime('close');
+			logger.debug(`Airlock ${this.name} closing from ${startTime} to ${endTime}`);
+
+			this.dmx('close');
+			this.patchData({ status: 'closing', countdown_to: endTime, pressure: currentPressure });
+			await this.waitUntil(endTime);
+		}
+
+		this.patchData({ status: 'closed', countdown_to: 0, pressure: currentPressure });
 	},
 	async autoClose() {
 		const config = this.data.config || DEFAULT_CONFIG, status = this.data.status;

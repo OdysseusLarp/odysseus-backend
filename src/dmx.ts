@@ -132,6 +132,9 @@ export const CHANNELS = {
 	MainAirlockDepressurizeFast: 289,
 	HangarBayDoorLock: 195,
 	HangarBayDoorUnlock: 196,
+	HangarBayFighterLaunch: 197,
+	HangarBayDepressurize: 198,
+	HangarBayPressurize: 199,
 
 	__SHIP_NOTIFICATIONS__: 0,
 	LoraBeaconSignalDecrypted: 250,
