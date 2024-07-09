@@ -253,7 +253,7 @@ blobs.push({
 
 // Front shields
 
-priority = priorityGenerator(10, 10);
+priority = priorityGenerator(12, 8);
 for (let i = 0; i < 20; i++) {
 	const letter = String.fromCharCode('A'.charCodeAt(0) + Math.floor(i / 2));
 	const number = (i % 2) + 1;
@@ -326,7 +326,7 @@ blobs.push({
 
 // Rear shields
 
-priority = priorityGenerator(15, 5);
+priority = priorityGenerator(12, 8);
 for (let i = 0; i < 20; i++) {
 	const letter = String.fromCharCode('A'.charCodeAt(0) + Math.floor(i / 2));
 	const number = (i % 2) + 1;
