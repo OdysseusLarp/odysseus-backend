@@ -1,8 +1,8 @@
-import { store, watch } from '@/store/store';
-import { CHANNELS, fireEvent } from '@/dmx';
-import { logger } from '@/logger';
-import { saveBlob, clamp, timeout } from '../helpers';
-import { LandingPadStates } from "@/integrations/emptyepsilon/client";
+import {store, watch} from '@/store/store';
+import {CHANNELS, fireEvent} from '@/dmx';
+import {logger} from '@/logger';
+import {clamp, saveBlob, timeout} from '../helpers';
+import {LandingPadStates} from "@/integrations/emptyepsilon/client";
 
 const airlockNames = ['airlock_main', 'airlock_hangarbay'];
 
@@ -97,7 +97,6 @@ Airlock.prototype = {
 			pressurize: ['pressurize'],
 			open: ['pressurize', 'openDoor', 'autoClose'],
 			depressurize: ['closeDoor', 'depressurize', 'autoPressurize'],
-			fighterLaunch: ['denyAccess', 'closeDoor', 'depressurize', 'allowAccess'],  // for hangar bay
 			forceDepressurize: ['denyAccess', 'closeDoor', 'depressurize', 'autoPressurize', 'allowAccess'], // access override for special scene
 			evacuate: ['closeDoor', 'evacuate', 'autoPressurize'], // faster depressurize for jettisoning objects
 			close: ['closeDoor'],
@@ -148,29 +147,49 @@ Airlock.prototype = {
 
 	// Trigger automatic depressurization when fighters are launched:
 	depressurizeIfFightersLaunched() {
-		const fightersLaunched = this.fightersLaunched();
-		const status = this.data.status;
-		if (fightersLaunched) {
-			if (status !== 'vacuum' && status !== 'depressurizing' && !this.fighterLaunchTimeout) {
-				const delay = this.data.config?.fighter_launch_delay || 20000; // Give players time to leave the hangar bay
-				logger.info(`Airlock ${this.name} detected fighter launch, depressurizing in ${delay} ms`);
-				this.dmx('fighter_launch');  // Play warning sound
-				this.fighterLaunchTimeout = setTimeout(() => this.command('fighterLaunch'), delay);
-			}
+		if (this.fightersLaunched()) {
+			this.handleFighterLaunch();
 		} else {
-			if (this.fighterLaunchTimeout) clearTimeout(this.fighterLaunchTimeout);
-			this.fighterLaunchTimeout = null;
-			if (status === 'vacuum' || status === 'depressurizing') {
-				logger.info(`Airlock ${this.name} detected all fighters returned, pressurizing`);
-				// KLUGE: Just doing this.command('pressurize') apparently triggers an infinite loop!
-				this.patchData({ status: 'pressurizing', command: 'pressurize' });
-			}
+			this.handleFighterReturn();
 		}
 	},
 	fightersLaunched() {
 		const fighterPads = this.data.config?.fighter_pads || [];
 		const padStatus = this.eeLandingPadStatus || {};
 		return fighterPads.some(padName => padStatus[padName] === LandingPadStates.Launched);
+	},
+	handleFighterLaunch() {
+		if (this.fighterLaunchTimeout || this.data.fighters === 'active') return;
+
+		const status = this.data.status;
+		if (status !== 'vacuum' && status !== 'depressurizing') {
+			const delay = this.data.config?.fighter_launch_delay || 20000; // Give players time to leave the hangar bay
+
+			logger.info(`Airlock ${this.name} detected fighter launch, depressurizing in ${delay} ms`);
+			this.dmx('fighter_launch');  // Play warning sound
+
+			if (this.data.fighters !== 'active') this.patchData({ fighters: 'launching' }); // notify admin UI of pending fighter launch
+			this.fighterLaunchTimeout = setTimeout(() => {
+				this.patchData({ fighters: 'active', command: 'depressurize' })
+			}, delay);
+		} else {
+			logger.info(`Airlock ${this.name} detected fighter launch while already in ${state} state`);
+			this.patchData({ fighters: 'active' });
+		}
+	},
+	handleFighterReturn() {
+		if (this.fighterLaunchTimeout) clearTimeout(this.fighterLaunchTimeout);
+		this.fighterLaunchTimeout = null;
+
+		const status = this.data.status;
+		if (status === 'vacuum' || status === 'depressurizing') {
+			logger.info(`Airlock ${this.name} detected all fighters returned, pressurizing`);
+			// KLUGE: Just doing this.command('pressurize') apparently triggers an infinite loop!
+			this.patchData({ fighters: 'docked', status: 'pressurizing', command: 'pressurize' });
+		} else if ((this.data.fighters || 'docked') !== 'docked') {
+			logger.warn(`Fighters returning to airlock ${this.name} in ${status} state???`);
+			this.patchData({ fighters: 'docked' });  // just in case
+		}
 	},
 
 	// transition animations
@@ -216,7 +235,7 @@ Airlock.prototype = {
 	},
 	async openDoor() {
 		const status = this.data.status;
-		if (status === 'open') return;  // already open
+		if (status === 'open' || this.data.fighters === 'active') return;  // already open
 
 		const startTime = now();
 		const endTime = startTime + this.transitionTime('open');
@@ -266,7 +285,7 @@ Airlock.prototype = {
 	},
 	async autoPressurize() {
 		const config = this.data.config || DEFAULT_CONFIG, status = this.data.status;
-		if (status !== 'vacuum' || !(config.auto_pressurize_delay > 0)) return;
+		if (status !== 'vacuum' || !(config.auto_pressurize_delay > 0) || this.data.fighters === 'active') return;
 
 		const autoPressurizeTime = now() + config.auto_pressurize_delay;
 		const endTime = autoPressurizeTime + this.transitionTime('pressurize');  // for UI countdown
