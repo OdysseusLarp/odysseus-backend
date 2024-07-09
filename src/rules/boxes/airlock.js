@@ -2,7 +2,7 @@ import { store, watch } from '@/store/store';
 import { CHANNELS, fireEvent } from '@/dmx';
 import { logger } from '@/logger';
 import { saveBlob, clamp, timeout } from '../helpers';
-import {LandingPadStates} from "@/integrations/emptyepsilon/client";
+import { LandingPadStates } from "@/integrations/emptyepsilon/client";
 
 const airlockNames = ['airlock_main', 'airlock_hangarbay'];
 
@@ -31,7 +31,7 @@ function Airlock(airlockName) {
 	this.commandCounter = 0;
 	this.closeBeforeJumpTimeout = null;
 	this.fighterLaunchTimeout = null;
-	this.landingPads = {};
+	this.eeLandingPadStatus = {};
 
 	watch(['data', 'box', this.name], (data) => {
 		this.data = data;
@@ -58,7 +58,7 @@ function Airlock(airlockName) {
 	});
 
 	watch(['data', 'ship', 'ee', 'landingPads'], (landingPads) => {
-		this.landingPads = landingPads;
+		this.eeLandingPadStatus = landingPads || {};
 		this.depressurizeIfFightersLaunched();
 	});
 
@@ -169,7 +169,7 @@ Airlock.prototype = {
 	},
 	fightersLaunched() {
 		const fighterPads = this.data.config?.fighter_pads || [];
-		const padStatus = this.landingPads || {};
+		const padStatus = this.eeLandingPadStatus || {};
 		return fighterPads.some(padName => padStatus[padName] === LandingPadStates.Launched);
 	},
 
