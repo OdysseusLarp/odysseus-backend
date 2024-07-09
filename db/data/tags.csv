@@ -42,7 +42,7 @@ science:gas_leak_100,science,"Sulfur dioxide
 100 ppm → The substance can be absorbed into the body by inhalation. No immediate danger."
 medic:gun_wound,medic,"Gun wound
 
-Level 1: Shallow wound from gun shot, no bullet in. Basic treatment. 
+Level 1: Shallow wound from gun shot, no bullet in. Basic treatment.
 
 Level 2: More serious wound, some blood loss. Bullet can be removed easily. Basic treatment, some rest.
 
@@ -151,11 +151,11 @@ medic:worm,medic,"Patient feels stinging pain in the nape of their neck.
 
 At first there are no external symptoms. Internal: inflammation, mild poisoning, hallucinations.
 
-X-ray scan is highly suggested! 
+X-ray scan is highly suggested!
 
 Small worm like life forms visible around the neck area.
 
-10-15 min after the patient has arrived, there will be a granulated lesion. 
+10-15 min after the patient has arrived, there will be a granulated lesion.
 ((Wait for make up team! They will arrive to medbay.))
 
 If any bits of the worm are left in the wound the worm will regenerate from the bits.
@@ -163,7 +163,7 @@ If any bits of the worm are left in the wound the worm will regenerate from the 
 ((For extra drama you could make a mistake in the removal process, the worm will regenerate and you need to start over.))"
 medic:poison_blood_coagulation,medic,"Poisoning
 
-Poisoning from an unknown life form. Blood does not coagulate due to some unknown venom in the wound. 
+Poisoning from an unknown life form. Blood does not coagulate due to some unknown venom in the wound.
 
 (OFFGAME: This character will die in the medbay from this injury, the player is aware of this. Please let the player and other marines play this out a little and say their goodbyes.)"
 medic:wound,medic,"Wound
@@ -183,14 +183,14 @@ Level 3: Behavioral change, reduced level of consciousness, cerebral anoxia. Che
 science:machine_weapon,science,"A very conventional rifle, possibly human made, but adapted slightly for the machines. Surprisingly boring in it's make."
 science:araknium,science,Araknium heat treatment successful
 medic:radiation_stims,medic,"Radiation poisoning is interacting with substance abuse in the patients body, causing the immune system to overload. His mucus membranes and spit glands are going berserk, and patient needs fluids and i.v. hydration. Iodine pills for radiation and a possible liver operation. "
-medic:bartender,medic,"Severe damage to internal organs, internal bleeding (blood in lungs).  
+medic:bartender,medic,"Severe damage to internal organs, internal bleeding (blood in lungs).
 
 ((Bio ID says Jack Lange, but character is Sally Lange. Please let me die for drama. You can extend dying but no miracle saves should work, you can come up with reasons why :))"
-medic:velian_death,medic,"Patient has foreign, serrated, object lodged deep in the throat. Massive damage to carotid artery, larynx and trachea. The patient requires immediate surgery to stop bleeding and to have any possibility of retaining speech functions. Patient is unable to breathe, requires intubating. 
+medic:velian_death,medic,"Patient has foreign, serrated, object lodged deep in the throat. Massive damage to carotid artery, larynx and trachea. The patient requires immediate surgery to stop bleeding and to have any possibility of retaining speech functions. Patient is unable to breathe, requires intubating.
 
 Patient has suffered burns from the blast.
 
-After 10 minutes of intense surgery the patient seizures due to cardiac arrest caused by stress to the body and exsanguination (blood loss). 
+After 10 minutes of intense surgery the patient seizures due to cardiac arrest caused by stress to the body and exsanguination (blood loss).
 Patient is pronounced dead after 13 minutes of surgery."
 medic:gunshot_clean,medic,"Gunshot_clean
 
@@ -224,7 +224,7 @@ engi:communicator1,engineer,"Communicator's signal reveals a complex frequency-h
 engi:communicator2,engineer,"Energy signature analysis indicates a hybrid power system utilizing tri-phase ion capacitors coupled with quantum-dynamic resonance coils. Consumption metrics show efficient energy utilization during active transmission cycles, with standby modes optimizing power conservation through sub-quantum phase oscillation."
 engi:communicator3,engineer,"Optimizing circuitry and power management algorithms to reduce the device's power consumption without compromising performance, extending battery life or reducing energy requirements for external power sources."
 engi:communicator4,engineer,"Deep packet inspection reveals a multi-layered quantum entanglement encryption schema, employing pseudo-random quantum bit generators synchronized with celestial reference points for key exchange. Vulnerability assessment identifies residual phase modulation artifacts susceptible to temporal decoherence exploits."
-engi:communicator5,engineer,Enhance the device's antenna design or signal processing capabilities to improve signal strength and extend communication range. 
+engi:communicator5,engineer,Enhance the device's antenna design or signal processing capabilities to improve signal strength and extend communication range.
 
 Metainfo: Repairs and enhancements are purely improvisational. Please do not use tape or anyway harm the device when attaching it. Message EVA when installation is ready."
 engi:communicator6,engineer,"Metainfo: This info at the bottom of the bage is only for VANE HODGE OR LANE THOMAS!
@@ -303,13 +303,13 @@ engi:calculator4,engineer,"Performance benchmarking reveals a quantum supersymme
 engi:calculator5,engineer,"Incorporate the device into the ship's data integration pathways, configuring optical or quantum data links to ensure seamless communication with the ship's mainframe and minimize latency in data processing.
 
 Metainfo: Attaching the device is purely improvisational. Please do not use tape or anyway harm the device when attaching it. Message EVA when installation is ready."
-engi:calculator6,engineer,"Conduct a comprehensive assessment to ensure compatibility between the calculation capacity extender and the existing computing architecture. Verify that the extender integrates seamlessly with the onboard processors, memory modules, and data buses. 
+engi:calculator6,engineer,"Conduct a comprehensive assessment to ensure compatibility between the calculation capacity extender and the existing computing architecture. Verify that the extender integrates seamlessly with the onboard processors, memory modules, and data buses.
 
 Metainfo: Attaching the device is purely improvisational. Please do not use tape or anyway harm the device when attaching it. Message EVA when installation is ready."
-engi:cooling1,engineer,"Ensure the device is structurally integrated with the engine assembly to minimize vibration and maintain alignment during spacecraft maneuvers. Use secure mounting points and consider structural reinforcements if needed. 
+engi:cooling1,engineer,"Ensure the device is structurally integrated with the engine assembly to minimize vibration and maintain alignment during spacecraft maneuvers. Use secure mounting points and consider structural reinforcements if needed.
 
 Metainfo: Attaching the device is purely improvisational. Please do not use tape or anyway harm the device when attaching it. Message EVA when installation is ready."
-engi:cooling2,engineer,"Implement sensor system to regulate coolant flow and temperature levels effectively. Automated controls should adjust coolant flow rates based on engine operation conditions. 
+engi:cooling2,engineer,"Implement sensor system to regulate coolant flow and temperature levels effectively. Automated controls should adjust coolant flow rates based on engine operation conditions.
 
 Metainfo: Attaching the device is purely improvisational. Please do not use tape or anyway harm the device when attaching it. Message EVA when installation is ready."
 engi:cooling3,engineer,Initial diagnostics indicate the presence of a highly efficient energy redistribution matrix.
@@ -318,19 +318,19 @@ engi:cooling5,engineer,"The device operates on a dynamic power allocation system
 engi:scanrange1,engineer,"Initial diagnostics reveal a sophisticated frequency modulation algorithm that dynamically adjusts to ambient electromagnetic conditions, optimizing signal clarity and coherence. The synchronization protocols appear to leverage quantum entanglement principles for real-time adjustment."
 engi:scanrange2,engineer,"Material analysis shows the use of exotic alloys and metamaterials with exceptional resonance properties, facilitating the efficient propagation of high-frequency waves. These materials exhibit unique dielectric and conductive characteristics that enhance signal fidelity."
 engi:scanrange3,engineer,Embedded within the device is an array of adaptive sensors and processors that continuously analyze environmental conditions and adjust operational parameters accordingly. This adaptive mechanism ensures optimal signal reception and transmission across varying spatial and temporal contexts.
-engi:scanrange4,engineer,"If integrated to ships systems ensure proper alignment with the ship's existing electromagnetic field array. This involves calibrating the interface nodes to synchronize with the vessel's frequency modulation systems, thereby enhancing spatial detection capabilities. 
+engi:scanrange4,engineer,"If integrated to ships systems ensure proper alignment with the ship's existing electromagnetic field array. This involves calibrating the interface nodes to synchronize with the vessel's frequency modulation systems, thereby enhancing spatial detection capabilities.
 
 Metainfo: Attaching the device is purely improvisational. Please do not use tape or anyway harm the device when attaching it. Message EVA when installation is ready."
-engi:scanrange5,engineer,"The extender device requires seamless integration into the ship's power grid. Configure the power coupling to optimize energy flow, utilizing phase modulation techniques to prevent overloading and ensure efficient energy utilization. 
+engi:scanrange5,engineer,"The extender device requires seamless integration into the ship's power grid. Configure the power coupling to optimize energy flow, utilizing phase modulation techniques to prevent overloading and ensure efficient energy utilization.
 
 Metainfo: Attaching the device is purely improvisational. Please do not use tape or anyway harm the device when attaching it. Message EVA when installation is ready."
 engi:calcboost1,engineer,"Advanced multi-dimensional processing matrix within the device, utilizing hyper-threaded quantum cores that enable parallel execution of complex algorithms with minimal latency."
 engi:calcboost2,engineer,"Initial diagnostics shows a highly efficient data bus architecture, leveraging photonic interconnects to facilitate ultra-fast data transfer rates and reduce signal attenuation across the processing network."
 engi:calcboost3,engineer,"An intelligent resource management system within the device, utilizing machine learning algorithms to predict computational demands and allocate processing power accordingly."
-engi:calcboost4,engineer,"Integrate the device through the ship's main data conduits, ensuring synchronization with the existing computational framework by calibrating the interface protocols to match system bus speeds and data formats. 
+engi:calcboost4,engineer,"Integrate the device through the ship's main data conduits, ensuring synchronization with the existing computational framework by calibrating the interface protocols to match system bus speeds and data formats.
 
 Metainfo: Attaching the device is purely improvisational. Please do not use tape or anyway harm the device when attaching it. Message EVA when installation is ready."
-engi:calcboost5,engineer,"Attach the device to the ship’s power grid using adaptive power converters, which regulate and harmonize the energy influx to prevent surges and ensure consistent power supply during peak operational phases. 
+engi:calcboost5,engineer,"Attach the device to the ship’s power grid using adaptive power converters, which regulate and harmonize the energy influx to prevent surges and ensure consistent power supply during peak operational phases.
 
 Metainfo: Attaching the device is purely improvisational. Please do not use tape or anyway harm the device when attaching it. Message EVA when installation is ready."
 medic:blunt,medic,"Blunt force trauma
@@ -340,3 +340,26 @@ Level 1: Surface injury. Some swelling and moderate pain to be expected, Should 
 Level 2: Moderate injury mainly to soft tissue structure. No bone fractures. Cold compression is adviced to prevent further internal bruising/minor bleeding. Will result in a nasty and sore bruise. Pain management adviced.
 
 Level 3: Severe blunt force trauma. No cut or penetration wounds but suspect fractured or broken bone structure that needs rest and monitoring. Severe swelling and nausea may occur. Monitor for iternal bleeding."
+medic:disloc_shoulder,MEDIC,"Shoulder has been dislocated. It needs to be set back to its place. Shoulder support and pain medication recommended."
+medic:dehydration,MEDIC,"Patient is suffering from severe dehydration and should be provided fluids via IV."
+medic:radiation_stim,MEDIC,"Radiation poisoning is interacting with substance abuse in the patients body, causing the immune system to overload. Their mucus membranes and spit glands are going berserk, and patient needs fluids and i.v. hydration. Iodine pills for radiation and a possible liver operation."
+medic:wound1,MEDIC,"Clean wound - Skin is torn, cut, or punctured (an open wound), needs to be cleaned and bandaged."
+medic:wound2,MEDIC,"Contaminated wound - Pathogenic organisms and foreign bodies in the wound. Possibility for infection. Needs to be cleaned and stitched."
+medic:wound3,MEDIC,"Infected wound - Pathogenic organisms present and multiplying, exhibiting clinical signs of infection (yellow appearance, soreness, redness, oozing pus). Give antibiotics, use clamps for closing the wound. If gangrene, remove affected tissue."
+medic:withdrawal,MEDIC,"The patient is experiencing withdrawals from medicine or addictive substances. May experience hallucinations, severe nausea, spasms and headaches. Prescribe medication according to symptoms. In case of severe hallucinations relieve of duty until rested and symptomless. Do not prescribe stimulants."
+medic:shrapnel1,MEDIC,"Pain, blood loss. Torn tissue and shrapnel stuck in muscle layers. Moderately contained area that can be bandaged for the time being and cleared with pinchers later on."
+medic:shrapnel2,MEDIC,"Severe pain, blood loss. Torn tissue and big foreign objects stuck in muscle and fatty tissue dangerously close to veins. Should be cleaned immediately and foreign objects removed."
+medic:shrapnel3,MEDIC,"Severe pain, great blood loss. Extremely torn tissue and shrapnel embedded all the way into patient's bone through skin, fatty tissue and muscle layers. Needs immediate extraction and cleaning. Sedation for operation and  Antibiotics adviced."
+medic:gunshot_clean1,MEDIC,"Gunshot wound, pain, bullet ripped muscle, flesh wound. Clean and bandage wound."
+medic:gunshot_clean2,MEDIC,"Gunshot wound, severe pain, muscle cramps, bullet penetrated muscle cleanly trough, major flesh wound. Clean and take steps to close wound before bandaging it."
+medic:gunshot_clean3,MEDIC,"Gunshot wound, severe pain and major blood-loss, nausea and weakness, bullet penetrated muscle and ripped nerve/ damaged bone and blood veins when exiting. Use scanner to determine damage, operate immediately to repair veins and nerves before closing and bandaging wound."
+medic:gunshot_stuck1,MEDIC,"Gunshot wound, pain, bullet ripped muscle. Entered on an angle and lodged close to surface. Quick operation- easy to remove with local anesthesia and quick extraction (a few seconds) on the spot for combat personnel."
+medic:gunshot_stuck2,MEDIC,"Gunshot wound , severe pain, muscle cramps. Bullet is stuck close to bone structure. Luckily missed major arteries. Operation will be required (a few minutes) to reach the bullet. Can be bandaged temporarily and left for later (within few hours)."
+medic:gunshot_stuck3,MEDIC,"Gunshot wound, severe pain and major blood-loss, nausea and weakness, bullet penetrated bone and is stuck catastrophically close to a major artery. Vein will rip within minutes. Major operation required to prevent potential loss of limb."
+medic:fatigue2,MEDIC,"Patient is severely exhausted and can make dangerous mistakes. Bedrest in MedBay and stimulants after sufficient rest are recommended."
+medic:sleepdeprived,MEDIC,"The patient is sleep deprived. The only remedy is maintaining a regular sleep cycle of minimum 8 hours in a peaceful and quiet environment. Avoid stress."
+medic:fatigue1,MEDIC,"Patient is exhausted but otherwise fine. Prescribe stimulants."
+medic:fatigue3,MEDIC,"The patient is extremely fatigued and can cause immediate danger to the mission. Relieve of duty and put on mandatory bed rest in MedBay. Contact superior officer. Give double dose of stimulants."
+medic:sal,MEDIC,"Patient has massive internal bleeding. Projectile has splintered and perforated the intestines as well as the spleen and lungs. Prognosis: fatal.
+
+OFF-GAME: You can fight to save me, but please let me die dramatically."
