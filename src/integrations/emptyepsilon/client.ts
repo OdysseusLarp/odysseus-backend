@@ -3,6 +3,7 @@ import { getData } from '@/routes/data';
 import axios from 'axios';
 import { forIn, get, isNumber, pick, set } from 'lodash';
 import { initEmptyEpsilonEmulator } from './emulator';
+import { EmptyEpsilonErrorState, EmptyEpsilonState } from './types';
 
 const { EMPTY_EPSILON_HOST, EMPTY_EPSILON_PORT } = process.env;
 
@@ -25,9 +26,8 @@ const LandingPadStateToText = {
 };
 
 export type AlertLevel = (typeof alertStates)[keyof typeof alertStates];
-export type EmptyEpsilonState = Record<string, any>;
 export type LandingPadState = (typeof LandingPadStates)[keyof typeof LandingPadStates];
-type EmptyEpsilonCommand = 'setSystemHealth' | 'setSystemHeat' | 'setWeaponStorage' | 'setLandingPadState';
+export type EmptyEpsilonCommand = 'setSystemHealth' | 'setSystemHeat' | 'setWeaponStorage' | 'setLandingPadState';
 
 export class EmptyEpsilonClient {
 	private isEmulated: boolean;
@@ -109,7 +109,7 @@ export class EmptyEpsilonClient {
 		this.setIsConnectionHealthy(true);
 	}
 
-	async getGameState(): Promise<EmptyEpsilonState> {
+	async getGameState(): Promise<EmptyEpsilonState | EmptyEpsilonErrorState> {
 		try {
 			const [gameState, landingPadStatuses] = await Promise.all([
 				this.fetchGameState(),
@@ -137,6 +137,13 @@ export class EmptyEpsilonClient {
 			const { shipHull, shipHullMax } = pick(get(formattedState, 'general', {} as any), ['shipHull', 'shipHullMax']);
 			if (isNumber(shipHull) && isNumber(shipHullMax)) {
 				set(formattedState, 'general.shipHullPercent', shipHull / shipHullMax);
+			}
+
+			// Validate state schema
+			const parseResult = EmptyEpsilonState.safeParse(formattedState);
+			if (!parseResult.success) {
+				logger.error('Invalid EmptyEpsilon state format: ', JSON.stringify({ parseResult, formattedState }, null, 2));
+				throw new Error(`EmptyEpsilon response schema validation failed, see logs for details`);
 			}
 
 			this.previousState = formattedState;

@@ -19,7 +19,7 @@ export function updateEmptyEpsilonState(): Promise<void> {
 			const previousConnectionStatus = omit(getData('ship', 'ee_metadata'), metadataKeys);
 			if (!isEqual(connectionStatus, previousConnectionStatus)) setData('ship', 'ee_metadata', connectionStatus, true);
 			// Do not update state if request to EE failed
-			if (state.error) return;
+			if ('error' in state) return;
 			// Do not update state if EE sync is disabled
 			if (!get(getData('ship', 'metadata'), 'ee_sync_enabled')) return;
 			const currentState = omit(getData('ship', 'ee'), metadataKeys);
