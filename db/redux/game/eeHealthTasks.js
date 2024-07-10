@@ -253,7 +253,7 @@ blobs.push({
 
 // Front shields
 
-priority = priorityGenerator(10, 10);
+priority = priorityGenerator(12, 8);
 for (let i = 0; i < 20; i++) {
 	const letter = String.fromCharCode('A'.charCodeAt(0) + Math.floor(i / 2));
 	const number = (i % 2) + 1;
@@ -326,7 +326,7 @@ blobs.push({
 
 // Rear shields
 
-priority = priorityGenerator(10, 10);
+priority = priorityGenerator(12, 8);
 for (let i = 0; i < 20; i++) {
 	const letter = String.fromCharCode('A'.charCodeAt(0) + Math.floor(i / 2));
 	const number = (i % 2) + 1;
@@ -510,7 +510,7 @@ for (let i = 0; i < 20; i++) {
 		calibrationTime: 8 * 60,
 		calibrationCount: 1,
 		title: `Beam weapon segment ${code}`,
-		description: `Beam weapon segment ${code} has fallen out-of-sync with the ship quantum state. The quantum phase must be recalibrated using HANSCA.`,
+		description: `Beam weapon segment ${code} has failed. Faulty segment needs to be reconfigured using HANSCA.`,
 		location: 'Upper deck, Science lab',
 		map: 'deck2',
 		mapX: 950,
@@ -523,36 +523,33 @@ blobs.push({
 	id: 'beamweapons',
 
 	default: {
-		initDescription: 'Beam weapon requires phase recalibration.',
-		endDescription: 'Phase calibration successful!',
-		game: 'phasesync',
+		initDescription: '<p>Beam weapons needs reconfiguration.</p>\n\t\t<p>Each number on the lines outside the grid represents a block of squares to be blacked out in that row or column</p>\n\t\t<p>You may reset the shield segments to a random state.</p>',
+		endDescription: 'Segment reconfiguration successful!',
+		game: 'nonogram',
 
-		dimensions: 2,
-		difficulty: 0.4,
-		duration: 1,
-		drift: 0.15,
+		gridWidth: 6,
+		gridHeight: 8,
+		maxStrikes: 1,
 	},
 
 	'skill:master': {
-		initDescription: 'Beam weapon requires phase recalibration.',
-		endDescription: 'Phase calibration successful!',
-		game: 'phasesync',
+		initDescription: '<p>Beam weapons needs reconfiguration.</p>\n\t\t<p>Each number on the lines outside the grid represents a block of squares to be blacked out in that row or column</p>\n\t\t<p>You may reset the shield segments to a random state.</p>',
+		endDescription: 'Segment reconfiguration successful!',
+		game: 'nonogram',
 
-		dimensions: 2,
-		difficulty: 0.4,
-		duration: 1,
-		drift: 0.05,
+		gridWidth: 6,
+		gridHeight: 6,
+		maxStrikes: 2,
 	},
 
 	'skill:expert': {
-		initDescription: 'Beam weapon requires phase recalibration.',
-		endDescription: 'Phase calibration successful!',
-		game: 'phasesync',
+		initDescription: '<p>Beam weapons needs reconfiguration.</p>\n\t\t<p>Each number on the lines outside the grid represents a block of squares to be blacked out in that row or column</p>\n\t\t<p>You may reset the shield segments to a random state.</p>',
+		endDescription: 'Segment reconfiguration successful!',
+		game: 'nonogram',
 
-		dimensions: 2,
-		difficulty: 0.2,
-		duration: 1,
-		drift: 0,
+		gridWidth: 5,
+		gridHeight: 5,
+		maxStrikes: 3,
 	},
 });
 
