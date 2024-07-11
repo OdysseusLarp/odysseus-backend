@@ -97,7 +97,7 @@ Airlock.prototype = {
 			pressurize: ['pressurize'],
 			open: ['pressurize', 'openDoor', 'autoClose'],
 			depressurize: ['closeDoor', 'depressurize', 'autoPressurize'],
-			forceDepressurize: ['denyAccess', 'closeDoor', 'depressurize', 'autoPressurize', 'allowAccess'], // access override for special scene
+			forceDepressurize: ['denyAccess', 'closeAllDoors', 'depressurize', 'autoPressurize', 'allowAccess'], // access override for special scene
 			evacuate: ['closeDoor', 'evacuate', 'autoPressurize'], // faster depressurize for jettisoning objects
 			close: ['closeDoor'],
 			stop: ['stopTransition'],  // also used to force status
@@ -147,11 +147,17 @@ Airlock.prototype = {
 
 	// Trigger automatic depressurization when fighters are launched:
 	depressurizeIfFightersLaunched() {
-		if (this.fightersLaunched()) {
+		if (!this.hasFighters()) {
+			if (this.data.fighters) this.patchData({ fighters: null });  // in case fighters were deleted from config
+		} else if (this.fightersLaunched()) {
 			this.handleFighterLaunch();
 		} else {
 			this.handleFighterReturn();
 		}
+	},
+	hasFighters() {
+		const fighterPads = this.data.config?.fighter_pads;
+		return fighterPads && fighterPads.length > 0;
 	},
 	fightersLaunched() {
 		const fighterPads = this.data.config?.fighter_pads || [];
@@ -159,7 +165,7 @@ Airlock.prototype = {
 		return fighterPads.some(padName => padStatus[padName] === LandingPadStates.Launched);
 	},
 	handleFighterLaunch() {
-		if (this.fighterLaunchTimeout || this.data.fighters === 'active') return;
+		if (this.fighterLaunchTimeout || this.data.fighters === 'active' || !this.hasFighters()) return;
 
 		const status = this.data.status;
 		if (status !== 'vacuum' && status !== 'depressurizing') {
@@ -173,7 +179,7 @@ Airlock.prototype = {
 				this.patchData({ fighters: 'active', command: 'depressurize' })
 			}, delay);
 		} else {
-			logger.info(`Airlock ${this.name} detected fighter launch while already in ${state} state`);
+			logger.info(`Airlock ${this.name} detected fighter launch while already in ${status} state`);
 			this.patchData({ fighters: 'active' });
 		}
 	},
@@ -181,8 +187,10 @@ Airlock.prototype = {
 		if (this.fighterLaunchTimeout) clearTimeout(this.fighterLaunchTimeout);
 		this.fighterLaunchTimeout = null;
 
+		if (this.data.fighters === 'docked' || !this.hasFighters()) return;
+
 		const status = this.data.status;
-		if (status === 'vacuum' || status === 'depressurizing') {
+		if ((status === 'vacuum' || status === 'depressurizing') && !this.data?.config?.allow_depressurize) {
 			logger.info(`Airlock ${this.name} detected all fighters returned, pressurizing`);
 			// KLUGE: Just doing this.command('pressurize') apparently triggers an infinite loop!
 			this.patchData({ fighters: 'docked', status: 'pressurizing', command: 'pressurize' });
@@ -319,6 +327,17 @@ Airlock.prototype = {
 		for (const name of airlockNames) {
 			airlocks[name].patchData({ access_denied: false });
 		}
+	},
+	async closeAllDoors() {
+		return await Promise.all(airlockNames.map(name => {
+			const airlock = airlocks[name];
+			const status = airlock?.data?.status
+			if (status === 'open' || status === 'opening') {
+				return airlock.closeDoor();
+			} else {
+				return Promise.resolve();  // already closed or closing
+			}
+		}));
 	},
 
 	// convert linear pressure ramp back to a numeric pressure value
