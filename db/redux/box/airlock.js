@@ -16,7 +16,7 @@ blobs.push({
 	config: {
 		title_bar_text: 'Hangar Bay', // shown in an extra bar at the top of the UI, if set
 		allow_depressurize: false,    // should the depressurize button be shown in the player UI?
-		fighter_launch_delay: 30000,  // milliseconds before depressurization starts on fighter launch
+		fighter_launch_delay: 19000,  // milliseconds before depressurization starts on fighter launch
 		jump_close_delay: 42000,      // milliseconds before door closes after jump initiation
 		auto_close_delay: 0,          // milliseconds before door closes automatically after opening (0 = never)
 		// auto-depressurize when any fighters are launched
@@ -25,13 +25,14 @@ blobs.push({
 		dmx_events: {
 			open: 'HangarBayDoorUnlock',
 			close: 'HangarBayDoorLock',
-			fighter_launch: 'HangarBayDepressurizeWarning',
+			fighter_launch: 'HangarBayFighterLaunch',
 			depressurize: 'HangarBayDepressurize',
 			pressurize: 'HangarBayPressurize',
 		},
 		// custom transition durations (milliseconds)
 		transition_times: {
-			depressurize: 10000  // activated automatically when fighters are launched
+			depressurize: 5500,  // activated automatically when any fighters are launched
+			pressurize: 23000,  // activated automatically when all fighters return
 		},
 		// custom UI strings
 		messages: {
