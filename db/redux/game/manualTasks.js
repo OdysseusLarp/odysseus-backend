@@ -1100,7 +1100,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Rear shield neogenic capacitator GR3914D positronic stabilizer',
+			title: 'Rear shield neogenic capacitator GR3914D - resetting the positronic stabilizer',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>In order to resynchronise the rear shield’s positronic stabilizer, it needs to be reset.</p><p>The Neogenic capacitator GR3914D is located in the security room. Refer to ESS Odysseus Operations Handbook page 3-99 for instructions.</p>',
 				'<p>Push reset button twice</p>',
