@@ -18,6 +18,7 @@ const SampleTypes = {
 	AGE: 'Radiocarbon dating',
 	HISTORY_SAMPLE: 'Historical analysis',
 	XRF_SAMPLE: 'X-Ray Fluorescence analysis',
+	XRF_SCAN: 'X-Ray Fluorescence analysis',
 } as const;
 
 export const addOperationResultsToArtifactEntry = async (operationResult: Bookshelf.Model<unknown>) => {
@@ -39,7 +40,7 @@ export const addOperationResultsToArtifactEntry = async (operationResult: Booksh
 		case 'AGE':
 			entryText = artifact.get('test_age');
 			break;
-		case 'XRF_SAMPLE':
+		case 'XRF_SCAN':
 			entryText = artifact.get('test_xrf');
 			break;
 		case 'HISTORY_SAMPLE':
