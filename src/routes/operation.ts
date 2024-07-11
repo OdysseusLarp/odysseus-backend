@@ -85,6 +85,12 @@ async function scheduleAddOperationResultToArtifactEntry(operationResult: Booksh
 	const authorId = operationResult.get('author_id');
 	const author = await new Person().where({ id: authorId }).fetchWithRelated();
 
+	const additionalType = operationResult.get('additional_type');
+	if (additionalType === 'OTHER_SAMPLE') {
+		logger.info('Skipping scheduling of operation result submission, as it is of type OTHER_SAMPLE');
+		return;
+	}
+
 	const analysisTime = getScienceAnalysisTime(author);
 	const analysisCompletesAt = Date.now() + analysisTime;
 

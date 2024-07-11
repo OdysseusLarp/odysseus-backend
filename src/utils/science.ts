@@ -45,6 +45,9 @@ export const addOperationResultsToArtifactEntry = async (operationResult: Booksh
 		case 'HISTORY_SAMPLE':
 			entryText = artifact.get('test_history');
 			break;
+		case 'OTHER_SAMPLE':
+			logger.info('Skipping submission of operation result, as it is of type OTHER_SAMPLE');
+			return;
 		default:
 			entryText = null;
 	}
