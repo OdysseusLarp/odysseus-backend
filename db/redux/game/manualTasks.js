@@ -940,7 +940,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Missile neogenic capacitator GR3914D delta-wave fuse box A',
+			title: 'Missile neogenic capacitator GR3914D - reprogramming the delta-wave fuse box A',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>Reprogram the delta-wave fuse box.</p><p>The Neogenic capacitator GR3914D is located in the security room. Refer to ESS Odysseus Operations Handbook page 3-99 for instructions.</p>',
 				'<p>Switch fuses as follows:</p><ul><li>Latch 2</li><li>Latch 5</li><li>Latch 10</li></ul>',
@@ -956,7 +956,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Missile neogenic capacitator GR3914D delta-wave fuse box B',
+			title: 'Missile neogenic capacitator GR3914D - reprogramming the delta-wave fuse box B',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>Reprogram the delta-wave fuse box.</p><p>The Neogenic capacitator GR3914D is located in the security room. Refer to ESS Odysseus Operations Handbook page 3-99 for instructions.</p>',
 				'<p>Switch fuses as follows:</p><ul><li>Latch 1</li><li>Latch 3</li><li>Latch 7</li></ul>',
@@ -972,7 +972,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Missile neogenic capacitator GR3914D delta-wave fuse box C',
+			title: 'Missile neogenic capacitator GR3914D - reprogramming the delta-wave fuse box C',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>Reprogram the delta-wave fuse box.</p><p>The Neogenic capacitator GR3914D is located in the security room. Refer to ESS Odysseus Operations Handbook page 3-99 for instructions.</p>',
 				'<p>Switch fuses as follows:</p><ul><li>Latch 6</li><li>Latch 9</li><li>Latch 10</li></ul>',
@@ -988,7 +988,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Missile neogenic capacitator GR3914D delta-wave fuse box D',
+			title: 'Missile neogenic capacitator GR3914D - reprogramming the delta-wave fuse box D',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>Reprogram the delta-wave fuse box.</p><p>The Neogenic capacitator GR3914D is located in the security room. Refer to ESS Odysseus Operations Handbook page 3-99 for instructions.</p>',
 				'<p>Switch fuses as follows:</p><ul><li>Latch 1</li><li>Latch 4</li><li>Latch 5</li></ul>',
@@ -1004,7 +1004,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Missile neogenic capacitator GR3914D delta-wave fuse box E',
+			title: 'Missile neogenic capacitator GR3914D - reprogramming the delta-wave fuse box E',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>Reprogram the delta-wave fuse box.</p><p>The Neogenic capacitator GR3914D is located in the security room. Refer to ESS Odysseus Operations Handbook page 3-99 for instructions.</p>',
 				'<p>Switch fuses as follows:</p><ul><li>Latch 2</li><li>Latch 7</li><li>Latch 8</li></ul>',
@@ -1020,7 +1020,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Hull neogenic capacitator GR3914D dilithium ccc signals A',
+			title: 'Hull neogenic capacitator GR3914D - rerouting the dilithium containment core control A',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>Reroute the control signals for the dilithium containment core, as the hull power grid is at risk of being overcharged.</p><p>The Neogenic capacitator GR3914D is located in the security room. Refer to ESS Odysseus Operations Handbook page 3-99 for instructions.</p>',
 				'<p>Set up the wires as follows:</p><ul><li>Wire F-5 --> Slot 37</li><li>Wire Q-4 --> Slot 68</li></ul>',
@@ -1036,7 +1036,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Hull neogenic capacitator GR3914D dilithium ccc signals B',
+			title: 'Hull neogenic capacitator GR3914D - rerouting the dilithium containment core control B',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>Reroute the control signals for the dilithium containment core, as the hull power grid is at risk of being overcharged.</p><p>The Neogenic capacitator GR3914D is located in the security room. Refer to ESS Odysseus Operations Handbook page 3-99 for instructions.</p>',
 				'<p>Set up the wires as follows:</p><ul><li>Wire A-7 --> Slot A</li><li>Wire X-2 --> Slot 1</li><li>Wire Y-11 --> Slot C</li></ul>',
@@ -1052,7 +1052,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Hull neogenic capacitator GR3914D dilithium ccc signals C',
+			title: 'Hull neogenic capacitator GR3914D - rerouting the dilithium containment core control C',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>Reroute the control signals for the dilithium containment core, as the hull power grid is at risk of being overcharged.</p><p>The Neogenic capacitator GR3914D is located in the security room. Refer to ESS Odysseus Operations Handbook page 3-99 for instructions.</p>',
 				'<p>Set up the wires as follows:</p><ul><liWire F-5 --> Slot B</li><li>Wire X-2 --> Slot 26</li><li>Wire Y-11 --> Slot 33</li><li>Wire Q-4 --> Slot 19</li></ul>',
@@ -1068,7 +1068,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Hull neogenic capacitator GR3914D dilithium ccc signals D',
+			title: 'Hull neogenic capacitator GR3914D - rerouting the dilithium containment core control D',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>Reroute the control signals for the dilithium containment core, as the hull power grid is at risk of being overcharged.</p><p>The Neogenic capacitator GR3914D is located in the security room. Refer to ESS Odysseus Operations Handbook page 3-99 for instructions.</p>',
 				'<p>Set up the wires as follows:</p><ul><li>Wire F-5 --> Slot C</li><li>Wire X-2 --> Slot 71</li><li>Wire Y-11 --> Slot 59</li><li>Wire Q-4 --> Slot A</li><li>Wire A-7 --> Slot 24</li></ul>',
@@ -1084,7 +1084,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Hull neogenic capacitator GR3914D dilithium ccc signals E',
+			title: 'Hull neogenic capacitator GR3914D - rerouting the dilithium containment core control E',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>Reroute the control signals for the dilithium containment core, as the hull power grid is at risk of being overcharged.</p><p>The Neogenic capacitator GR3914D is located in the security room. Refer to ESS Odysseus Operations Handbook page 3-99 for instructions.</p>',
 				'<p>Set up the wires as follows:</p><ul><li>Wire X-2 --> Slot 29</li><li>Wire F-5 --> Slot 12</li><li>Wire Q-4 --> Slot 61</li><li>Wire Y-11 --> Slot C</li><li>Wire A-7 --> Slot B</li></ul>',
@@ -1571,7 +1571,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Impulse zirconium gluon gel core control panel - Re-routing control signals A',
+			title: 'Impulse zirconium gluon gel core control panel - System reset A',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>Plasma surges have been observed in the core. The system needs to be reset and reprogrammed to avoid a potentially critical plasma surge.</p><p>Zirconium gluon gel core control panel is located in the med bay. Refer to ESS Odysseus Operations Handbook page 2.4-35 for instructions.</p>',
 				'<p>Press the buttons and reset as follows:</p><ul><li>Buttons Y Y</li><li>Button START</li><li>Button ACK</li></ul>',
@@ -1587,7 +1587,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Impulse zirconium gluon gel core control panel - Re-routing control signals B',
+			title: 'Impulse zirconium gluon gel core control panel - System reset B',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>Plasma surges have been observed in the core. The system needs to be reset and reprogrammed to avoid a potentially critical plasma surge.</p><p>Zirconium gluon gel core control panel is located in the med bay. Refer to ESS Odysseus Operations Handbook page 2.4-35 for instructions.</p>',
 				'<p>Press the buttons and reset as follows:</p><ul><li>Buttons X X</li><li>Buttons Z Z</li></ul>',
@@ -1603,7 +1603,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Impulse zirconium gluon gel core control panel - Re-routing control signals C',
+			title: 'Impulse zirconium gluon gel core control panel - System reset C',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>Plasma surges have been observed in the core. The system needs to be reset and reprogrammed to avoid a potentially critical plasma surge.</p><p>Zirconium gluon gel core control panel is located in the med bay. Refer to ESS Odysseus Operations Handbook page 2.4-35 for instructions.</p>',
 				'<p>Press the buttons and reset as follows:</p><ul><li>Buttons W W</li><li>Button ACK</li><li>Button START</li><li>Button STOP</li></ul>',
@@ -1619,7 +1619,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Impulse zirconium gluon gel core control panel - Re-routing control signals D',
+			title: 'Impulse zirconium gluon gel core control panel - System reset D',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>Plasma surges have been observed in the core. The system needs to be reset and reprogrammed to avoid a potentially critical plasma surge.</p><p>Zirconium gluon gel core control panel is located in the med bay. Refer to ESS Odysseus Operations Handbook page 2.4-35 for instructions.</p>',
 				'<p>Press the buttons and reset as follows:</p><ul><li>Buttons Y Y</li><li>Buttons Z Z</li><li>Button STOP</li></ul>',
@@ -1635,7 +1635,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Impulse zirconium gluon gel core control panel - Re-routing control signals E',
+			title: 'Impulse zirconium gluon gel core control panel - System reset E',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>Plasma surges have been observed in the core. The system needs to be reset and reprogrammed to avoid a potentially critical plasma surge.</p><p>Zirconium gluon gel core control panel is located in the med bay. Refer to ESS Odysseus Operations Handbook page 2.4-35 for instructions.</p>',
 				'<p>Press the buttons and reset as follows:</p><ul><li>Buttons X X</li><li>Buttons Z Z</li><li>Buttons W W</li><li>Button ACK</li></ul>',
@@ -2685,7 +2685,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 3,
 		calibrationTime: 210,
-		title: 'Missile neogenic capacitator GR3914D delta-wave fuse box A',
+		title: 'Missile neogenic capacitator GR3914D - reprogramming the delta-wave fuse box A',
 		description:
 			'This capacitator supports the correct functioning of several of the ship’s systems. The missile system is observed to be producing abnormal delta-wave pulse signatures. Manual labor is needed. Perform the manual task according to instructions. The Neogenic capacitator GR3914D is located in the security room. Refer to ESS Odysseus Operations Handbook page 3-99 for instructions. Use HANSCA repair for calibration.',
 		location: 'Upper deck, security room',
@@ -2704,7 +2704,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 3,
 		calibrationTime: 210,
-		title: 'Missile neogenic capacitator GR3914D delta-wave fuse box B',
+		title: 'Missile neogenic capacitator GR3914D - reprogramming the delta-wave fuse box B',
 		description:
 			'This capacitator supports the correct functioning of several of the ship’s systems. The missile system is observed to be producing abnormal delta-wave pulse signatures. Manual labor is needed. Perform the manual task according to instructions. The Neogenic capacitator GR3914D is located in the security room. Refer to ESS Odysseus Operations Handbook page 3-99 for instructions. Use HANSCA repair for calibration.',
 		location: 'Upper deck, security room',
@@ -2723,7 +2723,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 3,
 		calibrationTime: 210,
-		title: 'Missile neogenic capacitator GR3914D delta-wave fuse box C',
+		title: 'Missile neogenic capacitator GR3914D - reprogramming the delta-wave fuse box C',
 		description:
 			'This capacitator supports the correct functioning of several of the ship’s systems. The missile system is observed to be producing abnormal delta-wave pulse signatures. Manual labor is needed. Perform the manual task according to instructions. The Neogenic capacitator GR3914D is located in the security room. Refer to ESS Odysseus Operations Handbook page 3-99 for instructions. Use HANSCA repair for calibration.',
 		location: 'Upper deck, security room',
@@ -2742,7 +2742,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 3,
 		calibrationTime: 210,
-		title: 'Missile neogenic capacitator GR3914D delta-wave fuse box D',
+		title: 'Missile neogenic capacitator GR3914D - reprogramming the delta-wave fuse box D',
 		description:
 			'This capacitator supports the correct functioning of several of the ship’s systems. The missile system is observed to be producing abnormal delta-wave pulse signatures. Manual labor is needed. Perform the manual task according to instructions. The Neogenic capacitator GR3914D is located in the security room. Refer to ESS Odysseus Operations Handbook page 3-99 for instructions. Use HANSCA repair for calibration.',
 		location: 'Upper deck, security room',
@@ -2761,7 +2761,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 3,
 		calibrationTime: 210,
-		title: 'Missile neogenic capacitator GR3914D delta-wave fuse box E',
+		title: 'Missile neogenic capacitator GR3914D - reprogramming the delta-wave fuse box E',
 		description:
 			'This capacitator supports the correct functioning of several of the ship’s systems. The missile system is observed to be producing abnormal delta-wave pulse signatures. Manual labor is needed. Perform the manual task according to instructions. The Neogenic capacitator GR3914D is located in the security room. Refer to ESS Odysseus Operations Handbook page 3-99 for instructions. Use HANSCA repair for calibration.',
 		location: 'Upper deck, security room',
@@ -2780,7 +2780,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 3,
 		calibrationTime: 130,
-		title: 'Hull neogenic capacitator GR3914D dilithium ccc signals A',
+		title: 'Hull neogenic capacitator GR3914D - rerouting the dilithium containment core control A',
 		description:
 			'This capacitator supports the correct functioning of several of the ship’s systems. This unit also contains the dilithium containment core control panel. Manual labor is needed. Perform the manual task according to instructions. The Neogenic capacitator GR3914D is located in the security room. Refer to ESS Odysseus Operations Handbook page 3-99 for instructions. Use HANSCA repair for calibration.',
 		location: 'Upper deck, security room',
@@ -2799,7 +2799,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 3,
 		calibrationTime: 130,
-		title: 'Hull neogenic capacitator GR3914D dilithium ccc signals B',
+		title: 'Hull neogenic capacitator GR3914D - rerouting the dilithium containment core control B',
 		description:
 			'This capacitator supports the correct functioning of several of the ship’s systems. This unit also contains the dilithium containment core control panel. Manual labor is needed. Perform the manual task according to instructions. The Neogenic capacitator GR3914D is located in the security room. Refer to ESS Odysseus Operations Handbook page 3-99 for instructions. Use HANSCA repair for calibration.',
 		location: 'Upper deck, security room',
@@ -2818,7 +2818,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 3,
 		calibrationTime: 130,
-		title: 'Hull neogenic capacitator GR3914D dilithium ccc signals C',
+		title: 'Hull neogenic capacitator GR3914D - rerouting the dilithium containment core control C',
 		description:
 			'This capacitator supports the correct functioning of several of the ship’s systems. This unit also contains the dilithium containment core control panel. Manual labor is needed. Perform the manual task according to instructions. The Neogenic capacitator GR3914D is located in the security room. Refer to ESS Odysseus Operations Handbook page 3-99 for instructions. Use HANSCA repair for calibration.',
 		location: 'Upper deck, security room',
@@ -2837,7 +2837,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 3,
 		calibrationTime: 130,
-		title: 'Hull neogenic capacitator GR3914D dilithium ccc signals D',
+		title: 'Hull neogenic capacitator GR3914D - rerouting the dilithium containment core control D',
 		description:
 			'This capacitator supports the correct functioning of several of the ship’s systems. This unit also contains the dilithium containment core control panel. Manual labor is needed. Perform the manual task according to instructions. The Neogenic capacitator GR3914D is located in the security room. Refer to ESS Odysseus Operations Handbook page 3-99 for instructions. Use HANSCA repair for calibration.',
 		location: 'Upper deck, security room',
@@ -2856,7 +2856,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 3,
 		calibrationTime: 130,
-		title: 'Hull neogenic capacitator GR3914D dilithium ccc signals E',
+		title: 'Hull neogenic capacitator GR3914D - rerouting the dilithium containment core control E',
 		description:
 			'This capacitator supports the correct functioning of several of the ship’s systems. This unit also contains the dilithium containment core control panel. Manual labor is needed. Perform the manual task according to instructions. The Neogenic capacitator GR3914D is located in the security room. Refer to ESS Odysseus Operations Handbook page 3-99 for instructions. Use HANSCA repair for calibration.',
 		location: 'Upper deck, security room',
@@ -2875,7 +2875,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 20,
 		calibrationTime: 22,
-		title: 'Rear shield neogenic capacitator GR3914D positronic stabilizer',
+		title: 'Rear shield neogenic capacitator GR3914D - resetting the positronic stabilizer',
 		description:
 			'This capacitator supports the correct functioning of several of the ship’s systems. In case of temporal anomalies, the rear shield’s positronic stabilizer should be resynchronised. Manual labor is needed. Perform the manual task according to instructions. The Neogenic capacitator GR3914D is located in the security room. Refer to ESS Odysseus Operations Handbook page 3-99 for instructions. Use HANSCA repair for calibration.',
 		location: 'Upper deck, security room',
@@ -3428,7 +3428,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 3,
 		calibrationTime: 140,
-		title: 'Impulse zirconium gluon gel core control panel - Re-routing control signals A',
+		title: 'Impulse zirconium gluon gel core control panel - System reset A',
 		description:
 			'This control panel is used to manually control the zirconium gluon core that propels the impulse engine. It can be used for resetting and reprogramming the system whenever a potentially critical plasma surge occurs. Manual labor is needed. Perform the manual task according to instructions. The Zirconium gluon gel core control panel is located in the med bay. Refer to ESS Odysseus Operations Handbook page 2.4-35 for instructions. Use HANSCA repair for calibration.',
 		location: '2rd deck, med bay',
@@ -3447,7 +3447,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 3,
 		calibrationTime: 140,
-		title: 'Impulse zirconium gluon gel core control panel - Re-routing control signals B',
+		title: 'Impulse zirconium gluon gel core control panel - System reset B',
 		description:
 			'This control panel is used to manually control the zirconium gluon core that propels the impulse engine. It can be used for resetting and reprogramming the system whenever a potentially critical plasma surge occurs. Manual labor is needed. Perform the manual task according to instructions. The Zirconium gluon gel core control panel is located in the med bay. Refer to ESS Odysseus Operations Handbook page 2.4-35 for instructions. Use HANSCA repair for calibration.',
 		location: '2rd deck, med bay',
@@ -3466,7 +3466,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 3,
 		calibrationTime: 140,
-		title: 'Impulse zirconium gluon gel core control panel - Re-routing control signals C',
+		title: 'Impulse zirconium gluon gel core control panel - System reset C',
 		description:
 			'This control panel is used to manually control the zirconium gluon core that propels the impulse engine. It can be used for resetting and reprogramming the system whenever a potentially critical plasma surge occurs. Manual labor is needed. Perform the manual task according to instructions. The Zirconium gluon gel core control panel is located in the med bay. Refer to ESS Odysseus Operations Handbook page 2.4-35 for instructions. Use HANSCA repair for calibration.',
 		location: '2rd deck, med bay',
@@ -3485,7 +3485,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 3,
 		calibrationTime: 140,
-		title: 'Impulse zirconium gluon gel core control panel - Re-routing control signals D',
+		title: 'Impulse zirconium gluon gel core control panel - System reset D',
 		description:
 			'This control panel is used to manually control the zirconium gluon core that propels the impulse engine. It can be used for resetting and reprogramming the system whenever a potentially critical plasma surge occurs. Manual labor is needed. Perform the manual task according to instructions. The Zirconium gluon gel core control panel is located in the med bay. Refer to ESS Odysseus Operations Handbook page 2.4-35 for instructions. Use HANSCA repair for calibration.',
 		location: '2rd deck, med bay',
@@ -3504,7 +3504,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 3,
 		calibrationTime: 140,
-		title: 'Impulse zirconium gluon gel core control panel - Re-routing control signals E',
+		title: 'Impulse zirconium gluon gel core control panel - System reset E',
 		description:
 			'This control panel is used to manually control the zirconium gluon core that propels the impulse engine. It can be used for resetting and reprogramming the system whenever a potentially critical plasma surge occurs. Manual labor is needed. Perform the manual task according to instructions. The Zirconium gluon gel core control panel is located in the med bay. Refer to ESS Odysseus Operations Handbook page 2.4-35 for instructions. Use HANSCA repair for calibration.',
 		location: '2rd deck, med bay',
