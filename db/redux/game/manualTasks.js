@@ -1198,7 +1198,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Maneuver promethium warp fragmentor Y99z A',
+			title: 'Maneuver promethium warp fragmentor Y99y A',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>The promethium warp fragmenter is an indispensable, usually autonomously operating part of the maneuvering system. The coding panel is used to manually re-code the system.</p><p>Promethium warp fragmentor Y99y is located in the captains quarters. Refer to ESS Odysseus Operations Handbook page 3-20 for instructions.</p>',
 				'<p>Flick switches as follows:</p><ul><li>Switches 1, 2, 6, 8, 10 --> ON</li><li>Switches 3, 4, 5, 7, 9 --> OFF</li></ul>',
@@ -1214,7 +1214,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Maneuver promethium warp fragmentor Y99z B',
+			title: 'Maneuver promethium warp fragmentor Y99y B',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>The promethium warp fragmenter is an indispensable, usually autonomously operating part of the maneuvering system. The coding panel is used to manually re-code the system.</p><p>Promethium warp fragmentor Y99y is located in the captains quarters. Refer to ESS Odysseus Operations Handbook page 3-20 for instructions.</p>',
 				'<p>Flick switches as follows:</p><ul><li>Switches 2, 4, 5, 9 --> ON</li><li>Switches 1, 3, 6, 7, 8, 10 --> OFF</li></ul>',
@@ -1230,7 +1230,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Maneuver promethium warp fragmentor Y99z C',
+			title: 'Maneuver promethium warp fragmentor Y99y C',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>The promethium warp fragmenter is an indispensable, usually autonomously operating part of the maneuvering system. The coding panel is used to manually re-code the system.</p><p>Promethium warp fragmentor Y99y is located in the captains quarters. Refer to ESS Odysseus Operations Handbook page 3-20 for instructions.</p>',
 				'<p>Flick switches as follows:</p><ul><li>Switches 1, 3, 4, 6, 7, 9 --> ON</li><li>Switches 2, 5, 8, 10 --> OFF</li></ul>',
@@ -1246,7 +1246,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Maneuver promethium warp fragmentor Y99z D',
+			title: 'Maneuver promethium warp fragmentor Y99y D',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>The promethium warp fragmenter is an indispensable, usually autonomously operating part of the maneuvering system. The coding panel is used to manually re-code the system.</p><p>Promethium warp fragmentor Y99y is located in the captains quarters. Refer to ESS Odysseus Operations Handbook page 3-20 for instructions.</p>',
 				'<p>Flick switches as follows:</p><ul><li>Switches 3, 5, 6, 8, 9 --> ON</li><li>Switches 1, 2, 4, 7, 10 --> OFF</li></ul>',
@@ -1262,7 +1262,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Maneuver promethium warp fragmentor Y99z E',
+			title: 'Maneuver promethium warp fragmentor Y99y E',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>The promethium warp fragmenter is an indispensable, usually autonomously operating part of the maneuvering system. The coding panel is used to manually re-code the system.</p><p>Promethium warp fragmentor Y99y is located in the captains quarters. Refer to ESS Odysseus Operations Handbook page 3-20 for instructions.</p>',
 				'<p>Flick switches as follows:</p><ul><li>Switches 1, 4, 6, 7, 8 --> ON</li><li>Switches 2, 3, 5, 9, 10 --> OFF</li></ul>',
@@ -2990,7 +2990,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 6,
 		calibrationTime: 80,
-		title: 'Maneuver promethium warp fragmentor Y99z A',
+		title: 'Maneuver promethium warp fragmentor Y99y A',
 		description:
 			'The promethium warp fragmenter is an indispensable, usually autonomously operating part of the maneuvering system. The coding panel is used to manually re-code the system. Manual labor is needed. Perform the manual task according to instructions. The Promethium warp fragmentor Y99y is located in the captains quarters. Refer to ESS Odysseus Operations Handbook page 3-20 for instructions. Use HANSCA repair for calibration.',
 		location: 'Upper deck, captains quarters',
@@ -3009,7 +3009,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 6,
 		calibrationTime: 80,
-		title: 'Maneuver promethium warp fragmentor Y99z B',
+		title: 'Maneuver promethium warp fragmentor Y99y B',
 		description:
 			'The promethium warp fragmenter is an indispensable, usually autonomously operating part of the maneuvering system. The coding panel is used to manually re-code the system. Manual labor is needed. Perform the manual task according to instructions. The Promethium warp fragmentor Y99y is located in the captains quarters. Refer to ESS Odysseus Operations Handbook page 3-20 for instructions. Use HANSCA repair for calibration.',
 		location: 'Upper deck, captains quarters',
@@ -3028,7 +3028,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 6,
 		calibrationTime: 80,
-		title: 'Maneuver promethium warp fragmentor Y99z C',
+		title: 'Maneuver promethium warp fragmentor Y99y C',
 		description:
 			'The promethium warp fragmenter is an indispensable, usually autonomously operating part of the maneuvering system. The coding panel is used to manually re-code the system. Manual labor is needed. Perform the manual task according to instructions. The Promethium warp fragmentor Y99y is located in the captains quarters. Refer to ESS Odysseus Operations Handbook page 3-20 for instructions. Use HANSCA repair for calibration.',
 		location: 'Upper deck, captains quarters',
@@ -3047,7 +3047,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 6,
 		calibrationTime: 80,
-		title: 'Maneuver promethium warp fragmentor Y99z D',
+		title: 'Maneuver promethium warp fragmentor Y99y D',
 		description:
 			'The promethium warp fragmenter is an indispensable, usually autonomously operating part of the maneuvering system. The coding panel is used to manually re-code the system. Manual labor is needed. Perform the manual task according to instructions. The Promethium warp fragmentor Y99y is located in the captains quarters. Refer to ESS Odysseus Operations Handbook page 3-20 for instructions. Use HANSCA repair for calibration.',
 		location: 'Upper deck, captains quarters',
@@ -3066,7 +3066,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 6,
 		calibrationTime: 80,
-		title: 'Maneuver promethium warp fragmentor Y99z B',
+		title: 'Maneuver promethium warp fragmentor Y99y B',
 		description:
 			'The promethium warp fragmenter is an indispensable, usually autonomously operating part of the maneuvering system. The coding panel is used to manually re-code the system. Manual labor is needed. Perform the manual task according to instructions. The Promethium warp fragmentor Y99y is located in the captains quarters. Refer to ESS Odysseus Operations Handbook page 3-20 for instructions. Use HANSCA repair for calibration.',
 		location: 'Upper deck, captains quarters',
