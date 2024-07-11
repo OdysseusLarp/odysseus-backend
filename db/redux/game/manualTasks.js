@@ -76,7 +76,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Fault in Argon quantum shift booster switchboard 5Fv6S A',
+			title: 'Hull fault in switchboard 5Fv6S A',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>In order to reroute the power with argon quantum shift booster switchboard 5Fv6S, change the wires into different slots to re-code the system.</p><p>The Argon quantum shift booster switchboard 5Fv6S is located in Engineering Technical Space. Refer to ESS Odysseus Operations Handbook page 2.5-19 for instructions.</p>',
 				'<p>Set up the wires as follows:</p><ul><li>Wire A --> Slot 3</li><li>Wire B --> Slot C</li></ul>',
@@ -92,7 +92,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Fault in Argon quantum shift booster switchboard 5Fv6S B',
+			title: 'Hull fault in switchboard 5Fv6S B',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>In order to reroute the power with argon quantum shift booster switchboard 5Fv6S, change the wires into different slots to re-code the system.</p><p>The Argon quantum shift booster switchboard 5Fv6S is located in Engineering Technical Space. Refer to ESS Odysseus Operations Handbook page 2.5-19 for instructions.</p>',
 				'<p>Set up the wires as follows:</p><ul><li>Wire A --> Slot 1</li><li>Wire B --> Slot B</li></ul>',
@@ -108,7 +108,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Fault in Argon quantum shift booster switchboard 5Fv6S C',
+			title: 'Hull fault in switchboard 5Fv6S C',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>In order to reroute the power with argon quantum shift booster switchboard 5Fv6S, change the wires into different slots to re-code the system.</p><p>The Argon quantum shift booster switchboard 5Fv6S is located in Engineering Technical Space. Refer to ESS Odysseus Operations Handbook page 2.5-19 for instructions.</p>',
 				'<p>Set up the wires as follows:</p><ul><li>Wire A --> Slot 5</li></ul>',
@@ -124,7 +124,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Fault in Argon quantum shift booster switchboard 5Fv6S D',
+			title: 'Hull fault in switchboard 5Fv6S D',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>In order to reroute the power with argon quantum shift booster switchboard 5Fv6S, change the wires into different slots to re-code the system.</p><p>The Argon quantum shift booster switchboard 5Fv6S is located in Engineering Technical Space. Refer to ESS Odysseus Operations Handbook page 2.5-19 for instructions.</p>',
 				'<p>Set up the wires as follows:</p><ul><li>Wire A --> Slot 6</li><li>Wire B --> Slot A</li></ul>',
@@ -140,7 +140,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Fault in Argon quantum shift booster switchboard 5Fv6S E',
+			title: 'Hull fault in switchboard 5Fv6S E',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>In order to reroute the power with argon quantum shift booster switchboard 5Fv6S, change the wires into different slots to re-code the system.</p><p>The Argon quantum shift booster switchboard 5Fv6S is located in Engineering Technical Space. Refer to ESS Odysseus Operations Handbook page 2.5-19 for instructions.</p>',
 				'<p>Set up the wires as follows:</p><ul><li>Wire B --> Slot D</li></ul>',
@@ -156,7 +156,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Coordinate calibration unit 369GKY-a A',
+			title: 'Maneuver coordinate calibration unit 369GKY-a A',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>The wires need to be changed into different slots to re-code the system.</p><p>The Coordinate calibration unit 369GKY-a is located in the Armory. Refer to ESS Odysseus Operations Handbook page 2.19-93 for instructions.</p>',
 				'<p>Set up the wires as follows:</p><ul><li>Wire HY --> Slot I8</li><li>Wire 63 --> Slot Q3-2</li></ul>',
@@ -172,7 +172,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Coordinate calibration unit 369GKY-a B',
+			title: 'Maneuver coordinate calibration unit 369GKY-a B',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>The wires need to be changed into different slots to re-code the system.</p><p>The Coordinate calibration unit 369GKY-a is located in the Armory. Refer to ESS Odysseus Operations Handbook page 2.19-93 for instructions.</p>',
 				'<p>Set up the wires as follows:</p><ul><li>Wire HY --> Slot I5</li><li>Wire 54 --> Slot Q4-1</li></ul>',
@@ -188,7 +188,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Coordinate calibration unit 369GKY-a C',
+			title: 'Maneuver coordinate calibration unit 369GKY-a C',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>The wires need to be changed into different slots to re-code the system.</p><p>The Coordinate calibration unit 369GKY-a is located in the Armory. Refer to ESS Odysseus Operations Handbook page 2.19-93 for instructions.</p>',
 				'<p>Set up the wires as follows:</p><ul><li>Wire 54 --> Slot Q3-1</li></ul>',
@@ -204,7 +204,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Coordinate calibration unit 369GKY-a D',
+			title: 'Maneuver coordinate calibration unit 369GKY-a D',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>The wires need to be changed into different slots to re-code the system.</p><p>The Coordinate calibration unit 369GKY-a is located in the Armory. Refer to ESS Odysseus Operations Handbook page 2.19-93 for instructions.</p>',
 				'<p>Set up the wires as follows:</p><ul><li>Wire HY --> Slot I4</li></ul>',
@@ -220,7 +220,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Coordinate calibration unit 369GKY-a E',
+			title: 'Maneuver coordinate calibration unit 369GKY-a E',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>The wires need to be changed into different slots to re-code the system.</p><p>The Coordinate calibration unit 369GKY-a is located in the Armory. Refer to ESS Odysseus Operations Handbook page 2.19-93 for instructions.</p>',
 				'<p>Set up the wires as follows:</p><ul><li>HARD RESET: pull all of the wires out of their slots</li></ul>',
@@ -236,7 +236,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Dorsal ion bio-filter G5He A',
+			title: 'Hull dorsal ion bio-filter G5He A',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>Manually enter a code to re-attenuate the crystal core according to the following configuration.</p><p>The Dorsal ion bio-filter G5He is located in the corridoor. Refer to ESS Odysseus Operations Handbook page 2.12-63 for instructions.</p>',
 				'<p>Set up the wires as follows:</p><ul><li>Wire 1 --> Slot B</li><li>Wire 3 --> Slot A</li></ul>',
@@ -252,7 +252,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Dorsal ion bio-filter G5He B',
+			title: 'Hull dorsal ion bio-filter G5He B',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>Manually enter a code to re-attenuate the crystal core according to the following configuration.</p><p>The Dorsal ion bio-filter G5He is located in the corridoor. Refer to ESS Odysseus Operations Handbook page 2.12-63 for instructions.</p>',
 				'<p>Set up the wires as follows:</p><ul><li>Wire 2 --> Slot A</li><li>Wire 3 --> Slot B</li></ul>',
@@ -268,7 +268,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Dorsal ion bio-filter G5He C',
+			title: 'Hull dorsal ion bio-filter G5He C',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>Manually enter a code to re-attenuate the crystal core according to the following configuration.</p><p>The Dorsal ion bio-filter G5He is located in the corridoor. Refer to ESS Odysseus Operations Handbook page 2.12-63 for instructions.</p>',
 				'<p>Set up the wires as follows:</p><ul><li>Wire 1 --> Slot A</li></ul>',
@@ -284,7 +284,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Dorsal ion bio-filter G5He D',
+			title: 'Hull dorsal ion bio-filter G5He D',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>Manually enter a code to re-attenuate the crystal core according to the following configuration.</p><p>The Dorsal ion bio-filter G5He is located in the corridoor. Refer to ESS Odysseus Operations Handbook page 2.12-63 for instructions.</p>',
 				'<p>Set up the wires as follows:</p><ul><li>Wire 2 --> Slot A</li></ul>',
@@ -300,7 +300,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Dorsal ion bio-filter G5He E',
+			title: 'Hull dorsal ion bio-filter G5He E',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>Manually enter a code to re-attenuate the crystal core according to the following configuration.</p><p>The Dorsal ion bio-filter G5He is located in the corridoor. Refer to ESS Odysseus Operations Handbook page 2.12-63 for instructions.</p>',
 				'<p>Set up the wires as follows:</p><ul><li>Wire 2 --> Slot B</li><li>Wire 3 --> Slot A</li></ul>',
@@ -396,7 +396,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Gamma-wave missile driver control unit Rr34c A',
+			title: 'Missile gamma-wave driver control unit Rr34c A',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>A new command needs to be programmed according to the following configuration.</p><p>The Gamma-wave missile driver control unit Rr34c is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.3-65 for instructions.</p>',
 				'<p>Set up the wire as follows:</p><ul><li>Wire --> Slot +Vcc</li></ul>',
@@ -412,7 +412,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Gamma-wave missile driver control unit Rr34c B',
+			title: 'Missile gamma-wave driver control unit Rr34c B',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>A new command needs to be programmed according to the following configuration.</p><p>The Gamma-wave missile driver control unit Rr34c is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.3-65 for instructions.</p>',
 				'<p>Set up the wire as follows:</p><ul><li>Wire --> Slot W3</li></ul>',
@@ -428,7 +428,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Gamma-wave missile driver control unit Rr34c C',
+			title: 'Missile gamma-wave driver control unit Rr34c C',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>A new command needs to be programmed according to the following configuration.</p><p>The Gamma-wave missile driver control unit Rr34c is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.3-65 for instructions.</p>',
 				'<p>Set up the wire as follows:</p><ul><li>Wire --> Slot Shield</li></ul>',
@@ -444,7 +444,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Gamma-wave missile driver control unit Rr34c D',
+			title: 'Missile gamma-wave driver control unit Rr34c D',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>A new command needs to be programmed according to the following configuration.</p><p>The Gamma-wave missile driver control unit Rr34c is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.3-65 for instructions.</p>',
 				'<p>Set up the wire as follows:</p><ul><li>Wire --> Slot W1</li></ul>',
@@ -460,7 +460,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Gamma-wave missile driver control unit Rr34c E',
+			title: 'Missile gamma-wave driver control unit Rr34c E',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>A new command needs to be programmed according to the following configuration.</p><p>The Gamma-wave missile driver control unit Rr34c is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.3-65 for instructions.</p>',
 				'<p>Set up the wire as follows:</p><ul><li>Wire --> Slot P_GND</li></ul>',
@@ -476,7 +476,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Gluon impulse control circuit switchboard 2f345G A',
+			title: 'Missile gluon impulse control circuit switchboard 2f345G A',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>The code for the switchboard needs to be changed so that the nitronium flow of the missile system can be re-routed, before it critically overloads the missile system’s power supply.</p><p>The Gluon impulse control circuit switchboard 2f345G is located in the armory. Refer to ESS Odysseus Operations Handbook page 2.5-31 for instructions.</p>',
 				'<p>Switch to cable 3 and set up the wires as follows:</p><ul><li>Wire 1 --> Slot R</li><li>Wire 2 --> Slot X</li><li>Wire 3 --> Slot Y</li><li>Wire 4 --> Slot P</li><li>Wire 5 --> Slot Z</li><li>Wire 6 --> Slot Q</li><li>Wire 7 --> Slot U</li><li>Wire 8 --> Slot W</li></ul>',
@@ -492,7 +492,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Gluon impulse control circuit switchboard 2f345G B',
+			title: 'Missile gluon impulse control circuit switchboard 2f345G B',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>The code for the switchboard needs to be changed so that the nitronium flow of the missile system can be re-routed, before it critically overloads the missile system’s power supply.</p><p>The Gluon impulse control circuit switchboard 2f345G is located in the armory. Refer to ESS Odysseus Operations Handbook page 2.5-31 for instructions.</p>',
 				'<p>Switch to cable 5 and set up the wires as follows:</p><ul><li>Wire 1 --> Slot Q</li><li>Wire 2 --> Slot Z</li><li>Wire 3 --> Slot P</li><li>Wire 4 --> Slot W</li><li>Wire 5 --> Slot U</li><li>Wire 6 --> Slot R</li><li>Wire 7 --> Slot X</li><li>Wire 8 --> Slot Y</li></ul>',
@@ -508,7 +508,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Gluon impulse control circuit switchboard 2f345G C',
+			title: 'Missile gluon impulse control circuit switchboard 2f345G C',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>The code for the switchboard needs to be changed so that the nitronium flow of the missile system can be re-routed, before it critically overloads the missile system’s power supply.</p><p>The Gluon impulse control circuit switchboard 2f345G is located in the armory. Refer to ESS Odysseus Operations Handbook page 2.5-31 for instructions.</p>',
 				'<p>Switch to cable 1 and set up the wires as follows:</p><ul><li>Wire 1 --> Slot Z</li><li>Wire 2 --> Slot U</li><li>Wire 3 --> Slot R</li><li>Wire 4 --> Slot W</li><li>Wire 5 --> Slot Y</li><li>Wire 6 --> Slot P</li><li>Wire 7 --> Slot Q</li><li>Wire 8 --> Slot X</li></ul>',
@@ -524,7 +524,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Gluon impulse control circuit switchboard 2f345G D',
+			title: 'Missile gluon impulse control circuit switchboard 2f345G D',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>The code for the switchboard needs to be changed so that the nitronium flow of the missile system can be re-routed, before it critically overloads the missile system’s power supply.</p><p>The Gluon impulse control circuit switchboard 2f345G is located in the armory. Refer to ESS Odysseus Operations Handbook page 2.5-31 for instructions.</p>',
 				'<p>Switch to cable 2 and set up the wires as follows:</p><ul><li>Wire 1 --> Slot P</li><li>Wire 2 --> Slot Q</li><li>Wire 3 --> Slot R</li><li>Wire 4 --> Slot U</li><li>Wire 5 --> Slot W</li><li>Wire 6 --> Slot X</li><li>Wire 7 --> Slot Y</li><li>Wire 8 --> Slot Z</li></ul>',
@@ -540,7 +540,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Gluon impulse control circuit switchboard 2f345G E',
+			title: 'Missile gluon impulse control circuit switchboard 2f345G E',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>The code for the switchboard needs to be changed so that the nitronium flow of the missile system can be re-routed, before it critically overloads the missile system’s power supply.</p><p>The Gluon impulse control circuit switchboard 2f345G is located in the armory. Refer to ESS Odysseus Operations Handbook page 2.5-31 for instructions.</p>',
 				'<p>Switch to cable 4 and set up the wires as follows:</p><ul><li>Wire 1 --> Slot X</li><li>Wire 2 --> Slot Q</li><li>Wire 3 --> Slot Z</li><li>Wire 4 --> Slot Y</li><li>Wire 5 --> Slot U</li><li>Wire 6 --> Slot P</li><li>Wire 7 --> Slot W</li><li>Wire 8 --> Slot R</li></ul>',
@@ -700,7 +700,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Isotopic microfilament ventilation unit Nu8-6',
+			title: 'Beam weapon isotopic microfilament ventilation unit Nu8-6',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>The unit has become stuck in a communication loop and ceased functioning. It needs to be reset so it can be fully functional again.</p><p>The Isotopic microfilament ventilation unit Nu8-6 is located in the Hive. Refer to ESS Odysseus Operations Handbook page 2.4-45 for instructions.</p>',
 				'<p>Hard reset:</p><ul><li>Press power button for five seconds</li></ul>',
@@ -716,7 +716,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Microfilament generator (model X41) anomalities A',
+			title: 'Front shield microfilament generator (model X41) anomalities A',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>The front shield’s gluon fetcher is showing anomalous power signatures and the power supply needs to be changed. Change the code for the generator in order to do so.</p><p>The Microfilament generator (model X41) is located in the engine room. Refer to ESS Odysseus Operations Handbook page 2.8-5 for instructions.</p>',
 				'<p>Set up the wires as follows:</p><ul><li>Wire A --> Slot NC</li><li>Wire 2 --> Slot +V</li><li>Wire 3 --> Slot GR</li></ul>',
@@ -732,7 +732,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Microfilament generator (model X41) anomalities B',
+			title: 'Front shield microfilament generator (model X41) anomalities B',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>The front shield’s gluon fetcher is showing anomalous power signatures and the power supply needs to be changed. Change the code for the generator in order to do so.</p><p>The Microfilament generator (model X41) is located in the engine room. Refer to ESS Odysseus Operations Handbook page 2.8-5 for instructions.</p>',
 				'<p>Set up the wires as follows:</p><ul><li>Wire B --> Slot +V</li><li>Wire 1 --> Slot -V</li></ul>',
@@ -748,7 +748,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Microfilament generator (model X41) anomalities C',
+			title: 'Front shield microfilament generator (model X41) anomalities C',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>The front shield’s gluon fetcher is showing anomalous power signatures and the power supply needs to be changed. Change the code for the generator in order to do so.</p><p>The Microfilament generator (model X41) is located in the engine room. Refer to ESS Odysseus Operations Handbook page 2.8-5 for instructions.</p>',
 				'<p>Set up the wires as follows:</p><ul><li>Wire A --> Slot -V</li><li>Wire B --> Slot NC</li><li>Wire 3 --> Slot +V</li></ul>',
@@ -764,7 +764,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Microfilament generator (model X41) anomalities D',
+			title: 'Front shield microfilament generator (model X41) anomalities D',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>The front shield’s gluon fetcher is showing anomalous power signatures and the power supply needs to be changed. Change the code for the generator in order to do so.</p><p>The Microfilament generator (model X41) is located in the engine room. Refer to ESS Odysseus Operations Handbook page 2.8-5 for instructions.</p>',
 				'<p>Set up the wires as follows:</p><ul><li>Wire B --> Slot -V</li><li>Wire 1 --> Slot +V</li><li>Wire 2 --> Slot GR</li></ul>',
@@ -780,7 +780,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Microfilament generator (model X41) anomalities E',
+			title: 'Front shield microfilament generator (model X41) anomalities E',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>The front shield’s gluon fetcher is showing anomalous power signatures and the power supply needs to be changed. Change the code for the generator in order to do so.</p><p>The Microfilament generator (model X41) is located in the engine room. Refer to ESS Odysseus Operations Handbook page 2.8-5 for instructions.</p>',
 				'<p>Set up the wires as follows:</p><ul><li>Wire A --> Slot -V</li><li>Wire 2 --> Slot -V</li></ul>',
@@ -796,7 +796,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Unidedified articles on Isotopic particle detector K1p (model SICK)',
+			title: 'Beam weapon Isotopic particle detector K1p (model SICK)',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>The isotopic gamma-spore reader is dirty and needs to be cleaned.</p><p>Isotopic particle detector K1p (model SICK) is located in the war room. Refer to ESS Odysseus Operations Handbook page 2.4-21 for instructions.</p>',
 				'<p>Clean isotopic gamma-spore reader</p',
@@ -812,7 +812,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'PIPELINE UNIT 42X-PQ',
+			title: 'Maneuvering pipeline unit 42X-PQ',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>Pipeline unit 42X-PQ needs to be cleaned.</p><p>Pipeline unit 42X-PQ is located in the airlock. Refer to ESS Odysseus Operations Handbook page 2.9-1 for instructions.</p>',
 				'<p>Clean pipeline unit 42X-PQ from obstructions</p',
@@ -828,7 +828,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Microfilament generator (model X41) A',
+			title: 'Rear shield microfilament generator (model X41) A',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>The rear shield’s gluon fetcher is showing anomalous power signatures and the power supply needs to be changed. Change the code for the generator in order to do so.</p><p>The Microfilament generator (model X41) is located in the science lab. Refer to ESS Odysseus Operations Handbook page 2.8-5 for instructions.</p>',
 				'<p>Set up the wires as follows:</p><ul><li>Wire B --> Slot NC</li><li>Wire 1 --> Slot -V</li><li>Wire 2 --> Slot GR</li></ul>',
@@ -844,7 +844,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Microfilament generator (model X41) B',
+			title: 'Rear shield microfilament generator (model X41) B',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>The rear shield’s gluon fetcher is showing anomalous power signatures and the power supply needs to be changed. Change the code for the generator in order to do so.</p><p>The Microfilament generator (model X41) is located in the science lab. Refer to ESS Odysseus Operations Handbook page 2.8-5 for instructions.</p>',
 				'<p>Set up the wires as follows:</p><ul><li>Wire A --> Slot -V</li><li>Wire 3 --> Slot -V</li></ul>',
@@ -860,7 +860,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Microfilament generator (model X41) C',
+			title: 'Rear shield microfilament generator (model X41) C',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>The rear shield’s gluon fetcher is showing anomalous power signatures and the power supply needs to be changed. Change the code for the generator in order to do so.</p><p>The Microfilament generator (model X41) is located in the science lab. Refer to ESS Odysseus Operations Handbook page 2.8-5 for instructions.</p>',
 				'<p>Set up the wires as follows:</p><ul><li>Wire A --> Slot NC</li><li>Wire B --> Slot +V</li><li>Wire 1 --> Slot GR</li></ul>',
@@ -876,7 +876,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Microfilament generator (model X41) D',
+			title: 'Rear shield microfilament generator (model X41) D',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>The rear shield’s gluon fetcher is showing anomalous power signatures and the power supply needs to be changed. Change the code for the generator in order to do so.</p><p>The Microfilament generator (model X41) is located in the science lab. Refer to ESS Odysseus Operations Handbook page 2.8-5 for instructions.</p>',
 				'<p>Set up the wires as follows:</p><ul><li>Wire A --> Slot -V</li><li>Wire 1 --> Slot GR</li><li>Wire 3 --> Slot +V</li></ul>',
@@ -892,7 +892,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Microfilament generator (model X41) E',
+			title: 'Rear shield microfilament generator (model X41) E',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>The rear shield’s gluon fetcher is showing anomalous power signatures and the power supply needs to be changed. Change the code for the generator in order to do so.</p><p>The Microfilament generator (model X41) is located in the science lab. Refer to ESS Odysseus Operations Handbook page 2.8-5 for instructions.</p>',
 				'<p>Set up the wires as follows:</p><ul><li>Wire B --> Slot +V</li><li>Wire 3 --> Slot -V</li></ul>',
@@ -908,7 +908,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Neogenic capacitator GR3914D - controlling the power of the gamma-wave shifter A',
+			title: 'Beam weapon neogenic capacitator GR3914D - controlling the power of the gamma-wave shifter A',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>Due to some unclear anomalies, the power of the gamma-wave shifter needs to be changed according to current circumstances.</p><p>The Neogenic capacitator GR3914D - power of the gamma-wave shifter is located in the security room. Refer to ESS Odysseus Operations Handbook page 3-99 for instructions.</p>',
 				'<p>Push button to deactivate.</p>',
@@ -924,7 +924,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Neogenic capacitator GR3914D - controlling the power of the gamma-wave shifter B',
+			title: 'Beam weapon neogenic capacitator GR3914D - controlling the power of the gamma-wave shifter B',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>Due to some unclear anomalies, the power of the gamma-wave shifter needs to be changed according to current circumstances.</p><p>The Neogenic capacitator GR3914D - power of the gamma-wave shifter is located in the security room. Refer to ESS Odysseus Operations Handbook page 3-99 for instructions.</p>',
 				'<p>Twist button to activate.</p>',
@@ -940,7 +940,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Neogenic capacitator GR3914D - reprogramming the delta-wave fuse box A',
+			title: 'Missile neogenic capacitator GR3914D - reprogramming the delta-wave fuse box A',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>Reprogram the delta-wave fuse box.</p><p>The Neogenic capacitator GR3914D is located in the security room. Refer to ESS Odysseus Operations Handbook page 3-99 for instructions.</p>',
 				'<p>Switch fuses as follows:</p><ul><li>Latch 2</li><li>Latch 5</li><li>Latch 10</li></ul>',
@@ -956,7 +956,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Neogenic capacitator GR3914D - reprogramming the delta-wave fuse box B',
+			title: 'Missile neogenic capacitator GR3914D - reprogramming the delta-wave fuse box B',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>Reprogram the delta-wave fuse box.</p><p>The Neogenic capacitator GR3914D is located in the security room. Refer to ESS Odysseus Operations Handbook page 3-99 for instructions.</p>',
 				'<p>Switch fuses as follows:</p><ul><li>Latch 1</li><li>Latch 3</li><li>Latch 7</li></ul>',
@@ -972,7 +972,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Neogenic capacitator GR3914D - reprogramming the delta-wave fuse box C',
+			title: 'Missile neogenic capacitator GR3914D - reprogramming the delta-wave fuse box C',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>Reprogram the delta-wave fuse box.</p><p>The Neogenic capacitator GR3914D is located in the security room. Refer to ESS Odysseus Operations Handbook page 3-99 for instructions.</p>',
 				'<p>Switch fuses as follows:</p><ul><li>Latch 6</li><li>Latch 9</li><li>Latch 10</li></ul>',
@@ -988,7 +988,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Neogenic capacitator GR3914D - reprogramming the delta-wave fuse box D',
+			title: 'Missile neogenic capacitator GR3914D - reprogramming the delta-wave fuse box D',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>Reprogram the delta-wave fuse box.</p><p>The Neogenic capacitator GR3914D is located in the security room. Refer to ESS Odysseus Operations Handbook page 3-99 for instructions.</p>',
 				'<p>Switch fuses as follows:</p><ul><li>Latch 1</li><li>Latch 4</li><li>Latch 5</li></ul>',
@@ -1004,7 +1004,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Neogenic capacitator GR3914D - reprogramming the delta-wave fuse box E',
+			title: 'Missile neogenic capacitator GR3914D - reprogramming the delta-wave fuse box E',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>Reprogram the delta-wave fuse box.</p><p>The Neogenic capacitator GR3914D is located in the security room. Refer to ESS Odysseus Operations Handbook page 3-99 for instructions.</p>',
 				'<p>Switch fuses as follows:</p><ul><li>Latch 2</li><li>Latch 7</li><li>Latch 8</li></ul>',
@@ -1020,7 +1020,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Neogenic capacitator GR3914D - rerouting the dilithium containment core control signals A',
+			title: 'Hull neogenic capacitator GR3914D - rerouting the dilithium containment core control A',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>Reroute the control signals for the dilithium containment core, as the hull power grid is at risk of being overcharged.</p><p>The Neogenic capacitator GR3914D is located in the security room. Refer to ESS Odysseus Operations Handbook page 3-99 for instructions.</p>',
 				'<p>Set up the wires as follows:</p><ul><li>Wire F-5 --> Slot 37</li><li>Wire Q-4 --> Slot 68</li></ul>',
@@ -1036,7 +1036,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Neogenic capacitator GR3914D - rerouting the dilithium containment core control signals B',
+			title: 'Hull neogenic capacitator GR3914D - rerouting the dilithium containment core control B',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>Reroute the control signals for the dilithium containment core, as the hull power grid is at risk of being overcharged.</p><p>The Neogenic capacitator GR3914D is located in the security room. Refer to ESS Odysseus Operations Handbook page 3-99 for instructions.</p>',
 				'<p>Set up the wires as follows:</p><ul><li>Wire A-7 --> Slot A</li><li>Wire X-2 --> Slot 1</li><li>Wire Y-11 --> Slot C</li></ul>',
@@ -1052,7 +1052,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Neogenic capacitator GR3914D - rerouting the dilithium containment core control signals C',
+			title: 'Hull neogenic capacitator GR3914D - rerouting the dilithium containment core control C',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>Reroute the control signals for the dilithium containment core, as the hull power grid is at risk of being overcharged.</p><p>The Neogenic capacitator GR3914D is located in the security room. Refer to ESS Odysseus Operations Handbook page 3-99 for instructions.</p>',
 				'<p>Set up the wires as follows:</p><ul><liWire F-5 --> Slot B</li><li>Wire X-2 --> Slot 26</li><li>Wire Y-11 --> Slot 33</li><li>Wire Q-4 --> Slot 19</li></ul>',
@@ -1068,7 +1068,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Neogenic capacitator GR3914D - rerouting the dilithium containment core control signals D',
+			title: 'Hull neogenic capacitator GR3914D - rerouting the dilithium containment core control D',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>Reroute the control signals for the dilithium containment core, as the hull power grid is at risk of being overcharged.</p><p>The Neogenic capacitator GR3914D is located in the security room. Refer to ESS Odysseus Operations Handbook page 3-99 for instructions.</p>',
 				'<p>Set up the wires as follows:</p><ul><li>Wire F-5 --> Slot C</li><li>Wire X-2 --> Slot 71</li><li>Wire Y-11 --> Slot 59</li><li>Wire Q-4 --> Slot A</li><li>Wire A-7 --> Slot 24</li></ul>',
@@ -1084,7 +1084,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Neogenic capacitator GR3914D - rerouting the dilithium containment core control signals E',
+			title: 'Hull neogenic capacitator GR3914D - rerouting the dilithium containment core control E',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>Reroute the control signals for the dilithium containment core, as the hull power grid is at risk of being overcharged.</p><p>The Neogenic capacitator GR3914D is located in the security room. Refer to ESS Odysseus Operations Handbook page 3-99 for instructions.</p>',
 				'<p>Set up the wires as follows:</p><ul><li>Wire X-2 --> Slot 29</li><li>Wire F-5 --> Slot 12</li><li>Wire Q-4 --> Slot 61</li><li>Wire Y-11 --> Slot C</li><li>Wire A-7 --> Slot B</li></ul>',
@@ -1100,7 +1100,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Neogenic capacitator GR3914D - resetting the positronic stabilizer',
+			title: 'Rear shield neogenic capacitator GR3914D - resetting the positronic stabilizer',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>In order to resynchronise the rear shield’s positronic stabilizer, it needs to be reset.</p><p>The Neogenic capacitator GR3914D is located in the security room. Refer to ESS Odysseus Operations Handbook page 3-99 for instructions.</p>',
 				'<p>Push reset button twice</p>',
@@ -1116,7 +1116,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Promethium warp fragmentor Y99z A',
+			title: 'Maneuver promethium warp fragmentor Y99z A',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>The promethium warp fragmenter is an indispensable, usually autonomously operating part of the maneuvering system. The coding panel is used to manually re-code the system.</p><p>Promethium warp fragmentor Y99z is located in the med bay. Refer to ESS Odysseus Operations Handbook page 3-20 for instructions.</p>',
 				'<p>Flick switches as follows:</p><ul><li>Switches 1, 2, 6, 8, 10 --> ON</li><li>Switches 3, 4, 5, 7, 9 --> OFF</li></ul>',
@@ -1132,7 +1132,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Promethium warp fragmentor Y99z B',
+			title: 'Maneuver promethium warp fragmentor Y99z B',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>The promethium warp fragmenter is an indispensable, usually autonomously operating part of the maneuvering system. The coding panel is used to manually re-code the system.</p><p>Promethium warp fragmentor Y99z is located in the med bay. Refer to ESS Odysseus Operations Handbook page 3-20 for instructions.</p>',
 				'<p>Flick switches as follows:</p><ul><li>Switches 2, 4, 5, 9 --> ON</li><li>Switches 1, 3, 6, 7, 8, 10 --> OFF</li></ul>',
@@ -1148,7 +1148,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Promethium warp fragmentor Y99z C',
+			title: 'Maneuver promethium warp fragmentor Y99z C',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>The promethium warp fragmenter is an indispensable, usually autonomously operating part of the maneuvering system. The coding panel is used to manually re-code the system.</p><p>Promethium warp fragmentor Y99z is located in the med bay. Refer to ESS Odysseus Operations Handbook page 3-20 for instructions.</p>',
 				'<p>Flick switches as follows:</p><ul><li>Switches 1, 3, 4, 6, 7, 9 --> ON</li><li>Switches 2, 5, 8, 10 --> OFF</li></ul>',
@@ -1164,7 +1164,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Promethium warp fragmentor Y99z D',
+			title: 'Maneuver promethium warp fragmentor Y99z D',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>The promethium warp fragmenter is an indispensable, usually autonomously operating part of the maneuvering system. The coding panel is used to manually re-code the system.</p><p>Promethium warp fragmentor Y99z is located in the med bay. Refer to ESS Odysseus Operations Handbook page 3-20 for instructions.</p>',
 				'<p>Flick switches as follows:</p><ul><li>Switches 3, 5, 6, 8, 9 --> ON</li><li>Switches 1, 2, 4, 7, 10 --> OFF</li></ul>',
@@ -1180,7 +1180,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Promethium warp fragmentor Y99z E',
+			title: 'Maneuver promethium warp fragmentor Y99z E',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>The promethium warp fragmenter is an indispensable, usually autonomously operating part of the maneuvering system. The coding panel is used to manually re-code the system.</p><p>Promethium warp fragmentor Y99z is located in the med bay. Refer to ESS Odysseus Operations Handbook page 3-20 for instructions.</p>',
 				'<p>Flick switches as follows:</p><ul><li>Switches 1, 4, 6, 7, 8 --> ON</li><li>Switches 2, 3, 5, 9, 10 --> OFF</li></ul>',
@@ -1198,7 +1198,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Promethium warp fragmentor Y99y A',
+			title: 'Maneuver promethium warp fragmentor Y99y A',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>The promethium warp fragmenter is an indispensable, usually autonomously operating part of the maneuvering system. The coding panel is used to manually re-code the system.</p><p>Promethium warp fragmentor Y99y is located in the captains quarters. Refer to ESS Odysseus Operations Handbook page 3-20 for instructions.</p>',
 				'<p>Flick switches as follows:</p><ul><li>Switches 1, 2, 6, 8, 10 --> ON</li><li>Switches 3, 4, 5, 7, 9 --> OFF</li></ul>',
@@ -1214,7 +1214,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Promethium warp fragmentor Y99y B',
+			title: 'Maneuver promethium warp fragmentor Y99y B',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>The promethium warp fragmenter is an indispensable, usually autonomously operating part of the maneuvering system. The coding panel is used to manually re-code the system.</p><p>Promethium warp fragmentor Y99y is located in the captains quarters. Refer to ESS Odysseus Operations Handbook page 3-20 for instructions.</p>',
 				'<p>Flick switches as follows:</p><ul><li>Switches 2, 4, 5, 9 --> ON</li><li>Switches 1, 3, 6, 7, 8, 10 --> OFF</li></ul>',
@@ -1230,7 +1230,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Promethium warp fragmentor Y99y C',
+			title: 'Maneuver promethium warp fragmentor Y99y C',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>The promethium warp fragmenter is an indispensable, usually autonomously operating part of the maneuvering system. The coding panel is used to manually re-code the system.</p><p>Promethium warp fragmentor Y99y is located in the captains quarters. Refer to ESS Odysseus Operations Handbook page 3-20 for instructions.</p>',
 				'<p>Flick switches as follows:</p><ul><li>Switches 1, 3, 4, 6, 7, 9 --> ON</li><li>Switches 2, 5, 8, 10 --> OFF</li></ul>',
@@ -1246,7 +1246,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Promethium warp fragmentor Y99y D',
+			title: 'Maneuver promethium warp fragmentor Y99y D',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>The promethium warp fragmenter is an indispensable, usually autonomously operating part of the maneuvering system. The coding panel is used to manually re-code the system.</p><p>Promethium warp fragmentor Y99y is located in the captains quarters. Refer to ESS Odysseus Operations Handbook page 3-20 for instructions.</p>',
 				'<p>Flick switches as follows:</p><ul><li>Switches 3, 5, 6, 8, 9 --> ON</li><li>Switches 1, 2, 4, 7, 10 --> OFF</li></ul>',
@@ -1262,7 +1262,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Promethium warp fragmentor Y99y E',
+			title: 'Maneuver promethium warp fragmentor Y99y E',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>The promethium warp fragmenter is an indispensable, usually autonomously operating part of the maneuvering system. The coding panel is used to manually re-code the system.</p><p>Promethium warp fragmentor Y99y is located in the captains quarters. Refer to ESS Odysseus Operations Handbook page 3-20 for instructions.</p>',
 				'<p>Flick switches as follows:</p><ul><li>Switches 1, 4, 6, 7, 8 --> ON</li><li>Switches 2, 3, 5, 9, 10 --> OFF</li></ul>',
@@ -1279,7 +1279,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Radiation containment switch 464-900 A',
+			title: 'Reactor radiation containment switch 464-900 A',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>A buildup of alpha and beta particles has been observed, and the switch needs to be flicked to reroute energy to alternative charge splitters. The Radiation containment switch 464-900 is located above the mess hall.</p><p><strong>Please scan the corresponding Hansca tag on the stairs before climbing up and leave the Hansca phone to keep it away from radiation during the task. Mark the task to be calibrated only after you return to deck.</strong></p><p>Refer to ESS Odysseus Operations Handbook page 3-186 for instructions.</p>',
 				'<p>Flick switch as follows:</p><ul><li>Up</li></ul>',
@@ -1295,7 +1295,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Radiation containment switch 464-900 B',
+			title: 'Reactor radiation containment switch 464-900 B',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>A buildup of alpha and beta particles has been observed, and the switch needs to be flicked to reroute energy to alternative charge splitters. The Radiation containment switch 464-900 is located above the mess hall.</p><p><strong>Please scan the corresponding Hansca tag on the stairs before climbing up and leave the Hansca phone to keep it away from radiation during the task. Mark the task to be calibrated only after you return to deck.</strong></p><p>Refer to ESS Odysseus Operations Handbook page 3-186 for instructions.</p>',
 				'<p>Flick switch as follows:</p><ul><li>Down</li></ul>',
@@ -1311,7 +1311,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Radiation containment switch 464-900 C',
+			title: 'Reactor radiation containment switch 464-900 C',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>A buildup of alpha and beta particles has been observed, and the switch needs to be flicked to reroute energy to alternative charge splitters. The Radiation containment switch 464-900 is located above the mess hall.</p><p><strong>Please scan the corresponding Hansca tag on the stairs before climbing up and leave the Hansca phone to keep it away from radiation during the task. Mark the task to be calibrated only after you return to deck.</strong></p><p>Refer to ESS Odysseus Operations Handbook page 3-186 for instructions.</p>',
 				'<p>Flick switch as follows:</p><ul><li>Middle</li></ul>',
@@ -1331,7 +1331,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Revolving pulse turbine lubricator switch 53r A',
+			title: 'Rear shield revolving pulse turbine lubricator switch 53r A',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>The rear shield has suffered damage, and the revolving pulse signals need to be re-attenuated to ensure the shield remains up.</p><p>The Revolving pulse turbine lubricator switch 53r is located in the war room. Refer to ESS Odysseus Operations Handbook page  2.5-34 for instructions.</p>',
 				'<p>Turn the switches as follows:</p><ul><li>Switch AA --> SUP.</li><li>Switch AB --> SUP.</li></ul>',
@@ -1347,7 +1347,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Revolving pulse turbine lubricator switch 53r B',
+			title: 'Rear shield revolving pulse turbine lubricator switch 53r B',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>The rear shield has suffered damage, and the revolving pulse signals need to be re-attenuated to ensure the shield remains up.</p><p>The Revolving pulse turbine lubricator switch 53r is located in the war room. Refer to ESS Odysseus Operations Handbook page  2.5-34 for instructions.</p>',
 				'<p>Turn the switches as follows:</p><ul><li>Switch AA --> EXH.</li><li>Switch AB --> SUP.</li></ul>',
@@ -1363,7 +1363,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Revolving pulse turbine lubricator switch 53r C',
+			title: 'Rear shield revolving pulse turbine lubricator switch 53r C',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>The rear shield has suffered damage, and the revolving pulse signals need to be re-attenuated to ensure the shield remains up.</p><p>The Revolving pulse turbine lubricator switch 53r is located in the war room. Refer to ESS Odysseus Operations Handbook page  2.5-34 for instructions.</p>',
 				'<p>Turn the switches as follows:</p><ul><li>Switch AA --> SUP.</li><li>Switch AB --> EXH.</li></ul>',
@@ -1379,7 +1379,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Revolving pulse turbine lubricator switch 53r D',
+			title: 'Rear shield revolving pulse turbine lubricator switch 53r D',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>The rear shield has suffered damage, and the revolving pulse signals need to be re-attenuated to ensure the shield remains up.</p><p>The Revolving pulse turbine lubricator switch 53r is located in the war room. Refer to ESS Odysseus Operations Handbook page  2.5-34 for instructions.</p>',
 				'<p>Turn the switches as follows:</p><ul><li>Switch AA --> EXH.</li><li>Switch AB --> EXH.</li></ul>',
@@ -1411,7 +1411,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Versatile Voltmeter B7-17 (model 562) A',
+			title: 'Beam weapon versatile Voltmeter B7-17 (model 562) A',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>The argon quantum shift propulsion of the beam weapons is no longer synchronized, so the setting has been recalculated and needs to be changed.</p><p>The Versatile Voltmeter B7-17 (model 562) is located in the science lab. Refer to ESS Odysseus Operations Handbook page 2.8-49 for instructions.</p>',
 				'<p>Change the setting as follows:</p><ul><li>Turn switch to 0 / 1</li></ul>',
@@ -1427,7 +1427,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Versatile Voltmeter B7-17 (model 562) B',
+			title: 'Beam weapon versatile Voltmeter B7-17 (model 562) B',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>The argon quantum shift propulsion of the beam weapons is no longer synchronized, so the setting has been recalculated and needs to be changed.</p><p>The Versatile Voltmeter B7-17 (model 562) is located in the science lab. Refer to ESS Odysseus Operations Handbook page 2.8-49 for instructions.</p>',
 				'<p>Change the setting as follows:</p><ul><li>Turn switch to +50 / 300 / x105</li></ul>',
@@ -1443,7 +1443,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Versatile Voltmeter B7-17 (model 562) C',
+			title: 'Beam weapon versatile Voltmeter B7-17 (model 562) C',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>The argon quantum shift propulsion of the beam weapons is no longer synchronized, so the setting has been recalculated and needs to be changed.</p><p>The Versatile Voltmeter B7-17 (model 562) is located in the science lab. Refer to ESS Odysseus Operations Handbook page 2.8-49 for instructions.</p>',
 				'<p>Change the setting as follows:</p><ul><li>Turn switch to +20 / 10</li></ul>',
@@ -1459,7 +1459,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Versatile Voltmeter B7-17 (model 562) D',
+			title: 'Beam weapon versatile Voltmeter B7-17 (model 562) D',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>The argon quantum shift propulsion of the beam weapons is no longer synchronized, so the setting has been recalculated and needs to be changed.</p><p>The Versatile Voltmeter B7-17 (model 562) is located in the science lab. Refer to ESS Odysseus Operations Handbook page 2.8-49 for instructions.</p>',
 				'<p>Change the setting as follows:</p><ul><li>Turn switch to +10 / 3 / x107</li></ul>',
@@ -1475,7 +1475,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Versatile Voltmeter B7-17 (model 562) E',
+			title: 'Beam weapon versatile Voltmeter B7-17 (model 562) E',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>The argon quantum shift propulsion of the beam weapons is no longer synchronized, so the setting has been recalculated and needs to be changed.</p><p>The Versatile Voltmeter B7-17 (model 562) is located in the science lab. Refer to ESS Odysseus Operations Handbook page 2.8-49 for instructions.</p>',
 				'<p>Change the setting as follows:</p><ul><li>Turn switch to -10 / 0,3U</li></ul>',
@@ -1491,7 +1491,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Zirconium gluon gel core control panel - Re-routing control signals A',
+			title: 'Reactor zirconium gluon gel core control panel - Re-routing control signals A',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>Readings show anomalies in the zirconium values, so it needs to be contained. Re-code the system, so that the control signals can be re-routed.</p><p>Zirconium gluon gel core control panel is located in the med bay. Refer to ESS Odysseus Operations Handbook page 2.4-32 for instructions.</p>',
 				'<p>Set up the wires as follows:</p><ul><li>Wire 09 --> Slot 16</li><li>Wire 72 --> Slot 23</li></ul>',
@@ -1507,7 +1507,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Zirconium gluon gel core control panel - Re-routing control signals B',
+			title: 'Reactor zirconium gluon gel core control panel - Re-routing control signals B',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>Readings show anomalies in the zirconium values, so it needs to be contained. Re-code the system, so that the control signals can be re-routed.</p><p>Zirconium gluon gel core control panel is located in the med bay. Refer to ESS Odysseus Operations Handbook page 2.4-32 for instructions.</p>',
 				'<p>Set up the wires as follows:</p><ul><li>Wire 25 --> Slot 4</li><li>Wire 72 --> Slot 19</li><li>Wire 86 --> Slot 11</li></ul>',
@@ -1523,7 +1523,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Zirconium gluon gel core control panel - Re-routing control signals C',
+			title: 'Reactor zirconium gluon gel core control panel - Re-routing control signals C',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>Readings show anomalies in the zirconium values, so it needs to be contained. Re-code the system, so that the control signals can be re-routed.</p><p>Zirconium gluon gel core control panel is located in the med bay. Refer to ESS Odysseus Operations Handbook page 2.4-32 for instructions.</p>',
 				'<p>Set up the wires as follows:</p><ul><li>Wire 09 --> Slot 22</li><li>Wire 25 --> Slot 14</li><li>Wire 86 --> Slot 1</li></ul>',
@@ -1539,7 +1539,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Zirconium gluon gel core control panel - Re-routing control signals D',
+			title: 'Reactor zirconium gluon gel core control panel - Re-routing control signals D',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>Readings show anomalies in the zirconium values, so it needs to be contained. Re-code the system, so that the control signals can be re-routed.</p><p>Zirconium gluon gel core control panel is located in the med bay. Refer to ESS Odysseus Operations Handbook page 2.4-32 for instructions.</p>',
 				'<p>Set up the wires as follows:</p><ul><li>Wire 86 --> Slot 7</li></ul>',
@@ -1555,7 +1555,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Zirconium gluon gel core control panel - Re-routing control signals E',
+			title: 'Reactor zirconium gluon gel core control panel - Re-routing control signals E',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>Readings show anomalies in the zirconium values, so it needs to be contained. Re-code the system, so that the control signals can be re-routed.</p><p>Zirconium gluon gel core control panel is located in the med bay. Refer to ESS Odysseus Operations Handbook page 2.4-32 for instructions.</p>',
 				'<p>Set up the wires as follows:</p><ul><li>Wire 09 --> Slot 17</li><li>Wire 25 --> Slot 3</li><li>Wire 72 --> Slot 24</li><li>Wire 86 --> Slot 9</li></ul>',
@@ -1571,7 +1571,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Zirconium gluon gel core control panel - System reset A',
+			title: 'Impulse zirconium gluon gel core control panel - System reset A',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>Plasma surges have been observed in the core. The system needs to be reset and reprogrammed to avoid a potentially critical plasma surge.</p><p>Zirconium gluon gel core control panel is located in the med bay. Refer to ESS Odysseus Operations Handbook page 2.4-35 for instructions.</p>',
 				'<p>Press the buttons and reset as follows:</p><ul><li>Buttons Y Y</li><li>Button START</li><li>Button ACK</li></ul>',
@@ -1587,7 +1587,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Zirconium gluon gel core control panel - System reset B',
+			title: 'Impulse zirconium gluon gel core control panel - System reset B',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>Plasma surges have been observed in the core. The system needs to be reset and reprogrammed to avoid a potentially critical plasma surge.</p><p>Zirconium gluon gel core control panel is located in the med bay. Refer to ESS Odysseus Operations Handbook page 2.4-35 for instructions.</p>',
 				'<p>Press the buttons and reset as follows:</p><ul><li>Buttons X X</li><li>Buttons Z Z</li></ul>',
@@ -1603,7 +1603,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Zirconium gluon gel core control panel - System reset C',
+			title: 'Impulse zirconium gluon gel core control panel - System reset C',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>Plasma surges have been observed in the core. The system needs to be reset and reprogrammed to avoid a potentially critical plasma surge.</p><p>Zirconium gluon gel core control panel is located in the med bay. Refer to ESS Odysseus Operations Handbook page 2.4-35 for instructions.</p>',
 				'<p>Press the buttons and reset as follows:</p><ul><li>Buttons W W</li><li>Button ACK</li><li>Button START</li><li>Button STOP</li></ul>',
@@ -1619,7 +1619,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Zirconium gluon gel core control panel - System reset D',
+			title: 'Impulse zirconium gluon gel core control panel - System reset D',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>Plasma surges have been observed in the core. The system needs to be reset and reprogrammed to avoid a potentially critical plasma surge.</p><p>Zirconium gluon gel core control panel is located in the med bay. Refer to ESS Odysseus Operations Handbook page 2.4-35 for instructions.</p>',
 				'<p>Press the buttons and reset as follows:</p><ul><li>Buttons Y Y</li><li>Buttons Z Z</li><li>Button STOP</li></ul>',
@@ -1635,7 +1635,7 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Zirconium gluon gel core control panel - System reset E',
+			title: 'Impulse zirconium gluon gel core control panel - System reset E',
 			pages: [
 				'<p>Perform the manual task according to instructions.</p><p>Plasma surges have been observed in the core. The system needs to be reset and reprogrammed to avoid a potentially critical plasma surge.</p><p>Zirconium gluon gel core control panel is located in the med bay. Refer to ESS Odysseus Operations Handbook page 2.4-35 for instructions.</p>',
 				'<p>Press the buttons and reset as follows:</p><ul><li>Buttons X X</li><li>Buttons Z Z</li><li>Buttons W W</li><li>Button ACK</li></ul>',
@@ -1659,7 +1659,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 2,
 		calibrationTime: 290,
-		title: 'Fault in Argon quantum shift booster switchboard 5Fv6S A',
+		title: 'Hull fault in switchboard 5Fv6S A',
 		description:
 			'A loss of energy of the hull systems has been observed. Power will need to be rerouted towards the hull’s argon quantum shift booster. Manual labor is needed. Perform the manual task according to instructions.The Argon quantum shift booster switchboard 5Fv6S is located in Engineering Technical Space. Refer to ESS Odysseus Operations Handbook page 2.5-19 for instructions. Use HANSCA repair for calibration.',
 		location: 'Upper deck, Engine room',
@@ -1678,7 +1678,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 2,
 		calibrationTime: 290,
-		title: 'Fault in Argon quantum shift booster switchboard 5Fv6S B',
+		title: 'Hull fault in switchboard 5Fv6S B',
 		description:
 			'A loss of energy of the hull systems has been observed. Power will need to be rerouted towards the hull’s argon quantum shift booster. Manual labor is needed. Perform the manual task according to instructions. The Argon quantum shift booster switchboard 5Fv6S is located in Engineering Technical Space. Refer to ESS Odysseus Operations Handbook page 2.5-19 for instructions. Use HANSCA repair for calibration.',
 		location: 'Upper deck, engineering room',
@@ -1697,7 +1697,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 2,
 		calibrationTime: 290,
-		title: 'Fault in Argon quantum shift booster switchboard 5Fv6S C',
+		title: 'Hull fault in switchboard 5Fv6S C',
 		description:
 			'A loss of energy of the hull systems has been observed. Power will need to be rerouted towards the hull’s argon quantum shift booster. Manual labor is needed. Perform the manual task according to instructions.The Argon quantum shift booster switchboard 5Fv6S is located in Engineering Technical Space. Refer to ESS Odysseus Operations Handbook page 2.5-19 for instructions. Use HANSCA repair for calibration.',
 		location: 'Upper deck, engineering room',
@@ -1716,7 +1716,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 2,
 		calibrationTime: 290,
-		title: 'Fault in Argon quantum shift booster switchboard 5Fv6S D',
+		title: 'Hull fault in switchboard 5Fv6S D',
 		description:
 			'A loss of energy of the hull systems has been observed. Power will need to be rerouted towards the hull’s argon quantum shift booster. Manual labor is needed. Perform the manual task according to instructions.The Argon quantum shift booster switchboard 5Fv6S is located in Engineering Technical Space. Refer to ESS Odysseus Operations Handbook page 2.5-19 for instructions. Use HANSCA repair for calibration.',
 		location: 'Upper deck, engineering room',
@@ -1735,7 +1735,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 2,
 		calibrationTime: 290,
-		title: 'Fault in Argon quantum shift booster switchboard 5Fv6S E',
+		title: 'Hull fault in switchboard 5Fv6S E',
 		description:
 			'A loss of energy of the hull systems has been observed. Power will need to be rerouted towards the hull’s argon quantum shift booster. Manual labor is needed. Perform the manual task according to instructions.The Argon quantum shift booster switchboard 5Fv6S is located in Engineering Technical Space. Refer to ESS Odysseus Operations Handbook page 2.5-19 for instructions. Use HANSCA repair for calibration.',
 		location: 'Upper deck, engineering room',
@@ -1754,7 +1754,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 1,
 		calibrationTime: 580,
-		title: 'Coordinate calibration unit 369GKY-a A',
+		title: 'Maneuver coordinate calibration unit 369GKY-a A',
 		description:
 			'This unit translates the calculations of recalibrations of the ship’s maneuvering system into code for small corrective adjustment actions. The system needs to be re-coded as there is an internal miscommunication within the maneuvering system. Manual labor is needed. Perform the manual task according to instructions.The Coordinate calibration unit 369GKY-a is located in the Armory. Refer to ESS Odysseus Operations Handbook page 2.19-93 for instructions. Use HANSCA repair for calibration.',
 		location: 'Lower deck, armory',
@@ -1773,7 +1773,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 1,
 		calibrationTime: 580,
-		title: 'Coordinate calibration unit 369GKY-a B',
+		title: 'Maneuver coordinate calibration unit 369GKY-a B',
 		description:
 			'This unit translates the calculations of recalibrations of the ship’s maneuvering system into code for small corrective adjustment actions. The system needs to be re-coded as there is an internal miscommunication within the maneuvering system. Manual labor is needed. Perform the manual task according to instructions.The Coordinate calibration unit 369GKY-a is located in the Armory. Refer to ESS Odysseus Operations Handbook page 2.19-93 for instructions. Use HANSCA repair for calibration.',
 		location: 'Lower deck, armory',
@@ -1792,7 +1792,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 1,
 		calibrationTime: 580,
-		title: 'Coordinate calibration unit 369GKY-a C',
+		title: 'Maneuver coordinate calibration unit 369GKY-a C',
 		description:
 			'This unit translates the calculations of recalibrations of the ship’s maneuvering system into code for small corrective adjustment actions. The system needs to be re-coded as there is an internal miscommunication within the maneuvering system. Manual labor is needed. Perform the manual task according to instructions.The Coordinate calibration unit 369GKY-a is located in the Armory. Refer to ESS Odysseus Operations Handbook page 2.19-93 for instructions. Use HANSCA repair for calibration.',
 		location: 'Lower deck, armory',
@@ -1811,7 +1811,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 1,
 		calibrationTime: 580,
-		title: 'Coordinate calibration unit 369GKY-a D',
+		title: 'Maneuver coordinate calibration unit 369GKY-a D',
 		description:
 			'This unit translates the calculations of recalibrations of the ship’s maneuvering system into code for small corrective adjustment actions. The system needs to be re-coded as there is an internal miscommunication within the maneuvering system. Manual labor is needed. Perform the manual task according to instructions.The Coordinate calibration unit 369GKY-a is located in the Armory. Refer to ESS Odysseus Operations Handbook page 2.19-93 for instructions. Use HANSCA repair for calibration.',
 		location: 'Lower deck, armory',
@@ -1830,7 +1830,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 1,
 		calibrationTime: 580,
-		title: 'Coordinate calibration unit 369GKY-a E',
+		title: 'Maneuver coordinate calibration unit 369GKY-a E',
 		description:
 			'This unit translates the calculations of recalibrations of the ship’s maneuvering system into code for small corrective adjustment actions. The system needs to be re-coded as there is an internal miscommunication within the maneuvering system. Manual labor is needed. Perform the manual task according to instructions. The Coordinate calibration unit 369GKY-a is located in the Armory. Refer to ESS Odysseus Operations Handbook page 2.19-93 for instructions. Use HANSCA repair for calibration.',
 		location: 'Lower deck, armory',
@@ -1849,7 +1849,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 13,
 		calibrationTime: 40,
-		title: 'Dorsal ion bio-filter G5He A',
+		title: 'Hull dorsal ion bio-filter G5He A',
 		description:
 			'The filter is causing quantum surges that will overload the general hull system if not fixed. The filter’s crystal core needs to be re-attenuated. Manual labor is needed. Perform the manual task according to instructions.The Dorsal ion bio-filter G5He is located in the corridoor. Refer to ESS Odysseus Operations Handbook page 2.12-63 for instructions. Use HANSCA repair for calibration.',
 		location: 'Upper deck, corridor outside Bridge',
@@ -1868,7 +1868,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 13,
 		calibrationTime: 40,
-		title: 'Dorsal ion bio-filter G5He B',
+		title: 'Hull dorsal ion bio-filter G5He B',
 		description:
 			'The filter is causing quantum surges that will overload the general hull system if not fixed. The filter’s crystal core needs to be re-attenuated. Manual labor is needed. Perform the manual task according to instructions.The Dorsal ion bio-filter G5He is located in the corridoor. Refer to ESS Odysseus Operations Handbook page 2.12-63 for instructions. Use HANSCA repair for calibration.',
 		location: 'Upper deck, corridor outside Bridge',
@@ -1887,7 +1887,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 13,
 		calibrationTime: 40,
-		title: 'Dorsal ion bio-filter G5He C',
+		title: 'Hull dorsal ion bio-filter G5He C',
 		description:
 			'The filter is causing quantum surges that will overload the general hull system if not fixed. The filter’s crystal core needs to be re-attenuated. Manual labor is needed. Perform the manual task according to instructions.The Dorsal ion bio-filter G5He is located in the corridoor. Refer to ESS Odysseus Operations Handbook page 2.12-63 for instructions. Use HANSCA repair for calibration.',
 		location: 'Upper deck, corridor outside Bridge',
@@ -1906,7 +1906,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 13,
 		calibrationTime: 40,
-		title: 'Dorsal ion bio-filter G5He D',
+		title: 'Hull dorsal ion bio-filter G5He D',
 		description:
 			'The filter is causing quantum surges that will overload the general hull system if not fixed. The filter’s crystal core needs to be re-attenuated. Manual labor is needed. Perform the manual task according to instructions.The Dorsal ion bio-filter G5He is located in the corridoor. Refer to ESS Odysseus Operations Handbook page 2.12-63 for instructions. Use HANSCA repair for calibration.',
 		location: 'Upper deck, corridor outside Bridge',
@@ -1925,7 +1925,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 13,
 		calibrationTime: 40,
-		title: 'Dorsal ion bio-filter G5He E',
+		title: 'Hull dorsal ion bio-filter G5He E',
 		description:
 			'The filter is causing quantum surges that will overload the general hull system if not fixed. The filter’s crystal core needs to be re-attenuated. Manual labor is needed. Perform the manual task according to instructions. The Dorsal ion bio-filter G5He is located in the corridoor. Refer to ESS Odysseus Operations Handbook page 2.12-63 for instructions. Use HANSCA repair for calibration.',
 		location: 'Upper deck, corridor outside Bridge',
@@ -2039,7 +2039,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 2,
 		calibrationTime: 315,
-		title: 'Gamma-wave missile driver control unit Rr34c A',
+		title: 'Missile gamma-wave driver control unit Rr34c A',
 		description:
 			'This unit functions as a secondary motherboard for programming some key commands for the gamma-wave missile system. Manual labor is needed. Perform the manual task according to instructions. The Gamma-wave missile driver control unit Rr34c is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.3-65 for instructions. Use HANSCA repair for calibration.',
 		location: 'Upper deck, bridge',
@@ -2058,7 +2058,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 2,
 		calibrationTime: 315,
-		title: 'Gamma-wave missile driver control unit Rr34c B',
+		title: 'Missile gamma-wave driver control unit Rr34c B',
 		description:
 			'This unit functions as a secondary motherboard for programming some key commands for the gamma-wave missile system. Manual labor is needed. Perform the manual task according to instructions. The Gamma-wave missile driver control unit Rr34c is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.3-65 for instructions. Use HANSCA repair for calibration.',
 		location: 'Upper deck, bridge',
@@ -2077,7 +2077,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 2,
 		calibrationTime: 315,
-		title: 'Gamma-wave missile driver control unit Rr34c C',
+		title: 'Missile gamma-wave driver control unit Rr34c C',
 		description:
 			'This unit functions as a secondary motherboard for programming some key commands for the gamma-wave missile system. Manual labor is needed. Perform the manual task according to instructions. The Gamma-wave missile driver control unit Rr34c is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.3-65 for instructions. Use HANSCA repair for calibration.',
 		location: 'Upper deck, bridge',
@@ -2096,7 +2096,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 2,
 		calibrationTime: 315,
-		title: 'Gamma-wave missile driver control unit Rr34c D',
+		title: 'Missile gamma-wave driver control unit Rr34c D',
 		description:
 			'This unit functions as a secondary motherboard for programming some key commands for the gamma-wave missile system. Manual labor is needed. Perform the manual task according to instructions. The Gamma-wave missile driver control unit Rr34c is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.3-65 for instructions. Use HANSCA repair for calibration.',
 		location: 'Upper deck, bridge',
@@ -2115,7 +2115,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 2,
 		calibrationTime: 315,
-		title: 'Gamma-wave missile driver control unit Rr34c E',
+		title: 'Missile gamma-wave driver control unit Rr34c E',
 		description:
 			'This unit functions as a secondary motherboard for programming some key commands for the gamma-wave missile system. Manual labor is needed. Perform the manual task according to instructions. The Gamma-wave missile driver control unit Rr34c is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.3-65 for instructions. Use HANSCA repair for calibration.',
 		location: 'Upper deck, bridge',
@@ -2134,7 +2134,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 10,
 		calibrationTime: 50,
-		title: 'Gluon impulse control circuit switchboard 2f345G A',
+		title: 'Missile gluon impulse control circuit switchboard 2f345G A',
 		description:
 			'This switchboard re-routes the nitronium flow from the gluon core to the missile propeller systems. In order to ensure the safety of the ship, the nitronium flow needs to be frequently re-routed. Manual labor is needed. Perform the manual task according to instructions. The Gluon impulse control circuit switchboard 2f345G is located in the armory. Refer to ESS Odysseus Operations Handbook page 2.5-31 for instructions. Use HANSCA repair for calibration.',
 		location: 'Lower deck, armory',
@@ -2153,7 +2153,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 10,
 		calibrationTime: 50,
-		title: 'Gluon impulse control circuit switchboard 2f345G B',
+		title: 'Missile gluon impulse control circuit switchboard 2f345G B',
 		description:
 			'This switchboard re-routes the nitronium flow from the gluon core to the missile propeller systems. In order to ensure the safety of the ship, the nitronium flow needs to be frequently re-routed. Manual labor is needed. Perform the manual task according to instructions. The Gluon impulse control circuit switchboard 2f345G is located in the armory. Refer to ESS Odysseus Operations Handbook page 2.5-31 for instructions. Use HANSCA repair for calibration.',
 		location: 'Lower deck, armory',
@@ -2172,7 +2172,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 10,
 		calibrationTime: 50,
-		title: 'Gluon impulse control circuit switchboard 2f345G C',
+		title: 'Missile gluon impulse control circuit switchboard 2f345G C',
 		description:
 			'This switchboard re-routes the nitronium flow from the gluon core to the missile propeller systems. In order to ensure the safety of the ship, the nitronium flow needs to be frequently re-routed. Manual labor is needed. Perform the manual task according to instructions. The Gluon impulse control circuit switchboard 2f345G is located in the armory. Refer to ESS Odysseus Operations Handbook page 2.5-31 for instructions. Use HANSCA repair for calibration.',
 		location: 'Lower deck, armory',
@@ -2191,7 +2191,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 10,
 		calibrationTime: 50,
-		title: 'Gluon impulse control circuit switchboard 2f345G D',
+		title: 'Missile gluon impulse control circuit switchboard 2f345G D',
 		description:
 			'This switchboard re-routes the nitronium flow from the gluon core to the missile propeller systems. In order to ensure the safety of the ship, the nitronium flow needs to be frequently re-routed. Manual labor is needed. Perform the manual task according to instructions. The Gluon impulse control circuit switchboard 2f345G is located in the armory. Refer to ESS Odysseus Operations Handbook page 2.5-31 for instructions. Use HANSCA repair for calibration.',
 		location: 'Lower deck, armory',
@@ -2210,7 +2210,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 10,
 		calibrationTime: 50,
-		title: 'Gluon impulse control circuit switchboard 2f345G E',
+		title: 'Missile gluon impulse control circuit switchboard 2f345G E',
 		description:
 			'This switchboard re-routes the nitronium flow from the gluon core to the missile propeller systems. In order to ensure the safety of the ship, the nitronium flow needs to be frequently re-routed. Manual labor is needed. Perform the manual task according to instructions. The Gluon impulse control circuit switchboard 2f345G is located in the armory. Refer to ESS Odysseus Operations Handbook page 2.5-31 for instructions. Use HANSCA repair for calibration.',
 		location: 'Lower deck, armory',
@@ -2229,7 +2229,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 2,
 		calibrationTime: 230,
-		title: 'IEPBR-unit B33e - controlling the power charge A',
+		title: 'Impulse IEPBR-unit B33e - power charge A',
 		description:
 			'This unit controls the backup power for the impulse engine. If any anomalies outside of the normal range occur, it may have a critical effect on the energy supply of the impulse engine. Manual labor is needed. Perform the manual task according to instructions. The Impulse engine backup power regulation unit B33e is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.6-3 for instructions. Use HANSCA repair for calibration.',
 		location: 'Upper deck, bridge',
@@ -2248,7 +2248,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 2,
 		calibrationTime: 230,
-		title: 'IEPBR-unit B33e - power charge B',
+		title: 'Impulse IEPBR-unit B33e - power charge B',
 		description:
 			'This unit controls the backup power for the impulse engine. If any anomalies outside of the normal range occur, it may have a critical effect on the energy supply of the impulse engine. Manual labor is needed. Perform the manual task according to instructions. The Impulse engine backup power regulation unit B33e is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.6-3 for instructions. Use HANSCA repair for calibration.',
 		location: 'Upper deck, bridge',
@@ -2267,7 +2267,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 2,
 		calibrationTime: 230,
-		title: 'IEPBR-unit B33e - power charge C',
+		title: 'Impulse IEPBR-unit B33e - power charge C',
 		description:
 			'This unit controls the backup power for the impulse engine. If any anomalies outside of the normal range occur, it may have a critical effect on the energy supply of the impulse engine. Manual labor is needed. Perform the manual task according to instructions. The Impulse engine backup power regulation unit B33e is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.6-3 for instructions. Use HANSCA repair for calibration.',
 		location: 'Upper deck, bridge',
@@ -2286,7 +2286,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 2,
 		calibrationTime: 230,
-		title: 'IEPBR-unit B33e - power charge D',
+		title: 'Impulse IEPBR-unit B33e - power charge D',
 		description:
 			'This unit controls the backup power for the impulse engine. If any anomalies outside of the normal range occur, it may have a critical effect on the energy supply of the impulse engine. Manual labor is needed. Perform the manual task according to instructions. The Impulse engine backup power regulation unit B33e is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.6-3 for instructions. Use HANSCA repair for calibration.',
 		location: 'Upper deck, bridge',
@@ -2305,7 +2305,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 2,
 		calibrationTime: 230,
-		title: 'IEPBR-unit B33e - power charge E',
+		title: 'Impulse IEPBR-unit B33e - power charge E',
 		description:
 			'This unit controls the backup power for the impulse engine. If any anomalies outside of the normal range occur, it may have a critical effect on the energy supply of the impulse engine. Manual labor is needed. Perform the manual task according to instructions. The Impulse engine backup power regulation unit B33e is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.6-3 for instructions. Use HANSCA repair for calibration.',
 		location: 'Upper deck, bridge',
@@ -2324,7 +2324,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 4,
 		calibrationTime: 110,
-		title: 'IEPBR-unit B33e - controlling power supply A',
+		title: 'Impulse IEPBR-unit B33e - controlling power supply A',
 		description:
 			'This unit controls the backup power for the impulse engine. If any anomalies outside of the normal range occur, it may have a critical effect on the energy supply of the impulse engine. Manual labor is needed. Perform the manual task according to instructions. The Impulse engine backup power regulation unit B33e is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.6-2 for instructions. Use HANSCA repair for calibration.',
 		location: 'Upper deck, bridge',
@@ -2343,7 +2343,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 4,
 		calibrationTime: 110,
-		title: 'IEPBR-unit B33e - controlling power supply B',
+		title: 'Impulse IEPBR-unit B33e - controlling power supply B',
 		description:
 			'This unit controls the backup power for the impulse engine. If any anomalies outside of the normal range occur, it may have a critical effect on the energy supply of the impulse engine. Manual labor is needed. Perform the manual task according to instructions. The Impulse engine backup power regulation unit B33e is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.6-2 for instructions. Use HANSCA repair for calibration.',
 		location: 'Upper deck, bridge',
@@ -2362,7 +2362,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 4,
 		calibrationTime: 110,
-		title: 'IEPBR-unit B33e - controlling power supply C',
+		title: 'Impulse IEPBR-unit B33e - controlling power supply C',
 		description:
 			'This unit controls the backup power for the impulse engine. If any anomalies outside of the normal range occur, it may have a critical effect on the energy supply of the impulse engine. Manual labor is needed. Perform the manual task according to instructions. The Impulse engine backup power regulation unit B33e is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.6-2 for instructions. Use HANSCA repair for calibration.',
 		location: 'Upper deck, bridge',
@@ -2381,7 +2381,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 4,
 		calibrationTime: 110,
-		title: 'IEPBR-unit B33e - controlling power supply D',
+		title: 'Impulse IEPBR-unit B33e - controlling power supply D',
 		description:
 			'This unit controls the backup power for the impulse engine. If any anomalies outside of the normal range occur, it may have a critical effect on the energy supply of the impulse engine. Manual labor is needed. Perform the manual task according to instructions. The Impulse engine backup power regulation unit B33e is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.6-2 for instructions. Use HANSCA repair for calibration.',
 		location: 'Upper deck, bridge',
@@ -2400,7 +2400,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 1,
 		calibrationTime: 560,
-		title: 'Isotopic microfilament ventilation unit Nu8-6',
+		title: 'Beam weapon Isotopic microfilament ventilation unit Nu8-6',
 		description:
 			'This ventilation unit supports the regulation of the ventilation of the beam weapons system whenever the realignment of the delta-wave drive pedals bears a risk of overheating. Manual labor is needed. Perform the manual task according to instructions. The Isotopic microfilament ventilation unit Nu8-6 is located in the Hive. Refer to ESS Odysseus Operations Handbook page 2.4-45 for instructions. Use HANSCA repair for calibration.',
 		location: 'Upper deck, hive',
@@ -2419,7 +2419,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 4,
 		calibrationTime: 95,
-		title: 'Microfilament generator (model X41) anomalities A',
+		title: 'Front shield microfilament generator (model X41) anomalities A',
 		description:
 			'This generator is used for coding the command to increase or decrease the power supply to the front shield’s gluon fetcher when it is showing any kind of anomalous power signature. Manual labor is needed. Perform the manual task according to instructions. The Microfilament generator (model X41) is located in the engine room. Refer to ESS Odysseus Operations Handbook page 2.8-5 for instructions. Use HANSCA repair for calibration.',
 		location: 'Upper deck, engineering room',
@@ -2438,7 +2438,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 4,
 		calibrationTime: 95,
-		title: 'Microfilament generator (model X41) anomalities B',
+		title: 'Front shield microfilament generator (model X41) anomalities B',
 		description:
 			'This generator is used for coding the command to increase or decrease the power supply to the front shield’s gluon fetcher when it is showing any kind of anomalous power signature. Manual labor is needed. Perform the manual task according to instructions. The Microfilament generator (model X41) is located in the engine room. Refer to ESS Odysseus Operations Handbook page 2.8-5 for instructions. Use HANSCA repair for calibration.',
 		location: 'Upper deck, engineering room',
@@ -2457,7 +2457,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 4,
 		calibrationTime: 95,
-		title: 'Microfilament generator (model X41) anomalities C',
+		title: 'Front shield microfilament generator (model X41) anomalities C',
 		description:
 			'This generator is used for coding the command to increase or decrease the power supply to the front shield’s gluon fetcher when it is showing any kind of anomalous power signature. Manual labor is needed. Perform the manual task according to instructions. The Microfilament generator (model X41) is located in the engine room. Refer to ESS Odysseus Operations Handbook page 2.8-5 for instructions. Use HANSCA repair for calibration.',
 		location: 'Upper deck, engineering room',
@@ -2476,7 +2476,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 4,
 		calibrationTime: 95,
-		title: 'Microfilament generator (model X41) anomalities D',
+		title: 'Front shield microfilament generator (model X41) anomalities D',
 		description:
 			'This generator is used for coding the command to increase or decrease the power supply to the front shield’s gluon fetcher when it is showing any kind of anomalous power signature. Manual labor is needed. Perform the manual task according to instructions. The Microfilament generator (model X41) is located in the engine room. Refer to ESS Odysseus Operations Handbook page 2.8-5 for instructions. Use HANSCA repair for calibration.',
 		location: 'Upper deck, engineering room',
@@ -2495,7 +2495,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 4,
 		calibrationTime: 95,
-		title: 'Microfilament generator (model X41) anomalities E',
+		title: 'Front shield microfilament generator (model X41) anomalities E',
 		description:
 			'This generator is used for coding the command to increase or decrease the power supply to the front shield’s gluon fetcher when it is showing any kind of anomalous power signature. Manual labor is needed. Perform the manual task according to instructions. The Microfilament generator (model X41) is located in the engine room. Refer to ESS Odysseus Operations Handbook page 2.8-5 for instructions. Use HANSCA repair for calibration.',
 		location: 'Upper deck, engineering room',
@@ -2514,7 +2514,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 12,
 		calibrationTime: 50,
-		title: 'Unidedified articles on Isotopic particle detector K1p (model SICK)',
+		title: 'Beam weapon Isotopic particle detector K1p (model SICK)',
 		description:
 			'This unit detects any anomalies in isotopic particles and communicates this information to the ship’s central beam weapons system. The isotopic gamma-spore reader needs to be cleaned to ensure optimal targeting result. Manual labor is needed. Perform the manual task according to instructions. The Isotopic particle detector K1p (model SICK) is located in the war room. Refer to ESS Odysseus Operations Handbook page 2.4-21 for instructions. Use HANSCA repair for calibration.',
 		location: 'Upper deck, war room',
@@ -2533,7 +2533,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 1,
 		calibrationTime: 800,
-		title: 'PIPELINE UNIT 42X-PQ',
+		title: 'Maneuver pipeline unit 42X-PQ',
 		description:
 			'Pipeline unit 42X-PQ is essential for maintaining optimal fluid dynamics within the ship\'s hydro-system. This system is important for maneuvering to work. Obstructions can occur due to various particulate build-ups, which must be cleared to ensure seamless fluid transfer. Manual labor is needed. Perform the manual task according to instructions. Pipeline unit 42X-PQ is located near the airlock. Refer to ESS Odysseus Operations Handbook page 2.9-1 for instructions. Use HANSCA repair for calibration.',
 		location: 'Lower deck, fighter 36',
@@ -2552,7 +2552,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 4,
 		calibrationTime: 95,
-		title: 'Microfilament generator (model X41) A',
+		title: 'Rear shield microfilament generator (model X41) A',
 		description:
 			'This generator is used for coding the command to increase or decrease the power supply to the rear shield’s gluon fetcher when it is showing any kind of anomalous power signature. Manual labor is needed. Perform the manual task according to instructions. The Microfilament generator (model X41) is located in the science lab. Refer to ESS Odysseus Operations Handbook page 2.8-5 for instructions. Use HANSCA repair for calibration.',
 		location: 'Upper deck, science lab',
@@ -2571,7 +2571,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 4,
 		calibrationTime: 95,
-		title: 'Microfilament generator (model X41) B',
+		title: 'Rear shield microfilament generator (model X41) B',
 		description:
 			'This generator is used for coding the command to increase or decrease the power supply to the rear shield’s gluon fetcher when it is showing any kind of anomalous power signature. Manual labor is needed. Perform the manual task according to instructions. The Microfilament generator (model X41) is located in the science lab. Refer to ESS Odysseus Operations Handbook page 2.8-5 for instructions. Use HANSCA repair for calibration.',
 		location: 'Upper deck, science lab',
@@ -2590,7 +2590,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 4,
 		calibrationTime: 95,
-		title: 'Microfilament generator (model X41) C',
+		title: 'Rear shield microfilament generator (model X41) C',
 		description:
 			'This generator is used for coding the command to increase or decrease the power supply to the rear shield’s gluon fetcher when it is showing any kind of anomalous power signature. Manual labor is needed. Perform the manual task according to instructions. The Microfilament generator (model X41) is located in the science lab. Refer to ESS Odysseus Operations Handbook page 2.8-5 for instructions. Use HANSCA repair for calibration.',
 		location: 'Upper deck, science lab',
@@ -2609,7 +2609,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 4,
 		calibrationTime: 95,
-		title: 'Microfilament generator (model X41) D',
+		title: 'Rear shield microfilament generator (model X41) D',
 		description:
 			'This generator is used for coding the command to increase or decrease the power supply to the rear shield’s gluon fetcher when it is showing any kind of anomalous power signature. Manual labor is needed. Perform the manual task according to instructions. The Microfilament generator (model X41) is located in the science lab. Refer to ESS Odysseus Operations Handbook page 2.8-5 for instructions. Use HANSCA repair for calibration.',
 		location: 'Upper deck, science lab',
@@ -2628,7 +2628,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 4,
 		calibrationTime: 95,
-		title: 'Microfilament generator (model X41) E',
+		title: 'Rear shield microfilament generator (model X41) E',
 		description:
 			'This generator is used for coding the command to increase or decrease the power supply to the rear shield’s gluon fetcher when it is showing any kind of anomalous power signature. Manual labor is needed. Perform the manual task according to instructions. The Microfilament generator (model X41) is located in the science lab. Refer to ESS Odysseus Operations Handbook page 2.8-5 for instructions. Use HANSCA repair for calibration.',
 		location: 'Upper deck, science lab',
@@ -2647,7 +2647,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 20,
 		calibrationTime: 30,
-		title: 'Neogenic capacitator GR3914D gamma-wave shifter A',
+		title: 'Beam weapon neogenic capacitator GR3914D gamma-wave shifter A',
 		description:
 			'This capacitator supports the correct functioning of several of the ship’s systems. The ship’s beam weapons system relies on the support of the gamma-wave shifter to keep power surges within an acceptable range. Manual labor is needed. Perform the manual task according to instructions. The Neogenic capacitator GR3914D - controlling the power of the gamma-wave shifter is located in the security room. Refer to ESS Odysseus Operations Handbook page 3-99 for instructions. Use HANSCA repair for calibration.',
 		location: 'Upper deck, security room',
@@ -2666,7 +2666,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 20,
 		calibrationTime: 30,
-		title: 'Neogenic capacitator GR3914D gamma-wave shifter B',
+		title: 'Beam weapon neogenic capacitator GR3914D gamma-wave shifter B',
 		description:
 			'This capacitator supports the correct functioning of several of the ship’s systems. The ship’s beam weapons system relies on the support of the gamma-wave shifter to keep power surges within an acceptable range. Manual labor is needed. Perform the manual task according to instructions. The Neogenic capacitator GR3914D - controlling the power of the gamma-wave shifter is located in the security room. Refer to ESS Odysseus Operations Handbook page 3-99 for instructions. Use HANSCA repair for calibration.',
 		location: 'Upper deck, security room',
@@ -2685,7 +2685,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 3,
 		calibrationTime: 210,
-		title: 'Neogenic capacitator GR3914D delta-wave fuse box A',
+		title: 'Missile neogenic capacitator GR3914D - reprogramming the delta-wave fuse box A',
 		description:
 			'This capacitator supports the correct functioning of several of the ship’s systems. The missile system is observed to be producing abnormal delta-wave pulse signatures. Manual labor is needed. Perform the manual task according to instructions. The Neogenic capacitator GR3914D is located in the security room. Refer to ESS Odysseus Operations Handbook page 3-99 for instructions. Use HANSCA repair for calibration.',
 		location: 'Upper deck, security room',
@@ -2704,7 +2704,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 3,
 		calibrationTime: 210,
-		title: 'Neogenic capacitator GR3914D delta-wave fuse box B',
+		title: 'Missile neogenic capacitator GR3914D - reprogramming the delta-wave fuse box B',
 		description:
 			'This capacitator supports the correct functioning of several of the ship’s systems. The missile system is observed to be producing abnormal delta-wave pulse signatures. Manual labor is needed. Perform the manual task according to instructions. The Neogenic capacitator GR3914D is located in the security room. Refer to ESS Odysseus Operations Handbook page 3-99 for instructions. Use HANSCA repair for calibration.',
 		location: 'Upper deck, security room',
@@ -2723,7 +2723,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 3,
 		calibrationTime: 210,
-		title: 'Neogenic capacitator GR3914D delta-wave fuse box C',
+		title: 'Missile neogenic capacitator GR3914D - reprogramming the delta-wave fuse box C',
 		description:
 			'This capacitator supports the correct functioning of several of the ship’s systems. The missile system is observed to be producing abnormal delta-wave pulse signatures. Manual labor is needed. Perform the manual task according to instructions. The Neogenic capacitator GR3914D is located in the security room. Refer to ESS Odysseus Operations Handbook page 3-99 for instructions. Use HANSCA repair for calibration.',
 		location: 'Upper deck, security room',
@@ -2742,7 +2742,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 3,
 		calibrationTime: 210,
-		title: 'Neogenic capacitator GR3914D delta-wave fuse box D',
+		title: 'Missile neogenic capacitator GR3914D - reprogramming the delta-wave fuse box D',
 		description:
 			'This capacitator supports the correct functioning of several of the ship’s systems. The missile system is observed to be producing abnormal delta-wave pulse signatures. Manual labor is needed. Perform the manual task according to instructions. The Neogenic capacitator GR3914D is located in the security room. Refer to ESS Odysseus Operations Handbook page 3-99 for instructions. Use HANSCA repair for calibration.',
 		location: 'Upper deck, security room',
@@ -2761,7 +2761,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 3,
 		calibrationTime: 210,
-		title: 'Neogenic capacitator GR3914D delta-wave fuse box E',
+		title: 'Missile neogenic capacitator GR3914D - reprogramming the delta-wave fuse box E',
 		description:
 			'This capacitator supports the correct functioning of several of the ship’s systems. The missile system is observed to be producing abnormal delta-wave pulse signatures. Manual labor is needed. Perform the manual task according to instructions. The Neogenic capacitator GR3914D is located in the security room. Refer to ESS Odysseus Operations Handbook page 3-99 for instructions. Use HANSCA repair for calibration.',
 		location: 'Upper deck, security room',
@@ -2780,7 +2780,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 3,
 		calibrationTime: 130,
-		title: 'Neogenic capacitator GR3914D dilithium ccc signals A',
+		title: 'Hull neogenic capacitator GR3914D - rerouting the dilithium containment core control A',
 		description:
 			'This capacitator supports the correct functioning of several of the ship’s systems. This unit also contains the dilithium containment core control panel. Manual labor is needed. Perform the manual task according to instructions. The Neogenic capacitator GR3914D is located in the security room. Refer to ESS Odysseus Operations Handbook page 3-99 for instructions. Use HANSCA repair for calibration.',
 		location: 'Upper deck, security room',
@@ -2799,7 +2799,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 3,
 		calibrationTime: 130,
-		title: 'Neogenic capacitator GR3914D dilithium ccc signals B',
+		title: 'Hull neogenic capacitator GR3914D - rerouting the dilithium containment core control B',
 		description:
 			'This capacitator supports the correct functioning of several of the ship’s systems. This unit also contains the dilithium containment core control panel. Manual labor is needed. Perform the manual task according to instructions. The Neogenic capacitator GR3914D is located in the security room. Refer to ESS Odysseus Operations Handbook page 3-99 for instructions. Use HANSCA repair for calibration.',
 		location: 'Upper deck, security room',
@@ -2818,7 +2818,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 3,
 		calibrationTime: 130,
-		title: 'Neogenic capacitator GR3914D dilithium ccc signals C',
+		title: 'Hull neogenic capacitator GR3914D - rerouting the dilithium containment core control C',
 		description:
 			'This capacitator supports the correct functioning of several of the ship’s systems. This unit also contains the dilithium containment core control panel. Manual labor is needed. Perform the manual task according to instructions. The Neogenic capacitator GR3914D is located in the security room. Refer to ESS Odysseus Operations Handbook page 3-99 for instructions. Use HANSCA repair for calibration.',
 		location: 'Upper deck, security room',
@@ -2837,7 +2837,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 3,
 		calibrationTime: 130,
-		title: 'Neogenic capacitator GR3914D dilithium ccc signals D',
+		title: 'Hull neogenic capacitator GR3914D - rerouting the dilithium containment core control D',
 		description:
 			'This capacitator supports the correct functioning of several of the ship’s systems. This unit also contains the dilithium containment core control panel. Manual labor is needed. Perform the manual task according to instructions. The Neogenic capacitator GR3914D is located in the security room. Refer to ESS Odysseus Operations Handbook page 3-99 for instructions. Use HANSCA repair for calibration.',
 		location: 'Upper deck, security room',
@@ -2856,7 +2856,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 3,
 		calibrationTime: 130,
-		title: 'Neogenic capacitator GR3914D dilithium ccc signals E',
+		title: 'Hull neogenic capacitator GR3914D - rerouting the dilithium containment core control E',
 		description:
 			'This capacitator supports the correct functioning of several of the ship’s systems. This unit also contains the dilithium containment core control panel. Manual labor is needed. Perform the manual task according to instructions. The Neogenic capacitator GR3914D is located in the security room. Refer to ESS Odysseus Operations Handbook page 3-99 for instructions. Use HANSCA repair for calibration.',
 		location: 'Upper deck, security room',
@@ -2875,7 +2875,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 20,
 		calibrationTime: 22,
-		title: 'Neogenic capacitator GR3914D positronic stabilizer',
+		title: 'Rear shield neogenic capacitator GR3914D - resetting the positronic stabilizer',
 		description:
 			'This capacitator supports the correct functioning of several of the ship’s systems. In case of temporal anomalies, the rear shield’s positronic stabilizer should be resynchronised. Manual labor is needed. Perform the manual task according to instructions. The Neogenic capacitator GR3914D is located in the security room. Refer to ESS Odysseus Operations Handbook page 3-99 for instructions. Use HANSCA repair for calibration.',
 		location: 'Upper deck, security room',
@@ -2894,7 +2894,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 6,
 		calibrationTime: 80,
-		title: 'Promethium warp fragmentor Y99z A',
+		title: 'Maneuver promethium warp fragmentor Y99z A',
 		description:
 			'The promethium warp fragmenter is an indispensable, usually autonomously operating part of the maneuvering system. The coding panel is used to manually re-code the system. Manual labor is needed. Perform the manual task according to instructions. The Promethium warp fragmentor Y99z is located in the med bay. Refer to ESS Odysseus Operations Handbook page 3-20 for instructions. Use HANSCA repair for calibration.',
 		location: 'Upper deck, med bay',
@@ -2913,7 +2913,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 6,
 		calibrationTime: 80,
-		title: 'Promethium warp fragmentor Y99z B',
+		title: 'Maneuver promethium warp fragmentor Y99z B',
 		description:
 			'The promethium warp fragmenter is an indispensable, usually autonomously operating part of the maneuvering system. The coding panel is used to manually re-code the system. Manual labor is needed. Perform the manual task according to instructions. The Promethium warp fragmentor Y99z is located in the med bay. Refer to ESS Odysseus Operations Handbook page 3-20 for instructions. Use HANSCA repair for calibration.',
 		location: 'Upper deck, med bay',
@@ -2932,7 +2932,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 6,
 		calibrationTime: 80,
-		title: 'Promethium warp fragmentor Y99z C',
+		title: 'Maneuver promethium warp fragmentor Y99z C',
 		description:
 			'The promethium warp fragmenter is an indispensable, usually autonomously operating part of the maneuvering system. The coding panel is used to manually re-code the system. Manual labor is needed. Perform the manual task according to instructions. The Promethium warp fragmentor Y99z is located in the med bay. Refer to ESS Odysseus Operations Handbook page 3-20 for instructions. Use HANSCA repair for calibration.',
 		location: 'Upper deck, med bay',
@@ -2951,7 +2951,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 6,
 		calibrationTime: 80,
-		title: 'Promethium warp fragmentor Y99z D',
+		title: 'Maneuver promethium warp fragmentor Y99z D',
 		description:
 			'The promethium warp fragmenter is an indispensable, usually autonomously operating part of the maneuvering system. The coding panel is used to manually re-code the system. Manual labor is needed. Perform the manual task according to instructions. The Promethium warp fragmentor Y99z is located in the med bay. Refer to ESS Odysseus Operations Handbook page 3-20 for instructions. Use HANSCA repair for calibration.',
 		location: 'Upper deck, med bay',
@@ -2970,7 +2970,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 6,
 		calibrationTime: 80,
-		title: 'Promethium warp fragmentor Y99z E',
+		title: 'Maneuver promethium warp fragmentor Y99z E',
 		description:
 			'The promethium warp fragmenter is an indispensable, usually autonomously operating part of the maneuvering system. The coding panel is used to manually re-code the system. Manual labor is needed. Perform the manual task according to instructions. The Promethium warp fragmentor Y99z is located in the med bay. Refer to ESS Odysseus Operations Handbook page 3-20 for instructions. Use HANSCA repair for calibration.',
 		location: 'Upper deck, med bay',
@@ -2990,7 +2990,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 6,
 		calibrationTime: 80,
-		title: 'Promethium warp fragmentor Y99y A',
+		title: 'Maneuver promethium warp fragmentor Y99y A',
 		description:
 			'The promethium warp fragmenter is an indispensable, usually autonomously operating part of the maneuvering system. The coding panel is used to manually re-code the system. Manual labor is needed. Perform the manual task according to instructions. The Promethium warp fragmentor Y99y is located in the captains quarters. Refer to ESS Odysseus Operations Handbook page 3-20 for instructions. Use HANSCA repair for calibration.',
 		location: 'Upper deck, captains quarters',
@@ -3009,7 +3009,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 6,
 		calibrationTime: 80,
-		title: 'Promethium warp fragmentor Y99y B',
+		title: 'Maneuver promethium warp fragmentor Y99y B',
 		description:
 			'The promethium warp fragmenter is an indispensable, usually autonomously operating part of the maneuvering system. The coding panel is used to manually re-code the system. Manual labor is needed. Perform the manual task according to instructions. The Promethium warp fragmentor Y99y is located in the captains quarters. Refer to ESS Odysseus Operations Handbook page 3-20 for instructions. Use HANSCA repair for calibration.',
 		location: 'Upper deck, captains quarters',
@@ -3028,7 +3028,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 6,
 		calibrationTime: 80,
-		title: 'Promethium warp fragmentor Y99y C',
+		title: 'Maneuver promethium warp fragmentor Y99y C',
 		description:
 			'The promethium warp fragmenter is an indispensable, usually autonomously operating part of the maneuvering system. The coding panel is used to manually re-code the system. Manual labor is needed. Perform the manual task according to instructions. The Promethium warp fragmentor Y99y is located in the captains quarters. Refer to ESS Odysseus Operations Handbook page 3-20 for instructions. Use HANSCA repair for calibration.',
 		location: 'Upper deck, captains quarters',
@@ -3047,7 +3047,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 6,
 		calibrationTime: 80,
-		title: 'Promethium warp fragmentor Y99y D',
+		title: 'Maneuver promethium warp fragmentor Y99y D',
 		description:
 			'The promethium warp fragmenter is an indispensable, usually autonomously operating part of the maneuvering system. The coding panel is used to manually re-code the system. Manual labor is needed. Perform the manual task according to instructions. The Promethium warp fragmentor Y99y is located in the captains quarters. Refer to ESS Odysseus Operations Handbook page 3-20 for instructions. Use HANSCA repair for calibration.',
 		location: 'Upper deck, captains quarters',
@@ -3066,7 +3066,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 6,
 		calibrationTime: 80,
-		title: 'Promethium warp fragmentor Y99y B',
+		title: 'Maneuver promethium warp fragmentor Y99y B',
 		description:
 			'The promethium warp fragmenter is an indispensable, usually autonomously operating part of the maneuvering system. The coding panel is used to manually re-code the system. Manual labor is needed. Perform the manual task according to instructions. The Promethium warp fragmentor Y99y is located in the captains quarters. Refer to ESS Odysseus Operations Handbook page 3-20 for instructions. Use HANSCA repair for calibration.',
 		location: 'Upper deck, captains quarters',
@@ -3085,7 +3085,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 6,
 		calibrationTime: 150,
-		title: 'Radiation containment switch 464-900 A',
+		title: 'Reactor radiation containment switch 464-900 A',
 		description:
 			'This switch is used to reroute energy to alternative charge splitters when there’s a risk of buildup of alpha and beta particles. Manual labor is needed. Perform the manual task according to instructions. The Radiation containment switch 464-900 is located above the mess hall. Refer to ESS Odysseus Operations Handbook page 3-186 for instructions. Use HANSCA repair for calibration.',
 		location: '3rd deck, above mess hall',
@@ -3104,7 +3104,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 6,
 		calibrationTime: 150,
-		title: 'Radiation containment switch 464-900 B',
+		title: 'Reactor radiation containment switch 464-900 B',
 		description:
 			'This switch is used to reroute energy to alternative charge splitters when there’s a risk of buildup of alpha and beta particles. Manual labor is needed. Perform the manual task according to instructions. The Radiation containment switch 464-900 is located above the mess hall. Refer to ESS Odysseus Operations Handbook page 3-186 for instructions. Use HANSCA repair for calibration.',
 		location: '3rd deck, above mess hall',
@@ -3123,7 +3123,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 6,
 		calibrationTime: 150,
-		title: 'Radiation containment switch 464-900 C',
+		title: 'Reactor radiation containment switch 464-900 C',
 		description:
 			'This switch is used to reroute energy to alternative charge splitters when there’s a risk of buildup of alpha and beta particles. Manual labor is needed. Perform the manual task according to instructions. The Radiation containment switch 464-900 is located above the mess hall. Refer to ESS Odysseus Operations Handbook page 3-186 for instructions. Use HANSCA repair for calibration.',
 		location: '3rd deck, above mess hall',
@@ -3142,7 +3142,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 5,
 		calibrationTime: 65,
-		title: 'Revolving pulse turbine lubricator switch 53r A',
+		title: 'Rear shield revolving pulse turbine lubricator switch 53r A',
 		description:
 			'This switch re-attenuates the revolving pulse signals that drive the rear shield’s quantum portal bracket. If the rear shield suffers any kind of damage, this switch helps to ensure the shield remains up. Manual labor is needed. Perform the manual task according to instructions. The Revolving pulse turbine lubricator switch 53r is located in the war room. Refer to ESS Odysseus Operations Handbook page  2.5-34 for instructions. Use HANSCA repair for calibration.',
 		location: '2rd deck, war room',
@@ -3161,7 +3161,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 5,
 		calibrationTime: 65,
-		title: 'Revolving pulse turbine lubricator switch 53r B',
+		title: 'Rear shield revolving pulse turbine lubricator switch 53r B',
 		description:
 			'This switch re-attenuates the revolving pulse signals that drive the rear shield’s quantum portal bracket. If the rear shield suffers any kind of damage, this switch helps to ensure the shield remains up. Manual labor is needed. Perform the manual task according to instructions. The Revolving pulse turbine lubricator switch 53r is located in the war room. Refer to ESS Odysseus Operations Handbook page  2.5-34 for instructions. Use HANSCA repair for calibration.',
 		location: '2rd deck, war room',
@@ -3181,7 +3181,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 5,
 		calibrationTime: 65,
-		title: 'Revolving pulse turbine lubricator switch 53r C',
+		title: 'Rear shield revolving pulse turbine lubricator switch 53r C',
 		description:
 			'This switch re-attenuates the revolving pulse signals that drive the rear shield’s quantum portal bracket. If the rear shield suffers any kind of damage, this switch helps to ensure the shield remains up. Manual labor is needed. Perform the manual task according to instructions. The Revolving pulse turbine lubricator switch 53r is located in the war room. Refer to ESS Odysseus Operations Handbook page  2.5-34 for instructions. Use HANSCA repair for calibration.',
 		location: '2rd deck, war room',
@@ -3200,7 +3200,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 5,
 		calibrationTime: 65,
-		title: 'Revolving pulse turbine lubricator switch 53r D',
+		title: 'Rear shield revolving pulse turbine lubricator switch 53r D',
 		description:
 			'This switch re-attenuates the revolving pulse signals that drive the rear shield’s quantum portal bracket. If the rear shield suffers any kind of damage, this switch helps to ensure the shield remains up. Manual labor is needed. Perform the manual task according to instructions. The Revolving pulse turbine lubricator switch 53r is located in the war room. Refer to ESS Odysseus Operations Handbook page  2.5-34 for instructions. Use HANSCA repair for calibration.',
 		location: '2rd deck, war room',
@@ -3238,7 +3238,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 2,
 		calibrationTime: 330,
-		title: 'Versatile Voltmeter B7-17 (model 562) A',
+		title: 'Beam weapon versatile Voltmeter B7-17 (model 562) A',
 		description:
 			' This Voltmeter is used to synchronize the argon quantum shift propulsion of the beam weapons in order to ensure faultless and safe usage. Manual labor is needed. Perform the manual task according to instructions. The Versatile Voltmeter B7-17 (model 562) is located in the science lab. Refer to ESS Odysseus Operations Handbook page 2.8-49 for instructions. Use HANSCA repair for calibration.',
 		location: '2rd deck, science lab',
@@ -3257,7 +3257,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 2,
 		calibrationTime: 330,
-		title: 'Versatile Voltmeter B7-17 (model 562) B',
+		title: 'Beam weapon versatile Voltmeter B7-17 (model 562) B',
 		description:
 			' This Voltmeter is used to synchronize the argon quantum shift propulsion of the beam weapons in order to ensure faultless and safe usage. Manual labor is needed. Perform the manual task according to instructions. The Versatile Voltmeter B7-17 (model 562) is located in the science lab. Refer to ESS Odysseus Operations Handbook page 2.8-49 for instructions. Use HANSCA repair for calibration.',
 		location: '2rd deck, science lab',
@@ -3276,7 +3276,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 2,
 		calibrationTime: 330,
-		title: 'Versatile Voltmeter B7-17 (model 562) C',
+		title: 'Beam weapon versatile Voltmeter B7-17 (model 562) C',
 		description:
 			' This Voltmeter is used to synchronize the argon quantum shift propulsion of the beam weapons in order to ensure faultless and safe usage. Manual labor is needed. Perform the manual task according to instructions. The Versatile Voltmeter B7-17 (model 562) is located in the science lab. Refer to ESS Odysseus Operations Handbook page 2.8-49 for instructions. Use HANSCA repair for calibration.',
 		location: '2rd deck, science lab',
@@ -3295,7 +3295,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 2,
 		calibrationTime: 330,
-		title: 'Versatile Voltmeter B7-17 (model 562) D',
+		title: 'Beam weapon versatile Voltmeter B7-17 (model 562) D',
 		description:
 			' This Voltmeter is used to synchronize the argon quantum shift propulsion of the beam weapons in order to ensure faultless and safe usage. Manual labor is needed. Perform the manual task according to instructions. The Versatile Voltmeter B7-17 (model 562) is located in the science lab. Refer to ESS Odysseus Operations Handbook page 2.8-49 for instructions. Use HANSCA repair for calibration.',
 		location: '2rd deck, science lab',
@@ -3314,7 +3314,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 2,
 		calibrationTime: 330,
-		title: 'Versatile Voltmeter B7-17 (model 562) E',
+		title: 'Beam weapon versatile Voltmeter B7-17 (model 562) E',
 		description:
 			' This Voltmeter is used to synchronize the argon quantum shift propulsion of the beam weapons in order to ensure faultless and safe usage. Manual labor is needed. Perform the manual task according to instructions. The Versatile Voltmeter B7-17 (model 562) is located in the science lab. Refer to ESS Odysseus Operations Handbook page 2.8-49 for instructions. Use HANSCA repair for calibration.',
 		location: '2rd deck, science lab',
@@ -3333,7 +3333,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 5,
 		calibrationTime: 105,
-		title: 'Zirconium gluon gel core control panel - Re-routing control signals A',
+		title: 'Reactor zirconium gluon gel core control panel - Re-routing control signals A',
 		description:
 			'This control panel is used to manually control the zirconium gluon core that propels the reactor. It can be used for re-routing control signals for zirconium containment. Manual labor is needed. Perform the manual task according to instructions. The Zirconium gluon gel core control panel is located in the med bay. Refer to ESS Odysseus Operations Handbook page 2.4-32 for instructions. Use HANSCA repair for calibration.',
 		location: '2rd deck, med bay',
@@ -3352,7 +3352,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 5,
 		calibrationTime: 105,
-		title: 'Zirconium gluon gel core control panel - Re-routing control signals B',
+		title: 'Reactor zirconium gluon gel core control panel - Re-routing control signals B',
 		description:
 			'This control panel is used to manually control the zirconium gluon core that propels the reactor. It can be used for re-routing control signals for zirconium containment. Manual labor is needed. Perform the manual task according to instructions. The Zirconium gluon gel core control panel is located in the med bay. Refer to ESS Odysseus Operations Handbook page 2.4-32 for instructions. Use HANSCA repair for calibration.',
 		location: '2rd deck, med bay',
@@ -3371,7 +3371,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 5,
 		calibrationTime: 105,
-		title: 'Zirconium gluon gel core control panel - Re-routing control signals C',
+		title: 'Reactor zirconium gluon gel core control panel - Re-routing control signals C',
 		description:
 			'This control panel is used to manually control the zirconium gluon core that propels the reactor. It can be used for re-routing control signals for zirconium containment. Manual labor is needed. Perform the manual task according to instructions. The Zirconium gluon gel core control panel is located in the med bay. Refer to ESS Odysseus Operations Handbook page 2.4-32 for instructions. Use HANSCA repair for calibration.',
 		location: '2rd deck, med bay',
@@ -3390,7 +3390,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 5,
 		calibrationTime: 105,
-		title: 'Zirconium gluon gel core control panel - Re-routing control signals D',
+		title: 'Reactor zirconium gluon gel core control panel - Re-routing control signals D',
 		description:
 			'This control panel is used to manually control the zirconium gluon core that propels the reactor. It can be used for re-routing control signals for zirconium containment. Manual labor is needed. Perform the manual task according to instructions. The Zirconium gluon gel core control panel is located in the med bay. Refer to ESS Odysseus Operations Handbook page 2.4-32 for instructions. Use HANSCA repair for calibration.',
 		location: '2rd deck, med bay',
@@ -3409,7 +3409,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 5,
 		calibrationTime: 105,
-		title: 'Zirconium gluon gel core control panel - Re-routing control signals E',
+		title: 'Reactor zirconium gluon gel core control panel - Re-routing control signals E',
 		description:
 			'This control panel is used to manually control the zirconium gluon core that propels the reactor. It can be used for re-routing control signals for zirconium containment. Manual labor is needed. Perform the manual task according to instructions. The Zirconium gluon gel core control panel is located in the med bay. Refer to ESS Odysseus Operations Handbook page 2.4-32 for instructions. Use HANSCA repair for calibration.',
 		location: '2rd deck, med bay',
@@ -3428,7 +3428,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 3,
 		calibrationTime: 140,
-		title: 'Zirconium gluon gel core control panel - System reset A',
+		title: 'Impulse zirconium gluon gel core control panel - System reset A',
 		description:
 			'This control panel is used to manually control the zirconium gluon core that propels the impulse engine. It can be used for resetting and reprogramming the system whenever a potentially critical plasma surge occurs. Manual labor is needed. Perform the manual task according to instructions. The Zirconium gluon gel core control panel is located in the med bay. Refer to ESS Odysseus Operations Handbook page 2.4-35 for instructions. Use HANSCA repair for calibration.',
 		location: '2rd deck, med bay',
@@ -3447,7 +3447,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 3,
 		calibrationTime: 140,
-		title: 'Zirconium gluon gel core control panel - System reset B',
+		title: 'Impulse zirconium gluon gel core control panel - System reset B',
 		description:
 			'This control panel is used to manually control the zirconium gluon core that propels the impulse engine. It can be used for resetting and reprogramming the system whenever a potentially critical plasma surge occurs. Manual labor is needed. Perform the manual task according to instructions. The Zirconium gluon gel core control panel is located in the med bay. Refer to ESS Odysseus Operations Handbook page 2.4-35 for instructions. Use HANSCA repair for calibration.',
 		location: '2rd deck, med bay',
@@ -3466,7 +3466,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 3,
 		calibrationTime: 140,
-		title: 'Zirconium gluon gel core control panel - System reset C',
+		title: 'Impulse zirconium gluon gel core control panel - System reset C',
 		description:
 			'This control panel is used to manually control the zirconium gluon core that propels the impulse engine. It can be used for resetting and reprogramming the system whenever a potentially critical plasma surge occurs. Manual labor is needed. Perform the manual task according to instructions. The Zirconium gluon gel core control panel is located in the med bay. Refer to ESS Odysseus Operations Handbook page 2.4-35 for instructions. Use HANSCA repair for calibration.',
 		location: '2rd deck, med bay',
@@ -3485,7 +3485,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 3,
 		calibrationTime: 140,
-		title: 'Zirconium gluon gel core control panel - System reset D',
+		title: 'Impulse zirconium gluon gel core control panel - System reset D',
 		description:
 			'This control panel is used to manually control the zirconium gluon core that propels the impulse engine. It can be used for resetting and reprogramming the system whenever a potentially critical plasma surge occurs. Manual labor is needed. Perform the manual task according to instructions. The Zirconium gluon gel core control panel is located in the med bay. Refer to ESS Odysseus Operations Handbook page 2.4-35 for instructions. Use HANSCA repair for calibration.',
 		location: '2rd deck, med bay',
@@ -3504,7 +3504,7 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 3,
 		calibrationTime: 140,
-		title: 'Zirconium gluon gel core control panel - System reset E',
+		title: 'Impulse zirconium gluon gel core control panel - System reset E',
 		description:
 			'This control panel is used to manually control the zirconium gluon core that propels the impulse engine. It can be used for resetting and reprogramming the system whenever a potentially critical plasma surge occurs. Manual labor is needed. Perform the manual task according to instructions. The Zirconium gluon gel core control panel is located in the med bay. Refer to ESS Odysseus Operations Handbook page 2.4-35 for instructions. Use HANSCA repair for calibration.',
 		location: '2rd deck, med bay',
