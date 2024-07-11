@@ -19,6 +19,7 @@ const SampleTypes = {
 	HISTORY_SAMPLE: 'Historical analysis',
 	XRF_SAMPLE: 'X-Ray Fluorescence analysis',
 	XRF_SCAN: 'X-Ray Fluorescence analysis',
+	XRAY_SCAN: 'X-Ray scan',
 } as const;
 
 export const addOperationResultsToArtifactEntry = async (operationResult: Bookshelf.Model<unknown>) => {
