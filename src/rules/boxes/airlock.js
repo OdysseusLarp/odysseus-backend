@@ -168,19 +168,21 @@ Airlock.prototype = {
 		if (this.fighterLaunchTimeout || this.data.fighters === 'active' || !this.hasFighters()) return;
 
 		const status = this.data.status;
-		if (status !== 'vacuum' && status !== 'depressurizing') {
+		if (status === 'pressurizing') {
+			logger.info(`Airlock ${this.name} detected fighter launch while pressurizing, depressurizing immediately`);
+			this.patchData({ fighters: 'active', command: 'depressurize' })
+		} else if (status === 'vacuum' || status === 'depressurizing') {
+			logger.info(`Airlock ${this.name} detected fighter launch while already in ${status} state`);
+			this.patchData({ fighters: 'active' });
+		} else {
 			const delay = this.data.config?.fighter_launch_delay || 20000; // Give players time to leave the hangar bay
-
 			logger.info(`Airlock ${this.name} detected fighter launch, depressurizing in ${delay} ms`);
 			this.dmx('fighter_launch');  // Play warning sound
 
-			if (this.data.fighters !== 'active') this.patchData({ fighters: 'launching' }); // notify admin UI of pending fighter launch
+			if (this.data.fighters !== 'active') this.patchData({fighters: 'launching'}); // notify admin UI of pending fighter launch
 			this.fighterLaunchTimeout = setTimeout(() => {
-				this.patchData({ fighters: 'active', command: 'depressurize' })
+				this.patchData({ fighters: 'active', command: 'depressurize' });
 			}, delay);
-		} else {
-			logger.info(`Airlock ${this.name} detected fighter launch while already in ${status} state`);
-			this.patchData({ fighters: 'active' });
 		}
 	},
 	handleFighterReturn() {
