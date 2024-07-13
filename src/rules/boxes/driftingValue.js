@@ -17,6 +17,9 @@ interval(async () => {
 		}
 
 		if (Math.random() < box.engineBreakProb) {
+			logger.info("Skipping breaking of impulse engine health");
+			return;
+
 			const ee = store.getState().data.ship.ee;
 			const engineHealth = ee.systems.health.impulseHealth;
 			if (engineHealth > 0) {
