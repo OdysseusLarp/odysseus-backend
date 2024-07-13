@@ -16,7 +16,7 @@ blobs.push({
 	id: 'thermic_fusion_regulator',
 	box: 'thermic_fusion_regulator',
 	status: 'initial',
-	failure_probability_per_minute: 0.01, // On avg every 70 minutes
+	failure_probability_per_minute: 0.0666, // On avg every 15 minutes
 	battery_charge_level_when_broken: 65,
 	title: 'Thermic Fusion Conduit blockage',
 	description:
