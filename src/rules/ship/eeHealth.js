@@ -126,7 +126,7 @@ watch(['data', 'task'], async (tasks, previousTasks, state) => {
 	for (const id of Object.keys(tasks)) {
 		const task = tasks[id];
 		const previous = previousTasks[id];
-		if (task.eeType && task.eeHealth && task.status === 'fixed' && previous.status !== 'fixed') {
+		if (task.eeType && task.eeHealth && task.status === 'fixed' && previous?.status !== 'fixed') {
 			const ee = store.getState().data.ship.ee;
 			const type = task.eeType;
 			const health = clamp(getEEHealth(ee, type) + task.eeHealth, -1, 1);
