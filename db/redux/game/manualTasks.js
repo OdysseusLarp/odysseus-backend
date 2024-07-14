@@ -316,13 +316,13 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Front shield antilepton control switchboard 473f A',
+			title: 'Impulssimoottorin antileptonin kontrollointivirtapiiri 473f A',
 			pages: [
-				'<p>Perform the manual task according to instructions.</p><p>The front shield antilepton commands need to be entered manually, in order to override the corrupted automated commands. It’s vital that all requested buttons on both switchboards are switched simultaneously.</p><p>The Front shield antilepton control switchboard 473f is located in the crew bar. Refer to ESS Odysseus Operations Handbook page 2.13-30 for instructions.</p>',
-				'<p>Simultaneously switch the buttons as follows:</p><ul><li>Buttons AMP --> OFF</li><li>Buttons DRIVE --> ON</li></ul>',
-				'<p>Move to calibrating when complete.</p>',
+				'<p>Suorita työ ohjeiden mukaisesti.</p><p>Impulssimoottorin antileptonikomennot täytyy muuttaa käsin, jotta automaatio voidaan ohittaa turvallisesti. On tärkeää, että molempien ohjausyksiköiden kytkimiä painetaan yhtäaikaisesti.</p><p>Impulssimoottorin antileptonin kontrollointivirtapiiri 473f sijaitsee kantiinissa baaripöydän luona. Ohjeet löytyy ESS Odysseuksen ohjekirjasta.</p>',
+				'<p>Paina seuraavia nappeja yhtäaikaa molemmista ohjausyksiköistä:</p><ul><li>Napit AMP --> Pois päältä asentoon I</li><li>Napit DRIVE --> Päälle asentoon O</li></ul>',
+				'<p>Siirry kalibrointiin, kun työ on valmis.</p>',
 			],
-			buttons: ['Wiring instructions', 'Next', 'Calibrate'],
+			buttons: ['Konfiguraatio', 'Seuraava', 'Kalibroi'],
 		},
 	},
 	{
@@ -332,13 +332,13 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Front shield antilepton control switchboard 473f B',
+			title: 'Impulssimoottorin antileptonin kontrollointivirtapiiri 473f B',
 			pages: [
-				'<p>Perform the manual task according to instructions.</p><p>The front shield antilepton commands need to be entered manually, in order to override the corrupted automated commands. It’s vital that all requested buttons on both switchboards are switched simultaneously.</p><p>The Front shield antilepton control switchboard 473f is located in the crew bar. Refer to ESS Odysseus Operations Handbook page 2.13-30 for instructions.</p>',
-				'<p>Simultaneously switch the buttons as follows:</p><ul><li>Buttons EJCT --> ON</li></ul>',
-				'<p>Move to calibrating when complete.</p>',
+				'<p>Suorita työ ohjeiden mukaisesti.</p><p>Impulssimoottorin antileptonikomennot täytyy muuttaa käsin, jotta automaatio voidaan ohittaa turvallisesti. On tärkeää, että molempien ohjausyksiköiden kytkimiä painetaan yhtäaikaisesti.</p><p>Impulssimoottorin antileptonin kontrollointivirtapiiri 473f sijaitsee kantiinissa baaripöydän luona. Ohjeet löytyy ESS Odysseuksen ohjekirjasta.</p>',
+				'<p>Paina seuraavia nappeja yhtäaikaa molemmista ohjausyksiköistä:</p><ul><li>Napit AMP --> Pois päältä asentoon I</li><li>Napit DRIVE --> Päälle asentoon O</li></ul>',
+				'<p>Siirry kalibrointiin, kun työ on valmis.</p>',
 			],
-			buttons: ['Wiring instructions', 'Next', 'Calibrate'],
+			buttons: ['Konfiguraatio', 'Seuraava', 'Kalibroi'],
 		},
 	},
 	{
@@ -348,13 +348,13 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Front shield antilepton control switchboard 473f C',
+			title: 'Impulssimoottorin antileptonin kontrollointivirtapiiri 473f C',
 			pages: [
-				'<p>Perform the manual task according to instructions.</p><p>The front shield antilepton commands need to be entered manually, in order to override the corrupted automated commands. It’s vital that all requested buttons on both switchboards are switched simultaneously.</p><p>The Front shield antilepton control switchboard 473f is located in the crew bar. Refer to ESS Odysseus Operations Handbook page 2.13-30 for instructions.</p>',
-				'<p>Simultaneously switch the buttons as follows:</p><ul><li>Buttons THRUST --> OFF</li><li>Buttons EJCT --> OFF</li></ul>',
-				'<p>Move to calibrating when complete.</p>',
+				'<p>Suorita työ ohjeiden mukaisesti.</p><p>Impulssimoottorin antileptonikomennot täytyy muuttaa käsin, jotta automaatio voidaan ohittaa turvallisesti. On tärkeää, että molempien ohjausyksiköiden kytkimiä painetaan yhtäaikaisesti.</p><p>Impulssimoottorin antileptonin kontrollointivirtapiiri 473f sijaitsee kantiinissa baaripöydän luona. Ohjeet löytyy ESS Odysseuksen ohjekirjasta.</p>',
+				'<p>Paina seuraavia nappeja yhtäaikaa molemmista ohjausyksiköistä:</p><ul><li>Napit AMP --> Pois päältä asentoon I</li><li>Napit DRIVE --> Päälle asentoon O</li></ul>',
+				'<p>Siirry kalibrointiin, kun työ on valmis.</p>',
 			],
-			buttons: ['Wiring instructions', 'Next', 'Calibrate'],
+			buttons: ['Konfiguraatio', 'Seuraava', 'Kalibroi'],
 		},
 	},
 	{
@@ -364,13 +364,13 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Front shield antilepton control switchboard 473f D',
+			title: 'Impulssimoottorin antileptonin kontrollointivirtapiiri 473f D',
 			pages: [
-				'<p>Perform the manual task according to instructions.</p><p>The front shield antilepton commands need to be entered manually, in order to override the corrupted automated commands. It’s vital that all requested buttons on both switchboards are switched simultaneously.</p><p>The Front shield antilepton control switchboard 473f is located in the crew bar. Refer to ESS Odysseus Operations Handbook page 2.13-30 for instructions.</p>',
-				'<p>Simultaneously switch the buttons as follows:</p><ul><li>Buttons AMP --> ON</li><li>Buttons THRUST --> ON</li></ul>',
-				'<p>Move to calibrating when complete.</p>',
+				'<p>Suorita työ ohjeiden mukaisesti.</p><p>Impulssimoottorin antileptonikomennot täytyy muuttaa käsin, jotta automaatio voidaan ohittaa turvallisesti. On tärkeää, että molempien ohjausyksiköiden kytkimiä painetaan yhtäaikaisesti.</p><p>Impulssimoottorin antileptonin kontrollointivirtapiiri 473f sijaitsee kantiinissa baaripöydän luona. Ohjeet löytyy ESS Odysseuksen ohjekirjasta.</p>',
+				'<p>Paina seuraavia nappeja yhtäaikaa molemmista ohjausyksiköistä:</p><ul><li>Napit AMP --> Pois päältä asentoon I</li><li>Napit DRIVE --> Päälle asentoon O</li></ul>',
+				'<p>Siirry kalibrointiin, kun työ on valmis.</p>',
 			],
-			buttons: ['Wiring instructions', 'Next', 'Calibrate'],
+			buttons: ['Konfiguraatio', 'Seuraava', 'Kalibroi'],
 		},
 	},
 	{
@@ -380,13 +380,13 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Front shield antilepton control switchboard 473f E',
+			title: 'Impulssimoottorin antileptonin kontrollointivirtapiiri 473f E',
 			pages: [
-				'<p>Perform the manual task according to instructions.</p><p>The front shield antilepton commands need to be entered manually, in order to override the corrupted automated commands. It’s vital that all requested buttons on both switchboards are switched simultaneously.</p><p>The Front shield antilepton control switchboard 473f is located in the crew bar. Refer to ESS Odysseus Operations Handbook page 2.13-30 for instructions.</p>',
-				'<p>Simultaneously switch the buttons as follows:</p><ul><li>Buttons DRIVE --> OFF</li></ul>',
-				'<p>Move to calibrating when complete.</p>',
+				'<p>Suorita työ ohjeiden mukaisesti.</p><p>Impulssimoottorin antileptonikomennot täytyy muuttaa käsin, jotta automaatio voidaan ohittaa turvallisesti. On tärkeää, että molempien ohjausyksiköiden kytkimiä painetaan yhtäaikaisesti.</p><p>Impulssimoottorin antileptonin kontrollointivirtapiiri 473f sijaitsee kantiinissa baaripöydän luona. Ohjeet löytyy ESS Odysseuksen ohjekirjasta.</p>',
+				'<p>Paina seuraavia nappeja yhtäaikaa molemmista ohjausyksiköistä:</p><ul><li>Napit AMP --> Pois päältä asentoon I</li><li>Napit DRIVE --> Päälle asentoon O</li></ul>',
+				'<p>Siirry kalibrointiin, kun työ on valmis.</p>',
 			],
-			buttons: ['Wiring instructions', 'Next', 'Calibrate'],
+			buttons: ['Konfiguraatio', 'Seuraava', 'Kalibroi'],
 		},
 	},
 	{
@@ -476,13 +476,13 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Missile gluon impulse control circuit switchboard 2f345G A',
+			title: 'Reaktorin kontrollointivirtapiiri 2f345G A',
 			pages: [
-				'<p>Perform the manual task according to instructions.</p><p>The code for the switchboard needs to be changed so that the nitronium flow of the missile system can be re-routed, before it critically overloads the missile system’s power supply.</p><p>The Gluon impulse control circuit switchboard 2f345G is located in the armory. Refer to ESS Odysseus Operations Handbook page 2.5-31 for instructions.</p>',
-				'<p>Switch to cable 3 and set up the wires as follows:</p><ul><li>Wire 1 --> Slot R</li><li>Wire 2 --> Slot X</li><li>Wire 3 --> Slot Y</li><li>Wire 4 --> Slot P</li><li>Wire 5 --> Slot Z</li><li>Wire 6 --> Slot Q</li><li>Wire 7 --> Slot U</li><li>Wire 8 --> Slot W</li></ul>',
-				'<p>Move to calibrating when complete.</p>',
+				'<p>Suorita työ ohjeiden mukaisesti.</p><pKontrollointivirtapiirin 2f345G konfiguraatiota tulee muuttaa, jotta nitronium virtaus reaktoriin voidaan uudelleenohjata.</p><p>Reaktorin kontrollointivirtapiiri 2f345G sijaitsee varastohuoneessa. Ohjeet löytyy ESS Odysseuksen ohjekirjasta.</p>',
+				'<p>Vaihda kaapeliin 3 ja aseta johdot seuraavasti:</p><ul><li>Johto 1 --> Koloon R</li><li>Johto 2 --> Koloon X</li><li>Johto 3 --> Koloon Y</li><li>Johto 4 --> Koloon P</li><li>Johto 5 --> Koloon Z</li><li>Johto 6 --> Koloon Q</li><li>Johto 7 --> Koloon U</li><li>Johto 8 --> Koloon W</li></ul>',
+				'<p>Siirry kalibrointiin, kun työ on valmis.</p>',
 			],
-			buttons: ['Wiring instructions', 'Next', 'Calibrate'],
+			buttons: ['Johdotusohjeet', 'Seuraava', 'Kalibroi'],
 		},
 	},
 	{
@@ -492,13 +492,13 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Missile gluon impulse control circuit switchboard 2f345G B',
+			title: 'Reaktorin kontrollointivirtapiiri 2f345G B',
 			pages: [
-				'<p>Perform the manual task according to instructions.</p><p>The code for the switchboard needs to be changed so that the nitronium flow of the missile system can be re-routed, before it critically overloads the missile system’s power supply.</p><p>The Gluon impulse control circuit switchboard 2f345G is located in the armory. Refer to ESS Odysseus Operations Handbook page 2.5-31 for instructions.</p>',
-				'<p>Switch to cable 5 and set up the wires as follows:</p><ul><li>Wire 1 --> Slot Q</li><li>Wire 2 --> Slot Z</li><li>Wire 3 --> Slot P</li><li>Wire 4 --> Slot W</li><li>Wire 5 --> Slot U</li><li>Wire 6 --> Slot R</li><li>Wire 7 --> Slot X</li><li>Wire 8 --> Slot Y</li></ul>',
-				'<p>Move to calibrating when complete.</p>',
+				'<p>Suorita työ ohjeiden mukaisesti.</p><pKontrollointivirtapiirin 2f345G konfiguraatiota tulee muuttaa, jotta nitronium virtaus reaktoriin voidaan uudelleenohjata.</p><p>Reaktorin kontrollointivirtapiiri 2f345G sijaitsee varastohuoneessa. Ohjeet löytyy ESS Odysseuksen ohjekirjasta.</p>',
+				'<p>Vaihda kaapeliin 5 ja aseta johdot seuraavasti:</p><ul><li>Johto 1 --> Koloon Q</li><li>Johto 2 --> Koloon Z</li><li>Johto 3 --> Koloon P</li><li>Johto 4 --> Koloon W</li><li>Johto 5 --> Koloon U</li><li>Johto 6 --> Koloon R</li><li>Johto 7 --> Koloon X</li><li>Johto 8 --> Koloon Y</li></ul>',
+				'<p>Siirry kalibrointiin, kun työ on valmis.</p>',
 			],
-			buttons: ['Wiring instructions', 'Next', 'Calibrate'],
+			buttons: ['Johdotusohjeet', 'Seuraava', 'Kalibroi'],
 		},
 	},
 	{
@@ -508,13 +508,13 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Missile gluon impulse control circuit switchboard 2f345G C',
+			title: 'Reaktorin kontrollointivirtapiiri 2f345G C',
 			pages: [
-				'<p>Perform the manual task according to instructions.</p><p>The code for the switchboard needs to be changed so that the nitronium flow of the missile system can be re-routed, before it critically overloads the missile system’s power supply.</p><p>The Gluon impulse control circuit switchboard 2f345G is located in the armory. Refer to ESS Odysseus Operations Handbook page 2.5-31 for instructions.</p>',
-				'<p>Switch to cable 1 and set up the wires as follows:</p><ul><li>Wire 1 --> Slot Z</li><li>Wire 2 --> Slot U</li><li>Wire 3 --> Slot R</li><li>Wire 4 --> Slot W</li><li>Wire 5 --> Slot Y</li><li>Wire 6 --> Slot P</li><li>Wire 7 --> Slot Q</li><li>Wire 8 --> Slot X</li></ul>',
-				'<p>Move to calibrating when complete.</p>',
+				'<p>Suorita työ ohjeiden mukaisesti.</p><pKontrollointivirtapiirin 2f345G konfiguraatiota tulee muuttaa, jotta nitronium virtaus reaktoriin voidaan uudelleenohjata.</p><p>Reaktorin kontrollointivirtapiiri 2f345G sijaitsee varastohuoneessa. Ohjeet löytyy ESS Odysseuksen ohjekirjasta.</p>',
+				'<p>Vaihda kaapeliin 1 ja aseta johdot seuraavasti:</p><ul><li>Johto 1 --> Koloon Z</li><li>Johto 2 --> Koloon U</li><li>Johto 3 --> Koloon R</li><li>Johto 4 --> Koloon W</li><li>Johto 5 --> Koloon Y</li><li>Johto 6 --> Koloon P</li><li>Johto 7 --> Koloon Q</li><li>Johto 8 --> Koloon X</li></ul>',
+				'<p>Siirry kalibrointiin, kun työ on valmis.</p>',
 			],
-			buttons: ['Wiring instructions', 'Next', 'Calibrate'],
+			buttons: ['Johdotusohjeet', 'Seuraava', 'Kalibroi'],
 		},
 	},
 	{
@@ -524,13 +524,13 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Missile gluon impulse control circuit switchboard 2f345G D',
+			title: 'Reaktorin kontrollointivirtapiiri 2f345G D',
 			pages: [
-				'<p>Perform the manual task according to instructions.</p><p>The code for the switchboard needs to be changed so that the nitronium flow of the missile system can be re-routed, before it critically overloads the missile system’s power supply.</p><p>The Gluon impulse control circuit switchboard 2f345G is located in the armory. Refer to ESS Odysseus Operations Handbook page 2.5-31 for instructions.</p>',
-				'<p>Switch to cable 2 and set up the wires as follows:</p><ul><li>Wire 1 --> Slot P</li><li>Wire 2 --> Slot Q</li><li>Wire 3 --> Slot R</li><li>Wire 4 --> Slot U</li><li>Wire 5 --> Slot W</li><li>Wire 6 --> Slot X</li><li>Wire 7 --> Slot Y</li><li>Wire 8 --> Slot Z</li></ul>',
-				'<p>Move to calibrating when complete.</p>',
+				'<p>Suorita työ ohjeiden mukaisesti.</p><pKontrollointivirtapiirin 2f345G konfiguraatiota tulee muuttaa, jotta nitronium virtaus reaktoriin voidaan uudelleenohjata.</p><p>Reaktorin kontrollointivirtapiiri 2f345G sijaitsee varastohuoneessa. Ohjeet löytyy ESS Odysseuksen ohjekirjasta.</p>',
+				'<p>Vaihda kaapeliin 2 ja aseta johdot seuraavasti:</p><ul><li>Johto 1 --> Koloon P</li><li>Johto 2 --> Koloon Q</li><li>Johto 3 --> Koloon R</li><li>Johto 4 --> Koloon U</li><li>Johto 5 --> Koloon W</li><li>Johto 6 --> Koloon X</li><li>Johto 7 --> Koloon Y</li><li>Johto 8 --> Koloon Z</li></ul>',
+				'<p>Siirry kalibrointiin, kun työ on valmis.</p>',
 			],
-			buttons: ['Wiring instructions', 'Next', 'Calibrate'],
+			buttons: ['Johdotusohjeet', 'Seuraava', 'Kalibroi'],
 		},
 	},
 	{
@@ -540,13 +540,13 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Missile gluon impulse control circuit switchboard 2f345G E',
+			title: 'Reaktorin kontrollointivirtapiiri 2f345G E',
 			pages: [
-				'<p>Perform the manual task according to instructions.</p><p>The code for the switchboard needs to be changed so that the nitronium flow of the missile system can be re-routed, before it critically overloads the missile system’s power supply.</p><p>The Gluon impulse control circuit switchboard 2f345G is located in the armory. Refer to ESS Odysseus Operations Handbook page 2.5-31 for instructions.</p>',
-				'<p>Switch to cable 4 and set up the wires as follows:</p><ul><li>Wire 1 --> Slot X</li><li>Wire 2 --> Slot Q</li><li>Wire 3 --> Slot Z</li><li>Wire 4 --> Slot Y</li><li>Wire 5 --> Slot U</li><li>Wire 6 --> Slot P</li><li>Wire 7 --> Slot W</li><li>Wire 8 --> Slot R</li></ul>',
-				'<p>Move to calibrating when complete.</p>',
+				'<p>Suorita työ ohjeiden mukaisesti.</p><pKontrollointivirtapiirin 2f345G konfiguraatiota tulee muuttaa, jotta nitronium virtaus reaktoriin voidaan uudelleenohjata.</p><p>Reaktorin kontrollointivirtapiiri 2f345G sijaitsee varastohuoneessa. Ohjeet löytyy ESS Odysseuksen ohjekirjasta.</p>',
+				'<p>Vaihda kaapeliin 4 ja aseta johdot seuraavasti:</p><ul><li>Johto 1 --> Koloon X</li><li>Johto 2 --> Koloon Q</li><li>Johto 3 --> Koloon Z</li><li>Johto 4 --> Koloon Y</li><li>Johto 5 --> Koloon U</li><li>Johto 6 --> Koloon P</li><li>Johto 7 --> Koloon W</li><li>Johto 8 --> Koloon R</li></ul>',
+				'<p>Siirry kalibrointiin, kun työ on valmis.</p>',
 			],
-			buttons: ['Wiring instructions', 'Next', 'Calibrate'],
+			buttons: ['Johdotusohjeet', 'Seuraava', 'Kalibroi'],
 		},
 	},
 	{
@@ -556,13 +556,13 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Impulse engine backup power regulation unit B33e - controlling the power charge A',
+			title: 'Impulssimoottorin varavirransäätöyksikkö B33e - varauksen (charge) säätö A',
 			pages: [
-				'<p>Perform the manual task according to instructions.</p><p>Readjust the backup power charge to fix the anomaly.</p><p>The Impulse engine backup power regulation unit B33e is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.6-3 for instructions.</p>',
-				'<p>Twist the button to value:</p><ul><li>300 mA</li></ul>',
-				'<p>Move to calibrating when complete.</p>',
+				'<p>Suorita työ ohjeiden mukaisesti.</p><p>Säädä uudelleen varavirtayksikön varaus.</p><p>Impulssimoottorin varavirransäätöyksikkö B33e sijaitsee komentosillalla. Ohjeet löytyy ESS Odysseuksen ohjekirjasta.</p>',
+				'<p>Käännä kytkin seuraavaan asentoon:</p><ul><li>300 mA</li></ul>',
+				'<p>Siirry kalibrointiin, kun työ on valmis.</p>',
 			],
-			buttons: ['Wiring instructions', 'Next', 'Calibrate'],
+			buttons: ['Konfiguraatio', 'Seuraava', 'Kalibroi'],
 		},
 	},
 	{
@@ -572,13 +572,13 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Impulse engine backup power regulation unit B33e - controlling the power charge B',
+			title: 'Impulssimoottorin varavirransäätöyksikkö B33e - varauksen (charge) säätö B',
 			pages: [
-				'<p>Perform the manual task according to instructions.</p><p>Readjust the backup power charge to fix the anomaly.</p><p>The Impulse engine backup power regulation unit B33e is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.6-3 for instructions.</p>',
-				'<p>Twist the button to value:</p><ul><li>60 V</li></ul>',
-				'<p>Move to calibrating when complete.</p>',
+				'<p>Suorita työ ohjeiden mukaisesti.</p><p>Säädä uudelleen varavirtayksikön varaus.</p><p>Impulssimoottorin varavirransäätöyksikkö B33e sijaitsee komentosillalla. Ohjeet löytyy ESS Odysseuksen ohjekirjasta.</p>',
+				'<p>Käännä kytkin seuraavaan asentoon:</p><ul><li>60 V</li></ul>',
+				'<p>Siirry kalibrointiin, kun työ on valmis.</p>',
 			],
-			buttons: ['Wiring instructions', 'Next', 'Calibrate'],
+			buttons: ['Konfiguraatio', 'Seuraava', 'Kalibroi'],
 		},
 	},
 	{
@@ -588,13 +588,13 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Impulse engine backup power regulation unit B33e - controlling the power charge C',
+			title: 'Impulssimoottorin varavirransäätöyksikkö B33e - varauksen (charge) säätö C',
 			pages: [
-				'<p>Perform the manual task according to instructions.</p><p>Readjust the backup power charge to fix the anomaly.</p><p>The Impulse engine backup power regulation unit B33e is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.6-3 for instructions.</p>',
-				'<p>Twist the button to value:</p><ul><li>1500 mA</li></ul>',
-				'<p>Move to calibrating when complete.</p>',
+				'<p>Suorita työ ohjeiden mukaisesti.</p><p>Säädä uudelleen varavirtayksikön varaus.</p><p>Impulssimoottorin varavirransäätöyksikkö B33e sijaitsee komentosillalla. Ohjeet löytyy ESS Odysseuksen ohjekirjasta.</p>',
+				'<p>Käännä kytkin seuraavaan asentoon:</p><ul><li>1500 mA</li></ul>',
+				'<p>Siirry kalibrointiin, kun työ on valmis.</p>',
 			],
-			buttons: ['Wiring instructions', 'Next', 'Calibrate'],
+			buttons: ['Konfiguraatio', 'Seuraava', 'Kalibroi'],
 		},
 	},
 	{
@@ -604,13 +604,13 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Impulse engine backup power regulation unit B33e - controlling the power charge D',
+			title: 'Impulssimoottorin varavirransäätöyksikkö B33e - varauksen (charge) säätö D',
 			pages: [
-				'<p>Perform the manual task according to instructions.</p><p>Readjust the backup power charge to fix the anomaly.</p><p>The Impulse engine backup power regulation unit B33e is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.6-3 for instructions.</p>',
-				'<p>Twist the button to value:</p><ul><li>600 V</li></ul>',
-				'<p>Move to calibrating when complete.</p>',
+				'<p>Suorita työ ohjeiden mukaisesti.</p><p>Säädä uudelleen varavirtayksikön varaus.</p><p>Impulssimoottorin varavirransäätöyksikkö B33e sijaitsee komentosillalla. Ohjeet löytyy ESS Odysseuksen ohjekirjasta.</p>',
+				'<p>Käännä kytkin seuraavaan asentoon:</p><ul><li>600 V</li></ul>',
+				'<p>Siirry kalibrointiin, kun työ on valmis.</p>',
 			],
-			buttons: ['Wiring instructions', 'Next', 'Calibrate'],
+			buttons: ['Konfiguraatio', 'Seuraava', 'Kalibroi'],
 		},
 	},
 	{
@@ -620,13 +620,13 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Impulse engine backup power regulation unit B33e - controlling the power charge E',
+			title: 'Impulssimoottorin varavirransäätöyksikkö B33e - varauksen (charge) säätö E',
 			pages: [
-				'<p>Perform the manual task according to instructions.</p><p>Readjust the backup power charge to fix the anomaly.</p><p>The Impulse engine backup power regulation unit B33e is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.6-3 for instructions.</p>',
-				'<p>Twist the button to value:</p><ul><li>15 V</li></ul>',
-				'<p>Move to calibrating when complete.</p>',
+				'<p>Suorita työ ohjeiden mukaisesti.</p><p>Säädä uudelleen varavirtayksikön varaus.</p><p>Impulssimoottorin varavirransäätöyksikkö B33e sijaitsee komentosillalla. Ohjeet löytyy ESS Odysseuksen ohjekirjasta.</p>',
+				'<p>Käännä kytkin seuraavaan asentoon:</p><ul><li>15 V</li></ul>',
+				'<p>Siirry kalibrointiin, kun työ on valmis.</p>',
 			],
-			buttons: ['Wiring instructions', 'Next', 'Calibrate'],
+			buttons: ['Konfiguraatio', 'Seuraava', 'Kalibroi'],
 		},
 	},
 	{
@@ -636,13 +636,13 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Impulse engine backup power regulation unit B33e - controlling power supply A',
+			title: 'Impulssimoottorin varavirransäätöyksikkö B33e - virransyötön (supply) säätö A',
 			pages: [
-				'<p>Perform the manual task according to instructions.</p><p>Change the power supply to another setting to fix the anomaly.</p><p>The Impulse engine backup power regulation unit B33e is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.6-2 for instructions.</p>',
-				'<p>Push the button as follows:</p><ul><li>Kj</li></ul>',
-				'<p>Move to calibrating when complete.</p>',
+				'<p>Suorita työ ohjeiden mukaisesti.</p><p>Vaihda virransyöttöjärjestelmä.</p><p>Impulssimoottorin varavirransäätöyksikkö B33e sijaitsee komentosillalla. Ohjeet löytyy ESS Odysseuksen ohjekirjasta.</p>',
+				'<p>Paina nappia:</p><ul><li>Kj</li></ul>',
+				'<p>Siirry kalibrointiin, kun työ on valmis.</p>',
 			],
-			buttons: ['Wiring instructions', 'Next', 'Calibrate'],
+			buttons: ['Konfiguraatio', 'Seuraava', 'Kalibroi'],
 		},
 	},
 	{
@@ -652,13 +652,13 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Impulse engine backup power regulation unit B33e - controlling power supply B',
+			title: 'Impulssimoottorin varavirransäätöyksikkö B33e - virransyötön (supply) säätö B',
 			pages: [
-				'<p>Perform the manual task according to instructions.</p><p>Change the power supply to another setting to fix the anomaly.</p><p>The Impulse engine backup power regulation unit B33e is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.6-2 for instructions.</p>',
-				'<p>Push the button as follows:</p><ul><li>FM</li></ul>',
-				'<p>Move to calibrating when complete.</p>',
+				'<p>Suorita työ ohjeiden mukaisesti.</p><p>Vaihda virransyöttöjärjestelmä.</p><p>Impulssimoottorin varavirransäätöyksikkö B33e sijaitsee komentosillalla. Ohjeet löytyy ESS Odysseuksen ohjekirjasta.</p>',
+				'<p>Paina nappia:</p><ul><li>FM</li></ul>',
+				'<p>Siirry kalibrointiin, kun työ on valmis.</p>',
 			],
-			buttons: ['Wiring instructions', 'Next', 'Calibrate'],
+			buttons: ['Konfiguraatio', 'Seuraava', 'Kalibroi'],
 		},
 	},
 	{
@@ -668,13 +668,13 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Impulse engine backup power regulation unit B33e - controlling power supply C',
+			title: 'Impulssimoottorin varavirransäätöyksikkö B33e - virransyötön (supply) säätö C',
 			pages: [
-				'<p>Perform the manual task according to instructions.</p><p>Change the power supply to another setting to fix the anomaly.</p><p>The Impulse engine backup power regulation unit B33e is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.6-2 for instructions.</p>',
-				'<p>Push the button as follows:</p><ul><li>rZ</li></ul>',
-				'<p>Move to calibrating when complete.</p>',
+				'<p>Suorita työ ohjeiden mukaisesti.</p><p>Vaihda virransyöttöjärjestelmä.</p><p>Impulssimoottorin varavirransäätöyksikkö B33e sijaitsee komentosillalla. Ohjeet löytyy ESS Odysseuksen ohjekirjasta.</p>',
+				'<p>Paina nappia:</p><ul><li>rZ</li></ul>',
+				'<p>Siirry kalibrointiin, kun työ on valmis.</p>',
 			],
-			buttons: ['Wiring instructions', 'Next', 'Calibrate'],
+			buttons: ['Konfiguraatio', 'Seuraava', 'Kalibroi'],
 		},
 	},
 	{
@@ -684,13 +684,13 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Impulse engine backup power regulation unit B33e - controlling power supply D',
+			title: 'Impulssimoottorin varavirransäätöyksikkö B33e - virransyötön (supply) säätö D',
 			pages: [
-				'<p>Perform the manual task according to instructions.</p><p>Change the power supply to another setting to fix the anomaly.</p><p>The Impulse engine backup power regulation unit B33e is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.6-2 for instructions.</p>',
-				'<p>Emergency action: reset:</p><ul><li>Press two buttons to deactivate all buttons</li></ul>',
-				'<p>Move to calibrating when complete.</p>',
+				'<p>Suorita työ ohjeiden mukaisesti.</p><p>Vaihda virransyöttöjärjestelmä.</p><p>Impulssimoottorin varavirransäätöyksikkö B33e sijaitsee komentosillalla. Ohjeet löytyy ESS Odysseuksen ohjekirjasta.</p>',
+				'<p>Paina nappia:</p><ul><li>Paina kahta nappia yhtäaikaa, jotta mikään nappi ei ole alas painettuna</li></ul>',
+				'<p>Siirry kalibrointiin, kun työ on valmis.</p>',
 			],
-			buttons: ['Wiring instructions', 'Next', 'Calibrate'],
+			buttons: ['Konfiguraatio', 'Seuraava', 'Kalibroi'],
 		},
 	},
 	{
@@ -1279,13 +1279,13 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Reactor radiation containment switch 464-900 A',
+			title: 'Reactorin sätelynhallintakytkin 464-900 A',
 			pages: [
-				'<p>Perform the manual task according to instructions.</p><p>A buildup of alpha and beta particles has been observed, and the switch needs to be flicked to reroute energy to alternative charge splitters. The Radiation containment switch 464-900 is located above the mess hall.</p><p><strong>Please scan the corresponding Hansca tag on the stairs before climbing up and leave the Hansca phone to keep it away from radiation during the task. Mark the task to be calibrated only after you return to deck.</strong></p><p>Refer to ESS Odysseus Operations Handbook page 3-186 for instructions.</p>',
-				'<p>Flick switch as follows:</p><ul><li>Up</li></ul>',
-				'<p>Move to calibrating when complete.</p>'
+				'<p>Suorita työ ohjeiden mukaisesti.</p><p>Alfa ja beta partikkelien kerääntymän vuoksi reaktorin sätelynhallintakytkintä käyttäen partikkelit tulee uudelleen ohjata ja hajottaa. Sätelynhallinnan kytkin 464-900 sijaitsee kanttiinin yläpuolella.</p><p><strong>Skannaa HANSCA tagi portaiden alapäässä ennen ylös kiipeämistä. Jätä HANSCA ja tyhjää taskuista kaikki mahdolliset tavarat, jotka voivat pudota. Merkitse tehtävä tehdyksi vasta, kun olet palannut takaisen toiseen kerrokseen.</strong></p><p>Ohjeet löytyvät ESS Odysseuksen käsikirjasta.</p>',
+				'<p>Käännä kytkintä seuraavaan asentoon:</p><ul><li>Ylös</li></ul>',
+				'<p>Siirry kalibrointiin, kun tehtävä on valmis</p>'
 			],
-			buttons: ['Wiring instructions', 'Next', 'Calibrate'],
+			buttons: ['Konfiguraatio', 'Seuraava', 'Kalibroi'],
 		},
 	},
 	{
@@ -1295,13 +1295,13 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Reactor radiation containment switch 464-900 B',
+			title: 'Reactorin sätelynhallintakytkin 464-900 B',
 			pages: [
-				'<p>Perform the manual task according to instructions.</p><p>A buildup of alpha and beta particles has been observed, and the switch needs to be flicked to reroute energy to alternative charge splitters. The Radiation containment switch 464-900 is located above the mess hall.</p><p><strong>Please scan the corresponding Hansca tag on the stairs before climbing up and leave the Hansca phone to keep it away from radiation during the task. Mark the task to be calibrated only after you return to deck.</strong></p><p>Refer to ESS Odysseus Operations Handbook page 3-186 for instructions.</p>',
-				'<p>Flick switch as follows:</p><ul><li>Down</li></ul>',
-				'<p>Move to calibrating when complete.</p>'
+				'<p>Suorita työ ohjeiden mukaisesti.</p><p>Alfa ja beta partikkelien kerääntymän vuoksi reaktorin sätelynhallintakytkintä käyttäen partikkelit tulee uudelleen ohjata ja hajottaa. Sätelynhallinnan kytkin 464-900 sijaitsee kanttiinin yläpuolella.</p><p><strong>Skannaa HANSCA tagi portaiden alapäässä ennen ylös kiipeämistä. Jätä HANSCA ja tyhjää taskuista kaikki mahdolliset tavarat, jotka voivat pudota. Merkitse tehtävä tehdyksi vasta, kun olet palannut takaisen toiseen kerrokseen.</strong></p><p>Ohjeet löytyvät ESS Odysseuksen käsikirjasta.</p>',
+				'<p>Käännä kytkintä seuraavaan asentoon:</p><ul><li>Alas</li></ul>',
+				'<p>Siirry kalibrointiin, kun tehtävä on valmis</p>'
 			],
-			buttons: ['Wiring instructions', 'Next', 'Calibrate'],
+			buttons: ['Konfiguraatio', 'Seuraava', 'Kalibroi'],
 		},
 	},
 	{
@@ -1311,17 +1311,13 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Reactor radiation containment switch 464-900 C',
+			title: 'Reactorin sätelynhallintakytkin 464-900 C',
 			pages: [
-				'<p>Perform the manual task according to instructions.</p><p>A buildup of alpha and beta particles has been observed, and the switch needs to be flicked to reroute energy to alternative charge splitters. The Radiation containment switch 464-900 is located above the mess hall.</p><p><strong>Please scan the corresponding Hansca tag on the stairs before climbing up and leave the Hansca phone to keep it away from radiation during the task. Mark the task to be calibrated only after you return to deck.</strong></p><p>Refer to ESS Odysseus Operations Handbook page 3-186 for instructions.</p>',
-				'<p>Flick switch as follows:</p><ul><li>Middle</li></ul>',
-				'<p>Move to calibrating when complete.</p>'
+				'<p>Suorita työ ohjeiden mukaisesti.</p><p>Alfa ja beta partikkelien kerääntymän vuoksi reaktorin sätelynhallintakytkintä käyttäen partikkelit tulee uudelleen ohjata ja hajottaa. Sätelynhallinnan kytkin 464-900 sijaitsee kanttiinin yläpuolella.</p><p><strong>Skannaa HANSCA tagi portaiden alapäässä ennen ylös kiipeämistä. Jätä HANSCA ja tyhjää taskuista kaikki mahdolliset tavarat, jotka voivat pudota. Merkitse tehtävä tehdyksi vasta, kun olet palannut takaisen toiseen kerrokseen.</strong></p><p>Ohjeet löytyvät ESS Odysseuksen käsikirjasta.</p>',
+				'<p>Käännä kytkintä seuraavaan asentoon:</p><ul><li>Keskelle</li></ul>',
+				'<p>Siirry kalibrointiin, kun tehtävä on valmis</p>'
 			],
-			buttons: [
-				'Wiring instructions',
-				'Next',
-				'Calibrate'
-			]
+			buttons: ['Konfiguraatio', 'Seuraava', 'Kalibroi'],
 		}
 	},
 	{
@@ -1331,13 +1327,13 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Rear shield revolving pulse turbine lubricator switch 53r A',
+			title: 'Reaktorin pyörivä pulssiturbiinin voitelukytkin 53r A',
 			pages: [
-				'<p>Perform the manual task according to instructions.</p><p>The rear shield has suffered damage, and the revolving pulse signals need to be re-attenuated to ensure the shield remains up.</p><p>The Revolving pulse turbine lubricator switch 53r is located in the war room. Refer to ESS Odysseus Operations Handbook page  2.5-34 for instructions.</p>',
-				'<p>Turn the switches as follows:</p><ul><li>Switch AA --> SUP.</li><li>Switch AB --> SUP.</li></ul>',
-				'<p>Move to calibrating when complete.</p>',
+				'<p>Suorita työ ohjeiden mukaisesti.</p><p>Reaktorin hajotessa pyörivä pulssiturbiini tulee voidella.</p><p>Reaktorin pulssiturbiinin voitelukytkin 53r sijaitsee sotahuoneen ryömintätunnelissa. Ohjeet löytyvät ESS Odysseuksen käsikirjasta.</p>',
+				'<p>Käännä voitelukytkintä seuraavasti:</p><ul><li>Kytkin AA --> SUP.</li><li>Kytkin AB --> SUP.</li></ul>',
+				'<p>Siirry kalibrointiin, kun tehtävä on valmis</p>',
 			],
-			buttons: ['Wiring instructions', 'Next', 'Calibrate'],
+			buttons: ['Konfiguraatio', 'Seuraava', 'Kalibroi'],
 		},
 	},
 	{
@@ -1347,13 +1343,13 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Rear shield revolving pulse turbine lubricator switch 53r B',
+			title: 'Reaktorin pyörivä pulssiturbiinin voitelukytkin 53r B',
 			pages: [
-				'<p>Perform the manual task according to instructions.</p><p>The rear shield has suffered damage, and the revolving pulse signals need to be re-attenuated to ensure the shield remains up.</p><p>The Revolving pulse turbine lubricator switch 53r is located in the war room. Refer to ESS Odysseus Operations Handbook page  2.5-34 for instructions.</p>',
-				'<p>Turn the switches as follows:</p><ul><li>Switch AA --> EXH.</li><li>Switch AB --> SUP.</li></ul>',
-				'<p>Move to calibrating when complete.</p>',
+				'<p>Suorita työ ohjeiden mukaisesti.</p><p>Reaktorin hajotessa pyörivä pulssiturbiini tulee voidella.</p><p>Reaktorin pulssiturbiinin voitelukytkin 53r sijaitsee sotahuoneen ryömintätunnelissa. Ohjeet löytyvät ESS Odysseuksen käsikirjasta.</p>',
+				'<p>Käännä voitelukytkintä seuraavasti:</p><ul><li>Kytkin AA --> EXH.</li><li>Kytkin AB --> SUP.</li></ul>',
+				'<p>Siirry kalibrointiin, kun tehtävä on valmis</p>',
 			],
-			buttons: ['Wiring instructions', 'Next', 'Calibrate'],
+			buttons: ['Konfiguraatio', 'Seuraava', 'Kalibroi'],
 		},
 	},
 	{
@@ -1363,13 +1359,13 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Rear shield revolving pulse turbine lubricator switch 53r C',
+			title: 'Reaktorin pyörivä pulssiturbiinin voitelukytkin 53r C',
 			pages: [
-				'<p>Perform the manual task according to instructions.</p><p>The rear shield has suffered damage, and the revolving pulse signals need to be re-attenuated to ensure the shield remains up.</p><p>The Revolving pulse turbine lubricator switch 53r is located in the war room. Refer to ESS Odysseus Operations Handbook page  2.5-34 for instructions.</p>',
-				'<p>Turn the switches as follows:</p><ul><li>Switch AA --> SUP.</li><li>Switch AB --> EXH.</li></ul>',
-				'<p>Move to calibrating when complete.</p>',
+				'<p>Suorita työ ohjeiden mukaisesti.</p><p>Reaktorin hajotessa pyörivä pulssiturbiini tulee voidella.</p><p>Reaktorin pulssiturbiinin voitelukytkin 53r sijaitsee sotahuoneen ryömintätunnelissa. Ohjeet löytyvät ESS Odysseuksen käsikirjasta.</p>',
+				'<p>Käännä voitelukytkintä seuraavasti:</p><ul><li>Kytkin AA --> SUP.</li><li>Kytkin AB --> EXH.</li></ul>',
+				'<p>Siirry kalibrointiin, kun tehtävä on valmis</p>',
 			],
-			buttons: ['Wiring instructions', 'Next', 'Calibrate'],
+			buttons: ['Konfiguraatio', 'Seuraava', 'Kalibroi'],
 		},
 	},
 	{
@@ -1379,13 +1375,13 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Rear shield revolving pulse turbine lubricator switch 53r D',
+			title: 'Reaktorin pyörivä pulssiturbiinin voitelukytkin 53r D',
 			pages: [
-				'<p>Perform the manual task according to instructions.</p><p>The rear shield has suffered damage, and the revolving pulse signals need to be re-attenuated to ensure the shield remains up.</p><p>The Revolving pulse turbine lubricator switch 53r is located in the war room. Refer to ESS Odysseus Operations Handbook page  2.5-34 for instructions.</p>',
-				'<p>Turn the switches as follows:</p><ul><li>Switch AA --> EXH.</li><li>Switch AB --> EXH.</li></ul>',
-				'<p>Move to calibrating when complete.</p>',
+				'<p>Suorita työ ohjeiden mukaisesti.</p><p>Reaktorin hajotessa pyörivä pulssiturbiini tulee voidella.</p><p>Reaktorin pulssiturbiinin voitelukytkin 53r sijaitsee sotahuoneen ryömintätunnelissa. Ohjeet löytyvät ESS Odysseuksen käsikirjasta.</p>',
+				'<p>Käännä voitelukytkintä seuraavasti:</p><ul><li>Kytkin AA --> EXH.</li><li>Kytkin AB --> EXH.</li></ul>',
+				'<p>Siirry kalibrointiin, kun tehtävä on valmis</p>',
 			],
-			buttons: ['Wiring instructions', 'Next', 'Calibrate'],
+			buttons: ['Konfiguraatio', 'Seuraava', 'Kalibroi'],
 		},
 	},
 	{
@@ -1411,13 +1407,13 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Beam weapon versatile Voltmeter B7-17 (model 562) A',
+			title: 'Impulssimoottorin monipuolinen volttimittari B7-17 (malli 562) A',
 			pages: [
-				'<p>Perform the manual task according to instructions.</p><p>The argon quantum shift propulsion of the beam weapons is no longer synchronized, so the setting has been recalculated and needs to be changed.</p><p>The Versatile Voltmeter B7-17 (model 562) is located in the science lab. Refer to ESS Odysseus Operations Handbook page 2.8-49 for instructions.</p>',
-				'<p>Change the setting as follows:</p><ul><li>Turn switch to 0 / 1</li></ul>',
-				'<p>Move to calibrating when complete.</p>',
+				'<p>Suorita manuaalinen tehtävä ohjeiden mukaisesti.</p><p>Impulssimoottorien kvanttisiirtymä on mennyt epätahtiin, joten asetukset on laskettava ja asetettava uudelleen.</p><p>Monimuotoinen volttimittari B7-17 (malli 562) sijaitsee tiedelaboratioriossa. Ohjeet löytyy ESS Odysseuksen ohjekirjasta.</p>',
+				'<p>Muuta asetukset seuraavasti:</p><ul><li>Käännä iso vipu asentoon x10<sup>3</sup></li></ul>',
+				'<p>Siirry kalibraatiovaiheeseen, kun on valmis.</p>',
 			],
-			buttons: ['Wiring instructions', 'Next', 'Calibrate'],
+			buttons: ['Konfiguraatio', 'Seuraava', 'Kalibroi'],
 		},
 	},
 	{
@@ -1427,13 +1423,13 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Beam weapon versatile Voltmeter B7-17 (model 562) B',
+			title: 'Impulssimoottorin monipuolinen volttimittari B7-17 (malli 562) B',
 			pages: [
-				'<p>Perform the manual task according to instructions.</p><p>The argon quantum shift propulsion of the beam weapons is no longer synchronized, so the setting has been recalculated and needs to be changed.</p><p>The Versatile Voltmeter B7-17 (model 562) is located in the science lab. Refer to ESS Odysseus Operations Handbook page 2.8-49 for instructions.</p>',
-				'<p>Change the setting as follows:</p><ul><li>Turn switch to +50 / 300 / x105</li></ul>',
-				'<p>Move to calibrating when complete.</p>',
+				'<p>Suorita manuaalinen tehtävä ohjeiden mukaisesti.</p><p>Impulssimoottorien kvanttisiirtymä on mennyt epätahtiin, joten asetukset on laskettava ja asetettava uudelleen.</p><p>Monimuotoinen volttimittari B7-17 (malli 562) sijaitsee tiedelaboratioriossa. Ohjeet löytyy ESS Odysseuksen ohjekirjasta.</p>',
+				'<p>Muuta asetukset seuraavasti:</p><ul><li>Käännä iso vipu asentoon +50 / 300 / x10<sup>5</sup></li></ul>',
+				'<p>Siirry kalibraatiovaiheeseen, kun on valmis.</p>',
 			],
-			buttons: ['Wiring instructions', 'Next', 'Calibrate'],
+			buttons: ['Konfiguraatio', 'Seuraava', 'Kalibroi'],
 		},
 	},
 	{
@@ -1443,13 +1439,13 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Beam weapon versatile Voltmeter B7-17 (model 562) C',
+			title: 'Impulssimoottorin monipuolinen volttimittari B7-17 (malli 562) C',
 			pages: [
-				'<p>Perform the manual task according to instructions.</p><p>The argon quantum shift propulsion of the beam weapons is no longer synchronized, so the setting has been recalculated and needs to be changed.</p><p>The Versatile Voltmeter B7-17 (model 562) is located in the science lab. Refer to ESS Odysseus Operations Handbook page 2.8-49 for instructions.</p>',
-				'<p>Change the setting as follows:</p><ul><li>Turn switch to +20 / 10</li></ul>',
-				'<p>Move to calibrating when complete.</p>',
+				'<p>Suorita manuaalinen tehtävä ohjeiden mukaisesti.</p><p>Impulssimoottorien kvanttisiirtymä on mennyt epätahtiin, joten asetukset on laskettava ja asetettava uudelleen.</p><p>Monimuotoinen volttimittari B7-17 (malli 562) sijaitsee tiedelaboratioriossa. Ohjeet löytyy ESS Odysseuksen ohjekirjasta.</p>',
+				'<p>Muuta asetukset seuraavasti:</p><ul><li>Käännä iso vipu asentoon +20 / 10</li></ul>',
+				'<p>Siirry kalibraatiovaiheeseen, kun on valmis.</p>',
 			],
-			buttons: ['Wiring instructions', 'Next', 'Calibrate'],
+			buttons: ['Konfiguraatio', 'Seuraava', 'Kalibroi'],
 		},
 	},
 	{
@@ -1459,13 +1455,13 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Beam weapon versatile Voltmeter B7-17 (model 562) D',
+			title: 'Impulssimoottorin monipuolinen volttimittari B7-17 (malli 562) D',
 			pages: [
-				'<p>Perform the manual task according to instructions.</p><p>The argon quantum shift propulsion of the beam weapons is no longer synchronized, so the setting has been recalculated and needs to be changed.</p><p>The Versatile Voltmeter B7-17 (model 562) is located in the science lab. Refer to ESS Odysseus Operations Handbook page 2.8-49 for instructions.</p>',
-				'<p>Change the setting as follows:</p><ul><li>Turn switch to +10 / 3 / x107</li></ul>',
-				'<p>Move to calibrating when complete.</p>',
+				'<p>Suorita manuaalinen tehtävä ohjeiden mukaisesti.</p><p>Impulssimoottorien kvanttisiirtymä on mennyt epätahtiin, joten asetukset on laskettava ja asetettava uudelleen.</p><p>Monimuotoinen volttimittari B7-17 (malli 562) sijaitsee tiedelaboratioriossa. Ohjeet löytyy ESS Odysseuksen ohjekirjasta.</p>',
+				'<p>Muuta asetukset seuraavasti:</p><ul><li>Käännä iso vipu asentoon +10 / 3 / x10<sup>7</sup></li></ul>',
+				'<p>Siirry kalibraatiovaiheeseen, kun on valmis.</p>',
 			],
-			buttons: ['Wiring instructions', 'Next', 'Calibrate'],
+			buttons: ['Konfiguraatio', 'Seuraava', 'Kalibroi'],
 		},
 	},
 	{
@@ -1475,13 +1471,13 @@ blobs.push({
 		game_config: 'manual',
 		status: 'fixed',
 		config: {
-			title: 'Beam weapon versatile Voltmeter B7-17 (model 562) E',
+			title: 'Impulssimoottorin monipuolinen volttimittari B7-17 (malli 562) E',
 			pages: [
-				'<p>Perform the manual task according to instructions.</p><p>The argon quantum shift propulsion of the beam weapons is no longer synchronized, so the setting has been recalculated and needs to be changed.</p><p>The Versatile Voltmeter B7-17 (model 562) is located in the science lab. Refer to ESS Odysseus Operations Handbook page 2.8-49 for instructions.</p>',
-				'<p>Change the setting as follows:</p><ul><li>Turn switch to -10 / 0,3U</li></ul>',
-				'<p>Move to calibrating when complete.</p>',
+				'<p>Suorita manuaalinen tehtävä ohjeiden mukaisesti.</p><p>Impulssimoottorien kvanttisiirtymä on mennyt epätahtiin, joten asetukset on laskettava ja asetettava uudelleen.</p><p>Monimuotoinen volttimittari B7-17 (malli 562) sijaitsee tiedelaboratioriossa. Ohjeet löytyy ESS Odysseuksen ohjekirjasta.</p>',
+				'<p>Muuta asetukset seuraavasti:</p><ul><li>Käännä iso vipu asentoon -10 / 0,3U</li></ul>',
+				'<p>Siirry kalibraatiovaiheeseen, kun on valmis.</p>',
 			],
-			buttons: ['Wiring instructions', 'Next', 'Calibrate'],
+			buttons: ['Konfiguraatio', 'Seuraava', 'Kalibroi'],
 		},
 	},
 	{
@@ -1939,15 +1935,15 @@ blobs.push({
 		game: 'frontshield_antilepton_a',
 		singleUse: false,
 		used: false,
-		eeType: 'frontshield',
+		eeType: 'impulse',
 		eeHealth: 0.12,
 		status: 'initial',
 		calibrationCount: 1,
 		calibrationTime: 480,
-		title: 'Front shield antilepton control switchboard 473f A',
+		title: 'Impulssimoottorin antileptonin kontrollointivirtapiiri 473f A',
 		description:
-			'This combination of switchboards manually controls the front shield antilepton commands. Manual labor is needed. Perform the manual task according to instructions. The Front shield antilepton control switchboard 473f is located in the crew bar. Refer to ESS Odysseus Operations Handbook page 2.13-30 for instructions. Use HANSCA repair for calibration.',
-		location: 'Lower deck, crew bar',
+			'Tämä ohjausyksikköpari kontrolloi impulssimoottorin antileptonivirtapiirejä. Suorita käsin tehtävä työ ohjeiden mukaisesti. Impulssimoottorin antileptonin kontrollointivirtapiiri 473f sijaitsee kantiinissa baaripöydän luona. Ohjeet löytyvät ESS Odysseuksen Operaatiokäsikirjasta. Käytä HANSCAa korjaamiseen.',
+		location: '1. kerros, kantiini',
 		map: 'deck1',
 		mapX: 750, // X coordinate in image
 		mapY: 1170, // Y coordinate in image
@@ -1958,15 +1954,15 @@ blobs.push({
 		game: 'frontshield_antilepton_b',
 		singleUse: false,
 		used: false,
-		eeType: 'frontshield',
+		eeType: 'impulse',
 		eeHealth: 0.12,
 		status: 'initial',
 		calibrationCount: 1,
 		calibrationTime: 480,
-		title: 'Front shield antilepton control switchboard 473f B',
+		title: 'Impulssimoottorin antileptonin kontrollointivirtapiiri 473f B',
 		description:
-			'This combination of switchboards manually controls the front shield antilepton commands. Manual labor is needed. Perform the manual task according to instructions. The Front shield antilepton control switchboard 473f is located in the crew bar. Refer to ESS Odysseus Operations Handbook page 2.13-30 for instructions. Use HANSCA repair for calibration.',
-		location: 'Lower deck, crew bar',
+			'Tämä ohjausyksikköpari kontrolloi impulssimoottorin antileptonivirtapiirejä. Suorita käsin tehtävä työ ohjeiden mukaisesti. Impulssimoottorin antileptonin kontrollointivirtapiiri 473f sijaitsee kantiinissa baaripöydän luona. Ohjeet löytyvät ESS Odysseuksen Operaatiokäsikirjasta. Käytä HANSCAa korjaamiseen.',
+		location: '1. kerros, kantiini',
 		map: 'deck1',
 		mapX: 750, // X coordinate in image
 		mapY: 1170, // Y coordinate in image
@@ -1977,15 +1973,15 @@ blobs.push({
 		game: 'frontshield_antilepton_c',
 		singleUse: false,
 		used: false,
-		eeType: 'frontshield',
+		eeType: 'impulse',
 		eeHealth: 0.12,
 		status: 'initial',
 		calibrationCount: 1,
 		calibrationTime: 480,
-		title: 'Front shield antilepton control switchboard 473f C',
+		title: 'Impulssimoottorin antileptonin kontrollointivirtapiiri 473f C',
 		description:
-			'This combination of switchboards manually controls the front shield antilepton commands. Manual labor is needed. Perform the manual task according to instructions. The Front shield antilepton control switchboard 473f is located in the crew bar. Refer to ESS Odysseus Operations Handbook page 2.13-30 for instructions. Use HANSCA repair for calibration.',
-		location: 'Lower deck, crew bar',
+			'Tämä ohjausyksikköpari kontrolloi impulssimoottorin antileptonivirtapiirejä. Suorita käsin tehtävä työ ohjeiden mukaisesti. Impulssimoottorin antileptonin kontrollointivirtapiiri 473f sijaitsee kantiinissa baaripöydän luona. Ohjeet löytyvät ESS Odysseuksen Operaatiokäsikirjasta. Käytä HANSCAa korjaamiseen.',
+		location: '1. kerros, kantiini',
 		map: 'deck1',
 		mapX: 750, // X coordinate in image
 		mapY: 1170, // Y coordinate in image
@@ -1996,15 +1992,15 @@ blobs.push({
 		game: 'frontshield_antilepton_d',
 		singleUse: false,
 		used: false,
-		eeType: 'frontshield',
+		eeType: 'impulse',
 		eeHealth: 0.12,
 		status: 'initial',
 		calibrationCount: 1,
 		calibrationTime: 480,
-		title: 'Front shield antilepton control switchboard 473f D',
+		title: 'Impulssimoottorin antileptonin kontrollointivirtapiiri 473f D',
 		description:
-			'This combination of switchboards manually controls the front shield antilepton commands. Manual labor is needed. Perform the manual task according to instructions. The Front shield antilepton control switchboard 473f is located in the crew bar. Refer to ESS Odysseus Operations Handbook page 2.13-30 for instructions. Use HANSCA repair for calibration.',
-		location: 'Lower deck, crew bar',
+			'Tämä ohjausyksikköpari kontrolloi impulssimoottorin antileptonivirtapiirejä. Suorita käsin tehtävä työ ohjeiden mukaisesti. Impulssimoottorin antileptonin kontrollointivirtapiiri 473f sijaitsee kantiinissa baaripöydän luona. Ohjeet löytyvät ESS Odysseuksen Operaatiokäsikirjasta. Käytä HANSCAa korjaamiseen.',
+		location: '1. kerros, kantiini',
 		map: 'deck1',
 		mapX: 750, // X coordinate in image
 		mapY: 1170, // Y coordinate in image
@@ -2015,15 +2011,15 @@ blobs.push({
 		game: 'frontshield_antilepton_e',
 		singleUse: false,
 		used: false,
-		eeType: 'frontshield',
+		eeType: 'impulse',
 		eeHealth: 0.12,
 		status: 'initial',
 		calibrationCount: 1,
 		calibrationTime: 480,
-		title: 'Front shield antilepton control switchboard 473f E',
+		title: 'Impulssimoottorin antileptonin kontrollointivirtapiiri 473f E',
 		description:
-			'This combination of switchboards manually controls the front shield antilepton commands. Manual labor is needed. Perform the manual task according to instructions. The Front shield antilepton control switchboard 473f is located in the crew bar. Refer to ESS Odysseus Operations Handbook page 2.13-30 for instructions. Use HANSCA repair for calibration.',
-		location: 'Lower deck, crew bar',
+			'Tämä ohjausyksikköpari kontrolloi impulssimoottorin antileptonivirtapiirejä. Suorita käsin tehtävä työ ohjeiden mukaisesti. Impulssimoottorin antileptonin kontrollointivirtapiiri 473f sijaitsee kantiinissa baaripöydän luona. Ohjeet löytyvät ESS Odysseuksen Operaatiokäsikirjasta. Käytä HANSCAa korjaamiseen.',
+		location: '1. kerros, kantiini',
 		map: 'deck1',
 		mapX: 750, // X coordinate in image
 		mapY: 1170, // Y coordinate in image
@@ -2129,15 +2125,15 @@ blobs.push({
 		game: 'missile_gluon_a',
 		singleUse: false,
 		used: false,
-		eeType: 'missilesystem',
+		eeType: 'reactor',
 		eeHealth: 0.11,
 		status: 'initial',
 		calibrationCount: 10,
 		calibrationTime: 50,
-		title: 'Missile gluon impulse control circuit switchboard 2f345G A',
+		title: 'Reaktorin kontrollointivirtapiiri 2f345G A',
 		description:
-			'This switchboard re-routes the nitronium flow from the gluon core to the missile propeller systems. In order to ensure the safety of the ship, the nitronium flow needs to be frequently re-routed. Manual labor is needed. Perform the manual task according to instructions. The Gluon impulse control circuit switchboard 2f345G is located in the armory. Refer to ESS Odysseus Operations Handbook page 2.5-31 for instructions. Use HANSCA repair for calibration.',
-		location: 'Lower deck, armory',
+			'Kontrollointivirtapiiri uudelleenohjaa nitronium virtausta reaktorille. Suorita käsin tehtävä työ ohjeiden mukaisesti. Reaktorin kontrollointivirtapiiri 2f345Gsijaitsee varastohuoneessa. Ohjeet löytyvät ESS Odysseuksen Operaatiokäsikirjasta. Käytä HANSCAa korjaamiseen.',
+		location: '1. kerros, varastohuone',
 		map: 'deck1',
 		mapX: 560, // X coordinate in image
 		mapY: 1615, // Y coordinate in image
@@ -2148,15 +2144,15 @@ blobs.push({
 		game: 'missile_gluon_b',
 		singleUse: false,
 		used: false,
-		eeType: 'missilesystem',
+		eeType: 'reactor',
 		eeHealth: 0.11,
 		status: 'initial',
 		calibrationCount: 10,
 		calibrationTime: 50,
-		title: 'Missile gluon impulse control circuit switchboard 2f345G B',
+		title: 'Reaktorin kontrollointivirtapiiri 2f345G B',
 		description:
-			'This switchboard re-routes the nitronium flow from the gluon core to the missile propeller systems. In order to ensure the safety of the ship, the nitronium flow needs to be frequently re-routed. Manual labor is needed. Perform the manual task according to instructions. The Gluon impulse control circuit switchboard 2f345G is located in the armory. Refer to ESS Odysseus Operations Handbook page 2.5-31 for instructions. Use HANSCA repair for calibration.',
-		location: 'Lower deck, armory',
+			'Kontrollointivirtapiiri uudelleenohjaa nitronium virtausta reaktorille. Suorita käsin tehtävä työ ohjeiden mukaisesti. Reaktorin kontrollointivirtapiiri 2f345Gsijaitsee varastohuoneessa. Ohjeet löytyvät ESS Odysseuksen Operaatiokäsikirjasta. Käytä HANSCAa korjaamiseen.',
+		location: '1. kerros, varastohuone',
 		map: 'deck1',
 		mapX: 560, // X coordinate in image
 		mapY: 1615, // Y coordinate in image
@@ -2167,15 +2163,15 @@ blobs.push({
 		game: 'missile_gluon_c',
 		singleUse: false,
 		used: false,
-		eeType: 'missilesystem',
+		eeType: 'reactor',
 		eeHealth: 0.11,
 		status: 'initial',
 		calibrationCount: 10,
 		calibrationTime: 50,
-		title: 'Missile gluon impulse control circuit switchboard 2f345G C',
+		title: 'Reaktorin kontrollointivirtapiiri 2f345G C',
 		description:
-			'This switchboard re-routes the nitronium flow from the gluon core to the missile propeller systems. In order to ensure the safety of the ship, the nitronium flow needs to be frequently re-routed. Manual labor is needed. Perform the manual task according to instructions. The Gluon impulse control circuit switchboard 2f345G is located in the armory. Refer to ESS Odysseus Operations Handbook page 2.5-31 for instructions. Use HANSCA repair for calibration.',
-		location: 'Lower deck, armory',
+			'Kontrollointivirtapiiri uudelleenohjaa nitronium virtausta reaktorille. Suorita käsin tehtävä työ ohjeiden mukaisesti. Reaktorin kontrollointivirtapiiri 2f345Gsijaitsee varastohuoneessa. Ohjeet löytyvät ESS Odysseuksen Operaatiokäsikirjasta. Käytä HANSCAa korjaamiseen.',
+		location: '1. kerros, varastohuone',
 		map: 'deck1',
 		mapX: 560, // X coordinate in image
 		mapY: 1615, // Y coordinate in image
@@ -2186,15 +2182,15 @@ blobs.push({
 		game: 'missile_gluon_d',
 		singleUse: false,
 		used: false,
-		eeType: 'missilesystem',
+		eeType: 'reactor',
 		eeHealth: 0.11,
 		status: 'initial',
 		calibrationCount: 10,
 		calibrationTime: 50,
-		title: 'Missile gluon impulse control circuit switchboard 2f345G D',
+		title: 'Reaktorin kontrollointivirtapiiri 2f345G D',
 		description:
-			'This switchboard re-routes the nitronium flow from the gluon core to the missile propeller systems. In order to ensure the safety of the ship, the nitronium flow needs to be frequently re-routed. Manual labor is needed. Perform the manual task according to instructions. The Gluon impulse control circuit switchboard 2f345G is located in the armory. Refer to ESS Odysseus Operations Handbook page 2.5-31 for instructions. Use HANSCA repair for calibration.',
-		location: 'Lower deck, armory',
+			'Kontrollointivirtapiiri uudelleenohjaa nitronium virtausta reaktorille. Suorita käsin tehtävä työ ohjeiden mukaisesti. Reaktorin kontrollointivirtapiiri 2f345Gsijaitsee varastohuoneessa. Ohjeet löytyvät ESS Odysseuksen Operaatiokäsikirjasta. Käytä HANSCAa korjaamiseen.',
+		location: '1. kerros, varastohuone',
 		map: 'deck1',
 		mapX: 560, // X coordinate in image
 		mapY: 1615, // Y coordinate in image
@@ -2205,15 +2201,15 @@ blobs.push({
 		game: 'missile_gluon_e',
 		singleUse: false,
 		used: false,
-		eeType: 'missilesystem',
+		eeType: 'reactor',
 		eeHealth: 0.11,
 		status: 'initial',
 		calibrationCount: 10,
 		calibrationTime: 50,
-		title: 'Missile gluon impulse control circuit switchboard 2f345G E',
+		title: 'Reaktorin kontrollointivirtapiiri 2f345G E',
 		description:
-			'This switchboard re-routes the nitronium flow from the gluon core to the missile propeller systems. In order to ensure the safety of the ship, the nitronium flow needs to be frequently re-routed. Manual labor is needed. Perform the manual task according to instructions. The Gluon impulse control circuit switchboard 2f345G is located in the armory. Refer to ESS Odysseus Operations Handbook page 2.5-31 for instructions. Use HANSCA repair for calibration.',
-		location: 'Lower deck, armory',
+			'Kontrollointivirtapiiri uudelleenohjaa nitronium virtausta reaktorille. Suorita käsin tehtävä työ ohjeiden mukaisesti. Reaktorin kontrollointivirtapiiri 2f345Gsijaitsee varastohuoneessa. Ohjeet löytyvät ESS Odysseuksen Operaatiokäsikirjasta. Käytä HANSCAa korjaamiseen.',
+		location: '1. kerros, varastohuone',
 		map: 'deck1',
 		mapX: 560, // X coordinate in image
 		mapY: 1615, // Y coordinate in image
@@ -2229,10 +2225,10 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 2,
 		calibrationTime: 230,
-		title: 'Impulse IEPBR-unit B33e - power charge A',
+		title: 'Impulssimoottorin varavirransäätöyksikkö B33e - varauksen (charge) säätö A',
 		description:
-			'This unit controls the backup power for the impulse engine. If any anomalies outside of the normal range occur, it may have a critical effect on the energy supply of the impulse engine. Manual labor is needed. Perform the manual task according to instructions. The Impulse engine backup power regulation unit B33e is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.6-3 for instructions. Use HANSCA repair for calibration.',
-		location: 'Upper deck, bridge',
+			'Tämä yksikkö kontrolloi impulssimoottorin varavirtaa. Jos ulkopuoliset poikkeamat voivat vaikuttaa impulssimoottorin varaukseen. Suorita käsin tehtävä työ ohjeiden mukaisesti. Impullsimoottorin varavirransyöttöyksikkö sijatisee komentosillalla. Ohjeet löytyvät ESS Odysseuksen Operaatiokäsikirjasta. Käytä HANSCAa korjaamiseen.',
+		location: '2 kerros, komentosilta',
 		map: 'deck2',
 		mapX: 305, // X coordinate in image
 		mapY: 1200, // Y coordinate in image
@@ -2248,10 +2244,10 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 2,
 		calibrationTime: 230,
-		title: 'Impulse IEPBR-unit B33e - power charge B',
+		title: 'Impulssimoottorin varavirransäätöyksikkö B33e - varauksen (charge) säätö B',
 		description:
-			'This unit controls the backup power for the impulse engine. If any anomalies outside of the normal range occur, it may have a critical effect on the energy supply of the impulse engine. Manual labor is needed. Perform the manual task according to instructions. The Impulse engine backup power regulation unit B33e is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.6-3 for instructions. Use HANSCA repair for calibration.',
-		location: 'Upper deck, bridge',
+			'Tämä yksikkö kontrolloi impulssimoottorin varavirtaa. Jos ulkopuoliset poikkeamat voivat vaikuttaa impulssimoottorin varaukseen. Suorita käsin tehtävä työ ohjeiden mukaisesti. Impullsimoottorin varavirransyöttöyksikkö sijatisee komentosillalla. Ohjeet löytyvät ESS Odysseuksen Operaatiokäsikirjasta. Käytä HANSCAa korjaamiseen.',
+		location: '2 kerros, komentosilta',
 		map: 'deck2',
 		mapX: 305, // X coordinate in image
 		mapY: 1200, // Y coordinate in image
@@ -2267,10 +2263,10 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 2,
 		calibrationTime: 230,
-		title: 'Impulse IEPBR-unit B33e - power charge C',
+		title: 'Impulssimoottorin varavirransäätöyksikkö B33e - varauksen (charge) säätö C',
 		description:
-			'This unit controls the backup power for the impulse engine. If any anomalies outside of the normal range occur, it may have a critical effect on the energy supply of the impulse engine. Manual labor is needed. Perform the manual task according to instructions. The Impulse engine backup power regulation unit B33e is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.6-3 for instructions. Use HANSCA repair for calibration.',
-		location: 'Upper deck, bridge',
+			'Tämä yksikkö kontrolloi impulssimoottorin varavirtaa. Jos ulkopuoliset poikkeamat voivat vaikuttaa impulssimoottorin varaukseen. Suorita käsin tehtävä työ ohjeiden mukaisesti. Impullsimoottorin varavirransyöttöyksikkö sijatisee komentosillalla. Ohjeet löytyvät ESS Odysseuksen Operaatiokäsikirjasta. Käytä HANSCAa korjaamiseen.',
+		location: '2 kerros, komentosilta',
 		map: 'deck2',
 		mapX: 305, // X coordinate in image
 		mapY: 1200, // Y coordinate in image
@@ -2286,10 +2282,10 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 2,
 		calibrationTime: 230,
-		title: 'Impulse IEPBR-unit B33e - power charge D',
+		title: 'Impulssimoottorin varavirransäätöyksikkö B33e - varauksen (charge) säätö D',
 		description:
-			'This unit controls the backup power for the impulse engine. If any anomalies outside of the normal range occur, it may have a critical effect on the energy supply of the impulse engine. Manual labor is needed. Perform the manual task according to instructions. The Impulse engine backup power regulation unit B33e is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.6-3 for instructions. Use HANSCA repair for calibration.',
-		location: 'Upper deck, bridge',
+			'Tämä yksikkö kontrolloi impulssimoottorin varavirtaa. Jos ulkopuoliset poikkeamat voivat vaikuttaa impulssimoottorin varaukseen. Suorita käsin tehtävä työ ohjeiden mukaisesti. Impullsimoottorin varavirransyöttöyksikkö sijatisee komentosillalla. Ohjeet löytyvät ESS Odysseuksen Operaatiokäsikirjasta. Käytä HANSCAa korjaamiseen.',
+		location: '2 kerros, komentosilta',
 		map: 'deck2',
 		mapX: 305, // X coordinate in image
 		mapY: 1200, // Y coordinate in image
@@ -2305,10 +2301,10 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 2,
 		calibrationTime: 230,
-		title: 'Impulse IEPBR-unit B33e - power charge E',
+		title: 'Impulssimoottorin varavirransäätöyksikkö B33e - varauksen (charge) säätö E',
 		description:
-			'This unit controls the backup power for the impulse engine. If any anomalies outside of the normal range occur, it may have a critical effect on the energy supply of the impulse engine. Manual labor is needed. Perform the manual task according to instructions. The Impulse engine backup power regulation unit B33e is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.6-3 for instructions. Use HANSCA repair for calibration.',
-		location: 'Upper deck, bridge',
+			'Tämä yksikkö kontrolloi impulssimoottorin varavirtaa. Jos ulkopuoliset poikkeamat voivat vaikuttaa impulssimoottorin varaukseen. Suorita käsin tehtävä työ ohjeiden mukaisesti. Impullsimoottorin varavirransyöttöyksikkö sijatisee komentosillalla. Ohjeet löytyvät ESS Odysseuksen Operaatiokäsikirjasta. Käytä HANSCAa korjaamiseen.',
+		location: '2 kerros, komentosilta',
 		map: 'deck2',
 		mapX: 305, // X coordinate in image
 		mapY: 1200, // Y coordinate in imagee
@@ -2324,11 +2320,10 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 4,
 		calibrationTime: 110,
-		title: 'Impulse IEPBR-unit B33e - controlling power supply A',
+		title: 'Impulssimoottorin varavirransäätöyksikkö B33e - virransyötön (supply) säätö A',
 		description:
-			'This unit controls the backup power for the impulse engine. If any anomalies outside of the normal range occur, it may have a critical effect on the energy supply of the impulse engine. Manual labor is needed. Perform the manual task according to instructions. The Impulse engine backup power regulation unit B33e is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.6-2 for instructions. Use HANSCA repair for calibration.',
-		location: 'Upper deck, bridge',
-		map: 'deck2',
+			'Tämä yksikkö kontrolloi impulssimoottorin varavirtaa. Jos ulkopuoliset poikkeamat voivat vaikuttaa impulssimoottorin virransyöttöön. Suorita käsin tehtävä työ ohjeiden mukaisesti. Impullsimoottorin varavirransyöttöyksikkö sijatisee komentosillalla. Ohjeet löytyvät ESS Odysseuksen Operaatiokäsikirjasta. Käytä HANSCAa korjaamiseen.',
+		location: '2 kerros, komentosilta',
 		mapX: 305, // X coordinate in image
 		mapY: 1200, // Y coordinate in image
 	},
@@ -2343,11 +2338,10 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 4,
 		calibrationTime: 110,
-		title: 'Impulse IEPBR-unit B33e - controlling power supply B',
+		title: 'Impulssimoottorin varavirransäätöyksikkö B33e - virransyötön (supply) säätö B',
 		description:
-			'This unit controls the backup power for the impulse engine. If any anomalies outside of the normal range occur, it may have a critical effect on the energy supply of the impulse engine. Manual labor is needed. Perform the manual task according to instructions. The Impulse engine backup power regulation unit B33e is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.6-2 for instructions. Use HANSCA repair for calibration.',
-		location: 'Upper deck, bridge',
-		map: 'deck2',
+			'Tämä yksikkö kontrolloi impulssimoottorin varavirtaa. Jos ulkopuoliset poikkeamat voivat vaikuttaa impulssimoottorin virransyöttöön. Suorita käsin tehtävä työ ohjeiden mukaisesti. Impullsimoottorin varavirransyöttöyksikkö sijatisee komentosillalla. Ohjeet löytyvät ESS Odysseuksen Operaatiokäsikirjasta. Käytä HANSCAa korjaamiseen.',
+		location: '2 kerros, komentosilta',
 		mapX: 305, // X coordinate in image
 		mapY: 1200, // Y coordinate in image
 	},
@@ -2362,10 +2356,10 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 4,
 		calibrationTime: 110,
-		title: 'Impulse IEPBR-unit B33e - controlling power supply C',
+		title: 'Impulssimoottorin varavirransäätöyksikkö B33e - virransyötön (supply) säätö C',
 		description:
-			'This unit controls the backup power for the impulse engine. If any anomalies outside of the normal range occur, it may have a critical effect on the energy supply of the impulse engine. Manual labor is needed. Perform the manual task according to instructions. The Impulse engine backup power regulation unit B33e is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.6-2 for instructions. Use HANSCA repair for calibration.',
-		location: 'Upper deck, bridge',
+			'Tämä yksikkö kontrolloi impulssimoottorin varavirtaa. Jos ulkopuoliset poikkeamat voivat vaikuttaa impulssimoottorin virransyöttöön. Suorita käsin tehtävä työ ohjeiden mukaisesti. Impullsimoottorin varavirransyöttöyksikkö sijatisee komentosillalla. Ohjeet löytyvät ESS Odysseuksen Operaatiokäsikirjasta. Käytä HANSCAa korjaamiseen.',
+		location: '2 kerros, komentosilta',
 		map: 'deck2',
 		mapX: 305, // X coordinate in image
 		mapY: 1200, // Y coordinate in image
@@ -2381,10 +2375,10 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 4,
 		calibrationTime: 110,
-		title: 'Impulse IEPBR-unit B33e - controlling power supply D',
+		title: 'Impulssimoottorin varavirransäätöyksikkö B33e - virransyötön (supply) säätö D',
 		description:
-			'This unit controls the backup power for the impulse engine. If any anomalies outside of the normal range occur, it may have a critical effect on the energy supply of the impulse engine. Manual labor is needed. Perform the manual task according to instructions. The Impulse engine backup power regulation unit B33e is located in the bridge. Refer to ESS Odysseus Operations Handbook page 2.6-2 for instructions. Use HANSCA repair for calibration.',
-		location: 'Upper deck, bridge',
+			'Tämä yksikkö kontrolloi impulssimoottorin varavirtaa. Jos ulkopuoliset poikkeamat voivat vaikuttaa impulssimoottorin virransyöttöön. Suorita käsin tehtävä työ ohjeiden mukaisesti. Impullsimoottorin varavirransyöttöyksikkö sijatisee komentosillalla. Ohjeet löytyvät ESS Odysseuksen Operaatiokäsikirjasta. Käytä HANSCAa korjaamiseen.',
+		location: '2 kerros, komentosilta',
 		map: 'deck2',
 		mapX: 305, // X coordinate in image
 		mapY: 1200, // Y coordinate in image
@@ -3085,10 +3079,10 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 6,
 		calibrationTime: 150,
-		title: 'Reactor radiation containment switch 464-900 A',
+		title: 'Reactorin sätelynhallintakytkin 464-900 A',
 		description:
-			'This switch is used to reroute energy to alternative charge splitters when there’s a risk of buildup of alpha and beta particles. Manual labor is needed. Perform the manual task according to instructions. The Radiation containment switch 464-900 is located above the mess hall. Refer to ESS Odysseus Operations Handbook page 3-186 for instructions. Use HANSCA repair for calibration.',
-		location: '3rd deck, above mess hall',
+			'Tätä kytkintä käytetään reaktorin alfa ja beta partikkellien uudelleenohjaamiseen ja hajottamiseen. Suorita käsin tehtävä työ ohjeiden mukaisesti. Säteilynhallintakytkin sijaitsee kantiinin yläpuolella. Ohjeet löytyvät ESS Odysseuksen Operaatiokäsikirjasta. Käytä HANSCAa korjaamiseen.',
+		location: '3. kerros, kanttiinin yläpuolella',
 		map: 'deck3',
 		mapX: 135, // X coordinate in image
 		mapY: 130, // Y coordinate in image
@@ -3104,10 +3098,10 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 6,
 		calibrationTime: 150,
-		title: 'Reactor radiation containment switch 464-900 B',
+		title: 'Reactorin sätelynhallintakytkin 464-900 B',
 		description:
-			'This switch is used to reroute energy to alternative charge splitters when there’s a risk of buildup of alpha and beta particles. Manual labor is needed. Perform the manual task according to instructions. The Radiation containment switch 464-900 is located above the mess hall. Refer to ESS Odysseus Operations Handbook page 3-186 for instructions. Use HANSCA repair for calibration.',
-		location: '3rd deck, above mess hall',
+			'Tätä kytkintä käytetään reaktorin alfa ja beta partikkellien uudelleenohjaamiseen ja hajottamiseen. Suorita käsin tehtävä työ ohjeiden mukaisesti. Säteilynhallintakytkin sijaitsee kantiinin yläpuolella. Ohjeet löytyvät ESS Odysseuksen Operaatiokäsikirjasta. Käytä HANSCAa korjaamiseen.',
+		location: '3. kerros, kanttiinin yläpuolella',
 		map: 'deck3',
 		mapX: 135, // X coordinate in image
 		mapY: 130, // Y coordinate in image
@@ -3123,10 +3117,10 @@ blobs.push({
 		status: 'initial',
 		calibrationCount: 6,
 		calibrationTime: 150,
-		title: 'Reactor radiation containment switch 464-900 C',
+		title: 'Reactorin sätelynhallintakytkin 464-900 C',
 		description:
-			'This switch is used to reroute energy to alternative charge splitters when there’s a risk of buildup of alpha and beta particles. Manual labor is needed. Perform the manual task according to instructions. The Radiation containment switch 464-900 is located above the mess hall. Refer to ESS Odysseus Operations Handbook page 3-186 for instructions. Use HANSCA repair for calibration.',
-		location: '3rd deck, above mess hall',
+			'Tätä kytkintä käytetään reaktorin alfa ja beta partikkellien uudelleenohjaamiseen ja hajottamiseen. Suorita käsin tehtävä työ ohjeiden mukaisesti. Säteilynhallintakytkin sijaitsee kantiinin yläpuolella. Ohjeet löytyvät ESS Odysseuksen Operaatiokäsikirjasta. Käytä HANSCAa korjaamiseen.',
+		location: '3. kerros, kanttiinin yläpuolella',
 		map: 'deck3',
 		mapX: 135, // X coordinate in image
 		mapY: 130, // Y coordinate in image
@@ -3137,15 +3131,15 @@ blobs.push({
 		game: 'rearshield_lubricator_a',
 		singleUse: false,
 		used: false,
-		eeType: 'rearshield',
+		eeType: 'reactor',
 		eeHealth: 0.12,
 		status: 'initial',
 		calibrationCount: 5,
 		calibrationTime: 65,
-		title: 'Rear shield revolving pulse turbine lubricator switch 53r A',
+		title: 'Reaktorin pyörivän pulssiturbiinin voitelu kytkin 53r A',
 		description:
-			'This switch re-attenuates the revolving pulse signals that drive the rear shield’s quantum portal bracket. If the rear shield suffers any kind of damage, this switch helps to ensure the shield remains up. Manual labor is needed. Perform the manual task according to instructions. The Revolving pulse turbine lubricator switch 53r is located in the war room. Refer to ESS Odysseus Operations Handbook page  2.5-34 for instructions. Use HANSCA repair for calibration.',
-		location: '2rd deck, war room',
+			'Tämä kytkin ohjaa pyörivän pulssiturbiinin voitelua. Jos reaktoriin tulee vikaa tämä kytkin auttaa pitämään reaktorin käynnissä. Suorita käsin tehtävä työ ohjeiden mukaisesti. Voitelukytkin 53r A sijaitsee sotahuoneen ryömintätunnelissa. Ohjeet löytyvät ESS Odysseuksen Operaatiokäsikirjasta. Käytä HANSCAa korjaamiseen.',
+		location: '2. kerros, sotahuoneen ryömintätunneli',
 		map: 'deck2',
 		mapX: 615,
 		mapY: 1895,
@@ -3156,15 +3150,15 @@ blobs.push({
 		game: 'rearshield_lubricator_b',
 		singleUse: false,
 		used: false,
-		eeType: 'rearshield',
+		eeType: 'reactor',
 		eeHealth: 0.12,
 		status: 'initial',
 		calibrationCount: 5,
 		calibrationTime: 65,
-		title: 'Rear shield revolving pulse turbine lubricator switch 53r B',
+		title: 'Reaktorin pyörivän pulssiturbiinin voitelu kytkin 53r B',
 		description:
-			'This switch re-attenuates the revolving pulse signals that drive the rear shield’s quantum portal bracket. If the rear shield suffers any kind of damage, this switch helps to ensure the shield remains up. Manual labor is needed. Perform the manual task according to instructions. The Revolving pulse turbine lubricator switch 53r is located in the war room. Refer to ESS Odysseus Operations Handbook page  2.5-34 for instructions. Use HANSCA repair for calibration.',
-		location: '2rd deck, war room',
+			'Tämä kytkin ohjaa pyörivän pulssiturbiinin voitelua. Jos reaktoriin tulee vikaa tämä kytkin auttaa pitämään reaktorin käynnissä. Suorita käsin tehtävä työ ohjeiden mukaisesti. Voitelukytkin 53r A sijaitsee sotahuoneen ryömintätunnelissa. Ohjeet löytyvät ESS Odysseuksen Operaatiokäsikirjasta. Käytä HANSCAa korjaamiseen.',
+		location: '2. kerros, sotahuoneen ryömintätunneli',
 		map: 'deck2',
 		mapX: 615,
 		mapY: 1895,
@@ -3176,15 +3170,15 @@ blobs.push({
 		game: 'rearshield_lubricator_c',
 		singleUse: false,
 		used: false,
-		eeType: 'rearshield',
+		eeType: 'reactor',
 		eeHealth: 0.12,
 		status: 'initial',
 		calibrationCount: 5,
 		calibrationTime: 65,
-		title: 'Rear shield revolving pulse turbine lubricator switch 53r C',
+		title: 'Reaktorin pyörivän pulssiturbiinin voitelu kytkin 53r C',
 		description:
-			'This switch re-attenuates the revolving pulse signals that drive the rear shield’s quantum portal bracket. If the rear shield suffers any kind of damage, this switch helps to ensure the shield remains up. Manual labor is needed. Perform the manual task according to instructions. The Revolving pulse turbine lubricator switch 53r is located in the war room. Refer to ESS Odysseus Operations Handbook page  2.5-34 for instructions. Use HANSCA repair for calibration.',
-		location: '2rd deck, war room',
+			'Tämä kytkin ohjaa pyörivän pulssiturbiinin voitelua. Jos reaktoriin tulee vikaa tämä kytkin auttaa pitämään reaktorin käynnissä. Suorita käsin tehtävä työ ohjeiden mukaisesti. Voitelukytkin 53r A sijaitsee sotahuoneen ryömintätunnelissa. Ohjeet löytyvät ESS Odysseuksen Operaatiokäsikirjasta. Käytä HANSCAa korjaamiseen.',
+		location: '2. kerros, sotahuoneen ryömintätunneli',
 		map: 'deck2',
 		mapX: 615,
 		mapY: 1895,
@@ -3195,15 +3189,15 @@ blobs.push({
 		game: 'rearshield_lubricator_d',
 		singleUse: false,
 		used: false,
-		eeType: 'rearshield',
+		eeType: 'reactor',
 		eeHealth: 0.12,
 		status: 'initial',
 		calibrationCount: 5,
 		calibrationTime: 65,
-		title: 'Rear shield revolving pulse turbine lubricator switch 53r D',
+		title: 'Reaktorin pyörivän pulssiturbiinin voitelu kytkin 53r D',
 		description:
-			'This switch re-attenuates the revolving pulse signals that drive the rear shield’s quantum portal bracket. If the rear shield suffers any kind of damage, this switch helps to ensure the shield remains up. Manual labor is needed. Perform the manual task according to instructions. The Revolving pulse turbine lubricator switch 53r is located in the war room. Refer to ESS Odysseus Operations Handbook page  2.5-34 for instructions. Use HANSCA repair for calibration.',
-		location: '2rd deck, war room',
+			'Tämä kytkin ohjaa pyörivän pulssiturbiinin voitelua. Jos reaktoriin tulee vikaa tämä kytkin auttaa pitämään reaktorin käynnissä. Suorita käsin tehtävä työ ohjeiden mukaisesti. Voitelukytkin 53r A sijaitsee sotahuoneen ryömintätunnelissa. Ohjeet löytyvät ESS Odysseuksen Operaatiokäsikirjasta. Käytä HANSCAa korjaamiseen.',
+		location: '2. kerros, sotahuoneen ryömintätunneli',
 		map: 'deck2',
 		mapX: 615,
 		mapY: 1895,
@@ -3233,15 +3227,15 @@ blobs.push({
 		game: 'beam_voltmeter_a',
 		singleUse: false,
 		used: false,
-		eeType: 'beamweapons',
+		eeType: 'impulse',
 		eeHealth: 0.15,
 		status: 'initial',
 		calibrationCount: 2,
 		calibrationTime: 330,
-		title: 'Beam weapon versatile Voltmeter B7-17 (model 562) A',
+		title: 'Impulssimoottorin monimuotoinen volttimittari B7-17 (malli 562) A',
 		description:
-			' This Voltmeter is used to synchronize the argon quantum shift propulsion of the beam weapons in order to ensure faultless and safe usage. Manual labor is needed. Perform the manual task according to instructions. The Versatile Voltmeter B7-17 (model 562) is located in the science lab. Refer to ESS Odysseus Operations Handbook page 2.8-49 for instructions. Use HANSCA repair for calibration.',
-		location: '2rd deck, science lab',
+			'Tätä volttimittaria käytetään Argon pohjaisen kvanttisiirtymän tahdistamiseen. Suorita käsin tehtävä työ ohjeiden mukaisesti. Monimuotoinen volttimittari B7-17 (malli 562) sijaitsee tiedelaboratioriossa. Ohjeet löytyvät ESS Odysseuksen Operaatiokäsikirjasta. Käytä HANSCAa korjaamiseen.',
+		location: '2. kerros, tiedelaboratorio',
 		map: 'deck2',
 		mapX: 1250, // X coordinate in image
 		mapY: 830, // Y coordinate in image
@@ -3252,15 +3246,15 @@ blobs.push({
 		game: 'beam_voltmeter_b',
 		singleUse: false,
 		used: false,
-		eeType: 'beamweapons',
+		eeType: 'impulse',
 		eeHealth: 0.15,
 		status: 'initial',
 		calibrationCount: 2,
 		calibrationTime: 330,
-		title: 'Beam weapon versatile Voltmeter B7-17 (model 562) B',
+		title: 'Impulssimoottorin monimuotoinen volttimittari B7-17 (malli 562) B',
 		description:
-			' This Voltmeter is used to synchronize the argon quantum shift propulsion of the beam weapons in order to ensure faultless and safe usage. Manual labor is needed. Perform the manual task according to instructions. The Versatile Voltmeter B7-17 (model 562) is located in the science lab. Refer to ESS Odysseus Operations Handbook page 2.8-49 for instructions. Use HANSCA repair for calibration.',
-		location: '2rd deck, science lab',
+			'Tätä volttimittaria käytetään Argon pohjaisen kvanttisiirtymän tahdistamiseen. Suorita käsin tehtävä työ ohjeiden mukaisesti. Monimuotoinen volttimittari B7-17 (malli 562) sijaitsee tiedelaboratioriossa. Ohjeet löytyvät ESS Odysseuksen Operaatiokäsikirjasta. Käytä HANSCAa korjaamiseen.',
+		location: '2. kerros, tiedelaboratorio',
 		map: 'deck2',
 		mapX: 1250, // X coordinate in image
 		mapY: 830, // Y coordinate in image
@@ -3271,15 +3265,15 @@ blobs.push({
 		game: 'beam_voltmeter_c',
 		singleUse: false,
 		used: false,
-		eeType: 'beamweapons',
+		eeType: 'impulse',
 		eeHealth: 0.15,
 		status: 'initial',
 		calibrationCount: 2,
 		calibrationTime: 330,
-		title: 'Beam weapon versatile Voltmeter B7-17 (model 562) C',
+		title: 'Impulssimoottorin monimuotoinen volttimittari B7-17 (malli 562) C',
 		description:
-			' This Voltmeter is used to synchronize the argon quantum shift propulsion of the beam weapons in order to ensure faultless and safe usage. Manual labor is needed. Perform the manual task according to instructions. The Versatile Voltmeter B7-17 (model 562) is located in the science lab. Refer to ESS Odysseus Operations Handbook page 2.8-49 for instructions. Use HANSCA repair for calibration.',
-		location: '2rd deck, science lab',
+			'Tätä volttimittaria käytetään Argon pohjaisen kvanttisiirtymän tahdistamiseen. Suorita käsin tehtävä työ ohjeiden mukaisesti. Monimuotoinen volttimittari B7-17 (malli 562) sijaitsee tiedelaboratioriossa. Ohjeet löytyvät ESS Odysseuksen Operaatiokäsikirjasta. Käytä HANSCAa korjaamiseen.',
+		location: '2. kerros, tiedelaboratorio',
 		map: 'deck2',
 		mapX: 1250, // X coordinate in image
 		mapY: 830, // Y coordinate in image
@@ -3290,15 +3284,15 @@ blobs.push({
 		game: 'beam_voltmeter_d',
 		singleUse: false,
 		used: false,
-		eeType: 'beamweapons',
+		eeType: 'impulse',
 		eeHealth: 0.15,
 		status: 'initial',
 		calibrationCount: 2,
 		calibrationTime: 330,
-		title: 'Beam weapon versatile Voltmeter B7-17 (model 562) D',
+		title: 'Impulssimoottorin monimuotoinen volttimittari B7-17 (malli 562) D',
 		description:
-			' This Voltmeter is used to synchronize the argon quantum shift propulsion of the beam weapons in order to ensure faultless and safe usage. Manual labor is needed. Perform the manual task according to instructions. The Versatile Voltmeter B7-17 (model 562) is located in the science lab. Refer to ESS Odysseus Operations Handbook page 2.8-49 for instructions. Use HANSCA repair for calibration.',
-		location: '2rd deck, science lab',
+			'Tätä volttimittaria käytetään Argon pohjaisen kvanttisiirtymän tahdistamiseen. Suorita käsin tehtävä työ ohjeiden mukaisesti. Monimuotoinen volttimittari B7-17 (malli 562) sijaitsee tiedelaboratioriossa. Ohjeet löytyvät ESS Odysseuksen Operaatiokäsikirjasta. Käytä HANSCAa korjaamiseen.',
+		location: '2. kerros, tiedelaboratorio',
 		map: 'deck2',
 		mapX: 1250, // X coordinate in image
 		mapY: 830, // Y coordinate in image
@@ -3309,15 +3303,15 @@ blobs.push({
 		game: 'beam_voltmeter_e',
 		singleUse: false,
 		used: false,
-		eeType: 'beamweapons',
+		eeType: 'impulse',
 		eeHealth: 0.15,
 		status: 'initial',
 		calibrationCount: 2,
 		calibrationTime: 330,
-		title: 'Beam weapon versatile Voltmeter B7-17 (model 562) E',
+		title: 'Impulssimoottorin monimuotoinen volttimittari B7-17 (malli 562) E',
 		description:
-			' This Voltmeter is used to synchronize the argon quantum shift propulsion of the beam weapons in order to ensure faultless and safe usage. Manual labor is needed. Perform the manual task according to instructions. The Versatile Voltmeter B7-17 (model 562) is located in the science lab. Refer to ESS Odysseus Operations Handbook page 2.8-49 for instructions. Use HANSCA repair for calibration.',
-		location: '2rd deck, science lab',
+			'Tätä volttimittaria käytetään Argon pohjaisen kvanttisiirtymän tahdistamiseen. Suorita käsin tehtävä työ ohjeiden mukaisesti. Monimuotoinen volttimittari B7-17 (malli 562) sijaitsee tiedelaboratioriossa. Ohjeet löytyvät ESS Odysseuksen Operaatiokäsikirjasta. Käytä HANSCAa korjaamiseen.',
+		location: '2. kerros, tiedelaboratorio',
 		map: 'deck2',
 		mapX: 1250, // X coordinate in image
 		mapY: 830, // Y coordinate in image

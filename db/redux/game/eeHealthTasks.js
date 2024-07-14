@@ -43,7 +43,7 @@ for (let i = 0; i < 20; i++) {
 		game_config: 'reactor',
 		status: 'fixed',
 		config: {
-			title: `Reactor power segment ${code}`,
+			title: `Reactorin energia segmentti ${code}`,
 		},
 	});
 	blobs.push({
@@ -56,9 +56,9 @@ for (let i = 0; i < 20; i++) {
 		status: 'initial',
 		calibrationTime: 10 * 60,
 		calibrationCount: 1,
-		title: `Reactor power segment ${code}`,
-		description: `Reactor power segment ${code} has failed. Phase shift needs to be recalibrated using HANSCA.`,
-		location: 'Upper deck, War room',
+		title: `Reactorin energia segmentti ${code}`,
+		description: `Reactorin energia segmentti ${code} on hajonnut. Reaktorin vaihe tarvii uudelleen kalibroidakäyttäen HANSCAa.`,
+		location: '2. kerros, sotahuone',
 		map: 'deck2',
 		mapX: 570,
 		mapY: 1755,
@@ -119,7 +119,7 @@ for (let i = 0; i < 20; i++) {
 		game_config: 'impulse',
 		status: 'fixed',
 		config: {
-			title: `Impulse engine power segment ${code}`,
+			title: `Impulssimoottorin energia segmentti ${code}`,
 		},
 	});
 	blobs.push({
@@ -132,8 +132,8 @@ for (let i = 0; i < 20; i++) {
 		status: 'initial',
 		calibrationTime: 5 * 60,
 		calibrationCount: 1,
-		title: `Impulse engine power segment ${code}`,
-		description: `Impulse engine power segment ${code} has failed. Faulty segment needs to be reconfigured using HANSCA. `,
+		title: `Impulssimoottorin energia segmentti ${code}`,
+		description: `Impulssimoottorin energia segmentti ${code} on likaantunut. Putsaa likaantuneet segmentit käyttäen HANSCAa. `,
 		location: 'Upper deck, Security room',
 		map: 'deck2',
 		mapX: 380,
@@ -146,33 +146,30 @@ blobs.push({
 	id: 'impulse',
 
 	default: {
-		initDescription: '<p>Impulse engine power segment needs reconfiguration.</p>\n\t\t<p>Each number on the lines outside the grid represents a block of squares to be blacked out in that row or column</p>\n\t\t<p>You may reset the shield segments to a random state.</p>',
-		endDescription: 'Segment reconfiguration successful!',
-		game: 'nonogram',
+		initDescription: '<p>Impulssimoottorin segmentit tarvitsevat puhdistusta.</p>\n\t\t<p>Puhdista likaiset segmentit keräämällä likaa (punaiset neliöt) kauko-ohjattavalla käärmeputsarilla. Kun lika on putsattu, järjestelmä korjaantuu.</p>',
+		endDescription: 'Järjestelmä putsattu onnistuneesti!',
+		game: 'snake',
 
-		gridWidth: 6,
-		gridHeight: 8,
-		maxStrikes: 1,
+		speed: 3,
+		targetSnakeLength: 24,
 	},
 
 	'skill:master': {
-		initDescription: '<p>Impulse engine power segment needs reconfiguration.</p>\n\t\t<p>Each number on the lines outside the grid represents a block of squares to be blacked out in that row or column</p>\n\t\t<p>You may reset the shield segments to a random state.</p>',
-		endDescription: 'Segment reconfiguration successful!',
-		game: 'nonogram',
+		initDescription: '<p>Impulssimoottorin segmentit tarvitsevat puhdistusta.</p>\n\t\t<p>Puhdista likaiset segmentit keräämällä likaa (punaiset neliöt) kauko-ohjattavalla käärmeputsarilla. Kun lika on putsattu, järjestelmä korjaantuu.</p>',
+		endDescription: 'Järjestelmä putsattu onnistuneesti!',
+		game: 'snake',
 
-		gridWidth: 6,
-		gridHeight: 6,
-		maxStrikes: 2,
+		speed: 4,
+		targetSnakeLength: 20,
 	},
 
 	'skill:expert': {
-		initDescription: '<p>Impulse engine power segment needs reconfiguration.</p>\n\t\t<p>Each number on the lines outside the grid represents a block of squares to be blacked out in that row or column</p>\n\t\t<p>You may reset the shield segments to a random state.</p>',
-		endDescription: 'Segment reconfiguration successful!',
-		game: 'nonogram',
+		initDescription: '<p>Impulssimoottorin segmentit tarvitsevat puhdistusta.</p>\n\t\t<p>Puhdista likaiset segmentit keräämällä likaa (punaiset neliöt) kauko-ohjattavalla käärmeputsarilla. Kun lika on putsattu, järjestelmä korjaantuu.</p>',
+		endDescription: 'Järjestelmä putsattu onnistuneesti!',
+		game: 'snake',
 
-		gridWidth: 5,
-		gridHeight: 5,
-		maxStrikes: 3,
+		speed: 6,
+		targetSnakeLength: 16,
 	},
 });
 
