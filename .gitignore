@@ -44,7 +44,7 @@ testem.log
 .DS_Store
 Thumbs.db
 
-.env
+#.env
 .backend.env.prod
 
 .nyc_output
