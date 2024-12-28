@@ -1,4 +1,5 @@
 #!/bin/bash
+cd "$(dirname "$0")"
 
 # URL to open in kiosk mode FIXME
 URL="https://google.com"
@@ -8,10 +9,10 @@ CHROMIUM_CMD="chromium-browser --kiosk --noerrdialogs --disable-infobars --disab
 
 # Function to start Chromium
 start_chromium() {
-    echo "Starting Chromium..."
-    $CHROMIUM_CMD &
-    CHROMIUM_PID=$! # Capture the PID of the process
-    echo "Chromium started with PID $CHROMIUM_PID"
+	echo "Starting Chromium..."
+	$CHROMIUM_CMD &
+	CHROMIUM_PID=$! # Capture the PID of the process
+	echo "Chromium started with PID $CHROMIUM_PID"
 }
 
 # Start Chromium initially
@@ -19,9 +20,9 @@ start_chromium
 
 # Monitor Chromium
 while true; do
-    if ! kill -0 $CHROMIUM_PID 2>/dev/null; then
-        echo "Chromium has exited. Restarting..."
-        start_chromium
-    fi
-    sleep 2 # Check every 2 seconds
+	if ! kill -0 $CHROMIUM_PID 2>/dev/null; then
+		echo "Chromium has exited. Restarting..."
+		start_chromium
+	fi
+	sleep 2 # Check every 2 seconds
 done
