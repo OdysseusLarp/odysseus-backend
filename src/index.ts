@@ -41,6 +41,7 @@ import { breakEE } from './rules/ship/jump';
 import { sleep } from './utils/sleep';
 import { initializeTplinkScanning } from './tplink/tplink-control';
 import { interval } from './rules/helpers';
+import path from 'path';
 
 const app = express();
 const http = new Server(app);
@@ -50,6 +51,14 @@ const io = initSocketIoClient(http);
 app.use(bodyParser.json());
 app.use(loggerMiddleware);
 app.use(cors());
+
+// Serve static files from the "odysseus-social-hub" directory under the "/social" path
+app.use('/social', express.static(path.join(__dirname, 'odysseus-social-hub')));
+
+// Redirect any 404 under "/social" to "/social" (since it rewrites to missing urls like /social/news)
+app.use('/social', (req, res) => {
+	res.redirect('/social');
+});
 
 /**
  * Get Prometheus metrics of all API routes and Socket.IO clients
