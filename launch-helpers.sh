@@ -30,3 +30,18 @@ wait_for_frontend() {
 	done
 	echo >&2 "Frontend is up - continuing"
 }
+
+kill_script() {
+	local script_name="$1"
+
+	# Find PIDs of the script
+	local pids
+	pids=$(pgrep -f "$script_name")
+
+	if [[ -n "$pids" ]]; then
+		echo "Killing processes for script '$script_name': $pids"
+		kill $pids
+	else
+		echo "No running process found for script '$script_name'"
+	fi
+}
