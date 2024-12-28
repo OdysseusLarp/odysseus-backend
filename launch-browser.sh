@@ -1,8 +1,8 @@
 #!/bin/bash
 cd "$(dirname "$0")"
 
-# URL to open in kiosk mode FIXME
-URL="https://google.com"
+# URL to open in kiosk mode
+URL="http://localhost:8888/social/"
 
 # Chromium command with kiosk mode flags
 CHROMIUM_CMD="chromium-browser --kiosk --noerrdialogs --disable-infobars --disable-session-crashed-bubble $URL"
