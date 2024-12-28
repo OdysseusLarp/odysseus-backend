@@ -1,5 +1,6 @@
 #!/bin/bash -x
 cd "$(dirname "$0")"
+source "launch-helpers.sh"
 
 # FIXME: Make grep more specific as Docker also uses overlayfs
 if mount | grep -q overlay; then
