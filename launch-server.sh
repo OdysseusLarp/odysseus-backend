@@ -3,7 +3,7 @@ cd "$(dirname "$0")"
 
 source "launch-helpers.sh"
 
-npm run db:start
+#npm run db:start # only if using Docker
 wait_for_postgres
 npm run start:prod &
 wait_for_server
