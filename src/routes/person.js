@@ -7,6 +7,7 @@ import { NotFound, BadRequest } from 'http-errors';
 import { logger } from '@/logger';
 import { getHackingDetectionTime, getRandomHackingIntrustionDetectionMessage } from '@/utils/hacking';
 import * as dmx from '@/dmx';
+import { resetMuseumDatabase } from '@/museum/museum-data-reset';
 const router = new Router();
 
 const DEFAULT_PERSON_PAGE = 1;
@@ -124,6 +125,11 @@ router.get('/:id', handleAsyncErrors(async (req, res) => {
  */
 router.get('/card/:id', handleAsyncErrors(async (req, res) => {
 	const isLogin = req.query.login === 'true';
+
+		if (isLogin) {
+			await resetMuseumDatabase();
+		}
+
 	const person = await Person.forge({ card_id: get(req.params, 'id', '').toUpperCase() }).fetchWithRelated();
 	// Save login to audit log if the login succeeded
 	if (isLogin && person) {
