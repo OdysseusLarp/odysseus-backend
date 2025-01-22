@@ -2,6 +2,7 @@ import { knex } from '../../db';
 import artifactDump from 'museum/data/artifact.json';
 import postDump from 'museum/data/post.json';
 import messageDump from 'museum/data/com_message.json';
+import shipLogDump from 'museum/data/ship_log.json';
 
 /**
  * Update timestamps to the same difference from now as toBeUpdates is from referenceTime
@@ -40,4 +41,5 @@ export async function resetMuseumDatabase() {
 	await resetTable('artifact', artifactDump);
 	await resetTable('post', postDump, 'created_at', '2024-07-05 01:37:00.000+03');
 	await resetTable('com_message', messageDump, 'created_at', '2025-01-22 20:00:00+02');
+	await resetTable('ship_log', shipLogDump, 'created_at', '2024-07-05 00:07:00.000+03');
 }
