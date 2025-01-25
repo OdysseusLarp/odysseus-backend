@@ -767,13 +767,13 @@ THE SOFTWARE.
 
 @angular/material/dialog
 
-@ng-select/ng-select
-MIT
-
 ngx-markdown
 MIT
 
 ngx-scrollbar
+MIT
+
+@ng-select/ng-select
 MIT
 
 @angular/material/tabs
