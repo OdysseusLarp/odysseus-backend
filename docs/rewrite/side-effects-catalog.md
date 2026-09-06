@@ -1,11 +1,8 @@
 # Side-effect catalog
 
-This document lists every place in the Odysseus backend where an operation does
-more than its name, its HTTP method or its signature suggests.
+This document lists every place in the Odysseus backend where an operation does more than its name, its HTTP method or its signature suggests.
 
-Read `docs/rewrite/CONVENTIONS.md` first. This document uses the tags defined
-there. The mechanism behind the store-driven entries is described in
-`docs/rewrite/rules-engine.md`.
+Read `docs/rewrite/CONVENTIONS.md` first. This document uses the tags defined there. The mechanism behind the store-driven entries is described in `docs/rewrite/rules-engine.md`.
 
 **Total entries: 42.**
 
@@ -17,6 +14,7 @@ Severity means "how surprising, multiplied by how much damage".
 | High | Changes state that the caller did not name. Hard to find from the call site. |
 | Medium | Surprising, but the blast radius is one subsystem. |
 | Low | Worth knowing during a rewrite. Low damage. |
+| By design | Not a defect. The behaviour is deliberate. It is listed because other entries inherit it. |
 
 ---
 
@@ -24,11 +22,11 @@ Severity means "how surprising, multiplied by how much damage".
 
 | # | Trigger | Location | Unexpected effect | Why it surprises | Severity | Rewrite guidance |
 |---|---|---|---|---|---|---|
-| 1 | Any HTTP request, any Socket.IO connection | whole of `src/` | No authentication. No authorization. No rate limit. | Every route, including the ones that damage the ship and switch mains power, is open to anyone on the network. | Critical | Add authentication at the edge. Split player, box, HANSCA and game-master scopes. |
+| 1 | Any HTTP request, any Socket.IO connection | whole of `src/` | No authentication. No authorization. No rate limit. | By design. The game runs on a closed network and every client is game equipment. Every route is open, so a client defect has the blast radius of the whole API. | By design `[BY-DESIGN]` | Keep the open model. Record the blast radius of each route instead. |
 | 2 | Any store write at all | `src/store/storePersistance.ts:20-30` | The **entire** Redux store is serialised into one `store` table row every 5 s. | The caller writes one blob; the system rewrites about 1 MB of JSON. Concurrent writers overwrite each other's blobs. Up to 5 s of every change is lost on a crash. | Critical | Store one row per blob. Write on change, not on a global timer. |
 | 3 | `POST /data/:type/:id`, `PATCH /data/:type/:id` | `src/routes/data.js:105,128` | The write runs the rules engine. That can fire DMX, switch mains power sockets, call EmptyEpsilon, write the `ship`, `ship_log` and `grid_action` tables, and cascade into other blobs. | The route reads as a key-value store. It is the main control surface of the whole ship. | Critical | Keep the generic route for reads. Give every effect-bearing write a named command route. |
 | 4 | Any exception inside a `watch` callback | `src/store/store.ts:69` | The process dies. | `interval()` and `timeout()` catch exceptions but `watch()` does not, and there is no `uncaughtException` handler. A missing field in one blob kills the backend. | Critical | Wrap rule callbacks. Add a process-level handler. |
-| 5 | `POST /emit/:eventName` | `src/index.ts:149` | Emits **any** Socket.IO event name with **any** body to every connected client. | The route has no allow-list. A caller can forge `shipUpdated`, `logEntryAdded`, `eventFinished` or any other event. | Critical | Delete it, or restrict it to a fixed list behind game-master authentication. |
+| 5 | `POST /emit/:eventName` | `src/index.ts:149` | Emits **any** Socket.IO event name with **any** body to every connected client. | The route has no allow-list. A caller can forge `shipUpdated`, `logEntryAdded`, `eventFinished` or any other event. | Critical | Delete it, or restrict it to an allow-list of event names. |
 | 6 | `SIGINT` / `SIGTERM` | `src/store/storePersistance.ts:32-45` | The handler saves the store and then calls `process.exit(0)`. | It exits from inside a state-persistence function. Nothing else can run a shutdown step, and the exit code is always 0 even when the save failed. | High | Separate "flush" from "exit". Let the entry point own the exit. |
 | 7 | `POST /dmx/event/:channel` | `src/routes/dmx.js:28` + `src/dmx.ts:232` | Fires DMX **and** switches TP-Link mains sockets on or off. | The route says "DMX". It also cuts mains power to lights and displays. | High | Make the mains control explicit and separate. |
 | 8 | Any `fireEvent(...)` anywhere | `src/dmx.ts:211-233` | Every DMX event is also matched against `tplink/dmxconfig` and can switch a mains socket. The call is not awaited. | 30 call sites across rules and routes think they only fire a lighting cue. | High | Make the mapping a subscriber on an event bus, not a hidden call inside `fireEvent`. |
@@ -37,10 +35,10 @@ Severity means "how surprising, multiplied by how much damage".
 | 11 | `POST /operation` | `src/routes/operation.ts:170` | Writes `entry` (the medical file), `artifact_entry`, updates `operation_result`, and appends to the `misc/science_analysis_in_progress` Redux blob. | The route name says one table. It touches four. | High | Split into explicit sub-flows. |
 | 12 | `PUT /starmap/beacon/decode/:id` | `src/models/ship.js:83-103` | `Beacon.activate()` sets `is_active = false` on **every other** beacon row, fires DMX 250, and writes a `ship_log` entry. | Decoding one beacon rewrites the whole `starmap_beacon` table. | High | Keep the transaction; name the method `activateExclusively`. |
 | 13 | `POST /fleet/:id/jump/validate` | `src/eventhandler.js:166-193` | When `metadata.should_add_log_entries` is true, a failed validation inserts `ship_log` rows. | "Validate" is a read-only word. | High | Move the log writes to the caller. |
-| 14 | `PATCH /fleet/:id/metadata` | `src/routes/fleet.js:90` | Uses lodash `set()` with a caller-supplied `key_path` on the ship metadata object. | Any key path can be written, including nested ones the code does not expect. Combined with entry 1, anyone can set `jump_range`, `scan_range` or `probe_count`. | High | Use an allow-list of key paths. |
+| 14 | `PATCH /fleet/:id/metadata` | `src/routes/fleet.js:90` | Uses lodash `set()` with a caller-supplied `key_path` on the ship metadata object. | Any key path can be written, including nested ones the code does not expect. Any client can set `jump_range`, `scan_range` or `probe_count`. | High | Use an allow-list of key paths. |
 | 15 | `POST /state/break-task` | `src/index.ts:116-138` | Breaks the task, waits 500 ms with a bare `sleep`, then damages EmptyEpsilon. The rules then break more tasks. | The 500 ms sleep is a race workaround, not a synchronisation. `breakEE(type, min, max)` is called with the arguments in the wrong order for hull. | High | Make the sequence explicit and awaited. |
-| 16 | `POST /state/full-push` | `src/index.ts:106` | Fans out into about 29 parallel EmptyEpsilon writes and overwrites the whole live game state. | One HTTP call replaces every system health, heat, weapon count, landing pad, alert level and the hull. | High | Keep it, but make it a game-master-only route with a confirmation. |
-| 17 | `GET /emptyepsilon/damage-dmx` | `src/integrations/emptyepsilon/client.ts:246` | Sends `POST /exec.lua` with a raw Lua string to the EmptyEpsilon server. | A GET performs remote code execution on another host. | High | Rename. Keep the Lua strings in one place and treat the endpoint as privileged. |
+| 16 | `POST /state/full-push` | `src/index.ts:106` | Fans out into about 29 parallel EmptyEpsilon writes and overwrites the whole live game state. | One HTTP call replaces every system health, heat, weapon count, landing pad, alert level and the hull. | High | Keep it. Add a confirmation step before it runs. |
+| 17 | `GET /emptyepsilon/damage-dmx` | `src/integrations/emptyepsilon/client.ts:246` | Sends `POST /exec.lua` with a raw Lua string to the EmptyEpsilon server. | A GET performs remote code execution on another host. | High | Rename it. Keep the Lua strings in one place. |
 | 18 | Any `Post`, `LogEntry`, `AuditLogEntry` or `Vote` save | `src/models/post.js:29-40`, `src/models/log.js:24-35,56`, `src/models/vote.js:56-61` | The Bookshelf `created`, `updated` and `destroying` hooks emit Socket.IO events. | A plain `.save()` in any rule or route broadcasts to every client. `getSocketIoClient()` throws when the socket is not initialised. | High [BOOKSHELF] | Emit from the service layer, not from the model. |
 | 19 | Any `Ship` save where `id === 'odysseus'` | `src/models/ship.js:146-156` | The `updated` hook re-fetches the ship **with geometry** and emits `shipUpdated`. | An unrelated metadata patch triggers an extra `SELECT` with a PostGIS geometry column and a broadcast. | High [BOOKSHELF] [GIS] | Same as entry 18. |
 | 20 | Any `Ship` fetch | `src/models/ship.js:157-162` | The `fetching` hook injects a correlated `COUNT(*)` sub-query over the `person` table into every ship query. | Nothing in the call site mentions `person`. | Medium [BOOKSHELF] [PG] | Make it an explicit `withPersonCount()` scope. |
@@ -71,12 +69,9 @@ Severity means "how surprising, multiplied by how much damage".
 
 ## Detailed entries
 
-### 1. No authentication or authorization anywhere — Critical
+### 1. No authentication, authorization or rate limit — by design `[BY-DESIGN]`
 
-`grep -rni "passport|jwt|authenticate|authorization|req.user" src` finds
-nothing. The only middleware in `src/index.ts:50-75` is `bodyParser.json()`,
-the logger, `cors()` (with no origin restriction), the Prometheus middleware and
-one that attaches `io` to the request.
+The command `grep -rni "passport|jwt|authenticate|authorization|req.user" src` finds nothing. The only middleware in `src/index.ts:50-75` is `bodyParser.json()`, the logger, `cors()`, the Prometheus middleware, and one that attaches `io` to the request. `cors()` has no origin restriction.
 
 ```js
 app.use(bodyParser.json());
@@ -85,12 +80,13 @@ app.use(cors());
 ```
 `src/index.ts:50-52`
 
-Every route in the summary table is reachable by anyone who can reach the port.
-The Socket.IO `/data` namespace is also open (`src/store/storeSocket.ts:35`).
+Every route in the summary table is open to any client that can reach the port. The Socket.IO `/data` namespace is also open (`src/store/storeSocket.ts:35`).
 
-**Rewrite guidance.** The clients are: the physical boxes, HANSCA tablets, the
-admin UI, the Datahub, the infoboards and the Unity games. Give each a scope.
-The box scope needs only `POST /data/box/<its own id>`.
+This is a design decision, not a defect. `00-overview.md` section 2 gives the reasons. The game runs on a closed network. Every client on it is game equipment built by the game crew.
+
+This entry stays in the catalog for one reason: every other entry inherits its blast radius. A client defect, or a test tool pointed at the live server, can fire DMX, switch mains power, or damage the ship.
+
+**Rewrite guidance.** Keep the open model while the network stays closed. Do not add authentication. Instead, make the effect-bearing routes explicit, so a wrong call is easy to see.
 
 ---
 
@@ -121,28 +117,14 @@ async function saveState(data: Record<string, unknown>, id: string) {
 
 Consequences:
 
-- **One row, one column.** The whole store — 671 blobs, including the
-  99 manual task descriptions and the 160 mini-game configurations — is one
-  JSONB value with primary key `'data'` (`db/migrations/20190225175509_redux-store.js:4`).
-- **Last writer wins, at the whole-store level.** There are no per-blob
-  transactions and no row-level locking. Two backend processes on the same
-  database would each overwrite the other completely.
-- **A 5 second loss window.** `leading: false` means the first write after an
-  idle period is delayed by the full period. A crash loses up to 5 s of
-  everything.
-- **The store is never idle.** `jumpstate.js` writes every second
-  (`src/rules/ship/jumpstate.js:169`), `ee-temp.js` writes every second
-  (`src/rules/ship/ee-temp.js:63`), `tasks.js` every 2 s, the airlocks every
-  60 s each. The 5 s write therefore runs for the whole game, whether or not
-  anything meaningful changed.
-- **`saveState` is a read-then-write with no transaction.** Two concurrent calls
-  can both see "no row" and both try to insert.
-- The persistence subscriber runs on **every** dispatch, and `isEmpty(data)`
-  walks the object each time.
+- **One row, one column.** The whole store is one JSONB value with primary key `'data'` (`db/migrations/20190225175509_redux-store.js:4`). It holds 671 blobs, including the 99 manual task descriptions and the 160 mini-game configurations.
+- **Last writer wins, at the whole-store level.** There are no per-blob transactions and no row-level locking. Two backend processes on the same database would each overwrite the other completely.
+- **A 5 second loss window.** `leading: false` means the first write after an idle period is delayed by the full period. A crash loses up to 5 s of everything.
+- **The store is never idle.** `jumpstate.js` writes every second (`src/rules/ship/jumpstate.js:169`). `ee-temp.js` also writes every second (`src/rules/ship/ee-temp.js:63`). `tasks.js` writes every 2 s, and the airlocks write every 60 s each. The 5 s write therefore runs for the whole game, whether or not anything meaningful changed.
+- **`saveState` is a read-then-write with no transaction.** Two concurrent calls can both see "no row" and both try to insert.
+- The persistence subscriber runs on **every** dispatch, and `isEmpty(data)` walks the object each time.
 
-**Rewrite guidance.** One row per `(type, id)`. Write only the blob that
-changed, inside the same transaction as the dispatch. Keep a version column for
-the optimistic check that `src/routes/data.js:18` already implements in memory.
+**Rewrite guidance.** One row per `(type, id)`. Write only the blob that changed, inside the same transaction as the dispatch. Keep a version column for the optimistic check that `src/routes/data.js:18` already implements in memory.
 
 ---
 
@@ -159,8 +141,7 @@ router.post('/:type/:id', (req, res) => {
 ```
 `src/routes/data.js:105-111`
 
-`setData` dispatches. The dispatch runs about 25 `watch` subscribers plus the
-persistence and socket subscribers. Depending on the blob, the write can:
+`setData` dispatches. The dispatch runs about 25 `watch` subscribers plus the persistence and socket subscribers. Depending on the blob, the write can:
 
 | Blob written | Effects reached |
 |---|---|
@@ -173,9 +154,7 @@ persistence and socket subscribers. Depending on the blob, the write can:
 | `tplink/dmxconfig` | Re-scans every configured mains socket. |
 | any blob | `box-game-tasks.js` runs a full scan of `box` and `game`. |
 
-**Rewrite guidance.** Keep `GET /data/...` as a read API. Replace the writes
-with named commands: `POST /jump/initiate`, `POST /box/:id/state`,
-`POST /artifact/:id/activate`. Each command then owns its documented effects.
+**Rewrite guidance.** Keep `GET /data/...` as a read API. Replace the writes with named commands: `POST /jump/initiate`, `POST /box/:id/state`, `POST /artifact/:id/activate`. Each command then owns its documented effects.
 
 ---
 
@@ -193,41 +172,23 @@ if (currentObject !== previousObject) {
 ```
 `src/store/store.ts:66-72`
 
-There is no `try/catch`. There is no `process.on('uncaughtException')` anywhere
-in `src/` or `db/`. An exception inside any rule callback is an uncaught
-exception in a timer tick, which terminates Node.
+There is no `try/catch`. There is no `process.on('uncaughtException')` anywhere in `src/` or `db/`. An exception inside any rule callback is an uncaught exception in a timer tick, which terminates Node.
 
-**This compounds with entry 2.** The only code that saves the Redux state on
-exit is the `SIGINT`/`SIGTERM` handler in `src/store/storePersistance.ts:42-43`.
-An uncaught exception does not raise a signal, so it does not run that handler.
-A rule that throws therefore kills the process **and** skips the shutdown save.
-The game loses everything written since the last 5-second throttled flush.
+**This compounds with entry 2.** The only code that saves the Redux state on exit is the `SIGINT`/`SIGTERM` handler in `src/store/storePersistance.ts:42-43`. An uncaught exception does not raise a signal, so it does not run that handler. A rule that throws therefore kills the process **and** skips the shutdown save. The game loses everything written since the last 5-second throttled flush.
 
-The three known throw sites (`airlock.js:48`, `box-game-tasks.js:39`,
-`box-game-tasks.js:44`) are all reachable from an ordinary `POST /data/:type/:id`
-call with a malformed body. An unauthenticated caller can stop the backend and
-roll the game state back by up to five seconds.
+The three known throw sites (`airlock.js:48`, `box-game-tasks.js:39`, `box-game-tasks.js:44`) are all reachable from an ordinary `POST /data/:type/:id` call with a malformed body. Any caller can stop the backend and roll the game state back by up to five seconds.
 
-A rewrite must do three things, not one: catch exceptions per rule callback,
-install a process-level handler, and make persistence not depend on a clean
-shutdown.
+A rewrite must do three things, not one. It must catch exceptions per rule callback. It must install a process-level handler. It must also make persistence not depend on a clean shutdown.
 
 Known instances:
 
-- `src/rules/boxes/airlock.js:48` reads `this.data.config.jump_close_delay`
-  without a guard. A `box/airlock_main` blob written without a `config` object
-  crashes the backend. [BUG]
-- `src/rules/tasks/box-game-tasks.js:39,44` read `previous.box[id]` and
-  `previous.game[id]` without checking that `previous.box` and `previous.game`
-  exist. [BUG]
-- `src/rules/ship/eeHealth.js:129` had this defect until commit `20146e3`,
-  whose message is "Fix potential server crash".
+- `src/rules/boxes/airlock.js:48` reads `this.data.config.jump_close_delay` without a guard. A `box/airlock_main` blob written without a `config` object crashes the backend. [BUG]
+- `src/rules/tasks/box-game-tasks.js:39,44` read `previous.box[id]` and `previous.game[id]` without checking that `previous.box` and `previous.game` exist. [BUG]
+- `src/rules/ship/eeHealth.js:129` had this defect until commit `20146e3`, whose message is "Fix potential server crash".
 
-Contrast with `src/rules/helpers.js:26` and `:47`, where `interval()` and
-`timeout()` do catch and log.
+Contrast with `src/rules/helpers.js:26` and `:47`, where `interval()` and `timeout()` do catch and log.
 
-**Rewrite guidance.** Wrap every rule invocation. Log the rule name, the path
-and the blob. Add a supervisor.
+**Rewrite guidance.** Wrap every rule invocation. Log the rule name, the path and the blob. Add a supervisor.
 
 ---
 
@@ -242,13 +203,9 @@ app.post('/emit/:eventName', (req, res) => {
 ```
 `src/index.ts:149-153`
 
-Any caller can emit any event name with any payload to every connected client.
-The clients trust these events. Real event names that this can forge include
-`shipUpdated`, `logEntryAdded`, `postAdded`, `voteUpdated`,
-`auditLogEntryAdded`, `eventFinished` and `shipAlertLevelUpdated`.
+Any caller can emit any event name with any payload to every connected client. The clients trust these events. Real event names that this can forge include `shipUpdated`, `logEntryAdded`, `postAdded`, `voteUpdated`, `auditLogEntryAdded`, `eventFinished` and `shipAlertLevelUpdated`.
 
-**Rewrite guidance.** Delete it. If the game masters need a manual trigger, give
-them a fixed list of events behind authentication.
+**Rewrite guidance.** Delete it. If the game masters need a manual trigger, give them a fixed list of allowed event names.
 
 ---
 
@@ -272,18 +229,12 @@ export function enableGracefulShutdown() {
 
 Problems:
 
-1. A state-persistence module owns the process lifecycle. No other component can
-   register a shutdown step.
-2. `if (isEmpty(data)) return;` returns **without exiting**. A signal received
-   before `initState` therefore does nothing at all, and the process keeps
-   running.
-3. The exit code is always 0. A failed `saveState` rejects, the `async` handler
-   produces an unhandled rejection, and the process never exits.
-4. Nothing closes the HTTP server, the Socket.IO server or the database pool.
-   In-flight requests are dropped.
+1. A state-persistence module owns the process lifecycle. No other component can register a shutdown step.
+2. `if (isEmpty(data)) return;` returns **without exiting**. A signal received before `initState` therefore does nothing at all, and the process keeps running.
+3. The exit code is always 0. A failed `saveState` rejects, the `async` handler produces an unhandled rejection, and the process never exits.
+4. Nothing closes the HTTP server, the Socket.IO server or the database pool. In-flight requests are dropped.
 
-**Rewrite guidance.** Emit a shutdown event. Let subscribers flush. Exit from
-the entry point with a timeout.
+**Rewrite guidance.** Emit a shutdown event. Let subscribers flush. Exit from the entry point with a timeout.
 
 ---
 
@@ -318,25 +269,15 @@ for (let dmxSignal of dmxSignals) {
 ```
 `src/tplink/tplink-control.ts:52-67`
 
-Five real devices are wired this way (`db/redux/tplink/index.ts:8`): the medbay
-examination light, the science lab research lights, the security room camera
-displays, the engine room displays and the engine room plasma ball. `JumpStart`
-turns three of them off; `JumpEnd` and `JumpEndBreaking` turn them back on.
+Five real devices are wired this way (`db/redux/tplink/index.ts:8`): the medbay examination light, the science lab research lights, the security room camera displays, the engine room displays and the engine room plasma ball. `JumpStart` turns three of them off. `JumpEnd` and `JumpEndBreaking` turn them back on.
 
-The failure mode: `fireEvent` does not await `processDmxSignal`, and
-`processDmxSignal` schedules the actual switch in a `setTimeout`. A failure is
-logged and swallowed. A socket can stay in the wrong state with no retry and no
-alarm. If the process dies between `JumpStart` and `JumpEnd`, three rooms stay
-dark permanently. [BUG]
+The failure mode: `fireEvent` does not await `processDmxSignal`, and `processDmxSignal` schedules the actual switch in a `setTimeout`. A failure is logged and swallowed. A socket can stay in the wrong state with no retry and no alarm. If the process dies between `JumpStart` and `JumpEnd`, three rooms stay dark permanently. [BUG]
 
-The DMX reset is the same shape: `setTimeout(() => dmx.update(..., 0), 1000)`.
-A crash inside that second leaves the channel latched at 255.
+The DMX reset is the same shape: `setTimeout(() => dmx.update(..., 0), 1000)`. A crash inside that second leaves the channel latched at 255.
 
-`POST /dmx/event/:channel` (`src/routes/dmx.js:28`) is the manual entry point
-into all of this.
+`POST /dmx/event/:channel` (`src/routes/dmx.js:28`) is the manual entry point into all of this.
 
-**Rewrite guidance.** Make the DMX layer emit an event. Let a separate mains
-controller subscribe, retry, and expose its last known state.
+**Rewrite guidance.** Make the DMX layer emit an event. Let a separate mains controller subscribe, retry, and expose its last known state.
 
 ---
 
@@ -372,18 +313,13 @@ router.get('/:id', handleAsyncErrors(async (req, res) => {
 
 Effects of one GET:
 
-1. Inserts an `audit_log` row. That fires the `created` model hook, which emits
-   `auditLogEntryAdded` to every Socket.IO client (`src/models/log.js:56`).
-2. Arms a `setTimeout` of 1, 2 or 5 minutes, taken from
-   `misc/hacker_detection_times` (`db/redux/misc/index.ts:56`).
-3. When it fires: inserts a `ship_log` row (another broadcast) and fires DMX
-   channel 257.
+1. Inserts an `audit_log` row. That fires the `created` model hook, which emits `auditLogEntryAdded` to every Socket.IO client (`src/models/log.js:56`).
+2. Arms a `setTimeout` of 1, 2 or 5 minutes, taken from `misc/hacker_detection_times` (`db/redux/misc/index.ts:56`).
+3. When it fires: inserts a `ship_log` row (another broadcast) and fires DMX channel 257.
 
-The timer is in memory. A restart cancels the alarm silently. The `TODO` at
-line 104 acknowledges that a logout cannot cancel it either.
+The timer is in memory. A restart cancels the alarm silently. The `TODO` at line 104 acknowledges that a logout cannot cancel it either.
 
-**Rewrite guidance.** `POST /session/hacker-login`. Persist a
-`detection_due_at` row and let a poller fire the alarm.
+**Rewrite guidance.** `POST /session/hacker-login`. Persist a `detection_due_at` row and let a poller fire the alarm.
 
 ---
 
@@ -400,9 +336,7 @@ res.json(person);
 ```
 `src/routes/person.js:129-137`
 
-The `save()` is not awaited and has no `.catch`. A database failure becomes an
-unhandled rejection and the client still receives 200. Every Social Hub card
-login goes through this route.
+The `save()` is not awaited and has no `.catch`. A database failure becomes an unhandled rejection and the client still receives 200. Every Social Hub card login goes through this route.
 
 ---
 
@@ -428,26 +362,13 @@ await processXrayOperation(operationResult);
 ```
 `src/routes/operation.ts:174-194`
 
-- `is_analysed: true` is forced on every insert, whatever the caller sent
-  (line 177).
-- `addOperationResultToMedicalEntry` (line 58) inserts an `entry` row in the
-  person's **medical file**, attributed to the hard-coded person id `20263`
-  (`EVA_ID`, line 20), and marks the operation complete.
-- `processXrayOperation` (line 28) inserts a medical entry containing an image
-  link. The image depends on two flags in the `misc/medical` Redux blob: person
-  `20110` gets `brainscan.gif` when `show_20110_tumor` is set, person `20070`
-  gets `kontaminaatio.gif` when `show_20070_alien` is set (lines 38-44). A
-  game-master toggle in the Redux store therefore changes the content that a
-  medical scan produces.
-- `scheduleAddOperationResultToArtifactEntry` (line 84) appends an entry to the
-  `misc/science_analysis_in_progress` Redux blob, with a completion time that
-  depends on the author's skill level **and** on whether the big battery is
-  plugged into the science lab (`src/utils/science.ts:89-92`). A physical
-  battery position changes how long a database analysis takes.
+- `is_analysed: true` is forced on every insert, whatever the caller sent (line 177).
+- `addOperationResultToMedicalEntry` (line 58) inserts an `entry` row in the person's **medical file**. The insert is attributed to the hard-coded person id `20263` (`EVA_ID`, line 20). It also marks the operation complete.
+- `processXrayOperation` (line 28) inserts a medical entry containing an image link. The image depends on two flags in the `misc/medical` Redux blob. Person `20110` gets `brainscan.gif` when `show_20110_tumor` is set. Person `20070` gets `kontaminaatio.gif` when `show_20070_alien` is set (lines 38-44). A game-master toggle in the Redux store therefore changes the content that a medical scan produces.
+- `scheduleAddOperationResultToArtifactEntry` (line 84) appends an entry to the `misc/science_analysis_in_progress` Redux blob. The completion time depends on the author's skill level **and** on whether the big battery is plugged into the science lab (`src/utils/science.ts:89-92`). A physical battery position changes how long a database analysis takes.
 - Later, `src/rules/science/analysis.js` inserts the `artifact_entry` row.
 
-`PUT /operation/:id` (line 208) runs the medical and X-ray steps again, so an
-update can insert another medical entry.
+`PUT /operation/:id` (line 208) runs the medical and X-ray steps again, so an update can insert another medical entry.
 
 ---
 
@@ -472,10 +393,7 @@ activate: function (velianMessage) {
 ```
 `src/models/ship.js:83-103`
 
-Callers: `PUT /starmap/beacon/decode/:id` (`src/routes/starmap.js:43`) and
-`PUT /starmap/velian-distress-signal` (`src/routes/starmap.js:64`). The second
-one additionally writes the `misc/velian` Redux blob with `force = true`
-(line 65), bypassing the version check.
+Callers: `PUT /starmap/beacon/decode/:id` (`src/routes/starmap.js:43`) and `PUT /starmap/velian-distress-signal` (`src/routes/starmap.js:64`). The second one additionally writes the `misc/velian` Redux blob with `force = true` (line 65), bypassing the version check.
 
 ---
 
@@ -492,10 +410,7 @@ export async function validateJumpTarget(shipId, metadata, shouldValidateRange =
 ```
 `src/eventhandler.js:166-193`
 
-The flag lives in the request body, not in the route. `POST /fleet/:id/jump/validate`
-(`src/routes/fleet.js:112`) passes the body straight through. A caller can
-therefore make a "validation" insert `ship_log` rows, each of which broadcasts
-over Socket.IO through the model hook.
+The flag lives in the request body, not in the route. `POST /fleet/:id/jump/validate` (`src/routes/fleet.js:112`) passes the body straight through. A caller can therefore make a "validation" insert `ship_log` rows, each of which broadcasts over Socket.IO through the model hook.
 
 ---
 
@@ -516,14 +431,9 @@ router.patch('/:id/metadata', handleAsyncErrors(async (req, res) => {
 ```
 `src/routes/fleet.js:90-100`
 
-`set()` is lodash. The `key_path` comes from the request body. Game-critical
-values live in this object: `jump_range`, `scan_range`, `probe_count`,
-`jump_crystal_count`. Combined with entry 1, anyone can set them. `clone()` is a
-shallow copy, so `set()` on a nested path mutates the model's own object as
-well.
+`set()` is lodash. The `key_path` comes from the request body. Game-critical values live in this object: `jump_range`, `scan_range`, `probe_count`, `jump_crystal_count`. Any client can set any of them. `clone()` is a shallow copy, so `set()` on a nested path mutates the model's own object as well.
 
-The save also fires the `updated` hook (entry 19), which re-fetches the ship with
-geometry and broadcasts.
+The save also fires the `updated` hook (entry 19), which re-fetches the ship with geometry and broadcasts.
 
 ---
 
@@ -543,14 +453,8 @@ res.sendStatus(204);
 
 Two defects:
 
-1. The 500 ms `sleep` is a guess at how long the cascade
-   `breakTask -> box blob -> box-game-tasks -> task blob` takes. Under load it
-   is not enough. [BUG]
-2. `breakEE(type, min, max)` (`src/rules/ship/jump.js:521`) picks a random
-   damage in `[min, max]`. The call passes `(task.eeHealth, healthAmount)`. For
-   hull, `healthAmount = eeHealth - 0.01`, so `min > max` and
-   `random(min, max)` returns a value **below** `max`, that is, less damage than
-   either bound. The comment says the intent was the opposite. [BUG]
+1. The 500 ms `sleep` is a guess at how long the cascade `breakTask -> box blob -> box-game-tasks -> task blob` takes. Under load it is not enough. [BUG]
+2. `breakEE(type, min, max)` (`src/rules/ship/jump.js:521`) picks a random damage in `[min, max]`. The call passes `(task.eeHealth, healthAmount)`. For hull, `healthAmount = eeHealth - 0.01`, so `min > max` and `random(min, max)` returns a value **below** `max`, that is, less damage than either bound. The comment says the intent was the opposite. [BUG]
 
 ---
 
@@ -570,15 +474,9 @@ public async pushFullGameState(state: Record<string, any>) {
 ```
 `src/integrations/emptyepsilon/client.ts:211-220`
 
-`fullStateToApiCommands` (line 260) produces 9 heat writes, 9 health writes, 5
-weapon writes and 4 landing pad writes. With the alert level and the hull that
-is 29 parallel HTTP requests to a game server that the code elsewhere describes
-as fragile (`src/integrations/emptyepsilon/state.ts:8`, and the request-splitting
-workaround at `client.ts:88`).
+`fullStateToApiCommands` (line 260) produces 9 heat writes, 9 health writes, 5 weapon writes and 4 landing pad writes. With the alert level and the hull, that is 29 parallel HTTP requests to a game server. The code elsewhere describes that server as fragile (`src/integrations/emptyepsilon/state.ts:8`, and the request-splitting workaround at `client.ts:88`).
 
-`setGameState` returns `undefined` when `ship/metadata.ee_connection_enabled` is
-false (line 197). `Promise.all` then resolves and the route reports
-`{success: true}` even though nothing was sent. [BUG]
+`setGameState` returns `undefined` when `ship/metadata.ee_connection_enabled` is false (line 197). `Promise.all` then resolves and the route reports `{success: true}` even though nothing was sent. [BUG]
 
 ---
 
@@ -598,13 +496,9 @@ public async isDamageDmxEnabled() {
 ```
 `src/integrations/emptyepsilon/client.ts:246-258`
 
-Reached from `GET /emptyepsilon/damage-dmx` (`src/routes/emptyepsilon.ts:97`).
-`enableDamageDmx` and `disableDamageDmx` (lines 222 and 234) do the same with
-mutating Lua.
+Reached from `GET /emptyepsilon/damage-dmx` (`src/routes/emptyepsilon.ts:97`). `enableDamageDmx` and `disableDamageDmx` (lines 222 and 234) do the same with mutating Lua.
 
-Both of those have a second defect: the `if (!this.dmxExecUrl)` branch logs but
-does not `return`. The code then calls `axios.post(undefined, ...)`, which
-throws and is swallowed by the `catch`. The caller sees a success. [BUG]
+Both of those have a second defect: the `if (!this.dmxExecUrl)` branch logs but does not `return`. The code then calls `axios.post(undefined, ...)`, which throws and is swallowed by the `catch`. The caller sees a success. [BUG]
 
 ---
 
@@ -622,20 +516,13 @@ initialize() {
 ```
 `src/models/post.js:26-41`
 
-The same pattern is in `src/models/log.js:21-36` (`LogEntry`),
-`src/models/log.js:55-62` (`AuditLogEntry`) and `src/models/vote.js:55-62`
-(`Vote`).
+The same pattern is in `src/models/log.js:21-36` (`LogEntry`), `src/models/log.js:55-62` (`AuditLogEntry`) and `src/models/vote.js:55-62` (`Vote`).
 
 Consequences:
 
-- Every `shipLogger.info(...)` call inside a rule broadcasts to every client.
-  There are 20 such calls in `src/rules/ship/jump.js` alone.
-- `getSocketIoClient()` **throws** when `io` is not set
-  (`src/websocket.ts:20`). Any model save before `initSocketIoClient` runs kills
-  the caller. Today `initSocketIoClient` runs first (`src/index.ts:47`), so this
-  is latent.
-- The hooks run inside the caller's transaction. A broadcast can therefore
-  announce a row that a later rollback removes.
+- Every `shipLogger.info(...)` call inside a rule broadcasts to every client. There are 20 such calls in `src/rules/ship/jump.js` alone.
+- `getSocketIoClient()` **throws** when `io` is not set (`src/websocket.ts:20`). Any model save before `initSocketIoClient` runs kills the caller. Today `initSocketIoClient` runs first (`src/index.ts:47`), so this is latent.
+- The hooks run inside the caller's transaction. A broadcast can therefore announce a row that a later rollback removes.
 
 The `Ship` model is worse:
 
@@ -651,12 +538,7 @@ this.on('updated', async model => {
 ```
 `src/models/ship.js:146-156`
 
-Every Odysseus update triggers an extra `SELECT` that includes the PostGIS
-geometry column and the person-count sub-query (entry 20), then a broadcast of
-the whole model. `src/rules/ship/jump.js` and
-`src/rules/artifacts/artifact.ts:91` both save the ship. The `if (!io)` guard is
-dead code: `getSocketIoClient()` throws instead of returning a falsy value.
-[DEAD]
+Every Odysseus update triggers an extra `SELECT`. That query includes the PostGIS geometry column and the person-count sub-query (entry 20). It is followed by a broadcast of the whole model. `src/rules/ship/jump.js` and `src/rules/artifacts/artifact.ts:91` both save the ship. The `if (!io)` guard is dead code: `getSocketIoClient()` throws instead of returning a falsy value. [DEAD]
 
 ---
 
@@ -677,12 +559,7 @@ this.on('saving', (model, columns, options) => {
 ```
 `src/models/ship.js:157-167`
 
-A correlated sub-query is added to **every** ship fetch, including the ones
-inside the jump rule. The `saving` hook then has to remove the resulting virtual
-column, because there is no such column in the table. A fetch-modify-save round
-trip therefore silently drops `person_count`.
-[BOOKSHELF] [PG] — a plain SQL rewrite must add this column explicitly where it
-is wanted, and nowhere else.
+A correlated sub-query is added to **every** ship fetch, including the ones inside the jump rule. The `saving` hook then has to remove the resulting virtual column, because there is no such column in the table. A fetch-modify-save round trip therefore silently drops `person_count`. [BOOKSHELF] [PG] — a plain SQL rewrite must add this column explicitly where it is wanted, and nowhere else.
 
 ---
 
@@ -700,13 +577,9 @@ jumpFleet: async function ({ grid_id, metadata, the_geom }) {
 ```
 `src/models/ship.js:160-172`
 
-The raw statement bypasses Bookshelf, so no hooks fire for the fleet — only for
-Odysseus. That is deliberate (comment at line 171) but it means the fleet ships
-move with no broadcast. [PG] [GIS]
+The raw statement bypasses Bookshelf, so no hooks fire for the fleet — only for Odysseus. That is deliberate (comment at line 171) but it means the fleet ships move with no broadcast. [PG] [GIS]
 
-Called from `performShipJump` (`src/rules/ship/jump.js:84`), which is itself
-called without `await` at line 337. A failure there is an unhandled rejection
-during the most important moment of the game. [BUG]
+Called from `performShipJump` (`src/rules/ship/jump.js:84`), which is itself called without `await` at line 337. A failure there is an unhandled rejection during the most important moment of the game. [BUG]
 
 ---
 
@@ -731,13 +604,9 @@ watch(['data', 'ship', 'ee'], (ee, previous, state) => {
 ```
 `src/rules/ship/eeHealth.js:96-122`
 
-The EE poll writes `ship/ee` up to once per second. Any drop breaks tasks until
-the task-derived health matches. Each break writes a `box` or `game` blob, which
-triggers `box-game-tasks.js`, which writes a `task` blob, which triggers
-`lifesupport.js` and `eeHealthDmx.js`, which fires DMX.
+The EE poll writes `ship/ee` up to once per second. Any drop breaks tasks until the task-derived health matches. Each break writes a `box` or `game` blob, which triggers `box-game-tasks.js`, which writes a `task` blob, which triggers `lifesupport.js` and `eeHealthDmx.js`, which fires DMX.
 
-The hull special case returns from the **whole callback**, not from the current
-loop iteration:
+The hull special case returns from the **whole callback**, not from the current loop iteration:
 
 ```js
 if (type === 'hull' && shouldIgnoreHullDamage) {
@@ -747,11 +616,9 @@ if (type === 'hull' && shouldIgnoreHullDamage) {
 ```
 `src/rules/ship/eeHealth.js:108-111`
 
-`hull` is the last element of `TYPES` (line 21), so today nothing is skipped.
-Reordering the array would silently break the other types. [BUG]
+`hull` is the last element of `TYPES` (line 21), so today nothing is skipped. Reordering the array would silently break the other types. [BUG]
 
-The `try/catch` here means a bad EE payload is logged and ignored, which hides
-the failure.
+The `try/catch` here means a bad EE payload is logged and ignored, which hides the failure.
 
 ---
 
@@ -772,11 +639,7 @@ watch(['data', 'task'], async (tasks, previousTasks, state) => {
 ```
 `src/rules/ship/eeHealth.js:125-142`
 
-`setEEHealth` (line 36) calls EmptyEpsilon and then forces a full state re-poll.
-The callback is `async` and `watch()` does not await it, so several of these can
-be in flight at once. Each one reads `getEEHealth(ee, type)` from a possibly
-stale snapshot, so two tasks fixed in the same tick can both compute the same
-base and one increment is lost. [BUG]
+`setEEHealth` (line 36) calls EmptyEpsilon and then forces a full state re-poll. The callback is `async` and `watch()` does not await it, so several of these can be in flight at once. Each one reads `getEEHealth(ee, type)` from a possibly stale snapshot. So two tasks fixed in the same tick can both compute the same base, and one increment is lost. [BUG]
 
 ---
 
@@ -799,12 +662,9 @@ watch(['data', 'ship', 'ee'], autoRepairHull);
 ```
 `src/rules/ship/autoRepairHull.ts:20-32`
 
-The hull can never go below 2 hit points. A game master who sets the hull to 0
-sees it jump back to 2 within 2 s. The reason is in the comment: EmptyEpsilon
-fires its own damage DMX only when the hull actually takes damage.
+The hull can never go below 2 hit points. A game master who sets the hull to 0 sees it jump back to 2 within 2 s. The reason is in the comment: EmptyEpsilon fires its own damage DMX only when the hull actually takes damage.
 
-`eeHealth.js:88-93` has a matching special case so that this oscillation does
-not break hull tasks forever.
+`eeHealth.js:88-93` has a matching special case so that this oscillation does not break hull tasks forever.
 
 ---
 
@@ -827,13 +687,9 @@ if (Math.random() < box.engineBreakProb) {
 ```
 `src/rules/boxes/driftingValue.js:19-31`
 
-Runs every second. The seed sets `engineBreakProb` to 0.055
-(`db/redux/box/driftingValue.js:17`), which is about 3.3 percentage points of
-impulse health per minute. Each drop cascades through entry 22 and breaks
-impulse tasks.
+Runs every second. The seed sets `engineBreakProb` to 0.055 (`db/redux/box/driftingValue.js:17`), which is about 3.3 percentage points of impulse health per minute. Each drop cascades through entry 22 and breaks impulse tasks.
 
-The presets in the seed name the intended durations: 10, 15, 20, 30, 45 and 60
-minutes to reach 0 % (`db/redux/box/driftingValue.js:83-100`).
+The presets in the seed name the intended durations: 10, 15, 20, 30, 45 and 60 minutes to reach 0 % (`db/redux/box/driftingValue.js:83-100`).
 
 ---
 
@@ -848,12 +704,9 @@ case CRITICAL:
 ```
 `src/rules/ship/lifesupport.js:80-84`
 
-The promise is not awaited and has no `.catch`. `setAlertLevel` rejects on any
-HTTP error (`src/integrations/emptyepsilon/client.ts:165`), which becomes an
-unhandled rejection.
+The promise is not awaited and has no `.catch`. `setAlertLevel` rejects on any HTTP error (`src/integrations/emptyepsilon/client.ts:165`), which becomes an unhandled rejection.
 
-The whole `checkLevel` call is delayed by 4.5 minutes from the health change
-(`src/rules/ship/lifesupport.js:28`), so the alert appears long after the cause.
+The whole `checkLevel` call is delayed by 4.5 minutes from the health change (`src/rules/ship/lifesupport.js:28`), so the alert appears long after the cause.
 
 ---
 
@@ -868,14 +721,9 @@ async function repairFighter(landingPad: number) {
 ```
 `src/rules/ship/fighters.ts:21-25`
 
-`getRandomLogEntry` picks one of five templates at random (line 16). The rule
-runs on every `box/bigbattery` change, and the depletion timer changes that blob
-every 60 s. The function is `async` and the watcher does not await it, so two
-overlapping runs can repair the same pad twice and write two log entries. [BUG]
+`getRandomLogEntry` picks one of five templates at random (line 16). The rule runs on every `box/bigbattery` change, and the depletion timer changes that blob every 60 s. The function is `async`, and the watcher does not await it. So two overlapping runs can repair the same pad twice and write two log entries. [BUG]
 
-`isBatteryConnectedAndCharged` honours `emergency_assumed_at_positions`
-(`src/utils/bigbattery-helpers.ts:39`), so a game master preset can make the
-battery "connected everywhere" and repair all three fighters at once.
+`isBatteryConnectedAndCharged` honours `emergency_assumed_at_positions` (`src/utils/bigbattery-helpers.ts:39`), so a game master preset can make the battery "connected everywhere" and repair all three fighters at once.
 
 ---
 
@@ -889,9 +737,7 @@ command(command) {
 ```
 `src/rules/boxes/airlock.js:89-93`
 
-The rule watches its own blob, so this write re-enters the watcher. The second
-pass sees `command === null` and stops. This is a deliberate one-step feedback
-loop.
+The rule watches its own blob, so this write re-enters the watcher. The second pass sees `command === null` and stops. This is a deliberate one-step feedback loop.
 
 `forceDepressurize` reaches both airlocks:
 
@@ -945,15 +791,11 @@ watch(['data'], (data, previous) => {
 ```
 `src/rules/tasks/box-game-tasks.js:37-48`
 
-`data` is a new object on every dispatch, so this callback runs after every
-single store write in the system — including the once-per-second writes from
-`jumpstate.js` and `ee-temp.js`. Each run scans 322 blobs.
+`data` is a new object on every dispatch. So this callback runs after every single store write in the system, including the once-per-second writes from `jumpstate.js` and `ee-temp.js`. Each run scans 322 blobs.
 
-The rule writes `task` blobs, which are inside `data`, so it re-enters itself.
-The status comparison stops the second pass.
+The rule writes `task` blobs, which are inside `data`, so it re-enters itself. The status comparison stops the second pass.
 
-`previous.box[id]` and `previous.game[id]` are read without checking that
-`previous.box` and `previous.game` exist. [BUG] See entry 4.
+`previous.box[id]` and `previous.game[id]` are read without checking that `previous.box` and `previous.game` exist. [BUG] See entry 4.
 
 ---
 
@@ -969,10 +811,7 @@ watch(['data', 'ship', 'jump'], (current, previous, state) => {
 ```
 `src/rules/ship/jump.js:574-579`
 
-`handleTransition` writes `ship/jump` for the `jumping>cooldown`,
-`jump_initiated>prep_complete` and any `>jump_initiated` cases.
-`handleStatic` writes it for `broken`, `cooldown`, `preparation`,
-`prep_complete`, `ready`, `jump_initiated` and `jumping`.
+`handleTransition` writes `ship/jump` for the `jumping>cooldown`, `jump_initiated>prep_complete` and any `>jump_initiated` cases. `handleStatic` writes it for `broken`, `cooldown`, `preparation`, `prep_complete`, `ready`, `jump_initiated` and `jumping`.
 
 The `ready` case writes unconditionally when the flag is set:
 
@@ -995,8 +834,7 @@ case 'broken':
 ```
 `src/rules/ship/jump.js:363-365`, and the same at line 399.
 
-`updated_at` is written by the reducer, not by the rule. The guard therefore
-depends on an implementation detail of the store.
+`updated_at` is written by the reducer, not by the rule. The guard therefore depends on an implementation detail of the store.
 
 ---
 
@@ -1022,10 +860,7 @@ Ship.forge({ id: 'odysseus' })
 ```
 `src/rules/ship/jump.js:218-237`
 
-The chain has no `.catch`. The `model.save` inside is also unawaited. The
-counter can go negative; the code only tests for exactly 0 and exactly 5. A
-game-master edit of `misc/artifact_actions` in the Redux store changes whether
-the database counter moves at all.
+The chain has no `.catch`. The `model.save` inside is also unawaited. The counter can go negative; the code only tests for exactly 0 and exactly 5. A game-master edit of `misc/artifact_actions` in the Redux store changes whether the database counter moves at all.
 
 ---
 
@@ -1038,13 +873,9 @@ const lastEventTime = {};
 ```
 `src/rules/ship/eeHealthDmx.js:128-130`
 
-These are module-level and in memory. After a restart, `previousHealthStatus[type]`
-is `undefined` for all nine reported types. The first `updateHealthValues` pass
-sees `status !== undefined` for every type and fires an event for each, subject
-only to the per-channel 60 s cooldown, which is also empty.
+These are module-level and in memory. After a restart, `previousHealthStatus[type]` is `undefined` for all nine reported types. The first `updateHealthValues` pass sees `status !== undefined` for every type. It fires an event for each, subject only to the per-channel 60 s cooldown, which is also empty.
 
-The same shape applies to `oldLevel` in `src/rules/ship/lifesupport.js:67` and
-`isOutOfRange` in `src/rules/boxes/driftingValue.js:8`.
+The same shape applies to `oldLevel` in `src/rules/ship/lifesupport.js:67` and `isOutOfRange` in `src/rules/boxes/driftingValue.js:8`.
 
 ---
 
@@ -1065,12 +896,8 @@ function updateCalibrationSpeedup(current: Artifact, previous: Artifact) {
 
 Two defects:
 
-1. A restart in the 60 s window loses the revert. `ship/calibration.multiplier`
-   stays at 100 and every engineering calibration finishes instantly for the
-   rest of the game.
-2. The revert writes the **captured** `calibration` object, not the current one.
-   A `calibration_slot` artifact used during the same 60 s adds a slot, and the
-   revert removes it again.
+1. A restart in the 60 s window loses the revert. `ship/calibration.multiplier` stays at 100 and every engineering calibration finishes instantly for the rest of the game.
+2. The revert writes the **captured** `calibration` object, not the current one. A `calibration_slot` artifact used during the same 60 s adds a slot, and the revert removes it again.
 
 ---
 
@@ -1096,16 +923,9 @@ ship.save({ metadata: { ...shipMetadata, probe_count: newProbeCount } }, { type:
 ```
 `src/eventhandler.js:133-147`
 
-The `save` is not awaited. `{ type: 'update' }` is also the wrong option name —
-Bookshelf expects `method` — so this is an upsert by guess, not a forced update.
-[BUG]
+The `save` is not awaited. `{ type: 'update' }` is also the wrong option name — Bookshelf expects `method` — so this is an upsert by guess, not a forced update. [BUG]
 
-On restart, `loadEvents()` (`src/index.ts:162`) refetches active events and calls
-`addEvent`. `getTimeUntilEvent` returns a negative number, and
-`addScanObjectEvent` throws `Event ... occurs in the past` (line 93). The
-throw happens inside an unawaited `.then` callback in `loadEvents`, so it is an
-unhandled rejection. The scan is lost, the probe is lost, and the `event` row
-stays `is_active = true` forever.
+On restart, `loadEvents()` (`src/index.ts:162`) refetches active events and calls `addEvent`. `getTimeUntilEvent` returns a negative number, and `addScanObjectEvent` throws `Event ... occurs in the past` (line 93). The throw happens inside an unawaited `.then` callback in `loadEvents`, so it is an unhandled rejection. The scan is lost, the probe is lost, and the `event` row stays `is_active = true` forever.
 
 ---
 
@@ -1124,15 +944,9 @@ if (getEmptyEpsilonClient().getConnectionStatus().isConnectionHealthy) {
 ```
 `src/rules/ship/jump.js:207-215`
 
-`setSystemsEnabled(false)` runs at the start of the jump
-(`src/rules/ship/jump.js:312`) and writes `ship/metadata` with
-`jump_ui_enabled`, `social_ui_enabled` and `infoboard_enabled` all `false`. The
-re-enable is a 3.6 s timer. A restart inside that window leaves the jump UI, the
-social UI and the infoboards disabled with no automatic recovery.
+`setSystemsEnabled(false)` runs at the start of the jump (`src/rules/ship/jump.js:312`) and writes `ship/metadata` with `jump_ui_enabled`, `social_ui_enabled` and `infoboard_enabled` all `false`. The re-enable is a 3.6 s timer. A restart inside that window leaves the jump UI, the social UI and the infoboards disabled with no automatic recovery.
 
-The `else` branch is worse: when the EmptyEpsilon connection is unhealthy at the
-end of a jump, `ee_sync_enabled` stays `false` permanently and the ship state
-stops updating. Only a manual edit fixes it.
+The `else` branch is worse. When the EmptyEpsilon connection is unhealthy at the end of a jump, `ee_sync_enabled` stays `false` permanently, and the ship state stops updating. Only a manual edit fixes it.
 
 ---
 
@@ -1160,17 +974,13 @@ export function setData(dataType, dataId, data, force = false) {
 ```
 `src/routes/data.js:17-23`
 
-The spread sets `version: undefined` and the body usually has no `version`. The
-check then compares a real number against `undefined` and throws 409. Every
-PATCH without an explicit version fails unless `?force=` is used.
+The spread sets `version: undefined` and the body usually has no `version`. The check then compares a real number against `undefined` and throws 409. Every PATCH without an explicit version fails unless `?force=` is used.
 
 ---
 
 ### 37. `?force=false` forces the write — Medium [BUG]
 
-`const { force } = req.query;` gives the raw string. `setData` tests
-`if (!force)`. The strings `"false"`, `"0"` and `"no"` are all truthy in
-JavaScript, so any value at all disables the version check.
+`const { force } = req.query;` gives the raw string. `setData` tests `if (!force)`. The strings `"false"`, `"0"` and `"no"` are all truthy in JavaScript, so any value at all disables the version check.
 
 ---
 
@@ -1185,26 +995,21 @@ if (typeof message === 'string' && message.toLowerCase().includes('incoming jump
 ```
 `src/routes/log.js:42-47`
 
-Substring matching on free-form prose decides whether a physical alarm fires.
-Any log entry that quotes the phrase, including one describing that the alarm
-fired, triggers it again.
+Substring matching on free-form prose decides whether a physical alarm fires. Any log entry that quotes the phrase, including one describing that the alarm fired, triggers it again.
 
 ---
 
 ### 39. Approving a post or a vote does five things — Medium
 
 Post (`src/routes/post.js:57-79`):
+
 1. Saves the row, which fires the `updated` hook and broadcasts `postUpdated`.
-2. Emits `postUpdated` a second time from the route (line 60). Clients receive
-   the event twice. [BUG]
+2. Emits `postUpdated` a second time from the route (line 60). Clients receive the event twice. [BUG]
 3. Fires DMX 258 when the status changed to `APPROVED`.
 4. Sends a private Socket.IO message from `FLEET_SECRETARY_ID` to the author.
-5. Refuses to do step 4 when the author is the fleet secretary, because
-   "stuff breaks in very unexpected ways" (comment at line 66).
+5. Refuses to do step 4 when the author is the fleet secretary, because "stuff breaks in very unexpected ways" (comment at line 66).
 
-Vote (`src/routes/vote.js:163-181`): the same, plus
-`createVoteCreatedInfoboardEntry(vote)`, which inserts an `info_entry` row that
-expires in at most one hour (line 67).
+Vote (`src/routes/vote.js:163-181`): the same, plus `createVoteCreatedInfoboardEntry(vote)`, which inserts an `info_entry` row that expires in at most one hour (line 67).
 
 ---
 
@@ -1219,16 +1024,14 @@ async function closeVote(vote) {
 ```
 `src/rules/social/votes.js:11-15`
 
-`createVoteResultsInfoEntry` inserts an `info_entry` row with the results text
-and a `metadata.vote_results` array (line 62).
+`createVoteResultsInfoEntry` inserts an `info_entry` row with the results text and a `metadata.vote_results` array (line 62).
 
 Two defects in the same function:
 
 ```js
 results.forEach(result => result.votesPercentage = Math.round((result.votes / results[0].votes) * 100));
 ```
-`src/rules/social/votes.js:49` — divides by the leading option's vote count.
-When that is 0, the result is `NaN` or `Infinity`. [BUG]
+`src/rules/social/votes.js:49` — divides by the leading option's vote count. When that is 0, the result is `NaN` or `Infinity`. [BUG]
 
 ```js
 for (const vote of activeVotes.models) {
@@ -1238,9 +1041,7 @@ for (const vote of activeVotes.models) {
 	closeVoteTimers.set(vote.get('id'), setTimeout(() => closeVote(vote), closesIn));
 }
 ```
-`src/rules/social/votes.js:73-87` — both `return` statements should be
-`continue`. Only the first vote in the collection is ever handled. The same
-defect is in `src/rules/social/infoboard.js:26,29`. [BUG]
+`src/rules/social/votes.js:73-87` — both `return` statements should be `continue`. Only the first vote in the collection is ever handled. The same defect is in `src/rules/social/infoboard.js:26,29`. [BUG]
 
 ---
 
@@ -1255,9 +1056,7 @@ await entry.save({ body: updatedBody }, { method: 'update', patch: true });
 ```
 `src/rules/social/infoboard.js:48-52`
 
-No comparison. Every 10 s the row is written, `hasTimestamps` bumps
-`updated_at`, and the `updated` model hook broadcasts. `getTotalSoulsAlive()` is
-a `person` table aggregate that runs at the same rate.
+No comparison. Every 10 s the row is written, `hasTimestamps` bumps `updated_at`, and the `updated` model hook broadcasts. `getTotalSoulsAlive()` is a `person` table aggregate that runs at the same rate.
 
 ---
 
@@ -1272,12 +1071,9 @@ async function seed() {
 ```
 `db/redux/seed-redux.ts:6-9`
 
-`npm run db:seed` runs `knex seed:run && npm run redux:seed`
-(`package.json:25`). The Redux part first deletes every row of the `store`
-table. Against a live database this destroys the running game.
+`npm run db:seed` runs `knex seed:run && npm run redux:seed` (`package.json:25`). The Redux part first deletes every row of the `store` table. Against a live database this destroys the running game.
 
-The script also calls `process.exit(0)` and `process.exit(1)` directly (lines 22
-and 26).
+The script also calls `process.exit(0)` and `process.exit(1)` directly (lines 22 and 26).
 
 ---
 
@@ -1307,48 +1103,28 @@ Every one of these is a silent failure path.
 
 Errors that are caught and then hidden:
 
-- `src/rules/helpers.js:26-33` — `interval()` logs and continues. A rule that
-  throws on every tick logs forever and does nothing.
-- `src/rules/ship/eeHealth.js:118-120` — a `catch` inside the per-type loop
-  turns a bad EE payload into a warning.
+- `src/rules/helpers.js:26-33` — `interval()` logs and continues. A rule that throws on every tick logs forever and does nothing.
+- `src/rules/ship/eeHealth.js:118-120` — a `catch` inside the per-type loop turns a bad EE payload into a warning.
 - `src/rules/ship/eeHealthDmx.js:167-170` — a `catch` per health type.
 - `src/rules/boxes/airlock.js:84-86` — a `catch` around every DMX fire.
-- `src/integrations/emptyepsilon/client.ts:151-154` — `getGameState` returns
-  `{error}` instead of throwing. `updateEmptyEpsilonState` then silently skips
-  the update (`state.ts:22`).
-- `src/integrations/emptyepsilon/client.ts:197-200` — `setGameState` returns
-  `undefined` when the connection is disabled. Callers that `await` it see
-  success.
+- `src/integrations/emptyepsilon/client.ts:151-154` — `getGameState` returns `{error}` instead of throwing. `updateEmptyEpsilonState` then silently skips the update (`state.ts:22`).
+- `src/integrations/emptyepsilon/client.ts:197-200` — `setGameState` returns `undefined` when the connection is disabled. Callers that `await` it see success.
 
 ### In-memory state lost on restart
 
-The full list is in `docs/rewrite/rules-engine.md`, "Timers and background
-loops". The game-critical items are:
+The full list is in `docs/rewrite/rules-engine.md`, "Timers and background loops". The game-critical items are:
 
-1. Scan completion timers (`src/eventhandler.js:10-11`). The probe is already
-   spent. Entry 34.
-2. The `calibration_speedup` revert (`src/rules/artifacts/artifact.ts:106`).
-   Entry 33.
-3. The jump post-processing timers (`src/rules/ship/jump.js:208,212,317`).
-   Entry 35.
+1. Scan completion timers (`src/eventhandler.js:10-11`). The probe is already spent. Entry 34.
+2. The `calibration_speedup` revert (`src/rules/artifacts/artifact.ts:106`). Entry 33.
+3. The jump post-processing timers (`src/rules/ship/jump.js:208,212,317`). Entry 35.
 4. The hacker detection alarm (`src/routes/person.js:106`). Entry 9.
-5. The life support notification delay and `oldLevel`
-   (`src/rules/ship/lifesupport.js:28,67`).
-6. Airlock transitions (`src/rules/boxes/airlock.js`). Recovered by the
-   constructor's `command('stop')`, which forces a known state rather than
-   resuming.
-7. The DMX status and cooldown maps (`src/rules/ship/eeHealthDmx.js:128-130`).
-   Entry 32.
-8. `previousState` in the EmptyEpsilon client
-   (`src/integrations/emptyepsilon/client.ts:39`). `setHullHealthPercent` throws
-   until the first successful poll (line 173). Any hull write in the first
-   second after start fails. [BUG]
-9. The emulator's `mockState` (`src/integrations/emptyepsilon/emulator.ts:22`).
-   In an emulated deployment, every EmptyEpsilon value resets on restart.
+5. The life support notification delay and `oldLevel` (`src/rules/ship/lifesupport.js:28,67`).
+6. Airlock transitions (`src/rules/boxes/airlock.js`). Recovered by the constructor's `command('stop')`, which forces a known state rather than resuming.
+7. The DMX status and cooldown maps (`src/rules/ship/eeHealthDmx.js:128-130`). Entry 32.
+8. `previousState` in the EmptyEpsilon client (`src/integrations/emptyepsilon/client.ts:39`). `setHullHealthPercent` throws until the first successful poll (line 173). Any hull write in the first second after start fails. [BUG]
+9. The emulator's `mockState` (`src/integrations/emptyepsilon/emulator.ts:22`). In an emulated deployment, every EmptyEpsilon value resets on restart.
 
-The science analysis queue is the one background job that **is** persisted, in
-the `misc/science_analysis_in_progress` blob. It survives a restart because
-`src/rules/science/analysis.js` polls the store rather than holding timers.
+The science analysis queue is the one background job that **is** persisted, in the `misc/science_analysis_in_progress` blob. It survives a restart because `src/rules/science/analysis.js` polls the store rather than holding timers.
 
 ### Startup ordering
 
@@ -1373,26 +1149,12 @@ Store.forge({ id: 'data' })
 
 What this order gives:
 
-- `http.listen` runs **after** the state and the rules are ready. A request that
-  arrives earlier is refused at the TCP level. That is the safe outcome: there
-  is no window in which a route reads an empty store.
-- `initialized` is set by `initState` (`src/store/store.ts:78`), so no rule
-  callback can run before the state loads.
+- `http.listen` runs **after** the state and the rules are ready. A request that arrives earlier is refused at the TCP level. That is the safe outcome: there is no window in which a route reads an empty store.
+- `initialized` is set by `initState` (`src/store/store.ts:78`), so no rule callback can run before the state loads.
 
 What it does not give:
 
-- `loadMessaging(io)` (line 159) and `loadEvents(io)` (line 162) run **before**
-  the state loads. `loadEvents` starts a database query and can arm scan timers
-  before the rules exist. A scan that completes in that window fires DMX from
-  `performGridScan` (`src/eventhandler.js:241`) with no rules loaded.
-- `initStoreSocket(io)` (line 185) runs on the module tick, so
-  `previousData` is captured from the empty pre-`initState` store
-  (`src/store/storeSocket.ts:51`). The first throttled push after `initState`
-  therefore emits `dataUpdate` for **every** blob in the store: 671 blobs, each
-  emitted to three rooms, so 2013 emit calls in one tick. [SIDE-EFFECT]
-- There is no `.catch` on the fetch. A database failure leaves a process that
-  binds no port and logs nothing after the last startup line. [BUG]
-- `loadSwagger(app)` (line 183) registers routes after
-  `errorHandlingMiddleware` (line 156). Express matches in registration order,
-  so the error middleware sits between the application routes and the Swagger
-  routes.
+- `loadMessaging(io)` (line 159) and `loadEvents(io)` (line 162) run **before** the state loads. `loadEvents` starts a database query and can arm scan timers before the rules exist. A scan that completes in that window fires DMX from `performGridScan` (`src/eventhandler.js:241`) with no rules loaded.
+- `initStoreSocket(io)` (line 185) runs on the module tick, so `previousData` is captured from the empty pre-`initState` store (`src/store/storeSocket.ts:51`). The first throttled push after `initState` therefore emits `dataUpdate` for **every** blob in the store. That is 671 blobs, each emitted to three rooms, so 2013 emit calls in one tick. [SIDE-EFFECT]
+- There is no `.catch` on the fetch. A database failure leaves a process that binds no port and logs nothing after the last startup line. [BUG]
+- `loadSwagger(app)` (line 183) registers routes after `errorHandlingMiddleware` (line 156). Express matches in registration order, so the error middleware sits between the application routes and the Swagger routes.

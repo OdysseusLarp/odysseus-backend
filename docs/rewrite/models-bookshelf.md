@@ -1,53 +1,30 @@
 # Bookshelf models
 
-This document describes every Bookshelf model in `src/models/*.js` and
-`src/models/*.ts`, and the plain SQL a rewrite needs to replace each
-relation and custom method. Tags are defined in
-`docs/rewrite/CONVENTIONS.md`.
+This document describes every Bookshelf model in `src/models/*.js` and `src/models/*.ts`, and the plain SQL a rewrite needs to replace each relation and custom method. Tags are defined in `docs/rewrite/CONVENTIONS.md`.
 
-Two facts about the current setup apply to every model below and are not
-repeated per model:
+Two facts about the current setup apply to every model below and are not repeated per model:
 
-- `db/index.ts:12` sets `bookshelf.Model.prototype.requireFetch = false`.
-  Every `.fetch()` call returns `null` when no row matches, instead of
-  throwing. A plain SQL rewrite using `knex(...).first()` already returns
-  `undefined` on no match, which is the closer equivalent - callers that
-  currently check `if (!thing) throw ...` keep working, but code that
-  relied on a thrown `EmptyResponse` (there is none found in `src/`)
-  would not.
-- Every model with `hasTimestamps: true` gets `created_at`/`updated_at`
-  auto-managed by Bookshelf on save. A plain SQL rewrite must set these
-  explicitly (`created_at: knex.fn.now()` on insert,
-  `updated_at: knex.fn.now()` on every update).
+- `db/index.ts:12` sets `bookshelf.Model.prototype.requireFetch = false`. Every `.fetch()` call returns `null` when no row matches, instead of throwing. A plain SQL rewrite using `knex(...).first()` already returns `undefined` on no match. This is the closer equivalent. Callers that currently check `if (!thing) throw ...` keep working. But code that relied on a thrown `EmptyResponse` would not; there is none found in `src/`.
+- Every model with `hasTimestamps: true` gets `created_at`/`updated_at` auto-managed by Bookshelf on save. A plain SQL rewrite must set these explicitly (`created_at: knex.fn.now()` on insert, `updated_at: knex.fn.now()` on every update).
 
-The five `story-*.ts` files under `src/models/` are **not** Bookshelf
-models - they already use `knex` directly with `zod` for validation, no
-translation needed. They are documented briefly at the end for
-completeness, since the task description names the whole directory.
+The five `story-*.ts` files under `src/models/` are **not** Bookshelf models. They already use `knex` directly with `zod` for validation; no translation is needed. They are documented briefly at the end for completeness, since the task description names the whole directory.
 
 ---
 
 ## `Artifact` (`artifact`)
 
 **Source:** `src/models/artifact.js:52-67`
+
 **Table:** `artifact`
 
-**Bookshelf features used:** `[BOOKSHELF]` `hasTimestamps`
-(`:55`), `hasMany` relation `entries` -> `ArtifactEntry`
-(`:56-58`), custom fetch methods `fetchAllWithRelated`/`fetchWithRelated`
-(`:59-66`) that eager-load `entries` and `entries.person` restricted to
-`id, first_name, last_name` (`:27-29`).
+**Bookshelf features used:** `[BOOKSHELF]` `hasTimestamps` (`:55`) and a `hasMany` relation `entries` -> `ArtifactEntry` (`:56-58`). Custom fetch methods `fetchAllWithRelated`/`fetchWithRelated` (`:59-66`) eager-load `entries` and `entries.person`, restricted to `id, first_name, last_name` (`:27-29`).
 
 **Implicit behaviour:** None beyond the timestamps/eager-load.
 
 **Custom methods:**
-- `fetchAllWithRelated(isVisible)` (`:59-63`): if `isVisible` is a
-  boolean, `SELECT * FROM artifact WHERE is_visible = ? ORDER BY id`
-  (implicit default order) with `entries` eager-loaded; otherwise
-  `SELECT * FROM artifact ORDER BY created_at DESC` with the same
-  eager-load.
-- `fetchWithRelated()` (`:65-66`): `SELECT * FROM artifact WHERE id = ?`
-  plus the same eager-load, for a single artifact.
+
+- `fetchAllWithRelated(isVisible)` (`:59-63`): if `isVisible` is a boolean, runs `SELECT * FROM artifact WHERE is_visible = ? ORDER BY id` (implicit default order), with `entries` eager-loaded. Otherwise runs `SELECT * FROM artifact ORDER BY created_at DESC`, with the same eager-load.
+- `fetchWithRelated()` (`:65-66`): `SELECT * FROM artifact WHERE id = ?` plus the same eager-load, for a single artifact.
 
 **Equivalent plain SQL:**
 ```sql
@@ -59,30 +36,19 @@ FROM artifact_entry ae
 LEFT JOIN person p ON p.id = ae.person_id
 WHERE ae.artifact_id = :artifactId;
 ```
-A rewrite should do this as one query with `LEFT JOIN artifact_entry ...
-LEFT JOIN person ...` and group in application code, rather than N+1.
+A rewrite should do this as one query with `LEFT JOIN artifact_entry ... LEFT JOIN person ...` and group in application code, rather than N+1.
 
-**Rewrite risks:** N+1 if `entries`/`entries.person` are fetched
-per-artifact in a loop instead of one joined query.
-`entries.artifact_id` has the FK bug documented in
-`docs/rewrite/database-schema.md` (`artifact_entry` entry) - a rewrite
-join must still work correctly since the join key (`artifact.id =
-artifact_entry.artifact_id`) is right even though the FK constraint
-target is wrong.
+**Rewrite risks:** N+1 if `entries`/`entries.person` are fetched per-artifact in a loop instead of one joined query. `entries.artifact_id` has the FK bug documented in `docs/rewrite/database-schema.md` (`artifact_entry` entry). A rewrite join still works correctly, because the join key (`artifact.id = artifact_entry.artifact_id`) is right, even though the FK constraint target is wrong.
 
 ---
 
 ## `ArtifactEntry` (`artifact_entry`)
 
 **Source:** `src/models/artifact.js:16-24`
+
 **Table:** `artifact_entry`
 
-**Bookshelf features used:** `[BOOKSHELF]` `hasTimestamps` (`:18`),
-`hasOne` relations `artifact` -> `Artifact` on `id`/`artifact_id`
-(`:19-21`) and `person` -> `Person` on `id`/`person_id` (`:22-23`).
-Note: Bookshelf's `hasOne(Artifact, 'id', 'artifact_id')` here really
-means "the *foreign* table's `id` matches *this* row's `artifact_id`" -
-functionally a `belongsTo`, expressed with `hasOne` and explicit columns.
+**Bookshelf features used:** `[BOOKSHELF]` `hasTimestamps` (`:18`), `hasOne` relations `artifact` -> `Artifact` on `id`/`artifact_id` (`:19-21`) and `person` -> `Person` on `id`/`person_id` (`:22-23`). Note: Bookshelf's `hasOne(Artifact, 'id', 'artifact_id')` here really means "the *foreign* table's `id` matches *this* row's `artifact_id`". This is functionally a `belongsTo`, expressed with `hasOne` and explicit columns.
 
 **Custom methods:** None beyond the relations.
 
@@ -92,60 +58,40 @@ SELECT a.* FROM artifact a WHERE a.id = :entry.artifact_id;
 SELECT p.* FROM person p WHERE p.id = :entry.person_id;
 ```
 
-**Rewrite risks:** None beyond the FK-target bug noted in the schema doc
-(does not affect this join, which uses `artifact.id`, the correct
-column).
+**Rewrite risks:** None beyond the FK-target bug noted in the schema doc (does not affect this join, which uses `artifact.id`, the correct column).
 
 ---
 
 ## `Box` (`box`)
 
 **Source:** `src/models/box.js:11-14`
+
 **Table:** `box`
 
 **Bookshelf features used:** `[BOOKSHELF]` `hasTimestamps` only.
 
-**Custom methods:** `getBoxValueById(id)` (`:16-19`): `SELECT value FROM
-box WHERE id = ? LIMIT 1`, returns `.value` or `undefined`.
+**Custom methods:** `getBoxValueById(id)` (`:16-19`): `SELECT value FROM box WHERE id = ? LIMIT 1`, returns `.value` or `undefined`.
 
 **Equivalent plain SQL:** `SELECT value FROM box WHERE id = :id;`
 
-**Rewrite risks:** None functionally - but see `docs/rewrite/database-
-schema.md` (`box` entry): this model and table are `[DEAD]`, nothing
-calls `getBoxValueById`. A rewrite can drop this model and table
-entirely rather than port it.
+**Rewrite risks:** None functionally. But see `docs/rewrite/database-schema.md` (`box` entry): this model and table are `[DEAD]`, nothing calls `getBoxValueById`. A rewrite can drop this model and table entirely rather than port it.
 
 ---
 
 ## `ComMessage` (`com_message`)
 
 **Source:** `src/models/communications.js:19-61`
+
 **Table:** `com_message`
 
-**Bookshelf features used:** `[BOOKSHELF]` `hasTimestamps` (`:21`),
-`hasOne` relations `sender` -> `Person` on `person_id` (`:22-24`),
-`receiver` -> `Person` on `target_person` (`:25-27`), `channel` ->
-`ComChannel` on `target_channel` (`:28-30`); custom fetch methods
-`fetchAllWithRelated`/`fetchWithRelated`/`fetchPageWithRelated`
-(`:31-45`); custom query methods `getPrivateHistory`/`getChannelHistory`
-(`:46-60`).
+**Bookshelf features used:** `[BOOKSHELF]` `hasTimestamps` (`:21`); `hasOne` relations `sender` -> `Person` on `person_id` (`:22-24`), `receiver` -> `Person` on `target_person` (`:25-27`), and `channel` -> `ComChannel` on `target_channel` (`:28-30`). Custom fetch methods `fetchAllWithRelated`/`fetchWithRelated`/`fetchPageWithRelated` (`:31-45`). Custom query methods `getPrivateHistory`/`getChannelHistory` (`:46-60`).
 
-**Implicit behaviour:** `[SIDE-EFFECT]` `fetchPageWithRelated` hardcodes
-`pageSize: 500000` (`:41`) with the comment "Feature that caused us great
-distress, fetching the FIRST 50 entries with no way to fetch more / Quick
-and dirty fix: increase pageSize to a large number" (`:39-40`) - i.e. it
-deliberately disables pagination by requesting an effectively unbounded
-page. A rewrite should implement real pagination or a deliberate
-"fetch all" query, not copy this workaround.
+**Implicit behaviour:** `[SIDE-EFFECT]` `fetchPageWithRelated` hardcodes `pageSize: 500000` (`:41`). Its own comment reads: "Feature that caused us great distress, fetching the FIRST 50 entries with no way to fetch more / Quick and dirty fix: increase pageSize to a large number" (`:39-40`). It deliberately disables pagination by requesting an effectively unbounded page. A rewrite should implement real pagination or a deliberate "fetch all" query, not copy this workaround.
 
 **Custom methods:**
-- `getPrivateHistory(userId, targetId)` (`:46-56`): messages where
-  `(target_person = targetId AND person_id = userId) OR (target_person =
-  userId AND person_id = targetId)`, ordered by `created_at`, page 1 of
-  500000.
-- `getChannelHistory(channelId)` (`:58-60`): messages where
-  `target_channel = channelId`, ordered by `created_at`, page 1 of
-  500000.
+
+- `getPrivateHistory(userId, targetId)` (`:46-56`): messages where `(target_person = targetId AND person_id = userId) OR (target_person = userId AND person_id = targetId)`. Ordered by `created_at`, page 1 of 500000.
+- `getChannelHistory(channelId)` (`:58-60`): messages where `target_channel = channelId`, ordered by `created_at`, page 1 of 500000.
 
 **Equivalent plain SQL:**
 ```sql
@@ -169,78 +115,67 @@ WHERE cm.target_channel = :channelId
 ORDER BY cm.created_at ASC;
 ```
 
-**Rewrite risks:** The "500000 page size" pattern must not be
-copy-pasted; it works around a Bookshelf pagination bug and is really
-"fetch everything". Aliasing collisions when joining `person` twice
-(sender/receiver) must be handled explicitly in raw SQL (Bookshelf hides
-this).
+**Rewrite risks:** The "500000 page size" pattern must not be copy-pasted. It works around a Bookshelf pagination bug and is really "fetch everything". Aliasing collisions, when joining `person` twice for sender and receiver, must be handled explicitly in raw SQL. Bookshelf hides this.
 
 ---
 
 ## `ComChannel` (`com_channel`)
 
 **Source:** `src/models/communications.js:70-73`
+
 **Table:** `com_channel`
 
 **Bookshelf features used:** `[BOOKSHELF]` `hasTimestamps` only.
 
 **Custom methods:** None.
 
-**Rewrite risks:** None. See schema doc: table is legacy per its own
-seed comment.
+**Rewrite risks:** None. See schema doc: table is legacy per its own seed comment.
 
 ---
 
 ## `ComChannelEvent` (`com_channel_event`)
 
 **Source:** `src/models/communications.js:83-86`
+
 **Table:** `com_channel_event`
 
 **Bookshelf features used:** `[BOOKSHELF]` `hasTimestamps` only.
 
-**Rewrite risks:** None - `[DEAD]`, drop model and table (see schema
-doc).
+**Rewrite risks:** None. `[DEAD]`; drop model and table (see schema doc).
 
 ---
 
 ## `Event` (`event`)
 
 **Source:** `src/models/event.js:17-23`
+
 **Table:** `event`
 
 **Bookshelf features used:** `[BOOKSHELF]` `hasTimestamps` (`:19`).
 
-**Custom methods:** `setActive(active)` (`:20-22`): `this.save({
-is_active: !!active })`.
+**Custom methods:** `setActive(active)` (`:20-22`): `this.save({ is_active: !!active })`.
 
-**`[BUG]`:** `setActive` does not `return` the result of `this.save(...)`
-(`src/models/event.js:20-22`):
+**`[BUG]`:** `setActive` does not `return` the result of `this.save(...)` (`src/models/event.js:20-22`):
 ```js
 setActive: function (active) {
     this.save({ is_active: !!active });
 }
 ```
-Its only caller, `src/eventhandler.js:84`, does `await
-event.setActive(false)` - because `setActive` returns `undefined`, the
-`await` resolves immediately without waiting for the UPDATE to finish or
-observing any save error. A rewrite must either return the promise or
-make the caller call the update directly.
+Its only caller, `src/eventhandler.js:84`, does `await event.setActive(false)`. Because `setActive` returns `undefined`, the `await` resolves immediately. It does not wait for the UPDATE to finish, or observe any save error. A rewrite must either return the promise or make the caller call the update directly.
 
-**Equivalent plain SQL:** `UPDATE event SET is_active = :active,
-updated_at = now() WHERE id = :id;`
+**Equivalent plain SQL:** `UPDATE event SET is_active = :active, updated_at = now() WHERE id = :id;`
 
-**Rewrite risks:** Fix the missing `return` while rewriting; otherwise a
-functionally-faithful port would keep the race condition.
+**Rewrite risks:** Fix the missing `return` while rewriting; otherwise a functionally-faithful port would keep the race condition.
 
 ---
 
 ## `InfoEntry` (`infoboard_entry`)
 
 **Source:** `src/models/infoentry.js:18-21`
+
 **Table:** `infoboard_entry`
 
-**Bookshelf features used:** `[BOOKSHELF]` `hasTimestamps` only. No
-relations, no custom methods, no listeners.
+**Bookshelf features used:** `[BOOKSHELF]` `hasTimestamps` only. No relations, no custom methods, no listeners.
 
 **Rewrite risks:** None.
 
@@ -249,25 +184,22 @@ relations, no custom methods, no listeners.
 ## `InfoPriority` (`infoboard_priority`)
 
 **Source:** `src/models/infoentry.js:29-32`
+
 **Table:** `infoboard_priority`
 
 **Bookshelf features used:** `[BOOKSHELF]` `hasTimestamps` only.
 
-**Rewrite risks:** See schema doc: table has no primary key, so
-`InfoPriority.forge().fetch()` (used in `src/routes/infoboard.js:36,84`)
-is really "fetch any one row" - `SELECT * FROM infoboard_priority LIMIT
-1` is the faithful equivalent, not "fetch the row", since there is no
-identity to fetch by.
+**Rewrite risks:** See the schema doc: the table has no primary key. So `InfoPriority.forge().fetch()` (used in `src/routes/infoboard.js:36,84`) is really "fetch any one row". `SELECT * FROM infoboard_priority LIMIT 1` is the faithful equivalent, not "fetch the row", since there is no identity to fetch by.
 
 ---
 
 ## `LogEntry` (`ship_log`)
 
 **Source:** `src/models/log.js:18-37`
+
 **Table:** `ship_log`
 
-**Bookshelf features used:** `[BOOKSHELF]` `hasTimestamps` (`:20`),
-`initialize` hook with three event listeners (`:21-36`).
+**Bookshelf features used:** `[BOOKSHELF]` `hasTimestamps` (`:20`), `initialize` hook with three event listeners (`:21-36`).
 
 **Implicit behaviour:** `[SIDE-EFFECT]` On `destroying`:
 ```js
@@ -276,55 +208,32 @@ this.on('destroying', model => {
     getSocketIoClient().emit('logEntryDeleted', { id: model.get('id') });
 });
 ```
-(`src/models/log.js:24-27`) - every delete of a `ship_log` row logs and
-emits a Socket.IO `logEntryDeleted` event. On `created`
-(`:28-31`) and `updated` (`:32-35`), analogous `logEntryAdded`/
-`logEntryUpdated` events are emitted with the full model. None of this
-happens if a rewrite does a plain `DELETE`/`INSERT`/`UPDATE` - the
-Socket.IO emits must be added explicitly at every call site (`src/models/
-log.js:87-95` `addShipLogEntry`, `src/routes/log.js` PUT/DELETE
-handlers).
+(`src/models/log.js:24-27`). Every delete of a `ship_log` row logs and emits a Socket.IO `logEntryDeleted` event. On `created` (`:28-31`) and `updated` (`:32-35`), analogous `logEntryAdded`/`logEntryUpdated` events are emitted with the full model. None of this happens if a rewrite does a plain `DELETE`/`INSERT`/`UPDATE`. The Socket.IO emits must be added explicitly at every call site (`src/models/log.js:87-95` `addShipLogEntry`, `src/routes/log.js` PUT/DELETE handlers).
 
-**Custom methods:** `addShipLogEntry(type, message, shipId, metadata)`
-(`:87-95`, module-level function, not on the model): `INSERT INTO
-ship_log (ship_id, message, metadata, type) VALUES (...)` via
-`LogEntry.forge().save(body, { method: 'insert' })`. `shipLogger`
-(`:97-102`) is a 4-method convenience wrapper (`info`/`success`/
-`warning`/`error`) around it.
+**Custom methods:** `addShipLogEntry(type, message, shipId, metadata)` (`:87-95`) is a module-level function, not on the model. It runs `INSERT INTO ship_log (ship_id, message, metadata, type) VALUES (...)` via `LogEntry.forge().save(body, { method: 'insert' })`. `shipLogger` (`:97-102`) is a 4-method convenience wrapper (`info`/`success`/`warning`/`error`) around it.
 
 **Equivalent plain SQL:**
 ```sql
 INSERT INTO ship_log (ship_id, message, metadata, type, created_at, updated_at)
 VALUES (:ship_id, :message, :metadata, :type, now(), now());
 ```
-Plus, in application code, an explicit `io.emit('logEntryAdded', row)`
-after the insert to replace the lost lifecycle hook.
+Plus, in application code, an explicit `io.emit('logEntryAdded', row)` after the insert to replace the lost lifecycle hook.
 
-**Rewrite risks:** `[SIDE-EFFECT]` is the whole point of this model -
-losing the emits silently breaks any frontend relying on
-`logEntryAdded`/`logEntryUpdated`/`logEntryDeleted` Socket.IO events.
+**Rewrite risks:** `[SIDE-EFFECT]` is the whole point of this model. Losing the emits silently breaks any frontend relying on `logEntryAdded`/`logEntryUpdated`/`logEntryDeleted` Socket.IO events.
 
 ---
 
 ## `AuditLogEntry` (`audit_log`)
 
 **Source:** `src/models/log.js:52-79`
+
 **Table:** `audit_log`
 
-**Bookshelf features used:** `[BOOKSHELF]` `hasTimestamps` (`:54`),
-`initialize` hook with a `created` listener (`:55-62`), `hasOne`
-relations `person` (`:63-65`) and `hacker` (`:66-68`), custom
-`fetchWithRelated`/`fetchPageWithRelated` (`:69-77`) eager-loading
-`person`/`hacker` restricted to `id, first_name, last_name,
-is_character` (`:39-40`).
+**Bookshelf features used:** `[BOOKSHELF]` `hasTimestamps` (`:54`); an `initialize` hook with a `created` listener (`:55-62`); `hasOne` relations `person` (`:63-65`) and `hacker` (`:66-68`). Custom `fetchWithRelated`/`fetchPageWithRelated` (`:69-77`) eager-load `person`/`hacker`, restricted to `id, first_name, last_name, is_character` (`:39-40`).
 
-**Implicit behaviour:** `[SIDE-EFFECT]` On `created`
-(`src/models/log.js:56-61`): logs and emits Socket.IO `auditLogEntryAdded`
-with the full model, including a "(Hacked by X)" suffix in the log line
-if `hacker_id` is set.
+**Implicit behaviour:** `[SIDE-EFFECT]` On `created` (`src/models/log.js:56-61`), it logs and emits Socket.IO `auditLogEntryAdded` with the full model. It adds a "(Hacked by X)" suffix in the log line if `hacker_id` is set.
 
-**Custom methods:** `fetchPageWithRelated(page)` (`:72-77`): page of 50,
-ordered by `created_at`, with `person`/`hacker` eager-loaded.
+**Custom methods:** `fetchPageWithRelated(page)` (`:72-77`): page of 50, ordered by `created_at`, with `person`/`hacker` eager-loaded.
 
 **Equivalent plain SQL:**
 ```sql
@@ -337,40 +246,31 @@ ORDER BY al.created_at DESC
 LIMIT 50 OFFSET :page_offset;
 ```
 
-**Rewrite risks:** `[SIDE-EFFECT]` lost Socket.IO emit on insert must be
-added explicitly at both call sites
-(`src/routes/person.js:96-100,130-133`, `src/routes/log.js:76`).
+**Rewrite risks:** `[SIDE-EFFECT]` lost Socket.IO emit on insert must be added explicitly at both call sites (`src/routes/person.js:96-100,130-133`, `src/routes/log.js:76`).
 
 ---
 
 ## `MapObject` (`starmap_object`)
 
 **Source:** `src/models/map-object.js:16-26`
+
 **Table:** `starmap_object`
 
-**Bookshelf features used:** `[BOOKSHELF]` No `hasTimestamps` (commented
-out, `:18-19` - matches the table having no timestamp columns). Custom
-`fetchAllWithRelated`/`fetchWithRelated` (`:20-25`) that currently
-eager-load nothing (`shipWithRelated` is `[]`, `:5-7`) - dead
-parameterisation.
+**Bookshelf features used:** `[BOOKSHELF]` No `hasTimestamps` (commented out, `:18-19`; this matches the table having no timestamp columns). Custom `fetchAllWithRelated`/`fetchWithRelated` (`:20-25`) currently eager-load nothing (`shipWithRelated` is `[]`, `:5-7`). This is dead parameterisation.
 
-**Equivalent plain SQL:** `SELECT * FROM starmap_object [WHERE ...];` -
-no joins needed today.
+**Equivalent plain SQL:** `SELECT * FROM starmap_object [WHERE ...];`. No joins are needed today.
 
-**Rewrite risks:** None significant; the eager-load scaffolding is
-vestigial and can be dropped.
+**Rewrite risks:** None significant; the eager-load scaffolding is vestigial and can be dropped.
 
 ---
 
 ## `Entry` (`person_entry`)
 
 **Source:** `src/models/person.js:16-25`
+
 **Table:** `person_entry`
 
-**Bookshelf features used:** `[BOOKSHELF]` `hasTimestamps` (`:18`),
-`hasOne` relations `person` (`:19-21`, note: no explicit FK columns
-passed, relies on Bookshelf's convention `person_id` -> `person.id`) and
-`added_by` -> `Person` on `id`/`added_by` (`:22-24`).
+**Bookshelf features used:** `[BOOKSHELF]` `hasTimestamps` (`:18`). `hasOne` relations `person` (`:19-21`) and `added_by` -> `Person` on `id`/`added_by` (`:22-24`). Note: the `person` relation passes no explicit FK columns; it relies on Bookshelf's convention `person_id` -> `person.id`.
 
 **Equivalent plain SQL:**
 ```sql
@@ -385,24 +285,12 @@ SELECT p.* FROM person p WHERE p.id = :entry.added_by;
 ## `Group` (`group`)
 
 **Source:** `src/models/person.js:33-43`
+
 **Table:** `group`
 
-**Bookshelf features used:** `[BOOKSHELF]` `hasTimestamps` (`:35`),
-custom `serialize` override (`:37-39`), `belongsToMany` relation
-`persons` -> `Person` via pivot table `person_group` (`:40-42`).
+**Bookshelf features used:** `[BOOKSHELF]` `hasTimestamps` (`:35`), custom `serialize` override (`:37-39`), `belongsToMany` relation `persons` -> `Person` via pivot table `person_group` (`:40-42`).
 
-**Implicit behaviour:** `[SIDE-EFFECT]`-adjacent serialization
-difference: `serialize: function () { return this.get('id'); }`
-(`:37-39`) means every time a `Group` model is turned to JSON (including
-inside another model's eager-loaded `groups` relation), it renders as a
-**bare string** (the group ID), not `{ id, created_at, updated_at }`. A
-plain SQL rewrite that does `SELECT * FROM group` and returns the row
-object as-is would produce a different, richer shape than the API
-currently returns. `src/routes/person.js:73` (`GET /person/groups`)
-returns the raw model collection, so this endpoint currently returns an
-array of plain ID strings, not group objects - a rewrite must replicate
-that shape explicitly (`SELECT id FROM "group"`, or map rows to `row.id`)
-to avoid a breaking API change.
+**Implicit behaviour:** `[SIDE-EFFECT]`-adjacent serialization difference: `serialize: function () { return this.get('id'); }` (`:37-39`). Every time a `Group` model is turned to JSON, it renders as a **bare string** (the group ID), not `{ id, created_at, updated_at }`. This includes when it appears inside another model's eager-loaded `groups` relation. A plain SQL rewrite might do `SELECT * FROM group` and return the row object as-is. That produces a different, richer shape than the API currently returns. `src/routes/person.js:73` (`GET /person/groups`) returns the raw model collection. So this endpoint currently returns an array of plain ID strings, not group objects. A rewrite must replicate that shape explicitly (`SELECT id FROM "group"`, or map rows to `row.id`), to avoid a breaking API change.
 
 **Equivalent plain SQL:**
 ```sql
@@ -412,35 +300,25 @@ JOIN person_group pg ON pg.person_id = p.id
 WHERE pg.group_id = :groupId;
 ```
 
-**Rewrite risks:** The `serialize` override is easy to miss and would
-silently change the `GET /person/groups` response shape from
-`["role:medic", ...]` to `[{id: "role:medic", created_at: ..., ...}]` if
-not replicated.
+**Rewrite risks:** The `serialize` override is easy to miss. If not replicated, it silently changes the `GET /person/groups` response shape from `["role:medic", ...]` to `[{id: "role:medic", created_at: ..., ...}]`.
 
 ---
 
 ## `BloodTestResult` (`person_blood_test_result`)
 
 **Source:** `src/models/person.js:60-69`
+
 **Table:** `person_blood_test_result`
 
-**Bookshelf features used:** `[BOOKSHELF]` `hasTimestamps` (`:62`),
-`hasOne` relation `person` (`:63-65`), custom `fetchWithRelated`
-(`:66-68`).
+**Bookshelf features used:** `[BOOKSHELF]` `hasTimestamps` (`:62`), `hasOne` relation `person` (`:63-65`), custom `fetchWithRelated` (`:66-68`).
 
-**`[BUG]`:** `fetchWithRelated` does not return its result
-(`src/models/person.js:66-68`):
+**`[BUG]`:** `fetchWithRelated` does not return its result (`src/models/person.js:66-68`):
 ```js
 fetchWithRelated() {
     this.fetch({ withRelated: ['person'] });
 }
 ```
-Calling it always yields `undefined`. Currently unused (grep of `src/`
-shows no caller of `BloodTestResult#fetchWithRelated`;
-`src/routes/operation.ts:398` calls plain `.fetch()` on a `where()`
-query instead), so the bug is latent, not active. A rewrite does not
-need to preserve this method as-is - just query
-`person_blood_test_result` directly, optionally joined to `person`.
+Calling it always yields `undefined`. Currently unused: a grep of `src/` shows no caller of `BloodTestResult#fetchWithRelated`. `src/routes/operation.ts:398` calls plain `.fetch()` on a `where()` query instead. So the bug is latent, not active. A rewrite does not need to preserve this method as-is. Just query `person_blood_test_result` directly, optionally joined to `person`.
 
 **Equivalent plain SQL:**
 ```sql
@@ -456,39 +334,27 @@ WHERE bt.person_id = :personId;
 ## `Person` (`person`)
 
 **Source:** `src/models/person.js:128-235`
+
 **Table:** `person`
 
-**Bookshelf features used:** `[BOOKSHELF]` `hasTimestamps` (`:130`),
-`virtuals.full_name` (`:131-137`, computed as `first_name + ' ' +
-last_name` when `last_name` is set - requires the
-`bookshelf-virtuals-plugin`, registered in `db/index.ts:8`),
-`hasMany` `entries` -> `Entry` (`:138-140`), `belongsToMany` `family` ->
-`Person` (self-referencing) via pivot `person_family` on
-`person1_id`/`person2_id` with `.withPivot(['relation'])`
-(`:141-143`), `belongsTo` `ship` -> `Ship` (`:144-146`),
-`belongsToMany` `groups` -> `Group` via pivot `person_group`
-(`:147-149`).
+**Bookshelf features used:** `[BOOKSHELF]`
+
+- `hasTimestamps` (`:130`).
+- `virtuals.full_name` (`:131-137`), computed as `first_name + ' ' + last_name` when `last_name` is set. This requires the `bookshelf-virtuals-plugin`, registered in `db/index.ts:8`.
+- `hasMany` `entries` -> `Entry` (`:138-140`).
+- `belongsToMany` `family` -> `Person` (self-referencing) via pivot `person_family` on `person1_id`/`person2_id`, with `.withPivot(['relation'])` (`:141-143`).
+- `belongsTo` `ship` -> `Ship` (`:144-146`).
+- `belongsToMany` `groups` -> `Group` via pivot `person_group` (`:147-149`).
 
 **Custom methods:**
-- `fetchListPage({ page, pageSize, showHidden, filters })`
-  (`:150-186`): paginated, filtered list of persons with a fixed column
-  projection and `ship: {id, name}` eager-loaded.
-- `fetchWithRelated()` (`:187-203`): single person with `entries`,
-  `ship`, `groups`, `family` (columns restricted to `id, first_name,
-  last_name, ship_id, status, is_visible, is_character`), and
-  `entries.added_by` (restricted to `id, first_name, last_name`).
-- `search(name, showHidden)` (`:204-209`): case-insensitive substring
-  search on full name.
-- `addToGroup(groupId)` / `deleteFromGroup(groupId)` (`:210-221`): raw
-  INSERT/DELETE on `person_group`.
-- `killPerson()` (`:222-234`): transaction that sets `status =
-  'Deceased'` and inserts a `person_entry` row.
 
-**Implicit behaviour:** `[SIDE-EFFECT]` `killPerson` is transactional and
-touches two tables at once - a rewrite must keep both writes in one DB
-transaction. It also hardcodes the log text `` `542 - Deceased` `` and
-`added_by: process.env.FLEET_SECRETARY_ID` (`:227-231`) - game-specific
-constants that must be preserved or made configurable.
+- `fetchListPage({ page, pageSize, showHidden, filters })` (`:150-186`): paginated, filtered list of persons with a fixed column projection and `ship: {id, name}` eager-loaded.
+- `fetchWithRelated()` (`:187-203`): a single person with `entries`, `ship`, `groups` and `family` eager-loaded. Columns are restricted to `id, first_name, last_name, ship_id, status, is_visible, is_character`, plus `entries.added_by` restricted to `id, first_name, last_name`.
+- `search(name, showHidden)` (`:204-209`): case-insensitive substring search on full name.
+- `addToGroup(groupId)` / `deleteFromGroup(groupId)` (`:210-221`): raw INSERT/DELETE on `person_group`.
+- `killPerson()` (`:222-234`): transaction that sets `status = 'Deceased'` and inserts a `person_entry` row.
+
+**Implicit behaviour:** `[SIDE-EFFECT]` `killPerson` is transactional and touches two tables at once. A rewrite must keep both writes in one DB transaction. It also hardcodes the log text `` `542 - Deceased` `` and `added_by: process.env.FLEET_SECRETARY_ID` (`:227-231`). These are game-specific constants that must be preserved or made configurable.
 
 **Equivalent plain SQL:**
 ```sql
@@ -529,46 +395,21 @@ INSERT INTO person_entry (person_id, type, entry, added_by)
 VALUES (:id, 'PERSONAL', '542 - Deceased', :FLEET_SECRETARY_ID);
 ```
 
-**Rewrite risks:** `family` is a **self-referencing many-to-many via two
-differently-named FK columns** (`person1_id`/`person2_id`) - the most
-Bookshelf-specific relation in the codebase; a naive ORM-to-SQL port
-easily gets the join direction backwards (note the relation is
-one-directional: fetching `personA.family` only returns rows where
-`personA` is `person1_id`, never rows where `personA` is `person2_id` -
-this is a **pre-existing asymmetry** in the current code, not a rewrite
-bug to fix silently; the `PUT /:id/family` route comment even says "WIP -
-Not working properly yet", `src/routes/person.js:195`). `virtuals.full_name`
-is computed in JS on every serialize - any raw-SQL rewrite must compute
-it in the query (`CONCAT`) or in application code, not rely on it
-appearing "for free". `fetchListPage`'s dynamic filter loop
-(`forOwn(filters, ...)`, `:154-157`) builds `WHERE key = value` for
-arbitrary keys - a straight port must keep this allow-list narrow (it
-currently only receives pre-picked query params from
-`src/routes/person.js:37-40`) to avoid SQL-injectable column names in a
-rewrite that takes the filters object less carefully.
+**Rewrite risks:** `family` is a **self-referencing many-to-many via two differently-named FK columns** (`person1_id`/`person2_id`). It is the most Bookshelf-specific relation in the codebase. A naive ORM-to-SQL port easily gets the join direction backwards. Note that the relation is one-directional: fetching `personA.family` only returns rows where `personA` is `person1_id`, never rows where `personA` is `person2_id`. This is a **pre-existing asymmetry** in the current code, not a rewrite bug to fix silently. The `PUT /:id/family` route comment even says "WIP - Not working properly yet" (`src/routes/person.js:195`).
+
+`virtuals.full_name` is computed in JS on every serialize. Any raw-SQL rewrite must compute it in the query (`CONCAT`) or in application code, not rely on it appearing "for free". `fetchListPage`'s dynamic filter loop (`forOwn(filters, ...)`, `:154-157`) builds `WHERE key = value` for arbitrary keys. A straight port must keep this allow-list narrow, to avoid SQL-injectable column names in a rewrite that takes the filters object less carefully. Today it only receives pre-picked query params from `src/routes/person.js:37-40`.
 
 ---
 
 ## `Post` (`post`)
 
 **Source:** `src/models/post.js:23-51`
+
 **Table:** `post`
 
-**Bookshelf features used:** `[BOOKSHELF]` `hasTimestamps` (`:25`),
-`initialize` hook with `destroying`/`created`/`updated` listeners
-(`:26-41`), `hasOne` relation `author` (`:42-44`), custom
-`fetchAllWithRelated`/`fetchWithRelated` (`:45-50`).
+**Bookshelf features used:** `[BOOKSHELF]` `hasTimestamps` (`:25`), `initialize` hook with `destroying`/`created`/`updated` listeners (`:26-41`), `hasOne` relation `author` (`:42-44`), custom `fetchAllWithRelated`/`fetchWithRelated` (`:45-50`).
 
-**Implicit behaviour:** `[SIDE-EFFECT]` Same pattern as `LogEntry`:
-delete/create/update each log via `logger` and emit
-`postDeleted`/`postAdded`/`postUpdated` over Socket.IO
-(`src/models/post.js:29-40`). Note `src/routes/post.js:56,60` **also**
-emits `postAdded`/`postUpdated` itself via `req.io.emit(...)` - so today
-a post insert/update emits **twice**: once from the route, once from the
-model's `initialize` listener. A rewrite must pick one place to emit, or
-it will double the number of Socket.IO events compared to... actually
-compared to a naive single-emit rewrite; replicating current behaviour
-exactly means emitting twice.
+**Implicit behaviour:** `[SIDE-EFFECT]` Same pattern as `LogEntry`: delete/create/update each log via `logger`, and emit `postDeleted`/`postAdded`/`postUpdated` over Socket.IO (`src/models/post.js:29-40`). Note that `src/routes/post.js:56,60` **also** emits `postAdded`/`postUpdated` itself, via `req.io.emit(...)`. So today a post insert/update emits **twice**: once from the route, once from the model's `initialize` listener. A rewrite must pick one place to emit. Replicating current behaviour exactly means emitting twice, not once.
 
 **Equivalent plain SQL:**
 ```sql
@@ -578,34 +419,23 @@ UPDATE post SET title=..., body=..., updated_at = now() WHERE id = :id RETURNING
 SELECT po.*, p.* FROM post po LEFT JOIN person p ON p.id = po.person_id ORDER BY po.created_at DESC;
 ```
 
-**Rewrite risks:** Double Socket.IO emit (route + model listener) is
-easy to "fix" accidentally during a rewrite by only keeping one; decide
-deliberately whether that is a bug to fix or existing behaviour to keep.
+**Rewrite risks:** A double Socket.IO emit (route plus model listener) is easy to "fix" accidentally, by keeping only one. Decide deliberately whether that is a bug to fix, or existing behaviour to keep.
 
 ---
 
 ## `Grid` (`grid`)
 
 **Source:** `src/models/ship.js:24-50`
+
 **Table:** `grid`
 
-**Bookshelf features used:** `[BOOKSHELF]` `hasTimestamps` (`:26`) -
-**mismatched with the actual table schema**, see `[BUG]` below.
-`hasMany` relation `ships` -> `Ship` (`:27-29`), custom
-`fetchWithRelated` (`:30-32`), `getCoordinates` (`:33-35`),
-`getRandomJumpTarget` (`:37-40`, raw SQL `[GIS]`), `containsObject`
-(`:42-49`, raw SQL `[GIS]`).
+**Bookshelf features used:** `[BOOKSHELF]` `hasTimestamps` (`:26`). **This is mismatched with the actual table schema**; see `[BUG]` below. `hasMany` relation `ships` -> `Ship` (`:27-29`), custom `fetchWithRelated` (`:30-32`), `getCoordinates` (`:33-35`), `getRandomJumpTarget` (`:37-40`, raw SQL `[GIS]`), `containsObject` (`:42-49`, raw SQL `[GIS]`).
 
-**`[BUG]`:** `hasTimestamps: true` (`src/models/ship.js:26`) but the
-`grid` table has no `created_at`/`updated_at` columns
-(`db/migrations/20181118152323_starmap-and-fleet.js:7-17` never calls
-`.timestamps()`). See `docs/rewrite/database-schema.md` (`grid` entry)
-for the full analysis; latent because nothing calls `.save()` on `Grid`.
+**`[BUG]`:** `hasTimestamps: true` (`src/models/ship.js:26`) but the `grid` table has no `created_at`/`updated_at` columns (`db/migrations/20181118152323_starmap-and-fleet.js:7-17` never calls `.timestamps()`). See `docs/rewrite/database-schema.md` (`grid` entry) for the full analysis; latent because nothing calls `.save()` on `Grid`.
 
 **Custom methods:**
-- `getRandomJumpTarget()` (`:37-40`): `[GIS]` random point within
-  ~300km of the grid's centroid, in the grid's own SRID (3857 units are
-  meters, so ±150000 ~ ±150km per axis):
+
+- `getRandomJumpTarget()` (`:37-40`): `[GIS]` a random point within about 300km of the grid's centroid, in the grid's own SRID. 3857 units are meters, so ±150000 is about ±150km per axis:
   ```sql
   SELECT ST_Translate(
     ST_Centroid(grid.the_geom),
@@ -614,8 +444,7 @@ for the full analysis; latent because nothing calls `.save()` on `Grid`.
   ) AS jump_target
   FROM grid WHERE grid.id = :id;
   ```
-- `containsObject(nameGenerated)` (`:42-49`): `[GIS]` whether a named,
-  non-star/non-black-hole `starmap_object` lies within this grid cell:
+- `containsObject(nameGenerated)` (`:42-49`): `[GIS]` whether a named, non-star/non-black-hole `starmap_object` lies within this grid cell:
   ```sql
   SELECT ST_WITHIN(
     (SELECT the_geom FROM starmap_object
@@ -631,34 +460,31 @@ for the full analysis; latent because nothing calls `.save()` on `Grid`.
 SELECT g.*, s.* FROM grid g LEFT JOIN ship s ON s.grid_id = g.id WHERE g.id = :id;
 ```
 
-**Rewrite risks:** `[GIS]` both custom methods must stay on PostgreSQL.
-Fix (or deliberately preserve) the `hasTimestamps` mismatch.
+**Rewrite risks:** `[GIS]` both custom methods must stay on PostgreSQL. Fix (or deliberately preserve) the `hasTimestamps` mismatch.
 
 ---
 
 ## `GridAction` (`grid_action`)
 
 **Source:** `src/models/ship.js:61-64`
+
 **Table:** `grid_action`
 
 **Bookshelf features used:** `[BOOKSHELF]` `hasTimestamps` only.
 
-**Rewrite risks:** None. Nothing in `src/` inserts into this table at
-runtime (only the seed does); see schema doc.
+**Rewrite risks:** None. Nothing in `src/` inserts into this table at runtime (only the seed does); see schema doc.
 
 ---
 
 ## `Beacon` (`starmap_beacon`)
 
 **Source:** `src/models/ship.js:74-107`
+
 **Table:** `starmap_beacon`
 
-**Bookshelf features used:** `[BOOKSHELF]` `hasTimestamps` (`:76`),
-`hasOne` relation `grid` (`:77-79`), custom `fetchWithRelated`
-(`:80-82`), custom `activate(velianMessage)` (`:83-105`).
+**Bookshelf features used:** `[BOOKSHELF]` `hasTimestamps` (`:76`), `hasOne` relation `grid` (`:77-79`), custom `fetchWithRelated` (`:80-82`), custom `activate(velianMessage)` (`:83-105`).
 
-**Implicit behaviour:** `[SIDE-EFFECT]` `activate` (`:83-105`) is the
-single most side-effect-heavy method in the codebase:
+**Implicit behaviour:** `[SIDE-EFFECT]` `activate` (`:83-105`) is the single most side-effect-heavy method in the codebase:
 ```js
 activate: function (velianMessage) {
     return knex.transaction(async trx =>
@@ -678,16 +504,15 @@ activate: function (velianMessage) {
             .catch(() => trx.rollback()));
 }
 ```
-(`src/models/ship.js:83-105`). It: (1) deactivates every other beacon in
-one UPDATE, (2) activates and marks this one decrypted, (3) fires a DMX
-lighting event, (4) writes a `ship_log` row (itself triggering the
-`LogEntry`/socket side effects documented above) with different text
-depending on whether this is the special Velian beacon, (5) emits a
-`refreshMap` Socket.IO event. `[BUG]`-adjacent: `trx.commit()` is called
-manually inside a `knex.transaction(async trx => ...)` callback, which
-already auto-commits on successful resolution and auto-rolls-back on a
-thrown error - calling `.commit()`/`.rollback()` manually here is
-redundant with, and can race, Knex's own transaction lifecycle.
+(`src/models/ship.js:83-105`). It does five things:
+
+1. Deactivates every other beacon in one UPDATE.
+2. Activates and marks this one decrypted.
+3. Fires a DMX lighting event.
+4. Writes a `ship_log` row with text that depends on whether this is the special Velian beacon. This itself triggers the `LogEntry`/socket side effects documented above.
+5. Emits a `refreshMap` Socket.IO event.
+
+`[BUG]`-adjacent: `trx.commit()` is called manually inside a `knex.transaction(async trx => ...)` callback. This callback already auto-commits on success and auto-rolls-back on a thrown error. Calling `.commit()`/`.rollback()` manually here is redundant with Knex's own transaction lifecycle, and can race it.
 
 **Equivalent plain SQL (as one transaction):**
 ```sql
@@ -698,62 +523,37 @@ COMMIT;
 -- then, outside the DB transaction: dmx.fireEvent(...), INSERT INTO ship_log (...), socket emit('refreshMap')
 ```
 
-**Rewrite risks:** This is the single richest `[SIDE-EFFECT]` method to
-port faithfully: DMX hardware event + ship log (with its own nested
-Socket.IO side effect) + map-refresh Socket.IO event, all keyed off one
-DB update. Missing any one of the three breaks a different subsystem
-(lighting, in-game log feed, or the live map).
+**Rewrite risks:** This is the single richest `[SIDE-EFFECT]` method to port faithfully. One DB update keys off a DMX hardware event, a ship log write (with its own nested Socket.IO side effect), and a map-refresh Socket.IO event. Missing any one of the three breaks a different subsystem: lighting, the in-game log feed, or the live map.
 
 ---
 
 ## `Ship` (`ship`)
 
 **Source:** `src/models/ship.js:141-231`
+
 **Table:** `ship`
 
-**Bookshelf features used:** `[BOOKSHELF]` `hasTimestamps` (`:143`),
-`initialize` hook with three listeners (`:144-168`): `updated`
-(`:146-156`), `fetching fetching:collection` (`:157-162`), `saving`
-(`:163-167`). `hasOne` relation `position` -> `Grid` (`:169-171`),
-`hasMany` relation `persons` -> `Person` (`:172-174`). Custom
-`fetchAllWithRelated`/`fetchWithRelated` (`:175-185`) that conditionally
-add a computed `geom` GeoJSON column `[GIS]`. Custom `getGrid`
-(`:186-188`), `jumpFleet` (`:189-202`), `moveTo` (`:203-205`),
-`destroyShip` (`:206-230`). A `Ships` Bookshelf `Collection` subclass is
-also defined (`:233-235`).
+**Bookshelf features used:** `[BOOKSHELF]` `hasTimestamps` (`:143`), `initialize` hook with three listeners (`:144-168`): `updated` (`:146-156`), `fetching fetching:collection` (`:157-162`), `saving` (`:163-167`). `hasOne` relation `position` -> `Grid` (`:169-171`), `hasMany` relation `persons` -> `Person` (`:172-174`). Custom `fetchAllWithRelated`/`fetchWithRelated` (`:175-185`) that conditionally add a computed `geom` GeoJSON column `[GIS]`. Custom `getGrid` (`:186-188`), `jumpFleet` (`:189-202`), `moveTo` (`:203-205`), `destroyShip` (`:206-230`). A `Ships` Bookshelf `Collection` subclass is also defined (`:233-235`).
 
 **Implicit behaviour:** `[SIDE-EFFECT]` Three distinct hooks:
-1. `on('updated', ...)` (`:146-156`): **only when the updated ship's id
-   is `'odysseus'`**, re-fetches Odysseus with geometry and emits
-   `shipUpdated` over Socket.IO. Updating any other ship emits nothing.
-2. `on('fetching fetching:collection', ...)` (`:157-162`): injects a
-   correlated subquery into **every** `ship`/`ships` fetch, adding a
-   virtual `person_count` column:
+
+1. `on('updated', ...)` (`:146-156`): **only when the updated ship's id is `'odysseus'`**, re-fetches Odysseus with geometry and emits `shipUpdated` over Socket.IO. Updating any other ship emits nothing.
+2. `on('fetching fetching:collection', ...)` (`:157-162`): injects a correlated subquery into **every** `ship`/`ships` fetch, adding a virtual `person_count` column:
    ```sql
    (SELECT COUNT(*) FROM person
     WHERE person.ship_id = ship.id AND person.is_visible IS TRUE
       AND person.status = 'Present and accounted for') AS person_count
    ```
-   This runs on every single `Ship`/`Ships` fetch anywhere in the
-   codebase, including ones that don't obviously ask for it.
-3. `on('saving', ...)` (`:163-167`): strips `person_count` off the model
-   before every save, because it is a computed column injected by hook 2
-   above and does not exist as a real column - without this, saving a
-   previously-fetched Ship model would try to `UPDATE ship SET
-   person_count = ...` and fail.
+This runs on every single `Ship`/`Ships` fetch anywhere in the codebase, including ones that don't obviously ask for it.
+
+3. `on('saving', ...)` (`:163-167`): strips `person_count` off the model before every save. `person_count` is a computed column injected by hook 2 above; it does not exist as a real column. Without this step, saving a previously-fetched Ship model would try to `UPDATE ship SET person_count = ...` and fail.
 
 **Custom methods:**
-- `getColumns(withGeometry)` (`:116-119`): when requested, adds
-  `ST_AsGeoJSON(ship.the_geom)::jsonb AS geom` `[GIS]` to the projection.
-- `jumpFleet({ grid_id, metadata, the_geom })` (`:189-202`): raw UPDATE
-  of every other visible, present ship to the same `grid_id`/`the_geom`,
-  then a normal Bookshelf `.save()` of Odysseus itself (to trigger the
-  `updated` hook above).
+
+- `getColumns(withGeometry)` (`:116-119`): when requested, adds `ST_AsGeoJSON(ship.the_geom)::jsonb AS geom` `[GIS]` to the projection.
+- `jumpFleet({ grid_id, metadata, the_geom })` (`:189-202`): a raw UPDATE moves every other visible, present ship to the same `grid_id`/`the_geom`. Then a normal Bookshelf `.save()` of Odysseus itself triggers the `updated` hook above.
 - `moveTo(grid_id, the_geom)` (`:203-205`): plain patch save.
-- `destroyShip()` (`:206-230`): transaction that sets the ship to
-  `'Destroyed'`, sets every person aboard to `'Killed in action'`, and
-  inserts one `person_entry` row per person killed; then (outside the
-  transaction) fires a DMX event and a `refreshMap` Socket.IO emit.
+- `destroyShip()` (`:206-230`): a transaction sets the ship to `'Destroyed'` and sets every person aboard to `'Killed in action'`. It also inserts one `person_entry` row per person killed. Outside the transaction, it then fires a DMX event and a `refreshMap` Socket.IO emit.
 
 **Equivalent plain SQL:**
 ```sql
@@ -781,23 +581,14 @@ INSERT INTO person_entry (person_id, type, entry, added_by)
 -- outside the transaction: dmx.fireEvent(...), socket emit('refreshMap')
 ```
 
-**Rewrite risks:** The `person_count` computed-column-via-hook pattern is
-the single most dangerous thing to port: **every** existing caller of
-`Ship`/`Ships` fetch implicitly gets `person_count` today
-(`src/models/ship.js:243-253` `getTotalSoulsAlive` depends on it being
-present), and a rewrite that queries `ship` directly without adding the
-subquery will silently return ships with no `person_count` field, which
-`getTotalSoulsAlive`-equivalent code would then read as `NaN`/0. The
-`updated`-hook's odysseus-only re-fetch-and-emit must be replicated at
-every UPDATE call site that touches ship id `'odysseus'`
-(`src/routes/fleet.js` PUT/PATCH handlers, `jumpFleet`, `moveTo`), not
-just wherever `.save()` happened to be called through Bookshelf.
+**Rewrite risks:** The `person_count` computed-column-via-hook pattern is the single most dangerous thing to port. **Every** existing caller of a `Ship`/`Ships` fetch implicitly gets `person_count` today; `getTotalSoulsAlive` (`src/models/ship.js:243-253`) depends on it being present. A rewrite that queries `ship` directly, without adding the subquery, silently returns ships with no `person_count` field. `getTotalSoulsAlive`-equivalent code would then read that as `NaN` or 0. The `updated`-hook's odysseus-only re-fetch-and-emit must be replicated at every UPDATE call site that touches ship id `'odysseus'` (`src/routes/fleet.js` PUT/PATCH handlers, `jumpFleet`, `moveTo`). This applies everywhere, not just where `.save()` happened to be called through Bookshelf.
 
 ---
 
 ## `SipContact` (`sip_contact`)
 
 **Source:** `src/models/sip-contact.js:15-18`
+
 **Table:** `sip_contact`
 
 **Bookshelf features used:** `[BOOKSHELF]` `hasTimestamps` only.
@@ -809,13 +600,12 @@ just wherever `.save()` happened to be called through Bookshelf.
 ## `Store` (`store`)
 
 **Source:** `src/models/store.js:10-13`
+
 **Table:** `store`
 
 **Bookshelf features used:** `[BOOKSHELF]` `hasTimestamps` only.
 
-**Custom methods:** None on the model itself, but it is the persistence
-backend for the entire Redux state tree, driven from
-`src/store/storePersistance.ts:6-10`:
+**Custom methods:** None on the model itself, but it is the persistence backend for the entire Redux state tree, driven from `src/store/storePersistance.ts:6-10`:
 ```js
 async function saveState(data, id) {
     const oldState = await Store.forge({ id }).fetch();
@@ -823,10 +613,7 @@ async function saveState(data, id) {
     return Store.forge({ id }).save({ data }, { method });
 }
 ```
-called on a throttle (every `SAVE_STATE_FREQUENCY_MS`, default 5000ms,
-`src/store/storePersistance.ts:12-17,21-27`) on every Redux state change,
-and once more synchronously on `SIGINT`/`SIGTERM`
-(`src/store/storePersistance.ts:30-44`).
+called on a throttle (every `SAVE_STATE_FREQUENCY_MS`, default 5000ms, `src/store/storePersistance.ts:12-17,21-27`) on every Redux state change, and once more synchronously on `SIGINT`/`SIGTERM` (`src/store/storePersistance.ts:30-44`).
 
 **Equivalent plain SQL:**
 ```sql
@@ -835,21 +622,17 @@ ON CONFLICT (id) DO UPDATE SET data = EXCLUDED.data, updated_at = now();
 ```
 (a single upsert replaces the current fetch-then-branch pattern).
 
-**Rewrite risks:** The throttled, fire-and-forget nature of the save
-means a rewrite must preserve the "save on graceful shutdown" signal
-handlers (`src/store/storePersistance.ts:40-44`) or risk losing up to
-`SAVE_STATE_FREQUENCY_MS` of state on every deploy.
+**Rewrite risks:** The save is throttled and fire-and-forget. A rewrite must preserve the "save on graceful shutdown" signal handlers (`src/store/storePersistance.ts:40-44`), or risk losing up to `SAVE_STATE_FREQUENCY_MS` of state on every deploy.
 
 ---
 
 ## `Tag` (`tag`)
 
 **Source:** `src/models/tag.js:16-28`
+
 **Table:** `tag`
 
-**Bookshelf features used:** `[BOOKSHELF]` `hasTimestamps` (`:18`),
-`hasMany` relation `operations` -> `OperationResult` (`:19-21`), custom
-`fetchAllWithRelated`/`fetchWithRelated` (`:22-27`).
+**Bookshelf features used:** `[BOOKSHELF]` `hasTimestamps` (`:18`), `hasMany` relation `operations` -> `OperationResult` (`:19-21`), custom `fetchAllWithRelated`/`fetchWithRelated` (`:22-27`).
 
 **Equivalent plain SQL:**
 ```sql
@@ -863,14 +646,10 @@ SELECT t.*, o.* FROM tag t LEFT JOIN operation_result o ON o.tag_id = t.id [WHER
 ## `OperationResult` (`operation_result`)
 
 **Source:** `src/models/tag.js:54-75`
+
 **Table:** `operation_result`
 
-**Bookshelf features used:** `[BOOKSHELF]` `hasTimestamps` (`:56`),
-`hasOne` relations `tag` (`:57-59`), `person` -> `Person` joined on
-**`bio_id`, not `id`** (`:60-62`), `author` -> `Person` on `id`
-(`:63-65`), `artifact` -> `Artifact` joined on **`catalog_id`, not
-`id`** (`:66-68`). Custom `fetchWithRelated`/`fetchAllWithRelated`
-(`:69-74`).
+**Bookshelf features used:** `[BOOKSHELF]` `hasTimestamps` (`:56`). `hasOne` relations: `tag` (`:57-59`); `person` -> `Person`, joined on **`bio_id`, not `id`** (`:60-62`); `author` -> `Person` on `id` (`:63-65`); and `artifact` -> `Artifact`, joined on **`catalog_id`, not `id`** (`:66-68`). Custom `fetchWithRelated`/`fetchAllWithRelated` (`:69-74`).
 
 **Equivalent plain SQL:**
 ```sql
@@ -887,40 +666,30 @@ LEFT JOIN artifact art ON art.catalog_id = o.catalog_id
 [WHERE o.id = :id];
 ```
 
-**Rewrite risks:** Two of the four joins are on non-primary-key unique
-columns (`bio_id`, `catalog_id`) rather than the tables' own primary
-keys - easy to get wrong in a rewrite that assumes every join is
-`id = foreign_id`. See `docs/rewrite/database-schema.md`
-(`operation_result` entry) for the schema-level note on this pattern.
-The bulk of the real complexity for this table is in
-`src/routes/operation.ts` (not this model): automatic posting of
-blood/gene/xray results into `person_entry`, and scheduling delayed
-artifact-entry submission through the Redux store - see the `post
-/operation` route logic cited in the schema doc's `operation_result`
-entry for the full side-effect chain.
+**Rewrite risks:** Two of the four joins are on non-primary-key unique columns (`bio_id`, `catalog_id`), not the tables' own primary keys. This is easy to get wrong in a rewrite that assumes every join is `id = foreign_id`. See `docs/rewrite/database-schema.md` (`operation_result` entry) for the schema-level note on this pattern.
+
+The bulk of the real complexity for this table is not in this model. It is in `src/routes/operation.ts`: automatic posting of blood/gene/xray results into `person_entry`, and scheduling delayed artifact-entry submission through the Redux store. See the `post /operation` route logic cited in the schema doc's `operation_result` entry for the full side-effect chain.
 
 ---
 
 ## `Task` (`task`)
 
 **Source:** `src/models/task.js:15-18`
+
 **Table:** `task`
 
 **Bookshelf features used:** `[BOOKSHELF]` `hasTimestamps` only.
 
-**Custom methods:** `isTaskActive(id)` (module-level, `:20`): `SELECT
-is_active FROM task WHERE id = ? LIMIT 1`, defaults to `false` if not
-found.
+**Custom methods:** `isTaskActive(id)` (module-level, `:20`): `SELECT is_active FROM task WHERE id = ? LIMIT 1`, defaults to `false` if not found.
 
-**Rewrite risks:** None functionally - but see schema doc: this model
-and table are `[DEAD]`, nothing calls `isTaskActive`. Drop rather than
-port.
+**Rewrite risks:** None functionally. But see the schema doc: this model and table are `[DEAD]`, nothing calls `isTaskActive`. Drop rather than port.
 
 ---
 
 ## `VoteOption` (`vote_option`)
 
 **Source:** `src/models/vote.js:16-19`
+
 **Table:** `vote_option`
 
 **Bookshelf features used:** `[BOOKSHELF]` `hasTimestamps` only.
@@ -932,22 +701,12 @@ port.
 ## `VoteEntry` (`vote_entry`)
 
 **Source:** `src/models/vote.js:29-33`
+
 **Table:** `vote_entry`
 
-**Bookshelf features used:** `[BOOKSHELF]` `hasTimestamps` (`:32`),
-`idAttribute: 'person_id'` (`:31`).
+**Bookshelf features used:** `[BOOKSHELF]` `hasTimestamps` (`:32`), `idAttribute: 'person_id'` (`:31`).
 
-**`[BUG]`-adjacent:** The table's real primary key is the composite
-`(person_id, vote_id)` (`db/migrations/20181207151445_social-
-initial.js:80`), but the model declares `idAttribute: 'person_id'`
-alone. Bookshelf has no native composite-key support, so this is a
-workaround, but it means `VoteEntry.forge({ id: someId })` would
-(incorrectly) treat `someId` as a `person_id` alone and could match the
-wrong row if that person has voted in multiple votes. Currently latent:
-`grep` shows `VoteEntry` is only ever used via `.forge().save(...,
-{method: 'insert'})` (`src/routes/vote.js:198`) or `.where('vote_id',
-...).fetchAll()` (`src/rules/social/votes.js:18`), never
-`.forge({id})`.
+**`[BUG]`-adjacent:** The table's real primary key is the composite `(person_id, vote_id)` (`db/migrations/20181207151445_social-initial.js:80`), but the model declares `idAttribute: 'person_id'` alone. Bookshelf has no native composite-key support, so this is a workaround. It means `VoteEntry.forge({ id: someId })` would incorrectly treat `someId` as a `person_id` alone. It could then match the wrong row, if that person has voted in multiple votes. Currently latent: `grep` shows `VoteEntry` is only ever used via `.forge().save(..., {method: 'insert'})` (`src/routes/vote.js:198`) or `.where('vote_id', ...).fetchAll()` (`src/rules/social/votes.js:18`), never `.forge({id})`.
 
 **Equivalent plain SQL:**
 ```sql
@@ -956,32 +715,19 @@ VALUES (:person_id, :vote_id, :vote_option_id, now(), now());
 SELECT * FROM vote_entry WHERE vote_id = :voteId;
 ```
 
-**Rewrite risks:** A plain-SQL rewrite naturally uses the real composite
-key and has no equivalent problem - just don't introduce a single
-synthetic "id" concept for this table where none exists in the schema.
+**Rewrite risks:** A plain-SQL rewrite naturally uses the real composite key, and has no equivalent problem. Just don't introduce a single synthetic "id" concept for this table, where none exists in the schema.
 
 ---
 
 ## `Vote` (`vote`)
 
 **Source:** `src/models/vote.js:52-80`
+
 **Table:** `vote`
 
-**Bookshelf features used:** `[BOOKSHELF]` `hasTimestamps` (`:54`),
-`initialize` hook with `created`/`updated` listeners (`:55-63`), `hasOne`
-relation `author` (`:65-67`), `hasMany` relations `entries` ->
-`VoteEntry` (`:68-70`) and `options` -> `VoteOption` (`:71-73`), custom
-`fetchAllWithRelated` (ordered by `-is_active, -created_at`,
-`:74-76`) and `fetchWithRelated` (`:77-79`).
+**Bookshelf features used:** `[BOOKSHELF]` `hasTimestamps` (`:54`); an `initialize` hook with `created`/`updated` listeners (`:55-63`); a `hasOne` relation `author` (`:65-67`); `hasMany` relations `entries` -> `VoteEntry` (`:68-70`) and `options` -> `VoteOption` (`:71-73`). Custom `fetchAllWithRelated`, ordered by `-is_active, -created_at` (`:74-76`), and `fetchWithRelated` (`:77-79`).
 
-**Implicit behaviour:** `[SIDE-EFFECT]` `created`/`updated` listeners log
-and emit `voteAdded`/`voteUpdated` over Socket.IO
-(`src/models/vote.js:56-62`). Note `src/routes/vote.js:134` **also**
-explicitly emits `voteCreated` (a different event name) via
-`req.io.emit('voteCreated', null)` on `PUT /vote/create` - so creating a
-vote today fires **two different Socket.IO event names**
-(`voteAdded` from the model hook, `voteCreated` from the route), which a
-rewrite must knowingly replicate or consolidate.
+**Implicit behaviour:** `[SIDE-EFFECT]` `created`/`updated` listeners log and emit `voteAdded`/`voteUpdated` over Socket.IO (`src/models/vote.js:56-62`). Note that `src/routes/vote.js:134` **also** explicitly emits `voteCreated`, a different event name, via `req.io.emit('voteCreated', null)` on `PUT /vote/create`. So creating a vote today fires **two different Socket.IO event names**: `voteAdded` from the model hook, and `voteCreated` from the route. A rewrite must knowingly replicate or consolidate this.
 
 **Equivalent plain SQL:**
 ```sql
@@ -992,55 +738,21 @@ SELECT * FROM vote_entry WHERE vote_id = :voteId;
 SELECT * FROM vote_option WHERE vote_id = :voteId;
 ```
 
-**Rewrite risks:** Two independently-named Socket.IO events on vote
-creation (`voteAdded` + `voteCreated`) is easy to collapse into one by
-accident; decide deliberately.
+**Rewrite risks:** Two independently-named Socket.IO events on vote creation (`voteAdded` + `voteCreated`) is easy to collapse into one by accident; decide deliberately.
 
 ---
 
 ## Non-Bookshelf story models (`[STORY-DB]`)
 
-These five files export `zod` schemas and plain `knex` query functions,
-not Bookshelf models. They need no ORM-to-SQL translation - they are
-already the target shape for a rewrite - but they share a repeated
-pattern worth naming: **every "upsert" function deletes all of a parent
-row's link-table rows and reinserts them from scratch inside one
-transaction**, rather than diffing. This is simple and correct but is an
-`O(n)` full-rewrite on every save, not an incremental update.
+These five files export `zod` schemas and plain `knex` query functions, not Bookshelf models. They need no ORM-to-SQL translation; they are already the target shape for a rewrite. But they share a repeated pattern worth naming. **Every "upsert" function deletes all of a parent row's link-table rows and reinserts them from scratch inside one transaction**, rather than diffing. This is simple and correct but is an `O(n)` full-rewrite on every save, not an incremental update.
 
-- **`src/models/story-artifact.ts`** - `getArtifactRelations(id)`
-  (`:17-34`): joins `story_artifact_events`/`story_artifact_plots` to
-  fetch an artifact's linked events/plots.
-- **`src/models/story-events.ts`** - `listStoryEvents`/`getStoryEvent`
-  (`:93-170`): joins all 4 story link tables per event.
-  `upsertStoryEvent` (`:181-203`): `INSERT ... ON CONFLICT (id) DO
-  UPDATE` (`[PG]` upsert, `:184`), then delete+reinsert of
-  `story_artifact_events`/`story_person_events`/`story_event_messages`/
-  `story_event_plots` for that event, all in one `knex.transaction`.
-- **`src/models/story-messages.ts`** - `listStoryMessages`
-  (`:85-107`): two separate queries joined in JS, not SQL (fetches all
-  messages, then all person-message links, then matches them by
-  `message_id` in a `.forEach` loop, `:92-105`) - an N+1-shaped pattern
-  avoided only because it is done as 2 bulk queries instead of per-row;
-  still worth flagging as something a straight SQL rewrite could do in
-  one query with `GROUP BY`/`json_agg` instead. `upsertStoryMessage`
-  (`:170-187`): same delete+reinsert transaction pattern.
-- **`src/models/story-person.ts`** - `getStoryPersonDetails(id)`
-  (`:94-142`): 5 parallel queries (events, receivable/sendable messages,
-  plots, relations), the relations query self-joins `person` twice
-  (`first_person`/`second_person` aliases, `:115-128`) and
-  `parseRelation` (`:74-92`) picks which side of the relation is "the
-  other person" relative to the requested `id` in application code, not
-  SQL.
-- **`src/models/story-plots.ts`** - mirrors `story-events.ts`:
-  `listStoryPlots`/`getStoryPlot` (`:93-170`), `upsertStoryPlot`
-  (`:181-202`) with the same delete+reinsert transaction pattern.
+- **`src/models/story-artifact.ts`** - `getArtifactRelations(id)` (`:17-34`): joins `story_artifact_events`/`story_artifact_plots` to fetch an artifact's linked events/plots.
+- **`src/models/story-events.ts`** - `listStoryEvents`/`getStoryEvent` (`:93-170`): joins all 4 story link tables per event. `upsertStoryEvent` (`:181-203`): `INSERT ... ON CONFLICT (id) DO UPDATE` (`[PG]` upsert, `:184`), then delete+reinsert of `story_artifact_events`/`story_person_events`/`story_event_messages`/`story_event_plots` for that event, all in one `knex.transaction`.
+- **`src/models/story-messages.ts`** - `listStoryMessages` (`:85-107`) joins two separate queries in JS, not SQL. It fetches all messages, then all person-message links, then matches them by `message_id` in a `.forEach` loop (`:92-105`). This is an N+1-shaped pattern, avoided only because it runs as 2 bulk queries instead of per-row. It is still worth flagging: a straight SQL rewrite could do this in one query with `GROUP BY`/`json_agg` instead. `upsertStoryMessage` (`:170-187`) uses the same delete-and-reinsert transaction pattern.
+- **`src/models/story-person.ts`** - `getStoryPersonDetails(id)` (`:94-142`) runs 5 parallel queries: events, receivable/sendable messages, plots, and relations. The relations query self-joins `person` twice, using `first_person`/`second_person` aliases (`:115-128`). `parseRelation` (`:74-92`) then picks which side of the relation is "the other person", relative to the requested `id`, in application code, not SQL.
+- **`src/models/story-plots.ts`** - mirrors `story-events.ts`: `listStoryPlots`/`getStoryPlot` (`:93-170`), `upsertStoryPlot` (`:181-202`) with the same delete+reinsert transaction pattern.
 
-**Rewrite risks:** None ORM-related (already plain SQL). The repeated
-delete-and-reinsert-all-links pattern is a performance/consistency
-consideration if link tables grow large, and the `story-messages.ts`
-JS-side join (`:92-105`) is a candidate for a single SQL query with
-aggregation instead.
+**Rewrite risks:** None ORM-related; this is already plain SQL. The repeated delete-and-reinsert-all-links pattern is a performance and consistency consideration, if link tables grow large. The `story-messages.ts` JS-side join (`:92-105`) is a candidate for a single SQL query with aggregation instead.
 
 ---
 
@@ -1070,11 +782,7 @@ aggregation instead.
 
 ## Model event listeners
 
-Every `Model.on(...)` / `initialize()` lifecycle hook found in
-`src/models/`. A rewrite drops every one of these implicitly unless the
-equivalent call is added explicitly at each write site - they are the
-single biggest source of silent behaviour loss in a Bookshelf-to-SQL
-rewrite.
+Every `Model.on(...)` / `initialize()` lifecycle hook found in `src/models/`. A rewrite drops every one of these implicitly, unless the equivalent call is added explicitly at each write site. They are the single biggest source of silent behaviour loss in a Bookshelf-to-SQL rewrite.
 
 | Model | Event(s) | File:line | Effect |
 |---|---|---|---|
@@ -1091,12 +799,7 @@ rewrite.
 | `Vote` | `created` | `src/models/vote.js:56-59` | Log + emit `voteAdded` (route separately emits `voteCreated`, `src/routes/vote.js:134`) |
 | `Vote` | `updated` | `src/models/vote.js:60-62` | Log + emit `voteUpdated` |
 
-Not a lifecycle hook, but the same class of hidden effect: `Beacon
-.activate()` (`src/models/ship.js:83-105`) and `Ship.destroyShip()`
-(`src/models/ship.js:206-230`) are ordinary methods, not `on(...)`
-listeners, but both bundle a DB transaction with DMX hardware events and
-Socket.IO emits that a rewrite must trigger explicitly at the same call
-sites (`src/routes/starmap.js`, `src/routes/fleet.js`).
+`Beacon.activate()` (`src/models/ship.js:83-105`) and `Ship.destroyShip()` (`src/models/ship.js:206-230`) are not lifecycle hooks, but they hide the same class of effect. Both are ordinary methods, not `on(...)` listeners. But both bundle a DB transaction with DMX hardware events and Socket.IO emits. A rewrite must trigger these explicitly at the same call sites (`src/routes/starmap.js`, `src/routes/fleet.js`).
 
 ---
 
@@ -1133,7 +836,4 @@ erDiagram
     VoteEntry }o--|| VoteOption : "vote_option_id"
 ```
 
-Note: `Box`, `Task`, `Store`, `SipContact`, `InfoEntry`, `InfoPriority`,
-`GridAction`, `MapObject`, `ComChannelEvent` have no Bookshelf relations
-to any other model and are omitted from the diagram for clarity - see
-their entries above for details.
+Note: `Box`, `Task`, `Store`, `SipContact`, `InfoEntry`, `InfoPriority`, `GridAction`, `MapObject` and `ComChannelEvent` have no Bookshelf relations to any other model. They are omitted from the diagram for clarity. See their entries above for details.

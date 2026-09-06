@@ -1,8 +1,6 @@
 # Complete route inventory
 
-Every HTTP endpoint the backend serves, extracted from the source. Use this as
-a checklist. The detail for each route is in the API reference documents named
-in the last column.
+Every HTTP endpoint the backend serves, extracted from the source. Use this as a checklist. The detail for each route is in the API reference documents named in the last column.
 
 Mount points are in `src/index.ts:78-98`.
 
@@ -36,8 +34,7 @@ Mount points are in `src/index.ts:78-98`.
 | POST | `/fleet/:id/jump/validate` | `src/routes/fleet.js:112` |
 | POST | `/fleet/:id/destroy` | `src/routes/fleet.js:125` |
 
-Note: `PUT /fleet/set-visible` is declared before `PUT /fleet/:id`, so the
-literal path wins. `POST /fleet/move` and `POST /fleet/:id/...` do not collide.
+Note: `PUT /fleet/set-visible` is declared before `PUT /fleet/:id`, so the literal path wins. `POST /fleet/move` and `POST /fleet/:id/...` do not collide.
 
 ## `/starmap` — grids and beacons (4)
 
@@ -67,8 +64,7 @@ literal path wins. `POST /fleet/move` and `POST /fleet/:id/...` do not collide.
 | PUT | `/person/:id/group/:groupId` | `src/routes/person.js:256` |
 | DELETE | `/person/:id/group/:groupId` | `src/routes/person.js:278` |
 
-Note: `GET /person/filters` and `GET /person/groups` are declared before
-`GET /person/:id`. A person with the id `filters` would be unreachable.
+Note: `GET /person/filters` and `GET /person/groups` are declared before `GET /person/:id`. A person with the id `filters` would be unreachable.
 
 ## `/event` — scheduled scans (3)
 

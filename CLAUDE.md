@@ -120,9 +120,13 @@ These cost time if you do not know them up front.
   A throwing rule kills the process, and because a crash raises no signal it
   also skips the `SIGINT`/`SIGTERM` handler that saves state. `interval()` and
   `timeout()` in `src/rules/helpers.js` do catch; `watch()` was missed.
-- **No authentication anywhere.** The only exception is the `/messaging`
-  Socket.IO handshake, which reads a person id from the query string — that
-  identifies, it does not authenticate.
+- **No authentication, authorization or rate limiting anywhere. This is by
+  design, not a defect.** The game runs on a closed LAN and every client is
+  game equipment. Do not add auth, and do not report its absence as a finding.
+  See the trust model in `docs/rewrite/00-overview.md` section 2. The
+  `/messaging` Socket.IO handshake reads a person id from the query string;
+  that identifies a caller, it does not authenticate one. Blast radius still
+  matters, because a client defect can do the same damage.
 - **Two dependencies are git forks**, not npm packages: `bookshelf`
   (`OdysseusLarp/bookshelf`, supplies `fetchPage` and `orderBy('-x')`) and
   `express-swagger-generator`. Neither has a drop-in upstream equivalent.
